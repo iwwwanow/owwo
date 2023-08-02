@@ -16,7 +16,7 @@ const app = new Application();
 
 app.use(
   viewEngine(oakAdapter, etaEngine, {
-    viewRoot: "./templates",
+    viewRoot: "./views",
   })
 );
 

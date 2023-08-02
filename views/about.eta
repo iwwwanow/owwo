@@ -1,2 +1,3 @@
 <% layout("./layout.eta") %>
-	<h1>OWWO</h1>
+
+	<h1>about</h1>

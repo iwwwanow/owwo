@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>owwo</title>
 </head>
 
 <body>
-	<h1>body</h1>
-	<%~ it.body %>
+	<%~ includeFile("./partials/header.eta") %>
+		<%~ it.body %>
 </body>
 
 </html>
