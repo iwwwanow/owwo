@@ -1,0 +1,23 @@
+{
+  "name": "owwo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/effektivnayarabota1/owwo.git"
+  },
+  "keywords": [
+    "owwo",
+    "art"
+  ],
+  "author": "rabota1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/effektivnayarabota1/owwo/issues"
+  },
+  "homepage": "https://github.com/effektivnayarabota1/owwo#readme"
+}

@@ -1,0 +1,6 @@
+<% layout("./layout.eta") %>
+
+	<h1>Project</h1>
+	<a href="/elementId">
+		<h2>element</h2>
+	</a>
