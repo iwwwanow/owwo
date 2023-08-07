@@ -3,9 +3,6 @@ import * as path from "https://deno.land/std@0.102.0/path/mod.ts";
 
 import { router } from "./routes/routes.ts";
 
-// const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
-// import { Eta } from "https://deno.land/x/eta@v3.0.3/src/index.ts";
-
 import {
   viewEngine,
   oakAdapter,
@@ -14,12 +11,19 @@ import {
 
 const app = new Application();
 
-app.use(
+await app.use(
   viewEngine(oakAdapter, etaEngine, {
     viewRoot: "./views",
   })
 );
 
-app.use(router.routes());
+await app.use(router.routes());
+
+app.use(async (context) => {
+  await context.send({
+    root: `${Deno.cwd()}`,
+    // index: "index.html",
+  });
+});
 
 await app.listen({ port: 8000 });

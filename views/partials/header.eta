@@ -1,9 +1,11 @@
-<a href="/">
-	<h1>owwo</h1>
-</a>
-<a href="/about">
-	<h1>about</h1>
-</a>
-<a href="/login">
-	<h1>login</h1>
-</a>
+<header>
+	<a href="/" style="color: red">
+		<h1>owwo</h1>
+	</a>
+	<a href="/about">
+		<h1>about</h1>
+	</a>
+	<a href="/login">
+		<h1>login</h1>
+	</a>
+</header>
