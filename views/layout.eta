@@ -8,6 +8,13 @@
 
 	<link rel="stylesheet" href="/static/reset.css" />
 	<link rel="stylesheet" href="/static/style.css" />
+
+	<link rel="stylesheet" href="/static/layout.css" />
+	<link rel="stylesheet" href="/static/color.css" />
+	<link rel="stylesheet" href="/static/font.css" />
+
+	<link rel="stylesheet" href="/static/button.css" />
+	<link rel="stylesheet" href="/static/input.css" />
 </head>
 
 <body>
