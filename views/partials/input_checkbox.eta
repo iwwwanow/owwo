@@ -1,0 +1,6 @@
+<div>
+	<input type="checkbox" id="checkbox" name="name" />
+	<label for="checkbox">
+		<%= it.text %>
+	</label>
+</div>

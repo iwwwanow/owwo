@@ -11,8 +11,10 @@
 </head>
 
 <body>
-	<%~ includeFile("./partials/header.eta") %>
-		<%~ it.body %>
+	<div class="wrapper">
+		<%~ includeFile("./partials/header.eta") %>
+			<%~ it.body %>
+	</div>
 </body>
 
 </html>

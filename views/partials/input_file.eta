@@ -1,0 +1,6 @@
+<div>
+	<label for="image">
+		<%= it.text %>
+	</label>
+	<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+</div>

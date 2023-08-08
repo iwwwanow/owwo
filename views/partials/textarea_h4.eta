@@ -1,0 +1,3 @@
+<h4>
+	<textarea name="textarea" id="textarea"><%= it.text %></textarea>
+</h4>

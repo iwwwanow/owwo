@@ -1,0 +1,25 @@
+<% if (it.type==="disabled" ) {%>
+	<button disabled>
+		<h6>
+			<%= it.text %>
+		</h6>
+	</button>
+	<% } else if (it.type==="default" ){%>
+		<button>
+			<h6>
+				<%= it.text %>
+			</h6>
+		</button>
+		<% } else if (it.type==="green" ){%>
+			<button class="green">
+				<h6>
+					<%= it.text %>
+				</h6>
+			</button>
+			<% } else if (it.type==="red" ){%>
+				<button class="red">
+					<h6>
+						<%= it.text %>
+					</h6>
+				</button>
+				<%}%>
