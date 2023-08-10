@@ -8,11 +8,17 @@
 
 	<link rel="stylesheet" href="/static/reset.css" />
 	<link rel="stylesheet" href="/static/style.css" />
+
+	<link rel="stylesheet" href="/static/layout.css" />
+	<link rel="stylesheet" href="/static/color.css" />
+	<link rel="stylesheet" href="/static/font.css" />
 </head>
 
 <body>
-	<%~ includeFile("./partials/header.eta") %>
-		<%~ it.body %>
+	<div class="wrapper">
+		<%~ includeFile("./partials/header.eta") %>
+			<%~ it.body %>
+	</div>
 </body>
 
 </html>

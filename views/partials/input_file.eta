@@ -1,0 +1,16 @@
+<div class="input-file">
+	<h6>
+		<label for="image">
+			<%= it.text %>
+		</label>
+		<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+	</h6>
+</div>
+
+<style>
+	/* TODO Стилизовать inputFile */
+	.input-file {
+		text-transform: uppercase;
+	}
+
+</style>
