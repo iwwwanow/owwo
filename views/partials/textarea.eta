@@ -1,0 +1,35 @@
+<% if (it.type==="header" ) { %>
+	<h4>
+		<textarea name="textarea" id="textarea"><%= it.text %></textarea>
+	</h4>
+	<% } else if (it.type==="text" ) { %>
+		<h5>
+			<textarea name="textarea" id="textarea" spellcheck="false"><%= it.text %></textarea>
+		</h5>
+		<% } %>
+
+			<style>
+				textarea {
+					width: 100%;
+					resize: none;
+
+					color: var(--grey-dark);
+					background-color: var(--grey-light);
+
+					font-style: inherit;
+					font-weight: inherit;
+					text-transform: inherit;
+				}
+
+				textarea:focus {
+					color: var(--grey-light);
+					background-color: var(--grey-dark);
+
+					outline: none;
+				}
+
+				h4 textarea {
+					text-transform: uppercase;
+				}
+
+			</style>
