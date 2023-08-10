@@ -1,3 +1,0 @@
-<h5>
-	<textarea name="textarea" id="textarea" spellcheck="false"><%= it.text %></textarea>
-</h5>
