@@ -10,6 +10,10 @@ router.get("/about", (context) => {
   context.render("about.eta");
 });
 
+router.get("/register", (context) => {
+  context.render("register.eta");
+});
+
 router.get("/login", (context) => {
   context.render("login.eta");
 });

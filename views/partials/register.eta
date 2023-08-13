@@ -4,24 +4,17 @@
 	<div class="login_container">
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'login' }) %>
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'password' }) %>
+		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'confirm password' }) %>
 		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
 	</div>
 
-	<h6>
-		<a href="/register">
-			Регистрация
-		</a>
-	</h6>
+	<style>
+		.login_container {
+			grid-column: 1/span 2;
 
-</div>
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
 
-<style>
-	.login_container {
-		grid-column: 1/span 2;
-
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-
-</style>
+	</style>

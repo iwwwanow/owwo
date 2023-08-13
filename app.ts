@@ -1,6 +1,8 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import * as path from "https://deno.land/std@0.102.0/path/mod.ts";
 
+import GUN from "npm:gun";
+
 import { router } from "./routes/routes.ts";
 
 import {

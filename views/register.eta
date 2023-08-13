@@ -4,15 +4,9 @@
 	<div class="login_container">
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'login' }) %>
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'password' }) %>
+		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'confirm password' }) %>
 		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
 	</div>
-
-	<h6>
-		<a href="/register">
-			Регистрация
-		</a>
-	</h6>
-
 </div>
 
 <style>
