@@ -3,7 +3,7 @@ import path from "./deps.ts";
 
 import { viewEngine, oakAdapter, etaEngine } from "./deps.ts";
 
-import { router } from "./routes/routes.ts";
+import { router } from "./routes/router.ts";
 
 const app = new Application();
 

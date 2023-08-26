@@ -7,7 +7,25 @@
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'confirm password' }) %>
 		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
 	</div>
+
+	<form method="POST" action="/register">
+		<div>
+			<label for="name">usernsme: </label>
+			<input type="text" name="name" id="name" required />
+		</div>
+		<div>
+			<label for="name">password: </label>
+			<input type="text" name="password" id="password" required />
+		</div>
+		<div>
+			<label for="name">confirm password: </label>
+			<input type="text" name="confirm-password" id="confirm-password" required />
+		</div>
+		<input type="submit" value="Register" />
+	</form>
+
 </div>
+
 
 <style>
 	.login_container {
