@@ -1,5 +1,7 @@
 import { Router } from "../deps.ts";
 
+import UserController from "../controllers/user.ts";
+
 export const router = new Router();
 
 router.get("/", (ctx) => {
@@ -17,11 +19,8 @@ router.get("/login", (ctx) => {
 router.get("/register", (ctx) => {
   ctx.render("register.eta");
 });
-router.post("/register", async (ctx) => {
-  const result = ctx.request.body();
-  console.log(result.type);
-  console.log(await result.value);
-  ctx.render("login.eta");
+router.post("/register", (ctx) => {
+  UserController.create(ctx);
 });
 
 router.get("/projectId", (ctx) => {
