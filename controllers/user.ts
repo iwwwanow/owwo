@@ -1,5 +1,6 @@
 import * as edgedb from "edgedb";
-import * as e from "../dbschema/edgeql-js/external.ts";
+// import * as e from "../dbschema/edgeql-js/index.ts";
+import e from "../dbschema/edgeql-js/index.ts";
 
 const client = edgedb.createClient();
 
@@ -17,14 +18,19 @@ export default class UserController {
       await ctx.render("login.eta");
     }
 
-    console.log(e);
+    // const query = e.select(e.User, () => ({
+    //   ...e.User["*"],
+    // }));
+    //
+    // const result = await query.run(client);
 
-    const user = {
+    const query = e.insert(e.User, {
       username,
       password,
-    };
+    });
 
-    console.log(user);
+    const result = await query.run(client);
+    console.log(result);
 
     await ctx.render("login.eta");
   }

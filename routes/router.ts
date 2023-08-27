@@ -19,8 +19,8 @@ router.get("/login", (ctx) => {
 router.get("/register", (ctx) => {
   ctx.render("register.eta");
 });
-router.post("/register", (ctx) => {
-  UserController.create(ctx);
+router.post("/register", async (ctx) => {
+  await UserController.create(ctx);
 });
 
 router.get("/projectId", (ctx) => {
