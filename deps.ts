@@ -6,3 +6,6 @@ export {
   oakAdapter,
   etaEngine,
 } from "https://deno.land/x/view_engine@v10.6.0/mod.ts";
+
+export * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
+export { load } from "https://deno.land/std/dotenv/mod.ts";

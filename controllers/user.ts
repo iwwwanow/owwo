@@ -1,8 +1,10 @@
 import * as edgedb from "edgedb";
-// import * as e from "../dbschema/edgeql-js/index.ts";
 import e from "../dbschema/edgeql-js/index.ts";
+import { bcrypt } from "../deps.ts";
+import { load } from "../deps.ts";
 
 const client = edgedb.createClient();
+const env = await load();
 
 export default class UserController {
   static async create(ctx: any) {
@@ -18,20 +20,34 @@ export default class UserController {
       await ctx.render("login.eta");
     }
 
-    // const query = e.select(e.User, () => ({
-    //   ...e.User["*"],
-    // }));
-    //
-    // const result = await query.run(client);
+    // TODO проверка на уникальность.
+    const unique = await e
+      .select(e.User, (user) => ({
+        username: true,
+        password: true,
 
-    const query = e.insert(e.User, {
-      username,
-      password,
-    });
+        filter: e.op(user.username, "=", username),
+      }))
+      .run(client);
 
-    const result = await query.run(client);
-    console.log(result);
+    if (unique.length) {
+      // TODO вернуть ошибку на клиент
+      console.log("username already exists");
+      await ctx.render("login.eta");
+    } else {
+      // TODO bcrypt.
+      const bpassword = await bcrypt.hash(password);
+      console.log(bpassword);
 
-    await ctx.render("login.eta");
+      await e
+        .insert(e.User, {
+          username,
+          password: bpassword,
+        })
+        .run(client);
+      console.log("user created");
+
+      await ctx.render("login.eta");
+    }
   }
 }
