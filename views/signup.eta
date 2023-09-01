@@ -4,10 +4,11 @@
 	<div class="login_container">
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'login' }) %>
 		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'password' }) %>
+		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'confirm password' }) %>
 		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
 	</div>
 
-	<form method="POST" action="/login">
+	<form method="POST" action="/signup">
 		<div>
 			<label for="name">usernsme: </label>
 			<input type="text" name="username" id="name" required />
@@ -16,16 +17,15 @@
 			<label for="name">password: </label>
 			<input type="text" name="password" id="password" required />
 		</div>
-		<input type="submit" value="sign in" />
+		<div>
+			<label for="name">confirm password: </label>
+			<input type="text" name="confirm-password" id="confirm-password" required />
+		</div>
+		<input type="submit" value="Register" />
 	</form>
 
-	<h6>
-		<a href="/signup">
-			sugnup
-		</a>
-	</h6>
-
 </div>
+
 
 <style>
 	.login_container {

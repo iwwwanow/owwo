@@ -1,8 +1,13 @@
 <header class="grid">
 
 	<%~ includeFile("./partials/logo.eta") %>
-		<%~ includeFile("./partials/link_h1.eta", {class: 'about-container' , url: '/about' , text:'about' }) %>
-			<%~ includeFile("./partials/link_h1.eta", {class: 'login-container' , url: '/login' , text:'login' }) %>
+	<%~ includeFile("./partials/link_h1.eta", {class: 'about-container' , url: '/about' , text:'about' }) %>
+
+	<% if (it.request.auth) { %>
+	<%~ includeFile("./partials/link_h1.eta", {class: 'login-container' , url: '/logout' , text:'logout' }) %>
+	<% } else { %>
+	<%~ includeFile("./partials/link_h1.eta", {class: 'login-container' , url: '/login' , text:'login' }) %>
+	<% } %>
 
 </header>
 
