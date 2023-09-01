@@ -92,4 +92,16 @@ export default class auth {
       }
     }
   }
+  static async logout({ request, response, cookies }) {
+    if (request.auth) {
+      // TODO пробросить ошибку на клиент
+      cookies.set("token", "");
+      cookies.set("message", "Successfully Logged Out");
+      response.redirect("/");
+    } else {
+      // TODO пробросить ошибку на клиент
+      cookies.set("message", "your not logged in");
+      response.redirect("/");
+    }
+  }
 }

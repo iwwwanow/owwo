@@ -2,17 +2,27 @@ import { verify } from "../deps.ts";
 import { key } from "./jwt.js";
 
 export const validate = async ({ request, cookies }, next) => {
+  // TODO при каждом запросе запускает несоклько валидаций подряд. не понимаю почему, разберись.
+  // console.log("validate start:", request.auth);
+
   if (!(await cookies.get("token"))) {
     // TODO перепроверь этот момент. выглядит ненадежно. сижу больной голова плохо варит.
-    console.log("not cookies");
     await next();
   } else {
-    const token = await cookies.get("token");
-    const result = await verify(token, key);
-    if (result) {
-      request.auth = true;
-      request.username = result.username;
+    try {
+      const token = await cookies.get("token");
+      const result = await verify(token, key, { isThrowing: false });
+      console.log(result);
+      if (result) {
+        request.auth = true;
+        request.username = result.username;
+      }
+      await next();
+    } catch (err) {
+      cookies.set("token", "");
+      await next();
     }
-    await next();
+
+    // console.log("validate end:", request.auth);
   }
 };
