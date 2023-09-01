@@ -15,7 +15,6 @@ export default class auth {
       cookies.set("message", `You have already signed in`);
       response.redirect("/");
     } else {
-      // const body = parseBody(await request.body());
       const body = await request.body().value;
       const username = body.get("username");
       const password = body.get("password");
@@ -47,12 +46,11 @@ export default class auth {
             password: await bcrypt.hash(password),
           })
           .run(client);
-        console.log("user created");
         await cookies.set("message", `Successfully registered: username.`);
-        response.redirect("/");
+        response.redirect("/login");
       }
     }
-    response.redirect("/");
+    response.redirect("/login");
   }
 
   static async login({ request, response, cookies }) {
