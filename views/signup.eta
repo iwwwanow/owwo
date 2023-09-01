@@ -8,7 +8,7 @@
 		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
 	</div>
 
-	<form method="POST" action="/register">
+	<form method="POST" action="/signup">
 		<div>
 			<label for="name">usernsme: </label>
 			<input type="text" name="username" id="name" required />

@@ -4,34 +4,34 @@ import path from "./deps.ts";
 import { viewEngine, oakAdapter, etaEngine } from "./deps.ts";
 
 import { router } from "./routes/router.ts";
+import { validate } from "./utils/validate.ts";
 
 const app = new Application();
 
-await app.use(
+app.use(
   viewEngine(oakAdapter, etaEngine, {
     viewRoot: "./views",
   })
 );
 
-await app.use(router.routes());
+app.use(validate);
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 // static connect
-await app.use(async (context) => {
+app.use(async (context) => {
   await context.send({
     root: `${Deno.cwd()}`,
     // index: "index.html",
   });
 });
 
-const server = await app.addEventListener(
-  "listen",
-  ({ hostname, port, secure }) => {
-    console.log(
-      `Listening on: ${secure ? "https://" : "http://"}${
-        hostname ?? "localhost"
-      }:${port}`
-    );
-  }
-);
+const server = app.addEventListener("listen", ({ hostname, port, secure }) => {
+  console.log(
+    `Listening on: ${secure ? "https://" : "http://"}${
+      hostname ?? "localhost"
+    }:${port}`
+  );
+});
 
 await app.listen({ port: 8000 });
