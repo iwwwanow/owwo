@@ -1,6 +1,5 @@
 import { Router } from "../deps.ts";
 
-import UserController from "../controllers/user.ts";
 import auth from "../controllers/auth.ts";
 
 export const router = new Router();

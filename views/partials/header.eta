@@ -4,12 +4,18 @@
 		<%~ includeFile("./partials/logo.eta") %>
 	</div>
 
+	<% if (it.option == 'profile' ) {%>
+	<h6 class="username">
+		<%= it.request.username %>
+	</h6>
+	<% } else {%>
 	<h6>
 		<a href="/about">about</a>
 	</h6>
+	<%} %>
 
 	<div class="login-container">
-		<% if (it.request.auth === "username") { %>
+		<% if (it.option == 'profile') { %>
 		<h6>
 			<a href="/logout">logout</a>
 		</h6>
@@ -32,6 +38,10 @@
 
 	header h6 {
 		text-transform: uppercase;
+	}
+
+	header .username {
+		color: var(--red);
 	}
 
 	.logo-container {

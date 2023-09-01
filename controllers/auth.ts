@@ -78,7 +78,6 @@ export default class auth {
         if (await bcrypt.compare(password, user[0].password)) {
           response.body = user.username;
           payload.username = username;
-          console.log(payload);
           cookies.set("token", await create(header, payload, key));
           cookies.set("message", "Successfully entered");
           response.redirect("/");
