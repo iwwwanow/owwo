@@ -1,0 +1,5 @@
+<% layout("./layout.eta", {request: {auth: 'username'}}) %>
+
+<div class="grid">
+	<h1><%= it.request.username %></h1>
+</div>

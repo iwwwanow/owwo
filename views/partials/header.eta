@@ -9,9 +9,13 @@
 	</h6>
 
 	<div class="login-container">
-		<% if (it.request.auth) { %>
+		<% if (it.request.auth === "username") { %>
 		<h6>
 			<a href="/logout">logout</a>
+		</h6>
+		<%} else if (it.request.auth) { %>
+		<h6>
+			<a href="/<%= it.request.username %>"><%= it.request.username %></a>
 		</h6> <% } else { %>
 		<h6>
 			<a href="/login">login</a>

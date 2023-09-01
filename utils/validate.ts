@@ -11,7 +11,7 @@ export const validate = async ({ request, cookies }, next) => {
   } else {
     try {
       const token = await cookies.get("token");
-      const result = await verify(token, key, { isThrowing: false });
+      const result = await verify(token, key);
       console.log(result);
       if (result) {
         request.auth = true;

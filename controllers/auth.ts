@@ -62,8 +62,8 @@ export default class auth {
       response.redirect("/");
     } else {
       const body = await request.body().value;
-      const username = body.get("username");
-      const password = body.get("password");
+      const username = await body.get("username");
+      const password = await body.get("password");
 
       const user = await e
         .select(e.User, (user) => ({
@@ -73,10 +73,9 @@ export default class auth {
           filter: e.op(user.username, "=", username),
         }))
         .run(client);
-      if (!user) {
+      if (!user.length) {
         // TODO пробросить ошибку на клиент
-        console.log("user not found");
-        response.redirect("/");
+        response.redirect("/login");
       } else {
         if (await bcrypt.compare(password, user[0].password)) {
           response.body = user.username;

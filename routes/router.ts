@@ -8,7 +8,6 @@ export const router = new Router();
 // MAIN;
 router
   .get("/", (ctx) => {
-    console.log("get");
     ctx.render("index.eta", { request: ctx.request });
   })
   .get("/about", (ctx) => {
@@ -32,6 +31,11 @@ router
   .get("/logout", async (ctx) => {
     await auth.logout(ctx);
   });
+
+// PROFILE
+router.get("/:username", (ctx) => {
+  ctx.render("profile.eta", { request: ctx.request });
+});
 
 // PAGE
 router.get("/projectId", (ctx) => {
