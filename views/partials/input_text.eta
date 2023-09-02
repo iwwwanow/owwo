@@ -1,50 +1,53 @@
-<% if (it.type==="header" ) { %>
-	<div>
-		<h1><input type="text" name="<%= it.name %>" placeholder="<%= it.placeholder %>"></h1>
-	</div>
-	<% } else if (it.type==="text" ) { %>
-		<div>
-			<h6><input type="text" name="<%= it.name %>" placeholder="<%= it.placeholder %>"></h6>
-		</div>
-		<%} %>
+#$ if (it.type==="header" ) {$#
 
-			<style>
-				input[type="text"] {
-					width: 100%;
+<div>
+	<h1><input type="text" name="#$= it.name $#" placeholder="#$= it.placeholder $#" autocomplete="off"></h1>
+</div>
 
-					color: var(--grey-dark);
-					background-color: var(--grey-light);
+#$ } else if (it.type==="text" ) { $#
+<div>
+	<h6><input type="text" name="#$= it.name $#" placeholder="#$= it.placeholder $#" autocomplete="off"></h6>
+</div>
 
-					font-style: inherit;
-					font-weight: inherit;
-					text-transform: inherit;
-				}
+#$ } $#
 
-				h1 input[type="text"] {
-					height: 48px;
-				}
+<style>
+	input[type="text"] {
+		width: 100%;
 
-				h6 input[type="text"] {
-					padding: 0 4px;
-					line-height: 24px;
-					text-transform: uppercase;
-				}
+		color: var(--grey-dark);
+		background-color: var(--grey-light);
 
-				::placeholder {
-					/* Chrome, Firefox, Opera, Safari 10.1+ */
-					color: var(--grey-medium);
-					opacity: 1;
-					/* Firefox */
-				}
+		font-style: inherit;
+		font-weight: inherit;
+		text-transform: inherit;
+	}
 
-				:-ms-input-placeholder {
-					/* Internet Explorer 10-11 */
-					color: var(--grey-medium);
-				}
+	h1 input[type="text"] {
+		height: 48px;
+	}
 
-				::-ms-input-placeholder {
-					/* Microsoft Edge */
-					color: var(--grey-medium);
-				}
+	h6 input[type="text"] {
+		padding: 0 4px;
+		line-height: 24px;
+		text-transform: uppercase;
+	}
 
-			</style>
+	::placeholder {
+		/* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: var(--grey-medium);
+		opacity: 1;
+		/* Firefox */
+	}
+
+	:-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: var(--grey-medium);
+	}
+
+	::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: var(--grey-medium);
+	}
+
+</style>

@@ -1,17 +1,61 @@
 <header class="grid">
 
-	<%~ includeFile("./partials/logo.eta") %>
-	<%~ includeFile("./partials/link_h1.eta", {class: 'about-container' , url: '/about' , text:'about' }) %>
+	<div class="logo-container">
+		#$~ include("logo")$#
+	</div>
 
-	<% if (it.request.auth) { %>
-	<%~ includeFile("./partials/link_h1.eta", {class: 'login-container' , url: '/logout' , text:'logout' }) %>
-	<% } else { %>
-	<%~ includeFile("./partials/link_h1.eta", {class: 'login-container' , url: '/login' , text:'login' }) %>
-	<% } %>
+	#$ if (!!params ? !!params.username : false) { $#
+	<h5 class="username">
+		#$= request.username$#
+	</h5>
+	#$ } else { $#
+	<h6>
+		<a href="/about">about</a>
+	</h6>
+	#$ } $#
+
+	<div class="login-container">
+		#$ if (!!request.auth & !!params ? request.username === params.username : false) { $#
+		<h6>
+			<a href="/logout">logout</a>
+		</h6>
+		#$ } else if (!!request.auth) { $#
+		<h6>
+			<a href="/#$= request.username $#">#$= request.username $#</a>
+		</h6>
+		#$ } else { $#
+		<h6>
+			<a href="/login">login</a>
+		</h6>
+		#$ } $#
+	</div>
 
 </header>
 
 <style>
+	header {
+		position: relative;
+	}
+
+	header h6,
+	header h5 {
+		text-transform: uppercase;
+	}
+
+	header .username {
+		color: var(--grey-dark);
+	}
+
+	.logo-container {
+		position: relative;
+		height: 100%;
+	}
+
+	.logo {
+		position: absolute;
+		max-height: 100%;
+	}
+
 	.login-container {
 		grid-column-end: -1
 	}

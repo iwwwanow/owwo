@@ -1,7 +1,7 @@
 <div class="input-file">
 	<h6>
 		<label for="image">
-			<%= it.text %>
+			#$= it.text$#
 		</label>
 		<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
 	</h6>
