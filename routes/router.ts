@@ -33,6 +33,7 @@ router
 
 // PROFILE
 router.get("/:username", (ctx) => {
+  ctx.request.username = ctx.params.username;
   ctx.render("profile.eta", { request: ctx.request });
 });
 
