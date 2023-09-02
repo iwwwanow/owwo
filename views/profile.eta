@@ -1,13 +1,16 @@
-<% layout("./layout.eta", {option: 'profile'}) %>
+#$ layout("./layout.eta" )$#
 
 <div class="grid">
+
 	<h1 class="project-sample">p1</h1>
 	<h1 class="project-sample">p2</h1>
 	<h1 class="project-sample">p3</h1>
-	<% if (it.request.auth & it.request.authUsername == it.request.username) { %>
+
+	#$ if (true) { $#
 	<h2>plus button</h2>
 	<h2>order-form</h2>
-	<% } %>
+	#$ } $#
+
 </div>
 
 <style>

@@ -1,0 +1,3 @@
+<button formaction="URL">
+	#$= it.text$#
+</button>

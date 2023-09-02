@@ -16,8 +16,8 @@
 
 <body>
 	<div class="wrapper">
-		<%~ includeFile("./partials/header.eta", {request: it.request, option: it.option})  %>
-		<%~ it.body %>
+		#$~ include("./partials/header", {request: it.request} )$#
+		#$~ body$#
 	</div>
 </body>
 

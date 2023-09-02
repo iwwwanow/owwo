@@ -1,32 +1,23 @@
 <header class="grid">
 
 	<div class="logo-container">
-		<%~ includeFile("./partials/logo.eta") %>
+		#$~ include("logo")$#
 	</div>
 
-	<% if (it.option == 'profile' ) {%>
+	#$ if (false) {$#
 	<h5 class="username">
-		<%= it.request.username %>
+		#$= request.username$#
 	</h5>
-	<% } else {%>
+	#$ } else { $#
 	<h6>
 		<a href="/about">about</a>
 	</h6>
-	<%} %>
+	#$ } $#
 
 	<div class="login-container">
-		<% if (it.request.auth & it.request.authUsername == it.request.username) { %>
-		<h6>
-			<a href="/logout">logout</a>
-		</h6>
-		<%} else if (it.request.auth) { %>
-		<h6>
-			<a href="/<%= it.request.authUsername %>"><%= it.request.authUsername %></a>
-		</h6> <% } else { %>
 		<h6>
 			<a href="/login">login</a>
 		</h6>
-		<% } %>
 	</div>
 
 </header>

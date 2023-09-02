@@ -1,11 +1,11 @@
-<% layout("./layout.eta") %>
+#$ layout("./layout.eta")$#
 
 <div class="grid">
 	<div class="login_container">
-		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'login' }) %>
-		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'password' }) %>
-		<%~ includeFile("./partials/input_text.eta", {type: 'text', name: 'text' , placeholder: 'confirm password' }) %>
-		<%~ includeFile("./partials/button.eta", {type: 'default' , text: 'войти' }) %>
+		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'login' })$#
+		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'password' })$#
+		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'confirm password'})$#
+		#$~ include("./partials/button.eta", {type: 'default' , text: 'войти' })$#
 	</div>
 
 	<form method="POST" action="/signup">

@@ -1,18 +1,17 @@
-import { Application, Router } from "./deps.ts";
-import path from "./deps.ts";
+import { Application } from "./deps.ts";
 
-import { viewEngine, oakAdapter, etaEngine } from "./deps.ts";
+// import { viewEngine, oakAdapter, etaEngine } from "./deps.ts";
 
 import { router } from "./routes/router.ts";
 import { validate } from "./utils/validate.ts";
 
 const app = new Application();
 
-app.use(
-  viewEngine(oakAdapter, etaEngine, {
-    viewRoot: "./views",
-  })
-);
+// app.use(
+//   viewEngine(oakAdapter, etaEngine, {
+//     viewRoot: "./views",
+//   })
+// );
 
 app.use(validate);
 app.use(router.routes());

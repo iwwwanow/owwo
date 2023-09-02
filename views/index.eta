@@ -1,12 +1,5 @@
-<% layout("./layout.eta") %>
+#$ layout("layout") $#
 
 <div class="grid">
 	<h1>index</h1>
-	<%~ includeFile("./partials/button.eta", {type: 'default' }) %>
-	<%~ includeFile("./partials/input_checkbox.eta", {text: 'checkbox' }) %>
-	<%~ includeFile("./partials/input_file.eta", {text: 'checkbox' }) %>
-	<%~ includeFile("./partials/input_text.eta", {type: 'header' , name: 'name' , placeholder: 'h1' }) %>
-	<%~ includeFile("./partials/input_text.eta", {type: 'text' , name: 'name' , placeholder: 'h1' }) %>
-	<%~ includeFile("./partials/textarea.eta", {type: 'header' , name: 'name' , text: 'h1' }) %>
-	<%~ includeFile("./partials/textarea.eta", {type: 'text' , name: 'name' , text: 'h1' }) %>
 </div>

@@ -4,25 +4,32 @@ import auth from "../controllers/auth.ts";
 
 export const router = new Router();
 
+import { Eta } from "https://deno.land/x/eta@v3.1.0/src/index.ts";
+import configEta from "../config/eta.ts";
+
+const eta = new Eta(configEta);
+
+console.log(Deno.cwd() + "/views");
+
 // MAIN;
 router
   .get("/", (ctx) => {
-    ctx.render("index.eta", { request: ctx.request });
+    ctx.response.body = eta.render("./index", { request: ctx.request });
   })
   .get("/about", (ctx) => {
-    ctx.render("about.eta");
+    ctx.response.body = eta.render("./about", { request: ctx.request });
   });
 
 // AUTH;
 router
   .get("/login", (ctx) => {
-    ctx.render("login.eta", { request: ctx.request });
+    ctx.response.body = eta.render("./login", { request: ctx.request });
   })
   .post("/login", async (ctx) => {
     await auth.login(ctx);
   })
   .get("/signup", (ctx) => {
-    ctx.render("signup.eta", { request: ctx.request });
+    ctx.response.body = eta.render("./signup", { request: ctx.request });
   })
   .post("/signup", async (ctx) => {
     await auth.signup(ctx);
@@ -33,8 +40,10 @@ router
 
 // PROFILE
 router.get("/:username", (ctx) => {
-  ctx.request.username = ctx.params.username;
-  ctx.render("profile.eta", { request: ctx.request });
+  ctx.response.body = eta.render("./profile", {
+    request: ctx.request,
+    params: ctx.params,
+  });
 });
 
 // PAGE

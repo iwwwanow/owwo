@@ -497,6 +497,28 @@
     "https://deno.land/x/eta@v1.12.3/render.ts": "9173e99002a4169aeae45315bdd07cf4664c8dd9e39ce86d5c7daa989982f90c",
     "https://deno.land/x/eta@v1.12.3/storage.ts": "46f762d1c04d9095ed6fb694c0d993e9ae507a69bab469a5a3bd23a5a9a79983",
     "https://deno.land/x/eta@v1.12.3/utils.ts": "77ba806398590f4aff0ca1ea9485e769ba578eeb8776b4f2386067c9735b96c1",
+    "https://deno.land/x/eta@v3.1.0/src/compile-string.ts": "4f66617fb16ba227fa211cf1dc5f201ff57b2183f74882d6f4d24bde23817e89",
+    "https://deno.land/x/eta@v3.1.0/src/compile.ts": "146782227ddd5c423d07dedb2be40a2a5643c7429d9a3af5ac9a79c21bf7ae95",
+    "https://deno.land/x/eta@v3.1.0/src/config.ts": "7e2971ba3ec4b31b5f1ae0ea71957f0a2b868285192be77836d65ca27adb4f90",
+    "https://deno.land/x/eta@v3.1.0/src/core.ts": "b0f74d80ef0d42f5409297661279a86aec40c42efd0bd4bf31f8ee042d1fc01f",
+    "https://deno.land/x/eta@v3.1.0/src/err.ts": "e9732b5f7fe729fed9d67868ff7d87ef1002d45d0a8a4e8f7fb1fa9ec2e2d50b",
+    "https://deno.land/x/eta@v3.1.0/src/file-handling.ts": "ac54a84c4e73f47629d69725b8557080caf4e03cf34413b4a2a3f3a10c0abb25",
+    "https://deno.land/x/eta@v3.1.0/src/index.ts": "fa1e18db556462293408c7a455b05b5253aae460c97811f88bb023cdc3f95f62",
+    "https://deno.land/x/eta@v3.1.0/src/parse.ts": "8cb25b4ccf58ea7f08fe9835f7eb8bf45917d6d743d28d1e25cadc9fc908cb32",
+    "https://deno.land/x/eta@v3.1.0/src/render.ts": "bfd57548d5fdae11c1c1683ff748783c1f85be3db3c24fcc80ce915692b004dd",
+    "https://deno.land/x/eta@v3.1.0/src/storage.ts": "c40bd31cdd6f1218c86f70067282709e2f2c7fa7eea67547be950e1ed5d4bd4c",
+    "https://deno.land/x/eta@v3.1.0/src/utils.ts": "1994c8d228195558fb6785fb00a97cf21a457df598a6ab1945170f7a4b7f00d9",
+    "https://deno.land/x/eta@v3.1.1/src/compile-string.ts": "e095c711f8e76f407c5e82af296236759f15c03903f62ff03e6b3a5903ef90c3",
+    "https://deno.land/x/eta@v3.1.1/src/compile.ts": "146782227ddd5c423d07dedb2be40a2a5643c7429d9a3af5ac9a79c21bf7ae95",
+    "https://deno.land/x/eta@v3.1.1/src/config.ts": "7e2971ba3ec4b31b5f1ae0ea71957f0a2b868285192be77836d65ca27adb4f90",
+    "https://deno.land/x/eta@v3.1.1/src/core.ts": "b0f74d80ef0d42f5409297661279a86aec40c42efd0bd4bf31f8ee042d1fc01f",
+    "https://deno.land/x/eta@v3.1.1/src/err.ts": "e9732b5f7fe729fed9d67868ff7d87ef1002d45d0a8a4e8f7fb1fa9ec2e2d50b",
+    "https://deno.land/x/eta@v3.1.1/src/file-handling.ts": "ac54a84c4e73f47629d69725b8557080caf4e03cf34413b4a2a3f3a10c0abb25",
+    "https://deno.land/x/eta@v3.1.1/src/index.ts": "fa1e18db556462293408c7a455b05b5253aae460c97811f88bb023cdc3f95f62",
+    "https://deno.land/x/eta@v3.1.1/src/parse.ts": "8cb25b4ccf58ea7f08fe9835f7eb8bf45917d6d743d28d1e25cadc9fc908cb32",
+    "https://deno.land/x/eta@v3.1.1/src/render.ts": "bfd57548d5fdae11c1c1683ff748783c1f85be3db3c24fcc80ce915692b004dd",
+    "https://deno.land/x/eta@v3.1.1/src/storage.ts": "c40bd31cdd6f1218c86f70067282709e2f2c7fa7eea67547be950e1ed5d4bd4c",
+    "https://deno.land/x/eta@v3.1.1/src/utils.ts": "1994c8d228195558fb6785fb00a97cf21a457df598a6ab1945170f7a4b7f00d9",
     "https://deno.land/x/expect@v0.4.0/expect.ts": "1d1856758a750f440d0b65d74f19e5d4829bb76d8e576d05546abd8e7b1dfb9e",
     "https://deno.land/x/expect@v0.4.0/matchers.ts": "55acf74a3c4a308d079798930f05ab11da2080ec7acd53517193ca90d1296bf7",
     "https://deno.land/x/expect@v0.4.0/mock.ts": "562d4b1d735d15b0b8e935f342679096b64fe452f86e96714fe8616c0c884914",
@@ -652,5 +674,16 @@
     "https://raw.githubusercontent.com/lumeland/denjucks/v2.0.0/src/runtime.js": "9624ff5ac01f0106da4c20f4192b09ba9b8e0587289f07c2b3d817734bb0977a",
     "https://raw.githubusercontent.com/lumeland/denjucks/v2.0.0/src/transformer.js": "d0204985f527419304a3ab9547265b8fdb0d50da0716a208175606a09f227cd6",
     "https://raw.githubusercontent.com/lumeland/denjucks/v2.0.0/src/waterfall.js": "75da7663c4633cfbf0ae617dc3ca4e925808e2c66107ca1585524778d1f37986"
+  },
+  "npm": {
+    "specifiers": {
+      "eta": "eta@3.1.0"
+    },
+    "packages": {
+      "eta@3.1.0": {
+        "integrity": "sha512-my4rbVATtKt9P7oNH6NkynI2bMY081ak9mZfX5Hh2tZ0HHCMhhFKYh6KH9NyUTRMTgohYd2Pd8lA2b9IbR0WrA==",
+        "dependencies": {}
+      }
+    }
   }
 }
