@@ -1,5 +1,18 @@
 <% layout("./layout.eta", {option: 'profile'}) %>
 
 <div class="grid">
-	<h1><%= it.request.username %></h1>
+	<h1 class="project-sample">p1</h1>
+	<h1 class="project-sample">p2</h1>
+	<h1 class="project-sample">p3</h1>
+	<% if (it.request.auth & it.request.authUsername == it.request.username) { %>
+	<h2>plus button</h2>
+	<h2>order-form</h2>
+	<% } %>
 </div>
+
+<style>
+	.project-sample {
+		color: red;
+	}
+
+</style>
