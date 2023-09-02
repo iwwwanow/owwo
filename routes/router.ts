@@ -4,12 +4,10 @@ import auth from "../controllers/auth.ts";
 
 export const router = new Router();
 
-import { Eta } from "https://deno.land/x/eta@v3.1.0/src/index.ts";
-import configEta from "../config/eta.ts";
-
+import { Eta } from "../deps.ts";
+import { configEta } from "../deps.ts";
+console.log(configEta);
 const eta = new Eta(configEta);
-
-console.log(Deno.cwd() + "/views");
 
 // MAIN;
 router

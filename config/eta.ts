@@ -1,4 +1,4 @@
-const configEta = {
+export const configEta = {
   views: Deno.cwd() + "/views",
   // debug: true,
   // cache: true,
@@ -6,4 +6,3 @@ const configEta = {
   useWith: true,
   tags: ["#$", "$#"],
 };
-export default configEta;

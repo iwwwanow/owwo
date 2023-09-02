@@ -19,8 +19,5 @@
     "url": "https://github.com/effektivnayarabota1/owwo/issues"
   },
   "homepage": "https://github.com/effektivnayarabota1/owwo#readme",
-  "description": "",
-  "dependencies": {
-    "eta": "^3.1.1"
-  }
+  "description": ""
 }
