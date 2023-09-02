@@ -14,7 +14,7 @@ export const validate = async ({ request, cookies }, next) => {
       const result = await verify(token, key);
       if (result) {
         request.auth = true;
-        request.authUsername = result.username;
+        request.username = result.username;
       }
       await next();
     } catch (err) {

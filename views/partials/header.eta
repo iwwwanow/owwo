@@ -4,7 +4,7 @@
 		#$~ include("logo")$#
 	</div>
 
-	#$ if (false) {$#
+	#$ if (!!params ? !!params.username : false) { $#
 	<h5 class="username">
 		#$= request.username$#
 	</h5>
@@ -15,9 +15,19 @@
 	#$ } $#
 
 	<div class="login-container">
+		#$ if (!!request.auth & !!params ? request.username === params.username : false) { $#
+		<h6>
+			<a href="/logout">logout</a>
+		</h6>
+		#$ } else if (!!request.auth) { $#
+		<h6>
+			<a href="/#$= request.username $#">#$= request.username $#</a>
+		</h6>
+		#$ } else { $#
 		<h6>
 			<a href="/login">login</a>
 		</h6>
+		#$ } $#
 	</div>
 
 </header>

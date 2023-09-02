@@ -16,7 +16,7 @@
 
 <body>
 	<div class="wrapper">
-		#$~ include("./partials/header", {request: it.request} )$#
+		#$~ include("./partials/header", {request: it.request, params: it.params} )$#
 		#$~ body$#
 	</div>
 </body>
