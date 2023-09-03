@@ -1,10 +1,7 @@
-import configEta from "./config/eta.ts";
-
 export { Application, Router } from "https://deno.land/x/oak/mod.ts";
 export * as path from "https://deno.land/std@0.102.0/path/mod.ts";
 
 export { Eta } from "https://deno.land/x/eta@v3.1.0/src/index.ts";
-export { configEta } from "./config/eta.ts";
 
 export * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 export {

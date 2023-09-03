@@ -1,32 +1,30 @@
 import { Router } from "../deps.ts";
 
+import page from "../controllers/page.ts";
 import auth from "../controllers/auth.ts";
+import user from "../controllers/user.ts";
 
 export const router = new Router();
-
-import { Eta } from "../deps.ts";
-import { configEta } from "../deps.ts";
-const eta = new Eta(configEta);
 
 // MAIN;
 router
   .get("/", (ctx) => {
-    ctx.response.body = eta.render("./index", { request: ctx.request });
+    page.index(ctx);
   })
   .get("/about", (ctx) => {
-    ctx.response.body = eta.render("./about", { request: ctx.request });
+    page.about(ctx);
   });
 
 // AUTH;
 router
   .get("/login", (ctx) => {
-    ctx.response.body = eta.render("./login", { request: ctx.request });
+    page.login(ctx);
   })
   .post("/login", async (ctx) => {
     await auth.login(ctx);
   })
   .get("/signup", (ctx) => {
-    ctx.response.body = eta.render("./signup", { request: ctx.request });
+    page.signup(ctx);
   })
   .post("/signup", async (ctx) => {
     await auth.signup(ctx);
@@ -35,12 +33,9 @@ router
     await auth.logout(ctx);
   });
 
-// PROFILE
+// USER
 router.get("/:username", (ctx) => {
-  ctx.response.body = eta.render("./profile", {
-    request: ctx.request,
-    params: ctx.params,
-  });
+  user.index(ctx);
 });
 router.post("/:username", (ctx) => {
   console.log("create-page");
