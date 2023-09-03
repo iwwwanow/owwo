@@ -1,30 +1,31 @@
 import { Router } from "../deps.ts";
 
-import page from "../controllers/page.ts";
+import index from "../controllers/index.ts";
 import auth from "../controllers/auth.ts";
 import user from "../controllers/user.ts";
+import page from "../controllers/page.ts";
 
 export const router = new Router();
 
 // MAIN;
 router
   .get("/", (ctx) => {
-    page.index(ctx);
+    index.index(ctx);
   })
   .get("/about", (ctx) => {
-    page.about(ctx);
+    index.about(ctx);
   });
 
 // AUTH;
 router
   .get("/login", (ctx) => {
-    page.login(ctx);
+    index.login(ctx);
   })
   .post("/login", async (ctx) => {
     await auth.login(ctx);
   })
   .get("/signup", (ctx) => {
-    page.signup(ctx);
+    index.signup(ctx);
   })
   .post("/signup", async (ctx) => {
     await auth.signup(ctx);
@@ -37,12 +38,11 @@ router
 router.get("/:username", (ctx) => {
   user.index(ctx);
 });
-router.post("/:username", (ctx) => {
-  console.log("create-page");
-  ctx.response.redirect(`/${ctx.params.username}`);
-});
 
 // PAGE
+router.post("/:username", (ctx) => {
+  page.create(ctx);
+});
 router.get("/projectId", (ctx) => {
   ctx.render("project.eta");
 });

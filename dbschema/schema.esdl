@@ -3,4 +3,7 @@ module default {
 		required username: str;
 		required password: str;
 	}
+	type Page {
+		multi authors: User;
+		}
 };
