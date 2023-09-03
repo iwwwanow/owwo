@@ -1,20 +1,22 @@
-<form method="POST" action="/#$= action$#">
-	<button class="button-plus">
+<form class="button-plus_form" method="POST" action="/#$= action$#">
+	<button class="button-plus_button">
 		<img src="static/+.svg" alt="plus-vector">
 	</button>
 </form>
 
 <style>
-	form {
+	.button-plus_form {
 		display: flex;
 	}
 
-	.button-plus {
+	.button-plus_button {
 		padding: 4px 10px;
+		width: 100%;
+		height: 100%;
 		background-color: var(--grey-medium);
 	}
 
-	.button-plus:hover {
+	.button-plus_button:hover {
 		background-color: var(--grey-dark);
 	}
 

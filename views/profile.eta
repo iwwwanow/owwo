@@ -8,7 +8,6 @@
 
 	#$ if (!!request.auth && request.username == params.username) { $#
 	#$~ include("./partials/button_plus.eta", {action: request.username})$#
-	<h2>plus button</h2>
 	<h2>order-form</h2>
 	#$ } $#
 

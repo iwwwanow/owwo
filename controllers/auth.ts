@@ -1,8 +1,6 @@
 import * as edgedb from "edgedb";
 import e from "../dbschema/edgeql-js/index.ts";
 import { bcrypt } from "../deps.ts";
-import { load } from "../deps.ts";
-import { parseBody } from "../utils/parseBody.ts";
 import { key, payload, header } from "../utils/jwt.js";
 import { create } from "../deps.ts";
 

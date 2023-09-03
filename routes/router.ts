@@ -6,7 +6,6 @@ export const router = new Router();
 
 import { Eta } from "../deps.ts";
 import { configEta } from "../deps.ts";
-import { params } from "../dbschema/edgeql-js/params.ts";
 const eta = new Eta(configEta);
 
 // MAIN;
