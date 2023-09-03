@@ -1,0 +1,26 @@
+#$ layout("./layout.eta" )$#
+
+<div class="grid">
+	<h6>archive</h6>
+	<h6>move to trash</h6>
+</div>
+
+<div class="grid">
+	<h6>title</h6>
+	<h6>author</h6>
+	<h6>date</h6>
+	<h6>description</h6>
+</div>
+
+<div class="grid">
+	<h1 class="element-sample">e1</h1>
+	<h1 class="element-sample">e2</h1>
+	<h1 class="element-sample">e3</h1>
+</div>
+
+<style>
+	.element-sample {
+		color: var(--red);
+	}
+
+</style>

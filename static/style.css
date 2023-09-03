@@ -1,4 +1,4 @@
 hr {
-  border-top: 1px solid red;
+  border-top: 2px solid var(--grey-light);
   margin: 8px 0;
 }

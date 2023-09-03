@@ -3,7 +3,14 @@
 <div class="grid">
 
 	#$ pages.forEach(function (page) { $#
-	<h6 class="project-sample">#$= page.id $#</h6>
+	#$ const url = `/page/${page.id}` $#
+	<div>
+		<h6 class="project-sample">
+			<a href="#$= url $#">#$= page.id $#</a>
+		</h6>
+		<h6>archive</h6>
+		<h6>move to trash</h6>
+	</div>
 	#$ }) $#
 
 	#$ if (!!request.auth && request.username == params.username) { $#
@@ -13,9 +20,24 @@
 
 </div>
 
+#$ if (!!request.auth && request.username == params.username) { $#
+<div class="grid">
+	<hr>
+	<h2>archive</h2>
+</div>
+<div class="grid">
+	<hr>
+	<h2>recycle bin</h2>
+</div>
+#$ } $#
+
 <style>
 	.project-sample {
 		color: var(--blue);
+	}
+
+	hr {
+		grid-column: 1/ -1;
 	}
 
 </style>

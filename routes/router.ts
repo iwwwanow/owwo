@@ -42,8 +42,8 @@ router.get("/:username", async (ctx) => {
 router.post("/:username", async (ctx) => {
   await page.create(ctx);
 });
-router.get("/projectId", (ctx) => {
-  ctx.render("project.eta");
+router.get("/page/:pageId", async (ctx) => {
+  await page.index(ctx);
 });
 
 // ELEMENT;

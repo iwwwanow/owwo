@@ -14,9 +14,13 @@ export default class page {
         })),
       })
       .run(client);
-
-    console.log(result);
-
     await response.redirect(`/${username}`);
+  }
+
+  static async index({ request, response, params }) {
+    response.body = eta.render("./page", {
+      request,
+      params,
+    });
   }
 }
