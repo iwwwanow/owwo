@@ -1,7 +1,5 @@
 // TODO вынести настройку edgedb в отдельный файл. в конфиге.
-import * as edgedb from "edgedb";
-import e from "../dbschema/edgeql-js/index.ts";
-const client = edgedb.createClient();
+import { e, client } from "../config/edgedb.ts";
 import { eta } from "../config/eta.ts";
 
 export default class page {

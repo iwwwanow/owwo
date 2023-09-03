@@ -6,7 +6,6 @@ import user from "../controllers/user.ts";
 import page from "../controllers/page.ts";
 
 export const router = new Router();
-
 // MAIN;
 router
   .get("/", (ctx) => {
@@ -35,8 +34,8 @@ router
   });
 
 // USER
-router.get("/:username", (ctx) => {
-  user.index(ctx);
+router.get("/:username", async (ctx) => {
+  await user.index(ctx);
 });
 
 // PAGE

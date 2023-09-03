@@ -2,9 +2,9 @@
 
 <div class="grid">
 
-	<h1 class="project-sample">p1</h1>
-	<h1 class="project-sample">p2</h1>
-	<h1 class="project-sample">p3</h1>
+	#$ pages.forEach(function (page) { $#
+	<h6 class="project-sample">#$= page.id $#</h6>
+	#$ }) $#
 
 	#$ if (!!request.auth && request.username == params.username) { $#
 	#$~ include("./partials/button_plus.eta", {action: request.username})$#
@@ -15,7 +15,7 @@
 
 <style>
 	.project-sample {
-		color: red;
+		color: var(--blue);
 	}
 
 </style>
