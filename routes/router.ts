@@ -40,8 +40,8 @@ router.get("/:username", (ctx) => {
 });
 
 // PAGE
-router.post("/:username", (ctx) => {
-  page.create(ctx);
+router.post("/:username", async (ctx) => {
+  await page.create(ctx);
 });
 router.get("/projectId", (ctx) => {
   ctx.render("project.eta");

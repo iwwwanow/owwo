@@ -1,3 +1,4 @@
+// TODO вынести настройку edgedb в отдельный файл. в конфиге.
 import * as edgedb from "edgedb";
 import e from "../dbschema/edgeql-js/index.ts";
 import { bcrypt } from "../deps.ts";
