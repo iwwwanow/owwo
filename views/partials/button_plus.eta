@@ -1,3 +1,21 @@
-<button formaction="URL">
-	#$= it.text$#
-</button>
+<form method="POST" action="/#$= action$#">
+	<button class="button-plus">
+		<img src="static/+.svg" alt="plus-vector">
+	</button>
+</form>
+
+<style>
+	form {
+		display: flex;
+	}
+
+	.button-plus {
+		padding: 4px 10px;
+		background-color: var(--grey-medium);
+	}
+
+	.button-plus:hover {
+		background-color: var(--grey-dark);
+	}
+
+</style>

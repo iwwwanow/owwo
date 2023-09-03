@@ -6,7 +6,7 @@ export const router = new Router();
 
 import { Eta } from "../deps.ts";
 import { configEta } from "../deps.ts";
-console.log(configEta);
+import { params } from "../dbschema/edgeql-js/params.ts";
 const eta = new Eta(configEta);
 
 // MAIN;
@@ -42,6 +42,10 @@ router.get("/:username", (ctx) => {
     request: ctx.request,
     params: ctx.params,
   });
+});
+router.post("/:username", (ctx) => {
+  console.log("create-page");
+  ctx.response.redirect(`/${ctx.params.username}`);
 });
 
 // PAGE

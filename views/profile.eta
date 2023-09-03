@@ -6,7 +6,8 @@
 	<h1 class="project-sample">p2</h1>
 	<h1 class="project-sample">p3</h1>
 
-	#$ if (true) { $#
+	#$ if (!!request.auth && request.username == params.username) { $#
+	#$~ include("./partials/button_plus.eta", {action: request.username})$#
 	<h2>plus button</h2>
 	<h2>order-form</h2>
 	#$ } $#
