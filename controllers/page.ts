@@ -4,8 +4,6 @@ import { eta } from "../config/eta.ts";
 
 export default class page {
   static async create({ request, response, params }) {
-    console.log("create-page");
-
     const username = params.username;
     const result = await e
       .insert(e.Page, {
@@ -24,10 +22,25 @@ export default class page {
     });
   }
 
-  static async post({ request, response, params }) {
-    console.log("post");
+  static async state({ request, response, params }) {
+    const pageId = params.pageId;
 
-    const username = params.username;
-    await response.redirect(`/${username}`);
+    const body = await request.body().value;
+    const state = await body.get("button_page-state");
+    const editor = request.headers.get("referer").split("/").at(-1);
+
+    console.log(pageId);
+    console.log(state);
+
+    await e
+      .update(e.Page, (page) => ({
+        filter_single: { id: pageId },
+        set: {
+          state: state,
+        },
+      }))
+      .run(client);
+
+    await response.redirect(`/${editor}`);
   }
 }

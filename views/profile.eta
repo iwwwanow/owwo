@@ -6,17 +6,19 @@
 
 	#$ user.pages.forEach(function (page) { $#
 	#$ const url = `/page/${page.id}` $#
+
 	<form class="page-container" method="POST" action="#$= url $#">
 		<h6 class="project-sample">
 			<a href="#$= url $#">#$= page.id $#</a>
 		</h6>
-		<button>
+		<button name="button_page-state" value="archive">
 			<h6>move to archive</h6>
 		</button>
-		<button>
+		<button name="button_page-state" value="bin">
 			<h6>move to recycle bin</h6>
 		</button>
 	</form>
+
 	#$ }) $#
 
 	#$ } else { $#

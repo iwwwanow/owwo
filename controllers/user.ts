@@ -6,7 +6,6 @@ import { eta } from "../config/eta.ts";
 export default class user {
   static async index({ request, response, params }) {
     const username = params.username;
-    console.log(params.username);
 
     const user = await e
       .select(e.User, (user) => ({
