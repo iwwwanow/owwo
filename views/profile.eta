@@ -2,16 +2,30 @@
 
 <div class="grid">
 
-	#$ pages.forEach(function (page) { $#
+	#$ if (!!user && !!user.pages && user.pages.length) { $#
+
+	#$ user.pages.forEach(function (page) { $#
 	#$ const url = `/page/${page.id}` $#
-	<div>
+	<form class="page-container" method="POST" action="#$= url $#">
 		<h6 class="project-sample">
 			<a href="#$= url $#">#$= page.id $#</a>
 		</h6>
-		<h6>archive</h6>
-		<h6>move to trash</h6>
-	</div>
+		<button>
+			<h6>move to archive</h6>
+		</button>
+		<button>
+			<h6>move to recycle bin</h6>
+		</button>
+	</form>
 	#$ }) $#
+
+	#$ } else { $#
+
+	<!-- TODO отправлять ответ с сервера, что пользователь не найден -->
+	<h6>not found</h6>
+
+	#$ } $#
+
 
 	#$ if (!!request.auth && request.username == params.username) { $#
 	#$~ include("./partials/button_plus.eta", {action: request.username})$#
@@ -23,6 +37,10 @@
 #$ if (!!request.auth && request.username == params.username) { $#
 <div class="grid">
 	<hr>
+	<h2>drafts</h2>
+</div>
+<div class="grid">
+	<hr>
 	<h2>archive</h2>
 </div>
 <div class="grid">
@@ -32,6 +50,10 @@
 #$ } $#
 
 <style>
+	.page-container {
+		height: 288px;
+	}
+
 	.project-sample {
 		color: var(--blue);
 	}

@@ -23,4 +23,11 @@ export default class page {
       params,
     });
   }
+
+  static async post({ request, response, params }) {
+    console.log("post");
+
+    const username = params.username;
+    await response.redirect(`/${username}`);
+  }
 }

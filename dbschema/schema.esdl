@@ -2,8 +2,10 @@ module default {
 	type User {
 		required username: str;
 		required password: str;
+		multi link pages := .<authors[is Page]
 	}
 	type Page {
-		multi authors: User;
+		required multi authors: User;
+		state: str;
 		}
 };

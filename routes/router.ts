@@ -45,6 +45,9 @@ router.post("/:username", async (ctx) => {
 router.get("/page/:pageId", async (ctx) => {
   await page.index(ctx);
 });
+router.post("/page/:pageId", async (ctx) => {
+  await page.post(ctx);
+});
 
 // ELEMENT;
 router.get("/elementId", (ctx) => {
