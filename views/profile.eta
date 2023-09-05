@@ -6,19 +6,9 @@
 
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'default'){ $#
-	#$ const url = `/page/${page.id}` $#
 
-	<form class="page-container" method="POST" action="#$= url $#">
-		<h6 class="project-sample">
-			<a href="#$= url $#">#$= page.id $#</a>
-		</h6>
-		<button name="button_page-state" value="archive">
-			<h6>move to archive</h6>
-		</button>
-		<button name="button_page-state" value="bin">
-			<h6>move to recycle bin</h6>
-		</button>
-	</form>
+	#$~ include("./partials/page_card__admin", {page}) $#
+
 	#$ } $#
 	#$ }) $#
 
@@ -47,17 +37,8 @@
 	#$ if (page.state === 'draft'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	<form class="page-container" method="POST" action="#$= url $#">
-		<h6 class="project-sample">
-			<a href="#$= url $#">#$= page.id $#</a>
-		</h6>
-		<button name="button_page-state" value="archive">
-			<h6>move to archive</h6>
-		</button>
-		<button name="button_page-state" value="bin">
-			<h6>move to recycle bin</h6>
-		</button>
-	</form>
+	#$~ include("./partials/page_card__admin", {page}) $#
+
 	#$ } $#
 	#$ }) $#
 </div>
@@ -65,20 +46,11 @@
 <div class="grid">
 	<h2 class="profile_page-state-header">archive</h2>
 	#$ user.pages.forEach(function (page) { $#
-	#$ if (page.state === 'bin'){ $#
+	#$ if (page.state === 'archive'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	<form class="page-container" method="POST" action="#$= url $#">
-		<h6 class="project-sample">
-			<a href="#$= url $#">#$= page.id $#</a>
-		</h6>
-		<button name="button_page-state" value="archive">
-			<h6>move to archive</h6>
-		</button>
-		<button name="button_page-state" value="bin">
-			<h6>move to recycle bin</h6>
-		</button>
-	</form>
+	#$~ include("./partials/page_card__admin", {page}) $#
+
 	#$ } $#
 	#$ }) $#
 </div>
@@ -89,17 +61,8 @@
 	#$ if (page.state === 'bin'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	<form class="page-container" method="POST" action="#$= url $#">
-		<h6 class="project-sample">
-			<a href="#$= url $#">#$= page.id $#</a>
-		</h6>
-		<button name="button_page-state" value="archive">
-			<h6>move to archive</h6>
-		</button>
-		<button name="button_page-state" value="bin">
-			<h6>move to recycle bin</h6>
-		</button>
-	</form>
+	#$~ include("./partials/page_card__admin", {page}) $#
+
 	#$ } $#
 	#$ }) $#
 </div>
@@ -107,14 +70,6 @@
 #$ } $#
 
 <style>
-	.page-container {
-		height: 288px;
-	}
-
-	.project-sample {
-		color: var(--blue);
-	}
-
 	hr,
 	.profile_page-state-header {
 		grid-column: 1/ -1;

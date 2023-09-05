@@ -1,0 +1,33 @@
+#$ const url = `/page/${page.id}` $#
+
+<form class="page_card__container page_card__admin" method="POST" action="#$= url $#">
+	<h6 class="project-sample">
+		<a href="#$= url $#">#$= page.id $#</a>
+	</h6>
+	<button name="button_page-state" value="bin">
+		<h6>move to profile bin</h6>
+	</button>
+	<button name="button_page-state" value="archive">
+		<h6>move to archive</h6>
+	</button>
+	<button name="button_page-state" value="bin">
+		<h6>move to recycle bin</h6>
+	</button>
+</form>
+
+<style>
+	.page_card__container {
+		height: 288px;
+	}
+
+	.page_card__admin {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.project-sample {
+		color: var(--blue);
+	}
+
+</style>
