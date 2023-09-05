@@ -7,12 +7,33 @@ export default class user {
   static async index({ request, response, params }) {
     const username = params.username;
 
-    const user = await e
-      .select(e.User, (user) => ({
-        pages: true,
-        filter_single: e.op(user.username, "=", username),
-      }))
-      .run(client);
+    let editor, user;
+    if (!!request.auth && request.username == username) {
+      editor = request.headers.get("referer").split("/").at(-1);
+
+      user = await e
+        .select(e.User, (user) => ({
+          // pages: true,
+          pages: (page) => ({
+            id: true,
+            state: true,
+          }),
+          filter_single: e.op(user.username, "=", username),
+        }))
+        .run(client);
+    } else {
+      user = await e
+        .select(e.User, (user) => ({
+          pages: (page) => ({
+            id: true,
+            filter: e.op(page.state, "=", "default"),
+          }),
+          filter_single: e.op(user.username, "=", username),
+        }))
+        .run(client);
+    }
+
+    console.log(user);
 
     response.body = eta.render("./profile", {
       request,

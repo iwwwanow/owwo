@@ -5,6 +5,7 @@
 	#$ if (!!user && !!user.pages && user.pages.length) { $#
 
 	#$ user.pages.forEach(function (page) { $#
+	#$ if (page.state === 'default'){ $#
 	#$ const url = `/page/${page.id}` $#
 
 	<form class="page-container" method="POST" action="#$= url $#">
@@ -18,7 +19,7 @@
 			<h6>move to recycle bin</h6>
 		</button>
 	</form>
-
+	#$ } $#
 	#$ }) $#
 
 	#$ } else { $#
@@ -37,18 +38,72 @@
 </div>
 
 #$ if (!!request.auth && request.username == params.username) { $#
+<!--- TODO получается так, что программа три раза перебирает полный массив. можно делить массив на состояния, в контроллеке и отправлять сюда отсортированный массив.--->
+<!-- TODO Если нет, например, user.pages.drafts, не отображать эту секцию -->
+
 <div class="grid">
-	<hr>
-	<h2>drafts</h2>
+	<h2 class="profile_page-state-header">drafts</h2>
+	#$ user.pages.forEach(function (page) { $#
+	#$ if (page.state === 'draft'){ $#
+	#$ const url = `/page/${page.id}` $#
+
+	<form class="page-container" method="POST" action="#$= url $#">
+		<h6 class="project-sample">
+			<a href="#$= url $#">#$= page.id $#</a>
+		</h6>
+		<button name="button_page-state" value="archive">
+			<h6>move to archive</h6>
+		</button>
+		<button name="button_page-state" value="bin">
+			<h6>move to recycle bin</h6>
+		</button>
+	</form>
+	#$ } $#
+	#$ }) $#
 </div>
+
 <div class="grid">
-	<hr>
-	<h2>archive</h2>
+	<h2 class="profile_page-state-header">archive</h2>
+	#$ user.pages.forEach(function (page) { $#
+	#$ if (page.state === 'bin'){ $#
+	#$ const url = `/page/${page.id}` $#
+
+	<form class="page-container" method="POST" action="#$= url $#">
+		<h6 class="project-sample">
+			<a href="#$= url $#">#$= page.id $#</a>
+		</h6>
+		<button name="button_page-state" value="archive">
+			<h6>move to archive</h6>
+		</button>
+		<button name="button_page-state" value="bin">
+			<h6>move to recycle bin</h6>
+		</button>
+	</form>
+	#$ } $#
+	#$ }) $#
 </div>
+
 <div class="grid">
-	<hr>
-	<h2>recycle bin</h2>
+	<h2 class="profile_page-state-header">recycle bin</h2>
+	#$ user.pages.forEach(function (page) { $#
+	#$ if (page.state === 'bin'){ $#
+	#$ const url = `/page/${page.id}` $#
+
+	<form class="page-container" method="POST" action="#$= url $#">
+		<h6 class="project-sample">
+			<a href="#$= url $#">#$= page.id $#</a>
+		</h6>
+		<button name="button_page-state" value="archive">
+			<h6>move to archive</h6>
+		</button>
+		<button name="button_page-state" value="bin">
+			<h6>move to recycle bin</h6>
+		</button>
+	</form>
+	#$ } $#
+	#$ }) $#
 </div>
+
 #$ } $#
 
 <style>
@@ -60,7 +115,8 @@
 		color: var(--blue);
 	}
 
-	hr {
+	hr,
+	.profile_page-state-header {
 		grid-column: 1/ -1;
 	}
 

@@ -1,7 +1,7 @@
 {
   "name": "owwo",
   "version": "1.0.0",
-  "main": "main.ts",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,5 @@
   "bugs": {
     "url": "https://github.com/effektivnayarabota1/owwo/issues"
   },
-  "homepage": "https://github.com/effektivnayarabota1/owwo#readme",
-  "description": ""
+  "homepage": "https://github.com/effektivnayarabota1/owwo#readme"
 }

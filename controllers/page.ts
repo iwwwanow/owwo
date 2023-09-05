@@ -29,9 +29,6 @@ export default class page {
     const state = await body.get("button_page-state");
     const editor = request.headers.get("referer").split("/").at(-1);
 
-    console.log(pageId);
-    console.log(state);
-
     await e
       .update(e.Page, (page) => ({
         filter_single: { id: pageId },

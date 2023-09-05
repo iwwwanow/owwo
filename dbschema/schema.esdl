@@ -6,6 +6,8 @@ module default {
 	}
 	type Page {
 		required multi authors: User;
-		state: str;
+		state: str {
+			default := 'default'
+			};
 		}
 };
