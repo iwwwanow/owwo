@@ -26,14 +26,13 @@ export default class user {
         .select(e.User, (user) => ({
           pages: (page) => ({
             id: true,
+            state: true,
             filter: e.op(page.state, "=", "default"),
           }),
           filter_single: e.op(user.username, "=", username),
         }))
         .run(client);
     }
-
-    console.log(user);
 
     response.body = eta.render("./profile", {
       request,

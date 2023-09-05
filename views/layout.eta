@@ -19,7 +19,7 @@
 
 <body>
 	<div class="wrapper">
-		#$~ include("./partials/header", {request, params} )$#
+		#$~ include("./partials/header", {request: it.request, params: it.params} )$#
 		#$~ body $#
 	</div>
 </body>
