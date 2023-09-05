@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="/static/layout.css" />
 	<link rel="stylesheet" href="/static/color.css" />
 	<link rel="stylesheet" href="/static/font.css" />
+
+	<link rel="stylesheet" href="/static/card.css" />
 </head>
 
 <body>

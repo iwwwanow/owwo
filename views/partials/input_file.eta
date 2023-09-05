@@ -1,16 +1,43 @@
-<div class="input-file">
-	<h6>
-		<label for="image">
-			#$= it.text$#
-		</label>
-		<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
-	</h6>
+<div class="card input-file_container">
+	<label for="file-upload" class="input-file_label">
+		<h6 class="input-file_text">cover</h6>
+	</label>
+	<input id="file-upload" type="file" />
 </div>
 
 <style>
 	/* TODO Стилизовать inputFile */
-	.input-file {
-		text-transform: uppercase;
+	.input-file_container input[type="file"] {
+		display: none;
+	}
+
+	/* TODO сделать цветную рамку,
+	чтобы менялась под цвет кавера. */
+	.input-file_label {
+		height: 100%;
+		width: 100%;
+
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		/* border: 4px dashed #FF1B76; */
+		border: 4px double var(--grey-light);
+	}
+
+	.input-file_text {
+		color: var(--grey-medium);
+		text-transform: uppercase
+	}
+
+	.input-file_label:hover {
+		border: 4px solid var(--grey-dark);
+	}
+
+	.input-file_label:hover>.input-file_text {
+		color: var(--black);
+		text-decoration: underline;
 	}
 
 </style>

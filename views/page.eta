@@ -1,14 +1,50 @@
 #$ layout("./layout.eta" )$#
 
 <div class="grid">
+	<h6>if from profile, then: back to profile</h6>
+</div>
+
+<div class="grid">
+	<h6>view:</h6>
+	<h6>grid</h6>
+	<h6>list</h6>
+</div>
+
+<div class="grid">
+	<h6>state:</h6>
 	<h6>archive</h6>
 	<h6>move to trash</h6>
 </div>
 
+<hr>
+<form class="grid page_meta-container" method="post" action="/page/meta/#$= params.pageId $#">
+
+	#$~ include('partials/input_file') $#
+
+	<div>
+		<h6>title-input</h6>
+		<h6>desc-textarea</h6>
+	</div>
+	<div>
+		<h6>order-textarea</h6>
+		<h6>order-button</h6>
+	</div>
+	<div>
+		<h6>addElement-textarea</h6>
+		<h6>addElement-button</h6>
+		<h6>createElement-button</h6>
+		<h6>save-button</h6>
+		<h6>delete-button</h6>
+	</div>
+</form>
+
+<hr>
 <div class="grid">
 	<h6>title</h6>
-	<h6>author</h6>
-	<h6>date</h6>
+	<div>
+		<h6>author</h6>
+		<h6>date</h6>
+	</div>
 	<h6>description</h6>
 </div>
 
@@ -16,9 +52,16 @@
 	<h1 class="element-sample">e1</h1>
 	<h1 class="element-sample">e2</h1>
 	<h1 class="element-sample">e3</h1>
+	<h1>+</h1>
+	<h1>order form</h1>
 </div>
 
 <style>
+	.page_meta-container {
+		/* TODO попробуй стилизовать мета-форму с черным фоном. */
+		/* background-color: var(--black); */
+	}
+
 	.element-sample {
 		color: var(--red);
 	}
