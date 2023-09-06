@@ -70,7 +70,6 @@
 #$ } $#
 
 <style>
-	hr,
 	.profile_page-state-header {
 		grid-column: 1/ -1;
 	}

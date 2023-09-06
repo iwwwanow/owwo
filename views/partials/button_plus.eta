@@ -1,8 +1,10 @@
-<form class="button-plus_form" method="POST" action="/#$= action$#">
+#$ let action = (!!it && !!it.action) ? it.action : 'default' $#
+
+<div class="button-plus_form" method="POST" action="/#$= action $#">
 	<button class="button-plus_button">
-		<img src="static/+.svg" alt="plus-vector">
+		<img src="/static/+.svg" alt="plus-vector">
 	</button>
-</form>
+</div>
 
 <style>
 	.button-plus_form {

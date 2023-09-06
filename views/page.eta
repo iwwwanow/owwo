@@ -16,8 +16,9 @@
 	<h6>move to trash</h6>
 </div>
 
-<hr>
 <form class="grid page_meta-container" method="post" action="/page/meta/#$= params.pageId $#">
+
+	<hr>
 
 	#$~ include('partials/input_file') $#
 
@@ -26,21 +27,26 @@
 		#$~ include('partials/textarea', {type: 'text', text: 'page-description', placeholder: 'page-description'}) $#
 	</div>
 
-	<div>
-		<h6>order-textarea</h6>
-		<h6>order-button</h6>
+	<div class="card">
+		#$~ include('partials/textarea', {type: 'text', text: 'element-order', placeholder: 'element-order'}) $#
+		#$~ include('partials/button', {type: 'default', text: 'change order'}) $#
 	</div>
 
-	<div>
-		<h6>addElement-textarea</h6>
-		<h6>addElement-button</h6>
+	<div class="card">
+		<div class="page_meta-child-container">
+			#$~ include('partials/textarea', {type: 'text', text: 'element-list', placeholder: 'element-order'}) $#
+			#$~ include('partials/button', {type: 'default', text: 'change order'}) $#
+		</div>
+		#$~ include('partials/button_plus' ) $#
 		<h6>createElement-button</h6>
 		<h6>save-button</h6>
 		<h6>delete-button</h6>
 	</div>
+
+	<hr>
+
 </form>
 
-<hr>
 <div class="grid">
 	<h6>title</h6>
 	<div>
@@ -62,6 +68,13 @@
 	.page_meta-container {
 		/* TODO попробуй стилизовать мета-форму с черным фоном. */
 		/* background-color: var(--black); */
+	}
+
+	.page_meta-child-container {
+		height: 100%;
+		display: flex;
+		gap: 4px;
+		flex-direction: column;
 	}
 
 	.element-sample {
