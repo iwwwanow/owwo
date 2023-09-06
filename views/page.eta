@@ -38,9 +38,8 @@
 			#$~ include('partials/button', {type: 'default', text: 'change order'}) $#
 		</div>
 		#$~ include('partials/button_plus' ) $#
-		<h6>createElement-button</h6>
-		<h6>save-button</h6>
-		<h6>delete-button</h6>
+		#$~ include('partials/button', {type: 'green', text: 'save'}) $#
+		#$~ include('partials/button', {type: 'red', text: 'remove'}) $#
 	</div>
 
 	<hr>
