@@ -1,17 +1,23 @@
-#$ if (it.type==="header" ) {$#
-<h4>
-	<textarea name="textarea" id="textarea">#$= it.text $#</textarea>
+#$ if (type==="header" ) {$#
+<h4 class="textarea_header-container">
+	<textarea class="textarea_header" name="textarea" id="textarea" spellcheck="false" placeholder="#$= placeholder $#"
+		rows="2">#$= text $#</textarea>
 </h4>
-#$ } else if (it.type==="text" ) {$#
-<h5>
-	<textarea name="textarea" id="textarea" spellcheck="false">#$= it.text $#</textarea>
+#$ } else if (type==="text" ) {$#
+<h5 class="textarea_text-container">
+	<textarea class="textarea_text" name="textarea" id="textarea" spellcheck="false"
+		placeholder="#$= placeholder $#">#$= text $#</textarea>
 </h5>
-#$ $#}
+#$ } $#
 
 <style>
 	textarea {
 		width: 100%;
+		height: 100%;
+		display: block;
 		resize: none;
+
+		padding: 0;
 
 		color: var(--grey-dark);
 		background-color: var(--grey-light);
@@ -21,6 +27,14 @@
 		text-transform: inherit;
 	}
 
+	textarea:-moz-placeholder {
+		color: var(--grey-medium);
+	}
+
+	textarea::-webkit-input-placeholder {
+		color: var(--grey-medium);
+	}
+
 	textarea:focus {
 		color: var(--grey-light);
 		background-color: var(--grey-dark);
@@ -28,8 +42,12 @@
 		outline: none;
 	}
 
-	h4 textarea {
+	.textarea_header {
 		text-transform: uppercase;
+	}
+
+	.textarea_text-container {
+		height: 100%;
 	}
 
 </style>
