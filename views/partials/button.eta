@@ -1,27 +1,22 @@
-#$ if (it.type==="disabled" ) { $#
+#$ const type = it.type || 'button' $#
+#$ const _class = it.class || 'default' $#
+
+#$ if (_class==="disabled" ) { $#
+
 <button disabled>
 	<h6>
 		#$= it.text $#
 	</h6>
 </button>
-#$ } else if (it.type==="default" ) { $#
-<button>
+
+#$ } else { $#
+
+<button class="#$= _class $#" type="#$= type $#">
 	<h6>
 		#$= it.text $#
 	</h6>
 </button>
-#$ } else if (it.type==="green" ) { $#
-<button class="green">
-	<h6>
-		#$= it.text $#
-	</h6>
-</button>
-#$ } else if (it.type==="red" ){ $#
-<button class="red">
-	<h6>
-		#$= it.text $#
-	</h6>
-</button>
+
 #$ } $#
 
 <style>
@@ -30,27 +25,40 @@
 		width: 100%;
 		height: fit-content;
 
-		color: var(--white);
-		background-color: var(--grey-medium);
 		text-transform: uppercase;
-	}
 
-	button h6 {
-		color: var(--white);
-	}
-
-	button:hover {
-		background-color: var(--grey-dark);
-	}
-
-	button[disabled] {
-		/* background-color: var(--white); */
 		background-color: white;
 		border: 1px solid var(--grey-medium);
 	}
 
+	button h6 {
+		color: var(--grey-dark);
+	}
+
+	button:hover {
+		background-color: var(--grey-dark);
+		border: 1px solid var(--grey-dark);
+	}
+
+	button:not([disabled]):hover,
+	button:not([disabled]):hover>h6 {
+		color: var(--white);
+		font-weight: 600;
+	}
+
+	button[disabled] {
+		/* background-color: var(--white); */
+		color: var(--white);
+		background-color: var(--grey-medium);
+
+	}
+
 	button[disabled] h6 {
-		color: var(--grey-medium);
+		color: var(--white);
+	}
+
+	button[disabled]:hover {
+		border: 1px solid var(--grey-medium);
 	}
 
 	button.green {

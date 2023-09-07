@@ -16,31 +16,33 @@
 	<h6>move to trash</h6>
 </div>
 
-<form class="grid page_meta-container" method="post" action="/page/meta/#$= params.pageId $#">
+<form class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#">
 
 	<hr>
 
 	#$~ include('partials/input_file') $#
 
-	<div class="card">
+	<fieldset class="card">
 		#$~ include('partials/textarea', {type: 'header', text: 'page-title', placeholder: 'page-title'}) $#
 		#$~ include('partials/textarea', {type: 'text', text: 'page-description', placeholder: 'page-description'}) $#
-	</div>
+	</fieldset>
 
-	<div class="card">
-		#$~ include('partials/textarea', {type: 'text', text: 'element-order', placeholder: 'element-order'}) $#
-		#$~ include('partials/button', {type: 'default', text: 'change order'}) $#
-	</div>
-
-	<div class="card">
+	<fieldset class="card">
+		<div class="page_meta-child-container">
+			#$~ include('partials/textarea', {type: 'text', text: 'element-order', placeholder: 'element-order'}) $#
+			#$~ include('partials/button', {class: 'default', text: 'change order'}) $#
+		</div>
 		<div class="page_meta-child-container">
 			#$~ include('partials/textarea', {type: 'text', text: 'element-list', placeholder: 'element-order'}) $#
-			#$~ include('partials/button', {type: 'default', text: 'change order'}) $#
+			#$~ include('partials/button', {class: 'default', text: 'add elements'}) $#
 		</div>
+	</fieldset>
+
+	<fieldset class="card">
 		#$~ include('partials/button_plus' ) $#
-		#$~ include('partials/button', {type: 'green', text: 'save'}) $#
-		#$~ include('partials/button', {type: 'red', text: 'remove'}) $#
-	</div>
+		#$~ include('partials/button', {class: 'green', type: 'submit', text: 'save'}) $#
+		#$~ include('partials/button', {class: 'red', text: 'remove'}) $#
+	</fieldset>
 
 	<hr>
 

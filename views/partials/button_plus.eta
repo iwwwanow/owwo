@@ -1,13 +1,15 @@
 #$ let action = (!!it && !!it.action) ? it.action : 'default' $#
 
-<div class="button-plus_form" method="POST" action="/#$= action $#">
-	<button class="button-plus_button">
+<div class="button-plus_container">
+	<button class="button-plus_button" formaction="/#$= action $#" formmethod="get">
 		<img src="/static/+.svg" alt="plus-vector">
 	</button>
 </div>
 
 <style>
-	.button-plus_form {
+	.button-plus_container {
+		width: 100%;
+		height: 100%;
 		display: flex;
 	}
 
