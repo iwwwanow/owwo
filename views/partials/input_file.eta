@@ -1,8 +1,10 @@
+#$ const _name = it.name || 'input-file' $#
+
 <div class="card input-file_container">
 	<label for="file-upload" class="input-file_label">
 		<h6 class="input-file_text">cover</h6>
 	</label>
-	<input id="file-upload" type="file" />
+	<input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" />
 </div>
 
 <style>

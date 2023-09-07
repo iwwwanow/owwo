@@ -40,4 +40,10 @@ export default class page {
 
     await response.redirect(`/${editor}`);
   }
+
+  static async meta({ request, response, params }) {
+    const pageId = params.pageId;
+    console.log(await request.body().value);
+    await response.redirect(`/page/${pageId}`);
+  }
 }

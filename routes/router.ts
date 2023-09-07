@@ -48,6 +48,9 @@ router.get("/page/:pageId", async (ctx) => {
 router.post("/page/:pageId", async (ctx) => {
   await page.state(ctx);
 });
+router.post("/page/meta/:pageId", async (ctx) => {
+  await page.meta(ctx);
+});
 
 // ELEMENT;
 router.get("/elementId", (ctx) => {

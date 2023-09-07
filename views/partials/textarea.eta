@@ -1,13 +1,20 @@
-#$ if (type==="header" ) {$#
-<h4 class="textarea_header-container">
-	<textarea class="textarea_header" name="textarea" id="textarea" spellcheck="false" placeholder="#$= placeholder $#"
-		rows="2">#$= text $#</textarea>
-</h4>
-#$ } else if (type==="text" ) {$#
+#$ const _name = it.name || 'textarea' $#
+#$ const _type = it.type || 'default' $#
+
+#$ if (_type==="default" ) {$#
+
 <h5 class="textarea_text-container">
-	<textarea class="textarea_text" name="textarea" id="textarea" spellcheck="false"
+	<textarea form="#$= form $#" class="textarea_text" name="#$= _name $#" id="textarea" spellcheck="false"
 		placeholder="#$= placeholder $#">#$= text $#</textarea>
 </h5>
+
+#$ } else if (_type==="header" ) {$#
+
+<h4 class="textarea_header-container">
+	<textarea class="textarea_header" name="#$= _name $#" id="textarea" spellcheck="false"
+		placeholder="#$= placeholder $#" rows="2">#$= text $#</textarea>
+</h4>
+
 #$ } $#
 
 <style>
