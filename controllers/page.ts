@@ -23,6 +23,8 @@ export default class page {
     const page = await e
       .select(e.Page, () => ({
         cover: true,
+        title: true,
+        desc: true,
 
         filter_single: { id: pageId },
       }))
@@ -59,6 +61,17 @@ export default class page {
 
     const formDataReader = await request.body({ type: "form-data" }).value;
     const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
+
+    const { title, desc } = formDataBody.fields;
+    await e
+      .update(e.Page, () => ({
+        filter_single: { id: pageId },
+        set: {
+          title,
+          desc,
+        },
+      }))
+      .run(client);
 
     // TOOD странная точнка вначале. какбудто так быть не должно. Эта же точна сохраняется и при рендере
     let datadir = "./data";

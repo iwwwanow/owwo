@@ -34,14 +34,14 @@
 		form: 'page_meta-form',
 		type: 'header',
 		name: 'title',
-		text: 'page-title',
+		text: page.title,
 		placeholder: 'page-title'
 		}) $#
 
 		#$~ include('partials/textarea', {
 		form: 'page_meta-form',
-		name: 'description',
-		text: 'page-description',
+		name: 'desc',
+		text: page.desc,
 		placeholder: 'page-description'
 		}) $#
 

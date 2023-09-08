@@ -10,5 +10,11 @@ module default {
 			default := 'default'
 			};
 		cover: str;
+		title: str {
+			default := 'title'
+			};
+		desc: str {
+			default := 'desc'
+			};
 		}
 };

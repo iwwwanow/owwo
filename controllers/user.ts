@@ -13,10 +13,12 @@ export default class user {
 
       user = await e
         .select(e.User, (user) => ({
-          // pages: true,
           pages: (page) => ({
             id: true,
             state: true,
+            cover: true,
+            title: true,
+            desc: true,
           }),
           filter_single: e.op(user.username, "=", username),
         }))
@@ -27,6 +29,9 @@ export default class user {
           pages: (page) => ({
             id: true,
             state: true,
+            cover: true,
+            title: true,
+            desc: true,
             filter: e.op(page.state, "=", "default"),
           }),
           filter_single: e.op(user.username, "=", username),

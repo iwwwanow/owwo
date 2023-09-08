@@ -1,11 +1,17 @@
 #$ const url = `/page/${page.id}` $#
 
-<form class="page_card__container page_card__admin" method="POST" action="#$= url $#">
-	<h6 class="project-sample">
-		<a href="#$= url $#">#$= page.id $#</a>
-	</h6>
+<form class="card page_card__admin" method="POST" action="#$= url $#">
+	<h4 class="project-sample">
+		<a href="#$= url $#">#$= page.title $#</a>
+	</h4>
+	<h5>#$= page.desc $#</h5>
+
+	#$ if (!!page.cover) { $#
+	<img src="/#$= page.cover $#" alt="">
+	#$ } $#
+
 	<button name="button_page-state" value="default">
-		<h6>move to profile</h6>
+		<h6>restore</h6>
 	</button>
 	<button name="button_page-state" value="archive">
 		<h6>move to archive</h6>
@@ -16,14 +22,19 @@
 </form>
 
 <style>
-	.page_card__container {
-		height: 288px;
-	}
-
 	.page_card__admin {
 		display: flex;
+		position: relative;
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	.page_card__admin img {
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
 	}
 
 	.project-sample {
