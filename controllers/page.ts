@@ -1,4 +1,6 @@
 // TODO вынести настройку edgedb в отдельный файл. в конфиге.
+import { exists } from "../deps.ts";
+
 import { e, client } from "../config/edgedb.ts";
 import { eta } from "../config/eta.ts";
 
@@ -16,9 +18,20 @@ export default class page {
   }
 
   static async index({ request, response, params }) {
+    const pageId = params.pageId;
+
+    const page = await e
+      .select(e.Page, () => ({
+        cover: true,
+
+        filter_single: { id: pageId },
+      }))
+      .run(client);
+
     response.body = eta.render("./page", {
       request,
       params,
+      page,
     });
   }
 
@@ -47,15 +60,31 @@ export default class page {
     const formDataReader = await request.body({ type: "form-data" }).value;
     const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
 
-    const file = formDataBody.files[0];
-    console.log(file);
-    const directory = "./data/";
-    console.log(file.originalName);
-    console.log(file.content);
-    await Deno.writeFile(`${directory}${file.originalName}`, file.content);
+    // TOOD странная точнка вначале. какбудто так быть не должно. Эта же точна сохраняется и при рендере
+    let datadir = "./data";
+    datadir = datadir + "/" + pageId;
 
-    // const page = formDataBody.fields;
-    // console.log(page);
+    // TODO создавать папку при создании пользователя.
+    // TODO создавать папку при создании страницы.
+
+    const file = formDataBody.files[0];
+    if (file.contentType !== "application/octet-stream") {
+      if (!(await exists(datadir))) {
+        await Deno.mkdir(datadir, { recursive: true });
+      }
+      const extention = file.contentType.split("/").at(-1);
+      const filepath = `${datadir}/cover-${pageId}.${extention}`;
+      await Deno.writeFile(filepath, file.content);
+
+      await e
+        .update(e.Page, () => ({
+          filter_single: { id: pageId },
+          set: {
+            cover: filepath,
+          },
+        }))
+        .run(client);
+    }
 
     await response.redirect(`/page/${pageId}`);
   }

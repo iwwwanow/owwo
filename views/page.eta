@@ -72,6 +72,10 @@
 		#$~ include('partials/button', {class: 'red', text: 'remove'}) $#
 	</fieldset>
 
+	<div class="card">
+		<img src="/#$= page.cover $#" alt="">
+	</div>
+
 	<hr>
 
 </form>

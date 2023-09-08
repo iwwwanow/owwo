@@ -9,5 +9,6 @@ module default {
 		state: str {
 			default := 'default'
 			};
+		cover: str;
 		}
 };
