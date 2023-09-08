@@ -1,15 +1,14 @@
 #$ const _name = it.name || 'input-file' $#
+#$ const _multiple = it.multiple ? 'multiple' : '' $#
 
-<div class="card input-file_container">
-	<label for="file-upload" class="input-file_label">
-		<h6 class="input-file_text">cover</h6>
-	</label>
-	<input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" />
-</div>
+<label for="file-upload" class="input-file_label">
+	<h6 class="input-file_text">cover</h6>
+</label>
+<input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" #$=_multiple $# />
 
 <style>
 	/* TODO Стилизовать inputFile */
-	.input-file_container input[type="file"] {
+	input[type="file"] {
 		display: none;
 	}
 

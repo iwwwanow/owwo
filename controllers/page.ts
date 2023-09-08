@@ -43,7 +43,20 @@ export default class page {
 
   static async meta({ request, response, params }) {
     const pageId = params.pageId;
-    console.log(await request.body().value);
+
+    const formDataReader = await request.body({ type: "form-data" }).value;
+    const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
+
+    const file = formDataBody.files[0];
+    console.log(file);
+    const directory = "./data/";
+    console.log(file.originalName);
+    console.log(file.content);
+    await Deno.writeFile(`${directory}${file.originalName}`, file.content);
+
+    // const page = formDataBody.fields;
+    // console.log(page);
+
     await response.redirect(`/page/${pageId}`);
   }
 }

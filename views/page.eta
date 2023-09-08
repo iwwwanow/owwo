@@ -16,28 +16,31 @@
 	<h6>move to trash</h6>
 </div>
 
-<form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#">
+<form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
+	enctype="multipart/form-data">
 
 	<hr>
 
-	#$~ include('partials/input_file', {
-	form: 'page_meta-form',
-	name: 'page_meta-cover'
-	}) $#
+	<fieldset class="card">
+		#$~ include('partials/input_file', {
+		form: 'page_meta-form',
+		name: 'page_meta-cover'
+		}) $#
+	</fieldset>
 
 	<fieldset class="card">
 
 		#$~ include('partials/textarea', {
 		form: 'page_meta-form',
 		type: 'header',
-		name: 'page-title',
+		name: 'title',
 		text: 'page-title',
 		placeholder: 'page-title'
 		}) $#
 
 		#$~ include('partials/textarea', {
 		form: 'page_meta-form',
-		name: 'page-description',
+		name: 'description',
 		text: 'page-description',
 		placeholder: 'page-description'
 		}) $#
@@ -48,7 +51,7 @@
 		<div class="page_meta-child-container">
 			#$~ include('partials/textarea', {
 			form: 'page_meta-form',
-			name: 'element-order',
+			name: 'elementOrder',
 			text: 'element-order',
 			placeholder: 'element-order'
 			}) $#
@@ -56,7 +59,7 @@
 		<div class="page_meta-child-container">
 			#$~ include('partials/textarea', {
 			form: 'page_meta-form',
-			name: 'element-list',
+			name: 'elementList',
 			text: 'element-list',
 			placeholder: 'element-order'
 			}) $#
