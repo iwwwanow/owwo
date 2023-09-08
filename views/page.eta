@@ -24,12 +24,12 @@
 	<fieldset class="card">
 		#$~ include('partials/input_file', {
 		form: 'page_meta-form',
-		name: 'page_meta-cover'
+		name: 'page_meta-cover',
+		src: page.cover,
 		}) $#
 	</fieldset>
 
 	<fieldset class="card">
-
 		#$~ include('partials/textarea', {
 		form: 'page_meta-form',
 		type: 'header',
@@ -72,9 +72,6 @@
 		#$~ include('partials/button', {class: 'red', text: 'remove'}) $#
 	</fieldset>
 
-	<div class="card">
-		<img src="/#$= page.cover $#" alt="">
-	</div>
 
 	<hr>
 
