@@ -18,10 +18,14 @@ export default class page {
   }
 
   static async index({ request, response, params }) {
+    let editor$;
     const pageId = params.pageId;
 
     const page = await e
       .select(e.Page, () => ({
+        authors: {
+          username: true,
+        },
         cover: true,
         title: true,
         desc: true,
@@ -30,10 +34,17 @@ export default class page {
       }))
       .run(client);
 
+    if (request.auth) {
+      editor$ = page.authors.some(
+        (author) => author.username === request.username
+      );
+    }
+
     response.body = eta.render("./page", {
       request,
       params,
       page,
+      editor$,
     });
   }
 

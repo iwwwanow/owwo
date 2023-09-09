@@ -16,6 +16,8 @@
 	<h6>move to trash</h6>
 </div>
 
+#$ if (editor$) { $#
+
 <form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
 	enctype="multipart/form-data">
 
@@ -72,10 +74,11 @@
 		#$~ include('partials/button', {class: 'red', text: 'remove'}) $#
 	</fieldset>
 
-
 	<hr>
 
 </form>
+
+#$ } $#
 
 <div class="grid">
 	<h6>title</h6>
@@ -90,8 +93,12 @@
 	<h1 class="element-sample">e1</h1>
 	<h1 class="element-sample">e2</h1>
 	<h1 class="element-sample">e3</h1>
+
+	#$ if (editor$) { $#
 	<h1>+</h1>
 	<h1>order form</h1>
+	#$ } $#
+
 </div>
 
 <style>

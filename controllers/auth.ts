@@ -54,49 +54,59 @@ export default class auth {
 
   static async login({ request, response, cookies }) {
     if (request.auth) {
+      // user already auth
       // TODO вернуть ошибку на клиент
-      cookies.set("message", `You have already signed in`);
       response.redirect("/");
-    } else {
-      const body = await request.body().value;
-      const username = await body.get("username");
-      const password = await body.get("password");
+      return;
+    }
 
-      const user = await e
-        .select(e.User, (user) => ({
-          username: true,
-          password: true,
+    const body = await request.body().value;
 
-          filter: e.op(user.username, "=", username),
-        }))
-        .run(client);
-      if (!user.length) {
-        // TODO пробросить ошибку на клиент
-        response.redirect("/login");
-      } else {
-        if (await bcrypt.compare(password, user[0].password)) {
-          response.body = user.username;
-          payload.username = username;
-          cookies.set("token", await create(header, payload, key));
-          cookies.set("message", "Successfully entered");
-          response.redirect("/");
-        } else {
-          cookies.set("message", "Wrong Password");
-          response.redirect("/");
-        }
-      }
+    const username = await body.get("username");
+    const password = await body.get("password");
+
+    const user = await e
+      .select(e.User, (user) => ({
+        id: true,
+        username: true,
+        password: true,
+
+        filter_single: e.op(user.username, "=", username),
+      }))
+      .run(client);
+
+    if (!user) {
+      // incorrect username, username not found
+      // TODO пробросить ошибку на клиент
+      cookies.set("message", "incorrect");
+      response.redirect("/login");
+      return;
+    }
+
+    if (!(await bcrypt.compare(password, user.password))) {
+      // incorrect password
+      // TODO пробросить ошибку на клиент
+      cookies.set("message", "incorrect");
+      response.redirect("/login");
+      return;
+    }
+
+    if (await bcrypt.compare(password, user.password)) {
+      response.body = user.username;
+      payload.username = user.username;
+
+      cookies.set("message", "logged in");
+      cookies.set("token", await create(header, payload, key));
+
+      response.redirect("/");
+      return;
     }
   }
+
   static async logout({ request, response, cookies }) {
-    if (request.auth) {
-      // TODO пробросить ошибку на клиент
-      cookies.set("token", "");
-      cookies.set("message", "Successfully Logged Out");
-      response.redirect("/");
-    } else {
-      // TODO пробросить ошибку на клиент
-      cookies.set("message", "your not logged in");
-      response.redirect("/");
-    }
+    cookies.set("token", "");
+    cookies.set("message", "");
+    response.redirect("/");
+    return;
   }
 }
