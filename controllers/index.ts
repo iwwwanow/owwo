@@ -1,16 +1,22 @@
+import { Request, Response } from "../deps.ts";
 import { eta } from "../config/eta.ts";
 
+interface Context {
+  request: Request;
+  response: Response;
+}
+
 export default class page {
-  static async index({ request, response }) {
+  static index({ request, response }: Context) {
     response.body = eta.render("./index", { request });
   }
-  static async about({ request, response }) {
+  static about({ request, response }: Context) {
     response.body = eta.render("./about", { request });
   }
-  static async login({ request, response }) {
+  static login({ request, response }: Context) {
     response.body = eta.render("./login", { request });
   }
-  static async signup({ request, response }) {
+  static signup({ request, response }: Context) {
     response.body = eta.render("./signup", { request });
   }
 }

@@ -23,7 +23,6 @@ export default class user {
         desc: true,
       };
       if (filter) output.filter = e.op(page.state, "=", filter);
-      console.log(output);
       return output;
     }
 

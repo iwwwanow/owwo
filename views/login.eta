@@ -1,30 +1,33 @@
 #$ layout("./layout.eta")$#
 
 <div class="grid">
-	<div class="login_container">
-		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'login' })$#
-		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'password' })$#
-		#$~ include("./partials/button.eta", {type: 'default' , text: 'войти' })$#
-	</div>
+	<form method="POST" action="/login" class="login_container">
 
-	<form method="POST" action="/login">
-		<div>
-			<label for="name">usernsme: </label>
-			<input type="text" name="username" id="name" required />
-		</div>
-		<div>
-			<label for="name">password: </label>
-			<input type="text" name="password" id="password" required />
-		</div>
-		<input type="submit" value="sign in" />
+		#$~ include("./partials/input_text.eta", {
+		name: 'username',
+		placeholder: 'username',
+		id: 'login_input-username',
+		required: true
+		})$#
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'password',
+		type: 'password',
+		placeholder: 'password',
+		id: 'login_input-password',
+		required: true
+		})$#
+
+		#$~ include("./partials/button.eta", {
+		type: 'submit',
+		value: 'Войти'
+		})$#
+
 	</form>
 
 	<h6>
-		<a href="/signup">
-			sugnup
-		</a>
+		<a href="/signup">Регистрация</a>
 	</h6>
-
 </div>
 
 <style>
