@@ -21,8 +21,12 @@
 
 
 	#$ if (!!request.auth && request.username == params.username) { $#
-	#$~ include("./partials/button_plus.eta", {action: request.username})$#
+
+	<form action="">
+		#$~ include("./partials/button_plus.eta", {action: request.username})$#
+	</form>
 	<h2>order-form</h2>
+
 	#$ } $#
 
 </div>
