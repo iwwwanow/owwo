@@ -1,0 +1,72 @@
+<form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
+	enctype="multipart/form-data">
+	<hr>
+
+	<fieldset class="card">
+		#$~ include('input_file', {
+		form: 'page_meta-form',
+		name: 'page_meta-cover',
+		src: page.cover,
+		}) $#
+	</fieldset>
+
+	<fieldset class="card">
+		#$~ include('textarea', {
+		form: 'page_meta-form',
+		type: 'header',
+		name: 'title',
+		text: page.title,
+		placeholder: 'page-title'
+		}) $#
+
+		#$~ include('textarea', {
+		form: 'page_meta-form',
+		name: 'desc',
+		text: page.desc,
+		placeholder: 'page-description'
+		}) $#
+	</fieldset>
+
+	<fieldset class="card">
+		<div class="page_meta-child-container">
+			#$~ include('textarea', {
+			form: 'page_meta-form',
+			name: 'elementOrder',
+			text: 'element-order',
+			placeholder: 'element-order'
+			}) $#
+		</div>
+
+		<div class="page_meta-child-container">
+			#$~ include('textarea', {
+			form: 'page_meta-form',
+			name: 'elementList',
+			text: 'element-list',
+			placeholder: 'element-order'
+			}) $#
+		</div>
+	</fieldset>
+
+	<fieldset class="card">
+		#$~ include('button_plus' ) $#
+		#$~ include('button', {class: 'green', type: 'submit', text: 'save'}) $#
+		#$~ include('button', {class: 'red', text: 'remove'}) $#
+	</fieldset>
+
+	<hr>
+</form>
+
+<style>
+	.page_meta-container {
+		/* TODO попробуй стилизовать мета-форму с черным фоном. */
+		/* background-color: var(--black); */
+	}
+
+	.page_meta-child-container {
+		height: 100%;
+		display: flex;
+		gap: 4px;
+		flex-direction: column;
+	}
+
+</style>

@@ -13,7 +13,7 @@
 
 <button class="#$= _class $#" type="#$= type $#">
 	<h6>
-		#$= value $#
+		#$= it.text $#
 	</h6>
 </button>
 

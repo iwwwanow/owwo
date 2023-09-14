@@ -1,7 +1,6 @@
 #$ let action = (!!it && !!it.action) ? it.action : 'default' $#
 
 <div class="button-plus_container">
-	#$ console.log(action) $#
 	<button class="button-plus_button" formaction="/#$= action $#" formmethod="post">
 		<img src="/static/+.svg" alt="plus-vector">
 	</button>
