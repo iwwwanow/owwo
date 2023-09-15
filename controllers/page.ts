@@ -112,4 +112,11 @@ export default class page {
 
     await response.redirect(`/page/${pageId}`);
   }
+
+  static checkBin() {
+    console.log("checkBin");
+    e.delete(e.Page, (page) => ({
+      filter: e.op(page.state, "=", "bin"),
+    })).run(client);
+  }
 }

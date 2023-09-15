@@ -1,9 +1,9 @@
 import { Application } from "./deps.ts";
+import { cron } from "./deps.ts";
 
 import { router } from "./routes/router.ts";
+import page from "./controllers/page.ts";
 import { validate } from "./utils/validate.ts";
-
-import { cron } from "./deps.ts";
 
 const app = new Application();
 
@@ -20,16 +20,19 @@ app.use(async (context) => {
 
 // page deleting timer
 // const schedule = '0 0 * * 1'
-// every 1st day of the week at midnight
+// every monday at midnight
 
 // const schedule = "* * * * *";
 // every minute
 
-const schedule = "*/5 * * * * *";
+const schedule = "0 */1 * * *";
+// every hour at 00 minutes
+
+// const schedule = "*/5 * * * * *";
 // every 5sec
 
 cron(schedule, () => {
-  console.log("cron");
+  page.checkBin();
 });
 
 const server = app.addEventListener("listen", ({ hostname, port, secure }) => {
