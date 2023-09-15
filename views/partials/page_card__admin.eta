@@ -10,6 +10,8 @@
 	<img src="/#$= page.cover $#" alt="">
 	#$ } $#
 
+	#$ if (editor$) { $#
+
 	<button name="button_page-state" value="default">
 		<h6>restore</h6>
 	</button>
@@ -19,6 +21,9 @@
 	<button name="button_page-state" value="bin">
 		<h6>move to recycle bin</h6>
 	</button>
+
+	#$ } $#
+
 </form>
 
 <style>
