@@ -34,6 +34,13 @@ export default class page {
       }))
       .run(client);
 
+    console.log(page);
+    if (!page) {
+      // TODO вернуть ошибку на клиент станица не найдена
+      response.redirect("/");
+      return;
+    }
+
     if (request.auth) {
       editor$ = page.authors.some(
         (author) => author.username === request.username
@@ -113,10 +120,27 @@ export default class page {
     await response.redirect(`/page/${pageId}`);
   }
 
-  static checkBin() {
-    console.log("checkBin");
-    e.delete(e.Page, (page) => ({
-      filter: e.op(page.state, "=", "bin"),
-    })).run(client);
+  static async checkBin() {
+    const pages = await e
+      .select(e.Page, (page) => ({
+        filter: e.op(page.state, "=", "bin"),
+      }))
+      .run(client);
+
+    for (const page of pages) {
+      let datadir = "./data";
+      datadir = datadir + "/" + page.id;
+
+      if (await exists(datadir)) {
+        await Deno.remove(datadir, { recursive: true });
+        console.log("deletedir");
+      }
+    }
+
+    await e
+      .delete(e.Page, (page) => ({
+        filter: e.op(page.state, "=", "bin"),
+      }))
+      .run(client);
   }
 }
