@@ -1,3 +1,27 @@
-<button formaction="URL">
-	#$= it.text$#
-</button>
+#$ let action = (!!it && !!it.action) ? it.action : 'default' $#
+
+<div class="button-plus_container">
+	<button class="button-plus_button" formaction="/#$= action $#" formmethod="post">
+		<img src="/static/+.svg" alt="plus-vector">
+	</button>
+</div>
+
+<style>
+	.button-plus_container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+	}
+
+	.button-plus_button {
+		padding: 32px;
+		width: 100%;
+		height: 100%;
+		background-color: var(--grey-medium);
+	}
+
+	.button-plus_button:hover {
+		background-color: var(--grey-dark);
+	}
+
+</style>

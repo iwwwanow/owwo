@@ -6,7 +6,7 @@
 
 	#$ if (!!params ? !!params.username : false) { $#
 	<h5 class="username">
-		#$= request.username$#
+		#$= params.username$#
 	</h5>
 	#$ } else { $#
 	<h6>

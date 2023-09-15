@@ -1,27 +1,35 @@
 #$ layout("./layout.eta")$#
 
 <div class="grid">
-	<div class="login_container">
-		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'login' })$#
-		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'password' })$#
-		#$~ include("./partials/input_text.eta", {type: 'text' , name: 'text' , placeholder: 'confirm password'})$#
-		#$~ include("./partials/button.eta", {type: 'default' , text: 'войти' })$#
-	</div>
 
-	<form method="POST" action="/signup">
-		<div>
-			<label for="name">usernsme: </label>
-			<input type="text" name="username" id="name" required />
-		</div>
-		<div>
-			<label for="name">password: </label>
-			<input type="text" name="password" id="password" required />
-		</div>
-		<div>
-			<label for="name">confirm password: </label>
-			<input type="text" name="confirm-password" id="confirm-password" required />
-		</div>
-		<input type="submit" value="Register" />
+	<form method="POST" action="/signup" class="login_container">
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'username',
+		placeholder: 'username',
+		id: 'signup_input-username',
+		required: true
+		})$#
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'password',
+		placeholder: 'password',
+		id: 'signup_input-password',
+		required: true
+		})$#
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'confirm-password',
+		placeholder: 'confirm password',
+		id: 'signup_input-confirm-password',
+		required: true
+		})$#
+
+		#$~ include("./partials/button.eta", {
+		type: 'submit',
+		value: 'Зарегистрироваться'
+		})$#
+
 	</form>
 
 </div>

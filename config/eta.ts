@@ -6,4 +6,6 @@ const configEta = {
   useWith: true,
   tags: ["#$", "$#"],
 };
-export default configEta;
+
+import { Eta } from "../deps.ts";
+export const eta = new Eta(configEta);
