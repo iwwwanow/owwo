@@ -16,3 +16,4 @@ export {
   verify,
   getNumericDate,
 } from "https://deno.land/x/djwt/mod.ts";
+export { cron } from "https://deno.land/x/deno_cron/cron.ts";
