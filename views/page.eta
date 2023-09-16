@@ -1,9 +1,12 @@
 #$ layout("./layout.eta" )$#
 
+#$ if (profile) { $#
 <div class="grid">
-	<h6>if from profile, then: back to profile</h6>
+	<h6><a href="/#$= profile $#">
+			< #$=profile $# </a>
+				</6>
 </div>
-
+#$ } $#
 
 #$ if (editor$) { $#
 
