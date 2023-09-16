@@ -15,8 +15,7 @@ export default class user {
     let editor$, editor, user;
     const { username } = params;
 
-    console.log(username);
-    cookies.set("profile", username);
+    await cookies.set("profile", username);
 
     interface query {
       [index: string]: boolean | any;
