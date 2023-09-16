@@ -23,6 +23,7 @@ export default class page {
 
     const page = await e
       .select(e.Page, () => ({
+        state: true,
         authors: {
           username: true,
         },
@@ -98,13 +99,15 @@ export default class page {
     const formDataReader = await request.body({ type: "form-data" }).value;
     const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
 
-    const { title, desc } = formDataBody.fields;
+    const { title, desc, state } = formDataBody.fields;
+
     await e
       .update(e.Page, () => ({
         filter_single: { id: pageId },
         set: {
           title,
           desc,
+          state,
         },
       }))
       .run(client);

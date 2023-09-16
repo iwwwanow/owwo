@@ -49,8 +49,47 @@
 
 	<fieldset class="card">
 		#$~ include('button_plus' ) $#
-		#$~ include('button', {class: 'green', type: 'submit', text: 'save'}) $#
-		#$~ include('button', {class: 'red', text: 'remove'}) $#
+		#$= page.state $#
+
+		#$~ include('button', {
+		class: 'green',
+		type: 'submit',
+		name: 'state',
+		value: 'default',
+		text: 'опубликовать'
+		}) $#
+
+		#$~ include('button', {
+		class: 'blue',
+		type: 'submit',
+		name: 'state',
+		value: 'draft',
+		text: 'сохранить черновик'
+		}) $#
+
+		#$~ include('button', {
+		class: 'orange',
+		type: 'submit',
+		name: 'state',
+		value: 'archive',
+		text: 'в архив'
+		}) $#
+
+		#$~ include('button', {
+		class: 'red',
+		type: 'submit',
+		name: 'state',
+		value: 'bin',
+		text: 'в корзину'
+		}) $#
+
+	</fieldset>
+
+	<fieldset>
+		TODO отрисовать превьюшки этих лейаутов. серым на сером.
+		<h6>view:</h6>
+		<h6>grid</h6>
+		<h6>list</h6>
 	</fieldset>
 
 	<hr>
