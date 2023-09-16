@@ -29,6 +29,7 @@ export default class user {
     // editor = request.headers.get("referer").split("/").at(-1);
     if (request.auth && request.username === params.username) {
       // TODO нужно проверить, от автора ли идет этот запрос.
+      editor$ = true;
       // if (request.auth) {
       //   editor$ = page.authors.some(
       //     (author) => author.username === request.username
@@ -46,6 +47,7 @@ export default class user {
       .run(client);
 
     response.body = eta.render("./profile", {
+      editor$,
       request,
       params,
       user,

@@ -4,21 +4,13 @@
 	<h6>if from profile, then: back to profile</h6>
 </div>
 
-<div class="grid">
-	<h6>view:</h6>
-	<h6>grid</h6>
-	<h6>list</h6>
-</div>
-
-<div class="grid">
-	<h6>state:</h6>
-	<h6>archive</h6>
-	<h6>move to trash</h6>
-</div>
 
 #$ if (editor$) { $#
 
-#$~ include('partials/page_meta-form', {page: it.page, params: it.params} ) $#
+#$~ include('partials/page_meta-form', {
+page: it.page,
+params: it.params
+}) $#
 
 #$ } $#
 

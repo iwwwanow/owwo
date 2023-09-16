@@ -23,6 +23,7 @@ export default class page {
 
     const page = await e
       .select(e.Page, () => ({
+        state: true,
         authors: {
           username: true,
         },
@@ -34,7 +35,6 @@ export default class page {
       }))
       .run(client);
 
-    console.log(page);
     if (!page) {
       // TODO вернуть ошибку на клиент станица не найдена
       response.redirect("/");
@@ -62,16 +62,35 @@ export default class page {
     const state = await body.get("button_page-state");
     const editor = request.headers.get("referer").split("/").at(-1);
 
-    await e
-      .update(e.Page, (page) => ({
-        filter_single: { id: pageId },
-        set: {
-          state: state,
-        },
-      }))
-      .run(client);
+    if (state === "delete") {
+      await this.delete(pageId);
+    } else {
+      await e
+        .update(e.Page, (page) => ({
+          filter_single: { id: pageId },
+          set: {
+            state: state,
+          },
+        }))
+        .run(client);
+    }
 
     await response.redirect(`/${editor}`);
+  }
+
+  static async delete(pageId: string) {
+    let datadir = "./data";
+    datadir = datadir + "/" + pageId;
+
+    if (await exists(datadir)) {
+      await Deno.remove(datadir, { recursive: true });
+    }
+
+    await e
+      .delete(e.Page, () => ({
+        filter_single: { id: pageId },
+      }))
+      .run(client);
   }
 
   static async meta({ request, response, params }) {
@@ -80,16 +99,26 @@ export default class page {
     const formDataReader = await request.body({ type: "form-data" }).value;
     const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
 
-    const { title, desc } = formDataBody.fields;
-    await e
-      .update(e.Page, () => ({
-        filter_single: { id: pageId },
-        set: {
-          title,
-          desc,
-        },
-      }))
-      .run(client);
+    const { title, desc, state } = formDataBody.fields;
+    // TODO сохранить в черновики сохраняет копию в черновиках, опубликованный проект остается.
+
+    if (state === "delete") {
+      await this.delete(pageId);
+      // TODO сделать редирект на страницу профиля.
+      await response.redirect(`/`);
+      return;
+    } else {
+      await e
+        .update(e.Page, () => ({
+          filter_single: { id: pageId },
+          set: {
+            title,
+            desc,
+            state,
+          },
+        }))
+        .run(client);
+    }
 
     // TOOD странная точнка вначале. какбудто так быть не должно. Эта же точна сохраняется и при рендере
     let datadir = "./data";
@@ -128,19 +157,7 @@ export default class page {
       .run(client);
 
     for (const page of pages) {
-      let datadir = "./data";
-      datadir = datadir + "/" + page.id;
-
-      if (await exists(datadir)) {
-        await Deno.remove(datadir, { recursive: true });
-        console.log("deletedir");
-      }
+      await this.delete(page.id);
     }
-
-    await e
-      .delete(e.Page, (page) => ({
-        filter: e.op(page.state, "=", "bin"),
-      }))
-      .run(client);
   }
 }

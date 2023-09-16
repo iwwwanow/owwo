@@ -10,15 +10,34 @@
 	<img src="/#$= page.cover $#" alt="">
 	#$ } $#
 
+	#$ if (editor$) { $#
+
+	#$ if (page.state !== 'default') { $#
 	<button name="button_page-state" value="default">
-		<h6>restore</h6>
+		<h6>Опубликовать</h6>
 	</button>
+	#$ } $#
+
+	#$ if (page.state !== 'archive') { $#
 	<button name="button_page-state" value="archive">
-		<h6>move to archive</h6>
+		<h6>Архивировать</h6>
 	</button>
+	#$ } $#
+
+	#$ if (page.state !== 'bin') { $#
 	<button name="button_page-state" value="bin">
-		<h6>move to recycle bin</h6>
+		<h6>В корзину</h6>
 	</button>
+	#$ } $#
+
+	#$ if (page.state === 'bin') { $#
+	<button name="button_page-state" value="delete">
+		<h6>Удалить</h6>
+	</button>
+	#$ } $#
+
+	#$ } $#
+
 </form>
 
 <style>
@@ -39,6 +58,10 @@
 
 	.project-sample {
 		color: var(--blue);
+	}
+
+	button h6 {
+		text-transform: uppercase;
 	}
 
 </style>

@@ -1,4 +1,4 @@
-#$ layout("./layout.eta" )$#
+#$ layout("./layout.eta") $#
 
 <div class="grid">
 
@@ -7,7 +7,7 @@
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'default'){ $#
 
-	#$~ include("./partials/page_card__admin", {page}) $#
+	#$~ include("./partials/page_card__admin", {editor$, page}) $#
 
 	#$ } $#
 	#$ }) $#
@@ -20,7 +20,7 @@
 	#$ } $#
 
 
-	#$ if (!!request.auth && request.username == params.username) { $#
+	#$ if (editor$) { $#
 
 	<form action="">
 		#$~ include("./partials/button_plus.eta", {action: request.username})$#
@@ -31,51 +31,45 @@
 
 </div>
 
-#$ if (!!request.auth && request.username == params.username) { $#
+#$ if (editor$) { $#
 <!--- TODO получается так, что программа три раза перебирает полный массив. можно делить массив на состояния, в контроллеке и отправлять сюда отсортированный массив.--->
 <!-- TODO Если нет, например, user.pages.drafts, не отображать эту секцию -->
 
 <div class="grid">
-	<h2 class="profile_page-state-header">drafts</h2>
+	<h2 class="all-cols">drafts</h2>
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'draft'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	#$~ include("./partials/page_card__admin", {page}) $#
+	#$~ include("./partials/page_card__admin", {editor$, page}) $#
 
 	#$ } $#
 	#$ }) $#
 </div>
 
 <div class="grid">
-	<h2 class="profile_page-state-header">archive</h2>
+	<h2 class="all-cols">archive</h2>
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'archive'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	#$~ include("./partials/page_card__admin", {page}) $#
+	#$~ include("./partials/page_card__admin", {editor$, page}) $#
 
 	#$ } $#
 	#$ }) $#
 </div>
 
 <div class="grid">
-	<h2 class="profile_page-state-header">recycle bin</h2>
+	<h2 class="all-cols">recycle bin</h2>
 	#$ user.pages.forEach(function (page) { $#
+
 	#$ if (page.state === 'bin'){ $#
 	#$ const url = `/page/${page.id}` $#
 
-	#$~ include("./partials/page_card__admin", {page}) $#
+	#$~ include("./partials/page_card__admin", {editor$, page}) $#
 
 	#$ } $#
 	#$ }) $#
 </div>
 
 #$ } $#
-
-<style>
-	.profile_page-state-header {
-		grid-column: 1/ -1;
-	}
-
-</style>
