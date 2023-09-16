@@ -1,6 +1,21 @@
+#$ console.log(page.state) $#
+#$ let color $#
+#$ if (page.state === 'default') { $#
+#$ color = 'green' $#
+#$ } else if (page.state === 'draft') { $#
+#$ color = 'blue' $#
+#$ } else if (page.state === 'archive') { $#
+#$ color = 'orange' $#
+#$ } else if (page.state === 'bin') { $#
+#$ color = 'red' $#
+#$ } else { $#
+#$ color = 'grey-medium' $#
+#$ } $#
+
 <form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
 	enctype="multipart/form-data">
-	<hr>
+
+	<hr style="border-color: var(--#$= color $#)">
 
 	<fieldset class="card">
 		#$~ include('input_file', {
@@ -92,7 +107,8 @@
 		<h6>list</h6>
 	</fieldset>
 
-	<hr>
+	<hr style="border-color: var(--#$= color $#)">
+
 </form>
 
 <style>

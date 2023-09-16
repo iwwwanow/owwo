@@ -1,4 +1,17 @@
 #$ layout("./layout.eta" )$#
+#$ console.log(page.state) $#
+#$ let color $#
+#$ if (page.state === 'default') { $#
+#$ color = 'green' $#
+#$ } else if (page.state === 'draft') { $#
+#$ color = 'blue' $#
+#$ } else if (page.state === 'archive') { $#
+#$ color = 'orange' $#
+#$ } else if (page.state === 'bin') { $#
+#$ color = 'orange' $#
+#$ } else { $#
+#$ color = 'grey-medium' $#
+#$ } $#
 
 <div class="grid">
 	<h6>if from profile, then: back to profile</h6>
