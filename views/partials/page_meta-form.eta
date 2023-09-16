@@ -17,6 +17,8 @@
 #$ state_ru = 'owwo' $#
 #$ } $#
 
+#$ color = 'grey-medium' $#
+
 <form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
 	enctype="multipart/form-data">
 
@@ -76,7 +78,7 @@
 		#$~ include('button_plus' ) $#
 
 		#$~ include('button', {
-		class: 'green',
+		/* class: 'green', */
 		type: 'submit',
 		name: 'state',
 		value: 'default',
@@ -85,7 +87,7 @@
 
 		#$ if (state !== 'draft') { $#
 		#$~ include('button', {
-		class: 'blue',
+		/* class: 'blue', */
 		type: 'submit',
 		name: 'state',
 		value: 'draft',
@@ -95,7 +97,7 @@
 
 		#$ if (state !== 'archive') { $#
 		#$~ include('button', {
-		class: 'orange',
+		/* class: 'orange', */
 		type: 'submit',
 		name: 'state',
 		value: 'archive',
@@ -105,7 +107,7 @@
 
 		#$ if (state !== 'bin') { $#
 		#$~ include('button', {
-		class: 'red',
+		/* class: 'red', */
 		type: 'submit',
 		name: 'state',
 		value: 'bin',
@@ -115,7 +117,7 @@
 
 		#$ if (state === 'bin') { $#
 		#$~ include('button', {
-		class: 'red',
+		/* class: 'red', */
 		type: 'submit',
 		name: 'state',
 		value: 'delete',
