@@ -20,7 +20,7 @@
 
 		#$~ include("./partials/button.eta", {
 		type: 'submit',
-		value: 'Войти'
+		text: 'Войти'
 		})$#
 
 	</form>
