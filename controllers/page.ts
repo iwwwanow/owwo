@@ -100,17 +100,25 @@ export default class page {
     const formDataBody = await formDataReader.read({ maxSize: 10000000 }); // Max file size to handle
 
     const { title, desc, state } = formDataBody.fields;
+    // TODO сохранить в черновики сохраняет копию в черновиках, опубликованный проект остается.
 
-    await e
-      .update(e.Page, () => ({
-        filter_single: { id: pageId },
-        set: {
-          title,
-          desc,
-          state,
-        },
-      }))
-      .run(client);
+    if (state === "delete") {
+      await this.delete(pageId);
+      // TODO сделать редирект на страницу профиля.
+      await response.redirect(`/`);
+      return;
+    } else {
+      await e
+        .update(e.Page, () => ({
+          filter_single: { id: pageId },
+          set: {
+            title,
+            desc,
+            state,
+          },
+        }))
+        .run(client);
+    }
 
     // TOOD странная точнка вначале. какбудто так быть не должно. Эта же точна сохраняется и при рендере
     let datadir = "./data";

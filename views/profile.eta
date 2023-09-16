@@ -36,7 +36,7 @@
 <!-- TODO Если нет, например, user.pages.drafts, не отображать эту секцию -->
 
 <div class="grid">
-	<h2 class="profile_page-state-header">drafts</h2>
+	<h2 class="all-cols">drafts</h2>
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'draft'){ $#
 	#$ const url = `/page/${page.id}` $#
@@ -48,7 +48,7 @@
 </div>
 
 <div class="grid">
-	<h2 class="profile_page-state-header">archive</h2>
+	<h2 class="all-cols">archive</h2>
 	#$ user.pages.forEach(function (page) { $#
 	#$ if (page.state === 'archive'){ $#
 	#$ const url = `/page/${page.id}` $#
@@ -60,7 +60,7 @@
 </div>
 
 <div class="grid">
-	<h2 class="profile_page-state-header">recycle bin</h2>
+	<h2 class="all-cols">recycle bin</h2>
 	#$ user.pages.forEach(function (page) { $#
 
 	#$ if (page.state === 'bin'){ $#
@@ -73,10 +73,3 @@
 </div>
 
 #$ } $#
-
-<style>
-	.profile_page-state-header {
-		grid-column: 1/ -1;
-	}
-
-</style>

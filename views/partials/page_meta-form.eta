@@ -1,21 +1,31 @@
-#$ console.log(page.state) $#
-#$ let color $#
-#$ if (page.state === 'default') { $#
+#$ const state = page.state $#
+#$ let color, state_ru $#
+#$ if (state === 'default') { $#
 #$ color = 'green' $#
-#$ } else if (page.state === 'draft') { $#
+#$ state_ru = 'опубликован' $#
+#$ } else if (state === 'draft') { $#
 #$ color = 'blue' $#
-#$ } else if (page.state === 'archive') { $#
+#$ state_ru = 'черновик' $#
+#$ } else if (state === 'archive') { $#
 #$ color = 'orange' $#
-#$ } else if (page.state === 'bin') { $#
+#$ state_ru = 'в архиве' $#
+#$ } else if (state === 'bin') { $#
 #$ color = 'red' $#
+#$ state_ru = 'в корзине' $#
 #$ } else { $#
 #$ color = 'grey-medium' $#
+#$ state_ru = 'owwo' $#
 #$ } $#
 
 <form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
 	enctype="multipart/form-data">
 
+
 	<hr style="border-color: var(--#$= color $#)">
+
+	<h2 class="all-cols" style="color: var(--#$= color $#)">
+		#$= state_ru $#
+	</h2>
 
 	<fieldset class="card">
 		#$~ include('input_file', {
@@ -64,7 +74,6 @@
 
 	<fieldset class="card">
 		#$~ include('button_plus' ) $#
-		#$= page.state $#
 
 		#$~ include('button', {
 		class: 'green',
@@ -74,6 +83,7 @@
 		text: 'опубликовать'
 		}) $#
 
+		#$ if (state !== 'draft') { $#
 		#$~ include('button', {
 		class: 'blue',
 		type: 'submit',
@@ -81,7 +91,9 @@
 		value: 'draft',
 		text: 'сохранить черновик'
 		}) $#
+		#$ } $#
 
+		#$ if (state !== 'archive') { $#
 		#$~ include('button', {
 		class: 'orange',
 		type: 'submit',
@@ -89,7 +101,9 @@
 		value: 'archive',
 		text: 'в архив'
 		}) $#
+		#$ } $#
 
+		#$ if (state !== 'bin') { $#
 		#$~ include('button', {
 		class: 'red',
 		type: 'submit',
@@ -97,6 +111,17 @@
 		value: 'bin',
 		text: 'в корзину'
 		}) $#
+		#$ } $#
+
+		#$ if (state === 'bin') { $#
+		#$~ include('button', {
+		class: 'red',
+		type: 'submit',
+		name: 'state',
+		value: 'delete',
+		text: 'удалить'
+		}) $#
+		#$ } $#
 
 	</fieldset>
 
