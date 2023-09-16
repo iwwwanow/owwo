@@ -4,10 +4,12 @@ import { eta } from "../config/eta.ts";
 interface Context {
   request: Request;
   response: Response;
+  // cookies: Cookies;
 }
 
 export default class page {
-  static index({ request, response }: Context) {
+  static index({ request, response, cookies }: Context) {
+    cookies.set("profile", "");
     response.body = eta.render("./index", { request });
   }
   static about({ request, response }: Context) {

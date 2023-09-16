@@ -4,8 +4,15 @@ import { exists } from "../deps.ts";
 import { e, client } from "../config/edgedb.ts";
 import { eta } from "../config/eta.ts";
 
+interface Context {
+  request: Request;
+  response: Response;
+  // params: RouteParams;
+  // cookies: Cookies;
+}
+
 export default class page {
-  static async create({ request, response, params }) {
+  static async create({ request, response, params }: Context) {
     const username = params.username;
 
     const result = await e
@@ -20,9 +27,11 @@ export default class page {
     await response.redirect(`/page/${result.id}`);
   }
 
-  static async index({ request, response, params }) {
+  static async index({ request, response, params, cookies }: Context) {
     let editor$;
     const pageId = params.pageId;
+
+    const profile = await cookies.get("profile");
 
     const page = await e
       .select(e.Page, () => ({
@@ -55,6 +64,7 @@ export default class page {
       params,
       page,
       editor$,
+      profile,
     });
   }
 

@@ -3,10 +3,20 @@ import { e, client } from "../config/edgedb.ts";
 
 import { eta } from "../config/eta.ts";
 
+interface Context {
+  request: Request;
+  response: Response;
+  // params: RouteParams;
+  // cookies: Cookies;
+}
+
 export default class user {
-  static async index({ request, response, params }) {
+  static async index({ request, response, params, cookies }: Context) {
     let editor$, editor, user;
-    const username = params.username;
+    const { username } = params;
+
+    console.log(username);
+    cookies.set("profile", username);
 
     interface query {
       [index: string]: boolean | any;
