@@ -1,8 +1,8 @@
 <div class="checkbox">
-	<input type="checkbox" id="checkbox" name="name" />
+	<input type="checkbox" id="checkbox" name="name" autocomplete="off" />
 	<label for="checkbox">
 		<h6>
-			<%= it.text %>
+			#$= it.text$#
 		</h6>
 	</label>
 </div>

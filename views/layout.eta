@@ -6,18 +6,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>owwo</title>
 
+	<!-- TODO не отображает фавикон -->
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
 	<link rel="stylesheet" href="/static/reset.css" />
 	<link rel="stylesheet" href="/static/style.css" />
 
 	<link rel="stylesheet" href="/static/layout.css" />
 	<link rel="stylesheet" href="/static/color.css" />
 	<link rel="stylesheet" href="/static/font.css" />
+	<link rel="stylesheet" href="/static/font_custom.css" />
+
+	<link rel="stylesheet" href="/static/card.css" />
 </head>
 
 <body>
 	<div class="wrapper">
-		<%~ includeFile("./partials/header.eta") %>
-			<%~ it.body %>
+
+		#$~ include("./partials/header", {
+		request: it.request,
+		params: it.params
+		})$#
+
+		#$~ body $#
 	</div>
 </body>
 

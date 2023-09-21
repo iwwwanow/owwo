@@ -1,3 +1,6 @@
+* {
+  font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
+}
 h1 {
   /* margin-bottom: 48px; */
 
@@ -19,7 +22,7 @@ h2 {
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   font-size: 28px;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 24px; /* 85.714% */
   letter-spacing: -0.56px;
   text-transform: uppercase;
@@ -55,7 +58,6 @@ h5 {
 }
 h6 {
   color: var(--grey-dark);
-
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   font-size: 14px;
   font-style: italic;

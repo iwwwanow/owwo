@@ -1,13 +1,13 @@
-<% layout("./layout.eta") %>
+#$ layout("./layout.eta")$#
 
-	<div class="grid">
-		<h1 class="about-text">Платформа для свободного распространения творчества и коллабораций</h1>
-	</div>
+<div class="grid">
+	<h1 class="about-text">Платформа для публикации.</h1>
+</div>
 
-	<style>
-		.about-text {
-			color: var(--grey-dark);
-			grid-column: 1/ span 3;
-		}
+<style>
+	.about-text {
+		color: var(--grey-dark);
+		grid-column: 1/ span 3;
+	}
 
-	</style>
+</style>

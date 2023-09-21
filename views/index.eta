@@ -1,12 +1,14 @@
-<% layout("./layout.eta") %>
+#$ layout("layout") $#
 
-	<div class="grid">
-		<h1>index</h1>
-		<%~ includeFile("./partials/button.eta", {type: 'default' }) %>
-			<%~ includeFile("./partials/input_checkbox.eta", {text: 'checkbox' }) %>
-				<%~ includeFile("./partials/input_file.eta", {text: 'checkbox' }) %>
-					<%~ includeFile("./partials/input_text.eta", {type: 'header' , name: 'name' , placeholder: 'h1' }) %>
-						<%~ includeFile("./partials/input_text.eta", {type: 'text' , name: 'name' , placeholder: 'h1' }) %>
-							<%~ includeFile("./partials/textarea.eta", {type: 'header' , name: 'name' , text: 'h1' }) %>
-								<%~ includeFile("./partials/textarea.eta", {type: 'text' , name: 'name' , text: 'h1' }) %>
-	</div>
+<div class="grid">
+	<h6 class="element-sample">random_element-1</h6>
+	<h6 class="element-sample">random_element-2</h6>
+	<h6 class="element-sample">random_element-3</h6>
+</div>
+
+<style>
+	.element-sample {
+		color: var(--red);
+	}
+
+</style>

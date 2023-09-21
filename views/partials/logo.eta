@@ -1,14 +1,3 @@
-<h1>
-	<a href="/" style="color: var(--red); text-decoration-color: var(--red);">
-		owwo
-		<!-- <img class="logo" src="static/logo.svg" alt="logo"> -->
-	</a>
-</h1>
-
-<style>
-	.logo {
-		/* TODO измени размер лого, чтобы растягивался относительно родителя */
-		height: 48px;
-	}
-
-</style>
+<a href="/">
+	<img class="logo" src="/static/logo.svg" alt="logo">
+</a>
