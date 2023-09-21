@@ -1,9 +1,11 @@
 #$ const url = `/page/${page.id}` $#
 
 <form class="card page_card__admin" method="POST" action="#$= url $#">
+
 	<h4 class="project-sample">
 		<a href="#$= url $#">#$= page.title $#</a>
 	</h4>
+
 	<h5>#$= page.desc $#</h5>
 
 	#$ if (!!page.cover) { $#

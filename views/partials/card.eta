@@ -1,0 +1,73 @@
+#$ const type = Object.keys(it)[0] $#
+
+#$ const id = it[type].id $#
+#$ const url = `/${type}/${id}` $#
+#$ const obj = it[type] $#
+
+<div class="card">
+
+	<div class="card_text-wrapper">
+		<div class="card_text-container">
+			<h4 class="card_title">
+				<a href="#$= url $#">#$= obj.title $#</a>
+			</h4>
+			#$ if (obj.desc) { $#
+			<h5 class="card_desc">#$= obj.desc $#</h5>
+			#$ } $#
+		</div>
+	</div>
+
+	#$ if (!!obj.cover) { $#
+	<img src="/#$= obj.cover $#" alt="">
+	#$ } $#
+
+</div>
+
+<style>
+	.card a {
+		color: var(--grey-dark);
+	}
+
+	.card {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		align-items: flex-start;
+		border: 1px solid var(--grey-dark);
+	}
+
+	.card_desc {
+		display: none;
+	}
+
+	.card:hover .card_desc {
+		display: block;
+	}
+
+	.card_text-wrapper {
+		width: 100%;
+		height: 100%;
+		padding: 8px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	.card_text-container {
+		width: 100%;
+		padding: 4px;
+		display: flex;
+		gap: 16px;
+		flex-direction: column;
+		background-color: #FFFFFFA3;
+	}
+
+	.card img {
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+
+</style>

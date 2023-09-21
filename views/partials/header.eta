@@ -9,24 +9,24 @@
 		#$= params.username$#
 	</h5>
 	#$ } else { $#
-	<h6>
-		<a href="/about">about</a>
-	</h6>
+	<h5>
+		<a href="/about">о проекте</a>
+	</h5>
 	#$ } $#
 
 	<div class="login-container">
 		#$ if (!!request.auth & !!params ? request.username === params.username : false) { $#
-		<h6>
+		<h5>
 			<a href="/logout">logout</a>
-		</h6>
+		</h5>
 		#$ } else if (!!request.auth) { $#
-		<h6>
-			<a href="/#$= request.username $#">#$= request.username $#</a>
-		</h6>
+		<h5>
+			<a href="/#$= request.username $#" style="color: var(--red)">#$= request.username $#</a>
+		</h5>
 		#$ } else { $#
-		<h6>
+		<h5>
 			<a href="/login">login</a>
-		</h6>
+		</h5>
 		#$ } $#
 	</div>
 
