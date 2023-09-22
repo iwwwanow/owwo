@@ -1,18 +1,16 @@
 import { Elysia } from "elysia";
-import { Eta } from "eta";
-import { html } from "@elysiajs/html";
-
 import { Database } from "bun:sqlite";
+import { Eta } from "eta";
 
 import * as path from "node:path";
 
-const eta = new Eta({ views: "views" });
+const eta = new Eta({ views: path.join(import.meta.dir, "views") });
 
 const db = new Database("data/db.sqlite", { create: true });
 
 const router = new Elysia()
   .get("/", async () => {
-    return await eta.render("./index", { name: "Ben" });
+    return eta.render("./index", { name: "Ben" });
   })
   .get("/new-user", async ({ set }) => {
     db.prepare(
@@ -33,6 +31,4 @@ const router = new Elysia()
     set.redirect = "/";
   });
 
-const app = new Elysia().use(html()).use(router).listen(8080);
-
-console.log(`Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
+export default router;
