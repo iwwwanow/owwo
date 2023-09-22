@@ -1,1 +1,2 @@
-Hi <%= it.name %>!
+<h1>Index</h1>
+<a href="/new-user">new user</a>
