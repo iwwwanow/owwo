@@ -1,0 +1,32 @@
+#$ layout("./layout.eta") $#
+
+<div class="grid">
+
+	#$ if (!!user && !!user.pages && user.pages.length) { $#
+
+	#$ user.pages.forEach(function (page) { $#
+	#$ if (page.state === 'default'){ $#
+
+	#$~ include("partials/card", {page}) $#
+
+	#$ } $#
+	#$ }) $#
+
+	#$ } else { $#
+
+	<!-- TODO отправлять ответ с сервера, что пользователь не найден -->
+	<h6>not found</h6>
+
+	#$ } $#
+
+
+	#$ if (editor$) { $#
+
+	<form action="">
+		#$~ include("./partials/button_plus.eta", {action: request.username})$#
+	</form>
+	<h2>order-form</h2>
+
+	#$ } $#
+
+</div>

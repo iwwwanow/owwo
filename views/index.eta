@@ -1,2 +1,14 @@
-<h1>Index</h1>
-<a href="/new-user">new user</a>
+#$ layout("./layout") $#
+
+<div class="grid">
+	<h6 class="element-sample">random_element-1</h6>
+	<h6 class="element-sample">random_element-2</h6>
+	<h6 class="element-sample">random_element-3</h6>
+</div>
+
+<style>
+	.element-sample {
+		color: var(--red);
+	}
+
+</style>

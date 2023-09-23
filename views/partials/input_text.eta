@@ -1,0 +1,61 @@
+#$ const required = it.required ? 'required' : '' $#
+#$ const _type = it.type || 'text' $#
+
+#$ if (it.style==="header" ) {$#
+
+<div>
+	<h1><input id="#$= id $#" class="input_text" type="#$= _type $#" name="#$= it.name $#"
+			placeholder="#$= it.placeholder $#" autocomplete="off" #$=required $#>
+	</h1>
+</div>
+
+#$ } else { $#
+
+<div>
+	<h6><input id="#$= id $#" class="input_text" type="#$= _type $#" name="#$= it.name $#"
+			placeholder="#$= it.placeholder $#" autocomplete="off" #$=required $#>
+	</h6>
+</div>
+
+#$ } $#
+
+<style>
+	.input_text {
+		width: 100%;
+
+		color: var(--grey-dark);
+		background-color: var(--grey-light);
+
+		font-style: inherit;
+		font-weight: inherit;
+		text-transform: inherit;
+	}
+
+	h1 .input_text {
+		height: 48px;
+	}
+
+	h6 .input_text {
+		padding: 0 4px;
+		line-height: 24px;
+		text-transform: uppercase;
+	}
+
+	::placeholder {
+		/* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: var(--grey-medium);
+		opacity: 1;
+		/* Firefox */
+	}
+
+	:-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: var(--grey-medium);
+	}
+
+	::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: var(--grey-medium);
+	}
+
+</style>

@@ -1,0 +1,55 @@
+#$ const _name = it.name || 'input-file' $#
+#$ const _multiple = it.multiple ? 'multiple' : '' $#
+#$ const _src = it.src || false $#
+
+<label for="file-upload" class="input-file_label">
+	#$ if (_src) { $#
+	<img src="/#$= _src $#" alt="">
+	#$ } else { $#
+	<h6 class="input-file_text">cover</h6>
+	#$ } $#
+</label>
+<input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" #$=_multiple $# />
+
+<style>
+	/* TODO Стилизовать inputFile */
+	input[type="file"] {
+		display: none;
+	}
+
+	/* TODO сделать цветную рамку,
+	чтобы менялась под цвет кавера. */
+	.input-file_label {
+		height: 100%;
+		width: 100%;
+
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		/* border: 4px dashed #FF1B76; */
+		border: 4px double var(--grey-light);
+	}
+
+	.input-file_label img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.input-file_text {
+		color: var(--grey-medium);
+		text-transform: uppercase
+	}
+
+	.input-file_label:hover {
+		border: 4px solid var(--grey-dark);
+	}
+
+	.input-file_label:hover>.input-file_text {
+		color: var(--black);
+		text-decoration: underline;
+	}
+
+</style>

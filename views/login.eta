@@ -1,0 +1,42 @@
+#$ layout("./layout.eta")$#
+
+<div class="grid">
+	<form method="POST" action="/login" class="login_container">
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'username',
+		placeholder: 'username',
+		id: 'login_input-username',
+		required: true
+		})$#
+
+		#$~ include("./partials/input_text.eta", {
+		name: 'password',
+		type: 'password',
+		placeholder: 'password',
+		id: 'login_input-password',
+		required: true
+		})$#
+
+		#$~ include("./partials/button.eta", {
+		type: 'submit',
+		text: 'Войти'
+		})$#
+
+	</form>
+
+	<h6>
+		<a href="/signup">Регистрация</a>
+	</h6>
+</div>
+
+<style>
+	.login_container {
+		grid-column: 1/span 2;
+
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+</style>

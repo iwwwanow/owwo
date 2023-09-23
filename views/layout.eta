@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>owwo</title>
+
+    <!-- TODO не отображает фавикон -->
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+
+    <link rel="stylesheet" href="/public/reset.css" />
+    <link rel="stylesheet" href="/public/style.css" />
+
+    <link rel="stylesheet" href="/public/layout.css" />
+    <link rel="stylesheet" href="/public/color.css" />
+    <link rel="stylesheet" href="/public/font.css" />
+    <link rel="stylesheet" href="/public/font_custom.css" />
+
+    <link rel="stylesheet" href="/public/card.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      #$~ include("./partials/header", { request: it.request, params: it.params
+      })$# #$~ body $#
+    </div>
+  </body>
+</html>
