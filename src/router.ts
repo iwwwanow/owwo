@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
 
 import IndexController from "../controllers";
+import AuthController from "../controllers/auth";
 
 const router = new Elysia();
 
@@ -20,6 +21,9 @@ router
   });
 
 // AUTH;
+router.post("/signup", ({ body, set }) => {
+  return AuthController.createUser({ body, set });
+});
 
 export default router;
 
