@@ -1,0 +1,63 @@
+<header class="grid">
+
+	<div class="logo-container">
+		#$~ include("logo")$#
+	</div>
+
+	#$ if (!!params ? !!params.username : false) { $#
+	<h5 class="username">
+		#$= params.username$#
+	</h5>
+	#$ } else { $#
+	<h5>
+		<a href="/about">о проекте</a>
+	</h5>
+	#$ } $#
+
+	<div class="login-container">
+		#$ if (request &&!!request.auth & !!params ? request.username === params.username : false) { $#
+		<h5>
+			<a href="/logout">logout</a>
+		</h5>
+		#$ } else if (request && !!request.auth) { $#
+		<h5>
+			<a href="/#$= request.username $#" style="color: var(--red)">#$= request.username $#</a>
+		</h5>
+		#$ } else { $#
+		<h5>
+			<a href="/login">login</a>
+		</h5>
+		#$ } $#
+	</div>
+
+</header>
+
+<style>
+	header {
+		position: relative;
+	}
+
+	header h6,
+	header h5 {
+		text-transform: uppercase;
+	}
+
+	header .username {
+		color: var(--grey-dark);
+	}
+
+	.logo-container {
+		position: relative;
+		height: 100%;
+	}
+
+	.logo {
+		position: absolute;
+		max-height: 100%;
+	}
+
+	.login-container {
+		grid-column-end: -1
+	}
+
+</style>

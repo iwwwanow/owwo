@@ -1,17 +1,15 @@
 import { Elysia } from "elysia";
 import { Database } from "bun:sqlite";
-import { Eta } from "eta";
 
-import * as path from "node:path";
-
-const eta = new Eta({ views: path.join(import.meta.dir, "views") });
+import { eta } from "../config/eta";
 
 const db = new Database("data/db.sqlite", { create: true });
 
 const router = new Elysia()
   .get("/", async () => {
-    return eta.render("./index", { name: "Ben" });
+    return eta.render("./index", {});
   })
+
   .get("/new-user", async ({ set }) => {
     db.prepare(
       `

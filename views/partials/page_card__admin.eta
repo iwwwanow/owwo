@@ -1,0 +1,69 @@
+#$ const url = `/page/${page.id}` $#
+
+<form class="card page_card__admin" method="POST" action="#$= url $#">
+
+	<h4 class="project-sample">
+		<a href="#$= url $#">#$= page.title $#</a>
+	</h4>
+
+	<h5>#$= page.desc $#</h5>
+
+	#$ if (!!page.cover) { $#
+	<img src="/#$= page.cover $#" alt="">
+	#$ } $#
+
+	#$ if (editor$) { $#
+
+	#$ if (page.state !== 'default') { $#
+	<button name="button_page-state" value="default">
+		<h6>Опубликовать</h6>
+	</button>
+	#$ } $#
+
+	#$ if (page.state !== 'archive') { $#
+	<button name="button_page-state" value="archive">
+		<h6>Архивировать</h6>
+	</button>
+	#$ } $#
+
+	#$ if (page.state !== 'bin') { $#
+	<button name="button_page-state" value="bin">
+		<h6>В корзину</h6>
+	</button>
+	#$ } $#
+
+	#$ if (page.state === 'bin') { $#
+	<button name="button_page-state" value="delete">
+		<h6>Удалить</h6>
+	</button>
+	#$ } $#
+
+	#$ } $#
+
+</form>
+
+<style>
+	.page_card__admin {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.page_card__admin img {
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+
+	.project-sample {
+		color: var(--blue);
+	}
+
+	button h6 {
+		text-transform: uppercase;
+	}
+
+</style>
