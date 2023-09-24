@@ -6,6 +6,8 @@ import { jwt } from "@elysiajs/jwt";
 
 import config_jwt from "../config/jwt";
 
+import checkAuth from "../utils/checkAuth";
+
 import router from "./router";
 
 const app = new Elysia()
@@ -13,6 +15,7 @@ const app = new Elysia()
   .use(jwt(config_jwt()))
   .use(cookie())
   .use(await staticPlugin({ assets: "public" }))
+  .derive(async (c) => await checkAuth(c))
   .use(router)
   .listen(8080);
 

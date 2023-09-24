@@ -89,7 +89,6 @@ export default class AuthController {
       throw new Error("Incorrect auth attemp");
     }
 
-    console.log("correct login");
     setCookie("auth", await jwt.sign(username));
 
     set.redirect = "/";
