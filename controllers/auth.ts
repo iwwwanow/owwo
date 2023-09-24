@@ -4,9 +4,20 @@ import stringFromSQL from "../utils/stringFromSQL";
 
 const db = new Database("data/db.sqlite", { create: true });
 
+interface Context {
+  body: object;
+  set: { redirect: string };
+}
+
+interface Body {
+  username?: string;
+  password?: string;
+  confirm?: string;
+}
+
 export default class AuthController {
-  static async createUser({ body, set }) {
-    const { username, password, confirm } = body;
+  static async createUser({ body, set }: Context) {
+    const { username, password, confirm }: Body = body;
 
     if (password !== confirm) {
       // TODO выводить эту ошибку на клиент.
@@ -17,6 +28,14 @@ export default class AuthController {
       "./controllers/sql/check-table_users.sql"
     );
     db.prepare(query_checkTable_users).run();
+
+    if (!(typeof username === "string")) {
+      throw new Error("username is not string");
+    }
+
+    if (!(typeof password === "string")) {
+      throw new Error("password is not string");
+    }
 
     const query_checkUsername = await stringFromSQL(
       "./controllers/sql/check_username.sql"
@@ -41,15 +60,21 @@ export default class AuthController {
     return;
   }
 
-  static async authUser({ body, set }) {
-    const { username, password } = body;
+  static async authUser({ body, set }: Context) {
+    const { username, password }: Body = body;
+
+    if (!(typeof username === "string") || !(typeof password === "string")) {
+      throw new Error("username or password is not string");
+    }
 
     const query_selectUser = await stringFromSQL(
       "./controllers/sql/select_user.sql"
     );
-    const user = db.prepare(query_selectUser).get({
-      $username: username,
-    });
+    const user: { username: string; password: string } | any = db
+      .prepare(query_selectUser)
+      .get({
+        $username: username,
+      });
 
     if (!user) {
       throw new Error("Incorrect auth attemp");
