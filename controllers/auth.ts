@@ -1,3 +1,4 @@
+import { jwt } from "@elysiajs/jwt";
 import { Database } from "bun:sqlite";
 
 import stringFromSQL from "../utils/stringFromSQL";
@@ -5,8 +6,11 @@ import stringFromSQL from "../utils/stringFromSQL";
 const db = new Database("data/db.sqlite", { create: true });
 
 interface Context {
-  body: object;
-  set: { redirect: string };
+  body: object | any;
+  jwt: object | any;
+  cookie: object | any;
+  setCookie: any;
+  set: { redirect: string } | any;
 }
 
 interface Body {
@@ -60,7 +64,7 @@ export default class AuthController {
     return;
   }
 
-  static async authUser({ body, set }: Context) {
+  static async authUser({ body, jwt, setCookie, set }: Context) {
     const { username, password }: Body = body;
 
     if (!(typeof username === "string") || !(typeof password === "string")) {
@@ -85,8 +89,13 @@ export default class AuthController {
       throw new Error("Incorrect auth attemp");
     }
 
-    set.redirect = "/login";
-    // set.redirect = "/";
+    console.log("correct login");
+    setCookie("auth", await jwt.sign(username));
+
+    set.redirect = "/";
     return;
+  }
+  static async logout({ cookie, setCookie }: Context) {
+    console.log("logout");
   }
 }

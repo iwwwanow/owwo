@@ -22,11 +22,14 @@ router
 
 // AUTH;
 router
-  .post("/signup", ({ body, set }) => {
-    return AuthController.createUser({ body, set });
+  .post("/signup", (c) => {
+    return AuthController.createUser(c);
   })
-  .post("login", ({ body, set }) => {
-    return AuthController.authUser({ body, set });
+  .post("/login", (c) => {
+    return AuthController.authUser(c);
+  })
+  .get("/logout", (c) => {
+    return AuthController.logout(c);
   });
 
 export default router;

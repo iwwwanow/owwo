@@ -11,6 +11,7 @@ import router from "./router";
 const app = new Elysia()
   .use(html())
   .use(jwt(config_jwt()))
+  .use(cookie())
   .use(await staticPlugin({ assets: "public" }))
   .use(router)
   .listen(8080);
