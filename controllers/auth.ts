@@ -37,8 +37,31 @@ export default class AuthController {
       throw new Error("User exists");
     }
 
-    set.redirect = "/signup";
+    set.redirect = "/login";
     return;
-    // set.redirect = "/login";
+  }
+
+  static async authUser({ body, set }) {
+    const { username, password } = body;
+
+    const query_selectUser = await stringFromSQL(
+      "./controllers/sql/select_user.sql"
+    );
+    const user = db.prepare(query_selectUser).get({
+      $username: username,
+    });
+
+    if (!user) {
+      throw new Error("Incorrect auth attemp");
+    }
+
+    const verify_password = await Bun.password.verify(password, user.password);
+    if (!verify_password) {
+      throw new Error("Incorrect auth attemp");
+    }
+
+    set.redirect = "/login";
+    // set.redirect = "/";
+    return;
   }
 }

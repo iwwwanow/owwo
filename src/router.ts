@@ -21,8 +21,12 @@ router
   });
 
 // AUTH;
-router.post("/signup", ({ body, set }) => {
-  return AuthController.createUser({ body, set });
-});
+router
+  .post("/signup", ({ body, set }) => {
+    return AuthController.createUser({ body, set });
+  })
+  .post("login", ({ body, set }) => {
+    return AuthController.authUser({ body, set });
+  });
 
 export default router;
