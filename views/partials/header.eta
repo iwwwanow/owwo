@@ -14,14 +14,15 @@
 	</h5>
 	#$ } $#
 
+
 	<div class="login-container">
-		#$ if (request &&!!request.auth & !!params ? request.username === params.username : false) { $#
+		#$ if (cookie && !!cookie.username & !!params ? cookie.username === params.username : false) { $#
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		#$ } else if (request && !!request.auth) { $#
+		#$ } else if (cookie && !!cookie.username) { $#
 		<h5>
-			<a href="/#$= request.username $#" style="color: var(--red)">#$= request.username $#</a>
+			<a href="/#$= cookie.username $#" style="color: var(--red)">#$= cookie.username $#</a>
 		</h5>
 		#$ } else { $#
 		<h5>

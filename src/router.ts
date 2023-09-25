@@ -7,8 +7,8 @@ const router = new Elysia();
 
 // INDEX
 router
-  .get("/", () => {
-    return IndexController.renderIndex();
+  .get("/", (c) => {
+    return IndexController.renderIndex(c);
   })
   .get("/about", () => {
     return IndexController.renderAbout();
@@ -22,13 +22,13 @@ router
 
 // AUTH;
 router
-  .post("/signup", (c) => {
+  .post("/signup", (c: any) => {
     return AuthController.createUser(c);
   })
-  .post("/login", (c) => {
+  .post("/login", (c: any) => {
     return AuthController.authUser(c);
   })
-  .get("/logout", (c) => {
+  .get("/logout", (c: any) => {
     return AuthController.logout(c);
   });
 

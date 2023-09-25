@@ -9,8 +9,9 @@ interface Context {
   body: object | any;
   jwt: object | any;
   cookie: object | any;
-  setCookie: any;
+  setCookie?: any;
   set: { redirect: string } | any;
+  username_cookie?: string;
 }
 
 interface Body {
@@ -64,7 +65,17 @@ export default class AuthController {
     return;
   }
 
-  static async authUser({ body, jwt, setCookie, set }: Context) {
+  static async authUser({
+    body,
+    jwt,
+    setCookie,
+    set,
+    username_cookie,
+  }: Context) {
+    if (username_cookie) {
+      throw new Error("already login");
+    }
+
     const { username, password }: Body = body;
 
     if (!(typeof username === "string") || !(typeof password === "string")) {
