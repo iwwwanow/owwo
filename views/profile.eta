@@ -1,5 +1,8 @@
 #$ layout("./layout.eta") $#
 
+#$ const user = null $#
+#$ const editor$ = null $#
+
 <div class="grid">
 
 	#$ if (!!user && !!user.pages && user.pages.length) { $#

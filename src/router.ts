@@ -1,13 +1,15 @@
 import { Elysia } from "elysia";
 
 import IndexController from "../controllers";
+import AuthController from "../controllers/auth";
+import UserController from "../controllers/user";
 
 const router = new Elysia();
 
 // INDEX
 router
-  .get("/", () => {
-    return IndexController.renderIndex();
+  .get("/", (c) => {
+    return IndexController.renderIndex(c);
   })
   .get("/about", () => {
     return IndexController.renderAbout();
@@ -19,27 +21,21 @@ router
     return IndexController.renderSignUp();
   });
 
-// AUTH;
+// AUTH
+router
+  .post("/signup", (c: any) => {
+    return AuthController.createUser(c);
+  })
+  .post("/login", (c: any) => {
+    return AuthController.authUser(c);
+  })
+  .get("/logout", (c: any) => {
+    return AuthController.logout(c);
+  });
+
+// USER
+router.get("/:username", (c: any) => {
+  return UserController.index(c);
+});
 
 export default router;
-
-// import { Database } from "bun:sqlite";
-// const db = new Database("data/db.sqlite", { create: true });
-// .get("/new-user", async ({ set }) => {
-//   db.prepare(
-//     `
-// 		CREATE TABLE IF NOT EXISTS users (
-// 		user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-// 		username TEXT,
-// 		password TEXT);
-// 		`
-//   ).run();
-//
-//   db.prepare(
-//     `
-// 		INSERT INTO users (username, password) VALUES ('admin', 'admin')
-// 		`
-//   ).run();
-//
-//   set.redirect = "/";
-// });

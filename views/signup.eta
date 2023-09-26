@@ -13,13 +13,15 @@
 
 		#$~ include("./partials/input_text.eta", {
 		name: 'password',
+		type: 'password',
 		placeholder: 'password',
 		id: 'signup_input-password',
 		required: true
 		})$#
 
 		#$~ include("./partials/input_text.eta", {
-		name: 'confirm-password',
+		name: 'confirm',
+		type: 'password',
 		placeholder: 'confirm password',
 		id: 'signup_input-confirm-password',
 		required: true
@@ -27,7 +29,7 @@
 
 		#$~ include("./partials/button.eta", {
 		type: 'submit',
-		value: 'Зарегистрироваться'
+		text: 'Зарегистрироваться',
 		})$#
 
 	</form>

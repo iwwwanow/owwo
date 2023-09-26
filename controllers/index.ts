@@ -1,8 +1,8 @@
 import { eta } from "../config/eta";
 
 export default class IndexController {
-  static renderIndex() {
-    return eta.render("index", {});
+  static renderIndex({ username_cookie }: { username_cookie?: string }) {
+    return eta.render("index", { username_cookie });
   }
   static renderAbout() {
     return eta.render("about", {});
