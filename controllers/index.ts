@@ -1,8 +1,12 @@
 import { eta } from "../config/eta";
 
 export default class IndexController {
-  static renderIndex({ username_cookie }: { username_cookie?: string }) {
-    return eta.render("index", { username_cookie });
+  static renderIndex({
+    cookie_authUsername,
+  }: {
+    cookie_authUsername?: string;
+  }) {
+    return eta.render("index", { cookie_authUsername });
   }
   static renderAbout() {
     return eta.render("about", {});
