@@ -25,7 +25,7 @@
 
 		#$~ include("./partials/header", {
 		params: it.params,
-		username_cookie: it.username_cookie
+		cookie_authUsername: it.cookie_authUsername
 		})$#
 
 		#$~ body $#

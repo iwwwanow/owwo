@@ -4,9 +4,9 @@ import { staticPlugin } from "@elysiajs/static";
 import { cookie } from "@elysiajs/cookie";
 import { jwt } from "@elysiajs/jwt";
 
-import config_jwt from "../config/jwt";
+import config_jwt from "../config/jwt.ts";
 
-import checkAuth from "../utils/checkAuth";
+import checkAuth from "../utils/checkAuth.ts";
 
 import router from "./router";
 

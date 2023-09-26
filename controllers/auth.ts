@@ -5,31 +5,14 @@ import stringFromSQL from "../utils/stringFromSQL";
 
 const db = new Database("data/db.sqlite", { create: true });
 
-// TODO почему не экспортирует типы из пакета? по логике должно работать так.
-interface Context {
-  body: object | any;
-  jwt: object | any;
-  cookie: object | any;
-  setCookie: (
-    name: string,
-    value: string,
-    // options?: CookieSerializeOptions
-    options?: any
-  ) => void;
-  removeCookie: (name: string) => void;
-  set: { redirect: string } | any;
-  username_cookie?: string;
-}
-
-interface Body {
-  username?: string;
-  password?: string;
-  confirm?: string;
-}
+import { ExContext } from "../typescript/interfaces.ts";
 
 export default class AuthController {
-  static async createUser({ body, set }: Context) {
-    const { username, password, confirm }: Body = body;
+  static async createUser({
+    body: { username, password, confirm },
+    set,
+  }: ExContext) {
+    // const { username, password, confirm } = body;
 
     if (password !== confirm) {
       // TODO выводить эту ошибку на клиент.
@@ -73,17 +56,15 @@ export default class AuthController {
   }
 
   static async authUser({
-    body,
+    body: { username, password },
     jwt,
     setCookie,
     set,
     username_cookie,
-  }: Context) {
+  }: ExContext) {
     if (username_cookie) {
       throw new Error("already login");
     }
-
-    const { username, password }: Body = body;
 
     if (!(typeof username === "string") || !(typeof password === "string")) {
       throw new Error("username or password is not string");
@@ -112,7 +93,7 @@ export default class AuthController {
     set.redirect = "/";
     return;
   }
-  static async logout({ removeCookie, set }: Context) {
+  static async logout({ removeCookie, set }: ExContext) {
     removeCookie("auth");
     set.redirect = "/";
   }
