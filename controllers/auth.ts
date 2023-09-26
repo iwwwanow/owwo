@@ -5,11 +5,18 @@ import stringFromSQL from "../utils/stringFromSQL";
 
 const db = new Database("data/db.sqlite", { create: true });
 
+// TODO почему не экспортирует типы из пакета? по логике должно работать так.
 interface Context {
   body: object | any;
   jwt: object | any;
   cookie: object | any;
-  setCookie?: any;
+  setCookie: (
+    name: string,
+    value: string,
+    // options?: CookieSerializeOptions
+    options?: any
+  ) => void;
+  removeCookie: (name: string) => void;
   set: { redirect: string } | any;
   username_cookie?: string;
 }
@@ -105,7 +112,8 @@ export default class AuthController {
     set.redirect = "/";
     return;
   }
-  static async logout({ cookie, setCookie }: Context) {
-    console.log("logout");
+  static async logout({ removeCookie, set }: Context) {
+    removeCookie("auth");
+    set.redirect = "/";
   }
 }

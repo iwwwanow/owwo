@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 
 import IndexController from "../controllers";
 import AuthController from "../controllers/auth";
+import UserController from "../controllers/user";
 
 const router = new Elysia();
 
@@ -20,7 +21,7 @@ router
     return IndexController.renderSignUp();
   });
 
-// AUTH;
+// AUTH
 router
   .post("/signup", (c: any) => {
     return AuthController.createUser(c);
@@ -31,5 +32,10 @@ router
   .get("/logout", (c: any) => {
     return AuthController.logout(c);
   });
+
+// USER
+router.get("/:username", (c: any) => {
+  return UserController.index(c);
+});
 
 export default router;
