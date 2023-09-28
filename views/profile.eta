@@ -1,7 +1,6 @@
 #$ layout("./layout.eta") $#
 
 #$ const user = null $#
-#$ const editor$ = null $#
 
 <div class="grid">
 
@@ -22,11 +21,10 @@
 
 	#$ } $#
 
-
 	#$ if (editor$) { $#
 
 	<form action="">
-		#$~ include("./partials/button_plus.eta", {action: request.username})$#
+		#$~ include("./partials/button_plus.eta", {action: cookie_authUsername})$#
 	</form>
 	<h2>order-form</h2>
 

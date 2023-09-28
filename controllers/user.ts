@@ -8,6 +8,10 @@ const db = new Database("data/db.sqlite", { create: true });
 
 export default class UserController {
   static async index({ params, cookie_authUsername }: ExContext) {
-    return eta.render("profile", { params, cookie_authUsername });
+    let editor$;
+    if (params.username === cookie_authUsername) {
+      editor$ = true;
+    }
+    return eta.render("profile", { params, cookie_authUsername, editor$ });
   }
 }

@@ -15,12 +15,6 @@ export interface ExContext extends Context {
   cookie_authUsername: string;
 }
 
-// export interface Context {
-//   body: Body;
-//   cookie: object | any;
-//   set: { redirect: string } | any;
-// }
-
 export interface Body {
   username: string;
   password: string;

@@ -1,4 +1,3 @@
-import { jwt } from "@elysiajs/jwt";
 import { Database } from "bun:sqlite";
 
 import stringFromSQL from "../utils/stringFromSQL";
