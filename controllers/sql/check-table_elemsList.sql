@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS
+  elemsList (
+    elemsList_id INTEGER PRIMARY KEY AUTOINCREMENT
+  );

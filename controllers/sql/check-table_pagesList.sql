@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS
+  pagesList (
+    pagesList_id INTEGER PRIMARY KEY AUTOINCREMENT
+  );

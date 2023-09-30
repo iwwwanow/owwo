@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS
+  medias (
+    media_id INTEGER PRIMARY KEY AUTOINCREMENT,
+		user_id INTEGER,
+		data TEXT
+  );

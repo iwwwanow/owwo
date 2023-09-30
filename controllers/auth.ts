@@ -1,18 +1,15 @@
 import { Database } from "bun:sqlite";
+import { ExContext } from "../typescript/interfaces.ts";
 
 import stringFromSQL from "../utils/stringFromSQL";
 
 const db = new Database("data/db.sqlite", { create: true });
-
-import { ExContext } from "../typescript/interfaces.ts";
 
 export default class AuthController {
   static async createUser({
     body: { username, password, confirm },
     set,
   }: ExContext) {
-    // const { username, password, confirm } = body;
-
     if (password !== confirm) {
       // TODO выводить эту ошибку на клиент.
       throw new Error("Password mismatch");
@@ -59,9 +56,9 @@ export default class AuthController {
     jwt,
     setCookie,
     set,
-    username_cookie,
+    cookie_authUsername,
   }: ExContext) {
-    if (username_cookie) {
+    if (cookie_authUsername) {
       throw new Error("already login");
     }
 

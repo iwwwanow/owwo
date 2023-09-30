@@ -3,6 +3,9 @@ import { Elysia } from "elysia";
 import IndexController from "../controllers";
 import AuthController from "../controllers/auth";
 import UserController from "../controllers/user";
+import PageController from "../controllers/page";
+
+import { ExContext } from "../typescript/interfaces";
 
 const router = new Elysia();
 
@@ -36,6 +39,11 @@ router
 // USER
 router.get("/:username", (c: any) => {
   return UserController.index(c);
+});
+
+// USER
+router.post("/:username", (c: any) => {
+  return PageController.create(c);
 });
 
 export default router;
