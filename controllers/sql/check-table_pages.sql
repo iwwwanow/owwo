@@ -4,6 +4,5 @@ CREATE TABLE IF NOT EXISTS
     title TEXT,
     description TEXT,
     cover INTEGER,
-    authors INTEGER,
-		elemList INTEGER
+    user_id INTEGER,
   );

@@ -1,6 +1,8 @@
 import { Database } from "bun:sqlite";
 import { ExContext } from "../typescript/interfaces.ts";
 
+import checkType from "../typescript/checkType.ts";
+
 import stringFromSQL from "../utils/stringFromSQL";
 
 const db = new Database("data/db.sqlite", { create: true });
@@ -10,41 +12,35 @@ export default class AuthController {
     body: { username, password, confirm },
     set,
   }: ExContext) {
+    checkType.string(username);
+    checkType.string(password);
+
     if (password !== confirm) {
       // TODO выводить эту ошибку на клиент.
       throw new Error("Password mismatch");
     }
 
-    const query_checkTable_users = await stringFromSQL(
-      "./controllers/sql/check-table_users.sql"
+    const query_createTable_users = await stringFromSQL(
+      "./controllers/sql/createTable_users.sql"
     );
-    db.prepare(query_checkTable_users).run();
+    db.prepare(query_createTable_users).run();
 
-    if (!(typeof username === "string")) {
-      throw new Error("username is not string");
-    }
-
-    if (!(typeof password === "string")) {
-      throw new Error("password is not string");
-    }
-
-    const query_checkUsername = await stringFromSQL(
-      "./controllers/sql/check_username.sql"
+    const query_createIndex_users_username = await stringFromSQL(
+      "./controllers/sql/createIndex_users_username.sql"
     );
-    const userExist = !!db
-      .prepare(query_checkUsername)
-      .all({ $username: username }).length;
+    db.prepare(query_createIndex_users_username).run();
 
-    if (!userExist) {
-      const query_insertUser = await stringFromSQL(
-        "./controllers/sql/insert_user.sql"
-      );
+    const query_insertUser = await stringFromSQL(
+      "./controllers/sql/insert_user.sql"
+    );
+
+    try {
       db.prepare(query_insertUser).run({
         $username: username,
         $password: await Bun.password.hash(password),
       });
-    } else {
-      throw new Error("User exists");
+    } catch (e) {
+      throw new Error("Failed to add the user. Maybe username exists");
     }
 
     set.redirect = "/login";

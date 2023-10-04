@@ -1,4 +1,0 @@
-CREATE TABLE IF NOT EXISTS
-  authorsList (
-    authorsList_id INTEGER PRIMARY KEY AUTOINCREMENT
-  );

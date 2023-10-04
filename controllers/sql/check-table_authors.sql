@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS
-  authors (
-    author_id INTEGER PRIMARY KEY AUTOINCREMENT,
-		user_id INTEGER,
-		power TEXT
-  );
