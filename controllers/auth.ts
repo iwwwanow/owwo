@@ -23,19 +23,19 @@ export default class AuthController {
     const query_createTable_users = await stringFromSQL(
       "./controllers/sql/createTable_users.sql"
     );
-    db.prepare(query_createTable_users).run();
+    db.query(query_createTable_users).run();
 
     const query_createIndex_users_username = await stringFromSQL(
       "./controllers/sql/createIndex_users_username.sql"
     );
-    db.prepare(query_createIndex_users_username).run();
+    db.query(query_createIndex_users_username).run();
 
     const query_insertUser = await stringFromSQL(
       "./controllers/sql/insert_user.sql"
     );
 
     try {
-      db.prepare(query_insertUser).run({
+      db.query(query_insertUser).run({
         $username: username,
         $password: await Bun.password.hash(password),
       });
@@ -66,7 +66,7 @@ export default class AuthController {
       "./controllers/sql/select_user.sql"
     );
     const user: { username: string; password: string } | any = db
-      .prepare(query_selectUser)
+      .query(query_selectUser)
       .get({
         $username: username,
       });
