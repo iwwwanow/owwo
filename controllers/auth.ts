@@ -3,7 +3,7 @@ import { ExContext } from "../typescript/interfaces.ts";
 
 import checkType from "../typescript/checkType.ts";
 
-import stringFromSQL from "../utils/stringFromSQL";
+import string from "./sql/_string";
 
 const db = new Database("data/db.sqlite", { create: true });
 
@@ -20,19 +20,17 @@ export default class AuthController {
       throw new Error("Password mismatch");
     }
 
-    const query_createTable_users = await stringFromSQL(
+    const query_createTable_users = await string(
       "./controllers/sql/createTable_users.sql"
     );
     db.query(query_createTable_users).run();
 
-    const query_createIndex_users_username = await stringFromSQL(
+    const query_createIndex_users_username = await string(
       "./controllers/sql/createIndex_users_username.sql"
     );
     db.query(query_createIndex_users_username).run();
 
-    const query_insertUser = await stringFromSQL(
-      "./controllers/sql/insert_user.sql"
-    );
+    const query_insertUser = await string("./controllers/sql/insert_user.sql");
 
     try {
       db.query(query_insertUser).run({
@@ -62,9 +60,7 @@ export default class AuthController {
       throw new Error("username or password is not string");
     }
 
-    const query_selectUser = await stringFromSQL(
-      "./controllers/sql/select_user.sql"
-    );
+    const query_selectUser = await string("./controllers/sql/select_user.sql");
     const user: { username: string; password: string } | any = db
       .query(query_selectUser)
       .get({
