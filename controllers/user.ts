@@ -16,27 +16,29 @@ export default class UserController {
     const query_user_id = await string(
       "./controllers/sql/select_userId_users.sql"
     );
-    const { user_id }: { user_id: number } = db
-      .query(query_user_id)
-      .get({ $username: username });
-    console.log(user_id);
+    const { user_id } = db.query(query_user_id).get({ $username: username });
 
     const query_page_id = await string(
       "./controllers/sql/select_pageId_userPages.sql"
     );
-    const page_ids = db.query(query_page_id).all({ $user_id: user_id });
-    console.log(page_ids);
+    const page_ids = db
+      .query(query_page_id)
+      .all({ $user_id: user_id })
+      .map(({ page_id }) => page_id);
 
-    // const page_id
+    const query_page = await string("./controllers/sql/select_page.sql");
+    let pages = [];
+    for (let page_id of page_ids) {
+      if (!!page_id) {
+        const page = db.query(query_page).get({ $page_id: page_id });
+        pages.push(page);
+      } else {
+        // TODO пробраыавть ошибку в лог, не клиент не возвращать
+        console.log("page_id incorrect");
+      }
+    }
 
-    // const query_select_userPages_username = await stringFromSQL(
-    //   "./controllers/sql/select_userPages_username.sql"
-    // );
-    // const pages = db
-    //   .query(query_select_userPages_username)
-    //   .all({ $username: username });
-    // console.log(pages);
-    // query_select_userPages_username.finalize();
+    console.log(pages);
 
     return eta.render("profile", { params, cookie_authUsername, editor$ });
   }
