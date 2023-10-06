@@ -1,16 +1,15 @@
 import { Elysia } from "elysia";
 
-import IndexController from "../controllers";
-import AuthController from "../controllers/auth";
-import UserController from "../controllers/user";
-import PageController from "../controllers/page";
+import IndexController from "../controllers/index.ts";
+import AuthController from "../controllers/auth.ts";
+import UserController from "../controllers/user.ts";
+import PageController from "../controllers/page.ts";
 
 import { ExContext } from "../typescript/interfaces";
 
 const router = new Elysia();
 // ERROR
-router.onError((e) => {
-  console.log(e);
+router.onError((e: any) => {
   return new Response(IndexController.renderError(e), {
     headers: {
       "Content-Type": "text/html",
@@ -20,10 +19,10 @@ router.onError((e) => {
 
 // INDEX
 router
-  .get("/", (c) => {
+  .get("/", (c: any) => {
     return IndexController.renderIndex(c);
   })
-  .get("/about", (c) => {
+  .get("/about", (c: any) => {
     return IndexController.renderAbout(c);
   })
   .get("/login", () => {
@@ -46,13 +45,16 @@ router
   });
 
 // USER
-router.get("/:username", (c: any) => {
-  return UserController.index(c);
-});
+router
+  .get("/:username", (c: any) => {
+    return UserController.index(c);
+  })
+  .post("/:username", (c: any) => {
+    return PageController.create(c);
+  });
 
-// USER
-router.post("/:username", (c: any) => {
-  return PageController.create(c);
+router.get("/page/:page_id", (c: any) => {
+  return PageController.index(c);
 });
 
 export default router;

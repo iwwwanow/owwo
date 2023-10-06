@@ -1,8 +1,11 @@
-#$ const type = Object.keys(it)[0] $#
+#$ let type = Object.keys(it)[0] $#
+#$ type = 'page' $#
 
-#$ const id = it[type].id $#
+#$ const id = it[type].page_id $#
 #$ const url = `/${type}/${id}` $#
 #$ const obj = it[type] $#
+
+#$ console.log(obj.description) $#
 
 <div class="card">
 
@@ -11,8 +14,8 @@
 			<h4 class="card_title">
 				<a href="#$= url $#">#$= obj.title $#</a>
 			</h4>
-			#$ if (obj.desc) { $#
-			<h5 class="card_desc">#$= obj.desc $#</h5>
+			#$ if (!!obj.description) { $#
+			<h5 class="card_desc">#$= obj.description $#</h5>
 			#$ } $#
 		</div>
 	</div>

@@ -1,13 +1,5 @@
 #$ layout("./layout.eta" )$#
 
-#$ if (profile) { $#
-<div class="grid">
-	<h6><a href="/#$= profile $#">
-			< #$=profile $# </a>
-				</6>
-</div>
-#$ } $#
-
 #$ if (editor$) { $#
 
 #$~ include('partials/page_meta-form', {

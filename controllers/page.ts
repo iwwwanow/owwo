@@ -1,11 +1,17 @@
 import { Database } from "bun:sqlite";
 import { ExContext } from "../typescript/interfaces.ts";
+import { eta } from "../config/eta";
 
+import checkEditor from "../utils/checkEditor.ts";
 import string from "./sql/_string.ts";
 
 const db = new Database("data/db.sqlite", { create: true });
 
 export default class PageController {
+  static async index({ params, cookie_authUsername }: ExContext) {
+    const editor$ = checkEditor(params, cookie_authUsername);
+    return eta.render("page", {});
+  }
   static async create({ params: { username }, set }: ExContext) {
     const query_createTable_pages = await string(
       "./controllers/sql/createTable_pages.sql"

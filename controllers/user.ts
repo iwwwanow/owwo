@@ -1,11 +1,10 @@
 import { ExContext } from "../typescript/interfaces";
-
-import checkEditor from "../utils/checkEditor";
-
 import { Database } from "bun:sqlite";
 import { eta } from "../config/eta";
 
-import string from "./sql/_string.ts";
+import checkEditor from "../utils/checkEditor.ts";
+import _string from "./sql/_string.ts";
+
 const db = new Database("data/db.sqlite", { create: true });
 
 export default class UserController {
@@ -13,7 +12,7 @@ export default class UserController {
     const editor$ = checkEditor(params, cookie_authUsername);
     const { username } = params;
 
-    const query_user_id = await string(
+    const query_user_id = await _string(
       "./controllers/sql/select_userId_users.sql"
     );
     const result = db.query(query_user_id).get({ $username: username });
@@ -21,7 +20,7 @@ export default class UserController {
     if (!!result) user_id = result.user_id;
     else throw new Error("Username not found");
 
-    const query_page_id = await string(
+    const query_page_id = await _string(
       "./controllers/sql/select_pageId_userPages.sql"
     );
     const page_ids = db
@@ -29,7 +28,7 @@ export default class UserController {
       .all({ $user_id: user_id })
       .map(({ page_id }) => page_id);
 
-    const query_page = await string("./controllers/sql/select_page.sql");
+    const query_page = await _string("./controllers/sql/select_page.sql");
     let pages = [];
     for (let page_id of page_ids) {
       if (!!page_id) {
@@ -40,8 +39,6 @@ export default class UserController {
         console.log("page_id incorrect");
       }
     }
-
-    console.log(pages);
 
     return eta.render("profile", {
       editor$,
