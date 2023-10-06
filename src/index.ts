@@ -15,6 +15,9 @@ import checkAuth from "../utils/checkAuth.ts";
 import router from "./router";
 
 const app = new Elysia()
+  .onError(({ code, error }) => {
+    console.log("error:", code, error);
+  })
   .use(html())
   .use(jwt(config_jwt()))
   .use(cookie())

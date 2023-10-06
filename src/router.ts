@@ -8,14 +8,23 @@ import PageController from "../controllers/page";
 import { ExContext } from "../typescript/interfaces";
 
 const router = new Elysia();
+// ERROR
+router.onError((e) => {
+  console.log(e);
+  return new Response(IndexController.renderError(e), {
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
+});
 
 // INDEX
 router
   .get("/", (c) => {
     return IndexController.renderIndex(c);
   })
-  .get("/about", () => {
-    return IndexController.renderAbout();
+  .get("/about", (c) => {
+    return IndexController.renderAbout(c);
   })
   .get("/login", () => {
     return IndexController.renderLogin();

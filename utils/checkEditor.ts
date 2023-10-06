@@ -1,9 +1,9 @@
 export default function checkEditor(
   params: { username: string },
   cookie_authUsername: string
-): boolean {
+): string | boolean {
   if (params.username === cookie_authUsername) {
-    return true;
+    return cookie_authUsername;
   }
   return false;
 }

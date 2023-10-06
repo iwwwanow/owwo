@@ -16,7 +16,10 @@ export default class UserController {
     const query_user_id = await string(
       "./controllers/sql/select_userId_users.sql"
     );
-    const { user_id } = db.query(query_user_id).get({ $username: username });
+    const result = db.query(query_user_id).get({ $username: username });
+    let user_id;
+    if (!!result) user_id = result.user_id;
+    else throw new Error("Username not found");
 
     const query_page_id = await string(
       "./controllers/sql/select_pageId_userPages.sql"
@@ -38,8 +41,6 @@ export default class UserController {
       }
     }
 
-    console.log(pages);
-
-    return eta.render("profile", { params, cookie_authUsername, editor$ });
+    return eta.render("profile", { editor$, cookie_authUsername, params });
   }
 }
