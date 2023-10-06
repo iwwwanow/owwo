@@ -24,7 +24,7 @@
 	#$ if (editor$) { $#
 
 	<form action="">
-		#$~ include("./partials/button_plus.eta", {action: cookie_authUsername})$#
+		#$~ include("./partials/button_plus.eta", {action: editor$})$#
 	</form>
 	<h2>order-form</h2>
 
