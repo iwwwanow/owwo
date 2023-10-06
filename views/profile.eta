@@ -4,20 +4,19 @@
 
 <div class="grid">
 
-	#$ if (!!user && !!user.pages && user.pages.length) { $#
+	#$ if (!!pages) { $#
 
-	#$ user.pages.forEach(function (page) { $#
-	#$ if (page.state === 'default'){ $#
+	#$ pages.forEach(function (page) { $#
 
 	#$~ include("partials/card", {page}) $#
 
-	#$ } $#
 	#$ }) $#
 
 	#$ } else { $#
 
 	<!-- TODO отправлять ответ с сервера, что пользователь не найден -->
-	<h6>not found</h6>
+
+	<h6>Not pages to display</h6>
 
 	#$ } $#
 

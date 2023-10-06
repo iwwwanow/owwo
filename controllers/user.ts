@@ -41,6 +41,13 @@ export default class UserController {
       }
     }
 
-    return eta.render("profile", { editor$, cookie_authUsername, params });
+    console.log(pages);
+
+    return eta.render("profile", {
+      editor$,
+      cookie_authUsername,
+      params,
+      pages,
+    });
   }
 }
