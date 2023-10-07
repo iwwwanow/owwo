@@ -13,17 +13,64 @@ export default class SQL {
   }
   static createTable(
     table_name: string,
-    fields: Array<{ name: string; option: string }>
+    fields: Array<{
+      name: string;
+      option: string;
+      type?: string;
+      foreign?: {
+        column: string;
+        parent_table: string;
+        parent_column: string;
+        options: string;
+      };
+    }>
   ): void {
     let query = "";
-    query += "CREATE TABLE IF NOT EXISTS\n";
-    query += `${table_name} (\n`;
-    for (let field of fields) {
-      query += `${field.name} ${field.option}`;
+
+    query += "CREATE TABLE IF NOT EXISTS";
+    query += `\n${table_name} (`;
+
+    let primary_indexes: Array<number> = [];
+    let foreign_indexes: Array<number> = [];
+    fields.forEach((field, index) => {
+      query += `\n${field.name} ${field.option}`;
       if (field !== fields.at(-1)) query += ",";
-      query += "\n";
+      if (field.type === "primary") primary_indexes.push(index);
+      if (!!field.foreign) foreign_indexes.push(index);
+    });
+
+    let primary = "";
+    if (!!primary_indexes.length) {
+      query += ",\n";
+      primary += `PRIMARY KEY (`;
+      primary_indexes.forEach((index) => {
+        primary += `${fields[index].name}`;
+        if (index !== primary_indexes.at(-1)) primary += ", ";
+      });
+      primary += `)`;
     }
-    query += ");";
+
+    query += primary;
+
+    let foreign_string_array: Array<string> = [];
+    if (!!foreign_indexes.length) {
+      query += ",\n";
+      foreign_indexes.forEach((index) => {
+        const foreign_obj = fields[index].foreign;
+        let foreign_string = "";
+        foreign_string += `FOREIGN KEY `;
+        foreign_string += `(${foreign_obj?.column}) `;
+        foreign_string += `REFERENCES `;
+        foreign_string += `${foreign_obj?.parent_table} `;
+        foreign_string += `(${foreign_obj?.parent_column}) `;
+        foreign_string += `${foreign_obj?.options}`;
+
+        foreign_string_array.push(foreign_string);
+      });
+      query += foreign_string_array.join(",\n");
+    }
+
+    query += "\n);";
     db.query(query).run();
     return;
   }
@@ -56,7 +103,13 @@ export default class SQL {
     const result = db.query(query).all(obj);
 
     if (!!result) return result;
-    else throw new Error(`${conditions.name} not found`);
+    else {
+      const names: Array<string> = [];
+      conditions.forEach((condition) => {
+        names.push(condition.name);
+      });
+      throw new Error(`${names.join(", ")} not found`);
+    }
   }
 
   static insert(table_name: string, column_names: Array<string>, values: any) {
