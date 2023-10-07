@@ -74,11 +74,33 @@ export default class SQL {
     db.query(query).run();
     return;
   }
+  static createTrigger(
+    trigger_name: string,
+    trigger_table: string,
+    target_table: string,
+    target_column: string
+  ) {
+    let query = "";
+    query += `CREATE TRIGGER IF NOT EXISTS ${trigger_name}\n`;
+    query += `AFTER INSERT ON ${trigger_table}\n`;
+    query += "BEGIN\n";
+    query += "INSERT INTO\n";
+    query += `${target_table} (${target_column})\n`;
+    query += "VALUES\n";
+    query += `(NEW.${target_column});\n`;
+    query += "END;";
+    db.query(query).run();
+    return;
+  }
   static select(
     column_names: Array<string>,
     table_names: Array<string>,
     conditions: Array<{ name: string; value: string | number }>
   ): Array<any> {
+    // TODO сделать выбро по одному элементу.
+    // Входящий элемент будет строки
+    // Результат будет возвращаться по методу GET
+
     let query = "";
     query += `SELECT\n`;
     query += `${column_names.join(", ")}\n`;
@@ -112,6 +134,18 @@ export default class SQL {
     }
   }
 
+  static selectLast(table_name: string, column_name: string) {
+    let query = "";
+    query += `SELECT ${column_name}\n`;
+    query += `FROM ${table_name}\n`;
+    query += `ORDER BY rowid DESC\nLIMIT 1;`;
+
+    // TODO попровь тип, не понимаю.
+    let result: any = db.query(query).get();
+    if (!!result) return result[column_name];
+    else throw new Error("last item not found");
+  }
+
   static insert(table_name: string, column_names: Array<string>, values: any) {
     let query = "";
     query += `INSERT INTO\n`;
@@ -126,6 +160,24 @@ export default class SQL {
     });
 
     db.query(query).run(obj);
+    return;
+  }
+  static update(
+    table_name: string,
+    column_names: Array<string>,
+    values: Array<string>,
+    condition_column: string,
+    condition_value: string
+  ) {
+    let query = "";
+    query += `UPDATE ${table_name}\n`;
+    query += "SET ";
+    column_names.forEach((column_name: string, index: number) => {
+      query += `${column_name} = ${values[index]}\n`;
+    });
+    query += "WHERE\n";
+    query += `${condition_column} = ${condition_value};`;
+    db.query(query).run();
     return;
   }
 }

@@ -47,24 +47,18 @@ export default class PageController {
       },
     ]);
 
-    const query_createTable_userPages = await string(
-      "./controllers/sql/createTable_userPages.sql"
-    );
-    db.query(query_createTable_userPages).run();
+    const user_id = SQL.select(
+      ["user_id"],
+      ["users"],
+      [{ name: "username", value: username }]
+    )[0].user_id;
 
-    const query_createTrigger_insert_userPages = await string(
-      "./controllers/sql/createTrigger_insert_userPages.sql"
-    );
-    db.query(query_createTrigger_insert_userPages).run();
+    SQL.createTrigger("insert_authors_pageId", "pages", "authors", "page_id");
+    SQL.insert("pages", ["title"], ["title"]);
 
-    const query_insertPage = await string("./controllers/sql/insert_page.sql");
-    db.query(query_insertPage).run();
+    const last_pageId = SQL.selectLast("pages", "page_id");
 
-    // TODO Не нравится именно этот момент. протестировать, как это будет себя вести, когда будут писаться несколько человек.
-    const query_update_userPages_user_id = await string(
-      "./controllers/sql/update_userPages_user_id.sql"
-    );
-    db.query(query_update_userPages_user_id).run({ $username: username });
+    SQL.update("authors", ["user_id"], [user_id], "page_id", last_pageId);
 
     set.redirect = `/${username}`;
     return;

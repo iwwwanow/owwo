@@ -25,7 +25,7 @@ export default class UserController {
 
     const page_ids = SQL.select(
       ["page_id"],
-      ["user_pages"],
+      ["authors"],
       [
         {
           name: "user_id",
