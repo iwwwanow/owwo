@@ -1,10 +1,7 @@
 import { ExContext } from "../typescript/interfaces";
 import { eta } from "../config/eta";
-
-import checkEditor from "../utils/checkEditor.ts";
-import _string from "./sql/_string.ts";
-
 import SQL from "./sql.ts";
+import checkEditor from "../utils/checkEditor.ts";
 
 export default class UserController {
   static async index({ params, cookie_authUsername }: ExContext) {
