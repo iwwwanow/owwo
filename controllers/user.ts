@@ -11,16 +11,28 @@ export default class UserController {
     const editor$ = checkEditor(params, cookie_authUsername);
     const { username } = params;
 
-    const user_ids = SQL.select(["user_id"], ["users"], {
-      filter: "username",
-      value: username,
-    });
+    const user_ids = SQL.select(
+      ["user_id"],
+      ["users"],
+      [
+        {
+          name: "username",
+          value: username,
+        },
+      ]
+    );
     const user_id = user_ids[0].user_id;
 
-    const page_ids = SQL.select(["page_id"], ["user_pages"], {
-      filter: "user_id",
-      value: user_id,
-    }).map(({ page_id }) => page_id);
+    const page_ids = SQL.select(
+      ["page_id"],
+      ["user_pages"],
+      [
+        {
+          name: "user_id",
+          value: user_id,
+        },
+      ]
+    ).map(({ page_id }) => page_id);
 
     let pages = [];
     for (let page_id of page_ids) {
@@ -28,7 +40,7 @@ export default class UserController {
         const page = SQL.select(
           ["page_id", "title", "description", "cover"],
           ["pages"],
-          { filter: "page_id", value: page_id }
+          [{ name: "page_id", value: page_id }]
         );
         pages.push(page[0]);
       } else {

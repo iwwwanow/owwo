@@ -30,8 +30,7 @@ export default class SQL {
   static select(
     column_names: Array<string>,
     table_names: Array<string>,
-    // row: { filter: string; value: string }
-    conditions: any
+    conditions: Array<{ name: string; value: string | number }>
   ): Array<any> {
     let query = "";
     query += `SELECT\n`;
