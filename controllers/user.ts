@@ -1,39 +1,48 @@
 import { ExContext } from "../typescript/interfaces";
-import { Database } from "bun:sqlite";
 import { eta } from "../config/eta";
 
 import checkEditor from "../utils/checkEditor.ts";
 import _string from "./sql/_string.ts";
 
-const db = new Database("data/db.sqlite", { create: true });
+import SQL from "./sql.ts";
 
 export default class UserController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const editor$ = checkEditor(params, cookie_authUsername);
     const { username } = params;
 
-    const query_user_id = await _string(
-      "./controllers/sql/select_userId_users.sql"
+    const user_ids = SQL.select(
+      ["user_id"],
+      ["users"],
+      [
+        {
+          name: "username",
+          value: username,
+        },
+      ]
     );
-    const result = db.query(query_user_id).get({ $username: username });
-    let user_id;
-    if (!!result) user_id = result.user_id;
-    else throw new Error("Username not found");
+    const user_id = user_ids[0].user_id;
 
-    const query_page_id = await _string(
-      "./controllers/sql/select_pageId_userPages.sql"
-    );
-    const page_ids = db
-      .query(query_page_id)
-      .all({ $user_id: user_id })
-      .map(({ page_id }) => page_id);
+    const page_ids = SQL.select(
+      ["page_id"],
+      ["authors"],
+      [
+        {
+          name: "user_id",
+          value: user_id,
+        },
+      ]
+    ).map(({ page_id }) => page_id);
 
-    const query_page = await _string("./controllers/sql/select_page.sql");
     let pages = [];
     for (let page_id of page_ids) {
       if (!!page_id) {
-        const page = db.query(query_page).get({ $page_id: page_id });
-        pages.push(page);
+        const page = SQL.select(
+          ["page_id", "title", "description", "cover"],
+          ["pages"],
+          [{ name: "page_id", value: page_id }]
+        );
+        pages.push(page[0]);
       } else {
         // TODO пробраыавть ошибку в лог, не клиент не возвращать
         console.log("page_id incorrect");

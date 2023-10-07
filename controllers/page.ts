@@ -2,6 +2,8 @@ import { Database } from "bun:sqlite";
 import { ExContext } from "../typescript/interfaces.ts";
 import { eta } from "../config/eta";
 
+import SQL from "./sql.ts";
+
 import checkEditor from "../utils/checkEditor.ts";
 import string from "./sql/_string.ts";
 
@@ -13,29 +15,50 @@ export default class PageController {
     return eta.render("page", {});
   }
   static async create({ params: { username }, set }: ExContext) {
-    const query_createTable_pages = await string(
-      "./controllers/sql/createTable_pages.sql"
-    );
-    db.query(query_createTable_pages).run();
+    SQL.createTable("pages", [
+      { name: "page_id", option: "INTEGER PRIMARY KEY AUTOINCREMENT" },
+      { name: "title", option: "TEXT" },
+      { name: "description", option: "TEXT" },
+      { name: "cover", option: "TEXT" },
+    ]);
 
-    const query_createTable_userPages = await string(
-      "./controllers/sql/createTable_userPages.sql"
-    );
-    db.query(query_createTable_userPages).run();
+    SQL.createTable("authors", [
+      {
+        name: "user_id",
+        option: "INTEGER",
+        type: "primary",
+        foreign: {
+          column: "user_id",
+          parent_table: "users",
+          parent_column: "user_id",
+          options: "ON DELETE CASCADE ON UPDATE CASCADE",
+        },
+      },
+      {
+        name: "page_id",
+        option: "INTEGER",
+        type: "primary",
+        foreign: {
+          column: "page_id",
+          parent_table: "pages",
+          parent_column: "page_id",
+          options: "ON DELETE CASCADE ON UPDATE CASCADE",
+        },
+      },
+    ]);
 
-    const query_createTrigger_insert_userPages = await string(
-      "./controllers/sql/createTrigger_insert_userPages.sql"
-    );
-    db.query(query_createTrigger_insert_userPages).run();
+    const user_id = SQL.select(
+      ["user_id"],
+      ["users"],
+      [{ name: "username", value: username }]
+    )[0].user_id;
 
-    const query_insertPage = await string("./controllers/sql/insert_page.sql");
-    db.query(query_insertPage).run();
+    SQL.createTrigger("insert_authors_pageId", "pages", "authors", "page_id");
+    SQL.insert("pages", ["title"], ["title"]);
 
-    // TODO Не нравится именно этот момент. протестировать, как это будет себя вести, когда будут писаться несколько человек.
-    const query_update_userPages_user_id = await string(
-      "./controllers/sql/update_userPages_user_id.sql"
-    );
-    db.query(query_update_userPages_user_id).run({ $username: username });
+    const last_pageId = SQL.selectLast("pages", "page_id");
+
+    SQL.update("authors", ["user_id"], [user_id], "page_id", last_pageId);
 
     set.redirect = `/${username}`;
     return;
