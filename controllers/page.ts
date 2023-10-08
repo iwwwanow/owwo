@@ -6,13 +6,15 @@ import checkEditor from "../utils/checkEditor.ts";
 export default class PageController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const editor$ = checkEditor(params, cookie_authUsername);
+    console.log(editor$);
     const page = SQL.select(
       ["page_id", "title", "description", "cover"],
       ["pages"],
       [{ name: "page_id", value: params.page_id }]
     )[0];
-    return eta.render("page", { editor$, page, params });
+    return eta.render("page", { cookie_authUsername, editor$, page, params });
   }
+
   static async create({ params: { username }, set }: ExContext) {
     SQL.createTable("pages", [
       { name: "page_id", option: "INTEGER PRIMARY KEY AUTOINCREMENT" },
