@@ -1,45 +1,36 @@
 import { ExContext } from "../typescript/interfaces";
 import { eta } from "../config/eta";
-import SQL from "./sql.ts";
+import sql from "./_sql.ts";
 import checkEditor from "../utils/checkEditor.ts";
+import checkType from "../typescript/checkType.ts";
 
 export default class UserController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const editor$ = checkEditor(params, cookie_authUsername);
     const { username } = params;
 
-    const user_ids = SQL.select(
-      ["user_id"],
-      ["users"],
-      [
-        {
-          name: "username",
-          value: username,
-        },
-      ]
-    );
-    const user_id = user_ids[0].user_id;
+    await sql.custom("createTable_authors");
 
-    const page_ids = SQL.select(
-      ["page_id"],
-      ["authors"],
-      [
-        {
-          name: "user_id",
-          value: user_id,
-        },
-      ]
-    ).map(({ page_id }) => page_id);
+    const users = new sql("users");
+    const user_id = users.select("user_id").where({ username: username }).get();
 
-    let pages = [];
+    // TODO не работает!
+    checkType.number(user_id);
+
+    const authors = new sql("authors");
+    const page_ids = authors.select("page_id").where({ user_id }).all();
+
+    let pages_array = [];
     for (let page_id of page_ids) {
       if (!!page_id) {
-        const page = SQL.select(
-          ["page_id", "title", "description", "cover"],
-          ["pages"],
-          [{ name: "page_id", value: page_id }]
-        );
-        pages.push(page[0]);
+        // TODO поправь этот момент, можно запрашивать все страницы разом.
+        const pages = new sql("pages");
+        const page = pages
+          .select(["page_id", "title", "description", "cover"])
+          .where({ page_id })
+          .get();
+
+        pages_array.push(page);
       } else {
         // TODO пробраыавть ошибку в лог, не клиент не возвращать
         console.log("page_id incorrect");
@@ -50,7 +41,7 @@ export default class UserController {
       editor$,
       cookie_authUsername,
       params,
-      pages,
+      pages: pages_array,
     });
   }
 }

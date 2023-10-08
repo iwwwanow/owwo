@@ -1,6 +1,6 @@
 import { ExContext } from "../typescript/interfaces.ts";
 import checkType from "../typescript/checkType.ts";
-import SQL from "./sql.ts";
+import sql from "./_sql.ts";
 
 export default class AuthController {
   static async createUser({
@@ -15,20 +15,25 @@ export default class AuthController {
       throw new Error("Password mismatch");
     }
 
-    SQL.createTable("users", [
-      { name: "user_id", option: "INTEGER PRIMARY KEY AUTOINCREMENT" },
-      { name: "username", option: "TEXT NOT NULL" },
-      { name: "password", option: "TEXT NOT NULL" },
-    ]);
+    sql.createTable({
+      table_name: "users",
+      columns: {
+        user_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
+        username: "TEXT NOT NULL",
+        password: "TEXT NOT NULL",
+      },
+    });
 
-    SQL.createIndex("idx_users_username", "users", "username");
+    sql.custom("createIndex_idx_users_username");
 
     try {
-      SQL.insert(
-        "users",
-        ["username", "password"],
-        [username, await Bun.password.hash(password)]
-      );
+      const users = new sql("users");
+      users
+        .insert({
+          username,
+          password: await Bun.password.hash(password),
+        })
+        .run();
     } catch (e) {
       throw new Error("Failed to add the user. Maybe username exists");
     }
@@ -51,16 +56,14 @@ export default class AuthController {
     checkType.string(username);
     checkType.string(password);
 
-    const users = SQL.select(
-      ["username", "password"],
-      ["users"],
-      [{ name: "username", value: username }]
-    );
-
-    const user = users[0];
-
-    if (users.length > 1) throw new Error("Users more than one");
-    if (!user) throw new Error("Incorrect auth attemp");
+    // console.log(username);
+    const users = new sql("users");
+    let user;
+    try {
+      user = users.select(["username", "password"]).where({ username }).get();
+    } catch (e) {
+      throw new Error("Incorrect auth attemp");
+    }
 
     const verify_password = await Bun.password.verify(password, user.password);
     if (!verify_password) throw new Error("Incorrect auth attemp");

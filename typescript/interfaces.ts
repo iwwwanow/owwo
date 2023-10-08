@@ -19,4 +19,7 @@ export interface Body {
   username: string;
   password: string;
   confirm: string;
+  title: string;
+  description: string;
+  media: Blob;
 }

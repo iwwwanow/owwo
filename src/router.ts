@@ -53,8 +53,13 @@ router
     return PageController.create(c);
   });
 
-router.get("/page/:page_id", (c: any) => {
-  return PageController.index(c);
-});
+// PAGE
+router
+  .get("/page/:page_id", (c: any) => {
+    return PageController.index(c);
+  })
+  .post("/page/:page_id", (c: any) => {
+    return PageController.update(c);
+  });
 
 export default router;
