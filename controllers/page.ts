@@ -2,6 +2,7 @@ import { ExContext } from "../typescript/interfaces.ts";
 import { eta } from "../config/eta";
 import checkEditor from "../utils/checkEditor.ts";
 import sql from "./_sql.ts";
+import File from "../middleware/file.ts";
 
 export default class PageController {
   static async index({ params, cookie_authUsername }: ExContext) {
@@ -12,16 +13,9 @@ export default class PageController {
 
     const pages = new sql("pages");
     let page = pages
-      .select(["page_id", "title", "description", "cover_id"])
+      .select(["page_id", "title", "desc"])
       .where({ page_id })
       .get();
-
-    const arr = page.cover.blob.split(",").map((point) => Number(point));
-    const arr8 = new Uint8Array(arr);
-    const blob = new Blob([arr8]);
-    const str = await blob.text();
-
-    page.cover.blob = str;
 
     return eta.render("page", { cookie_authUsername, editor$, page, params });
   }
@@ -52,34 +46,12 @@ export default class PageController {
   static async update({
     set,
     params: { page_id },
-    body: { title, description, media },
+    body: { title, desc, media },
   }: ExContext) {
-    // const fileExtention = media.type.split("/").at(-1);
-    // const path = `./data/pages/${page_id}.${fileExtention}`;
-    // await Bun.write(path, media);
-
-    const buffer = await media.arrayBuffer();
-    const arr = new Uint8Array(buffer);
-
-    if (!!media.type) {
-      const media_table = new sql("media");
-      media_table
-        .update({
-          parent_id: page_id,
-          parent_type: "page",
-          // blob: media,
-          blob: arr,
-          type: media.type,
-        })
-        .where({ parent_id: page_id })
-        .run();
-    }
+    await File.write(media, page_id);
 
     const pages = new sql("pages");
-    pages
-      .update({ title: title, description: description })
-      .where({ page_id: page_id })
-      .run();
+    pages.update({ title, desc }).where({ page_id: page_id }).run();
 
     set.redirect = `/page/${page_id}`;
     return;

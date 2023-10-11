@@ -20,6 +20,6 @@ export interface Body {
   password: string;
   confirm: string;
   title: string;
-  description: string;
+  desc: string;
   media: Blob;
 }

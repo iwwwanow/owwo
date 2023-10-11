@@ -33,7 +33,7 @@ export default class sql {
       columns: {
         page_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
         title: "TEXT",
-        description: "TEXT",
+        desc: "TEXT",
       },
     });
     await sql.custom("createTable_authors");

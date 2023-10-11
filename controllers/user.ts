@@ -9,8 +9,6 @@ export default class UserController {
     const editor$ = checkEditor(params, cookie_authUsername);
     const { username } = params;
 
-    await sql.custom("createTable_authors");
-
     const users = new sql("users");
     const user_id = users.select("user_id").where({ username: username }).get();
 
@@ -26,7 +24,7 @@ export default class UserController {
         // TODO поправь этот момент, можно запрашивать все страницы разом.
         const pages = new sql("pages");
         const page = pages
-          .select(["page_id", "title", "description", "cover_id"])
+          .select(["page_id", "title", "desc"])
           .where({ page_id })
           .get();
 
