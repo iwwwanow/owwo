@@ -15,17 +15,6 @@ export default class AuthController {
       throw new Error("Password mismatch");
     }
 
-    sql.createTable({
-      table_name: "users",
-      columns: {
-        user_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
-        username: "TEXT NOT NULL",
-        password: "TEXT NOT NULL",
-      },
-    });
-
-    sql.custom("createIndex_idx_users_username");
-
     try {
       const users = new sql("users");
       users
@@ -56,7 +45,6 @@ export default class AuthController {
     checkType.string(username);
     checkType.string(password);
 
-    // console.log(username);
     const users = new sql("users");
     let user;
     try {

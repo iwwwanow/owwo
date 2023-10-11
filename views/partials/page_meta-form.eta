@@ -10,7 +10,7 @@
 		#$~ include('input_file', {
 		form: 'page_meta-form',
 		name: 'media',
-		src: page.cover,
+		cover: page.cover,
 		}) $#
 	</fieldset>
 

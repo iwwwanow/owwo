@@ -15,6 +15,31 @@ export default class sql {
     }
   }
 
+  static async init() {
+    db.exec("PRAGMA journal_mode = WAL;");
+
+    this.createTable({
+      table_name: "users",
+      columns: {
+        user_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
+        username: "TEXT NOT NULL",
+        password: "TEXT NOT NULL",
+      },
+    });
+    this.custom("createIndex_idx_users_username");
+
+    this.createTable({
+      table_name: "pages",
+      columns: {
+        page_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
+        title: "TEXT",
+        description: "TEXT",
+      },
+    });
+    await sql.custom("createTable_authors");
+    await this.custom("createTrigger_insertAuthors_pageId");
+  }
+
   static async custom(input: string) {
     const path = `./controllers/sql_custom/${input}.sql`;
     const file = Bun.file(path);
@@ -61,7 +86,7 @@ export default class sql {
     return this;
   }
 
-  insert(input: { [key: string]: string }) {
+  insert(input: { [key: string]: string | number | Blob }) {
     if (this.table_name) {
       this.query += `INSERT INTO ${this.table_name} `;
     }
@@ -82,7 +107,7 @@ export default class sql {
     return this;
   }
 
-  update(input: { [key: string]: string }) {
+  update(input: { [key: string]: string | Blob }) {
     if (this.table_name) {
       this.query += `UPDATE ${this.table_name}\n`;
     }
@@ -90,7 +115,7 @@ export default class sql {
     this.query += "SET ";
 
     Object.keys(input).forEach((column, index, array) => {
-      const value = input[column];
+      let value = input[column];
       this.query += `${column} = '${value}'`;
       if (index < array.length - 1) this.query += ",";
       this.query += "\n";
@@ -121,9 +146,7 @@ export default class sql {
   }
 
   get(): string | number | { [key: string]: any } {
-    console.log(this.query);
     let result = db.query(this.query).get() as { [key: string]: any };
-    console.log(result);
     if (!result) throw new Error("nothing selected");
     if (this.select_single) result = result[this.select_single];
     return result;

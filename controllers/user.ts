@@ -26,7 +26,7 @@ export default class UserController {
         // TODO поправь этот момент, можно запрашивать все страницы разом.
         const pages = new sql("pages");
         const page = pages
-          .select(["page_id", "title", "description", "cover"])
+          .select(["page_id", "title", "description", "cover_id"])
           .where({ page_id })
           .get();
 

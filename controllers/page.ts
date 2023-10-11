@@ -7,31 +7,28 @@ export default class PageController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const { page_id } = params;
     const editor$ = checkEditor(params, cookie_authUsername);
+
+    sql.init();
+
     const pages = new sql("pages");
-    const page = pages
-      .select(["page_id", "title", "description", "cover"])
+    let page = pages
+      .select(["page_id", "title", "description", "cover_id"])
       .where({ page_id })
       .get();
-    console.log(page);
+
+    const arr = page.cover.blob.split(",").map((point) => Number(point));
+    const arr8 = new Uint8Array(arr);
+    const blob = new Blob([arr8]);
+    const str = await blob.text();
+
+    page.cover.blob = str;
 
     return eta.render("page", { cookie_authUsername, editor$, page, params });
   }
 
   static async create({ params: { username }, set }: ExContext) {
-    sql.createTable({
-      table_name: "pages",
-      columns: {
-        page_id: "INTEGER PRIMARY KEY AUTOINCREMENT",
-        title: "TEXT",
-        description: "TEXT",
-        cover: "BLOB",
-      },
-    });
-
     const users = new sql("users");
     const user_id = users.select("user_id").where({ username: username }).get();
-
-    await sql.custom("createTrigger_insertAuthors_pageId");
 
     const pages = new sql("pages");
     pages.insert({ title: "title" }).run();
@@ -57,6 +54,27 @@ export default class PageController {
     params: { page_id },
     body: { title, description, media },
   }: ExContext) {
+    // const fileExtention = media.type.split("/").at(-1);
+    // const path = `./data/pages/${page_id}.${fileExtention}`;
+    // await Bun.write(path, media);
+
+    const buffer = await media.arrayBuffer();
+    const arr = new Uint8Array(buffer);
+
+    if (!!media.type) {
+      const media_table = new sql("media");
+      media_table
+        .update({
+          parent_id: page_id,
+          parent_type: "page",
+          // blob: media,
+          blob: arr,
+          type: media.type,
+        })
+        .where({ parent_id: page_id })
+        .run();
+    }
+
     const pages = new sql("pages");
     pages
       .update({ title: title, description: description })
