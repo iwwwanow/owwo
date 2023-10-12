@@ -4,6 +4,8 @@ import checkEditor from "../utils/checkEditor.ts";
 import sql from "./_sql.ts";
 import File from "../middleware/file.ts";
 
+import * as fs from "node:fs";
+
 export default class PageController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const { page_id } = params;
@@ -16,6 +18,16 @@ export default class PageController {
       .select(["page_id", "title", "desc"])
       .where({ page_id })
       .get();
+
+    // TODO перенести в мидлевайр ФАЙЛ
+    let page_dir = `./public/data_uploads/pages/${page_id}`;
+    if (fs.existsSync(page_dir)) {
+      fs.readdirSync(page_dir).forEach((file) => {
+        if (file.split(".").at(0) === "cover") {
+          page.cover_src = page_dir.substring(1) + "/" + file;
+        }
+      });
+    }
 
     return eta.render("page", { cookie_authUsername, editor$, page, params });
   }
@@ -48,6 +60,7 @@ export default class PageController {
     params: { page_id },
     body: { title, desc, media },
   }: ExContext) {
+    // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
     await File.write(media, page_id);
 
     const pages = new sql("pages");

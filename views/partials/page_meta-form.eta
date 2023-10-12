@@ -10,7 +10,8 @@
 		#$~ include('input_file', {
 		form: 'page_meta-form',
 		name: 'media',
-		cover: page.cover,
+		page_id: params.page_id,
+		cover_src: page.cover_src,
 		}) $#
 	</fieldset>
 
@@ -25,7 +26,7 @@
 
 		#$~ include('textarea', {
 		form: 'page_meta-form',
-		name: 'description',
+		name: 'desc',
 		text: page.description,
 		placeholder: 'page-description'
 		}) $#

@@ -20,7 +20,7 @@ const app = new Elysia()
   .use(jwt(config_jwt()))
   .use(cookie())
   .use(await staticPlugin({ assets: "public" }))
-  .derive(async (c) => await checkAuth(c))
+  .derive(async (c: any) => await checkAuth(c))
   .use(router)
   .listen(8080);
 

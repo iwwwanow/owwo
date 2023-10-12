@@ -1,13 +1,12 @@
 #$ const _name = it.name || 'input-file' $#
 #$ const _multiple = it.multiple ? 'multiple' : '' $#
-#$ const _cover = it.cover || false $#
+#$ const _cover_src = it.cover_src || false $#
 
 <label for="file-upload" class="input-file_label">
-	#$ if (_cover) { $#
+	#$ console.log(it) $#
+	#$ if (_cover_src) { $#
 
-	#$ const url = `data:${_cover.type};base64,${_cover.blob}` $#
-
-	<img src="#$= url $#" alt="">
+	<img src="#$= _cover_src $#" alt="">
 
 	#$ } else { $#
 
