@@ -18,8 +18,8 @@
 		</div>
 	</div>
 
-	#$ if (!!obj.cover) { $#
-	<img src="/#$= obj.cover $#" alt="">
+	#$ if (!!obj.cover_src) { $#
+	<img src="#$= obj.cover_src $#" alt="">
 	#$ } $#
 
 </div>

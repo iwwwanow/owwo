@@ -3,7 +3,6 @@
 #$ const _cover_src = it.cover_src || false $#
 
 <label for="file-upload" class="input-file_label">
-	#$ console.log(it) $#
 	#$ if (_cover_src) { $#
 
 	<img src="#$= _cover_src $#" alt="">

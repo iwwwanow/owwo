@@ -27,7 +27,7 @@
 		#$~ include('textarea', {
 		form: 'page_meta-form',
 		name: 'desc',
-		text: page.description,
+		text: page.desc,
 		placeholder: 'page-description'
 		}) $#
 	</fieldset>

@@ -4,6 +4,8 @@ import sql from "./_sql.ts";
 import checkEditor from "../utils/checkEditor.ts";
 import checkType from "../typescript/checkType.ts";
 
+import * as fs from "node:fs";
+
 export default class UserController {
   static async index({ params, cookie_authUsername }: ExContext) {
     const editor$ = checkEditor(params, cookie_authUsername);
@@ -27,6 +29,16 @@ export default class UserController {
           .select(["page_id", "title", "desc"])
           .where({ page_id })
           .get();
+
+        // TODO перенести в мидлевайр ФАЙЛ
+        let page_dir = `./public/data_uploads/pages/${page_id}`;
+        if (fs.existsSync(page_dir)) {
+          fs.readdirSync(page_dir).forEach((file) => {
+            if (file.split(".").at(0) === "cover") {
+              page.cover_src = page_dir.substring(1) + "/" + file;
+            }
+          });
+        }
 
         pages_array.push(page);
       } else {
