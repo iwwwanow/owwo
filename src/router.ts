@@ -44,6 +44,8 @@ router
     return AuthController.logout(c);
   });
 
+console.log("checkauth");
+
 // USER
 router
   .get("/:username", (c: any) => {
@@ -60,7 +62,8 @@ router
   })
   .post("/page/:page_id", (c: any) => {
     if (c.query._method === "DELETE") return PageController.delete(c);
-    return PageController.update(c);
+    if (c.query._method === "PUT") return PageController.update(c);
+    // return PageController.update(c);
   });
 
 export default router;

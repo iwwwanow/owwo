@@ -41,15 +41,17 @@
 	</fieldset>
 
 	<fieldset class="card">
-		#$~ include('button_plus' ) $#
+		#$ const url_formaction = `/page/${params.page_id}` $#
 
+		#$~ include('button_plus' ) $#
 		#$~ include('button', {
 		type: 'submit',
 		value: 'default',
-		text: 'опубликовать'
+		text: 'опубликовать',
+		formmethod: 'PUT',
+		formaction: url_formaction
 		}) $#
 
-		#$ const url_formaction = `/page/${params.page_id}` $#
 		#$~ include('button', {
 		type: 'submit',
 		value: 'delete',
