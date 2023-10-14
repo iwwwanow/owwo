@@ -8,7 +8,7 @@
 }
 
 .wrapper {
-  padding: 32px 0;
+  padding: 8px 0 32px;
   row-gap: 24px;
 
   display: flex;

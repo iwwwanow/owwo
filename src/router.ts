@@ -56,9 +56,12 @@ router
 // PAGE
 router
   .get("/page/:page_id", (c: any) => {
+    console.log("get");
     return PageController.index(c);
   })
   .post("/page/:page_id", (c: any) => {
+    if (c.query._method === "DELETE") return console.log("delete");
+    console.log("post");
     return PageController.update(c);
   });
 

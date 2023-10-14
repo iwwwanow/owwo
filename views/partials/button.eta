@@ -3,6 +3,14 @@
 #$ const _name = it.name || 'button-name' $#
 #$ const _value = it.value || 'button-value' $#
 
+#$ let _formmethod = it.formmethod || 'POST' $#
+#$ let _formaction = it.formaction || '' $#
+
+#$ if (_formmethod !== 'POST' && !!_formaction) { $#
+#$ _formaction = _formaction + `?_method=${_formmethod}` $#
+#$ _formmethod = 'POST' $#
+#$ } $#
+
 #$ if (_class==="disabled" ) { $#
 
 <button disabled>
@@ -13,7 +21,8 @@
 
 #$ } else { $#
 
-<button class="#$= _class $#" type="#$= type $#" name="#$= _name $#" value="#$= _value $#">
+<button class="#$= _class $#" type="#$= type $#" name="#$= _name $#" value="#$= _value $#"
+	formmethod="#$= _formmethod $#" formaction="#$= _formaction $#">
 	<h6>
 		#$= it.text $#
 	</h6>

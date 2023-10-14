@@ -52,10 +52,13 @@
 		text: 'опубликовать'
 		}) $#
 
+		#$ const url_formaction = `/page/${params.page_id}` $#
 		#$~ include('button', {
 		type: 'submit',
-		value: 'default',
-		text: 'удалить'
+		value: 'delete',
+		text: 'удалить',
+		formmethod: 'DELETE',
+		formaction: url_formaction
 		}) $#
 
 	</fieldset>
