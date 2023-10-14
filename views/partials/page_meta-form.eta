@@ -3,9 +3,6 @@
 <form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/#$= params.page_id $#"
 	enctype="multipart/form-data">
 
-
-	<hr style="border-color: var(--#$= color $#)">
-
 	<fieldset class="card">
 		#$~ include('input_file', {
 		form: 'page_meta-form',
@@ -69,8 +66,6 @@
 		<h6>grid</h6>
 		<h6>list</h6>
 	</fieldset>
-
-	<hr style="border-color: var(--#$= color $#)">
 
 </form>
 

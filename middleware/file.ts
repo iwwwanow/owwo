@@ -10,4 +10,9 @@ export default class File {
     path += `/cover.${fileExtention}`;
     await Bun.write(path, media);
   }
+  static async remove(page_id: string) {
+    let path = `./public/data_uploads/pages/${page_id}/`;
+    fs.rmSync(path, { recursive: true, force: true });
+    return;
+  }
 }

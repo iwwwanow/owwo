@@ -17,6 +17,7 @@ export default class sql {
 
   static async init() {
     db.exec("PRAGMA journal_mode = WAL;");
+    db.exec("PRAGMA foreign_keys = ON;");
 
     this.createTable({
       table_name: "users",
@@ -36,7 +37,7 @@ export default class sql {
         desc: "TEXT",
       },
     });
-    await sql.custom("createTable_authors");
+    await this.custom("createTable_authors");
     await this.custom("createTrigger_insertAuthors_pageId");
   }
 
@@ -124,11 +125,16 @@ export default class sql {
     return this;
   }
 
+  delete() {
+    this.query += `DELETE FROM ${this.table_name}\n`;
+    return this;
+  }
+
   where(input: { [key: string]: string | number }) {
-    this.query += "WHERE\n";
+    this.query += "WHERE ";
 
     Object.keys(input).forEach((column) => {
-      const value = (input as any)[column];
+      let value = (input as any)[column];
       this.query += `${column} = '${value}';\n`;
     });
 

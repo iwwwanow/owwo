@@ -69,4 +69,22 @@ export default class PageController {
     set.redirect = `/page/${page_id}`;
     return;
   }
+
+  static async delete({ set, params: { page_id } }: ExContext) {
+    await File.remove(page_id);
+
+    const authors = new sql("authors");
+    const user_id = authors.select("user_id").where({ page_id }).get();
+
+    const users = new sql("users");
+    const username = users.select("username").where({ user_id }).get();
+
+    const pages = new sql("pages");
+    pages
+      .delete()
+      .where({ page_id: Number(page_id) })
+      .run();
+
+    set.redirect = `/${username}`;
+  }
 }
