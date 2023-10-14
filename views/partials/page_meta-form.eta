@@ -1,39 +1,14 @@
-#$ const state = page.state $#
-#$ let color, state_ru $#
-#$ if (state === 'default') { $#
-#$ color = 'green' $#
-#$ state_ru = 'опубликован' $#
-#$ } else if (state === 'draft') { $#
-#$ color = 'blue' $#
-#$ state_ru = 'черновик' $#
-#$ } else if (state === 'archive') { $#
-#$ color = 'orange' $#
-#$ state_ru = 'в архиве' $#
-#$ } else if (state === 'bin') { $#
-#$ color = 'red' $#
-#$ state_ru = 'в корзине' $#
-#$ } else { $#
-#$ color = 'grey-medium' $#
-#$ state_ru = 'owwo' $#
-#$ } $#
+#$ color = 'grey-light' $#
 
-#$ color = 'grey-medium' $#
-
-<form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/meta/#$= params.pageId $#"
+<form id="page_meta-form" class="grid page_meta-container" method="POST" action="/page/#$= params.page_id $#"
 	enctype="multipart/form-data">
-
-
-	<hr style="border-color: var(--#$= color $#)">
-
-	<h2 class="all-cols" style="color: var(--#$= color $#)">
-		#$= state_ru $#
-	</h2>
 
 	<fieldset class="card">
 		#$~ include('input_file', {
 		form: 'page_meta-form',
-		name: 'page_meta-cover',
-		src: page.cover,
+		name: 'media',
+		page_id: params.page_id,
+		cover_src: page.cover_src,
 		}) $#
 	</fieldset>
 
@@ -58,72 +33,32 @@
 		<div class="page_meta-child-container">
 			#$~ include('textarea', {
 			form: 'page_meta-form',
-			name: 'elementOrder',
-			text: 'element-order',
-			placeholder: 'element-order'
-			}) $#
-		</div>
-
-		<div class="page_meta-child-container">
-			#$~ include('textarea', {
-			form: 'page_meta-form',
-			name: 'elementList',
-			text: 'element-list',
+			name: 'element_list',
+			text: 'element_list',
 			placeholder: 'element-order'
 			}) $#
 		</div>
 	</fieldset>
 
 	<fieldset class="card">
+		#$ const url_formaction = `/page/${params.page_id}` $#
+
 		#$~ include('button_plus' ) $#
-
 		#$~ include('button', {
-		/* class: 'green', */
 		type: 'submit',
-		name: 'state',
 		value: 'default',
-		text: 'опубликовать'
+		text: 'опубликовать',
+		formmethod: 'PUT',
+		formaction: url_formaction
 		}) $#
 
-		#$ if (state !== 'draft') { $#
 		#$~ include('button', {
-		/* class: 'blue', */
 		type: 'submit',
-		name: 'state',
-		value: 'draft',
-		text: 'сохранить черновик'
-		}) $#
-		#$ } $#
-
-		#$ if (state !== 'archive') { $#
-		#$~ include('button', {
-		/* class: 'orange', */
-		type: 'submit',
-		name: 'state',
-		value: 'archive',
-		text: 'в архив'
-		}) $#
-		#$ } $#
-
-		#$ if (state !== 'bin') { $#
-		#$~ include('button', {
-		/* class: 'red', */
-		type: 'submit',
-		name: 'state',
-		value: 'bin',
-		text: 'в корзину'
-		}) $#
-		#$ } $#
-
-		#$ if (state === 'bin') { $#
-		#$~ include('button', {
-		/* class: 'red', */
-		type: 'submit',
-		name: 'state',
 		value: 'delete',
-		text: 'удалить'
+		text: 'удалить',
+		formmethod: 'DELETE',
+		formaction: url_formaction
 		}) $#
-		#$ } $#
 
 	</fieldset>
 
@@ -133,8 +68,6 @@
 		<h6>grid</h6>
 		<h6>list</h6>
 	</fieldset>
-
-	<hr style="border-color: var(--#$= color $#)">
 
 </form>
 

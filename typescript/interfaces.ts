@@ -10,19 +10,16 @@ export interface ExContext extends Context {
     verify: (string: Cookie<any>) => Promise<string>;
   };
   // cookie: Record<string, string>;
-  setCookie: (name: string, value: string, options: CookieOptions) => void;
+  setCookie: (name: string, value: string, options?: CookieOptions) => void;
   removeCookie: (name: string) => void;
   cookie_authUsername: string;
 }
-
-// export interface Context {
-//   body: Body;
-//   cookie: object | any;
-//   set: { redirect: string } | any;
-// }
 
 export interface Body {
   username: string;
   password: string;
   confirm: string;
+  title: string;
+  desc: string;
+  media: Blob;
 }
