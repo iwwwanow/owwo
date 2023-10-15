@@ -5,28 +5,38 @@
 	</div>
 
 	#$ if (!!params ? !!params.username : false) { $#
+
 	<h5 class="username">
 		#$= params.username$#
 	</h5>
+
 	#$ } else { $#
+
 	<h5>
 		<a href="/about">о проекте</a>
 	</h5>
+
 	#$ } $#
 
 	<div class="login-container">
-		#$ if (!!request.auth & !!params ? request.username === params.username : false) { $#
+		#$ if (!!cookie && !!params && cookie.auth.username === params.username) { $#
+
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		#$ } else if (!!request.auth) { $#
+
+		#$ } else if (!!cookie && !!cookie.auth.username) { $#
+
 		<h5>
-			<a href="/#$= request.username $#" style="color: var(--red)">#$= request.username $#</a>
+			<a href="/#$= cookie.auth.username $#" style="color: var(--red)">#$= cookie.auth.username $#</a>
 		</h5>
+
 		#$ } else { $#
+
 		<h5>
 			<a href="/login">login</a>
 		</h5>
+
 		#$ } $#
 	</div>
 

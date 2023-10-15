@@ -1,13 +1,18 @@
 #$ const _name = it.name || 'input-file' $#
 #$ const _multiple = it.multiple ? 'multiple' : '' $#
-#$ const _src = it.src || false $#
+#$ const _cover_src = it.cover_src || false $#
 
 <label for="file-upload" class="input-file_label">
-	#$ if (_src) { $#
-	<img src="/#$= _src $#" alt="">
+	#$ if (_cover_src) { $#
+
+	<img src="#$= _cover_src $#" alt="">
+
 	#$ } else { $#
+
 	<h6 class="input-file_text">cover</h6>
+
 	#$ } $#
+
 </label>
 <input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" #$=_multiple $# />
 
@@ -27,9 +32,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
-		/* border: 4px dashed #FF1B76; */
-		border: 4px double var(--grey-light);
 	}
 
 	.input-file_label img {
@@ -44,7 +46,7 @@
 	}
 
 	.input-file_label:hover {
-		border: 4px solid var(--grey-dark);
+		border: 2px solid var(--grey-dark);
 	}
 
 	.input-file_label:hover>.input-file_text {

@@ -2,33 +2,34 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>owwo</title>
 
 	<!-- TODO не отображает фавикон -->
-	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
 
-	<link rel="stylesheet" href="/static/reset.css" />
-	<link rel="stylesheet" href="/static/style.css" />
+	<link rel="stylesheet" href="/public/style/reset.css" />
+	<link rel="stylesheet" href="/public/style/style.css" />
 
-	<link rel="stylesheet" href="/static/layout.css" />
-	<link rel="stylesheet" href="/static/color.css" />
-	<link rel="stylesheet" href="/static/font.css" />
-	<link rel="stylesheet" href="/static/font_custom.css" />
+	<link rel="stylesheet" href="/public/style/layout.css" />
+	<link rel="stylesheet" href="/public/style/color.css" />
+	<link rel="stylesheet" href="/public/style/font.css" />
+	<link rel="stylesheet" href="/public/style/font_custom.css" />
 
-	<link rel="stylesheet" href="/static/card.css" />
+	<link rel="stylesheet" href="/public/style/card.css" />
 </head>
 
 <body>
 	<div class="wrapper">
 
 		#$~ include("./partials/header", {
-		request: it.request,
-		params: it.params
+		params: it.params,
+		cookie: it.cookie
 		})$#
 
 		#$~ body $#
+
 	</div>
 </body>
 

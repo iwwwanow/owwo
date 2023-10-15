@@ -1,14 +1,7 @@
 #$ layout("./layout.eta" )$#
 
-#$ if (profile) { $#
-<div class="grid">
-	<h6><a href="/#$= profile $#">
-			< #$=profile $# </a>
-				</6>
-</div>
-#$ } $#
 
-#$ if (editor$) { $#
+#$ if (_editor) { $#
 
 #$~ include('partials/page_meta-form', {
 page: it.page,
@@ -31,7 +24,7 @@ params: it.params
 	<h1 class="element-sample">e2</h1>
 	<h1 class="element-sample">e3</h1>
 
-	#$ if (editor$) { $#
+	#$ if (_editor) { $#
 	<h1>+</h1>
 	<h1>order form</h1>
 	#$ } $#
