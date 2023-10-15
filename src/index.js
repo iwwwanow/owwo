@@ -5,12 +5,13 @@ import { cookie } from "@elysiajs/cookie";
 import { jwt } from "@elysiajs/jwt";
 
 import config_jwt from "../config/jwt.ts";
-import checkAuth from "../utils/checkAuth.ts";
+import check_auth from "../middleware/check_auth.ts";
+import check_editor from "../middleware/check_editor.ts";
 import router from "./router";
 
-import sql from "../controllers/_sql.ts";
+import SQL from "../controllers/sql.ts";
 
-await sql.init();
+await SQL().init();
 
 const app = new Elysia()
   .onError(({ code, error }) => {
@@ -20,7 +21,8 @@ const app = new Elysia()
   .use(jwt(config_jwt()))
   .use(cookie())
   .use(await staticPlugin({ assets: "public" }))
-  .derive(async (c: any) => await checkAuth(c))
+  .derive(async (c) => await check_auth(c))
+  .derive((c) => check_editor(c))
   .use(router)
   .listen(8080);
 

@@ -1,8 +1,9 @@
 {
   "name": "owwo",
-  "module": "index.ts",
+  "module": "src/index.js",
   "type": "module",
   "devDependencies": {
+    "@types/uuid": "^9.0.5",
     "bun-types": "latest"
   },
   "peerDependencies": {
@@ -14,9 +15,10 @@
     "@elysiajs/jwt": "^0.7.0",
     "@elysiajs/static": "^0.7.1",
     "elysia": "^0.7.5",
-    "eta": "^3.1.1"
+    "eta": "^3.1.1",
+    "uuid": "^9.0.1"
   },
   "scripts": {
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.js"
   }
 }

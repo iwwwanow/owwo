@@ -1,14 +1,8 @@
-export default async function ({ cookie: { auth }, jwt }) {
-  const usernameObj = await jwt.verify(auth);
-
-  let cookie_authUsername = "";
-
-  // TODO это пиздец какойто, исправь
-  for (const [key, value] of Object.entries(usernameObj)) {
-    if (!isNaN(Number(key))) {
-      cookie_authUsername += value;
-    }
+export default async function ({ cookie, removeCookie, jwt }): Promise<void> {
+  cookie.auth = await jwt.verify(cookie.auth);
+  if (!cookie.auth) {
+    removeCookie("auth");
+    return;
   }
-
-  return { cookie_authUsername };
+  return;
 }

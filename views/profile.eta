@@ -20,10 +20,10 @@
 
 	#$ } $#
 
-	#$ if (editor$) { $#
+	#$ if (_editor) { $#
 
 	<form action="">
-		#$~ include("./partials/button_plus.eta", {action: editor$})$#
+		#$~ include("./partials/button_plus.eta", {action: params.username})$#
 	</form>
 	<h2>order-form</h2>
 

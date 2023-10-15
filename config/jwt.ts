@@ -1,6 +1,7 @@
 export default function (): { name: string; secret: string } {
   const secret = process.env.JWT_SECRET;
-  if (typeof secret === "string") {
+
+  if (secret) {
     const config = {
       name: "jwt",
       secret,
