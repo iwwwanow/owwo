@@ -4,8 +4,8 @@
 #$ if (_editor) { $#
 
 #$~ include('partials/page_meta-form', {
-page: it.page,
-params: it.params
+page: page,
+params: params
 }) $#
 
 #$ } $#
@@ -20,13 +20,23 @@ params: it.params
 </div>
 
 <div class="grid">
-	<h1 class="element-sample">e1</h1>
-	<h1 class="element-sample">e2</h1>
-	<h1 class="element-sample">e3</h1>
+
+	#$if (!!page.elements) { $#
+	#$ page.elements.forEach(function (element) { $#
+	#$~ include("partials/card", {element}) $#
+	#$ }) $#
+	#$ } $#
 
 	#$ if (_editor) { $#
-	<h1>+</h1>
-	<h1>order form</h1>
+
+	<form action="">
+		#$ const url_formaction = `/page/${params.page_id}` $#
+
+		#$~ include('partials/button_plus', {
+		formaction: url_formaction
+		}) $#
+	</form>
+
 	#$ } $#
 
 </div>

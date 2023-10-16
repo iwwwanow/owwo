@@ -1,9 +1,8 @@
 #$ let type = Object.keys(it)[0] $#
-#$ type = 'page' $#
 
-#$ const id = it[type].page_id $#
-#$ const url = `/${type}/${id}` $#
 #$ const obj = it[type] $#
+#$ const id = obj.page_id || obj.element_id $#
+#$ const url = `/${type}/${id}` $#
 
 <div class="card">
 
@@ -33,8 +32,8 @@
 		display: flex;
 		position: relative;
 		flex-direction: column;
-		align-items: flex-start;
-		border: 1px solid var(--grey-dark);
+		/* align-items: flex-start; */
+		/* border: 1px solid var(--grey-dark); */
 	}
 
 	.card_desc {

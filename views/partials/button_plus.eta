@@ -1,7 +1,7 @@
 #$ let action = (!!it && !!it.action) ? it.action : 'default' $#
 
 <div class="button-plus_container">
-	<button class="button-plus_button" formaction="/#$= action $#" formmethod="post">
+	<button class="button-plus_button" formaction="#$= formaction $#" formmethod="POST">
 		#$~ include('./svg/+') $#
 	</button>
 </div>

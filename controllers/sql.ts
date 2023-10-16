@@ -31,6 +31,19 @@ export default function sql(table_name: string) {
 
       await this.custom("createTable_authors");
       await this.custom("createTrigger_insertAuthors_pageId");
+
+      this.create_table({
+        table_name: "elements",
+        columns: {
+          element_id: "TEXT PRIMARY KEY",
+          title: "TEXT",
+          desc: "TEXT",
+          author: "TEXT",
+        },
+      });
+
+      await this.custom("createTable_connections");
+      await this.custom("createTrigger_insertConnections_elementId");
     },
 
     custom: async function (input: string) {

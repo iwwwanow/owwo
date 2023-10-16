@@ -43,7 +43,10 @@
 	<fieldset class="card">
 		#$ const url_formaction = `/page/${params.page_id}` $#
 
-		#$~ include('button_plus' ) $#
+		#$~ include('button_plus', {
+		formaction: url_formaction
+		}) $#
+
 		#$~ include('button', {
 		type: 'submit',
 		value: 'default',

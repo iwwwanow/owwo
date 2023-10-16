@@ -15,19 +15,22 @@ export default class PageController {
 
     c.page.cover_src = await File.src("pages", params.page_id);
 
+    const elements_query = await sql().custom_all(
+      "innerJoin_elements_connections_$pageId"
+    );
+    c.page.elements = elements_query.all({ $page_id: params.page_id });
+
     return eta.render("page", c);
   }
 
   static async create(c) {
     const { cookie, set } = c;
 
-    sql("pages").insert({ page_id: uuidv4(), title: "title" }).run();
-    const last_pageId = sql("pages").select_last("page_id").get();
+    const page_id = uuidv4();
 
-    sql("authors")
-      .update({ user_id: cookie.user_id })
-      .where({ page_id: last_pageId })
-      .run();
+    sql("pages").insert({ page_id }).run();
+
+    sql("authors").update({ user_id: cookie.user_id }).where({ page_id }).run();
 
     set.redirect = `/${cookie.username}`;
     return;

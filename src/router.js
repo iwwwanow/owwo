@@ -4,6 +4,7 @@ import IndexController from "../controllers/index.js";
 import AuthController from "../controllers/auth.js";
 import UserController from "../controllers/user.js";
 import PageController from "../controllers/page.js";
+import ElementController from "../controllers/element.js";
 
 const router = new Elysia();
 // ERROR
@@ -61,5 +62,10 @@ router
     if (c.query._method === "PUT") return PageController.update(c);
     // return PageController.update(c);
   });
+
+// ELEMENT
+router.post("/page/:page_id", (c) => {
+  return ElementController.create(c);
+});
 
 export default router;

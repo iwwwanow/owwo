@@ -2,7 +2,6 @@ import { eta } from "../config/eta";
 
 export default class IndexController {
   static renderIndex(c) {
-    console.log(c.cookie.auth);
     return eta.render("index", c);
   }
   static renderError({ code, error }) {
@@ -13,7 +12,6 @@ export default class IndexController {
     return eta.render("about", {});
   }
   static renderLogin(c) {
-    console.log(c);
     return eta.render("login", c);
   }
   static renderSignUp(c) {

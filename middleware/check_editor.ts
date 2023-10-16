@@ -10,7 +10,7 @@ export default function checkEditor({ params, cookie }) {
       .select("user_id")
       .where({ user_id: cookie.auth.user_id, page_id: params.page_id })
       .get();
-    _editor = !_editor;
+    if (result) _editor = !_editor;
   }
   return { _editor };
 }

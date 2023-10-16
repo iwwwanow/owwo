@@ -23,7 +23,7 @@
 	#$ if (_editor) { $#
 
 	<form action="">
-		#$~ include("./partials/button_plus.eta", {action: params.username})$#
+		#$~ include("./partials/button_plus.eta", {formaction: params.username})$#
 	</form>
 	<h2>order-form</h2>
 
