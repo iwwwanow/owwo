@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>owwo</title>
 
-	<!-- TODO не отображает фавикон -->
 	<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
 
 	<link rel="stylesheet" href="/public/style/reset.css" />
@@ -22,14 +21,8 @@
 
 <body>
 	<div class="wrapper">
-
-		#$~ include("./partials/header", {
-		params: it.params,
-		cookie: it.cookie
-		})$#
-
+		#$~ include("partials/header", it )$#
 		#$~ body $#
-
 	</div>
 </body>
 

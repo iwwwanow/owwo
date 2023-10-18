@@ -7,8 +7,8 @@
   flex-direction: column;
 
   /* TODO Удалить. свойство для отлаки */
-  border: 1px solid var(--grey-light);
+  /* border: 1px solid var(--grey-light); */
 }
 .card:hover {
-  border: 1px solid var(--white);
+  /* border: 1px solid var(--white); */
 }

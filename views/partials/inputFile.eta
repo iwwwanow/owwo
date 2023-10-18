@@ -2,22 +2,27 @@
 #$ const _multiple = it.multiple ? 'multiple' : '' $#
 #$ const _cover_src = it.cover_src || false $#
 
-<label for="file-upload" class="input-file_label">
+<label
+	for="file-upload"
+	class="input-file_label">
 	#$ if (_cover_src) { $#
-
-	<img src="#$= _cover_src $#" alt="">
-
+	<img
+		src="#$= _cover_src $#"
+		alt="">
 	#$ } else { $#
-
-	<h6 class="input-file_text">cover</h6>
-
+	<h6 class="input-file_text">file-input</h6>
 	#$ } $#
-
 </label>
-<input id="file-upload" form="#$= form $#" name="#$= _name $#" type="file" accept="image/*" #$=_multiple $# />
+
+<input
+	id="file-upload"
+	form="#$=form$#"
+	name="#$= _name $#"
+	type="file"
+	accept="image/*"
+	#$=_multiple$# />
 
 <style>
-	/* TODO Стилизовать inputFile */
 	input[type="file"] {
 		display: none;
 	}
@@ -46,11 +51,11 @@
 	}
 
 	.input-file_label:hover {
-		border: 2px solid var(--grey-dark);
+		border: 2px solid var(--grey-medium);
 	}
 
 	.input-file_label:hover>.input-file_text {
-		color: var(--black);
+		color: var(--grey-medium);
 		text-decoration: underline;
 	}
 

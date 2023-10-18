@@ -1,13 +1,18 @@
 #$ layout("./layout.eta")$#
 
 <div class="grid">
-	<h1 class="about-text">Платформа для публикации.</h1>
+	<div>
+		<h4 class="about-text">Платформа для публикации.</h4>
+		<h4><a
+				href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1">figma</a>
+		</h4>
+		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
+	</div>
 </div>
 
 <style>
 	.about-text {
 		color: var(--grey-dark);
-		grid-column: 1/ span 3;
 	}
 
 </style>

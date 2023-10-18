@@ -4,29 +4,18 @@
 
 <div class="grid">
 
-	#$ if (!!pages) { $#
-
+	#$ if (!!pages.length) { $#
 	#$ pages.forEach(function (page) { $#
-
 	#$~ include("partials/card", {page}) $#
-
 	#$ }) $#
-
 	#$ } else { $#
-
-	<!-- TODO отправлять ответ с сервера, что пользователь не найден -->
-
-	<h6>Not pages to display</h6>
-
+	<h2 style="color: var(--red);">(●´⌓`●)</h2>
 	#$ } $#
 
 	#$ if (_editor) { $#
-
 	<form action="">
-		#$~ include("./partials/button_plus.eta", {formaction: params.username})$#
+		#$~ include("./partials/buttonPlus.eta", {formaction: params.username})$#
 	</form>
-	<h2>order-form</h2>
-
 	#$ } $#
 
 </div>

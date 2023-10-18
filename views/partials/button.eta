@@ -21,8 +21,14 @@
 
 #$ } else { $#
 
-<button class="#$= _class $#" type="#$= type $#" name="#$= _name $#" value="#$= _value $#"
-	formmethod="#$= _formmethod $#" formaction="#$= _formaction $#">
+<button
+	class="#$= _class $#"
+	type="#$= type $#"
+	name="#$= _name $#"
+	value="#$= _value $#"
+	formmethod="#$= _formmethod $#"
+	formaction="#$= _formaction $#"
+>
 	<h6>
 		#$= it.text $#
 	</h6>
@@ -39,7 +45,7 @@
 		text-transform: uppercase;
 
 		background-color: white;
-		border: 1px solid var(--grey-medium);
+		border: 1px solid var(--grey-dark);
 	}
 
 	button h6 {

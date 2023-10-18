@@ -4,24 +4,32 @@
 #$ const id = obj.page_id || obj.element_id $#
 #$ const url = `/${type}/${id}` $#
 
-<div class="card">
+<a
+	href="#$= url $#"
+	style="text-decoration: none;"
+>
+	<div class="card card__border">
+		<div class="card_text-wrapper">
+			<div class="card_text-container">
+				<h4 class="card_title">
+					#$= obj.title || id $#
+				</h4>
 
-	<div class="card_text-wrapper">
-		<div class="card_text-container">
-			<h4 class="card_title">
-				<a href="#$= url $#">#$= obj.title $#</a>
-			</h4>
-			#$ if (!!obj.description) { $#
-			<h5 class="card_desc">#$= obj.description $#</h5>
-			#$ } $#
+				#$ if (obj.desc) { $#
+				<h5 class="card_desc">#$= obj.desc $#</h5>
+				#$ } $#
+			</div>
 		</div>
+
+		#$ if (!!obj.cover_src) { $#
+		<img
+			src="#$= obj.cover_src $#"
+			alt="cover"
+		>
+		#$ } $#
+
 	</div>
-
-	#$ if (!!obj.cover_src) { $#
-	<img src="#$= obj.cover_src $#" alt="">
-	#$ } $#
-
-</div>
+</a>
 
 <style>
 	.card a {
@@ -33,7 +41,14 @@
 		position: relative;
 		flex-direction: column;
 		/* align-items: flex-start; */
-		/* border: 1px solid var(--grey-dark); */
+	}
+
+	.card__border {
+		border: 1px solid var(--grey-light);
+	}
+
+	.card__border:hover {
+		border: 1px solid var(--grey-dark);
 	}
 
 	.card_desc {

@@ -30,9 +30,12 @@ export default class PageController {
 
     sql("pages").insert({ page_id }).run();
 
-    sql("authors").update({ user_id: cookie.user_id }).where({ page_id }).run();
+    sql("authors")
+      .update({ user_id: cookie.auth.user_id })
+      .where({ page_id })
+      .run();
 
-    set.redirect = `/${cookie.username}`;
+    set.redirect = `/page/${page_id}`;
     return;
   }
 

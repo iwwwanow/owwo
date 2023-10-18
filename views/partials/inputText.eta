@@ -1,0 +1,64 @@
+#$ const _required = it.required || '' $#
+#$ const type = it.type || 'text' $#
+#$ const id = it.id || '' $#
+#$ const placeholder = it.placeholder || '' $#
+#$ const style = it.style || 'h6' $#
+
+#$ console.log(style) $#
+
+<#$=
+	style
+	$#
+>
+	<input
+		autocomplete="off"
+		id="#$= id $#"
+		#$=_required$#
+		class="input_text"
+		type="#$= type $#"
+		name="#$= it.name $#"
+		placeholder="#$= placeholder $#"
+	>
+</#$=
+	style
+	$#
+>
+
+<style>
+	.input_text {
+		width: 100%;
+
+		color: var(--grey-dark);
+		background-color: var(--grey-light);
+
+		font-style: inherit;
+		font-weight: inherit;
+		text-transform: inherit;
+	}
+
+	.input_text {
+		padding: 0 4px;
+	}
+
+	h6 .input_text {
+		line-height: 24px;
+	}
+
+	::placeholder {
+		/* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: var(--grey-medium);
+		opacity: 1;
+		/* Firefox */
+	}
+
+	:-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: var(--grey-medium);
+	}
+
+	::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: var(--grey-medium);
+	}
+
+</style>
