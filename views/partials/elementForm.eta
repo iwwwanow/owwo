@@ -1,0 +1,82 @@
+<form
+	method="POST"
+	action="/element/#$= params.element_id $#"
+	id="element-form"
+	class="grid element-form_container"
+>
+
+	<fieldset
+		class="element-form_file-input-container"
+		style="border: 1px solid black;"
+	>
+		#$~ include('inputFile', {
+		form: 'element-form',
+		name: 'media',
+		page_id: params.element_id,
+		cover_src: '',
+		}) $#
+	</fieldset>
+
+	<fieldset class="element-form_text-input-container">
+		#$~ include('inputText', {
+		style: 'h1',
+		form: 'element-form',
+		type: 'header',
+		name: 'title',
+		text: element.title,
+		placeholder: 'element-title'
+		}) $#
+
+		<p style="height: 100%;">
+			#$~ include('textarea', {
+			form: 'page_meta-form',
+			name: 'desc',
+			text: element.desc,
+			placeholder: 'element-description'
+			}) $#
+		</p>
+
+		<h1 style="color: red;">accent color</h1>
+
+		<div
+			class="element-form_button-container"
+			style="height: 95px;"
+		>
+			#$~ include('inputFile.eta', {
+			form: 'element-form',
+			name: 'script',
+			placeholder: 'script',
+			customClass: 'js'
+			}) $#
+
+			#$~ include('inputFile.eta', {
+			form: 'element-form',
+			name: 'style',
+			placeholder: 'style',
+			customClass: 'css'
+			}) $#
+		</div>
+
+		#$ const url_formaction = `/element/${params.element_id}` $#
+
+		<div class="element-form_button-container">
+			#$~ include('button', {
+			type: 'submit',
+			value: 'default',
+			text: 'сохранить',
+			formmethod: 'PUT',
+			formaction: url_formaction
+			}) $#
+
+			#$~ include('button', {
+			type: 'submit',
+			class: 'red',
+			value: 'default',
+			text: 'удалить',
+			formmethod: 'DELETE',
+			formaction: url_formaction
+			}) $#
+		</div>
+	</fieldset>
+
+</form>

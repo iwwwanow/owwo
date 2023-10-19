@@ -4,8 +4,6 @@
 #$ const placeholder = it.placeholder || '' $#
 #$ const style = it.style || 'h6' $#
 
-#$ console.log(style) $#
-
 <#$=
 	style
 	$#

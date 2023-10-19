@@ -1,76 +1,22 @@
 #$ layout("./layout.eta")$#
 
-#$ console.log(element) $#
-
-<form
-	action=""
-	class="grid element-form_container"
->
-
-	<fieldset
-		class="element-form_file-input-container"
-		style="border: 1px solid black;"
-	>
-		#$~ include('partials/inputFile', {
-		form: 'element-form',
-		name: 'media',
-		page_id: params.element_id,
-		cover_src: '',
-		}) $#
-	</fieldset>
-
-	<fieldset class="element-form_text-input-container">
-		#$~ include('partials/inputText', {
-		style: 'h1',
-		form: 'element-form',
-		type: 'header',
-		name: 'title',
-		text: element.title,
-		placeholder: 'element-title'
-		}) $#
-
-		#$~ include('partials/textarea', {
-		form: 'page_meta-form',
-		name: 'desc',
-		text: element.desc,
-		placeholder: 'element-description'
-		}) $#
-
-		#$ const url_formaction = `/element/${params.page_id}` $#
-
-		<div class="element-form_button-container">
-			#$~ include('partials/button', {
-			type: 'submit',
-			value: 'default',
-			text: 'сохранить',
-			formmethod: 'PUT',
-			formaction: url_formaction
-			}) $#
-
-			#$~ include('partials/button', {
-			type: 'submit',
-			class: 'red',
-			value: 'default',
-			text: 'удалить',
-			formmethod: 'PUT',
-			formaction: url_formaction
-			}) $#
-		</div>
-	</fieldset>
-
-</form>
+#$ if (_editor) { $#
+#$~ include('partials/elementForm', it ) $#
+#$ } $#
 
 <style>
+	/* @import "/public/style/element.css"; */
+
 	.element-form_container {
 		height: 600px;
 	}
 
 	.element-form_file-input-container {
-		grid-column: 1 / span 4
+		grid-column: 1 / span 5
 	}
 
 	.element-form_text-input-container {
-		grid-column: 5 / span 2;
+		grid-column: 6 / -1;
 		display: flex;
 		flex-direction: column;
 		gap: 32px;
@@ -78,7 +24,7 @@
 
 	.element-form_button-container {
 		display: flex;
-		gap: 8px;
+		gap: 16px;
 	}
 
 </style>

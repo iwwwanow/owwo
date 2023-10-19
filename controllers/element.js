@@ -16,7 +16,6 @@ export default class ElementController {
   }
   static create(c) {
     const { set, params, cookie } = c;
-    console.log("create");
 
     const element_id = uuidv4();
 
@@ -30,5 +29,10 @@ export default class ElementController {
       .run();
 
     set.redirect = `/page/${params.page_id}`;
+  }
+  static update(c) {
+    const { set, params, body } = c;
+
+    set.redirect = `/element/${params.element_id}`;
   }
 }

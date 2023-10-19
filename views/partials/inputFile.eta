@@ -1,26 +1,33 @@
-#$ const _name = it.name || 'input-file' $#
-#$ const _multiple = it.multiple ? 'multiple' : '' $#
-#$ const _cover_src = it.cover_src || false $#
+#$ const name = it.name || 'input-file' $#
+#$ const multiple = it.multiple ? 'multiple' : '' $#
+#$ const cover_src = it.cover_src || false $#
+#$ const placeholder = it.placeholder || 'file-input' $#
+#$ const customClass = it.customClass || '' $#
+#$ const style = it.style || '' $#
 
 <label
 	for="file-upload"
-	class="input-file_label">
-	#$ if (_cover_src) { $#
+	class="input-file_label #$= customClass $#"
+	style="#$= style $#"
+>
+	#$ if (cover_src) { $#
 	<img
-		src="#$= _cover_src $#"
-		alt="">
+		src="#$= cover_src $#"
+		alt=""
+	>
 	#$ } else { $#
-	<h6 class="input-file_text">file-input</h6>
+	<h6 class="input-file_text">#$= placeholder $#</h6>
 	#$ } $#
 </label>
 
 <input
 	id="file-upload"
 	form="#$=form$#"
-	name="#$= _name $#"
+	name="#$= name $#"
 	type="file"
 	accept="image/*"
-	#$=_multiple$# />
+	#$=multiple$#
+/>
 
 <style>
 	input[type="file"] {
@@ -57,6 +64,34 @@
 	.input-file_label:hover>.input-file_text {
 		color: var(--grey-medium);
 		text-decoration: underline;
+	}
+
+	/* CUSTOM CLASS */
+	.input-file_label.js:hover,
+	.input-file_label.css:hover {
+		border: 0;
+	}
+
+	.js {
+		border: 1px solid var(--js);
+	}
+
+	.js:hover {
+		background-color: var(--js);
+	}
+
+	.js:hover>.input-file_text,
+	.css:hover>.input-file_text {
+		color: white;
+		font-weight: 600;
+	}
+
+	.css {
+		border: 1px solid var(--css)
+	}
+
+	.css:hover {
+		background-color: var(--css);
 	}
 
 </style>
