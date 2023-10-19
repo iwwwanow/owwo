@@ -41,10 +41,10 @@ export default class PageController {
 
   static async update(c) {
     const { set, params, body } = c;
-    const { title, desc, media } = body;
+    const { title, desc, cover, script, style } = body;
 
     // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
-    await File.write(media, params.page_id);
+    await File.write(cover, params.page_id);
 
     sql("pages")
       .update({ title, desc })

@@ -1,7 +1,7 @@
 #$ layout("./layout.eta")$#
 
 #$ if (_editor) { $#
-#$~ include('partials/elementForm', it ) $#
+#$~ include('partials/metaForm_element', it ) $#
 #$ } $#
 
 <style>

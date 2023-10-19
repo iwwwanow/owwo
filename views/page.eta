@@ -2,7 +2,7 @@
 
 
 #$ if (_editor) { $#
-#$~ include('partials/metaForm', {
+#$~ include('partials/metaForm_page', {
 page: page,
 params: params
 }) $#

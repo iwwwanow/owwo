@@ -32,6 +32,7 @@ export default class ElementController {
   }
   static update(c) {
     const { set, params, body } = c;
+    const { text, media, script, style } = body;
 
     set.redirect = `/element/${params.element_id}`;
   }

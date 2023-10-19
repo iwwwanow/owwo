@@ -1,0 +1,101 @@
+#$ color = 'grey-light' $#
+
+<form
+	id="page_meta-form"
+	class="grid page_meta-container"
+	method="POST"
+	action="/page/#$= params.page_id $#"
+	enctype="multipart/form-data"
+>
+
+	<fieldset class="card">
+		#$~ include('inputFile', {
+		form: 'page_meta-form',
+		name: 'cover',
+		accept: 'image/*',
+		cover_src: page.cover_src,
+		}) $#
+	</fieldset>
+
+	<fieldset class="card">
+		<h4>
+			#$~ include('textarea', {
+			form: 'page_meta-form',
+			name: 'title',
+			text: page.title,
+			placeholder: 'page-title',
+			rows: 2
+			}) $#
+		</h4>
+
+		<h5 style="height: 100%;">
+			#$~ include('textarea', {
+			form: 'page_meta-form',
+			name: 'desc',
+			text: page.desc,
+			placeholder: 'page-description',
+			}) $#
+		</h5>
+	</fieldset>
+
+	<fieldset class="card">
+		#$ const url_formaction = `/page/${params.page_id}` $#
+
+		#$~ include('buttonPlus', {
+		formaction: url_formaction
+		}) $#
+
+		#$~ include('inputFile', {
+		form: 'page_meta-form',
+		accept: '.js',
+		name: 'script',
+		color: 'js',
+		}) $#
+
+		#$~ include('inputFile', {
+		form: 'page_meta-form',
+		accept: '.css',
+		name: 'style',
+		color: 'css',
+		}) $#
+
+
+		#$~ include('button', {
+		type: 'submit',
+		value: 'default',
+		color: 'grey-dark',
+		text: 'опубликовать',
+		formmethod: 'PUT',
+		formaction: url_formaction
+		}) $#
+
+		#$~ include('button', {
+		type: 'submit',
+		color: 'red',
+		value: 'delete',
+		text: 'удалить',
+		formmethod: 'DELETE',
+		formaction: url_formaction
+		}) $#
+
+	</fieldset>
+
+	<fieldset>
+		<h1>grid</h1>
+		<h1>list</h1>
+	</fieldset>
+
+	<hr>
+
+</form>
+
+
+<style>
+	.page_meta-child-container {
+		height: 100%;
+		display: flex;
+		gap: 4px;
+		flex-direction: column;
+	}
+
+</style>

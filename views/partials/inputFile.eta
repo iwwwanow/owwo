@@ -1,13 +1,15 @@
 #$ const name = it.name || 'input-file' $#
 #$ const multiple = it.multiple ? 'multiple' : '' $#
 #$ const cover_src = it.cover_src || false $#
-#$ const placeholder = it.placeholder || 'file-input' $#
 #$ const customClass = it.customClass || '' $#
 #$ const style = it.style || '' $#
+#$ const accept = it.accept || '' $#
+
+#$ const color = it.color || 'grey-dark' $#
 
 <label
-	for="file-upload"
-	class="input-file_label #$= customClass $#"
+	for="#$= name $#"
+	class="input-file_label #$= customClass $# #$= color $#"
 	style="#$= style $#"
 >
 	#$ if (cover_src) { $#
@@ -16,16 +18,16 @@
 		alt=""
 	>
 	#$ } else { $#
-	<h6 class="input-file_text">#$= placeholder $#</h6>
+	<h6>#$= name $#</h6>
 	#$ } $#
 </label>
 
 <input
-	id="file-upload"
-	form="#$=form$#"
+	id="#$= name $#"
+	form="#$= form $#"
 	name="#$= name $#"
 	type="file"
-	accept="image/*"
+	accept="#$= accept $#"
 	#$=multiple$#
 />
 
@@ -34,11 +36,10 @@
 		display: none;
 	}
 
-	/* TODO сделать цветную рамку,
-	чтобы менялась под цвет кавера. */
-	.input-file_label {
+	.input-file_label.#$=color$# {
 		height: 100%;
 		width: 100%;
+		border: 1px dashed var(--#$=color$#);
 
 		cursor: pointer;
 		display: flex;
@@ -52,46 +53,18 @@
 		object-fit: cover;
 	}
 
-	.input-file_text {
-		color: var(--grey-medium);
-		text-transform: uppercase
+	.input-file_label.#$=color$#>h6 {
+		color: var(--#$=color$#);
+		text-transform: uppercase;
 	}
 
-	.input-file_label:hover {
-		border: 2px solid var(--grey-medium);
+	/* FIX это пиздец) */
+	#$=`.input-file_label.${color}:hover` $# {
+		border: 2px dashed var(--#$=color$#);
 	}
 
-	.input-file_label:hover>.input-file_text {
-		color: var(--grey-medium);
+	#$=`.input-file_label.${color}:hover h6` $# {
 		text-decoration: underline;
-	}
-
-	/* CUSTOM CLASS */
-	.input-file_label.js:hover,
-	.input-file_label.css:hover {
-		border: 0;
-	}
-
-	.js {
-		border: 1px solid var(--js);
-	}
-
-	.js:hover {
-		background-color: var(--js);
-	}
-
-	.js:hover>.input-file_text,
-	.css:hover>.input-file_text {
-		color: white;
-		font-weight: 600;
-	}
-
-	.css {
-		border: 1px solid var(--css)
-	}
-
-	.css:hover {
-		background-color: var(--css);
 	}
 
 </style>
