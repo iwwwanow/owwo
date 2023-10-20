@@ -4,7 +4,6 @@
 #$ const _value = it.value || 'button-value' $#
 
 #$ const color = it.color || 'grey-dark' $#
-#$ console.log(color) $#
 
 #$ let _formmethod = it.formmethod || 'POST' $#
 #$ let _formaction = it.formaction || '' $#

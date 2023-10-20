@@ -44,7 +44,11 @@ export default class PageController {
     const { title, desc, cover, script, style } = body;
 
     // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
-    await File.write(cover, params.page_id);
+    await File.write("pages", cover, "cover", params.page_id);
+    await File.write("pages", script, "script", params.page_id);
+    await File.write("pages", style, "style", params.page_id);
+
+    if (style) console.log(style);
 
     sql("pages")
       .update({ title, desc })
@@ -58,7 +62,7 @@ export default class PageController {
   static async delete(c) {
     const { set, params, cookie } = c;
 
-    await File.remove(params.page_id);
+    await File.remove("pages", params.page_id);
 
     sql("pages").delete().where({ page_id: params.page_id }).run();
 
