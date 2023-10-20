@@ -64,8 +64,9 @@ router
   .post("/page/:page_id", (c) => {
     return ElementController.create(c);
   })
-  .post("page/:page_id/script", (c) => {
-    console.log("script");
+  .post("page/:page_id/:file", (c) => {
+    if (c.query._method === "DELETE") return PageController.removeFile(c);
+    else c.set.redirect = `/page/${c.params.page_id}`;
   });
 
 // ELEMENT

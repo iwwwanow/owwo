@@ -63,7 +63,7 @@
 				text: 'удалить',
 				color: 'red',
 				formmethod: 'DELETE',
-				formaction: url_formaction + '/script'
+				formaction: url_formaction + '/script.js'
 				})$#
 			</div>
 			#$ } $#
@@ -92,7 +92,7 @@
 				text: 'удалить',
 				color: 'red',
 				formmethod: 'DELETE',
-				formaction: url_formaction + '/style'
+				formaction: url_formaction + '/style.css'
 				})$#
 			</div>
 			#$ } $#

@@ -69,4 +69,15 @@ export default class PageController {
 
     set.redirect = `/${cookie.username}`;
   }
+
+  static async removeFile(c) {
+    const { set, params } = c;
+    console.log(params);
+
+    const filePath = `./public/data_uploads/pages/${params.page_id}/${params.file}`;
+
+    await File.removeFile(filePath);
+
+    set.redirect = `/page/${params.page_id}`;
+  }
 }

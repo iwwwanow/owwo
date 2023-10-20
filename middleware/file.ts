@@ -53,15 +53,8 @@ export default class File {
     return;
   }
 
-  static async removeFile(dirType: string, dirId: string, fileName: string) {
-    let dir = `./public/data_uploads/${dirType}/${dirId}/`;
-    if (fs.existsSync(dir)) {
-      fs.readdirSync(dir).forEach((file) => {
-        if (file.split(".").at(0) === fileName) {
-          const filePath = dir + file;
-          fs.rmSync(filePath, { recursive: true, force: true });
-        }
-      });
-    }
+  static async removeFile(filePath: string) {
+    console.log(filePath);
+    fs.rmSync(filePath, { recursive: true, force: true });
   }
 }
