@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 
 export default class File {
   static async write(
-    type: string,
+    dir_type: string,
     blob: any,
     name: string,
     id: string
@@ -12,7 +12,7 @@ export default class File {
     if (name === "script") fileExtention = "js";
     else if (name === "style") fileExtention = "css";
 
-    let path = `./public/data_uploads/${type}/${id}/`;
+    let path = `./public/data_uploads/${dir_type}/${id}/`;
     if (!fs.existsSync(path)) {
       fs.mkdirSync(path, { recursive: true });
     }

@@ -54,8 +54,4 @@ params: params
 <style>
 	@import "#$=page.src.style$#";
 
-	.element-sample {
-		color: var(--red);
-	}
-
 </style>

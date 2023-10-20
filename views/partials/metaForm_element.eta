@@ -11,8 +11,9 @@
 	<fieldset class="card">
 		#$~ include('inputFile', {
 		form: 'element_meta-form',
-		name: 'media',
-		src_image: element.src.image,
+		name: 'cover',
+		src_image: element.src.cover,
+		accept: 'image/*',
 		}) $#
 	</fieldset>
 

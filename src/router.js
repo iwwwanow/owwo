@@ -63,7 +63,6 @@ router
     else return ElementController.create(c);
   })
   .post("page/:page_id/:file", (c) => {
-    console.log("post");
     if (c.query._method === "DELETE") return PageController.removeFile(c);
     else c.set.redirect = `/page/${c.params.page_id}`;
   });
@@ -75,8 +74,12 @@ router
   })
   .post("/element/:element_id", (c) => {
     if (c.query._method === "DELETE") return ElementController.delete(c);
-    if (c.query._method === "PUT") return ElementController.update(c);
-    return ElementController.create(c);
+    else if (c.query._method === "PUT") return ElementController.update(c);
+    else return ElementController.create(c);
+  })
+  .post("element/:element_id/:file", (c) => {
+    if (c.query._method === "DELETE") return ElementController.removeFile(c);
+    else c.set.redirect = `/element/${c.params.element_id}`;
   });
 
 export default router;

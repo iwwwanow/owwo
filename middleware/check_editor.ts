@@ -17,7 +17,7 @@ export default function checkEditor({ params, cookie }) {
   } else if (!!params.element_id) {
     const result = SQL("elements")
       .select("element_id")
-      .where({ author: cookie.auth.user_id, element_id: params.element_id })
+      .where({ author_id: cookie.auth.user_id, element_id: params.element_id })
       .get();
     if (result) _editor = !_editor;
   }
