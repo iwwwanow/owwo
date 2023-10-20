@@ -4,6 +4,7 @@ import IndexController from "../controllers/index.js";
 import AuthController from "../controllers/auth.js";
 import UserController from "../controllers/user.js";
 import PageController from "../controllers/page.js";
+import ElementController from "../controllers/element.js";
 
 const router = new Elysia();
 // ERROR
@@ -58,8 +59,27 @@ router
   })
   .post("/page/:page_id", (c) => {
     if (c.query._method === "DELETE") return PageController.delete(c);
-    if (c.query._method === "PUT") return PageController.update(c);
-    // return PageController.update(c);
+    else if (c.query._method === "PUT") return PageController.update(c);
+    else return ElementController.create(c);
+  })
+  .post("page/:page_id/:file", (c) => {
+    if (c.query._method === "DELETE") return PageController.removeFile(c);
+    else c.set.redirect = `/page/${c.params.page_id}`;
+  });
+
+// ELEMENT
+router
+  .get("/element/:element_id", (c) => {
+    return ElementController.index(c);
+  })
+  .post("/element/:element_id", (c) => {
+    if (c.query._method === "DELETE") return ElementController.delete(c);
+    else if (c.query._method === "PUT") return ElementController.update(c);
+    else return ElementController.create(c);
+  })
+  .post("element/:element_id/:file", (c) => {
+    if (c.query._method === "DELETE") return ElementController.removeFile(c);
+    else c.set.redirect = `/element/${c.params.element_id}`;
   });
 
 export default router;

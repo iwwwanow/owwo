@@ -1,39 +1,57 @@
 #$ layout("./layout.eta" )$#
 
+<script src="#$=page.src.script$#"></script>
 
 #$ if (_editor) { $#
-
-#$~ include('partials/page_meta-form', {
-page: it.page,
-params: it.params
+#$~ include('partials/metaForm_page', {
+page: page,
+params: params
 }) $#
-
 #$ } $#
 
 <div class="grid">
-	<h6>title</h6>
-	<div>
+	<div style="grid-column: 1/-2;">
+
+		#$ if (page.title) { $#
+		<h1>#$= page.title $#</h1>
+		#$ } $#
+
+		#$ if (page.authors) {$#
 		<h6>author</h6>
 		<h6>date</h6>
+		#$ } $#
 	</div>
-	<h6>description</h6>
+
+	#$ if (page.desc) { $#
+	<h5>#$= page.desc $#</h5>
+	#$ } $#
 </div>
 
 <div class="grid">
-	<h1 class="element-sample">e1</h1>
-	<h1 class="element-sample">e2</h1>
-	<h1 class="element-sample">e3</h1>
+
+	#$if (!!page.elements) { $#
+	#$ page.elements.forEach(function (element) { $#
+	#$~ include("partials/card", {element}) $#
+	#$ }) $#
+	#$ } $#
 
 	#$ if (_editor) { $#
-	<h1>+</h1>
-	<h1>order form</h1>
+
+	<form action="">
+		#$ const url_formaction = `/page/${params.page_id}` $#
+
+		<div class="card">
+			#$~ include('partials/buttonPlus', {
+			formaction: url_formaction
+			}) $#
+		</div>
+	</form>
+
 	#$ } $#
 
 </div>
 
 <style>
-	.element-sample {
-		color: var(--red);
-	}
+	@import "#$=page.src.style$#";
 
 </style>

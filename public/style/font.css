@@ -2,7 +2,7 @@
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
 }
 h1 {
-  /* margin-bottom: 48px; */
+  margin-bottom: 48px;
 
   color: var(--black);
 
@@ -12,10 +12,10 @@ h1 {
   font-weight: 700;
   line-height: 75%; /* 48px */
   letter-spacing: -2.56px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 h2 {
-  /* margin-bottom: 24px; */
+  margin-bottom: 24px;
 
   color: var(--grey-dark);
 
@@ -25,7 +25,7 @@ h2 {
   font-weight: 700;
   line-height: 24px; /* 85.714% */
   letter-spacing: -0.56px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 h3 {
   color: var(--grey-dark);
@@ -35,7 +35,7 @@ h3 {
   font-style: normal;
   font-weight: 700;
   line-height: 24px; /* 150% */
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 h4 {
   color: var(--black);
@@ -45,7 +45,7 @@ h4 {
   font-style: normal;
   font-weight: 700;
   line-height: 16px; /* 114.286% */
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 h5 {
   color: var(--grey-dark);
@@ -88,12 +88,12 @@ a:visited {
   h1 {
     font-size: 32px;
     line-height: 75%; /* 24px */
-    /* margin-bottom: 24px; */
+    margin-bottom: 24px;
   }
   h2 {
     font-size: 24px;
     line-height: 24px; /* 100% */
-    /* margin-bottom: 24px; */
+    margin-bottom: 24px;
   }
   h1 input[type="text"] {
     height: 24px;

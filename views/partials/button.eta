@@ -3,10 +3,14 @@
 #$ const _name = it.name || 'button-name' $#
 #$ const _value = it.value || 'button-value' $#
 
+#$ const url_download = it.url_download || false $#
+
+#$ const color = it.color || 'grey-dark' $#
+
 #$ let _formmethod = it.formmethod || 'POST' $#
 #$ let _formaction = it.formaction || '' $#
 
-#$ if (_formmethod !== 'POST' && !!_formaction) { $#
+#$ if (_formmethod !== 'POST' && _formmethod !== 'GET' && !!_formaction) { $#
 #$ _formaction = _formaction + `?_method=${_formmethod}` $#
 #$ _formmethod = 'POST' $#
 #$ } $#
@@ -19,10 +23,37 @@
 	</h6>
 </button>
 
+#$} else if (!!url_download) {$#
+
+<button
+	class="#$= _class $# #$=color$#"
+	type="#$= type $#"
+	name="#$= _name $#"
+	value="#$= _value $#"
+	formmethod="#$= _formmethod $#"
+	formaction="#$= _formaction $#"
+>
+	<a
+		style="text-decoration: none;"
+		href="#$=url_download$#"
+		download
+	>
+		<h6>
+			#$= it.text || 'скачать'$#
+		</h6>
+	</a>
+</button>
+
 #$ } else { $#
 
-<button class="#$= _class $#" type="#$= type $#" name="#$= _name $#" value="#$= _value $#"
-	formmethod="#$= _formmethod $#" formaction="#$= _formaction $#">
+<button
+	class="#$= _class $# #$=color$#"
+	type="#$= type $#"
+	name="#$= _name $#"
+	value="#$= _value $#"
+	formmethod="#$= _formmethod $#"
+	formaction="#$= _formaction $#"
+>
 	<h6>
 		#$= it.text $#
 	</h6>
@@ -31,28 +62,30 @@
 #$ } $#
 
 <style>
-	button {
-		padding: 4px 0;
+	button.#$=color$# {
+		padding: 4px 2px;
 		width: 100%;
 		height: fit-content;
 
 		text-transform: uppercase;
 
 		background-color: white;
-		border: 1px solid var(--grey-medium);
+		border: 1px solid var(--#$=color $#);
 	}
 
-	button h6 {
-		color: var(--grey-dark);
+	button.#$=color$# h6 {
+		color: var(--#$=color $#);
+		overflow-wrap: break-word;
 	}
 
-	button:hover {
-		background-color: var(--grey-dark);
-		border: 1px solid var(--grey-dark);
+	/* FIX это пиздец) */
+	#$=`button.${color}:hover` $# {
+		background-color: var(--#$=color $#);
+		border: 1px solid var(--#$=color$#);
 	}
 
-	button:not([disabled]):hover,
-	button:not([disabled]):hover>h6 {
+	button:hover,
+	button:hover h6 {
 		color: var(--white);
 		font-weight: 600;
 	}
@@ -70,78 +103,6 @@
 
 	button[disabled]:hover {
 		border: 1px solid var(--grey-medium);
-	}
-
-	button.green {
-		background-color: var(--white);
-		border: 1px solid var(--green);
-	}
-
-	button.green h6 {
-		color: var(--green);
-	}
-
-	button.green:hover {
-		background-color: var(--green);
-	}
-
-	button.green:hover,
-	button.green:hover>h6 {
-		color: var(--white);
-	}
-
-	button.red {
-		background-color: var(--white);
-		border: 1px solid var(--red);
-	}
-
-	button.red h6 {
-		color: var(--red);
-	}
-
-	button.red:hover {
-		background-color: var(--red);
-	}
-
-	button.red:hover,
-	button.red:hover>h6 {
-		color: var(--white);
-	}
-
-	button.blue {
-		background-color: var(--white);
-		border: 1px solid var(--blue);
-	}
-
-	button.blue h6 {
-		color: var(--blue);
-	}
-
-	button.blue:hover {
-		background-color: var(--blue);
-	}
-
-	button.blue:hover,
-	button.red:hover>h6 {
-		color: var(--white);
-	}
-
-	button.orange {
-		background-color: var(--white);
-		border: 1px solid var(--orange);
-	}
-
-	button.orange h6 {
-		color: var(--orange);
-	}
-
-	button.orange:hover {
-		background-color: var(--orange);
-	}
-
-	button.orange:hover,
-	button.red:hover>h6 {
-		color: var(--white);
 	}
 
 </style>

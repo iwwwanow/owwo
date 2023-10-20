@@ -20,11 +20,13 @@
     grid-template-columns: repeat(6, 190px);
   }
 }
+
 @media screen and (max-width: 1268px) {
   .grid {
     grid-template-columns: repeat(4, 190px);
   }
 }
+
 @media screen and (max-width: 858px) {
   /* TODO на 768 выглядит не очень */
   .grid {
