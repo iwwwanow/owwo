@@ -3,13 +3,14 @@
 #$ const _name = it.name || 'button-name' $#
 #$ const _value = it.value || 'button-value' $#
 
+#$ const url_download = it.url_download || false $#
+
 #$ const color = it.color || 'grey-dark' $#
-#$ console.log(color) $#
 
 #$ let _formmethod = it.formmethod || 'POST' $#
 #$ let _formaction = it.formaction || '' $#
 
-#$ if (_formmethod !== 'POST' && !!_formaction) { $#
+#$ if (_formmethod !== 'POST' && _formmethod !== 'GET' && !!_formaction) { $#
 #$ _formaction = _formaction + `?_method=${_formmethod}` $#
 #$ _formmethod = 'POST' $#
 #$ } $#
@@ -20,6 +21,27 @@
 	<h6>
 		#$= it.text $#
 	</h6>
+</button>
+
+#$} else if (!!url_download) {$#
+
+<button
+	class="#$= _class $# #$=color$#"
+	type="#$= type $#"
+	name="#$= _name $#"
+	value="#$= _value $#"
+	formmethod="#$= _formmethod $#"
+	formaction="#$= _formaction $#"
+>
+	<a
+		style="text-decoration: none;"
+		href="#$=url_download$#"
+		download
+	>
+		<h6>
+			#$= it.text || 'скачать'$#
+		</h6>
+	</a>
 </button>
 
 #$ } else { $#
@@ -41,7 +63,7 @@
 
 <style>
 	button.#$=color$# {
-		padding: 4px 0;
+		padding: 4px 2px;
 		width: 100%;
 		height: fit-content;
 
@@ -53,6 +75,7 @@
 
 	button.#$=color$# h6 {
 		color: var(--#$=color $#);
+		overflow-wrap: break-word;
 	}
 
 	/* FIX это пиздец) */

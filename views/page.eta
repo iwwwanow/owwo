@@ -1,5 +1,6 @@
 #$ layout("./layout.eta" )$#
 
+<script src="#$=page.src.script$#"></script>
 
 #$ if (_editor) { $#
 #$~ include('partials/metaForm_page', {
@@ -42,6 +43,8 @@ params: params
 </div>
 
 <style>
+	@import "#$=page.src.style$#";
+
 	.element-sample {
 		color: var(--red);
 	}

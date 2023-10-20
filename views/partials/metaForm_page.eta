@@ -13,7 +13,7 @@
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
-		cover_src: page.cover_src,
+		src_image: page.src.cover,
 		}) $#
 	</fieldset>
 
@@ -39,26 +39,66 @@
 	</fieldset>
 
 	<fieldset class="card">
+
 		#$ const url_formaction = `/page/${params.page_id}` $#
+		#$ const page_dir = `/public/data_uploads/pages/${params.page_id}/` $#
 
-		#$~ include('buttonPlus', {
-		formaction: url_formaction
-		}) $#
+		<div class="input-container">
+			#$~ include('inputFile', {
+			form: 'page_meta-form',
+			accept: '.js',
+			name: 'script',
+			color: 'js',
+			}) $#
 
-		#$~ include('inputFile', {
-		form: 'page_meta-form',
-		accept: '.js',
-		name: 'script',
-		color: 'js',
-		}) $#
+			#$ const url_scriptDownload = page_dir + 'script.js' $#
+			#$ if (page.src.script) { $#
+			<div class="input-container_button-container">
+				#$~include('button', {
+				url_download: url_scriptDownload
+				})$#
 
-		#$~ include('inputFile', {
-		form: 'page_meta-form',
-		accept: '.css',
-		name: 'style',
-		color: 'css',
-		}) $#
+				#$~include('button', {
+				type: 'submit',
+				text: 'удалить',
+				color: 'red',
+				formmethod: 'DELETE',
+				formaction: url_formaction + '/script.js'
+				})$#
+			</div>
+			#$ } $#
 
+		</div>
+
+		<hr>
+
+		<div class="input-container">
+			#$~ include('inputFile', {
+			form: 'page_meta-form',
+			accept: '.css',
+			name: 'style',
+			color: 'css',
+			}) $#
+
+			#$ const url_styleDownload = page_dir + 'style.css' $#
+			#$ if (page.src.style) { $#
+			<div class="input-container_button-container">
+				#$~include('button', {
+				url_download: url_styleDownload
+				})$#
+
+				#$~include('button', {
+				type: 'submit',
+				text: 'удалить',
+				color: 'red',
+				formmethod: 'DELETE',
+				formaction: url_formaction + '/style.css'
+				})$#
+			</div>
+			#$ } $#
+		</div>
+
+		<hr style="border-color: var(--grey-dark);">
 
 		#$~ include('button', {
 		type: 'submit',
@@ -73,7 +113,7 @@
 		type: 'submit',
 		color: 'red',
 		value: 'delete',
-		text: 'удалить',
+		text: 'удалить страницу',
 		formmethod: 'DELETE',
 		formaction: url_formaction
 		}) $#
@@ -96,6 +136,19 @@
 		display: flex;
 		gap: 4px;
 		flex-direction: column;
+	}
+
+	.input-container {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.input-container_button-container {
+		display: flex;
+		flex-direction: row;
+		gap: 4px;
 	}
 
 </style>
