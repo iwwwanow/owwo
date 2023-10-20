@@ -8,20 +8,22 @@ export default class PageController {
   static async index(c) {
     const { params } = c;
 
-    c.page = sql("pages")
+    let output = c;
+
+    output.page = sql("pages")
       .select(["page_id", "title", "desc"])
       .where({ page_id: params.page_id })
       .get();
 
-    // c.page.src.cover = File.srcCover("pages", params.page_id);
-    c.page.src = File.src("pages", params.page_id);
+    // FIX ошибка типов. свойство readonly
+    output.page.src = File.get_src("pages", params.page_id);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"
     );
-    c.page.elements = elements_query.all({ $page_id: params.page_id });
+    output.page.elements = elements_query.all({ $page_id: params.page_id });
 
-    return eta.render("page", c);
+    return eta.render("page", output);
   }
 
   static async create(c) {
@@ -44,8 +46,8 @@ export default class PageController {
     const { set, params, body } = c;
     const { title, desc, cover, script, style } = body;
 
-    // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
-    if (!!cover.size) await File.removeFile("pages", params.page_id, "cover");
+    // FIX можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
+    if (!!cover.size) await File.removeCover("pages", params.page_id);
 
     await File.write("pages", cover, "cover", params.page_id);
     await File.write("pages", script, "script", params.page_id);
@@ -62,22 +64,14 @@ export default class PageController {
 
   static async delete(c) {
     const { set, params, cookie } = c;
-
     await File.removeDir("pages", params.page_id);
-
     sql("pages").delete().where({ page_id: params.page_id }).run();
-
     set.redirect = `/${cookie.username}`;
   }
 
   static async removeFile(c) {
     const { set, params } = c;
-    console.log(params);
-
-    const filePath = `./public/data_uploads/pages/${params.page_id}/${params.file}`;
-
-    await File.removeFile(filePath);
-
+    await File.removeFile("pages", params.page_id, params.file);
     set.redirect = `/page/${params.page_id}`;
   }
 }

@@ -20,9 +20,9 @@ export default class File {
     await Bun.write(path, blob);
   }
 
-  static src(type: string, id: string) {
+  static get_src(dir_type: string, id: string) {
     let result = {};
-    let dir = `./public/data_uploads/${type}/${id}`;
+    let dir = `./public/data_uploads/${dir_type}/${id}`;
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
         const fileName = file.split(".").at(0);
@@ -53,8 +53,19 @@ export default class File {
     return;
   }
 
-  static async removeFile(filePath: string) {
-    console.log(filePath);
+  static async removeFile(dir_type: string, id: string, file: string) {
+    const filePath = `./public/data_uploads/${dir_type}/${id}/${file}`;
     fs.rmSync(filePath, { recursive: true, force: true });
+  }
+
+  static async removeCover(dir_type: string, id: string) {
+    let dir = `./public/data_uploads/${dir_type}/${id}/`;
+    if (fs.existsSync(dir)) {
+      fs.readdirSync(dir).forEach((file) => {
+        if (file.split(".").at(0) === "cover") {
+          this.removeFile(dir_type, id, file);
+        }
+      });
+    }
   }
 }
