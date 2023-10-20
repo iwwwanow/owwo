@@ -2,16 +2,20 @@
 
 <div class="grid">
 
-	<form method="POST" action="/signup" class="login_container">
+	<form
+		method="POST"
+		action="/signup"
+		class="login_container"
+	>
 
-		#$~ include("./partials/input_text.eta", {
+		#$~ include("./partials/inputText.eta", {
 		name: 'username',
 		placeholder: 'username',
 		id: 'signup_input-username',
 		required: true
 		})$#
 
-		#$~ include("./partials/input_text.eta", {
+		#$~ include("./partials/inputText.eta", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'password',
@@ -19,7 +23,7 @@
 		required: true
 		})$#
 
-		#$~ include("./partials/input_text.eta", {
+		#$~ include("./partials/inputText.eta", {
 		name: 'confirm',
 		type: 'password',
 		placeholder: 'confirm password',

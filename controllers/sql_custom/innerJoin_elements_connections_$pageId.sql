@@ -1,7 +1,6 @@
 SELECT
   l.element_id,
-  l.title,
-  l.desc
+  l.text
 FROM
   elements l
   INNER JOIN connections r ON l.element_id = r.element_id

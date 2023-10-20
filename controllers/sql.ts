@@ -36,9 +36,8 @@ export default function sql(table_name: string) {
         table_name: "elements",
         columns: {
           element_id: "TEXT PRIMARY KEY",
-          title: "TEXT",
-          desc: "TEXT",
-          author: "TEXT",
+          text: "TEXT",
+          author_id: "TEXT",
         },
       });
 

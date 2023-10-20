@@ -37,7 +37,6 @@
 	</fieldset>
 
 	<fieldset class="card">
-
 		#$ const url_formaction = `/page/${params.page_id}` $#
 		#$ const page_dir = `/public/data_uploads/pages/${params.page_id}/` $#
 
@@ -65,7 +64,6 @@
 				})$#
 			</div>
 			#$ } $#
-
 		</div>
 
 		<hr>

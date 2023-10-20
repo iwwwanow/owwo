@@ -13,6 +13,13 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .get();
 
+    // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL запрос
+    // c.page.authors = sql("authors")
+    //   .select("user_id")
+    //   .where({ page_id: params.page_id })
+    //   .get();
+    // console.log(c.page.authors);
+
     // FIX ошибка типов. свойство readonly
     c.page.src = File.get_src("pages", params.page_id);
 
