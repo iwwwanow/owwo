@@ -13,8 +13,9 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .get();
 
-    c.page.src = {};
-    c.page.src.cover = await File.srcCover("pages", params.page_id);
+    // c.page.src.cover = File.srcCover("pages", params.page_id);
+    c.page.src = File.src("pages", params.page_id);
+    console.log(c.page.src);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"

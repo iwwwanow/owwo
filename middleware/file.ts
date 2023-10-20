@@ -20,6 +20,19 @@ export default class File {
     await Bun.write(path, blob);
   }
 
+  static src(type: string, id: string) {
+    let result = {};
+    let dir = `./public/data_uploads/${type}/${id}`;
+    if (fs.existsSync(dir)) {
+      fs.readdirSync(dir).forEach((file) => {
+        const fileName = file.split(".").at(0);
+        const filePath = dir.substring(1) + "/" + file;
+        result[fileName] = filePath;
+      });
+    }
+    return result;
+  }
+
   static srcCover(type: string, id: string) {
     // TODO почему не могу вернуть из внутренней функции? как работают стрелочные??
     let result;
