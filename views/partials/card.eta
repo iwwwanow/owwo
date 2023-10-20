@@ -21,7 +21,7 @@
 			</div>
 		</div>
 
-		#$ if (!!obj.src.cover) { $#
+		#$ if (!!obj.src && !!obj.src.cover) { $#
 		<img
 			src="#$= obj.src.cover $#"
 			alt="cover"

@@ -1,8 +1,6 @@
-#$ color = 'grey-light' $#
-
 <form
 	id="page_meta-form"
-	class="grid page_meta-container"
+	class="grid meta-container"
 	method="POST"
 	action="/page/#$= params.page_id $#"
 	enctype="multipart/form-data"
@@ -128,27 +126,3 @@
 	<hr>
 
 </form>
-
-
-<style>
-	.page_meta-child-container {
-		height: 100%;
-		display: flex;
-		gap: 4px;
-		flex-direction: column;
-	}
-
-	.input-container {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-	}
-
-	.input-container_button-container {
-		display: flex;
-		flex-direction: row;
-		gap: 4px;
-	}
-
-</style>

@@ -19,7 +19,7 @@
 		display: block;
 		resize: none;
 
-		padding: 0 4px;
+		padding: 4px;
 
 		color: var(--grey-dark);
 		background-color: var(--grey-light);
@@ -38,10 +38,10 @@
 	}
 
 	textarea:focus {
-		color: var(--grey-light);
-		background-color: var(--grey-dark);
+		color: var(--black);
+		background-color: var(--white);
 
-		outline: none;
+		outline: 1px solid var(--black);
 	}
 
 </style>

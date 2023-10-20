@@ -8,22 +8,20 @@ export default class PageController {
   static async index(c) {
     const { params } = c;
 
-    let output = c;
-
-    output.page = sql("pages")
+    c.page = sql("pages")
       .select(["page_id", "title", "desc"])
       .where({ page_id: params.page_id })
       .get();
 
     // FIX ошибка типов. свойство readonly
-    output.page.src = File.get_src("pages", params.page_id);
+    c.page.src = File.get_src("pages", params.page_id);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"
     );
-    output.page.elements = elements_query.all({ $page_id: params.page_id });
+    c.page.elements = elements_query.all({ $page_id: params.page_id });
 
-    return eta.render("page", output);
+    return eta.render("page", c);
   }
 
   static async create(c) {

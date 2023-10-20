@@ -1,52 +1,96 @@
-#$ color = 'grey-light' $#
+#$ if (!element.src) element.src = '' $#
 
 <form
 	id="element_meta-form"
-	class="grid page_meta-container"
+	class="grid meta-container"
 	method="POST"
 	action="/element/#$= params.element_id $#"
-	enctype="multipart/form-data">
+	enctype="multipart/form-data"
+>
 
 	<fieldset class="card">
 		#$~ include('inputFile', {
-		form: 'page_meta-form',
+		form: 'element_meta-form',
 		name: 'media',
-		page_id: params.element_id,
-		cover_src: element.cover_src,
+		src_image: element.src.image,
 		}) $#
 	</fieldset>
 
 	<fieldset class="card">
-		<h4>
-			#$~ include('textarea', {
-			form: 'page_meta-form',
-			name: 'title',
-			text: element.title,
-			placeholder: 'page-title',
-			rows: 2
-			}) $#
-		</h4>
-
 		<h5 style="height: 100%;">
 			#$~ include('textarea', {
-			form: 'page_meta-form',
-			name: 'desc',
-			text: element.desc,
-			placeholder: 'page-description',
+			form: 'element_meta-form',
+			name: 'text',
+			text: element.text,
+			placeholder: 'element-text',
 			}) $#
 		</h5>
 	</fieldset>
 
 	<fieldset class="card">
 		#$ const url_formaction = `/element/${params.element_id}` $#
+		#$ const element_dir = `/public/data_uploads/elements/${params.element_id}/` $#
 
-		#$~ include('buttonPlus', {
-		formaction: url_formaction
-		}) $#
+		<div class="input-container">
+			#$~ include('inputFile', {
+			form: 'element_meta-form',
+			accept: '.js',
+			name: 'script',
+			color: 'js',
+			}) $#
+
+			#$ const url_scriptDownload = element_dir + 'script.js' $#
+			#$ if (element.src.script) { $#
+			<div class="input-container_button-container">
+				#$~include('button', {
+				url_download: url_scriptDownload
+				})$#
+
+				#$~include('button', {
+				type: 'submit',
+				text: 'удалить',
+				color: 'red',
+				formmethod: 'DELETE',
+				formaction: url_formaction + '/script.js'
+				})$#
+			</div>
+			#$ } $#
+		</div>
+
+		<hr>
+
+		<div class="input-container">
+			#$~ include('inputFile', {
+			form: 'element_meta-form',
+			accept: '.css',
+			name: 'style',
+			color: 'css',
+			}) $#
+
+			#$ const url_styleDownload = element_dir + 'style.css' $#
+			#$ if (element.src.style) { $#
+			<div class="input-container_button-container">
+				#$~include('button', {
+				url_download: url_styleDownload
+				})$#
+
+				#$~include('button', {
+				type: 'submit',
+				text: 'удалить',
+				color: 'red',
+				formmethod: 'DELETE',
+				formaction: url_formaction + '/style.css'
+				})$#
+			</div>
+			#$ } $#
+		</div>
+
+		<hr style="border-color: var(--grey-dark);">
 
 		#$~ include('button', {
 		type: 'submit',
 		value: 'default',
+		color: 'grey-dark',
 		text: 'опубликовать',
 		formmethod: 'PUT',
 		formaction: url_formaction
@@ -54,31 +98,15 @@
 
 		#$~ include('button', {
 		type: 'submit',
-		class: 'red',
+		color: 'red',
 		value: 'delete',
-		text: 'удалить',
+		text: 'удалить элемент',
 		formmethod: 'DELETE',
 		formaction: url_formaction
 		}) $#
 
 	</fieldset>
 
-	<fieldset>
-		<h1>grid</h1>
-		<h1>list</h1>
-	</fieldset>
-
 	<hr>
 
 </form>
-
-
-<style>
-	.page_meta-child-container {
-		height: 100%;
-		display: flex;
-		gap: 4px;
-		flex-direction: column;
-	}
-
-</style>

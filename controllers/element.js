@@ -28,7 +28,7 @@ export default class ElementController {
       .where({ element_id })
       .run();
 
-    set.redirect = `/page/${params.page_id}`;
+    set.redirect = `/element/${element_id}`;
   }
   static update(c) {
     const { set, params, body } = c;

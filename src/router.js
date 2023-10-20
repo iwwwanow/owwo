@@ -59,12 +59,11 @@ router
   })
   .post("/page/:page_id", (c) => {
     if (c.query._method === "DELETE") return PageController.delete(c);
-    if (c.query._method === "PUT") return PageController.update(c);
-  })
-  .post("/page/:page_id", (c) => {
-    return ElementController.create(c);
+    else if (c.query._method === "PUT") return PageController.update(c);
+    else return ElementController.create(c);
   })
   .post("page/:page_id/:file", (c) => {
+    console.log("post");
     if (c.query._method === "DELETE") return PageController.removeFile(c);
     else c.set.redirect = `/page/${c.params.page_id}`;
   });
