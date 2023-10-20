@@ -7,8 +7,6 @@ export default class File {
     name: string,
     id: string
   ): Promise<void> {
-    let mediaType: string;
-
     let fileExtention = blob.type.split("/").at(-1);
 
     if (name === "script") fileExtention = "js";
@@ -22,7 +20,7 @@ export default class File {
     await Bun.write(path, blob);
   }
 
-  static src(type: string, id: string) {
+  static srcCover(type: string, id: string) {
     // TODO почему не могу вернуть из внутренней функции? как работают стрелочные??
     let result;
     let dir = `./public/data_uploads/${type}/${id}`;
@@ -36,9 +34,21 @@ export default class File {
     return result;
   }
 
-  static async remove(page_id: string) {
-    let path = `./public/data_uploads/pages/${page_id}/`;
-    fs.rmSync(path, { recursive: true, force: true });
+  static async removeDir(type: string, id: string) {
+    let dir = `./public/data_uploads/${type}/${id}/`;
+    fs.rmSync(dir, { recursive: true, force: true });
     return;
+  }
+
+  static async removeFile(dirType: string, dirId: string, fileName: string) {
+    let dir = `./public/data_uploads/${dirType}/${dirId}/`;
+    if (fs.existsSync(dir)) {
+      fs.readdirSync(dir).forEach((file) => {
+        if (file.split(".").at(0) === fileName) {
+          const filePath = dir + file;
+          fs.rmSync(filePath, { recursive: true, force: true });
+        }
+      });
+    }
   }
 }

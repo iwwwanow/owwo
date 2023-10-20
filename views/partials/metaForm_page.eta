@@ -13,7 +13,7 @@
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
-		cover_src: page.cover_src,
+		src_image: page.src.cover,
 		}) $#
 	</fieldset>
 

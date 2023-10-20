@@ -13,7 +13,8 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .get();
 
-    c.page.cover_src = await File.src("pages", params.page_id);
+    c.page.src = {};
+    c.page.src.cover = await File.srcCover("pages", params.page_id);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"
@@ -44,11 +45,11 @@ export default class PageController {
     const { title, desc, cover, script, style } = body;
 
     // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
+    if (!!cover.size) await File.removeFile("pages", params.page_id, "cover");
+
     await File.write("pages", cover, "cover", params.page_id);
     await File.write("pages", script, "script", params.page_id);
     await File.write("pages", style, "style", params.page_id);
-
-    if (style) console.log(style);
 
     sql("pages")
       .update({ title, desc })
@@ -62,7 +63,7 @@ export default class PageController {
   static async delete(c) {
     const { set, params, cookie } = c;
 
-    await File.remove("pages", params.page_id);
+    await File.removeDir("pages", params.page_id);
 
     sql("pages").delete().where({ page_id: params.page_id }).run();
 

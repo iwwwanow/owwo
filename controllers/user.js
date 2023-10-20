@@ -17,9 +17,10 @@ export default class UserController {
     );
     c.pages = pages_query.all({ $user_id: user_id });
 
-    c.pages.forEach(
-      (page) => (page.cover_src = File.src("pages", page.page_id))
-    );
+    c.pages.forEach((page) => {
+      page.src = {};
+      page.src.cover = File.srcCover("pages", page.page_id);
+    });
 
     return eta.render("profile", c);
   }

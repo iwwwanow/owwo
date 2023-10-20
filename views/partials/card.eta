@@ -21,9 +21,9 @@
 			</div>
 		</div>
 
-		#$ if (!!obj.cover_src) { $#
+		#$ if (!!obj.src.cover) { $#
 		<img
-			src="#$= obj.cover_src $#"
+			src="#$= obj.src.cover $#"
 			alt="cover"
 		>
 		#$ } $#

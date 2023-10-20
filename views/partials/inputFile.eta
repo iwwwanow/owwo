@@ -1,6 +1,6 @@
 #$ const name = it.name || 'input-file' $#
 #$ const multiple = it.multiple ? 'multiple' : '' $#
-#$ const cover_src = it.cover_src || false $#
+#$ const src_image = it.src_image || false $#
 #$ const customClass = it.customClass || '' $#
 #$ const style = it.style || '' $#
 #$ const accept = it.accept || '' $#
@@ -12,9 +12,9 @@
 	class="input-file_label #$= customClass $# #$= color $#"
 	style="#$= style $#"
 >
-	#$ if (cover_src) { $#
+	#$ if (src_image) { $#
 	<img
-		src="#$= cover_src $#"
+		src="#$= src_image $#"
 		alt=""
 	>
 	#$ } else { $#
