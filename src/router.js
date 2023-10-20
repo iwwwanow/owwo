@@ -63,6 +63,9 @@ router
   })
   .post("/page/:page_id", (c) => {
     return ElementController.create(c);
+  })
+  .post("page/:page_id/script", (c) => {
+    console.log("script");
   });
 
 // ELEMENT
