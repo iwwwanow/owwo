@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { marked } from "marked";
 
 import File from "../middleware/file.ts";
 import { eta } from "../config/eta";
@@ -14,6 +15,10 @@ export default class ElementController {
       .get();
 
     c.element.src = File.get_src("elements", params.element_id);
+
+    const html = marked.parse(c.element.text);
+
+    c.element.html = html;
 
     return eta.render("element", c);
   }

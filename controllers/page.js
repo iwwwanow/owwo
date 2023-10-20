@@ -28,6 +28,10 @@ export default class PageController {
     );
     c.page.elements = elements_query.all({ $page_id: params.page_id });
 
+    c.page.elements.map((element) => {
+      return (element.src = File.get_src("elements", element.element_id));
+    });
+
     return eta.render("page", c);
   }
 

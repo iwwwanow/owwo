@@ -1,13 +1,14 @@
 #$ layout("./layout.eta")$#
 
 <div class="grid">
-	<div>
-		<h4 class="about-text">Платформа для публикации.</h4>
-		<h4><a
-				href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1">figma</a>
-		</h4>
-		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
-	</div>
+	<h2 class="about-text">Платформа для публикации и коллабораций.</h4>
+		<div>
+			<h2><a
+					href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1"
+				>figma</a>
+			</h2>
+			<h2><a href="https://github.com/effektivnayarabota1/owwo">github</a></h2>
+		</div>
 </div>
 
 <style>
