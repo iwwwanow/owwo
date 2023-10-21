@@ -13,10 +13,15 @@ export default class PageController {
 
     const props = new Props(c);
 
-    props.page = sql("pages")
-      .select(["page_id", "title", "desc"])
+    const page = sql("pages")
+      .select(["page_id", "title", "desc", "markup"])
       .where({ page_id })
       .get();
+
+    props.title = page.title;
+    props.desc = page.desc;
+    props.markup = page.markup;
+    props.page_id = page.page_id;
 
     // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL для вывода авторов и информации страницы
     // const authors = sql("authors")
@@ -66,7 +71,7 @@ export default class PageController {
 
   static async update(c) {
     const { set, params, body } = c;
-    const { title, desc, cover, script, style } = body;
+    const { title, desc, cover, script, style, markup } = body;
 
     // FIX можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
     if (!!cover.size) await File.removeImage("pages", params.page_id, "cover");
@@ -76,7 +81,7 @@ export default class PageController {
     await File.write("pages", style, "style", params.page_id);
 
     sql("pages")
-      .update({ title, desc })
+      .update({ title, desc, markup })
       .where({ page_id: params.page_id })
       .run();
 

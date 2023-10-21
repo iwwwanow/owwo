@@ -13,6 +13,9 @@ export default class Props {
   src;
   text;
   html;
+  title;
+  desc;
+  markup;
 
   constructor(c) {
     this._editor = c._editor;

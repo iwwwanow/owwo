@@ -20,7 +20,7 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'title',
-			text: page.title,
+			text: title,
 			placeholder: 'page-title',
 			rows: 2
 			}) $#
@@ -30,10 +30,26 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
-			text: page.desc,
+			text: desc,
 			placeholder: 'page-description',
 			}) $#
 		</h5>
+	</fieldset>
+
+	<fieldset style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+		#$~ include('inputRadio', {
+		name: 'markup',
+		value: 'grid',
+		check: markup
+		}) $#
+
+		<h5>MARKUP</h5>
+
+		#$~ include('inputRadio', {
+		name: 'markup',
+		value: 'list',
+		check: markup,
+		}) $#
 	</fieldset>
 
 	<fieldset class="card">
@@ -116,10 +132,6 @@
 
 	</fieldset>
 
-	<fieldset>
-		<h1>grid</h1>
-		<h1>list</h1>
-	</fieldset>
 
 	<hr>
 

@@ -3,7 +3,6 @@
 #$ const user = null $#
 
 #$ if (_editor) { $#
-#$ console.log(it) $#
 #$~ include('partials/metaForm_user', it) $#
 #$ } $#
 
