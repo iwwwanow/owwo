@@ -1,5 +1,6 @@
 #$ const type = it.type || 'button' $#
 #$ const _class = it.class || 'default' $#
+#$ const style = it.style || '' $#
 #$ const _name = it.name || 'button-name' $#
 #$ const _value = it.value || 'button-value' $#
 
@@ -17,7 +18,10 @@
 
 #$ if (_class==="disabled" ) { $#
 
-<button disabled>
+<button
+	style="#$=style$#"
+	disabled
+>
 	<h6>
 		#$= it.text $#
 	</h6>
@@ -27,6 +31,7 @@
 
 <button
 	class="#$= _class $# #$=color$#"
+	style="#$= style $#"
 	type="#$= type $#"
 	name="#$= _name $#"
 	value="#$= _value $#"
@@ -48,6 +53,7 @@
 
 <button
 	class="#$= _class $# #$=color$#"
+	style="#$= style $#"
 	type="#$= type $#"
 	name="#$= _name $#"
 	value="#$= _value $#"

@@ -2,7 +2,10 @@
 
 #$ const user = null $#
 
-meta
+#$ if (_editor) { $#
+#$ console.log(it.src) $#
+#$~ include('partials/metaForm_user', it) $#
+#$ } $#
 
 <div class="grid">
 

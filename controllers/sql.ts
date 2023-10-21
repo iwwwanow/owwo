@@ -16,6 +16,7 @@ export default function sql(table_name: string) {
           user_id: "TEXT PRIMARY KEY",
           username: "TEXT NOT NULL",
           password: "TEXT NOT NULL",
+          text: "TEXT",
         },
       });
       this.custom("createIndex_idx_users_username");

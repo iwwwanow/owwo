@@ -15,6 +15,8 @@ export default class UserController {
 
     const user_id = sql("users").select("user_id").where({ username }).get();
 
+    props.src = File.get_src("users", user_id);
+
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
     );
