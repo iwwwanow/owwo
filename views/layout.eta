@@ -63,15 +63,16 @@
 
 </head>
 
-#$ if (it.src && src.script) { $#
-<script src="#$=src.script$#"></script>
-#$ } $#
-
 <body>
 	<div class="wrapper">
 		#$~ include("partials/header", it )$#
 		#$~ body $#
 	</div>
+
+	#$ if (it.src && src.script) { $#
+	<script src="#$=src.script$#"></script>
+	#$ } $#
+
 </body>
 
 </html>

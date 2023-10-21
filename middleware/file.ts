@@ -58,11 +58,11 @@ export default class File {
     fs.rmSync(filePath, { recursive: true, force: true });
   }
 
-  static async removeCover(dir_type: string, id: string) {
+  static async removeImage(dir_type: string, id: string, imageName: string) {
     let dir = `./public/data_uploads/${dir_type}/${id}/`;
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
-        if (file.split(".").at(0) === "cover") {
+        if (file.split(".").at(0) === imageName) {
           this.removeFile(dir_type, id, file);
         }
       });

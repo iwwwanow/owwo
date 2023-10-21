@@ -1,0 +1,125 @@
+<form
+	id="user_meta-form"
+	class="grid meta-container"
+	method="POST"
+	action="/#$= username $#"
+	enctype="multipart/form-data"
+>
+
+	<fieldset>
+		#$~ include('inputFile', {
+		form: 'user_meta-form',
+		style: 'aspect-ratio: 1/1; height: auto;',
+		name: 'avatar',
+		accept: 'image/*',
+		src_image: src.avatar,
+		}) $#
+	</fieldset>
+
+	<fieldset>
+		<h4 style="height: 100%;">
+			#$~ include('textarea', {
+			form: 'user_meta-form',
+			name: 'text',
+			text: text,
+			placeholder: 'profile-text',
+			}) $#
+		</h4>
+	</fieldset>
+
+	#$ const url_formaction = `/${username}` $#
+	#$ const user_dir = `/public/data_uploads/users/${user_id}/` $#
+
+	<fieldset class="input-container">
+		#$~ include('inputFile', {
+		form: 'user_meta-form',
+		accept: '.js',
+		name: 'script',
+		color: 'js',
+		}) $#
+
+		#$ const url_scriptDownload = user_dir + 'script.js' $#
+		#$ if (src.script) { $#
+		<div class="input-container_button-container">
+			#$~include('button', {
+			url_download: url_scriptDownload
+			})$#
+
+			#$~include('button', {
+			type: 'submit',
+			text: 'удалить',
+			color: 'red',
+			formmethod: 'DELETE',
+			formaction: url_formaction + '/script.js'
+			})$#
+		</div>
+		#$ } $#
+	</fieldset>
+
+	<fieldset class="input-container">
+		#$~ include('inputFile', {
+		form: 'user_meta-form',
+		accept: '.css',
+		name: 'style',
+		color: 'css',
+		}) $#
+
+		#$ const url_styleDownload = user_dir + 'style.css' $#
+		#$ if (src.style) { $#
+		<div class="input-container_button-container">
+			#$~include('button', {
+			url_download: url_styleDownload
+			})$#
+
+			#$~include('button', {
+			type: 'submit',
+			text: 'удалить',
+			color: 'red',
+			formmethod: 'DELETE',
+			formaction: url_formaction + '/style.css'
+			})$#
+		</div>
+		#$ } $#
+	</fieldset>
+
+	<fieldset style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+		#$~ include('inputRadio', {
+		name: 'markup',
+		value: 'grid',
+		check: markup
+		}) $#
+
+		<h5>MARKUP</h5>
+
+		#$~ include('inputRadio', {
+		name: 'markup',
+		value: 'list',
+		check: markup,
+		}) $#
+	</fieldset>
+
+	<fieldset style="display: flex; flex-direction: column; gap: 8px;">
+		#$~ include('button', {
+		type: 'submit',
+		value: 'default',
+		color: 'grey-dark',
+		style: 'height: 100%',
+		text: 'обновить инфо',
+		formmethod: 'PUT',
+		formaction: url_formaction
+		}) $#
+
+		#$~ include('button', {
+		type: 'submit',
+		color: 'red',
+		value: 'delete',
+		text: 'удалить профиль',
+		formmethod: 'DELETE',
+		formaction: url_formaction
+		}) $#
+	</fieldset>
+
+
+	<hr>
+
+</form>

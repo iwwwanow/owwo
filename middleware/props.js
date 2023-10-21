@@ -11,6 +11,7 @@ export default class Props {
   element;
   elements;
   src;
+  text;
   html;
 
   constructor(c) {
