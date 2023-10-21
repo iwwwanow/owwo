@@ -53,7 +53,19 @@
 		rel="stylesheet"
 		href="/public/style/card.css"
 	/>
+
+	#$ if (src.style) { $#
+	<link
+		rel="stylesheet"
+		href="#$=src.style$#"
+	/>
+	#$ } $#
+
 </head>
+
+#$ if (src.script) { $#
+<script src="#$=src.script$#"></script>
+#$ } $#
 
 <body>
 	<div class="wrapper">

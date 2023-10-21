@@ -1,12 +1,8 @@
 #$ layout("./layout.eta" )$#
 
-<script src="#$=page.src.script$#"></script>
 
 #$ if (_editor) { $#
-#$~ include('partials/metaForm_page', {
-page: page,
-params: params
-}) $#
+#$~ include('partials/metaForm_page', it) $#
 #$ } $#
 
 <div class="grid">
@@ -33,8 +29,8 @@ params: params
 <div class="
 		grid">
 
-	#$if (!!page.elements) { $#
-	#$ page.elements.forEach(function (element) { $#
+	#$if (!!elements) { $#
+	#$ elements.forEach(function (element) { $#
 	#$~ include("partials/card", {element}) $#
 	#$ }) $#
 	#$ } $#
@@ -42,7 +38,7 @@ params: params
 	#$ if (_editor) { $#
 
 	<form action="">
-		#$ const url_formaction = `/page/${params.page_id}` $#
+		#$ const url_formaction = `/page/${page_id}` $#
 
 		<div class="card">
 			#$~ include('partials/buttonPlus', {
@@ -54,8 +50,3 @@ params: params
 	#$ } $#
 
 </div>
-
-<style>
-	@import "#$=page.src.style$#";
-
-</style>

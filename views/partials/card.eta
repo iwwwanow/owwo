@@ -27,7 +27,6 @@
 		</div>
 		#$ } $#
 
-		#$ console.log(obj) $#
 		#$ if (!!obj.src && !!obj.src.cover) { $#
 		<img
 			src="#$= obj.src.cover $#"
