@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { marked } from "marked";
 
 import File from "../middleware/file.ts";
+import Props from "../middleware/props.js";
 import { eta } from "../config/eta";
 import sql from "./sql.ts";
 
@@ -9,19 +10,25 @@ export default class ElementController {
   static index(c) {
     const { params } = c;
 
-    c.element = sql("elements")
+    const props = new Props(c);
+
+    props.element = sql("elements")
       .select(["element_id", "text"])
       .where({ element_id: params.element_id })
       .get();
 
-    c.element.src = File.get_src("elements", params.element_id);
+    props.src = File.get_src("elements", params.element_id);
 
-    const html = marked.parse(c.element.text);
+    let html;
+    if (props.element.text) {
+      html = marked.parse(props.element.text);
+    }
 
-    c.element.html = html;
+    props.html = html;
 
-    return eta.render("element", c);
+    return eta.render("element", props);
   }
+
   static create(c) {
     const { set, params, cookie } = c;
 
@@ -38,6 +45,7 @@ export default class ElementController {
 
     set.redirect = `/element/${element_id}`;
   }
+
   static async update(c) {
     const { set, params, body } = c;
     const { text, cover, script, style } = body;

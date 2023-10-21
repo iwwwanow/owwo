@@ -13,8 +13,6 @@ export default class PageController {
 
     const props = new Props(c);
 
-    props._editor = c._editor;
-
     props.page = sql("pages")
       .select(["page_id", "title", "desc"])
       .where({ page_id })
@@ -33,6 +31,7 @@ export default class PageController {
     //     .get();
     // });
 
+    // TODO упаковать это в модлевайр PROPS
     props.src = File.get_src("pages", page_id);
 
     const elements_query = await sql().custom_all(

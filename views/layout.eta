@@ -54,7 +54,7 @@
 		href="/public/style/card.css"
 	/>
 
-	#$ if (src.style) { $#
+	#$ if (it.src && src.style) { $#
 	<link
 		rel="stylesheet"
 		href="#$=src.style$#"
@@ -63,7 +63,7 @@
 
 </head>
 
-#$ if (src.script) { $#
+#$ if (it.src && src.script) { $#
 <script src="#$=src.script$#"></script>
 #$ } $#
 
