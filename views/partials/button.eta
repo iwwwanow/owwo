@@ -19,7 +19,7 @@
 #$ if (_class==="disabled" ) { $#
 
 <button
-class="border__outter"
+	class="border__outter"
 	style="#$=style$#"
 	disabled
 >
@@ -69,20 +69,29 @@ class="border__outter"
 #$ } $#
 
 <style>
-	button.#$=color$# {
+	button {
 		padding: 4px 2px;
 		width: 100%;
 		height: fit-content;
 
-		text-transform: uppercase;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
+		text-transform: uppercase;
 		background-color: white;
+	}
+
+	button.#$=color$# {
 		border-color: var(--#$=color $#);
+	}
+
+	button>h6 {
+		overflow-wrap: break-word;
 	}
 
 	button.#$=color$# h6 {
 		color: var(--#$=color $#);
-		overflow-wrap: break-word;
 	}
 
 	/* FIX это пиздец) */
@@ -98,10 +107,8 @@ class="border__outter"
 	}
 
 	button[disabled] {
-		/* background-color: var(--white); */
 		color: var(--white);
 		background-color: var(--grey-medium);
-
 	}
 
 	button[disabled] h6 {

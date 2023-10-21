@@ -14,7 +14,6 @@
 >
 	#$ if (src_image) { $#
 	<img
-		style="z-index: -1;"
 		src="#$= src_image $#"
 		alt=""
 	>
@@ -39,6 +38,7 @@
 
 	.input-file_label {
 		position: relative;
+		background-color: var(--white);
 	}
 
 	.input-file_label.#$=color$# {

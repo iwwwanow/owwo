@@ -29,12 +29,13 @@
 		align-items: center;
 		justify-content: center;
 
+		background-color: var(--white);
 		text-transform: uppercase;
 	}
 
 	.input-radio_label h6 {
 		display: flex;
-		gap: 8px;
+		gap: 4px;
 	}
 
 	.input-radio_label h6 {
@@ -63,11 +64,11 @@
 	}
 
 	.circle::before {
-		content: '⚪';
+		content: '○';
 	}
 
 	.input-radio:checked+label .circle::before {
-		content: '⚫';
+		content: '●';
 	}
 
 </style>

@@ -18,10 +18,6 @@
 	<h5 class="username">
 		#$= params.username$#
 	</h5>
-	#$ } else { $#
-	<h5>
-		<a href="/about">о проекте</a>
-	</h5>
 	#$ } $#
 
 	<div class="login-container">

@@ -1,5 +1,6 @@
 .border__outter,
 .border__input {
+  overflow: hidden;
   outline: 0;
   border-width: 1px;
   border-style: solid;
@@ -29,7 +30,6 @@
   .border__input,
   .border__outter:hover,
   .border__input:hover {
-    border-width: 1px;
     border-radius: 4px;
   }
 

@@ -7,6 +7,11 @@
 		name="viewport"
 		content="width=device-width, initial-scale=1.0"
 	/>
+
+	<meta
+		name="theme-color"
+		content="#e0e0e0"
+	>
 	<title>owwo</title>
 
 	<link
@@ -80,12 +85,12 @@
 	<div class="wrapper">
 		#$~ include("partials/header", it )$#
 		#$~ body $#
+		#$~ include("partials/footer", it )$#
 	</div>
 
 	#$ if (it.src && src.script) { $#
 	<script src="#$=src.script$#"></script>
 	#$ } $#
-
 </body>
 
 </html>
