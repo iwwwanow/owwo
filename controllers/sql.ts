@@ -17,6 +17,7 @@ export default function sql(table_name: string) {
           username: "TEXT NOT NULL",
           password: "TEXT NOT NULL",
           text: "TEXT",
+          markup: "TEXT",
         },
       });
       this.custom("createIndex_idx_users_username");
@@ -27,6 +28,7 @@ export default function sql(table_name: string) {
           page_id: "TEXT PRIMARY KEY",
           title: "TEXT",
           desc: "TEXT",
+          markup: "TEXT",
         },
       });
 

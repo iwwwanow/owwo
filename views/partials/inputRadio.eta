@@ -1,10 +1,10 @@
-#$ const checked = it.checked || '' $#
+#$ const checked = it.value === it.check ? 'checked' : '' $#
 
 <input
 	class="input-radio"
 	type="radio"
 	id="#$= value $#"
-	name="markup"
+	name="#$= name $#"
 	value="#$= value $#"
 	#$=checked$#
 />
@@ -35,7 +35,7 @@
 
 	.input-radio_label h6 {
 		display: flex;
-		gap: 4px;
+		gap: 8px;
 	}
 
 	.input-radio_label h6 {
@@ -47,8 +47,8 @@
 	}
 
 	.input-radio_label:hover h6 {
+		font-weight: 600;
 		color: var(--grey-dark);
-		text-decoration: underline;
 	}
 
 	.input-radio {
@@ -69,8 +69,7 @@
 		content: '⚪';
 	}
 
-	.input-radio:checked+label .circle::before,
-	.input-radio_label:hover .circle::before {
+	.input-radio:checked+label .circle::before {
 		content: '⚫';
 	}
 

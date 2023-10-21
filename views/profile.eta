@@ -3,11 +3,27 @@
 #$ const user = null $#
 
 #$ if (_editor) { $#
-#$ console.log(it.src) $#
+#$ console.log(it) $#
 #$~ include('partials/metaForm_user', it) $#
 #$ } $#
 
 <div class="grid">
+	<img
+		style="height: 48px; aspect-ratio: 1/1;"
+		src="#$=src.avatar$#"
+		alt=""
+	>
+
+	<h1 style="color: var(--red)">#$= username $#</h1>
+
+	#$ if (html) { $#
+	<div class="element_text-container grid_break-start">
+		#$~html$#
+	</div>
+	#$ } $#
+</div>
+
+<div class="#$= markup $#">
 
 	#$ if (!!pages.length) { $#
 

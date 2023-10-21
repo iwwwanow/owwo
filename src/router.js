@@ -49,7 +49,13 @@ router
     return UserController.index(c);
   })
   .post("/:username", (c) => {
+    if (c.query._method === "DELETE") return UserController.delete(c);
+    else if (c.query._method === "PUT") return UserController.update(c);
     return PageController.create(c);
+  })
+  .post("/:username/:file", (c) => {
+    if (c.query._method === "DELETE") return UserController.removeFile(c);
+    else c.set.redirect = `/${c.params.username}`;
   });
 
 // PAGE

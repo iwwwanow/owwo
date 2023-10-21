@@ -19,12 +19,9 @@ export default class ElementController {
 
     props.src = File.get_src("elements", params.element_id);
 
-    let html;
     if (props.element.text) {
-      html = marked.parse(props.element.text);
+      props.html = marked.parse(props.element.text);
     }
-
-    props.html = html;
 
     return eta.render("element", props);
   }
@@ -50,7 +47,8 @@ export default class ElementController {
     const { set, params, body } = c;
     const { text, cover, script, style } = body;
 
-    if (!!cover.size) await File.removeCover("elements", params.element_id);
+    if (!!cover.size)
+      await File.removeImage("elements", params.element_id, "cover");
 
     await File.write("elements", cover, "cover", params.element_id);
     await File.write("elements", script, "script", params.element_id);

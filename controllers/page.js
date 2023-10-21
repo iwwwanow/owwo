@@ -69,7 +69,7 @@ export default class PageController {
     const { title, desc, cover, script, style } = body;
 
     // FIX можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
-    if (!!cover.size) await File.removeCover("pages", params.page_id);
+    if (!!cover.size) await File.removeImage("pages", params.page_id, "cover");
 
     await File.write("pages", cover, "cover", params.page_id);
     await File.write("pages", script, "script", params.page_id);

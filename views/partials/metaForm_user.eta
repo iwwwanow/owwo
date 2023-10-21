@@ -2,7 +2,7 @@
 	id="user_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/user/#$= username $#"
+	action="/#$= username $#"
 	enctype="multipart/form-data"
 >
 
@@ -27,7 +27,7 @@
 		</h4>
 	</fieldset>
 
-	#$ const url_formaction = `/users/${user_id}` $#
+	#$ const url_formaction = `/${username}` $#
 	#$ const user_dir = `/public/data_uploads/users/${user_id}/` $#
 
 	<fieldset class="input-container">
@@ -82,16 +82,19 @@
 		#$ } $#
 	</fieldset>
 
-	<fieldset style="display: flex; flex-direction: column; gap: 8px;">
+	<fieldset style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'grid',
-		checked: 'checked'
+		check: markup
 		}) $#
+
+		<h5>MARKUP</h5>
 
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'list',
+		check: markup,
 		}) $#
 	</fieldset>
 
