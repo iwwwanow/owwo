@@ -2,37 +2,50 @@ import { v4 as uuidv4 } from "uuid";
 
 import { eta } from "../config/eta";
 import File from "../middleware/file.ts";
+import Props from "../middleware/props.js";
 import sql from "./sql.ts";
 
 export default class PageController {
   static async index(c) {
-    const { params } = c;
+    const {
+      params: { page_id },
+    } = c;
 
-    c.page = sql("pages")
+    const props = new Props(c);
+
+    props.page = sql("pages")
       .select(["page_id", "title", "desc"])
-      .where({ page_id: params.page_id })
+      .where({ page_id })
       .get();
 
-    // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL запрос
-    // c.page.authors = sql("authors")
+    // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL для вывода авторов и информации страницы
+    // const authors = sql("authors")
     //   .select("user_id")
     //   .where({ page_id: params.page_id })
-    //   .get();
-    // console.log(c.page.authors);
+    //   .all();
+    //
+    // authors.forEach((author) => {
+    //   const username = sql("users")
+    //     .select("username")
+    //     .where({ user_id: author })
+    //     .get();
+    // });
 
-    // FIX ошибка типов. свойство readonly
-    c.page.src = File.get_src("pages", params.page_id);
+    // TODO упаковать это в модлевайр PROPS
+    props.src = File.get_src("pages", page_id);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"
     );
-    c.page.elements = elements_query.all({ $page_id: params.page_id });
+    const elements = elements_query.all({ $page_id: page_id });
 
-    c.page.elements.map((element) => {
+    elements.map((element) => {
       return (element.src = File.get_src("elements", element.element_id));
     });
 
-    return eta.render("page", c);
+    props.elements = elements;
+
+    return eta.render("page", props);
   }
 
   static async create(c) {

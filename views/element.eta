@@ -1,45 +1,32 @@
 #$ layout("./layout.eta")$#
 
-#$ if (element.src && element.src.script) { $#
-<script src="#$=element.src.script$#"></script>
-#$ } $#
-
 #$ if (_editor) { $#
 #$~ include('partials/metaForm_element', it ) $#
 #$ } $#
 
 <div class="grid element-container">
 
-	#$ if (element.src && element.src.cover) { $#
-	<div class="element_img-container">
+	#$ if (src && src.cover) { $#
+	<div class="element_img-container grid_break-end">
 		<figure>
 			<img
-				src="#$=element.src.cover$#"
+				src="#$=src.cover$#"
 				alt=""
 			>
 		</figure>
 	</div>
 	#$ } $#
 
-	#$ if (element.html) { $#
-	<div class="element_text-container">
-		#$~element.html$#
+	#$ if (html) { $#
+	<div class="element_text-container grid_break-start">
+		#$~html$#
 	</div>
 	#$ } $#
 </div>
 
 <style>
-	@import "#$=element.src.style$#";
-
-	.element-container {
-		--column: 6;
-	}
-
 	.element_img-container {
 		max-height: 600px;
-
-		grid-column-start: 1;
-		grid-column-end: var(--column);
 
 		display: flex;
 		justify-content: flex-end;
@@ -47,36 +34,6 @@
 
 	.element_img-container img {
 		max-height: 100%;
-	}
-
-	.element_text-container {
-		grid-column-start: var(--column);
-		grid-column-end: -1;
-	}
-
-	@media screen and (max-width: 1680px) {
-		.element-container {
-			--column: 4;
-		}
-	}
-
-	@media screen and (max-width: 1268px) {
-		.element-container {
-			--column: 3;
-		}
-	}
-
-	@media screen and (max-width: 858px) {
-		.element_img-container {
-			grid-column-start: 1;
-			grid-column-end: -1;
-			justify-content: flex-start;
-		}
-
-		.element_text-container {
-			grid-column-start: 1;
-			grid-column-end: -1;
-		}
 	}
 
 </style>

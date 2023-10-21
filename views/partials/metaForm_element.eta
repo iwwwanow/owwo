@@ -1,10 +1,8 @@
-#$ if (!element.src) element.src = '' $#
-
 <form
 	id="element_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/element/#$= params.element_id $#"
+	action="/element/#$= element_id $#"
 	enctype="multipart/form-data"
 >
 
@@ -12,7 +10,7 @@
 		#$~ include('inputFile', {
 		form: 'element_meta-form',
 		name: 'cover',
-		src_image: element.src.cover,
+		src_image: src.cover,
 		accept: 'image/*',
 		}) $#
 	</fieldset>
@@ -29,8 +27,8 @@
 	</fieldset>
 
 	<fieldset class="card">
-		#$ const url_formaction = `/element/${params.element_id}` $#
-		#$ const element_dir = `/public/data_uploads/elements/${params.element_id}/` $#
+		#$ const url_formaction = `/element/${element_id}` $#
+		#$ const element_dir = `/public/data_uploads/elements/${element_id}/` $#
 
 		<div class="input-container">
 			#$~ include('inputFile', {
@@ -41,7 +39,7 @@
 			}) $#
 
 			#$ const url_scriptDownload = element_dir + 'script.js' $#
-			#$ if (element.src.script) { $#
+			#$ if (src.script) { $#
 			<div class="input-container_button-container">
 				#$~include('button', {
 				url_download: url_scriptDownload
@@ -69,7 +67,7 @@
 			}) $#
 
 			#$ const url_styleDownload = element_dir + 'style.css' $#
-			#$ if (element.src.style) { $#
+			#$ if (src.style) { $#
 			<div class="input-container_button-container">
 				#$~include('button', {
 				url_download: url_styleDownload

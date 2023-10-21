@@ -1,36 +1,36 @@
 #$ layout("./layout.eta" )$#
 
-<script src="#$=page.src.script$#"></script>
 
 #$ if (_editor) { $#
-#$~ include('partials/metaForm_page', {
-page: page,
-params: params
-}) $#
+#$~ include('partials/metaForm_page', it) $#
 #$ } $#
 
 <div class="grid">
-	<div style="grid-column: 1/-2;">
+	<div
+		class="grid_break-end"">
 
 		#$ if (page.title) { $#
 		<h1>#$= page.title $#</h1>
 		#$ } $#
 
-		#$ if (page.authors) {$#
 		<h6>author</h6>
 		<h6>date</h6>
-		#$ } $#
 	</div>
 
 	#$ if (page.desc) { $#
-	<h5>#$= page.desc $#</h5>
+	<div class="
+		grid_break-start"
+	>
+		<h5>#$= page.desc $#</h5>
+	</div>
 	#$ } $#
 </div>
 
-<div class="grid">
+<div class="
+		grid">
 
-	#$if (!!page.elements) { $#
-	#$ page.elements.forEach(function (element) { $#
+	#$if (!!elements) { $#
+	#$ elements.forEach(function (element) { $#
 	#$~ include("partials/card", {element}) $#
 	#$ }) $#
 	#$ } $#
@@ -38,7 +38,7 @@ params: params
 	#$ if (_editor) { $#
 
 	<form action="">
-		#$ const url_formaction = `/page/${params.page_id}` $#
+		#$ const url_formaction = `/page/${page_id}` $#
 
 		<div class="card">
 			#$~ include('partials/buttonPlus', {
@@ -50,8 +50,3 @@ params: params
 	#$ } $#
 
 </div>
-
-<style>
-	@import "#$=page.src.style$#";
-
-</style>

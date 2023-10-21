@@ -1,27 +1,32 @@
 import { eta } from "../config/eta";
 
 import File from "../middleware/file.ts";
+import Props from "../middleware/props.js";
 import sql from "./sql.ts";
 
 export default class UserController {
   static async index(c) {
-    const { params } = c;
+    const {
+      params: { username },
+    } = c;
 
-    const user_id = sql("users")
-      .select("user_id")
-      .where({ username: params.username })
-      .get();
+    const props = new Props(c);
+    props.username = username;
+
+    const user_id = sql("users").select("user_id").where({ username }).get();
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
     );
-    c.pages = pages_query.all({ $user_id: user_id });
+    const pages = pages_query.all({ $user_id: user_id });
 
-    c.pages.forEach((page) => {
+    pages.forEach((page) => {
       page.src = {};
       page.src.cover = File.srcCover("pages", page.page_id);
     });
 
-    return eta.render("profile", c);
+    props.pages = pages;
+
+    return eta.render("profile", props);
   }
 }

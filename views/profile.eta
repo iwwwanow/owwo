@@ -2,19 +2,25 @@
 
 #$ const user = null $#
 
+meta
+
 <div class="grid">
 
 	#$ if (!!pages.length) { $#
+
 	#$ pages.forEach(function (page) { $#
 	#$~ include("partials/card", {page}) $#
 	#$ }) $#
+
 	#$ } else { $#
+
 	<h2 style="color: var(--red);">(●´⌓`●)</h2>
+
 	#$ } $#
 
 	#$ if (_editor) { $#
 	<form action="">
-		#$~ include("./partials/buttonPlus.eta", {formaction: params.username})$#
+		#$~ include("./partials/buttonPlus.eta", {formaction: username})$#
 	</form>
 	#$ } $#
 
