@@ -10,24 +10,28 @@ params: params
 #$ } $#
 
 <div class="grid">
-	<div style="grid-column: 1/-2;">
+	<div
+		class="grid_break-end"">
 
 		#$ if (page.title) { $#
 		<h1>#$= page.title $#</h1>
 		#$ } $#
 
-		#$ if (page.authors) {$#
 		<h6>author</h6>
 		<h6>date</h6>
-		#$ } $#
 	</div>
 
 	#$ if (page.desc) { $#
-	<h5>#$= page.desc $#</h5>
+	<div class="
+		grid_break-start"
+	>
+		<h5>#$= page.desc $#</h5>
+	</div>
 	#$ } $#
 </div>
 
-<div class="grid">
+<div class="
+		grid">
 
 	#$if (!!page.elements) { $#
 	#$ page.elements.forEach(function (element) { $#
