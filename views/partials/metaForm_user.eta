@@ -6,7 +6,7 @@
 	enctype="multipart/form-data"
 >
 
-	<fieldset>
+	<fieldset class="user_meta-form__square">
 		#$~ include('inputFile', {
 		form: 'user_meta-form',
 		style: 'aspect-ratio: 1/1; height: auto;',
@@ -16,7 +16,7 @@
 		}) $#
 	</fieldset>
 
-	<fieldset>
+	<fieldset class="user_meta-form__square">
 		<h4 style="height: 100%;">
 			#$~ include('textarea', {
 			form: 'user_meta-form',
@@ -30,7 +30,7 @@
 	#$ const url_formaction = `/${username}` $#
 	#$ const user_dir = `/public/data_uploads/users/${user_id}/` $#
 
-	<fieldset class="input-container">
+	<fieldset class="input-container user_meta-form__square">
 		#$~ include('inputFile', {
 		form: 'user_meta-form',
 		accept: '.js',
@@ -56,7 +56,7 @@
 		#$ } $#
 	</fieldset>
 
-	<fieldset class="input-container">
+	<fieldset class="input-container user_meta-form__square">
 		#$~ include('inputFile', {
 		form: 'user_meta-form',
 		accept: '.css',
@@ -82,7 +82,10 @@
 		#$ } $#
 	</fieldset>
 
-	<fieldset style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+	<fieldset
+		class="user_meta-form__square"
+		style="display: flex; flex-direction: column; align-items: center; gap: 8px;"
+	>
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'grid',
@@ -98,7 +101,10 @@
 		}) $#
 	</fieldset>
 
-	<fieldset style="display: flex; flex-direction: column; gap: 8px;">
+	<fieldset
+		class="user_meta-form__square"
+		style="display: flex; flex-direction: column; gap: 8px;"
+	>
 		#$~ include('button', {
 		type: 'submit',
 		value: 'default',
@@ -123,3 +129,10 @@
 	<hr>
 
 </form>
+
+<style>
+	.user_meta-form__square {
+		aspect-ratio: 1/1;
+	}
+
+</style>

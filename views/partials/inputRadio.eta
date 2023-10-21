@@ -10,7 +10,7 @@
 />
 
 <label
-	class="input-radio_label"
+	class="input-radio_label border__outter"
 	for="#$= value $#"
 >
 	<h6>
@@ -30,7 +30,6 @@
 		justify-content: center;
 
 		text-transform: uppercase;
-		border: 1px solid var(--grey-medium);
 	}
 
 	.input-radio_label h6 {
@@ -42,9 +41,7 @@
 		color: var(--grey-medium);
 	}
 
-	.input-radio_label:hover {
-		border: 1px solid var(--grey-dark);
-	}
+	.input-radio_label:hover {}
 
 	.input-radio_label:hover h6 {
 		font-weight: 600;
@@ -57,7 +54,7 @@
 
 	.input-radio:checked+label {
 		background-color: var(--grey-dark);
-		border: 1px solid var(--grey-dark);
+		border-color: var(--grey-dark);
 	}
 
 	.input-radio:checked+label h6 {

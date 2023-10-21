@@ -19,6 +19,7 @@
 #$ if (_class==="disabled" ) { $#
 
 <button
+class="border__outter"
 	style="#$=style$#"
 	disabled
 >
@@ -30,7 +31,7 @@
 #$} else if (!!url_download) {$#
 
 <button
-	class="#$= _class $# #$=color$#"
+	class="border__outter #$= _class $# #$=color$#"
 	style="#$= style $#"
 	type="#$= type $#"
 	name="#$= _name $#"
@@ -52,7 +53,7 @@
 #$ } else { $#
 
 <button
-	class="#$= _class $# #$=color$#"
+	class="border__outter #$= _class $# #$=color$#"
 	style="#$= style $#"
 	type="#$= type $#"
 	name="#$= _name $#"
@@ -76,7 +77,7 @@
 		text-transform: uppercase;
 
 		background-color: white;
-		border: 1px solid var(--#$=color $#);
+		border-color: var(--#$=color $#);
 	}
 
 	button.#$=color$# h6 {
@@ -87,7 +88,7 @@
 	/* FIX это пиздец) */
 	#$=`button.${color}:hover` $# {
 		background-color: var(--#$=color $#);
-		border: 1px solid var(--#$=color$#);
+		border-color: var(--#$=color$#);
 	}
 
 	button:hover,
@@ -108,7 +109,7 @@
 	}
 
 	button[disabled]:hover {
-		border: 1px solid var(--grey-medium);
+		border-color: var(--grey-medium);
 	}
 
 </style>

@@ -1,0 +1,24 @@
+.wrapper {
+  padding: 16px 0 32px;
+  row-gap: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 858px) {
+  /* TODO на 768 выглядит не очень */
+  .wrapper {
+    /* padding: 24px 0; */
+    padding: 24px 16px;
+    row-gap: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  /* MOBILE */
+  .wrapper {
+    padding: 24px 8px;
+    row-gap: 16px;
+  }
+}

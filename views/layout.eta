@@ -30,8 +30,17 @@
 
 	<link
 		rel="stylesheet"
-		href="/public/style/layout.css"
+		href="/public/style/markup_wrapper.css"
 	/>
+	<link
+		rel="stylesheet"
+		href="/public/style/markup_grid.css"
+	/>
+	<link
+		rel="stylesheet"
+		href="/public/style/markup_list.css"
+	/>
+
 	<link
 		rel="stylesheet"
 		href="/public/style/color.css"
@@ -52,6 +61,10 @@
 	<link
 		rel="stylesheet"
 		href="/public/style/card.css"
+	/>
+	<link
+		rel="stylesheet"
+		href="/public/style/border.css"
 	/>
 
 	#$ if (it.src && src.style) { $#

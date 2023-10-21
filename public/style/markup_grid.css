@@ -19,14 +19,6 @@
   grid-column-end: -1;
 }
 
-.wrapper {
-  padding: 16px 0 32px;
-  row-gap: 24px;
-
-  display: flex;
-  flex-direction: column;
-}
-
 @media screen and (max-width: 1680px) {
   .grid {
     --break-column: 4;
@@ -47,10 +39,6 @@
   .grid {
     grid-template-columns: repeat(2, 190px);
   }
-  .wrapper {
-    padding: 24px 0;
-    row-gap: 16px;
-  }
 
   .grid_break-end {
     grid-column-start: 1;
@@ -66,16 +54,13 @@
 /* MOBILE */
 @media screen and (max-width: 444px) {
   .grid {
-    grid-template-columns: repeat(2, 160px);
+    /* grid-template-columns: repeat(2, 160px); */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 360px) {
   /* MOBILE */
   .grid {
     grid-template-columns: 1fr;
-  }
-  .wrapper {
-    padding: 24px 8px;
-    row-gap: 16px;
   }
 }

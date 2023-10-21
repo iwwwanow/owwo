@@ -1,0 +1,81 @@
+.list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.list > a,
+.list > form {
+  width: 1632px;
+  max-height: 600px;
+}
+
+.list div {
+  display: block;
+  overflow: hidden;
+}
+
+.list .card {
+  width: 100%;
+  height: 600px;
+  display: flex;
+}
+
+.list .card_text-wrapper {
+  max-width: 480px;
+  display: flex;
+}
+.list .card_text-container {
+  width: fit-content;
+  padding: 4px 8px;
+  display: flex;
+}
+.list .card_desc {
+  display: block;
+}
+
+.list .card img {
+  position: absolute;
+}
+
+@media screen and (max-width: 1680px) {
+  .list > a,
+  .list > form {
+    width: 1220px;
+  }
+}
+
+@media screen and (max-width: 1268px) {
+  .list > a,
+  .list > form {
+    width: 808px;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  /* TODO на 768 выглядит не очень */
+  .list > a,
+  .list > form {
+    width: 396px;
+  }
+}
+/* MOBILE */
+@media screen and (max-width: 444px) {
+  .list {
+    gap: 16px;
+  }
+  .list > a,
+  .list > form {
+    /* width: 328px; */
+    width: 100%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .list > a,
+  .list > form {
+    width: 100%;
+  }
+}
