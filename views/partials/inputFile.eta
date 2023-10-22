@@ -13,6 +13,7 @@
 	style="#$= style $#"
 >
 	#$ if (src_image) { $#
+	<h6 style="z-index: 1; font-weight: 600; mix-blend-mode: difference;">#$= name $#</h6>
 	<img
 		src="#$= src_image $#"
 		alt=""

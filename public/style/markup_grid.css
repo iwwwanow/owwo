@@ -1,4 +1,5 @@
-.grid {
+.grid,
+.list {
   --break-column: 6;
 
   width: 100%;
@@ -20,7 +21,8 @@
 }
 
 @media screen and (max-width: 1680px) {
-  .grid {
+  .grid,
+  .list {
     --break-column: 4;
 
     grid-template-columns: repeat(6, 190px);
@@ -28,7 +30,8 @@
 }
 
 @media screen and (max-width: 1268px) {
-  .grid {
+  .grid,
+  .list {
     --break-column: 3;
     grid-template-columns: repeat(4, 190px);
   }
@@ -36,8 +39,9 @@
 
 @media screen and (max-width: 858px) {
   /* TODO на 768 выглядит не очень */
-  .grid {
-    grid-template-columns: repeat(2, 190px);
+  .grid,
+  .list {
+    grid-template-columns: repeat(3, 190px);
   }
 
   .grid_break-end {
@@ -51,18 +55,26 @@
     grid-column-end: -1;
   }
 }
+@media screen and (max-width: 650px) {
+  .grid,
+  .list {
+    grid-template-columns: repeat(2, 190px);
+  }
+}
 /* MOBILE */
 @media screen and (max-width: 444px) {
-  .grid {
+  .grid,
+  .list {
     /* grid-template-columns: repeat(2, 160px); */
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 12px 8px;
   }
 }
 
 @media screen and (max-width: 360px) {
   /* MOBILE */
-  .grid {
+  .grid,
+  .list {
     grid-template-columns: 1fr;
   }
 }

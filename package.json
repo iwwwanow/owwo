@@ -14,10 +14,8 @@
     "@elysiajs/html": "^0.7.0",
     "@elysiajs/jwt": "^0.7.0",
     "@elysiajs/static": "^0.7.1",
-    "dompurify": "^3.0.6",
     "elysia": "^0.7.5",
     "eta": "^3.1.1",
-    "jsdom": "^22.1.0",
     "marked": "^9.1.2",
     "uuid": "^9.0.1"
   },

@@ -10,7 +10,7 @@
 >
 	<div class="card border__outter">
 		#$ if (obj.title || obj.desc || obj.text) { $#
-		<div class="card_text-wrapper">
+		<div class="grid_break-end card_text-wrapper">
 			<div class="card_text-container border__inner">
 				#$ if (obj.title) { $#
 				<h4 class="card_title">#$= obj.title$#</h4>
@@ -20,7 +20,10 @@
 				<h5 class="card_desc">#$= obj.desc $#</h5>
 				#$ } $#
 
-				#$ if (obj.text) { $#
+
+				#$ if (it.markup === 'list' && obj.html) { $#
+				#$= obj.html $#
+				#$ } else if (obj.text) { $#
 				<h5 class="card_text">#$= obj.text $#</h5>
 				#$ } $#
 			</div>
@@ -29,6 +32,7 @@
 
 		#$ if (!!obj.src && !!obj.src.cover) { $#
 		<img
+			class="grid_break-start"
 			src="#$= obj.src.cover $#"
 			alt="cover"
 		>
@@ -67,7 +71,7 @@
 		max-height: 100%;
 		overflow-y: auto;
 		padding: 4px;
-		display: none;
+		display: flex;
 		gap: 16px;
 		flex-direction: column;
 		background-color: #FFFFFFCC;

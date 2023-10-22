@@ -14,6 +14,7 @@ header .username {
 
 .logo {
   position: absolute;
+  min-height: 1em;
   max-height: 100%;
 }
 
@@ -21,4 +22,16 @@ header .username {
   grid-column-end: -1;
   display: flex;
   justify-content: flex-end;
+}
+
+@media screen and (max-width: 650px) {
+  .header_username-container {
+    grid-row-start: 2;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .login-container {
+    justify-content: flex-start;
+  }
 }

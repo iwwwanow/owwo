@@ -17,9 +17,9 @@
 	</div>
 	#$ } $#
 
-	#$ if (html) { $#
+	#$ if (element.html) { $#
 	<div class="element_text-container grid_break-start">
-		#$~html$#
+		#$~element.html$#
 	</div>
 	#$ } $#
 </div>
@@ -34,6 +34,16 @@
 
 	.element_img-container img {
 		max-height: 100%;
+	}
+
+	@media screen and (max-width: 858px) {
+		.element_img-container {
+			max-height: 100%;
+		}
+
+		.element_img-container {
+			justify-content: flex-start;
+		}
 	}
 
 </style>

@@ -9,7 +9,7 @@
 		#$~ include("logo")$#
 	</div>
 
-	<div>
+	<div class="header_username-container">
 		#$ if (it.user && user.username) { $#
 		<h5 class="username">
 			#$= user.username$#

@@ -6,7 +6,10 @@
 	enctype="multipart/form-data"
 >
 
-	<fieldset class="user_meta-form__square">
+	<fieldset
+		style="aspect-ratio: 1/1;"
+		class="meta-form__square"
+	>
 		#$~ include('inputFile', {
 		form: 'user_meta-form',
 		style: 'aspect-ratio: 1/1; height: auto;',
@@ -16,7 +19,7 @@
 		}) $#
 	</fieldset>
 
-	<fieldset class="user_meta-form__square">
+	<fieldset class="meta-form__square meta-form_textarea">
 		<h4 style="height: 100%;">
 			#$~ include('textarea', {
 			form: 'user_meta-form',
@@ -30,79 +33,31 @@
 	#$ const url_formaction = `/${user.username}` $#
 	#$ const user_dir = `/public/data_uploads/users/${user.user_id}/` $#
 
-	<fieldset class="input-container user_meta-form__square">
-		#$~ include('inputFile', {
-		form: 'user_meta-form',
-		accept: '.js',
-		name: 'script',
-		color: 'js',
-		}) $#
+	#$~ include('fieldset_inputFile', {
+	form: 'user_meta-form',
+	className: 'meta-form__square',
+	obj: user,
+	type: 'script',
+	url_formaction,
+	dir: user_dir,
+	}) $#
 
-		#$ const url_scriptDownload = user_dir + 'script.js' $#
-		#$ if (user.src.script) { $#
-		<div class="input-container_button-container">
-			#$~include('button', {
-			url_download: url_scriptDownload
-			})$#
+	#$~ include('fieldset_inputFile', {
+	form: 'user_meta-form',
+	className: 'meta-form__square',
+	obj: user,
+	type: 'style',
+	url_formaction,
+	dir: user_dir,
+	}) $#
 
-			#$~include('button', {
-			type: 'submit',
-			text: 'удалить',
-			color: 'red',
-			formmethod: 'DELETE',
-			formaction: url_formaction + '/script.js'
-			})$#
-		</div>
-		#$ } $#
-	</fieldset>
-
-	<fieldset class="input-container user_meta-form__square">
-		#$~ include('inputFile', {
-		form: 'user_meta-form',
-		accept: '.css',
-		name: 'style',
-		color: 'css',
-		}) $#
-
-		#$ const url_styleDownload = user_dir + 'style.css' $#
-		#$ if (user.src.style) { $#
-		<div class="input-container_button-container">
-			#$~include('button', {
-			url_download: url_styleDownload
-			})$#
-
-			#$~include('button', {
-			type: 'submit',
-			text: 'удалить',
-			color: 'red',
-			formmethod: 'DELETE',
-			formaction: url_formaction + '/style.css'
-			})$#
-		</div>
-		#$ } $#
-	</fieldset>
+	#$~ include('fieldset_radioMarkup', {
+	className: 'meta-form__square',
+	markup: user.markup
+	}) $#
 
 	<fieldset
-		class="user_meta-form__square"
-		style="display: flex; flex-direction: column; align-items: center; gap: 8px;"
-	>
-		#$~ include('inputRadio', {
-		name: 'markup',
-		value: 'grid',
-		check: user.markup
-		}) $#
-
-		<h5>~ MARKUP ~</h5>
-
-		#$~ include('inputRadio', {
-		name: 'markup',
-		value: 'list',
-		check: user.markup,
-		}) $#
-	</fieldset>
-
-	<fieldset
-		class="user_meta-form__square"
+		class="meta-form__square"
 		style="display: flex; flex-direction: column; gap: 8px;"
 	>
 		#$~ include('button', {
@@ -126,12 +81,4 @@
 	</fieldset>
 
 	<hr>
-
 </form>
-
-<style>
-	.user_meta-form__square {
-		aspect-ratio: 1/1;
-	}
-
-</style>

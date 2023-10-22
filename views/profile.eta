@@ -30,7 +30,7 @@
 	#$ if (!!pages.length) { $#
 
 	#$ pages.forEach(function (page) { $#
-	#$~ include("partials/card", {page}) $#
+	#$~ include("partials/card_grid", {page}) $#
 	#$ }) $#
 
 	#$ } else { $#

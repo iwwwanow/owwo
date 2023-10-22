@@ -10,6 +10,7 @@
 >
 	<input
 		autocomplete="off"
+		autocapitalize="off"
 		id="#$= id $#"
 		#$=_required$#
 		class="input_text"
@@ -53,6 +54,12 @@
 	::-ms-input-placeholder {
 		/* Microsoft Edge */
 		color: var(--grey-medium);
+	}
+
+	@media screen and (max-width: 444px) {
+		.input_text {
+			border-radius: 4px;
+		}
 	}
 
 </style>
