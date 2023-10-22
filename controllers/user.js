@@ -19,6 +19,8 @@ export default class UserController {
       .where({ username })
       .get();
 
+    props.user.user_id = user.user_id;
+
     props.user.text = user.text;
     props.user.markup = user.markup;
 

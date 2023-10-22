@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { marked } from "marked";
 
 import { eta } from "../config/eta";
 import File from "../middleware/file.ts";
@@ -46,6 +47,14 @@ export default class PageController {
 
     elements.map((element) => {
       return (element.src = File.get_src("elements", element.element_id));
+    });
+
+    elements.map((element) => {
+      if (element.text) {
+        const text = element.text;
+        element.html = marked.parse(text);
+        return element;
+      }
     });
 
     props.elements = elements;

@@ -1,0 +1,17 @@
+#$ const className = it.className || '' $#
+
+<fieldset class="meta-form_radio-container #$= className $#">
+	#$~ include('inputRadio', {
+	name: 'markup',
+	value: 'grid',
+	check: markup
+	}) $#
+
+	<h5>~ MARKUP ~</h5>
+
+	#$~ include('inputRadio', {
+	name: 'markup',
+	value: 'list',
+	check: markup,
+	}) $#
+</fieldset>

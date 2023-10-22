@@ -1,81 +1,72 @@
-.list {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
 .list > a,
+.list > div,
 .list > form {
-  width: 1632px;
-  max-height: 600px;
+  grid-column: 1/-1;
 }
-
-.list div {
-  display: block;
-  overflow: hidden;
-}
-
 .list .card {
-  width: 100%;
   height: 600px;
-  display: flex;
-}
-
-.list .card_text-wrapper {
-  max-width: 480px;
-  display: flex;
 }
 .list .card_text-container {
-  width: fit-content;
-  padding: 4px 8px;
+  max-width: 420px;
+}
+.list .card:hover .card_title {
+  text-decoration: underline;
+}
+.list .card:hover .card_desc {
+  display: none;
+}
+.list .card_text-container:hover .card_desc {
   display: flex;
 }
-.list .card_desc {
-  display: block;
+
+/* CARD LIST */
+.list > div a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+.list > div .card_text-wrapper {
+  width: 602px;
 }
 
-.list .card img {
-  position: absolute;
+/* PAGE */
+.page.list img {
+  position: relative;
 }
-
-@media screen and (max-width: 1680px) {
-  .list > a,
-  .list > form {
-    width: 1220px;
-  }
+.page.list .card {
+  flex-direction: row-reverse;
 }
-
+.page .card_text-wrapper {
+  justify-content: flex-start;
+}
+.page.list .card_text-container {
+  max-width: 100%;
+}
+.page.list .card_text-container {
+  border: none;
+}
 @media screen and (max-width: 1268px) {
-  .list > a,
-  .list > form {
-    width: 808px;
+  .list > div .card_text-wrapper {
+    width: 396px;
   }
 }
 
 @media screen and (max-width: 858px) {
-  /* TODO на 768 выглядит не очень */
-  .list > a,
-  .list > form {
-    width: 396px;
-  }
-}
-/* MOBILE */
-@media screen and (max-width: 444px) {
-  .list {
-    gap: 16px;
-  }
-  .list > a,
-  .list > form {
-    /* width: 328px; */
+  .list > div .card_text-wrapper {
     width: 100%;
   }
-}
-@media screen and (max-width: 360px) {
-  .list > a,
-  .list > form {
-    width: 100%;
+  .page.list .card {
+    height: auto;
+  }
+  .list .card_desc {
+    display: flex;
+  }
+  .list .card:hover .card_desc {
+    display: flex;
+  }
+  .list .card_text-container {
+    max-width: 100%;
+  }
+  .page.list .card {
+    flex-direction: column-reverse;
   }
 }

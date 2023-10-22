@@ -1,0 +1,39 @@
+#$ let accept, name, color $#
+
+#$ const className = it.className || '' $#
+
+#$ if (type === 'script') { $#
+#$ accept = '.js' $#
+#$ name = 'script' $#
+#$ color = 'js' $#
+#$ } $#
+
+#$ if (type === 'style') { $#
+#$ accept = '.css' $#
+#$ name = 'style' $#
+#$ color = 'css' $#
+#$ } $#
+
+<fieldset class="input-container #$= className $#">
+	#$~ include('inputFile', {
+	form: it.form,
+	accept,
+	name,
+	color,
+	}) $#
+
+	#$ const url_download = it.dir + name + accept $#
+	#$ if (it.obj.src[type]) { $#
+	<div class="input-container_button-container">
+		#$~include('button', { url_download })$#
+
+		#$~include('button', {
+		type: 'submit',
+		text: 'удалить',
+		color: 'red',
+		formmethod: 'DELETE',
+		formaction: url_formaction + '/' + name + accept
+		})$#
+	</div>
+	#$ } $#
+</fieldset>

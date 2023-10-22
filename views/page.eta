@@ -26,11 +26,26 @@
 	#$ } $#
 </div>
 
-<div class="#$=page.markup$#">
+<div class="page #$=page.markup$#">
 
 	#$if (!!elements.length) { $#
 	#$ elements.forEach(function (element) { $#
-	#$~ include("partials/card", {element}) $#
+
+	#$ if (element.html) { $#
+	#$~ include("partials/card_list", {
+	element,
+	markup: page.markup,
+	}) $#
+
+	#$ } else { $#
+
+	#$~ include("partials/card_grid", {
+	element,
+	markup: page.markup,
+	}) $#
+
+	#$ } $#
+
 	#$ }) $#
 	#$ } else { $#
 	<h2 style="color: var(--red);">(●´⌓`●)</h2>
@@ -47,6 +62,5 @@
 		</div>
 	</form>
 	#$ } $#
-
 
 </div>
