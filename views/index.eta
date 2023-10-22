@@ -1,14 +1,33 @@
 #$ layout("./layout") $#
 
 <div class="grid">
-	<h6 class="element-sample">random_element-1</h6>
-	<h6 class="element-sample">random_element-2</h6>
-	<h6 class="element-sample">random_element-3</h6>
+	#$ console.log(it) $#
+	#$ if (it.users.length) { $#
+
+	<div class="avatars-container">
+		#$ users.forEach((user) => { $#
+		#$~ include("partials/Avatar", {
+		url: user.username,
+		src: user.src.avatar
+		}) $#
+		#$ }) $#
+	</div>
+
+	#$ } $#
+</div>
+
+<div class="grid">
+	<h6>random pages</h6>
+</div>
+
+<div class="grid">
+	<h6>random elements</h6>
 </div>
 
 <style>
-	.element-sample {
-		color: var(--red);
+	.avatars-container {
+		grid-column: 1/-1;
+		display: flex;
 	}
 
 </style>

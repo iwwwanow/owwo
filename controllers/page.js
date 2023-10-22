@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import { marked } from "marked";
 
+import sql from "./sql.ts";
 import { eta } from "../config/eta";
 import File from "../middleware/file.ts";
 import Props from "../middleware/props.js";
-import sql from "./sql.ts";
 
 export default class PageController {
   static async index(c) {

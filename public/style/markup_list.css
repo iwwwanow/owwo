@@ -18,41 +18,22 @@
 .list .card_text-container:hover .card_desc {
   display: flex;
 }
-
-/* CARD LIST */
-.list > div a {
-  color: var(--blue);
-  text-decoration: underline;
-}
-.list > div .card_text-wrapper {
-  width: 602px;
-}
-
-/* PAGE */
-.page.list img {
-  position: relative;
-}
-.page.list .card {
-  flex-direction: row-reverse;
-}
-.page .card_text-wrapper {
-  justify-content: flex-start;
-}
-.page.list .card_text-container {
-  max-width: 100%;
-}
-.page.list .card_text-container {
-  border: none;
-}
 @media screen and (max-width: 1268px) {
   .list > div .card_text-wrapper {
     width: 396px;
+  }
+  .list > div .image-link_container {
+    max-width: calc(100% - 404px);
   }
 }
 
 @media screen and (max-width: 858px) {
   .list > div .card_text-wrapper {
     width: 100%;
+    padding: 16px 8px 24px;
+  }
+  .list > div .image-link_container {
+    max-width: 100%;
   }
   .page.list .card {
     height: auto;

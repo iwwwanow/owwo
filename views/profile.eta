@@ -7,12 +7,12 @@
 <div class="grid">
 
 	<div class="user-container grid_break-end">
-		<h1 class="user_avatar-container">
-			<img
-				src="#$=user.src.avatar$#"
-				alt=""
-			>
-		</h1>
+
+		#$~ include("partials/Avatar", {
+		url: user.username,
+		src: user.src.avatar
+		}) $#
+
 		<h1>
 			#$= user.username $#
 		</h1>
@@ -30,7 +30,7 @@
 	#$ if (!!pages.length) { $#
 
 	#$ pages.forEach(function (page) { $#
-	#$~ include("partials/card_grid", {page}) $#
+	#$~ include("partials/Card", {page}) $#
 	#$ }) $#
 
 	#$ } else { $#
@@ -56,18 +56,6 @@
 	.user-container h1 {
 		margin: 0;
 		height: min-content;
-	}
-
-	h1.user_avatar-container {
-		height: 1em;
-		aspect-ratio: 1/1;
-		overflow: hidden;
-	}
-
-	.user_avatar-container img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
 	}
 
 	@media screen and (max-width: 444px) {

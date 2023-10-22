@@ -5,6 +5,7 @@ export default class Props {
   auth = {};
   user_id;
   user = { src: {} };
+  users;
   page_id;
   page = { src: {} };
   pages;

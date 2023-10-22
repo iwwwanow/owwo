@@ -32,14 +32,14 @@
 	#$ elements.forEach(function (element) { $#
 
 	#$ if (element.html) { $#
-	#$~ include("partials/card_list", {
+	#$~ include("partials/Card", {
 	element,
 	markup: page.markup,
 	}) $#
 
 	#$ } else { $#
 
-	#$~ include("partials/card_grid", {
+	#$~ include("partials/Card", {
 	element,
 	markup: page.markup,
 	}) $#

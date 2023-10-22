@@ -1,0 +1,26 @@
+#$ const size = it.size || 'h1' $#
+
+<a href="/#$=url$#">
+	<#$=size$# class="avatar">
+		<img
+			class="avatar"
+			src="#$=src$#"
+			alt=""
+		>
+	</#$=size$#>
+</a>
+
+<style>
+	.avatar {
+		height: 1em !important;
+		aspect-ratio: 1/1;
+		overflow: hidden;
+	}
+
+	.avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+</style>
