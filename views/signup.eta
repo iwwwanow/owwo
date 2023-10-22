@@ -10,7 +10,7 @@
 
 		#$~ include("./partials/inputText.eta", {
 		name: 'username',
-		placeholder: 'username',
+		placeholder: 'USERNAME',
 		id: 'signup_input-username',
 		required: true
 		})$#
@@ -18,7 +18,7 @@
 		#$~ include("./partials/inputText.eta", {
 		name: 'password',
 		type: 'password',
-		placeholder: 'password',
+		placeholder: 'PASSWORD',
 		id: 'signup_input-password',
 		required: true
 		})$#
@@ -26,7 +26,7 @@
 		#$~ include("./partials/inputText.eta", {
 		name: 'confirm',
 		type: 'password',
-		placeholder: 'confirm password',
+		placeholder: 'CONFIRM PASSWORD',
 		id: 'signup_input-confirm-password',
 		required: true
 		})$#

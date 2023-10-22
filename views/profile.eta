@@ -7,15 +7,18 @@
 #$ } $#
 
 <div class="grid">
-	<div style="height: 48px; aspect-ratio: 1/1; overflow: hidden;">
-		<img
-			style="width: 100%; height: 100%; object-fit: cover;"
-			src="#$=src.avatar$#"
-			alt=""
-		>
-	</div>
 
-	<h1 style="color: var(--red)">#$= username $#</h1>
+	<div class="user-container grid_break-end">
+		<h1 class="user_avatar-container">
+			<img
+				src="#$=src.avatar$#"
+				alt=""
+			>
+		</h1>
+		<h1>
+			#$= username $#
+		</h1>
+	</div>
 
 	#$ if (html) { $#
 	<div class="element_text-container grid_break-start">
@@ -45,3 +48,34 @@
 	#$ } $#
 
 </div>
+
+<style>
+	.user-container {
+		display: flex;
+		gap: 16px;
+	}
+
+	.user-container h1 {
+		margin: 0;
+		height: min-content;
+	}
+
+	h1.user_avatar-container {
+		height: 1em;
+		aspect-ratio: 1/1;
+		overflow: hidden;
+	}
+
+	.user_avatar-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media screen and (max-width: 444px) {
+		.user-container {
+			gap: 12px;
+		}
+	}
+
+</style>

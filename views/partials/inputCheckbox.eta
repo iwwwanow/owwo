@@ -2,6 +2,7 @@
 	<input
 		type="checkbox"
 		id="checkbox"
+		class="input-checkbox_label"
 		name="name"
 		autocomplete="off"
 	/>
@@ -11,3 +12,10 @@
 		</h6>
 	</label>
 </div>
+
+<style>
+	.input-checkbox_label {
+		padding: 8px 4px;
+		}
+
+</style>

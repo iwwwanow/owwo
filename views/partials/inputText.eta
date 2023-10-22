@@ -35,11 +35,7 @@
 	}
 
 	.input_text {
-		padding: 0 4px;
-	}
-
-	h6 .input_text {
-		line-height: 24px;
+		padding: 8px 4px;
 	}
 
 	::placeholder {

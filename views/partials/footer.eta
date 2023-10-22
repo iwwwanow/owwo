@@ -6,6 +6,8 @@
 		<h5>Иванов Кирилл</h5>
 		<h5>Москва</h5>
 		<h5>2024</h5>
+		<h5>*</h5>
+		<h6 style="color: var(--red);">⚆ᗝ⚆ $</h6>
 	</div>
 </footer>
 
@@ -22,7 +24,7 @@
 	}
 
 	.autograph-container * {
-		color: var(--red);
+		/* color: var(--red); */
 	}
 
 	footer * {

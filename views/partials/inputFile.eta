@@ -44,7 +44,7 @@
 	.input-file_label.#$=color$# {
 		height: 100%;
 		width: 100%;
-		padding: 4px 0;
+		padding: 8px 4px;
 		border-color: var(--#$=color $#);
 
 		cursor: pointer;

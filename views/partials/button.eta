@@ -70,7 +70,7 @@
 
 <style>
 	button {
-		padding: 4px 2px;
+		padding: 8px;
 		width: 100%;
 		height: fit-content;
 

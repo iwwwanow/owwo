@@ -42,33 +42,3 @@
 	</div>
 
 </header>
-
-<style>
-	header {
-		position: relative;
-	}
-
-	header h6,
-	header h5 {
-		text-transform: uppercase;
-	}
-
-	header .username {
-		color: var(--grey-dark);
-	}
-
-	.logo-container {
-		position: relative;
-		height: 100%;
-	}
-
-	.logo {
-		position: absolute;
-		max-height: 100%;
-	}
-
-	.login-container {
-		grid-column-end: -1
-	}
-
-</style>

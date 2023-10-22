@@ -9,7 +9,7 @@
 
 		#$~ include("./partials/inputText.eta", {
 		name: 'username',
-		placeholder: 'username',
+		placeholder: 'USERNAME',
 		id: 'login_input-username',
 		required: true
 		})$#
@@ -17,7 +17,7 @@
 		#$~ include("./partials/inputText.eta", {
 		name: 'password',
 		type: 'password',
-		placeholder: 'password',
+		placeholder: 'PASSWORD',
 		id: 'login_input-password',
 		required: true
 		})$#

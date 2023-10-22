@@ -61,6 +61,10 @@
 
 	<link
 		rel="stylesheet"
+		href="/public/style/header.css"
+	/>
+	<link
+		rel="stylesheet"
 		href="/public/style/form_meta.css"
 	/>
 	<link
