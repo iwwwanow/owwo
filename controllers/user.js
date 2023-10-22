@@ -12,21 +12,21 @@ export default class UserController {
     } = c;
 
     const props = new Props(c);
-    props.username = username;
+    props.user.username = username;
 
     const user = sql("users")
       .select(["user_id", "text", "markup"])
       .where({ username })
       .get();
 
-    props.text = user.text;
-    props.markup = user.markup;
+    props.user.text = user.text;
+    props.user.markup = user.markup;
 
-    if (props.text) {
-      props.html = marked.parse(props.text);
+    if (props.user.text) {
+      props.user.html = marked.parse(props.user.text);
     }
 
-    props.src = File.get_src("users", user.user_id);
+    props.user.src = File.get_src("users", user.user_id);
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"

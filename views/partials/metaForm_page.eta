@@ -2,7 +2,7 @@
 	id="page_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/page/#$= page_id $#"
+	action="/page/#$= page.page_id $#"
 	enctype="multipart/form-data"
 >
 
@@ -11,7 +11,7 @@
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
-		src_image: src.cover,
+		src_image: page.src.cover,
 		}) $#
 	</fieldset>
 
@@ -20,7 +20,7 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'title',
-			text: title,
+			text: page.title,
 			placeholder: 'page-title',
 			rows: 2
 			}) $#
@@ -30,7 +30,7 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
-			text: desc,
+			text: page.desc,
 			placeholder: 'page-description',
 			}) $#
 		</h5>
@@ -40,7 +40,7 @@
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'grid',
-		check: markup
+		check: page.markup
 		}) $#
 
 		<h5>MARKUP</h5>
@@ -48,13 +48,13 @@
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'list',
-		check: markup,
+		check: page.markup,
 		}) $#
 	</fieldset>
 
 	<fieldset class="card">
-		#$ const url_formaction = `/page/${page_id}` $#
-		#$ const page_dir = `/public/data_uploads/pages/${page_id}/` $#
+		#$ const url_formaction = `/page/${page.page_id}` $#
+		#$ const page_dir = `/public/data_uploads/pages/${page.page_id}/` $#
 
 		<div class="input-container">
 			#$~ include('inputFile', {
@@ -65,7 +65,7 @@
 			}) $#
 
 			#$ const url_scriptDownload = page_dir + 'script.js' $#
-			#$ if (src.script) { $#
+			#$ if (page.src.script) { $#
 			<div class="input-container_button-container">
 				#$~include('button', {
 				url_download: url_scriptDownload
@@ -93,7 +93,7 @@
 			}) $#
 
 			#$ const url_styleDownload = page_dir + 'style.css' $#
-			#$ if (src.style) { $#
+			#$ if (page.src.style) { $#
 			<div class="input-container_button-container">
 				#$~include('button', {
 				url_download: url_styleDownload
@@ -131,7 +131,6 @@
 		}) $#
 
 	</fieldset>
-
 
 	<hr>
 

@@ -1,8 +1,10 @@
 import { eta } from "../config/eta";
+import Props from "../middleware/props";
 
 export default class IndexController {
   static renderIndex(c) {
-    return eta.render("index", c);
+    const props = new Props(c);
+    return eta.render("index", props);
   }
   static renderError({ code, error }) {
     console.log(error);

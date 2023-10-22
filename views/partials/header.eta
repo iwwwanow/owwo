@@ -1,12 +1,7 @@
-#$ params = it.params || false $#
-#$ cookie = it.cookie || false $#
-
 #$ let isOwnProfile = false $#
-#$ if (!!cookie && !!params.username && params.username === cookie.auth.username) { $#
+#$ if (it.user && it.auth && user.username === auth.username) { $#
 #$ isOwnProfile = true $#
 #$ } $#
-
-#$ let isAuth = !!cookie.auth $#
 
 <header class="grid">
 
@@ -14,24 +9,30 @@
 		#$~ include("logo")$#
 	</div>
 
-	#$ if (!!params && !!params.username ) { $#
-	<h5 class="username">
-		#$= params.username$#
-	</h5>
-	#$ } $#
+	<div>
+		#$ if (it.user && user.username) { $#
+		<h5 class="username">
+			#$= user.username$#
+		</h5>
+		#$ } else if (it.page) { $#
+		<h5 class="username">
+			#$= page.title || 'page' $#
+		</h5>
+		#$ } $#
+	</div>
 
 	<div class="login-container">
 		#$ if (isOwnProfile) { $#
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		#$ } else if (isAuth) { $#
+		#$ } else if (!!it.auth) { $#
 		<h5>
 			<a
-				href="/#$= cookie.auth.username $#"
+				href="/#$= auth.username $#"
 				style="color: var(--red)"
 			>
-				#$= cookie.auth.username $#
+				#$= auth.username $#
 			</a>
 		</h5>
 		#$ } else { $#

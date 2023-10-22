@@ -1,7 +1,5 @@
 #$ layout("./layout.eta") $#
 
-#$ const user = null $#
-
 #$ if (_editor) { $#
 #$~ include('partials/metaForm_user', it) $#
 #$ } $#
@@ -11,23 +9,23 @@
 	<div class="user-container grid_break-end">
 		<h1 class="user_avatar-container">
 			<img
-				src="#$=src.avatar$#"
+				src="#$=user.src.avatar$#"
 				alt=""
 			>
 		</h1>
 		<h1>
-			#$= username $#
+			#$= user.username $#
 		</h1>
 	</div>
 
-	#$ if (html) { $#
+	#$ if (user.html) { $#
 	<div class="element_text-container grid_break-start">
-		#$~html$#
+		#$~user.html$#
 	</div>
 	#$ } $#
 </div>
 
-<div class="#$= markup $#">
+<div class="#$= user.markup $#">
 
 	#$ if (!!pages.length) { $#
 
@@ -43,7 +41,7 @@
 
 	#$ if (_editor) { $#
 	<form action="">
-		#$~ include("./partials/buttonPlus.eta", {formaction: username})$#
+		#$~ include("./partials/buttonPlus.eta", {formaction: user.username})$#
 	</form>
 	#$ } $#
 

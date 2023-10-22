@@ -1,30 +1,30 @@
 import File from "./file";
 
 export default class Props {
+  referer;
   _editor;
+  auth = {};
   user_id;
-  username;
+  user = { src: {} };
   page_id;
-  page;
+  page = { src: {} };
   pages;
   element_id;
-  element;
+  element = { src: {} };
   elements;
-  src;
-  text;
-  html;
-  title;
-  desc;
   markup;
 
   constructor(c) {
+    const { headers, cookie, path, params } = c;
     this._editor = c._editor;
-    this.type = c.path.split("/").at(1);
-    this[`${this.type}_id`] = c.params[`${this.type}_id`];
+    this.referer = headers.referer;
+    if (cookie) this.auth = cookie.auth;
+    if (path) this.type = path.split("/").at(1);
+    if (params) this[`${this.type}_id`] = params[`${this.type}_id`];
   }
 
   set username(username) {
-    this.username = username;
+    this.user.username = username;
   }
 
   set page_id(id) {

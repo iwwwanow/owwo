@@ -18,10 +18,10 @@ export default class PageController {
       .where({ page_id })
       .get();
 
-    props.title = page.title;
-    props.desc = page.desc;
-    props.markup = page.markup;
-    props.page_id = page.page_id;
+    props.page.title = page.title;
+    props.page.desc = page.desc;
+    props.page.markup = page.markup;
+    props.page.page_id = page.page_id;
 
     // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL для вывода авторов и информации страницы
     // const authors = sql("authors")
@@ -37,7 +37,7 @@ export default class PageController {
     // });
 
     // TODO упаковать это в модлевайр PROPS
-    props.src = File.get_src("pages", page_id);
+    props.page.src = File.get_src("pages", page_id);
 
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"

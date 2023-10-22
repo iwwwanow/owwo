@@ -2,7 +2,7 @@
 	id="user_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/#$= username $#"
+	action="/#$= user.username $#"
 	enctype="multipart/form-data"
 >
 
@@ -12,7 +12,7 @@
 		style: 'aspect-ratio: 1/1; height: auto;',
 		name: 'avatar',
 		accept: 'image/*',
-		src_image: src.avatar,
+		src_image: user.src.avatar,
 		}) $#
 	</fieldset>
 
@@ -21,14 +21,14 @@
 			#$~ include('textarea', {
 			form: 'user_meta-form',
 			name: 'text',
-			text: text,
+			text: user.text,
 			placeholder: 'profile-text',
 			}) $#
 		</h4>
 	</fieldset>
 
-	#$ const url_formaction = `/${username}` $#
-	#$ const user_dir = `/public/data_uploads/users/${user_id}/` $#
+	#$ const url_formaction = `/${user.username}` $#
+	#$ const user_dir = `/public/data_uploads/users/${user.user_id}/` $#
 
 	<fieldset class="input-container user_meta-form__square">
 		#$~ include('inputFile', {
@@ -39,7 +39,7 @@
 		}) $#
 
 		#$ const url_scriptDownload = user_dir + 'script.js' $#
-		#$ if (src.script) { $#
+		#$ if (user.src.script) { $#
 		<div class="input-container_button-container">
 			#$~include('button', {
 			url_download: url_scriptDownload
@@ -65,7 +65,7 @@
 		}) $#
 
 		#$ const url_styleDownload = user_dir + 'style.css' $#
-		#$ if (src.style) { $#
+		#$ if (user.src.style) { $#
 		<div class="input-container_button-container">
 			#$~include('button', {
 			url_download: url_styleDownload
@@ -89,15 +89,15 @@
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'grid',
-		check: markup
+		check: user.markup
 		}) $#
 
-		<h5>MARKUP</h5>
+		<h5>~ MARKUP ~</h5>
 
 		#$~ include('inputRadio', {
 		name: 'markup',
 		value: 'list',
-		check: markup,
+		check: user.markup,
 		}) $#
 	</fieldset>
 
@@ -124,7 +124,6 @@
 		formaction: url_formaction
 		}) $#
 	</fieldset>
-
 
 	<hr>
 
