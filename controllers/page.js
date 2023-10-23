@@ -12,11 +12,14 @@ export default class PageController {
     const {
       params,
       cookie,
+      query,
       params: { page_id },
     } = c;
 
     const props = new Props(c);
     props.page_type = "page";
+
+    if (query.mode) props.view_mode = query.mode;
 
     const page = sql("pages")
       .select(["page_id", "title", "desc", "markup"])
@@ -34,6 +37,7 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .all();
 
+    console.log(authors);
     if (cookie && cookie.auth) {
       const author = authors.find(
         (author) => author.user_id === cookie.auth.user_id
@@ -114,7 +118,7 @@ export default class PageController {
     const { set, params, cookie } = c;
     await File.removeDir("pages", params.page_id);
     sql("pages").delete().where({ page_id: params.page_id }).run();
-    set.redirect = `/${cookie.username}`;
+    set.redirect = `/${cookie.auth.username}`;
   }
 
   static async removeFile(c) {

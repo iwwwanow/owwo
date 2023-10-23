@@ -35,7 +35,7 @@
 
 	#$ } $#
 
-	#$ if (_editor) { $#
+	#$ if (it.user_type && user_type === 'owner') { $#
 	<form action="">
 		#$~ include("./partials/buttonPlus.eta", {formaction: user.username})$#
 	</form>

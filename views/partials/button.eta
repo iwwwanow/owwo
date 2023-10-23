@@ -12,7 +12,7 @@
 #$ let _formaction = it.formaction || '' $#
 
 #$ if (_formmethod !== 'POST' && _formmethod !== 'GET' && !!_formaction) { $#
-#$ _formaction = _formaction + `?_method=${_formmethod}` $#
+#$ _formaction = _formaction + `?method=${_formmethod}` $#
 #$ _formmethod = 'POST' $#
 #$ } $#
 

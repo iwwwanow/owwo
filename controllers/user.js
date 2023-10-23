@@ -7,11 +7,14 @@ import sql from "./sql.ts";
 
 export default class UserController {
   static async index(c) {
-    const { params, cookie } = c;
+    const { params, cookie, query } = c;
+    console.log(query);
 
     const props = new Props(c);
     props.page_type = "profile";
     props.user.username = params.username;
+
+    if (query.mode) props.view_mode = query.mode;
 
     if (cookie.auth && cookie.auth.username === params.username)
       props.user_type = "owner";

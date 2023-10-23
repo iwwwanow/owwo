@@ -29,6 +29,7 @@ export default function sql(table_name: string) {
           title: "TEXT",
           desc: "TEXT",
           markup: "TEXT DEFAULT grid",
+          type: "DEFAULT close",
         },
       });
 

@@ -44,6 +44,7 @@
 
 	.grid .card-element_container {
 		position: relative;
+		height: 288px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;

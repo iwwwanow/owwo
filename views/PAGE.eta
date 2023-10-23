@@ -12,6 +12,11 @@
 		class="
 		authors-container"
 	>
+		#$ if (authors.length > 1) { $#
+		<h6 style="color: var(--grey-medium);">Авторы:</h6>
+		#$ } else { $#
+		<h6 style="color: var(--grey-medium);">Автор:</h6>
+		#$ } $#
 		#$ authors.forEach((author) => { $#
 		<h6>
 			<a
@@ -22,7 +27,7 @@
 				#$= author.username $#
 			</a>
 
-			#$ if (it.user_type && user_type === 'owner' && author.type !== 'owner') { $#
+			#$ if (it.user_type && view_mode === 'editor' && user_type === 'owner' && author.type !== 'owner') { $#
 
 			<form
 				method="POST"
@@ -30,7 +35,8 @@
 			>
 				<input
 					type="submit"
-					value="---"
+					style="width: 1em; height: 1em;"
+					value="-"
 				/>
 			</form>
 			#$ } $#
@@ -38,7 +44,7 @@
 
 		#$ }) $#
 
-		#$ if (it.user_type && user_type === 'owner') { $#
+		#$ if (it.user_type && user_type === 'owner' && view_mode === 'editor') { $#
 		<h6>
 			<form
 				method="POST"
@@ -47,11 +53,13 @@
 				<input
 					type="text"
 					name="pusher_username"
-					size="8"
-					placeholder="username"
+					size="16"
+					style="text-transform: uppercase;"
+					placeholder="добавить редактора"
 				>
 				<input
 					type="submit"
+					style="width: 1em; height: 1em;"
 					value="+"
 				/>
 			</form>
@@ -119,7 +127,11 @@
 	}
 
 	a.owner {
-		color: var(--red) !important;
+		color: var(--black) !important;
+	}
+
+	a.pusher {
+		color: var(--grey-dark) !important;
 	}
 
 </style>

@@ -1,14 +1,15 @@
-header h6,
-header h5 {
+header * {
   text-transform: uppercase;
 }
 
-header .username {
+header .header_id-container {
   color: var(--grey-dark);
+  grid-column: 2 / span 2;
 }
 
-.logo-container {
+.header_logo-container {
   position: relative;
+  min-height: 1em;
   height: 100%;
 }
 
@@ -18,10 +19,16 @@ header .username {
   max-height: 100%;
 }
 
-.login-container {
+.header_login-container {
   grid-column-end: -1;
+  grid-row-start: 1;
   display: flex;
   justify-content: flex-end;
+}
+@media screen and (max-width: 858px) {
+  header .header_id-container {
+    grid-column: 1 / -1;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -31,7 +38,11 @@ header .username {
 }
 
 @media screen and (max-width: 360px) {
-  .login-container {
+  .header_logo-container {
+    grid-row: 1/2;
+  }
+  .header_login-container {
+    grid-row-start: 2;
     justify-content: flex-start;
   }
 }

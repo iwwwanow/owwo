@@ -50,8 +50,13 @@
 		/* align-items: flex-start; */
 	}
 
-	.card_desc {
+	.grid .card_desc {
 		display: none;
+		pointer-events: none;
+	}
+
+	.grid .card:hover .card_desc {
+		display: flex;
 	}
 
 	.card_text-wrapper {
@@ -72,11 +77,6 @@
 		gap: 16px;
 		flex-direction: column;
 		background-color: #FFFFFFCC;
-	}
-
-	.card:hover .card_text-container,
-	.card:hover .card_desc {
-		display: flex;
 	}
 
 	.card img {

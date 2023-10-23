@@ -3,6 +3,7 @@ import File from "./file";
 export default class Props {
   user_type = "viewer";
   page_type;
+  view_mode = "viewer";
   authors = [];
   auth = {};
   user_id;

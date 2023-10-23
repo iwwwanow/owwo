@@ -8,10 +8,12 @@ import sql from "./sql.ts";
 
 export default class ElementController {
   static async index(c) {
-    const { params, cookie } = c;
+    const { params, cookie, query } = c;
 
     const props = new Props(c);
     props.page_type = "element";
+
+    if (query.mode) props.view_mode = query.mode;
 
     props.element = sql("elements")
       .select(["element_id", "text", "author_id"])

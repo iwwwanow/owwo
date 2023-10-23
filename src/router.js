@@ -49,12 +49,12 @@ router
     return UserController.index(c);
   })
   .post("/:username", (c) => {
-    if (c.query._method === "DELETE") return UserController.delete(c);
-    else if (c.query._method === "PUT") return UserController.update(c);
+    if (c.query.method === "DELETE") return UserController.delete(c);
+    else if (c.query.method === "PUT") return UserController.update(c);
     return PageController.create(c);
   })
   .post("/:username/:file", (c) => {
-    if (c.query._method === "DELETE") return UserController.removeFile(c);
+    if (c.query.method === "DELETE") return UserController.removeFile(c);
     else c.set.redirect = `/${c.params.username}`;
   });
 
@@ -64,12 +64,12 @@ router
     return PageController.index(c);
   })
   .post("/page/:page_id", (c) => {
-    if (c.query._method === "DELETE") return PageController.delete(c);
-    else if (c.query._method === "PUT") return PageController.update(c);
+    if (c.query.method === "DELETE") return PageController.delete(c);
+    else if (c.query.method === "PUT") return PageController.update(c);
     else return ElementController.create(c);
   })
   .post("page/:page_id/:file", (c) => {
-    if (c.query._method === "DELETE") return PageController.removeFile(c);
+    if (c.query.method === "DELETE") return PageController.removeFile(c);
     else c.set.redirect = `/page/${c.params.page_id}`;
   })
   .post("page/:page_id/addpusher", (c) => {
@@ -85,12 +85,12 @@ router
     return ElementController.index(c);
   })
   .post("/element/:element_id", (c) => {
-    if (c.query._method === "DELETE") return ElementController.delete(c);
-    else if (c.query._method === "PUT") return ElementController.update(c);
+    if (c.query.method === "DELETE") return ElementController.delete(c);
+    else if (c.query.method === "PUT") return ElementController.update(c);
     else return ElementController.create(c);
   })
   .post("element/:element_id/:file", (c) => {
-    if (c.query._method === "DELETE") return ElementController.removeFile(c);
+    if (c.query.method === "DELETE") return ElementController.removeFile(c);
     else c.set.redirect = `/element/${c.params.element_id}`;
   });
 
