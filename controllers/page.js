@@ -10,10 +10,13 @@ import Props from "../middleware/props.js";
 export default class PageController {
   static async index(c) {
     const {
+      params,
+      cookie,
       params: { page_id },
     } = c;
 
     const props = new Props(c);
+    props.page_type = "page";
 
     const page = sql("pages")
       .select(["page_id", "title", "desc", "markup"])
@@ -26,17 +29,25 @@ export default class PageController {
     props.page.page_id = page.page_id;
 
     // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL для вывода авторов и информации страницы
-    // const authors = sql("authors")
-    //   .select("user_id")
-    //   .where({ page_id: params.page_id })
-    //   .all();
-    //
-    // authors.forEach((author) => {
-    //   const username = sql("users")
-    //     .select("username")
-    //     .where({ user_id: author })
-    //     .get();
-    // });
+    const authors = sql("authors")
+      .select(["user_id", "type"])
+      .where({ page_id: params.page_id })
+      .all();
+
+    if (cookie && cookie.auth) {
+      const author = authors.find(
+        (author) => author.user_id === cookie.auth.user_id
+      );
+      if (author.type === "owner") props.user_type = "owner";
+    }
+
+    authors.forEach((author) => {
+      author.username = sql("users")
+        .select("username")
+        .where({ user_id: author.user_id })
+        .get();
+      props.authors.push(author);
+    });
 
     // TODO упаковать это в модлевайр PROPS
     props.page.src = File.get_src("pages", page_id);
@@ -71,7 +82,7 @@ export default class PageController {
     sql("pages").insert({ page_id }).run();
 
     sql("authors")
-      .update({ user_id: cookie.auth.user_id })
+      .update({ user_id: cookie.auth.user_id, type: "owner" })
       .where({ page_id })
       .run();
 
@@ -109,6 +120,52 @@ export default class PageController {
   static async removeFile(c) {
     const { set, params } = c;
     await File.removeFile("pages", params.page_id, params.file);
+    set.redirect = `/page/${params.page_id}`;
+  }
+
+  static async pusherAdd(c) {
+    const { set, params, body } = c;
+    const { pusher_username } = body;
+
+    const pusher_id = sql("users")
+      .select("user_id")
+      .where({ username: pusher_username })
+      .get();
+
+    // TODO проверять, тчобы юсер не был OWNER
+    const check_pusher = sql("authors")
+      .select(["user_id", "type"])
+      .where({ user_id: pusher_id })
+      .get();
+
+    if (!check_pusher) {
+      sql("authors")
+        .insert({ page_id: params.page_id, user_id: pusher_id, type: "pusher" })
+        .run();
+    } else {
+      throw new Error("pusher exists");
+    }
+
+    set.redirect = `/page/${params.page_id}`;
+  }
+
+  static async pusherRemove(c) {
+    const { set, params } = c;
+
+    const pusher_id = sql("users")
+      .select("user_id")
+      .where({ username: params.pusher_username })
+      .get();
+
+    const check_pusher = sql("authors")
+      .select(["user_id", "type"])
+      .where({ user_id: pusher_id })
+      .get();
+
+    if (check_pusher && check_pusher.type !== "owner") {
+      sql("authors").delete().where({ user_id: pusher_id }).run();
+    }
+
     set.redirect = `/page/${params.page_id}`;
   }
 }

@@ -9,9 +9,6 @@
 		#$~ include("logo")$#
 	</div>
 
-	<h5>
-		редактировать
-	</h5>
 
 	<div class="header_username-container">
 		#$ if (it.user && user.username) { $#
@@ -47,3 +44,15 @@
 	</div>
 
 </header>
+
+#$ if (it.user_type && user_type === 'owner') { $#
+
+#$ if (page_type === 'profile') { $#
+#$~ include('metaForm_user', it) $#
+#$ } else if (page_type === 'page') { $#
+#$~ include('metaForm_page', it) $#
+#$ } else if (page_type === 'element') { $#
+#$~ include('metaForm_element', it) $#
+#$ } $#
+
+#$ } $#

@@ -1,9 +1,5 @@
 #$ layout("./layout.eta") $#
 
-#$ if (_editor) { $#
-#$~ include('partials/metaForm_user', it) $#
-#$ } $#
-
 <div class="grid">
 
 	<div class="user-container grid_break-end">

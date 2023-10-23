@@ -71,6 +71,12 @@ router
   .post("page/:page_id/:file", (c) => {
     if (c.query._method === "DELETE") return PageController.removeFile(c);
     else c.set.redirect = `/page/${c.params.page_id}`;
+  })
+  .post("page/:page_id/addpusher", (c) => {
+    return PageController.pusherAdd(c);
+  })
+  .post("page/:page_id/removepusher/:pusher_username", (c) => {
+    return PageController.pusherRemove(c);
   });
 
 // ELEMENT

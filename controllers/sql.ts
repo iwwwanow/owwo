@@ -86,6 +86,7 @@ export default function sql(table_name: string) {
     },
 
     select: function (input: string | Array<string>) {
+      // TODO переделай инпут на ...args
       query = "";
 
       if (typeof input === "string") select_single = input;

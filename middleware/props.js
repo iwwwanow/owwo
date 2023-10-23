@@ -1,7 +1,9 @@
 import File from "./file";
 
 export default class Props {
-  _editor;
+  user_type = "viewer";
+  page_type;
+  authors = [];
   auth = {};
   user_id;
   user = { src: {} };

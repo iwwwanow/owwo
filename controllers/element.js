@@ -8,14 +8,19 @@ import sql from "./sql.ts";
 
 export default class ElementController {
   static async index(c) {
-    const { params } = c;
+    const { params, cookie } = c;
 
     const props = new Props(c);
+    props.page_type = "element";
 
     props.element = sql("elements")
-      .select(["element_id", "text"])
+      .select(["element_id", "text", "author_id"])
       .where({ element_id: params.element_id })
       .get();
+
+    if (cookie.auth && props.element.author_id === cookie.auth.user_id) {
+      props.user_type = "owner";
+    }
 
     props.element.src = File.get_src("elements", params.element_id);
 

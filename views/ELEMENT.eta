@@ -1,9 +1,5 @@
 #$ layout("./layout.eta")$#
 
-#$ if (_editor) { $#
-#$~ include('partials/metaForm_element', it ) $#
-#$ } $#
-
 <div class="list">
 	#$~ include("partials/Card_element", { element, size: '80vh' }) $#
 </div>

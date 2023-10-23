@@ -1,10 +1,5 @@
 #$ layout("./layout.eta" )$#
 
-
-#$ if (_editor) { $#
-#$~ include('partials/metaForm_page', it) $#
-#$ } $#
-
 <div class="grid">
 	<div
 		class="grid_break-end"">
@@ -13,17 +8,67 @@
 		<h1>#$= page.title $#</h1>
 		#$ } $#
 
-		<h6>author</h6>
-		<h6>date</h6>
+		<div 
+		class="
+		authors-container"
+	>
+		#$ authors.forEach((author) => { $#
+		<h6>
+			<a
+				class="#$= author.type $#"
+				href="
+		/#$=author.username $#"
+			>
+				#$= author.username $#
+			</a>
+
+			#$ if (it.user_type && user_type === 'owner' && author.type !== 'owner') { $#
+
+			<form
+				method="POST"
+				action="/page/#$= page.page_id $#/removepusher/#$= author.username $#"
+			>
+				<input
+					type="submit"
+					value="---"
+				/>
+			</form>
+			#$ } $#
+		</h6>
+
+		#$ }) $#
+
+		#$ if (it.user_type && user_type === 'owner') { $#
+		<h6>
+			<form
+				method="POST"
+				action="/page/#$= page.page_id $#/addpusher"
+			>
+				<input
+					type="text"
+					name="pusher_username"
+					size="8"
+					placeholder="username"
+				>
+				<input
+					type="submit"
+					value="+"
+				/>
+			</form>
+		</h6>
+		#$ } $#
+
 	</div>
 
-	#$ if (page.desc) { $#
-	<div class="
-		grid_break-start"
-	>
-		<h5>#$= page.desc $#</h5>
-	</div>
-	#$ } $#
+	<h6>date</h6>
+</div>
+
+#$ if (page.desc) { $#
+<div class="
+		grid_break-start">
+	<h5>#$= page.desc $#</h5>
+</div>
+#$ } $#
 </div>
 
 <div class="page #$=page.markup$#">
@@ -40,7 +85,7 @@
 	<h2 style="color: var(--red);">(●´⌓`●)</h2>
 	#$ } $#
 
-	#$ if (_editor) { $#
+	#$ if (it.user_type && user_type === 'owner' || user_type === 'pusher') { $#
 	<form action="">
 		#$ const url_formaction = `/page/${page.page_id}` $#
 
@@ -53,3 +98,28 @@
 	#$ } $#
 
 </div>
+
+<style>
+	.authors-container {
+		display: flex;
+		gap: 8px;
+	}
+
+	.authors-container h6 {
+		display: flex;
+	}
+
+	.authors-container h6 a {
+		text-transform: none;
+	}
+
+	.authors-container form {
+		width: fit-content;
+		background-color: var(--grey-light);
+	}
+
+	a.owner {
+		color: var(--red) !important;
+	}
+
+</style>
