@@ -1,7 +1,6 @@
 #$ layout("./layout") $#
 
 <div class="grid">
-	#$ console.log(it) $#
 	#$ if (it.users.length) { $#
 
 	<div class="avatars-container">

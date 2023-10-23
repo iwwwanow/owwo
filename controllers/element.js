@@ -12,21 +12,18 @@ export default class ElementController {
 
     const props = new Props(c);
 
-    const element = sql("elements")
+    props.element = sql("elements")
       .select(["element_id", "text"])
       .where({ element_id: params.element_id })
       .get();
 
-    props.element.element_id = element.element_id;
-    props.element.text = element.text;
-
-    props.src = File.get_src("elements", params.element_id);
+    props.element.src = File.get_src("elements", params.element_id);
 
     if (props.element.text) {
       props.element.html = marked.parse(props.element.text);
     }
 
-    return eta.render("element", props);
+    return eta.render("ELEMENT", props);
   }
 
   static create(c) {

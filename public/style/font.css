@@ -14,7 +14,7 @@ h1 {
   color: var(--black);
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 64px; */
-  font-size: 6.4rem;
+  font-size: 6.4em;
   font-style: italic;
   font-weight: 700;
   line-height: 75%; /* 48px */
@@ -30,7 +30,7 @@ h2 {
 
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 28px; */
-  font-size: 2.8rem;
+  font-size: 2.8em;
   font-style: italic;
   font-weight: 700;
   /* line-height: 24px; /* 85.714% */
@@ -44,7 +44,7 @@ h3 {
 
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   /* font-size: 16px; */
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-style: normal;
   font-weight: 700;
   /* line-height: 24px; /* 150% */
@@ -56,7 +56,7 @@ h4 {
 
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 14px; */
-  font-size: 1.4rem;
+  font-size: 1.4em;
   font-style: normal;
   font-weight: 700;
   line-height: 1.6rem; /* 114.286% */
@@ -67,7 +67,7 @@ h5 {
 
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 14px; */
-  font-size: 1.4rem;
+  font-size: 1.4em;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6rem; /* 114.286% */
@@ -76,7 +76,7 @@ h6 {
   color: var(--grey-dark);
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 14px; */
-  font-size: 1.4rem;
+  font-size: 1.4em;
   font-style: italic;
   font-weight: 300;
   /* line-height: 16px; /* 114.286% */
@@ -88,7 +88,7 @@ p {
 
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   /* font-size: 16px; */
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-style: normal;
   font-weight: 400;
   /* line-height: 24px; /* 150% */
@@ -109,16 +109,16 @@ a:visited {
     font-size: 80%;
   }
   h1 {
-    font-size: 3.2rem;
+    font-size: 3.2em;
     line-height: 75%; /* 24px */
     margin-bottom: 2.4rem;
   }
   h2 {
-    font-size: 2.4rem;
+    font-size: 2.4em;
     line-height: 2.4rem; /* 100% */
     margin-bottom: 2.4rem;
   }
   h1 input[type="text"] {
-    height: 2.4rem;
+    height: 2.4em;
   }
 }

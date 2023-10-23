@@ -1,5 +1,4 @@
 .list > a,
-.list > div,
 .list > form {
   grid-column: 1/-1;
 }
@@ -8,15 +7,18 @@
 }
 .list .card_text-container {
   max-width: 420px;
+  width: fit-content;
+  padding: 8px 16px 6px 6px;
 }
 .list .card:hover .card_title {
   text-decoration: underline;
 }
-.list .card:hover .card_desc {
-  display: none;
-}
 .list .card_text-container:hover .card_desc {
   display: flex;
+}
+
+.page.list {
+  row-gap: 32px;
 }
 @media screen and (max-width: 1268px) {
   .list > div .card_text-wrapper {
@@ -28,9 +30,8 @@
 }
 
 @media screen and (max-width: 858px) {
-  .list > div .card_text-wrapper {
+  .list .card_text-wrapper {
     width: 100%;
-    padding: 16px 8px 24px;
   }
   .list > div .image-link_container {
     max-width: 100%;
@@ -46,6 +47,7 @@
   }
   .list .card_text-container {
     max-width: 100%;
+    width: 100%;
   }
   .page.list .card {
     flex-direction: column-reverse;

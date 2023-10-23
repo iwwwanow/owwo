@@ -1,0 +1,137 @@
+#$ const size = it.size || '600px' $#
+#$ let type = 'text' $#
+#$ if (element.src.cover) type = 'image' $#
+
+<div class="card-element_container #$= type $# ">
+
+	#$ if (element.src.cover) { $#
+	<div class="card-element_img-container border__outter">
+		<a href="/element/#$= element.element_id $#">
+			<img
+				src="#$= element.src.cover $#"
+				alt=""
+			>
+		</a>
+	</div>
+	#$ } else { $#
+	<a
+		class="card-element_link-container border__outter"
+		style="display: block; text-decoration: none;"
+		href="/element/#$= element.element_id $#"
+	>
+		<h2 style="margin: 0;">
+			#
+		</h2>
+	</a>
+	#$ } $#
+
+	#$ /* FIX НЕ ВЫВОДИТЬ HTML ПРИ РАЗМЕТКЕ LIST */ $#
+	#$ if (element.html) { $#
+	<div class="card-element_html-container">#$~ element.html $#</div>
+	#$ } $#
+	#$ if (element.text) { $#
+	<div class="card-element_text-container">#$~ element.text $#</div>
+	#$ } $#
+
+</div>
+
+
+<style>
+	/* GRID */
+	.grid .card-element_html-container {
+		display: none;
+	}
+
+	.grid .card-element_container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	.grid .card-element_img-container {
+		height: 288px;
+	}
+
+	.grid .card-element_img-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.grid .card-element_link-container {
+		height: 100%;
+	}
+
+	/* FIX ПОДВОПРОСНАЯ ДВИЖУХА */
+	.grid .card-element_text-container {
+		position: absolute;
+		display: flex;
+
+		width: 100%;
+		max-height: 100%;
+		overflow: hidden;
+		padding: 8px 4px;
+
+		pointer-events: none;
+
+		flex-direction: column;
+		justify-content: flex-start;
+
+		mix-blend-mode: luminosity;
+		color: var(--grey-dark);
+		opacity: 0.1;
+	}
+
+	.grid .card-element_container:hover .card-element_text-container {
+		opacity: 1;
+	}
+
+	/* LIST */
+	.list .card-element_text-container {
+		display: none;
+	}
+
+	.list .card-element_container {
+		width: 100%;
+		grid-column: 1/-1;
+		display: flex;
+		gap: 16px;
+	}
+
+	.list .card-element_container.text {
+		flex-direction: column;
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	.list .card-element_container.text .card-element_link-container {
+		width: fit-content;
+	}
+
+	.list .card-element_img-container {
+		height: min-content;
+		width: fit-content;
+	}
+
+	.list .card-element_html-container {
+		max-width: 602px;
+	}
+
+	@media screen and (max-width: 1268px) {
+		.list .image .card-element_html-container {
+			max-width: 396px;
+		}
+	}
+
+	@media screen and (max-width: 858px) {
+		.list .card-element_container {
+			flex-direction: column;
+		}
+
+		.list .card-element_html-container {
+			max-width: 100%;
+		}
+	}
+
+</style>

@@ -3,6 +3,7 @@ import { marked } from "marked";
 
 import sql from "./sql.ts";
 import { eta } from "../config/eta";
+
 import File from "../middleware/file.ts";
 import Props from "../middleware/props.js";
 
@@ -59,7 +60,7 @@ export default class PageController {
 
     props.elements = elements;
 
-    return eta.render("page", props);
+    return eta.render("PAGE", props);
   }
 
   static async create(c) {

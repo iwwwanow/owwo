@@ -42,7 +42,7 @@ export default class UserController {
 
     props.pages = pages;
 
-    return eta.render("profile", props);
+    return eta.render("PROFILE", props);
   }
 
   static async update(c) {

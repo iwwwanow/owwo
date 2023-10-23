@@ -20,10 +20,7 @@
 				<h5 class="card_desc">#$= obj.desc $#</h5>
 				#$ } $#
 
-
-				#$ if (it.markup === 'list' && obj.html) { $#
-				#$= obj.html $#
-				#$ } else if (obj.text) { $#
+				#$ if (obj.text) { $#
 				<h5 class="card_text">#$= obj.text $#</h5>
 				#$ } $#
 			</div>

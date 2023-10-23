@@ -31,20 +31,9 @@
 	#$if (!!elements.length) { $#
 	#$ elements.forEach(function (element) { $#
 
-	#$ if (element.html) { $#
-	#$~ include("partials/Card", {
+	#$~ include("partials/Card_element", {
 	element,
-	markup: page.markup,
 	}) $#
-
-	#$ } else { $#
-
-	#$~ include("partials/Card", {
-	element,
-	markup: page.markup,
-	}) $#
-
-	#$ } $#
 
 	#$ }) $#
 	#$ } else { $#

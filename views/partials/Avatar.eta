@@ -11,8 +11,11 @@
 </a>
 
 <style>
+	.avatar::before h1 {}
+
 	.avatar {
 		height: 1em !important;
+		margin: 0;
 		aspect-ratio: 1/1;
 		overflow: hidden;
 	}

@@ -9,6 +9,10 @@
 		#$~ include("logo")$#
 	</div>
 
+	<h5>
+		редактировать
+	</h5>
+
 	<div class="header_username-container">
 		#$ if (it.user && user.username) { $#
 		<h5 class="username">
