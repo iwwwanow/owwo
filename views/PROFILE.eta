@@ -5,28 +5,28 @@
 	<div class="user-container grid_break-end">
 
 		#$~ include("partials/Avatar", {
-		url: user.username,
-		src: user.src.avatar
+		url: params.username,
+		src: render.src.avatar
 		}) $#
 
 		<h1>
-			#$= user.username $#
+			#$= params.username $#
 		</h1>
-		#$~ include("partials/Date", {it: user}) $#
+		#$~ include("partials/Date", {it: render}) $#
 	</div>
 
-	#$ if (user.html) { $#
+	#$ if (render.html) { $#
 	<div class="element_text-container grid_break-start">
-		#$~user.html$#
+		#$~render.html$#
 	</div>
 	#$ } $#
 </div>
 
-<div class="#$= user.markup $#">
+<div class="#$= render.markup $#">
 
-	#$ if (!!pages.length) { $#
+	#$ if (render.pages && !!render.pages.length) { $#
 
-	#$ pages.forEach(function (page) { $#
+	#$ render.pages.forEach(function (page) { $#
 	#$~ include("partials/Card_page", {page}) $#
 	#$ }) $#
 
@@ -36,9 +36,9 @@
 
 	#$ } $#
 
-	#$ if (it.user_type && user_type === 'owner') { $#
+	#$ if (it.client && client.type === 'owner') { $#
 	<form action="">
-		#$~ include("./partials/buttonPlus.eta", {formaction: user.username})$#
+		#$~ include("./partials/buttonPlus.eta", {formaction: params.username})$#
 	</form>
 	#$ } $#
 

@@ -20,11 +20,11 @@
 	</h6>
 
 	<div class="header_login-container">
-		#$ if (isOwnProfile) { $#
+		#$ if (auth && auth.username === params.username) { $#
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		#$ } else if (!!it.auth) { $#
+		#$ } else if (it.auth) { $#
 		<h5>
 			<a
 				href="/#$= auth.username $#"
@@ -42,43 +42,43 @@
 
 </header>
 
-#$ if (it.user_type && user_type === 'owner') { $#
+#$ if (client && client.type === 'owner') { $#
 
-#$ if (it.view_mode && view_mode === 'viewer') { $#
+#$ if (client && client.mode === 'viewer') { $#
 
 <form class="grid mode">
 	<h5>
 		#$ const query = '?mode=editor' $#
-		#$ if (it.page_type && page_type === 'profile') { $#
-		<a href="/#$= user.username $##$= query $#">редактировать профиль</a>
-		#$ } else if (it.page_type && page_type === 'page') { $#
-		<a href="/page/#$= page.page_id $##$= query $#">редактировать страницу</a>
-		#$ } else if (it.page_type && page_type === 'element') { $#
-		<a href="/element/#$= element.element_id $##$= query $#">редактировать элемент</a>
+		#$ if (params.username) { $#
+		<a href="/#$= params.username $##$= query $#">редактировать профиль</a>
+		#$ } else if (params.page_id) { $#
+		<a href="/page/#$= params.page_id $##$= query $#">редактировать страницу</a>
+		#$ } else if (params.element_id) { $#
+		<a href="/element/#$= params.element_id $##$= query $#">редактировать элемент</a>
 		#$ } $#
 	</h5>
 </form>
 
-#$ } else if (it.view_mode && view_mode === 'editor') { $#
+#$ } else if (client.mode === 'editor') { $#
 
 <div class="grid mode">
 	<h5>
 		#$ const query = '?mode=viewer' $#
-		#$ if (it.page_type && page_type === 'profile') { $#
-		<a href="/#$= user.username $##$= query $#">скрыть редактор</a>
-		#$ } else if (it.page_type && page_type === 'page') { $#
-		<a href="/page/#$= page.page_id $##$= query $#">скрыть редактор</a>
-		#$ } else if (it.page_type && page_type === 'element') { $#
-		<a href="/element/#$= element.element_id $##$= query $#">скрыть редактор</a>
+		#$ if (params.username) { $#
+		<a href="/#$= params.username $##$= query $#">скрыть редактор</a>
+		#$ } else if (params.page_id) { $#
+		<a href="/page/#$= params.page_id $##$= query $#">скрыть редактор</a>
+		#$ } else if (params.element_id) { $#
+		<a href="/element/#$= params.element_id $##$= query $#">скрыть редактор</a>
 		#$ } $#
 	</h5>
 </div>
 
-#$ if (page_type === 'profile') { $#
+#$ if (params.username) { $#
 #$~ include('metaForm_user', it) $#
-#$ } else if (page_type === 'page') { $#
+#$ } else if (params.page_id) { $#
 #$~ include('metaForm_page', it) $#
-#$ } else if (page_type === 'element') { $#
+#$ } else if (params.element_id) { $#
 #$~ include('metaForm_element', it) $#
 #$ } $#
 
