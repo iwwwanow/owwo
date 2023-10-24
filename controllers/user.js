@@ -10,6 +10,7 @@ export default class UserController {
     const { params, cookie, query } = c;
 
     const props = new Props(c);
+
     props.page_type = "profile";
     props.user.username = params.username;
 
@@ -19,7 +20,7 @@ export default class UserController {
       props.user_type = "owner";
 
     const user = sql("users")
-      .select(["user_id", "text", "markup"])
+      .select(["user_id", "date_creation", "date_lastModify", "text", "markup"])
       .where({ username: params.username })
       .get();
 
@@ -27,6 +28,13 @@ export default class UserController {
 
     props.user.text = user.text;
     props.user.markup = user.markup;
+
+    props.user.date_creation = new Date(user.date_creation).toLocaleString(
+      "ru-RU"
+    );
+    props.user.date_lastModify = new Date(user.date_lastModify).toLocaleString(
+      "ru-RU"
+    );
 
     if (props.user.text) {
       props.user.html = marked.parse(props.user.text);

@@ -67,8 +67,7 @@
 		#$ } $#
 
 	</div>
-
-	<h6>date</h6>
+		#$~ include("partials/Date", {it: page}) $#
 </div>
 
 #$ if (page.desc) { $#

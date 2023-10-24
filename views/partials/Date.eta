@@ -1,0 +1,4 @@
+<div class="date-container">
+	<h5>#$= it.date_creation $#</h5>
+	<h6>#$= it.date_lastModify $#</h6>
+</div>

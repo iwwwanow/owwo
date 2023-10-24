@@ -12,6 +12,7 @@
 		<h1>
 			#$= user.username $#
 		</h1>
+		#$~ include("partials/Date", {it: user}) $#
 	</div>
 
 	#$ if (user.html) { $#
