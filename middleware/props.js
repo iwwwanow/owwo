@@ -1,6 +1,7 @@
 import { marked } from "marked";
 import File from "./file";
-import sql from "../controllers/sql";
+import sql from "./sql";
+import set_clientType from "./set_clientType";
 
 export default class Props {
   client = {
@@ -20,6 +21,7 @@ export default class Props {
       Object.keys(params).forEach((key) => {
         this.params[key] = params[key];
       });
+      if (this.auth) this.client.type = set_clientType(this);
     }
 
     if (query.mode) this.client.mode = query.mode;
@@ -36,14 +38,19 @@ export default class Props {
 
   async init() {
     if (!this.params) {
-      return this.init_index();
+      await this.init_index();
     } else if (this.params.username) {
-      return this.init_user();
+      await this.init_user();
     } else if (this.params.page_id) {
-      return this.init_page();
+      await this.init_page();
     } else if (this.params.element_id) {
-      return this.init_element();
+      await this.init_element();
+      this.render.src = File.get_src("elements", this.params.element_id);
     }
+
+    this.date_local();
+    if (this.render.text) this.render.html = marked.parse(this.render.text);
+    return this;
   }
 
   async init_index() {
@@ -65,18 +72,6 @@ export default class Props {
       .select(["user_id", "date_creation", "date_lastModify", "text", "markup"])
       .where({ username: this.params.username })
       .get();
-
-    if (!this.render) return;
-
-    this.date_local();
-
-    if (this.auth && this.auth.username === this.params.username) {
-      this.client.type = "owner";
-    }
-
-    if (this.render.text) {
-      this.render.html = marked.parse(this.render.text);
-    }
 
     this.render.src = File.get_src("users", this.render.user_id);
 
@@ -111,20 +106,11 @@ export default class Props {
       .get();
     this.render.src = File.get_src("pages", this.params.page_id);
     this.render.authors = [];
-    this.date_local();
 
     const authors = sql("authors")
       .select(["user_id", "type"])
       .where({ page_id: this.params.page_id })
       .all();
-
-    // CHECK OWNER
-    if (this.auth) {
-      const author = authors.find(
-        (author) => author.user_id === this.auth.user_id
-      );
-      if (author && author.type === "owner") this.client.type = "owner";
-    }
 
     authors.forEach((author) => {
       author.username = sql("users")
@@ -169,19 +155,5 @@ export default class Props {
       ])
       .where({ element_id: this.params.element_id })
       .get();
-
-    this.date_local();
-
-    // CHECK OWNER
-    if (this.auth && this.render.author_id === this.auth.user_id) {
-      this.client.type = "owner";
-    }
-
-    this.render.src = File.get_src("elements", this.params.element_id);
-
-    if (this.render.text) {
-      this.render.html = marked.parse(this.render.text);
-    }
-    return this;
   }
 }

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import check_uniqueUsername from "../middleware/check_unique-username.ts";
 import Password from "../middleware/password.ts";
-import sql from "./sql.ts";
+import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
 
 export default class AuthController {

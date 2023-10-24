@@ -1,7 +1,4 @@
-import sql from "./sql.ts";
 import { eta } from "../config/eta";
-
-import File from "../middleware/file.ts";
 import Props from "../middleware/props";
 
 export default class IndexController {

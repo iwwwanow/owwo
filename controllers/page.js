@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
 import { marked } from "marked";
 
-import sql from "./sql.ts";
 import { eta } from "../config/eta";
 
+import sql from "../middleware/sql.ts";
 import Props from "../middleware/props.js";
-import dbDate from "../middleware/date.js";
 import File from "../middleware/file.ts";
+import dbDate from "../middleware/date.js";
 
 export default class PageController {
   static async index(c) {
@@ -27,12 +27,12 @@ export default class PageController {
       })
       .run();
 
-    dbDate.update({ page_id });
-
     sql("authors")
       .update({ user_id: cookie.auth.user_id, type: "owner" })
       .where({ page_id })
       .run();
+
+    dbDate.update({ page_id });
 
     set.redirect = `/page/${page_id}`;
     return;
@@ -48,6 +48,11 @@ export default class PageController {
     await File.write("pages", cover, "cover", params.page_id);
     await File.write("pages", script, "script", params.page_id);
     await File.write("pages", style, "style", params.page_id);
+
+    sql("pages")
+      .update({ title, desc, markup, date_lastModify: Date.now() })
+      .where({ page_id: params.page_id })
+      .run();
 
     dbDate.update({ page_id: params.page_id });
 

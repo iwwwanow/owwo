@@ -4,8 +4,9 @@ import { marked } from "marked";
 import Props from "../middleware/props.js";
 import File from "../middleware/file.ts";
 import dbDate from "../middleware/date.js";
+import sql from "../middleware/sql.ts";
+
 import { eta } from "../config/eta";
-import sql from "./sql.ts";
 
 export default class ElementController {
   static async index(c) {
@@ -27,12 +28,12 @@ export default class ElementController {
       })
       .run();
 
-    dbDate.update({ element_id });
-
     sql("connections")
       .update({ page_id: params.page_id })
       .where({ element_id })
       .run();
+
+    dbDate.update({ element_id });
 
     set.redirect = `/element/${element_id}`;
   }
@@ -47,6 +48,11 @@ export default class ElementController {
     await File.write("elements", cover, "cover", params.element_id);
     await File.write("elements", script, "script", params.element_id);
     await File.write("elements", style, "style", params.element_id);
+
+    sql("elements")
+      .update({ text, date_lastModify: Date.now() })
+      .where({ element_id: params.element_id })
+      .run();
 
     dbDate.update({ element_id: params.element_id });
 

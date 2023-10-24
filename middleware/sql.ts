@@ -151,10 +151,14 @@ export default function sql(table_name: string) {
     where: function (input: { [key: string]: string }) {
       query += "WHERE ";
 
-      Object.keys(input).forEach((column) => {
+      Object.keys(input).forEach((column, i) => {
         let value = (input as any)[column];
-        query += `${column} = '${value}';\n`;
+        if (i > 0) {
+          query += "\nAND ";
+        }
+        query += `${column} = '${value}'`;
       });
+      query += ";\n";
 
       return this;
     },

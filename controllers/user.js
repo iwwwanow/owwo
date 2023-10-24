@@ -3,7 +3,7 @@ import { marked } from "marked";
 
 import File from "../middleware/file.ts";
 import Props from "../middleware/props.js";
-import sql from "./sql.ts";
+import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
 
 export default class UserController {
@@ -27,6 +27,11 @@ export default class UserController {
     await File.write("users", avatar, "avatar", user_id);
     await File.write("users", script, "script", user_id);
     await File.write("users", style, "style", user_id);
+
+    sql("users")
+      .update({ text, markup, date_lastModify: Date.now() })
+      .where({ user_id })
+      .run();
 
     dbDate.update(user_id);
 
