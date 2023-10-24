@@ -1,5 +1,4 @@
 #$ const name = it.name || 'input-file' $#
-#$ const multiple = it.multiple ? 'multiple' : '' $#
 #$ const src_image = it.src_image || false $#
 #$ const customClass = it.customClass || '' $#
 #$ const style = it.style || '' $#
@@ -29,7 +28,6 @@
 	name="#$= name $#"
 	type="file"
 	accept="#$= accept $#"
-	#$=multiple$#
 />
 
 <style>

@@ -4,8 +4,9 @@ import { marked } from "marked";
 import sql from "./sql.ts";
 import { eta } from "../config/eta";
 
-import File from "../middleware/file.ts";
 import Props from "../middleware/props.js";
+import dbDate from "../middleware/date.js";
+import File from "../middleware/file.ts";
 
 export default class PageController {
   static async index(c) {
@@ -25,6 +26,8 @@ export default class PageController {
         date_lastModify: Date.now(),
       })
       .run();
+
+    dbDate.update({ page_id });
 
     sql("authors")
       .update({ user_id: cookie.auth.user_id, type: "owner" })
@@ -46,10 +49,7 @@ export default class PageController {
     await File.write("pages", script, "script", params.page_id);
     await File.write("pages", style, "style", params.page_id);
 
-    sql("pages")
-      .update({ title, desc, markup, date_lastModify: Date.now() })
-      .where({ page_id: params.page_id })
-      .run();
+    dbDate.update({ page_id: params.page_id });
 
     const referer = c.request.headers.get("referer");
     set.redirect = referer;

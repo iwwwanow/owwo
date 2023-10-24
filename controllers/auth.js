@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import check_uniqueUsername from "../middleware/check_unique-username.ts";
 import Password from "../middleware/password.ts";
 import sql from "./sql.ts";
+import dbDate from "../middleware/date.js";
 
 export default class AuthController {
   static async createUser(c) {
@@ -11,16 +12,20 @@ export default class AuthController {
 
     Password.confirm(password, confirm);
 
+    const user_id = uuidv4();
+
     try {
       sql("users")
         .insert({
-          user_id: uuidv4(),
+          user_id,
           username,
           password: await Bun.password.hash(password),
           date_creation: Date.now(),
           date_lastModify: Date.now(),
         })
         .run();
+
+      dbDate.update({ user_id });
     } catch (e) {
       check_uniqueUsername(username);
       throw new Error("failed to add the user");
