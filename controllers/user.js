@@ -7,7 +7,7 @@ import sql from "./sql.ts";
 
 export default class UserController {
   static async index(c) {
-    const props = new Props(c);
+    const props = await new Props(c).init_user();
     return eta.render("PROFILE", props);
   }
 

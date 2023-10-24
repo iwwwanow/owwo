@@ -25,17 +25,8 @@ export default class Props {
 
     if (query.mode) this.client.mode = query.mode;
 
-    if (this.params.username) {
-      this.init_user();
-    }
-
     if (this.params.page_id) {
       this.init_page();
-    }
-
-    if (this.render) {
-      if (this.render.date_creation && this.render.date_lastModify)
-        this.date_local();
     }
   }
 
@@ -69,6 +60,8 @@ export default class Props {
 
     if (!this.render) return;
 
+    this.date_local();
+
     if (this.auth && this.auth.username === this.params.username) {
       this.client.type = "owner";
     }
@@ -82,6 +75,7 @@ export default class Props {
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
     );
+
     const pages = pages_query
       .order("date_lastModify")
       .all({ $user_id: this.render.user_id });
@@ -92,6 +86,7 @@ export default class Props {
     });
 
     this.render.pages = pages;
+    return this;
   }
 
   async init_page() {
