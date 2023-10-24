@@ -20,7 +20,7 @@
 	</h6>
 
 	<div class="header_login-container">
-		#$ if (it.auth && auth.username === params.username) { $#
+		#$ if (it.auth && it.params && auth.username === params.username) { $#
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>

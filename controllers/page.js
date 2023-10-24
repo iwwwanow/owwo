@@ -10,7 +10,7 @@ import File from "../middleware/file.ts";
 
 export default class PageController {
   static async index(c) {
-    const props = await new Props(c).init_page();
+    const props = await new Props(c).init();
     return eta.render("PAGE", props);
   }
 

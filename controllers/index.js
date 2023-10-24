@@ -6,7 +6,7 @@ import Props from "../middleware/props";
 
 export default class IndexController {
   static async renderIndex(c) {
-    const props = await new Props(c).init_index();
+    const props = await new Props(c).init();
     return eta.render("INDEX", props);
   }
   static renderError({ code, error }) {

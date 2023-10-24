@@ -8,24 +8,21 @@ export default class Props {
     mode: "viewer",
   };
   render = {};
-  params = {};
+  params;
 
   constructor(c) {
     const { cookie, params, query } = c;
 
     if (cookie) this.auth = cookie.auth;
 
-    if (params) {
+    if (!!params) {
+      this.params = {};
       Object.keys(params).forEach((key) => {
         this.params[key] = params[key];
       });
     }
 
     if (query.mode) this.client.mode = query.mode;
-
-    if (this.params.page_id) {
-      this.init_page();
-    }
   }
 
   date_local() {
@@ -35,6 +32,18 @@ export default class Props {
     };
     this.render.date_creation = local(render.date_creation);
     this.render.date_lastModify = local(render.date_lastModify);
+  }
+
+  async init() {
+    if (!this.params) {
+      return this.init_index();
+    } else if (this.params.username) {
+      return this.init_user();
+    } else if (this.params.page_id) {
+      return this.init_page();
+    } else if (this.params.element_id) {
+      return this.init_element();
+    }
   }
 
   async init_index() {

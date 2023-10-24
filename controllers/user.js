@@ -8,7 +8,7 @@ import dbDate from "../middleware/date.js";
 
 export default class UserController {
   static async index(c) {
-    const props = await new Props(c).init_user();
+    const props = await new Props(c).init();
     return eta.render("PROFILE", props);
   }
 

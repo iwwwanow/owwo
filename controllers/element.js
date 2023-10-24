@@ -9,7 +9,7 @@ import sql from "./sql.ts";
 
 export default class ElementController {
   static async index(c) {
-    const props = await new Props(c).init_element();
+    const props = await new Props(c).init();
     return eta.render("ELEMENT", props);
   }
 
