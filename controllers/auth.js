@@ -17,6 +17,8 @@ export default class AuthController {
           user_id: uuidv4(),
           username,
           password: await Bun.password.hash(password),
+          date_creation: Date.now(),
+          date_lastModify: Date.now(),
         })
         .run();
     } catch (e) {

@@ -2,7 +2,7 @@
 
 <div class="grid">
 	<div>
-		<h5 class="about-text">Платформа для публикации и коллабораций.</h5>
+		<h2 class="about-text">Открытая multimedia библиотека.</h2>
 		<h4><a
 				href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1"
 			>figma</a>
@@ -15,7 +15,7 @@
 		<h5>Москва</h5>
 		<h5>2024</h5>
 		<h5>*</h5>
-		<h6 style="color: var(--red);">⚆ᗝ⚆ ₽</h6>
+		<h6 style="color: var(--red);">⚆ᗝ⚆_₽</h6>
 	</div>
 </div>
 

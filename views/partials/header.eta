@@ -28,7 +28,7 @@
 		<h5>
 			<a
 				href="/#$= auth.username $#"
-				style="color: var(--red)"
+				style="color: var(--black)"
 			>
 				#$= auth.username $#
 			</a>

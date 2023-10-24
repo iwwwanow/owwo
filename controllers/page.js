@@ -37,7 +37,6 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .all();
 
-    console.log(authors);
     if (cookie && cookie.auth) {
       const author = authors.find(
         (author) => author.user_id === cookie.auth.user_id
@@ -59,7 +58,9 @@ export default class PageController {
     const elements_query = await sql().custom_all(
       "innerJoin_elements_connections_$pageId"
     );
-    const elements = elements_query.all({ $page_id: page_id });
+    const elements = elements_query
+      .order("date_lastModify")
+      .all({ $page_id: page_id });
 
     elements.map((element) => {
       return (element.src = File.get_src("elements", element.element_id));
@@ -83,7 +84,13 @@ export default class PageController {
 
     const page_id = uuidv4();
 
-    sql("pages").insert({ page_id }).run();
+    sql("pages")
+      .insert({
+        page_id,
+        date_creation: Date.now(),
+        date_lastModify: Date.now(),
+      })
+      .run();
 
     sql("authors")
       .update({ user_id: cookie.auth.user_id, type: "owner" })
@@ -106,7 +113,7 @@ export default class PageController {
     await File.write("pages", style, "style", params.page_id);
 
     sql("pages")
-      .update({ title, desc, markup })
+      .update({ title, desc, markup, date_lastModify: Date.now() })
       .where({ page_id: params.page_id })
       .run();
 

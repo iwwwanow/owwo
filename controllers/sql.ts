@@ -16,6 +16,8 @@ export default function sql(table_name: string) {
           user_id: "TEXT PRIMARY KEY",
           username: "TEXT NOT NULL",
           password: "TEXT NOT NULL",
+          date_creation: "INTEGER",
+          date_lastModify: "INTEGER",
           text: "TEXT",
           markup: "TEXT DEFAULT grid",
         },
@@ -26,6 +28,8 @@ export default function sql(table_name: string) {
         table_name: "pages",
         columns: {
           page_id: "TEXT PRIMARY KEY",
+          date_creation: "INTEGER",
+          date_lastModify: "INTEGER",
           title: "TEXT",
           desc: "TEXT",
           markup: "TEXT DEFAULT grid",
@@ -40,6 +44,8 @@ export default function sql(table_name: string) {
         table_name: "elements",
         columns: {
           element_id: "TEXT PRIMARY KEY",
+          date_creation: "INTEGER",
+          date_lastModify: "INTEGER",
           text: "TEXT",
           author_id: "TEXT",
         },
@@ -150,6 +156,12 @@ export default function sql(table_name: string) {
         query += `${column} = '${value}';\n`;
       });
 
+      return this;
+    },
+
+    order: function (input: string) {
+      query += "ORDER BY\n";
+      query += `${input} DESC;`;
       return this;
     },
 

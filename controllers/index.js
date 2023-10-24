@@ -8,7 +8,13 @@ export default class IndexController {
   static renderIndex(c) {
     const props = new Props(c);
 
-    props.users = sql("users").select(["user_id", "username"]).all();
+    props.users = sql("users")
+      .select(["user_id", "username"])
+      .order("date_lastModify")
+      .all();
+
+    console.log(props.users);
+
     props.users.map((user) => {
       return (user.src = File.get_src("users", user.user_id));
     });

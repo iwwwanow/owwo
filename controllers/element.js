@@ -39,7 +39,12 @@ export default class ElementController {
     const element_id = uuidv4();
 
     sql("elements")
-      .insert({ element_id: element_id, author_id: cookie.auth.user_id })
+      .insert({
+        element_id,
+        date_creation: Date.now(),
+        date_lastModify: Date.now(),
+        author_id: cookie.auth.user_id,
+      })
       .run();
 
     sql("connections")
@@ -62,7 +67,7 @@ export default class ElementController {
     await File.write("elements", style, "style", params.element_id);
 
     sql("elements")
-      .update({ text })
+      .update({ text, date_lastModify: Date.now() })
       .where({ element_id: params.element_id })
       .run();
 

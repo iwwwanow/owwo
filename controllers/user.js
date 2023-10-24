@@ -8,7 +8,6 @@ import sql from "./sql.ts";
 export default class UserController {
   static async index(c) {
     const { params, cookie, query } = c;
-    console.log(query);
 
     const props = new Props(c);
     props.page_type = "profile";
@@ -38,7 +37,9 @@ export default class UserController {
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
     );
-    const pages = pages_query.all({ $user_id: user.user_id });
+    const pages = pages_query
+      .order("date_lastModify")
+      .all({ $user_id: user.user_id });
 
     pages.forEach((page) => {
       page.src = {};
@@ -66,7 +67,10 @@ export default class UserController {
     await File.write("users", script, "script", user_id);
     await File.write("users", style, "style", user_id);
 
-    sql("users").update({ text, markup }).where({ user_id }).run();
+    sql("users")
+      .update({ text, markup, date_lastModify: Date.now() })
+      .where({ user_id })
+      .run();
 
     set.redirect = `/${username}`;
     return;
