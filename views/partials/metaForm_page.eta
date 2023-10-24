@@ -2,7 +2,7 @@
 	id="page_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/page/#$= page.page_id $#"
+	action="/page/#$= render.page_id $#"
 	enctype="multipart/form-data"
 >
 
@@ -11,7 +11,7 @@
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
-		src_image: page.src.cover,
+		src_image: render.src.cover,
 		}) $#
 	</fieldset>
 
@@ -20,7 +20,7 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'title',
-			text: page.title,
+			text: render.title,
 			placeholder: 'page-title',
 			rows: 2
 			}) $#
@@ -30,21 +30,21 @@
 			#$~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
-			text: page.desc,
+			text: render.desc,
 			placeholder: 'page-description',
 			}) $#
 		</h5>
 	</fieldset>
 
-	#$~ include('fieldset_radioMarkup', { className:'card', markup: page.markup}) $#
+	#$~ include('fieldset_radioMarkup', { className:'card', markup: render.markup}) $#
 
-	#$ const url_formaction = `/page/${page.page_id}` $#
-	#$ const page_dir = `/public/data_uploads/pages/${page.page_id}/` $#
+	#$ const url_formaction = `/page/${render.page_id}` $#
+	#$ const page_dir = `/public/data_uploads/pages/${render.page_id}/` $#
 
 	<div class="card">
 		#$~ include('fieldset_inputFile', {
 		form: 'page_meta-form',
-		obj: page,
+		obj: render,
 		type: 'script',
 		url_formaction,
 		dir: page_dir,
@@ -52,7 +52,7 @@
 
 		#$~ include('fieldset_inputFile', {
 		form: 'page_meta-form',
-		obj: page,
+		obj: render,
 		type: 'style',
 		url_formaction,
 		dir: page_dir,

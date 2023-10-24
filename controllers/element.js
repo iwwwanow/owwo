@@ -8,28 +8,8 @@ import sql from "./sql.ts";
 
 export default class ElementController {
   static async index(c) {
-    const { params, cookie, query } = c;
-
-    const props = new Props(c);
-    props.page_type = "element";
-
-    if (query.mode) props.view_mode = query.mode;
-
-    props.element = sql("elements")
-      .select(["element_id", "text", "author_id"])
-      .where({ element_id: params.element_id })
-      .get();
-
-    if (cookie.auth && props.element.author_id === cookie.auth.user_id) {
-      props.user_type = "owner";
-    }
-
-    props.element.src = File.get_src("elements", params.element_id);
-
-    if (props.element.text) {
-      props.element.html = marked.parse(props.element.text);
-    }
-
+    const props = await new Props(c).init_element();
+    console.log(props);
     return eta.render("ELEMENT", props);
   }
 
@@ -71,7 +51,9 @@ export default class ElementController {
       .where({ element_id: params.element_id })
       .run();
 
-    set.redirect = `/element/${params.element_id}`;
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
+    // set.redirect = `/element/${params.element_id}`;
   }
 
   static async delete(c) {

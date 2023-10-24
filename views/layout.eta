@@ -76,26 +76,16 @@
 		href="/public/style/border.css"
 	/>
 
-	#$ if (it.user && user.src && user.src.style) { $#
-	<link
-		rel="stylesheet"
-		href="#$=user.src.style$#"
-	/>
-	#$ } $#
-	#$ if (it.page && page.src && page.src.style) { $#
-	<link
-		rel="stylesheet"
-		href="#$=page.src.style$#"
-	/>
-	#$ } $#
-	#$ if (it.element && element.src && element.src.style) { $#
-	<link
-		rel="stylesheet"
-		href="#$=element.src.style$#"
-	/>
-	#$ } $#
 
+
+	#$ if (it.render && render.src && render.src.style) { $#
+	<link
+		rel="stylesheet"
+		href="#$=render.src.style$#"
+	/>
+	#$ } $#
 </head>
+
 
 <body>
 	<div class="wrapper">
@@ -104,14 +94,8 @@
 		#$~ include("partials/footer", it )$#
 	</div>
 
-	#$ if (it.user && user.src && user.src.script) { $#
-	<script src="#$=user.src.script$#"></script>
-	#$ } $#
-	#$ if (it.page && page.src && page.src.script) { $#
-	<script src="#$=page.src.script$#"></script>
-	#$ } $#
-	#$ if (it.element && element.src && element.src.script) { $#
-	<script src="#$=element.src.script$#"></script>
+	#$ if (it.render && render.src && render.src.script) { $#
+	<script src="#$=render.src.script$#"></script>
 	#$ } $#
 </body>
 

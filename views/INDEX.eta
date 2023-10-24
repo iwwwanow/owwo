@@ -1,10 +1,10 @@
 #$ layout("./layout") $#
 
 <div class="grid">
-	#$ if (it.users.length) { $#
+	#$ if (it.render.users && it.render.users.length) { $#
 
 	<div class="avatars-container">
-		#$ users.forEach((user) => { $#
+		#$ render.users.forEach((user) => { $#
 		#$~ include("partials/Avatar", {
 		url: user.username,
 		src: user.src.avatar

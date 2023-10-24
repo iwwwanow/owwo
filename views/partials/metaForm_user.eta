@@ -2,7 +2,7 @@
 	id="user_meta-form"
 	class="grid meta-container"
 	method="POST"
-	action="/#$= user.username $#"
+	action="/#$= params.username $#"
 	enctype="multipart/form-data"
 >
 
@@ -15,7 +15,7 @@
 		style: 'aspect-ratio: 1/1; height: auto;',
 		name: 'avatar',
 		accept: 'image/*',
-		src_image: user.src.avatar,
+		src_image: render.src.avatar,
 		}) $#
 	</fieldset>
 
@@ -24,19 +24,19 @@
 			#$~ include('textarea', {
 			form: 'user_meta-form',
 			name: 'text',
-			text: user.text,
+			text: render.text,
 			placeholder: 'profile-text',
 			}) $#
 		</h4>
 	</fieldset>
 
-	#$ const url_formaction = `/${user.username}` $#
-	#$ const user_dir = `/public/data_uploads/users/${user.user_id}/` $#
+	#$ const url_formaction = `/${params.username}` $#
+	#$ const user_dir = `/public/data_uploads/users/${render.user_id}/` $#
 
 	#$~ include('fieldset_inputFile', {
 	form: 'user_meta-form',
 	className: 'meta-form__square',
-	obj: user,
+	obj: render,
 	type: 'script',
 	url_formaction,
 	dir: user_dir,
@@ -45,7 +45,7 @@
 	#$~ include('fieldset_inputFile', {
 	form: 'user_meta-form',
 	className: 'meta-form__square',
-	obj: user,
+	obj: render,
 	type: 'style',
 	url_formaction,
 	dir: user_dir,
@@ -53,7 +53,7 @@
 
 	#$~ include('fieldset_radioMarkup', {
 	className: 'meta-form__square',
-	markup: user.markup
+	markup: render.markup
 	}) $#
 
 	<fieldset
