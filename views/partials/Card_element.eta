@@ -1,14 +1,15 @@
+#$ if (it.render) it = it.render $#
 #$ const size = it.size || '600px' $#
 #$ let type = 'text' $#
-#$ if (element.src.cover) type = 'image' $#
+#$ if (it.src && it.src.cover) type = 'image' $#
 
 <div class="card-element_container #$= type $# ">
 
-	#$ if (element.src.cover) { $#
+	#$ if (it.src && it.src.cover) { $#
 	<div class="card-element_img-container border__outter">
-		<a href="/element/#$= element.element_id $#">
+		<a href="/element/#$= it.element_id $#">
 			<img
-				src="#$= element.src.cover $#"
+				src="#$= it.src.cover $#"
 				alt=""
 			>
 		</a>
@@ -17,7 +18,7 @@
 	<a
 		class="card-element_link-container border__outter"
 		style="display: block; text-decoration: none;"
-		href="/element/#$= element.element_id $#"
+		href="/element/#$= it.element_id $#"
 	>
 		<h2 style="margin: 0;">
 			#
@@ -26,11 +27,11 @@
 	#$ } $#
 
 	#$ /* FIX НЕ ВЫВОДИТЬ HTML ПРИ РАЗМЕТКЕ LIST */ $#
-	#$ if (element.html) { $#
-	<div class="card-element_html-container">#$~ element.html $#</div>
+	#$ if (it.html) { $#
+	<div class="card-element_html-container">#$~ it.html $#</div>
 	#$ } $#
-	#$ if (element.text) { $#
-	<div class="card-element_text-container">#$~ element.text $#</div>
+	#$ if (it.text) { $#
+	<div class="card-element_text-container">#$~ it.text $#</div>
 	#$ } $#
 
 </div>

@@ -5,8 +5,8 @@ import File from "../middleware/file.ts";
 import Props from "../middleware/props";
 
 export default class IndexController {
-  static renderIndex(c) {
-    const props = new Props(c);
+  static async renderIndex(c) {
+    const props = await new Props(c).init_index();
     return eta.render("INDEX", props);
   }
   static renderError({ code, error }) {

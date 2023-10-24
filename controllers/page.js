@@ -9,7 +9,7 @@ import Props from "../middleware/props.js";
 
 export default class PageController {
   static async index(c) {
-    const props = new Props(c);
+    const props = await new Props(c).init_page();
     return eta.render("PAGE", props);
   }
 

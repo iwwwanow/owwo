@@ -19,8 +19,6 @@ export default class Props {
       Object.keys(params).forEach((key) => {
         this.params[key] = params[key];
       });
-    } else {
-      this.init_index();
     }
 
     if (query.mode) this.client.mode = query.mode;
@@ -50,6 +48,7 @@ export default class Props {
     });
 
     this.render.users = users;
+    return this;
   }
 
   async init_user() {
@@ -103,6 +102,7 @@ export default class Props {
       .get();
     this.render.src = File.get_src("pages", this.params.page_id);
     this.render.authors = [];
+    this.date_local();
 
     const authors = sql("authors")
       .select(["user_id", "type"])
@@ -146,5 +146,33 @@ export default class Props {
     });
 
     this.render.elements = elements;
+    return this;
+  }
+
+  async init_element() {
+    this.render = sql("elements")
+      .select([
+        "element_id",
+        "text",
+        "author_id",
+        "date_creation",
+        "date_lastModify",
+      ])
+      .where({ element_id: this.params.element_id })
+      .get();
+
+    this.date_local();
+
+    // CHECK OWNER
+    if (this.auth && this.render.author_id === this.auth.user_id) {
+      this.client.type = "owner";
+    }
+
+    this.render.src = File.get_src("elements", this.params.element_id);
+
+    if (this.render.text) {
+      this.render.html = marked.parse(this.render.text);
+    }
+    return this;
   }
 }

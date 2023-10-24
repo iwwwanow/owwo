@@ -1,8 +1,8 @@
 #$ layout("./layout.eta")$#
 
 <div class="list">
-	#$~ include("partials/Date", {it: page}) $#
-	#$~ include("partials/Card_element", { element, size: '80vh' }) $#
+	#$~ include("partials/Date", {it: render}) $#
+	#$~ include("partials/Card_element", { render, size: '80vh' }) $#
 </div>
 
 <style>
