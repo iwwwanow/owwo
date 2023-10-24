@@ -29,8 +29,13 @@ export default class Props {
       this.init_user();
     }
 
+    if (this.params.page_id) {
+      this.init_page();
+    }
+
     if (this.render) {
-      this.date_local();
+      if (this.render.date_creation && this.render.date_lastModify)
+        this.date_local();
     }
   }
 
@@ -87,5 +92,64 @@ export default class Props {
     });
 
     this.render.pages = pages;
+  }
+
+  async init_page() {
+    this.render = sql("pages")
+      .select([
+        "page_id",
+        "title",
+        "desc",
+        "markup",
+        "date_lastModify",
+        "date_creation",
+      ])
+      .where({ page_id: this.params.page_id })
+      .get();
+    this.render.src = File.get_src("pages", this.params.page_id);
+    this.render.authors = [];
+
+    const authors = sql("authors")
+      .select(["user_id", "type"])
+      .where({ page_id: this.params.page_id })
+      .all();
+
+    // CHECK OWNER
+    if (this.auth) {
+      const author = authors.find(
+        (author) => author.user_id === this.auth.user_id
+      );
+      if (author && author.type === "owner") this.client.type = "owner";
+    }
+
+    authors.forEach((author) => {
+      author.username = sql("users")
+        .select("username")
+        .where({ user_id: author.user_id })
+        .get();
+      this.render.authors.push(author);
+    });
+
+    const elements_query = await sql().custom_all(
+      "innerJoin_elements_connections_$pageId"
+    );
+
+    const elements = elements_query
+      .order("date_lastModify")
+      .all({ $page_id: this.params.page_id });
+
+    elements.map((element) => {
+      return (element.src = File.get_src("elements", element.element_id));
+    });
+
+    elements.map((element) => {
+      if (element.text) {
+        const text = element.text;
+        element.html = marked.parse(text);
+        return element;
+      }
+    });
+
+    this.render.elements = elements;
   }
 }

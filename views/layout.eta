@@ -78,7 +78,7 @@
 
 
 
-	#$ if (render.src.style) { $#
+	#$ if (it.render && render.src && render.src.style) { $#
 	<link
 		rel="stylesheet"
 		href="#$=render.src.style$#"
@@ -88,19 +88,14 @@
 
 
 <body>
-	#$ if (it.render) { $#
 	<div class="wrapper">
 		#$~ include("partials/header", it )$#
 		#$~ body $#
 		#$~ include("partials/footer", it )$#
 	</div>
 
-	#$ if (render.src.script) { $#
+	#$ if (it.render && render.src && render.src.script) { $#
 	<script src="#$=render.src.script$#"></script>
-	#$ } $#
-
-	#$ } else { $#
-	<h2 style="color: var(--red);">(◯Δ ◯ ∥)</h2>
 	#$ } $#
 </body>
 

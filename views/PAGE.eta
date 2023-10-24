@@ -4,20 +4,20 @@
 	<div
 		class="grid_break-end"">
 
-		#$ if (page.title) { $#
-		<h1>#$= page.title $#</h1>
+		#$ if (render.title) { $#
+		<h1>#$= render.title $#</h1>
 		#$ } $#
 
 		<div 
 		class="
 		authors-container"
 	>
-		#$ if (authors.length > 1) { $#
+		#$ if (render.authors.length > 1) { $#
 		<h6 style="color: var(--grey-medium);">Авторы:</h6>
 		#$ } else { $#
 		<h6 style="color: var(--grey-medium);">Автор:</h6>
 		#$ } $#
-		#$ authors.forEach((author) => { $#
+		#$ render.authors.forEach((author) => { $#
 		<h6>
 			<a
 				class="#$= author.type $#"
@@ -27,11 +27,11 @@
 				#$= author.username $#
 			</a>
 
-			#$ if (it.user_type && view_mode === 'editor' && user_type === 'owner' && author.type !== 'owner') { $#
+			#$ if (client.mode === 'editor' && client.type === 'owner' && author.type !== 'owner') { $#
 
 			<form
 				method="POST"
-				action="/page/#$= page.page_id $#/removepusher/#$= author.username $#"
+				action="/page/#$= render.page_id $#/removepusher/#$= author.username $#"
 			>
 				<input
 					type="submit"
@@ -44,11 +44,11 @@
 
 		#$ }) $#
 
-		#$ if (it.user_type && user_type === 'owner' && view_mode === 'editor') { $#
+		#$ if (client.type === 'owner' && client.mode === 'editor') { $#
 		<h6>
 			<form
 				method="POST"
-				action="/page/#$= page.page_id $#/addpusher"
+				action="/page/#$= render.page_id $#/addpusher"
 			>
 				<input
 					type="text"
@@ -67,21 +67,21 @@
 		#$ } $#
 
 	</div>
-		#$~ include("partials/Date", {it: page}) $#
+		#$~ include("partials/Date", {it: render}) $#
 </div>
 
-#$ if (page.desc) { $#
+#$ if (render.desc) { $#
 <div class="
 		grid_break-start">
-	<h5>#$= page.desc $#</h5>
+	<h5>#$= render.desc $#</h5>
 </div>
 #$ } $#
 </div>
 
-<div class="page #$=page.markup$#">
+<div class="page #$=render.markup$#">
 
-	#$if (!!elements.length) { $#
-	#$ elements.forEach(function (element) { $#
+	#$if (render.elements && render.elements.length) { $#
+	#$ render.elements.forEach(function (element) { $#
 
 	#$~ include("partials/Card_element", {
 	element,
@@ -92,9 +92,9 @@
 	<h2 style="color: var(--red);">(●´⌓`●)</h2>
 	#$ } $#
 
-	#$ if (it.user_type && user_type === 'owner' || user_type === 'pusher') { $#
+	#$ if (client.type === 'owner' || client.type === 'pusher') { $#
 	<form action="">
-		#$ const url_formaction = `/page/${page.page_id}` $#
+		#$ const url_formaction = `/page/${render.page_id}` $#
 
 		<div class="card">
 			#$~ include('partials/buttonPlus', {

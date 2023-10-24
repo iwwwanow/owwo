@@ -20,7 +20,7 @@
 	</h6>
 
 	<div class="header_login-container">
-		#$ if (auth && auth.username === params.username) { $#
+		#$ if (it.auth && auth.username === params.username) { $#
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
@@ -42,9 +42,9 @@
 
 </header>
 
-#$ if (client && client.type === 'owner') { $#
+#$ if (it.client && client.type === 'owner') { $#
 
-#$ if (client && client.mode === 'viewer') { $#
+#$ if (it.client && client.mode === 'viewer') { $#
 
 <form class="grid mode">
 	<h5>
@@ -63,13 +63,12 @@
 
 <div class="grid mode">
 	<h5>
-		#$ const query = '?mode=viewer' $#
 		#$ if (params.username) { $#
-		<a href="/#$= params.username $##$= query $#">скрыть редактор</a>
+		<a href="/#$= params.username $#">скрыть редактор</a>
 		#$ } else if (params.page_id) { $#
-		<a href="/page/#$= params.page_id $##$= query $#">скрыть редактор</a>
+		<a href="/page/#$= params.page_id $#">скрыть редактор</a>
 		#$ } else if (params.element_id) { $#
-		<a href="/element/#$= params.element_id $##$= query $#">скрыть редактор</a>
+		<a href="/element/#$= params.element_id $#">скрыть редактор</a>
 		#$ } $#
 	</h5>
 </div>

@@ -9,73 +9,7 @@ import Props from "../middleware/props.js";
 
 export default class PageController {
   static async index(c) {
-    const {
-      params,
-      cookie,
-      query,
-      params: { page_id },
-    } = c;
-
     const props = new Props(c);
-    props.page_type = "page";
-
-    if (query.mode) props.view_mode = query.mode;
-
-    const page = sql("pages")
-      .select(["page_id", "title", "desc", "markup"])
-      .where({ page_id })
-      .get();
-
-    props.page.title = page.title;
-    props.page.desc = page.desc;
-    props.page.markup = page.markup;
-    props.page.page_id = page.page_id;
-
-    // TODO Вывод авторов на клиент. нужен иннер джоин и один большой SQL для вывода авторов и информации страницы
-    const authors = sql("authors")
-      .select(["user_id", "type"])
-      .where({ page_id: params.page_id })
-      .all();
-
-    if (cookie && cookie.auth) {
-      const author = authors.find(
-        (author) => author.user_id === cookie.auth.user_id
-      );
-      if (author.type === "owner") props.user_type = "owner";
-    }
-
-    authors.forEach((author) => {
-      author.username = sql("users")
-        .select("username")
-        .where({ user_id: author.user_id })
-        .get();
-      props.authors.push(author);
-    });
-
-    // TODO упаковать это в модлевайр PROPS
-    props.page.src = File.get_src("pages", page_id);
-
-    const elements_query = await sql().custom_all(
-      "innerJoin_elements_connections_$pageId"
-    );
-    const elements = elements_query
-      .order("date_lastModify")
-      .all({ $page_id: page_id });
-
-    elements.map((element) => {
-      return (element.src = File.get_src("elements", element.element_id));
-    });
-
-    elements.map((element) => {
-      if (element.text) {
-        const text = element.text;
-        element.html = marked.parse(text);
-        return element;
-      }
-    });
-
-    props.elements = elements;
-
     return eta.render("PAGE", props);
   }
 
@@ -102,7 +36,7 @@ export default class PageController {
   }
 
   static async update(c) {
-    const { set, params, body } = c;
+    const { set, params, body, request } = c;
     const { title, desc, cover, script, style, markup } = body;
 
     // FIX можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
@@ -117,11 +51,13 @@ export default class PageController {
       .where({ page_id: params.page_id })
       .run();
 
-    set.redirect = `/page/${params.page_id}`;
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
+    // set.redirect = `/page/${params.page_id}`;
     return;
   }
 
-  static async delete(c) {
+  static async delete() {
     const { set, params, cookie } = c;
     await File.removeDir("pages", params.page_id);
     sql("pages").delete().where({ page_id: params.page_id }).run();

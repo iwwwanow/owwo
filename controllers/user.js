@@ -32,7 +32,9 @@ export default class UserController {
       .where({ user_id })
       .run();
 
-    set.redirect = `/${username}`;
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
+    // set.redirect = `/${username}`;
     return;
   }
 

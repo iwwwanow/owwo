@@ -71,7 +71,9 @@ export default class ElementController {
       .where({ element_id: params.element_id })
       .run();
 
-    set.redirect = `/element/${params.element_id}`;
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
+    // set.redirect = `/element/${params.element_id}`;
   }
 
   static async delete(c) {
