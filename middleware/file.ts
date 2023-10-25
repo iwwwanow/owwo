@@ -1,4 +1,5 @@
 import * as fs from "node:fs";
+import sharp from "sharp";
 
 export default class File {
   static async write(
@@ -8,7 +9,6 @@ export default class File {
     id: string
   ): Promise<void> {
     let fileExtention = blob.type.split("/").at(-1);
-
     if (name === "script") fileExtention = "js";
     else if (name === "style") fileExtention = "css";
 
@@ -20,14 +20,56 @@ export default class File {
     await Bun.write(path, blob);
   }
 
+  static async write_image(
+    dir_type: string,
+    blob: any,
+    name: string,
+    id: string
+  ) {
+    const dir = `./public/data_uploads/${dir_type}/${id}/`;
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    const write = async (image, ex, variant) => {
+      let name_file;
+      if (variant) name_file = name + `@${variant}`;
+      else name_file = name;
+      const path = `${dir}${name_file}.${ex}`;
+      await Bun.write(path, image);
+    };
+
+    const ex_original = blob.type.split("/").at(-1);
+    await write(blob, ex_original);
+
+    const buf = await blob.arrayBuffer();
+    const webp64 = await sharp(buf, { animated: true })
+      .webp()
+      .resize(64, 64, { fit: "cover" })
+      .toBuffer();
+    await write(webp64, "webp", "webp64");
+
+    const webp190 = await sharp(buf, { animated: true })
+      .webp()
+      .resize(190, 190, { fit: "cover" })
+      .toBuffer();
+    await write(webp190, "webp", "webp190");
+  }
+
   static get_src(dir_type: string, id: string) {
     let result = {};
     let dir = `./public/data_uploads/${dir_type}/${id}`;
+
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
-        const fileName = file.split(".").at(0);
+        const name_full = file.split(".").at(0);
+        const variant = name_full?.split("@").at(1) || "original";
+        const name = name_full?.split("@").at(0);
+
+        if (!result[name]) result[name] = {};
+
         const filePath = dir.substring(1) + "/" + file;
-        result[fileName] = filePath;
+        result[name][variant] = filePath;
       });
     }
     return result;
@@ -62,7 +104,7 @@ export default class File {
     let dir = `./public/data_uploads/${dir_type}/${id}/`;
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
-        if (file.split(".").at(0) === imageName) {
+        if (file.split(".").at(0)?.split("@").at(0) === imageName) {
           this.removeFile(dir_type, id, file);
         }
       });

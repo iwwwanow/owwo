@@ -1,41 +1,32 @@
-#$ const size = it.size || 'h1' $#
-
-<#$=size$# class="avatar">
-	<a
-		style="text-decoration: none;"
-		class="avatar-container"
-		href="/#$=url$#"
+<a
+	class="avatar"
+	href="/#$=url$#"
+>
+	#$ if (src) { $#
+	<img
+		class="avatar-image"
+		src="#$=src$#"
+		alt=""
 	>
-		#$ if (src) { $#
-		<img
-			class="avatar-image"
-			src="#$=src$#"
-			alt=""
-		>
-		#$ } else { $#
-		<div style="width: 100%; height: 100%; background-color: var(--grey-light); ">
-			<h6 style="font-size: 0.4em; color: var(--white);">
-				≧◡≦
-			</h6>
-		</div>
-		#$ } $#
-	</a>
-</#$=size$#>
+	#$ } else { $#
+	<h2 style="width: 100%; height: 100%; color: var(--grey-light);">
+		≧◡≦
+	</h2>
+	#$ } $#
+</a>
 
 <style>
 	.avatar {
-		height: 1em;
-		width: 1em;
-		margin: 0;
+		display: block;
+		height: fit-content;
+		text-decoration: none !important;
+		grid-column: auto;
 	}
 
-	.avatar-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		margin: 0;
-		aspect-ratio: 1/1;
-		overflow: hidden;
+	@media screen and (max-width: 444px) {
+		.avatar {
+			grid-column: 1/-1;
+		}
 	}
 
 </style>

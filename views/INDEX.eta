@@ -7,7 +7,7 @@
 		#$ render.users.forEach((user) => { $#
 		#$~ include("partials/Avatar", {
 		url: user.username,
-		src: user.src.avatar
+		src: user.src.avatar && user.src.avatar.webp64
 		}) $#
 		#$ }) $#
 	</div>

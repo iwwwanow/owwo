@@ -8,15 +8,17 @@ header .header_id-container {
 }
 
 .header_logo-container {
-  position: relative;
-  min-height: 1em;
+  width: fit-content;
   height: 100%;
-}
-
-.logo {
-  position: absolute;
   min-height: 1em;
-  max-height: 100%;
+  position: relative;
+}
+.header_logo-container a {
+  height: 100%;
+  display: block;
+}
+.header_logo-container img {
+  height: 100%;
 }
 
 .header_login-container {

@@ -15,7 +15,7 @@
 		style: 'aspect-ratio: 1/1; height: auto;',
 		name: 'avatar',
 		accept: 'image/*',
-		src_image: render.src.avatar,
+		src_image: render.src.avatar && render.src.avatar.original,
 		}) $#
 	</fieldset>
 

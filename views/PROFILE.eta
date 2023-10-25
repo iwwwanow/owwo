@@ -1,18 +1,17 @@
 #$ layout("./layout.eta") $#
 
-<div class="grid">
+<div class="grid profile">
 
-	<div class="user-container grid_break-end">
 
-		#$~ include("partials/Avatar", {
-		url: params.username,
-		src: render.src.avatar
-		}) $#
+	#$~ include("partials/Avatar", {
+	url: params.username,
+	src: render.src.avatar && render.src.avatar.webp190
+	}) $#
 
-		<h1>
+	<div class="username-container">
+		<h2>
 			#$= params.username $#
-		</h1>
-
+		</h2>
 		#$~ include("partials/Date", {render}) $#
 	</div>
 
@@ -46,15 +45,35 @@
 </div>
 
 <style>
-	.user-container {
+	.username-container {
 		height: min-content;
-		display: flex;
-		align-items: flex-end;
-		gap: 16px;
+		grid-column: 2/4;
 	}
 
-	.user-container * {
+	.username-container * {
 		margin: 0;
+	}
+
+	.username-container>h2 {
+		word-break: break-all;
+	}
+
+	@media screen and (max-width: 1268px) {
+		.username-container {
+			grid-column: auto;
+		}
+	}
+
+	@media screen and (max-width: 858px) {
+		.username-container {
+			grid-column: 2/4;
+		}
+	}
+
+	@media screen and (max-width: 650px) {
+		.username-container {
+			grid-column: 1/-1;
+		}
 	}
 
 	@media screen and (max-width: 444px) {

@@ -16,9 +16,11 @@ export default class UserController {
 
     const user_id = sql("users").select("user_id").where({ username }).get();
 
-    if (!!avatar.size) await File.removeImage("users", user_id, "avatar");
+    if (!!avatar.size) {
+      await File.removeImage("users", user_id, "avatar");
+      await File.write_image("users", avatar, "avatar", user_id);
+    }
 
-    await File.write("users", avatar, "avatar", user_id);
     await File.write("users", script, "script", user_id);
     await File.write("users", style, "style", user_id);
 
@@ -39,6 +41,7 @@ export default class UserController {
   }
 
   static async delete(c) {
+    // FIX REF
     checkOwner.check(c);
     const { set, params, removeCookie } = c;
     const user_id = sql("users")
@@ -46,7 +49,6 @@ export default class UserController {
       .where({ username: params.username })
       .get();
     const page_ids = sql("authors").select("page_id").where({ user_id }).all();
-    console.log(page_ids);
     if (page_ids.length) {
       page_ids.forEach(async (page_id) => {
         const connections = sql("connections")
