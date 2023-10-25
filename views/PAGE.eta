@@ -1,6 +1,6 @@
 #$ layout("./layout.eta" )$#
 
-<div class="grid">
+<div class="grid page_info-container">
 	<div
 		class="grid_break-end"">
 
@@ -8,127 +8,71 @@
 		<h1>#$= render.title $#</h1>
 		#$ } $#
 
-		<div 
-		class="
-		authors-container"
+		#$~ include("partials/Author", {render}) $#
+		#$~ include("partials/Date", {render}) $#
+
+		</div
 	>
-		#$ if (render.authors.length > 1) { $#
-		<h6 style="color: var(--grey-medium);">Авторы:</h6>
-		#$ } else { $#
-		<h6 style="color: var(--grey-medium);">Автор:</h6>
+
+		#$ if (render.desc) { $#
+		<div class="
+		grid_break-start">
+			<h5>#$= render.desc $#</h5>
+		</div>
 		#$ } $#
-		#$ render.authors.forEach((author) => { $#
-		<h6>
-			<a
-				class="#$= author.type $#"
-				href="
-		/#$=author.username $#"
-			>
-				#$= author.username $#
-			</a>
+	</div>
 
-			#$ if (client.mode === 'editor' && client.type === 'owner' && author.type !== 'owner') { $#
+	<div class="page #$=render.markup$#">
 
-			<form
-				method="POST"
-				action="/page/#$= render.page_id $#/removepusher/#$= author.username $#"
-			>
-				<input
-					type="submit"
-					style="width: 1em; height: 1em;"
-					value="-"
-				/>
-			</form>
-			#$ } $#
-		</h6>
+		#$if (render.elements && render.elements.length) { $#
+		#$ render.elements.forEach(function (element) { $#
+
+		#$~ include("partials/Card_element", { it: element }) $#
 
 		#$ }) $#
+		#$ } else { $#
+		<h2 style="color: var(--red);">(●´⌓`●)</h2>
+		#$ } $#
 
-		#$ if (client.type === 'owner' && client.mode === 'editor') { $#
-		<h6>
-			<form
-				method="POST"
-				action="/page/#$= render.page_id $#/addpusher"
-			>
-				<input
-					type="text"
-					name="pusher_username"
-					size="16"
-					style="text-transform: uppercase;"
-					placeholder="добавить редактора"
-				>
-				<input
-					type="submit"
-					style="width: 1em; height: 1em;"
-					value="+"
-				/>
-			</form>
-		</h6>
+		#$ if (client.type === 'owner' || client.type === 'pusher') { $#
+		<form action="">
+			#$ const url_formaction = `/page/${render.page_id}` $#
+
+			<div class="card">
+				#$~ include('partials/buttonPlus', {
+				formaction: url_formaction
+				}) $#
+			</div>
+		</form>
 		#$ } $#
 
 	</div>
-		#$~ include("partials/Date", {it: render}) $#
-</div>
 
-#$ if (render.desc) { $#
-<div class="
-		grid_break-start">
-	<h5>#$= render.desc $#</h5>
-</div>
-#$ } $#
-</div>
+	<style>
+		.authors-container {
+			display: flex;
+			gap: 8px;
+		}
 
-<div class="page #$=render.markup$#">
+		.authors-container h6 {
+			display: flex;
+		}
 
-	#$if (render.elements && render.elements.length) { $#
-	#$ render.elements.forEach(function (element) { $#
+		.authors-container h6 a {
+			text-transform: none;
+		}
 
-	#$~ include("partials/Card_element", { it: element }) $#
+		.authors-container form {
+			width: fit-content;
+			background-color: var(--grey-light);
+		}
 
-	#$ }) $#
-	#$ } else { $#
-	<h2 style="color: var(--red);">(●´⌓`●)</h2>
-	#$ } $#
+		a.owner {
+			color: var(--black) !important;
+		}
 
-	#$ if (client.type === 'owner' || client.type === 'pusher') { $#
-	<form action="">
-		#$ const url_formaction = `/page/${render.page_id}` $#
+		a.pusher {
+			color: var(--grey-dark) !important;
+		}
 
-		<div class="card">
-			#$~ include('partials/buttonPlus', {
-			formaction: url_formaction
-			}) $#
-		</div>
-	</form>
-	#$ } $#
-
-</div>
-
-<style>
-	.authors-container {
-		display: flex;
-		gap: 8px;
-	}
-
-	.authors-container h6 {
-		display: flex;
-	}
-
-	.authors-container h6 a {
-		text-transform: none;
-	}
-
-	.authors-container form {
-		width: fit-content;
-		background-color: var(--grey-light);
-	}
-
-	a.owner {
-		color: var(--black) !important;
-	}
-
-	a.pusher {
-		color: var(--grey-dark) !important;
-	}
-
-</style>
+	</style>

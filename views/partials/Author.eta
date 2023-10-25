@@ -1,0 +1,22 @@
+<div class="
+		authors-container">
+	#$ if (render.authors.length > 1) { $#
+	<h6 style="color: var(--grey-medium);">Авторы:</h6>
+	#$ } else { $#
+	<h6 style="color: var(--grey-medium);">Автор:</h6>
+	#$ } $#
+	#$ render.authors.forEach((author) => { $#
+
+	<h6>
+		<a
+			class="#$= author.type $#"
+			href="
+		/#$=author.username $#"
+		>
+			#$= author.username $#
+		</a>
+	</h6>
+
+	#$ }) $#
+
+</div>
