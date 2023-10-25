@@ -6,9 +6,10 @@
 
 <a
 	href="#$= url $#"
+	id="#$= obj.page_id $#"
+	class="card border__outter"
 	style="text-decoration: none;"
 >
-	<div class="card border__outter">
 		#$ if (obj.title || obj.desc || obj.text) { $#
 		<div class="grid_break-end card_text-wrapper">
 			<div class="card_text-container border__inner">
@@ -34,8 +35,6 @@
 			alt="cover"
 		>
 		#$ } $#
-
-	</div>
 </a>
 
 <style>

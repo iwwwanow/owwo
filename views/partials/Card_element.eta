@@ -3,10 +3,10 @@
 #$ let type = 'text' $#
 #$ if (it.src && it.src.cover) type = 'image' $#
 
-<div class="card-element_container #$= type $# ">
+<div id="#$= it.element_id $#" class="card-element_container #$= type $# ">
 
 	#$ if (it.src && it.src.cover) { $#
-	<div class="card-element_img-container border__outter">
+	<div  class="card-element_img-container border__outter">
 		<a href="/element/#$= it.element_id $#">
 			<img
 				src="#$= it.src.cover $#"
@@ -52,7 +52,7 @@
 	}
 
 	.grid .card-element_img-container {
-		height: 288px;
+		height: 100%;
 	}
 
 	.grid .card-element_img-container img {

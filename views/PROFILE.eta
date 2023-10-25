@@ -12,7 +12,7 @@
 		<h1>
 			#$= params.username $#
 		</h1>
-		#$~ include("partials/Date", {it: render}) $#
+		#$~ include("partials/Date", {render}) $#
 	</div>
 
 	#$ if (render.html) { $#

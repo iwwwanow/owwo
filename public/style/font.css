@@ -86,7 +86,8 @@ h6 {
 p {
   color: var(--grey-dark);
 
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  /* font-family: "Roboto", "Helvetica Neue", sans-serif; */
+  font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
   /* font-size: 16px; */
   font-size: 1.6em;
   font-style: normal;

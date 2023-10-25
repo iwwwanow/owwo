@@ -50,6 +50,8 @@ export default class Props {
 
     this.date_local();
     if (this.render.text) this.render.html = marked.parse(this.render.text);
+    else if (this.render.desc)
+      this.render.html = marked.parse(this.render.desc);
     return this;
   }
 

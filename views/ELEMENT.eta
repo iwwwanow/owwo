@@ -1,7 +1,7 @@
 #$ layout("./layout.eta")$#
 
 <div class="list">
-	#$~ include("partials/Date", {it: render}) $#
+	#$~ include("partials/Date", {render}) $#
 	#$~ include("partials/Card_element", { render, size: '80vh' }) $#
 </div>
 

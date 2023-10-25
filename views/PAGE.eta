@@ -17,7 +17,7 @@
 		#$ if (render.desc) { $#
 		<div class="
 		grid_break-start">
-			<h5>#$= render.desc $#</h5>
+			<h5>#$~ render.html $#</h5>
 		</div>
 		#$ } $#
 	</div>
