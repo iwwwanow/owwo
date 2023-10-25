@@ -1,3 +1,3 @@
 # *OWWO*
 
-publication platform
+Открытая multimedia библиотека.
