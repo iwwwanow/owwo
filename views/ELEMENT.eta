@@ -5,10 +5,20 @@
 </div>
 
 <div class="grid">
-<div class="grid_break-end">
-	#$~ include("partials/Author", {render}) $#
-	#$~ include("partials/Date", {render}) $#
-</div>
+	<div class="grid_break-end">
+		#$~ include("partials/Author", {render}) $#
+		#$~ include("partials/Date", {render}) $#
+	</div>
+	<div class="grid_break-start">
+		<h6>
+			Страница:
+			#$ console.log(render) $#
+			<a
+				href="/page/#$= render.page $#"
+				style="color: var(--black);"
+			>#$= render.page $#</a>
+		</h6>
+	</div>
 </div>
 
 <style>

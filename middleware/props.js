@@ -161,6 +161,11 @@ export default class Props {
       .where({ element_id: this.params.element_id })
       .get();
 
+    this.render.page = sql("connections")
+      .select("page_id")
+      .where({ element_id: this.render.element_id })
+      .get();
+
     this.render.author = {};
     this.render.author.username = sql("users")
       .select("username")
