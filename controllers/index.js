@@ -6,10 +6,22 @@ export default class IndexController {
     const props = await new Props(c).init();
     return eta.render("INDEX", props);
   }
-  static renderError({ code, error }) {
-    console.log(error);
-    return eta.render("error", { code, error });
+
+  static async renderProfile(c) {
+    const props = await new Props(c).init();
+    return eta.render("PROFILE", props);
   }
+
+  static async renderPage(c) {
+    const props = await new Props(c).init();
+    return eta.render("PAGE", props);
+  }
+
+  static async renderElement(c) {
+    const props = await new Props(c).init();
+    return eta.render("ELEMENT", props);
+  }
+
   static renderAbout(c) {
     return eta.render("about", c);
   }
@@ -18,5 +30,10 @@ export default class IndexController {
   }
   static renderSignUp(c) {
     return eta.render("signup", c);
+  }
+
+  static renderError({ code, error }) {
+    console.log(error);
+    return eta.render("error", { code, error });
   }
 }

@@ -1,22 +1,14 @@
 import { v4 as uuidv4 } from "uuid";
-import { marked } from "marked";
-
-import { eta } from "../config/eta";
 
 import sql from "../middleware/sql.ts";
-import Props from "../middleware/props.js";
 import File from "../middleware/file.ts";
 import dbDate from "../middleware/date.js";
+import checkOwner from "../middleware/check_owner.js";
 
 export default class PageController {
-  static async index(c) {
-    const props = await new Props(c).init();
-    return eta.render("PAGE", props);
-  }
-
   static async create(c) {
+    checkOwner.check(c);
     const { cookie, set } = c;
-
     const page_id = uuidv4();
 
     sql("pages")
@@ -39,10 +31,11 @@ export default class PageController {
   }
 
   static async update(c) {
+    checkOwner.check(c);
+
     const { set, params, body, request } = c;
     const { title, desc, cover, script, style, markup } = body;
 
-    // FIX можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
     if (!!cover.size) await File.removeImage("pages", params.page_id, "cover");
 
     await File.write("pages", cover, "cover", params.page_id);
@@ -58,66 +51,34 @@ export default class PageController {
 
     const referer = c.request.headers.get("referer");
     set.redirect = referer;
-    // set.redirect = `/page/${params.page_id}`;
     return;
   }
 
-  static async delete() {
+  static async delete(c) {
+    checkOwner.check(c);
     const { set, params, cookie } = c;
+
+    const connections = sql("connections")
+      .select("element_id")
+      .where({ page_id: params.page_id })
+      .all();
+    if (connections.length) {
+      connections.forEach(async (element_id) => {
+        sql("elements").delete().where({ element_id }).run();
+        await File.removeDir("elements", element_id);
+      });
+    }
+
     await File.removeDir("pages", params.page_id);
     sql("pages").delete().where({ page_id: params.page_id }).run();
+
     set.redirect = `/${cookie.auth.username}`;
   }
 
   static async removeFile(c) {
+    checkOwner.check(c);
     const { set, params } = c;
     await File.removeFile("pages", params.page_id, params.file);
-    set.redirect = `/page/${params.page_id}`;
-  }
-
-  static async pusherAdd(c) {
-    const { set, params, body } = c;
-    const { pusher_username } = body;
-
-    const pusher_id = sql("users")
-      .select("user_id")
-      .where({ username: pusher_username })
-      .get();
-
-    // TODO проверять, тчобы юсер не был OWNER
-    const check_pusher = sql("authors")
-      .select(["user_id", "type"])
-      .where({ user_id: pusher_id })
-      .get();
-
-    if (!check_pusher) {
-      sql("authors")
-        .insert({ page_id: params.page_id, user_id: pusher_id, type: "pusher" })
-        .run();
-    } else {
-      throw new Error("pusher exists");
-    }
-
-    set.redirect = `/page/${params.page_id}`;
-  }
-
-  static async pusherRemove(c) {
-    const { set, params } = c;
-
-    const pusher_id = sql("users")
-      .select("user_id")
-      .where({ username: params.pusher_username })
-      .get();
-
-    const check_pusher = sql("authors")
-      .select(["user_id", "type"])
-      .where({ user_id: pusher_id })
-      .get();
-
-    if (check_pusher && check_pusher.type !== "owner") {
-      sql("authors").delete().where({ user_id: pusher_id }).run();
-    }
-
     set.redirect = `/page/${params.page_id}`;
   }
 }

@@ -1,20 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
-import { marked } from "marked";
 
-import Props from "../middleware/props.js";
+import checkOwner from "../middleware/check_owner.js";
 import File from "../middleware/file.ts";
 import dbDate from "../middleware/date.js";
 import sql from "../middleware/sql.ts";
 
-import { eta } from "../config/eta";
-
 export default class ElementController {
-  static async index(c) {
-    const props = await new Props(c).init();
-    return eta.render("ELEMENT", props);
-  }
-
   static create(c) {
+    checkOwner.check(c);
     const { set, params, cookie } = c;
 
     const element_id = uuidv4();
@@ -39,6 +32,7 @@ export default class ElementController {
   }
 
   static async update(c) {
+    checkOwner.check(c);
     const { set, params, body } = c;
     const { text, cover, script, style } = body;
 
@@ -62,6 +56,7 @@ export default class ElementController {
   }
 
   static async delete(c) {
+    checkOwner.check(c);
     const { set, params, cookie } = c;
     await File.removeDir("elements", params.element_id);
     // TODO Удаляется ли connection?
@@ -70,6 +65,7 @@ export default class ElementController {
   }
 
   static async removeFile(c) {
+    checkOwner.check(c);
     const { set, params } = c;
     await File.removeFile("elements", params.element_id, params.file);
     set.redirect = `/element/${params.element_id}`;

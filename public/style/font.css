@@ -102,9 +102,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
-a:visited {
-  color: var(--blue-visited);
-}
+/* a:visited { */
+/*   color: var(--blue-visited); */
+/* } */
 @media screen and (max-width: 444px) {
   :root {
     font-size: 80%;

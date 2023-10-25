@@ -1,23 +1,17 @@
-import { eta } from "../config/eta";
-import { marked } from "marked";
-
 import File from "../middleware/file.ts";
-import Props from "../middleware/props.js";
 import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
+import checkOwner from "../middleware/check_owner.js";
 
 export default class UserController {
-  static async index(c) {
-    const props = await new Props(c).init();
-    return eta.render("PROFILE", props);
-  }
-
   static async update(c) {
     const {
       set,
       params: { username },
       body,
     } = c;
+    checkOwner.check(c);
+
     const { avatar, text, script, style, markup } = body;
 
     const user_id = sql("users").select("user_id").where({ username }).get();
@@ -37,16 +31,41 @@ export default class UserController {
 
     const referer = c.request.headers.get("referer");
     set.redirect = referer;
-    // set.redirect = `/${username}`;
     return;
   }
 
   static async delete(c) {
-    const { set } = c;
+    checkOwner.check(c);
+    const { set, params, removeCookie } = c;
+    const user_id = sql("users")
+      .select("user_id")
+      .where({ username: params.username })
+      .get();
+    const page_ids = sql("authors").select("page_id").where({ user_id }).all();
+    console.log(page_ids);
+    if (page_ids.length) {
+      page_ids.forEach(async (page_id) => {
+        const connections = sql("connections")
+          .select("element_id")
+          .where({ page_id })
+          .all();
+        if (connections.length) {
+          connections.forEach(async (element_id) => {
+            sql("elements").delete().where({ element_id }).run();
+            await File.removeDir("elements", element_id);
+          });
+        }
 
-    console.log("delete");
+        await File.removeDir("pages", page_id);
+        sql("pages").delete().where({ page_id }).run();
+      });
+    }
 
-    set.redirect = `/${params.username}`;
+    await File.removeDir("users", user_id);
+    sql("users").delete().where({ user_id }).run();
+
+    removeCookie("auth");
+    set.redirect = "/";
   }
 
   static async removeFile(c) {
@@ -54,8 +73,13 @@ export default class UserController {
       set,
       params: { username, file },
     } = c;
+    checkOwner.check(c);
+
     const user_id = sql("users").select("user_id").where({ username }).get();
     await File.removeFile("users", user_id, file);
-    set.redirect = `/${username}`;
+
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
+    return;
   }
 }

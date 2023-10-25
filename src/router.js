@@ -46,7 +46,7 @@ router
 // USER
 router
   .get("/:username", (c) => {
-    return UserController.index(c);
+    return IndexController.renderProfile(c);
   })
   .post("/:username", (c) => {
     if (c.query.method === "DELETE") return UserController.delete(c);
@@ -61,7 +61,7 @@ router
 // PAGE
 router
   .get("/page/:page_id", (c) => {
-    return PageController.index(c);
+    return IndexController.renderPage(c);
   })
   .post("/page/:page_id", (c) => {
     if (c.query.method === "DELETE") return PageController.delete(c);
@@ -82,7 +82,7 @@ router
 // ELEMENT
 router
   .get("/element/:element_id", (c) => {
-    return ElementController.index(c);
+    return IndexController.renderElement(c);
   })
   .post("/element/:element_id", (c) => {
     if (c.query.method === "DELETE") return ElementController.delete(c);
