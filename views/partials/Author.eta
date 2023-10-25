@@ -1,3 +1,5 @@
+#$ if (it.render.author) it.render.authors = [it.render.author] $#
+
 <div class="
 		authors-container">
 	#$ if (render.authors.length > 1) { $#
@@ -20,3 +22,32 @@
 	#$ }) $#
 
 </div>
+
+	<style>
+		.authors-container {
+			display: flex;
+			gap: 8px;
+		}
+
+		.authors-container h6 {
+			display: flex;
+		}
+
+		.authors-container h6 a {
+			text-transform: none;
+		}
+
+		.authors-container form {
+			width: fit-content;
+			background-color: var(--grey-light);
+		}
+
+		a.owner {
+			color: var(--black) !important;
+		}
+
+		a.pusher {
+			color: var(--grey-dark) !important;
+		}
+
+	</style>

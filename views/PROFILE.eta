@@ -12,6 +12,7 @@
 		<h1>
 			#$= params.username $#
 		</h1>
+
 		#$~ include("partials/Date", {render}) $#
 	</div>
 
@@ -32,7 +33,7 @@
 
 	#$ } else { $#
 
-	<h2 style="color: var(--red);">(●´⌓`●)</h2>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
 
 	#$ } $#
 
@@ -46,13 +47,14 @@
 
 <style>
 	.user-container {
+		height: min-content;
 		display: flex;
+		align-items: flex-end;
 		gap: 16px;
 	}
 
-	.user-container h1 {
+	.user-container * {
 		margin: 0;
-		height: min-content;
 	}
 
 	@media screen and (max-width: 444px) {

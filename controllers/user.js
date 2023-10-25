@@ -22,10 +22,14 @@ export default class UserController {
     await File.write("users", script, "script", user_id);
     await File.write("users", style, "style", user_id);
 
-    sql("users")
-      .update({ text, markup, date_lastModify: Date.now() })
-      .where({ user_id })
-      .run();
+    try {
+      sql("users")
+        .update({ text, markup, date_lastModify: Date.now() })
+        .where({ user_id })
+        .run();
+    } catch (e) {
+      throw new Error("запись не удалась(");
+    }
 
     dbDate.update(user_id);
 

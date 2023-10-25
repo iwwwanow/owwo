@@ -1,8 +1,14 @@
 #$ layout("./layout.eta")$#
 
 <div class="list">
-	#$~ include("partials/Date", {render}) $#
 	#$~ include("partials/Card_element", { render, size: '80vh' }) $#
+</div>
+
+<div class="grid">
+<div class="grid_break-end">
+	#$~ include("partials/Author", {render}) $#
+	#$~ include("partials/Date", {render}) $#
+</div>
 </div>
 
 <style>

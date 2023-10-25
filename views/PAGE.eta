@@ -10,14 +10,13 @@
 
 		#$~ include("partials/Author", {render}) $#
 		#$~ include("partials/Date", {render}) $#
-
 		</div
 	>
 
 		#$ if (render.desc) { $#
 		<div class="
 		grid_break-start">
-			<h5>#$~ render.html $#</h5>
+			<h5>#$= render.html $#</h5>
 		</div>
 		#$ } $#
 	</div>
@@ -31,7 +30,7 @@
 
 		#$ }) $#
 		#$ } else { $#
-		<h2 style="color: var(--red);">(●´⌓`●)</h2>
+		<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
 		#$ } $#
 
 		#$ if (client.type === 'owner' || client.type === 'pusher') { $#
@@ -48,31 +47,3 @@
 
 	</div>
 
-	<style>
-		.authors-container {
-			display: flex;
-			gap: 8px;
-		}
-
-		.authors-container h6 {
-			display: flex;
-		}
-
-		.authors-container h6 a {
-			text-transform: none;
-		}
-
-		.authors-container form {
-			width: fit-content;
-			background-color: var(--grey-light);
-		}
-
-		a.owner {
-			color: var(--black) !important;
-		}
-
-		a.pusher {
-			color: var(--grey-dark) !important;
-		}
-
-	</style>

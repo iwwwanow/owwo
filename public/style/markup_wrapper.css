@@ -12,7 +12,7 @@
   /* TODO на 768 выглядит не очень */
   .wrapper {
     padding: 16px 16px;
-    row-gap: 16px;
+    /* row-gap: 16px; */
   }
 }
 

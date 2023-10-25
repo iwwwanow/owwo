@@ -16,6 +16,7 @@
     "@elysiajs/static": "^0.7.1",
     "elysia": "^0.7.5",
     "eta": "^3.1.1",
+    "isomorphic-dompurify": "^1.9.0",
     "marked": "^9.1.2",
     "uuid": "^9.0.1"
   },

@@ -1,4 +1,6 @@
 import { marked } from "marked";
+import DOMPurify from "isomorphic-dompurify";
+
 import File from "./file";
 import sql from "./sql";
 import set_clientType from "./set_clientType";
@@ -49,9 +51,10 @@ export default class Props {
     }
 
     this.date_local();
-    if (this.render.text) this.render.html = marked.parse(this.render.text);
+    if (this.render.text)
+      this.render.html = DOMPurify.sanitize(marked.parse(this.render.text));
     else if (this.render.desc)
-      this.render.html = marked.parse(this.render.desc);
+      this.render.html = DOMPurify.sanitize(marked.parse(this.render.desc));
     return this;
   }
 
@@ -157,5 +160,12 @@ export default class Props {
       ])
       .where({ element_id: this.params.element_id })
       .get();
+
+    this.render.author = {};
+    this.render.author.username = sql("users")
+      .select("username")
+      .where({ user_id: this.render.author_id })
+      .get();
+    this.render.author.type = "owner";
   }
 }
