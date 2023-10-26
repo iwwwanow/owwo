@@ -1,15 +1,14 @@
 <form
-			id="user_meta-form"
-			class="grid meta-container"
+			id="form-meta"
+			class="grid form-meta form-meta-profile"
 			method="POST"
 			action="/<%= params.username %>"
 			enctype="multipart/form-data">
 
-	<fieldset style="aspect-ratio: 1/1;" class="meta-form__square">
+	<fieldset class="form-meta__fieldset_square">
 
 		<%~ include('inputFile', {
 		form: 'user_meta-form',
-		style: 'aspect-ratio: 1/1; height: auto;',
 		name: 'avatar',
 		accept: 'image/*',
 		src_image: render.src.avatar && render.src.avatar.original,
@@ -17,7 +16,7 @@
 
 	</fieldset>
 
-	<fieldset class="meta-form__square meta-form_textarea">
+	<fieldset class="form-meta__fieldset_square">
 
 		<h4 style="height: 100%;">
 			<%~ include('textarea', {
@@ -33,51 +32,28 @@
 	<% const url_formaction = `/${params.username}` %>
 	<% const user_dir = `/public/data_uploads/users/${render.user_id}/` %>
 
-	<%~ include('fieldset_InputFile', {
-	form: 'user_meta-form',
-	className: 'meta-form__square',
-	obj: render,
-	type: 'script',
-	url_formaction,
-	dir: user_dir,
+	<%~ include('fieldsetInputFile', { 
+		src: 'src', 
+		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<%~ include('fieldset_InputFile', {
-	form: 'user_meta-form',
-	className: 'meta-form__square',
-	obj: render,
-	type: 'style',
-	url_formaction,
-	dir: user_dir,
+	<%~ include('fieldsetInputFile', { 
+		src: 'src',
+		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<%~ include('fieldset_RadioMarkup', {
-	className: 'meta-form__square',
-	markup: render.markup
+	<%~ include('fieldsetRadioMarkup', {
+		markup: render.markup,
+		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<fieldset
-						class="meta-form__square"
-						style="display: flex; flex-direction: column; gap: 8px;">
-
-		<%~ include('button', {
-		type: 'submit',
-		value: 'default',
-		color: 'grey-dark',
-		style: 'height: 100%',
-		text: 'обновить инфо',
-		formmethod: 'PUT',
-		formaction: url_formaction
+	<fieldset class="form-meta__fieldset_square form-meta__submit-buttons">
+		<%~ include('button', { 
+			text: 'сохранить изменения',
+			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('button', {
-		type: 'submit',
-		color: 'red',
-		value: 'delete',
-		text: 'удалить профиль',
-		formmethod: 'DELETE',
-		formaction: url_formaction
-		}) %>
+		<%~ include('button_delete', { text: 'удалить профиль' }) %>
 	</fieldset>
 
 	<hr>

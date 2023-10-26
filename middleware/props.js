@@ -39,6 +39,8 @@ export default class Props {
   }
 
   async init() {
+    // FIX
+    if (this.params.username === "favicon.ico") return;
     if (!this.params) {
       await this.init_index();
     } else if (this.params.username) {
@@ -47,7 +49,6 @@ export default class Props {
       await this.init_page();
     } else if (this.params.element_id) {
       await this.init_element();
-      this.render.src = File.get_src("elements", this.params.element_id);
     }
 
     this.date_local();
@@ -55,6 +56,7 @@ export default class Props {
       this.render.html = DOMPurify.sanitize(marked.parse(this.render.text));
     else if (this.render.desc)
       this.render.html = DOMPurify.sanitize(marked.parse(this.render.desc));
+
     return this;
   }
 
@@ -69,7 +71,6 @@ export default class Props {
     });
 
     this.render.users = users;
-    return this;
   }
 
   async init_user() {
@@ -168,5 +169,9 @@ export default class Props {
       .where({ user_id: this.render.author_id })
       .get();
     this.render.author.type = "owner";
+
+    this.render.src = File.get_src("elements", this.params.element_id);
+
+    return this;
   }
 }

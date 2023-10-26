@@ -1,11 +1,10 @@
-#$ layout("./layout.eta")$#
+<% layout("_layout") %>
 
 <div class="grid">
 	<div>
 		<h2 class="about-text">Открытая multimedia библиотека.</h2>
 		<h4><a
-				href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1"
-			>figma</a>
+				 href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1">figma</a>
 		</h4>
 		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
 	</div>
@@ -15,31 +14,8 @@
 		<h5>Москва</h5>
 		<h5>2024</h5>
 		<h5>*</h5>
-		<h6 style="color: var(--red);">⚆ᗝ⚆_₽</h6>
+		<a class="about__me" href="/effectivnayarabota1">
+			<h6 style="color: var(--red);">⚆ᗝ⚆_₽</h6>
+		</a>
 	</div>
 </div>
-
-<style>
-	.about-text {
-		color: var(--grey-dark);
-	}
-
-	.autograph-container {
-		text-transform: uppercase;
-		grid-column-end: -1;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-
-	.autograph-container * {
-		/* color: var(--red); */
-	}
-
-	@media screen and (max-width: 360px) {
-		.autograph-container {
-			align-items: flex-start;
-		}
-	}
-
-</style>

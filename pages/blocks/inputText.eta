@@ -12,7 +12,7 @@
 				 id="<%= id %>"
 				 class="input-text__input <%= className %>"
 
-				 type="text"
+				 type="<%= type %>"
 				 <%= required && 'required' %>
 				 name="<%= it.name %>"
 				 placeholder="<%= placeholder %>">

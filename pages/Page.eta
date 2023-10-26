@@ -34,7 +34,7 @@
 	<form action="">
 		<% const url_formaction = `/page/${render.page_id}` %>
 		<div class="card">
-			<%~ include('blocks/buttonPlus', { formaction: url_formaction }) %>
+			<%~ include('blocks/button_plus', { formaction: url_formaction }) %>
 		</div>
 	</form>
 	<% } %>

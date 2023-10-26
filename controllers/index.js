@@ -3,8 +3,9 @@ import Props from "../middleware/props";
 
 export default class IndexController {
   static async renderIndex(c) {
-    const props = await new Props(c).init();
-    return eta.render("Index", props);
+    // const props = await new Props(c).init();
+    // return eta.render("Index", props);
+    return new Response("Welcome to Bun!");
   }
 
   static async renderProfile(c) {

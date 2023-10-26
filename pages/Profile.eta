@@ -33,7 +33,7 @@
 	<% } %>
 	<% if (it.client && client.type === 'owner') { %>
 	<form action="">
-		<%~ include("blocks/buttonPlus", {formaction: params.username})%>
+		<%~ include("blocks/button_plus", {formaction: params.username})%>
 	</form>
 	<% } %>
 

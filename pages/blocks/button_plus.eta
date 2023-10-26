@@ -1,12 +1,11 @@
-#$ let action = (!!it && !!it.action) ? it.action : 'default' $#
+<% let action = (!!it && !!it.action) ? it.action : 'default' %>
 
 <div class="button-plus_container card">
 	<button
-		class="button-plus_button border__outter"
-		formaction="#$= formaction $#"
-		formmethod="POST"
-	>
-		#$~ include('./svg/+') $#
+					class="button-plus_button border__outter"
+					formaction="<%= formaction %>"
+					formmethod="POST">
+		<%~ include('./svg/+') %>
 	</button>
 </div>
 

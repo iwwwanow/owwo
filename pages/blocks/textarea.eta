@@ -1,46 +1,12 @@
-#$ const text = it.text || '' $#
-#$ const name = it.name || 'textarea' $#
-#$ const type = it.type || 'default' $#
-#$ const rows = it.rows || '' $#
+<% const text = it.text || '' %>
+<% const name = it.name || 'textarea' %>
+<% const type = it.type || 'default' %>
+<% const rows = it.rows || '' %>
 
 <textarea
-	id="textarea"
-	class="textarea_header border__outter"
-	spellcheck="false"
-	name="#$= name $#"
-	placeholder="#$= placeholder $#"
-	rows="#$= rows $#"
->#$= text $#</textarea>
-
-<style>
-	textarea {
-		width: 100%;
-		height: 100%;
-		display: block;
-		resize: none;
-
-		padding: 4px;
-
-		color: var(--grey-dark);
-		background-color: var(--grey-light);
-
-		font-style: inherit;
-		font-weight: inherit;
-		text-transform: inherit;
-	}
-
-	textarea:-moz-placeholder {
-		color: var(--grey-medium);
-	}
-
-	textarea::-webkit-input-placeholder {
-		color: var(--grey-medium);
-	}
-
-	textarea:focus {
-		color: var(--black);
-		background-color: var(--white);
-		border-color: var(--black);
-	}
-
-</style>
+					id="textarea"
+					class="textarea border__outter"
+					spellcheck="false"
+					name="<%= name %>"
+					placeholder="<%= placeholder %>"
+					rows="<%= rows %>"><%= text %></textarea>

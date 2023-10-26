@@ -1,83 +1,68 @@
 <form
-	id="page_meta-form"
-	class="grid meta-container"
-	method="POST"
-	action="/page/#$= render.page_id $#"
-	enctype="multipart/form-data"
->
+			id="form-meta-page"
+			class="grid form-meta form-meta-page"
+			method="POST"
+			action="/page/<%= render.page_id %>"
+			enctype="multipart/form-data">
 
-	<fieldset class="card">
-		#$~ include('inputFile', {
+	<fieldset class="card form-meta__fieldset">
+		<%~ include('inputFile', {
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
 		src_image: render.src.cover,
-		}) $#
+		}) %>
 	</fieldset>
 
-	<fieldset class="card">
+	<fieldset class="card form-meta__fieldset">
 		<h4>
-			#$~ include('textarea', {
+			<%~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'title',
 			text: render.title,
 			placeholder: 'page-title',
 			rows: 2
-			}) $#
+			}) %>
 		</h4>
 
 		<h5 style="height: 100%;">
-			#$~ include('textarea', {
+			<%~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
 			text: render.desc,
 			placeholder: 'page-description',
-			}) $#
+			}) %>
 		</h5>
 	</fieldset>
 
-	#$~ include('fieldset_radioMarkup', { className:'card', markup: render.markup}) $#
-
-	#$ const url_formaction = `/page/${render.page_id}` $#
-	#$ const page_dir = `/public/data_uploads/pages/${render.page_id}/` $#
 
 	<div class="card">
-		#$~ include('fieldset_inputFile', {
-		form: 'page_meta-form',
-		obj: render,
-		type: 'script',
-		url_formaction,
-		dir: page_dir,
-		}) $#
-
-		#$~ include('fieldset_inputFile', {
-		form: 'page_meta-form',
-		obj: render,
-		type: 'style',
-		url_formaction,
-		dir: page_dir,
-		}) $#
+		<%~ include('fieldsetInputFile', { 
+			src: 'src',
+			className: 'form-meta__fieldset'
+		}) %>
 
 		<hr>
 
-		#$~ include('button', {
-		type: 'submit',
-		style: 'height: 100%',
-		value: 'default',
-		color: 'grey-dark',
-		text: 'опубликовать',
-		formmethod: 'PUT',
-		formaction: url_formaction
-		}) $#
+		<%~ include('fieldsetInputFile', { 
+			src: 'src',
+			className: 'form-meta__fieldset'
+		}) %>
+	</div>
 
-		#$~ include('button', {
-		type: 'submit',
-		color: 'red',
-		value: 'delete',
-		text: 'удалить страницу',
-		formmethod: 'DELETE',
-		formaction: url_formaction
-		}) $#
+	<%~ include('fieldsetRadioMarkup', {
+		markup: render.markup,
+		className: 'form-meta__fieldset'
+	}) %>
+
+	<div class="card">
+
+		<%~ include('button', { 
+			text: 'сохранить изменения',
+			className: "form-meta__submit-button" 
+		}) %>
+
+		<%~ include('button_delete', { text: 'удалить профиль' }) %>
 	</div>
 
 	<hr>

@@ -1,41 +1,16 @@
-.input-container {
-  height: 100%;
+.form-meta__fieldset {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: var(--gap-v);
 }
-
-.input-container_button-container {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-}
-
-.meta-form__square {
+.form-meta__fieldset_square {
   width: 100%;
   aspect-ratio: 1/1;
 }
-
-.meta-form_radio-container {
+.form-meta__submit-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  gap: var(--gap-v);
 }
-
-@media screen and (max-width: 444px) {
-  .meta-form_textarea {
-    height: 8em;
-  }
-  .meta-form__square {
-    grid-column: 1/-1;
-    aspect-ratio: 3/1;
-  }
-  .meta-form_radio-container {
-    flex-direction: row;
-  }
-  .meta-form_radio-container:not(.card) h5 {
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-  }
+.form-meta__submit-button {
+  height: 100%;
 }

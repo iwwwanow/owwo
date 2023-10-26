@@ -5,10 +5,8 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<meta name="theme-color" content="#e0e0e0">
+	<meta name="theme-color" content="#e0e0e0" />
 	<title>OWWO</title>
-
-	<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
 
 	<link rel="stylesheet" href="/public/style/reset.css" />
 	<link rel="stylesheet" href="/public/style/style.css" />
@@ -24,17 +22,24 @@
 
 	<link rel="stylesheet" href="/public/style.pages/login.css" />
 	<link rel="stylesheet" href="/public/style.pages/index.css" />
+	<link rel="stylesheet" href="/public/style.pages/about.css" />
 	<link rel="stylesheet" href="/public/style.pages/profile.css" />
 	<link rel="stylesheet" href="/public/style.pages/page.css" />
 	<link rel="stylesheet" href="/public/style.pages/element.css" />
 
 	<link rel="stylesheet" href="/public/style.blocks/header.css" />
 	<link rel="stylesheet" href="/public/style.blocks/footer.css" />
-	<link rel="stylesheet" href="/public/style.blocks/form_meta.css" />
 	<link rel="stylesheet" href="/public/style.blocks/card.css" />
 	<link rel="stylesheet" href="/public/style.blocks/border.css" />
 
+	<link rel="stylesheet" href="/public/style.blocks/form_meta.css" />
+	<link rel="stylesheet" href="/public/style.blocks/fieldset-input-file.css" />
+	<link rel="stylesheet" href="/public/style.blocks/fieldset-radio-markup.css" />
+
 	<link rel="stylesheet" href="/public/style.blocks/input-text.css" />
+	<link rel="stylesheet" href="/public/style.blocks/input-radio.css" />
+	<link rel="stylesheet" href="/public/style.blocks/input-file.css" />
+	<link rel="stylesheet" href="/public/style.blocks/textarea.css" />
 	<link rel="stylesheet" href="/public/style.blocks/button.css" />
 
 	<% if (it.render && render.src && render.src.style) { %>

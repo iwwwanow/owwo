@@ -1,7 +1,9 @@
 .button {
+  --color: var(--grey-dark);
+
   padding: 8px;
   width: 100%;
-  height: fit-content;
+  /* height: fit-content; */
 
   display: flex;
   justify-content: center;
@@ -10,13 +12,19 @@
   text-transform: uppercase;
   background-color: white;
 
-  color: var(--grey-medium);
+  color: var(--color);
+  border-color: var(--color);
+}
+.button_delete {
+  --color: var(--red);
 }
 .button > h6 {
+  color: var(--color);
   overflow-wrap: break-word;
 }
 .button:hover {
-  background-color: var(--grey-dark);
+  border-color: var(--color);
+  background-color: var(--color);
 }
 .button:hover > h6 {
   color: var(--white);
@@ -30,6 +38,6 @@
   color: var(--white);
   background-color: var(--grey-medium);
 }
-.button:hover > h6 {
+.button_disabled:hover > h6 {
   font-weight: normal;
 }

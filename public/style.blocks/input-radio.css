@@ -1,0 +1,51 @@
+.input-radio_label {
+  width: 100%;
+  height: 100%;
+  padding: 8px 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--white);
+  text-transform: uppercase;
+}
+
+.input-radio_label h6 {
+  display: flex;
+  gap: 4px;
+}
+
+.input-radio_label h6 {
+  color: var(--grey-medium);
+}
+
+.input-radio_label:hover {
+}
+
+.input-radio_label:hover h6 {
+  font-weight: 600;
+  color: var(--grey-dark);
+}
+
+.input-radio {
+  display: none;
+}
+
+.input-radio:checked + label {
+  background-color: var(--grey-dark);
+  border-color: var(--grey-dark);
+}
+
+.input-radio:checked + label h6 {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.circle::before {
+  content: "○";
+}
+
+.input-radio:checked + label .circle::before {
+  content: "●";
+}

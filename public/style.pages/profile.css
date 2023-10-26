@@ -33,4 +33,7 @@
   .profile_username {
     gap: 12px;
   }
+  .profile > .avatar {
+    grid-column: 1/-1;
+  }
 }
