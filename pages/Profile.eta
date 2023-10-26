@@ -1,0 +1,40 @@
+<% layout("_layout.eta", {
+	src_stylePage: 'profile',
+	src_styleBlocks: ['avatar']}) %>
+
+<div class="grid profile">
+
+	<%~ include("blocks/avatar", {
+	url: params.username,
+	src: render.src.avatar && render.src.avatar.webp190
+	}) %>
+
+	<div class="profile_username">
+		<h2><%= params.username %></h2>
+		<%~ include("blocks/date", {render}) %>
+	</div>
+
+	<% if (render.html) { %>
+	<div class="profile_desc grid_break-start">
+		<%~render.html%>
+	</div>
+	<% } %>
+
+</div>
+
+<div class="profile_pages <%= render.markup %>">
+
+	<% if (render.pages && !!render.pages.length) { %>
+	<% render.pages.forEach(function (page) { %>
+	<%~ include("blocks/cardPage", {page}) %>
+	<% }) %>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
+	<% } %>
+	<% if (it.client && client.type === 'owner') { %>
+	<form action="">
+		<%~ include("blocks/buttonPlus", {formaction: params.username})%>
+	</form>
+	<% } %>
+
+</div>

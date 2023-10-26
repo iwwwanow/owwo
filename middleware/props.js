@@ -134,15 +134,11 @@ export default class Props {
       .all({ $page_id: this.params.page_id });
 
     elements.map((element) => {
-      return (element.src = File.get_src("elements", element.element_id));
-    });
-
-    elements.map((element) => {
+      element.src = File.get_src("elements", element.element_id);
       if (element.text) {
-        const text = element.text;
-        element.html = marked.parse(text);
-        return element;
+        element.html = marked.parse(element.text);
       }
+      return element;
     });
 
     this.render.elements = elements;

@@ -1,13 +1,13 @@
-#$ layout("./layout.eta") $#
+<% layout("_layout") %>
 
 <div class="grid">
 
 	<div>
 		<h6 style="color: var(--blue);">
-			#$= code $#
+			<%= code %>
 		</h6>
 		<h5 style="color: var(--red);">
-			#$= error $#
+			<%= error %>
 		</h5>
 	</div>
 

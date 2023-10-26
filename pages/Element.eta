@@ -1,0 +1,21 @@
+<% layout("_layout", {src_stylePage: 'element', src_styleBlocks: ["card-element"]}) %>
+
+<div class="element list">
+	<%~ include("blocks/cardElement", { render, size: '80vh' }) %>
+</div>
+
+<div class="element-info grid">
+	<div class="grid_break-end">
+		<%~ include("blocks/author", {render}) %>
+		<%~ include("blocks/date", {render}) %>
+	</div>
+
+	<div class="grid_break-start">
+		<h6>
+			Страница:
+			<a
+				 href="/page/<%= render.page %>"
+				 style="color: var(--black);"><%= render.page %></a>
+		</h6>
+	</div>
+</div>

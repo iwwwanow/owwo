@@ -1,0 +1,22 @@
+<% layout("_layout", {src_style: '/public/style.pages/index.css'}) %>
+
+<div class="grid">
+	<% if (it.render.users && it.render.users.length) { %>
+	<div class="avatars-container">
+		<% render.users.forEach((user) => { %>
+		<%~ include("blocks/avatar", {
+		url: user.username,
+		src: user.src.avatar && user.src.avatar.webp64
+		}) %>
+		<% }) %>
+	</div>
+	<% } %>
+</div>
+
+<div class="grid">
+	<h6>random pages</h6>
+</div>
+
+<div class="grid">
+	<h6>random elements</h6>
+</div>

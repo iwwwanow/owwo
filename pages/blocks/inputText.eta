@@ -1,0 +1,20 @@
+<% const required = it.required || '' %>
+<% const type = it.type || 'text' %>
+<% const id = it.id || '' %>
+<% const className = it.class || '' %>
+<% const placeholder = it.placeholder || '' %>
+
+<h6 class="input-text">
+	<input
+				 autocomplete="off"
+				 autocapitalize="off"
+
+				 id="<%= id %>"
+				 class="input-text__input <%= className %>"
+
+				 type="text"
+				 <%= required && 'required' %>
+				 name="<%= it.name %>"
+				 placeholder="<%= placeholder %>">
+
+</h6>

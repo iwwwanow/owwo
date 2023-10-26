@@ -1,0 +1,32 @@
+<% layout("_layout.eta")%>
+
+<div class="grid">
+	<form
+				method="POST"
+				action="/login"
+				class="login">
+
+		<%~ include("./blocks/inputText.eta", {
+		name: 'username',
+		placeholder: 'USERNAME',
+		class: 'login__input-username',
+		required: true
+		})%>
+
+		<%~ include("./blocks/inputText.eta", {
+		name: 'password',
+		type: 'password',
+		placeholder: 'PASSWORD',
+		class: 'login__input-password',
+		required: true
+		})%>
+
+		<%~ include("./blocks/button.eta", {
+		text: 'Войти'
+		})%>
+	</form>
+
+	<h6>
+		<a href="/signup">Регистрация</a>
+	</h6>
+</div>

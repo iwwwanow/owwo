@@ -1,0 +1,35 @@
+.button {
+  padding: 8px;
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-transform: uppercase;
+  background-color: white;
+
+  color: var(--grey-medium);
+}
+.button > h6 {
+  overflow-wrap: break-word;
+}
+.button:hover {
+  background-color: var(--grey-dark);
+}
+.button:hover > h6 {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.button_disabled,
+.button_disabled:hover,
+.button_disabled > h6 {
+  font-weight: normal;
+  color: var(--white);
+  background-color: var(--grey-medium);
+}
+.button:hover > h6 {
+  font-weight: normal;
+}

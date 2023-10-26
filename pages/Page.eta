@@ -1,0 +1,42 @@
+<% layout("_layout.eta", {
+	src_stylePage: 'page',
+	src_styleBlocks: ["card-element", 'date', 'author']} )%>
+
+<div class="grid page-info">
+	<div class="grid_break-end"">
+		<% if (render.title) { %>
+		<h1><%= render.title %></h1>
+		<% } %>
+		<%~ include("blocks/author", {render}) %>
+		<%~ include("blocks/date", {render}) %>
+		</div
+	>
+
+		<% if (render.desc) { %>
+		<div class="
+			 grid_break-start">
+		<h5><%= render.html %></h5>
+	</div>
+	<% } %>
+</div>
+
+<div class="page <%=render.markup%>">
+
+	<%if (render.elements && render.elements.length) { %>
+	<% render.elements.forEach(function (element) { %>
+	<%~ include("blocks/cardElement", { it: element }) %>
+	<% }) %>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
+	<% } %>
+
+	<% if (client.type === 'owner' || client.type === 'pusher') { %>
+	<form action="">
+		<% const url_formaction = `/page/${render.page_id}` %>
+		<div class="card">
+			<%~ include('blocks/buttonPlus', { formaction: url_formaction }) %>
+		</div>
+	</form>
+	<% } %>
+
+</div>

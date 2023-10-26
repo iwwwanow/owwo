@@ -1,0 +1,74 @@
+<% if (it.cookie && it.cookie.auth) it.auth = it.cookie.auth %>
+
+<header class="grid">
+
+	<h5 class="header_logo-container">
+		<%~ include("logo")%>
+	</h5>
+
+	<% if (it.client && client.type === 'owner') { %>
+
+	<% if (client.mode === 'viewer') { %>
+	<h5 class="header_editor-link">
+		<% const query = '?mode=editor' %>
+		<% if (params.username) { %>
+		<a href="/<%= params.username %><%= query %>">редактировать профиль</a>
+		<% } else if (params.page_id) { %>
+		<a href="/page/<%= params.page_id %><%= query %>">редактировать страницу</a>
+		<% } else if (params.element_id) { %>
+		<a href="/element/<%= params.element_id %><%= query %>">редактировать элемент</a>
+		<% } %>
+	</h5>
+
+	<% } else if (client.mode === 'editor') { %>
+
+	<h5 class="header_editor-link">
+		<% if (params.username) { %>
+		<a href="/<%= params.username %>">скрыть редактор</a>
+		<% } else if (params.page_id) { %>
+		<a href="/page/<%= params.page_id %>">скрыть редактор</a>
+		<% } else if (params.element_id) { %>
+		<a href="/element/<%= params.element_id %>">скрыть редактор</a>
+		<% } %>
+	</h5>
+
+	<% } %>
+	<% } %>
+
+	<div class="header_login-container">
+		<% if (it.auth && it.params && auth.username === params.username) { %>
+		<h5>
+			<a href="/logout">logout</a>
+		</h5>
+		<% } else if (it.auth) { %>
+		<h5>
+			<a
+				 href="/<%= auth.username %>"
+				 style="color: var(--black)">
+				<%= auth.username %>
+			</a>
+		</h5>
+		<% } else { %>
+		<h5>
+			<a href="/login">login</a>
+		</h5>
+		<% } %>
+	</div>
+
+</header>
+
+<% if (it.client && client.type === 'owner') { %>
+
+<% if (client.mode === 'editor') { %>
+
+<% if (params.username) { %>
+<%~ include('formMeta_profile', it) %>
+<% } else if (params.page_id) { %>
+<%~ include('formMeta_page', it) %>
+<% } else if (params.element_id) { %>
+<%~ include('formMeta_element', it) %>
+<% } %>
+
+<% } %>
+
+<% } %>
