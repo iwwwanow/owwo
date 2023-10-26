@@ -9,7 +9,7 @@
 	#$ if (it.client && client.type === 'owner') { $#
 
 	#$ if (client.mode === 'viewer') { $#
-	<h5>
+	<h5 class="header_editor-link">
 		#$ const query = '?mode=editor' $#
 		#$ if (params.username) { $#
 		<a href="/#$= params.username $##$= query $#">редактировать профиль</a>
@@ -22,7 +22,7 @@
 
 	#$ } else if (client.mode === 'editor') { $#
 
-	<h5>
+	<h5 class="header_editor-link">
 		#$ if (params.username) { $#
 		<a href="/#$= params.username $#">скрыть редактор</a>
 		#$ } else if (params.page_id) { $#

@@ -39,6 +39,12 @@ header .header_id-container {
   }
 }
 
+@media screen and (max-width: 444px) {
+  .header_editor-link {
+    grid-column: 1 / -1;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .header_logo-container {
     grid-row: 1/2;
