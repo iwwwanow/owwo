@@ -13,18 +13,24 @@ const server = Bun.serve({
   async fetch(req) {
     const url = new URL(req.url);
 
+    const headers = {
+      // "Cache-Control": "public, max-age=31536000",
+    };
+
     if (url.pathname.split("/").at(1) === "public") {
       const path = "." + url.pathname;
       const file = Bun.file(path);
-      return new Response(file);
+      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
+      return new Response(file, { headers });
     }
 
     if (url.pathname === "/favicon.ico") {
-      console.log("need favicon braaa");
-      return;
+      const path = "./public/favicon.ico";
+      const file = Bun.file(path);
+      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
+      return new Response(file, { headers });
     }
 
-    const headers = {};
     const props = {
       client: {
         auth: false,
