@@ -5,6 +5,8 @@ import Password from "../middleware/password.ts";
 import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
 
+import * as jose from "jose";
+
 export default class AuthController {
   static async createUser(c) {
     const { body, set } = c;
@@ -35,9 +37,20 @@ export default class AuthController {
     return;
   }
 
-  static async authUser(c) {
-    const { body, jwt, setCookie, set } = c;
-    const { username, password } = body;
+  static async authUser(req) {
+    // const { body, jwt, setCookie, set } = c;
+    // const { username, password } = body;
+
+    const body = req.body;
+    const text = await Bun.readableStreamToText(body);
+    const arr = text.split("&");
+    const obj = {};
+    arr.forEach((item) => {
+      item = item.split("=");
+      obj[item[0]] = item[1];
+    });
+
+    const { username, password } = obj;
 
     let user;
     try {
@@ -51,10 +64,26 @@ export default class AuthController {
 
     await Password.verify(password, user.password);
 
-    setCookie("auth", await jwt.sign({ user_id: user.user_id, username }));
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
-    set.redirect = "/";
-    return;
+    const jwt = await new jose.SignJWT({ user_id: user.user_id, username })
+      .setProtectedHeader({ alg: "HS256" })
+      .setExpirationTime("30m")
+      .sign(secret);
+
+    console.log(jwt);
+
+    // return obj
+    // const secret2 = new TextEncoder().encode(process.env.JWT_SECRET);
+    // const { payload } = await jose.jwtVerify(jwt, secret2);
+    // console.log(payload);
+
+    // setCookie("auth", await jwt.sign({ user_id: user.user_id, username }));
+    //
+    // set.redirect = "/";
+    return Response.redirect("/login", {
+      headers: { "Set-Cookie": `auth=${jwt}` },
+    });
   }
 
   static async logout({ removeCookie, set }) {

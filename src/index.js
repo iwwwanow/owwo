@@ -26,6 +26,7 @@ await SQL().init();
 
 import Props from "../middleware/props.js";
 import { eta } from "../config/eta.ts";
+import AuthController from "../controllers/auth.js";
 
 const server = Bun.serve({
   port: 8080,
@@ -56,6 +57,9 @@ const server = Bun.serve({
     }
 
     if (url.pathname === "/login") {
+      if (req.method === "POST") {
+        return await AuthController.authUser(req);
+      }
       const html = eta.render("Login");
       return new Response(html, { headers: { "Content-Type": "text/html" } });
     }
