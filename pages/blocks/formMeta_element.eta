@@ -2,14 +2,14 @@
 			id="form-meta-element"
 			class="grid form-meta form-meta-element"
 			method="POST"
-			action="/element/<%= params.element_id %>"
+			action="/element/<%= data.element_id %>"
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
 		<%~ include('inputFile', {
 		form: 'element_meta-form',
 		name: 'cover',
-		src_image: render.src.cover,
+		src_image: data.src.cover,
 		accept: 'image/*',
 		}) %>
 	</fieldset>
@@ -19,7 +19,7 @@
 			<%~ include('textarea', {
 			form: 'element_meta-form',
 			name: 'text',
-			text: render.text,
+			text: data.text,
 			placeholder: 'element-text',
 			}) %>
 		</h5>

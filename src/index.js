@@ -1,23 +1,8 @@
-import config_jwt from "../config/jwt.ts";
-import check_auth from "../middleware/check_auth.ts";
-
 import * as jose from "jose";
 
 import SQL from "../middleware/sql.ts";
 
 await SQL().init();
-
-// const app = new Elysia()
-//   .onError(({ code, error }) => {
-//     console.log("error:", code, error);
-//   })
-//   .use(html())
-//   .use(jwt(config_jwt()))
-//   .use(cookie())
-//   .use(await staticPlugin({ assets: "public" }))
-//   .derive(async (c) => await check_auth(c))
-//   .use(router)
-//   .listen(8080);
 
 import Data from "../middleware/data.middleware.js";
 import { eta } from "../config/eta.ts";
@@ -104,8 +89,19 @@ const server = Bun.serve({
       const page_id = url.pathname.split("/").at(2);
 
       props.data = await Data.page(page_id);
-      console.log("page-props:", props);
 
+      if (
+        props.client.auth &&
+        props.data.authors.find(
+          (author) => author.user_id === props.client.auth.user_id
+        )
+      ) {
+        props.client.type = "owner";
+        if (url.search && url.searchParams.get("mode"))
+          props.client.mode = url.searchParams.get("mode");
+      }
+
+      console.log("page-props:", props);
       const html = eta.render("Page", props);
 
       headers["Content-Type"] = "text/html";
@@ -116,8 +112,17 @@ const server = Bun.serve({
       const element_id = url.pathname.split("/").at(2);
 
       props.data = await Data.element(element_id);
-      console.log("element-props:", props);
 
+      if (
+        props.client.auth &&
+        props.data.author_id === props.client.auth.user_id
+      ) {
+        props.client.type = "owner";
+        if (url.search && url.searchParams.get("mode"))
+          props.client.mode = url.searchParams.get("mode");
+      }
+
+      console.log("element-props:", props);
       const html = eta.render("Element", props);
 
       headers["Content-Type"] = "text/html";
@@ -127,7 +132,20 @@ const server = Bun.serve({
     if (url.pathname) {
       const username = url.pathname.split("/").at(1);
 
+      console.log(url);
+      console.log(url.searchParams);
+
       props.data = await Data.profile(username);
+
+      if (
+        props.client.auth &&
+        props.client.auth.user_id === props.data.user_id
+      ) {
+        props.client.type = "owner";
+        if (url.search && url.searchParams.get("mode"))
+          props.client.mode = url.searchParams.get("mode");
+      }
+
       console.log("profile-props:", props);
 
       const html = eta.render("Profile", props);

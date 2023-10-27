@@ -78,8 +78,7 @@ export default class Data {
       .where({ page_id })
       .get();
 
-    // this.render.src = File.get_src("pages", this.params.page_id);
-    // this.render.authors = [];
+    data.src = File.get_src("pages", page_id);
 
     const authors = sql("authors")
       .select(["user_id", "type"])
