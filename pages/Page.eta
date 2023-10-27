@@ -1,29 +1,27 @@
-<% layout("_layout.eta", {
-	src_stylePage: 'page',
-	src_styleBlocks: ["card-element", 'date', 'author']} )%>
+<% layout( "_layout" )%>
 
 <div class="grid page-info">
 	<div class="grid_break-end"">
-		<% if (render.title) { %>
-		<h1><%= render.title %></h1>
+		<% if (data.title) { %>
+		<h1><%= data.title %></h1>
 		<% } %>
-		<%~ include("blocks/author", {render}) %>
-		<%~ include("blocks/date", {render}) %>
+		<%~ include("blocks/author", {data}) %>
+		<%~ include("blocks/date", {data}) %>
 		</div
 	>
 
-		<% if (render.desc) { %>
+		<% if (data.desc) { %>
 		<div class="
 			 grid_break-start">
-		<h5><%= render.html %></h5>
+		<h5><%= data.html %></h5>
 	</div>
 	<% } %>
 </div>
 
-<div class="page <%=render.markup%>">
+<div class="page <%= data.markup %>">
 
-	<%if (render.elements && render.elements.length) { %>
-	<% render.elements.forEach(function (element) { %>
+	<%if (data.elements && data.elements.length) { %>
+	<% data.elements.forEach(function (element) { %>
 	<%~ include("blocks/cardElement", { it: element }) %>
 	<% }) %>
 	<% } else { %>
@@ -32,7 +30,7 @@
 
 	<% if (client.type === 'owner' || client.type === 'pusher') { %>
 	<form action="">
-		<% const url_formaction = `/page/${render.page_id}` %>
+		<% const url_formaction = `/page/${data.page_id}` %>
 		<div class="card">
 			<%~ include('blocks/button_plus', { formaction: url_formaction }) %>
 		</div>

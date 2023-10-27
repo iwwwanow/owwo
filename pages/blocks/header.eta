@@ -40,12 +40,12 @@
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		<% } else if (it.auth) { %>
+		<% } else if (it.client.auth) { %>
 		<h5>
 			<a
-				 href="/<%= auth.username %>"
+				 href="/<%= client.auth.username %>"
 				 style="color: var(--black)">
-				<%= auth.username %>
+				<%= client.auth.username %>
 			</a>
 		</h5>
 		<% } else { %>

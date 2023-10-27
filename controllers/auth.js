@@ -38,9 +38,6 @@ export default class AuthController {
   }
 
   static async authUser(req) {
-    // const { body, jwt, setCookie, set } = c;
-    // const { username, password } = body;
-
     const body = req.body;
     const text = await Bun.readableStreamToText(body);
     const arr = text.split("&");
@@ -68,20 +65,10 @@ export default class AuthController {
 
     const jwt = await new jose.SignJWT({ user_id: user.user_id, username })
       .setProtectedHeader({ alg: "HS256" })
-      .setExpirationTime("30m")
+      .setExpirationTime("1h")
       .sign(secret);
 
-    console.log(jwt);
-
-    // return obj
-    // const secret2 = new TextEncoder().encode(process.env.JWT_SECRET);
-    // const { payload } = await jose.jwtVerify(jwt, secret2);
-    // console.log(payload);
-
-    // setCookie("auth", await jwt.sign({ user_id: user.user_id, username }));
-    //
-    // set.redirect = "/";
-    return Response.redirect("/login", {
+    return Response.redirect("/", {
       headers: { "Set-Cookie": `auth=${jwt}` },
     });
   }

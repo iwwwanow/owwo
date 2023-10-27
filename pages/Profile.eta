@@ -1,29 +1,29 @@
-<% layout("_layout.eta" ) %>
+<% layout("_layout" ) %>
 
 <div class="grid profile">
 
 	<%~ include("blocks/avatar", {
-	url: render.username,
-	src: render.src.avatar && render.src.avatar.webp190
+	url: data.username,
+	src: data.src.avatar && data.src.avatar.webp190
 	}) %>
 
 	<div class="profile_username">
-		<h2><%= render.username %></h2>
-		<%~ include("blocks/date", {render}) %>
+		<h2><%= data.username %></h2>
+		<%~ include("blocks/date", {data}) %>
 	</div>
 
-	<% if (render.html) { %>
+	<% if (data.html) { %>
 	<div class="profile_desc grid_break-start">
-		<%~render.html%>
+		<%~data.html%>
 	</div>
 	<% } %>
 
 </div>
 
-<div class="profile_pages <%= render.markup %>">
+<div class="profile_pages <%= data.markup %>">
 
-	<% if (render.pages && !!render.pages.length) { %>
-	<% render.pages.forEach(function (page) { %>
+	<% if (data.pages && !!data.pages.length) { %>
+	<% data.pages.forEach(function (page) { %>
 	<%~ include("blocks/cardPage", {page}) %>
 	<% }) %>
 	<% } else { %>
@@ -31,7 +31,7 @@
 	<% } %>
 	<% if (it.client && client.type === 'owner') { %>
 	<form action="">
-		<%~ include("blocks/button_plus", {formaction: render.username})%>
+		<%~ include("blocks/button_plus", {formaction: data.username})%>
 	</form>
 	<% } %>
 
