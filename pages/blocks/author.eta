@@ -1,12 +1,12 @@
-<% if (it.render.author) it.render.authors = [it.render.author] %>
+<% if (it.data.author) it.data.authors = [it.data.author] %>
 
 <div class="authors-container">
-	<% if (render.authors.length > 1) { %>
+	<% if (data.authors.length > 1) { %>
 	<h6 style="color: var(--grey-medium);">Авторы:</h6>
 	<% } else { %>
 	<h6 style="color: var(--grey-medium);">Автор:</h6>
 	<% } %>
-	<% render.authors.forEach((author) => { %>
+	<% data.authors.forEach((author) => { %>
 	<h6>
 		<a
 			 class="<%= author.type %>"

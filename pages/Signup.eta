@@ -1,40 +1,39 @@
-#$ layout("./layout.eta")$#
+<% layout("_layout")%>
 
 <div class="grid">
 
 	<form
-		method="POST"
-		action="/signup"
-		class="login_container"
-	>
+				method="POST"
+				action="/signup"
+				class="login_container">
 
-		#$~ include("./partials/inputText.eta", {
+		<%~ include("./blocks/inputText.eta", {
 		name: 'username',
 		placeholder: 'USERNAME',
 		id: 'signup_input-username',
 		required: true
-		})$#
+		})%>
 
-		#$~ include("./partials/inputText.eta", {
+		<%~ include("./blocks/inputText.eta", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'PASSWORD',
 		id: 'signup_input-password',
 		required: true
-		})$#
+		})%>
 
-		#$~ include("./partials/inputText.eta", {
+		<%~ include("./blocks/inputText.eta", {
 		name: 'confirm',
 		type: 'password',
 		placeholder: 'CONFIRM PASSWORD',
 		id: 'signup_input-confirm-password',
 		required: true
-		})$#
+		})%>
 
-		#$~ include("./partials/button.eta", {
+		<%~ include("./blocks/button.eta", {
 		type: 'submit',
 		text: 'Зарегистрироваться',
-		})$#
+		})%>
 
 	</form>
 

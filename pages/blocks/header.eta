@@ -11,24 +11,24 @@
 	<% if (client.mode === 'viewer') { %>
 	<h5 class="header_editor-link">
 		<% const query = '?mode=editor' %>
-		<% if (params.username) { %>
-		<a href="/<%= params.username %><%= query %>">редактировать профиль</a>
-		<% } else if (params.page_id) { %>
-		<a href="/page/<%= params.page_id %><%= query %>">редактировать страницу</a>
-		<% } else if (params.element_id) { %>
-		<a href="/element/<%= params.element_id %><%= query %>">редактировать элемент</a>
+		<% if (data.username) { %>
+		<a href="/<%= data.username %><%= query %>">редактировать профиль</a>
+		<% } else if (data.page_id) { %>
+		<a href="/page/<%= data.page_id %><%= query %>">редактировать страницу</a>
+		<% } else if (data.element_id) { %>
+		<a href="/element/<%= data.element_id %><%= query %>">редактировать элемент</a>
 		<% } %>
 	</h5>
 
 	<% } else if (client.mode === 'editor') { %>
 
 	<h5 class="header_editor-link">
-		<% if (params.username) { %>
-		<a href="/<%= params.username %>">скрыть редактор</a>
-		<% } else if (params.page_id) { %>
-		<a href="/page/<%= params.page_id %>">скрыть редактор</a>
-		<% } else if (params.element_id) { %>
-		<a href="/element/<%= params.element_id %>">скрыть редактор</a>
+		<% if (data.username) { %>
+		<a href="/<%= data.username %>">скрыть редактор</a>
+		<% } else if (data.page_id) { %>
+		<a href="/page/<%= data.page_id %>">скрыть редактор</a>
+		<% } else if (data.element_id) { %>
+		<a href="/element/<%= data.element_id %>">скрыть редактор</a>
 		<% } %>
 	</h5>
 
@@ -36,16 +36,16 @@
 	<% } %>
 
 	<div class="header_login-container">
-		<% if (it.auth && it.params && auth.username === params.username) { %>
+		<% if (it.client && client.auth && it.data && data.username === client.auth.username) { %>
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		<% } else if (it.auth) { %>
+		<% } else if (it.client.auth) { %>
 		<h5>
 			<a
-				 href="/<%= auth.username %>"
+				 href="/<%= client.auth.username %>"
 				 style="color: var(--black)">
-				<%= auth.username %>
+				<%= client.auth.username %>
 			</a>
 		</h5>
 		<% } else { %>
@@ -61,11 +61,11 @@
 
 <% if (client.mode === 'editor') { %>
 
-<% if (params.username) { %>
+<% if (data.username) { %>
 <%~ include('formMeta_profile', it) %>
-<% } else if (params.page_id) { %>
+<% } else if (data.page_id) { %>
 <%~ include('formMeta_page', it) %>
-<% } else if (params.element_id) { %>
+<% } else if (data.element_id) { %>
 <%~ include('formMeta_element', it) %>
 <% } %>
 

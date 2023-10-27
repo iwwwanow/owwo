@@ -2,7 +2,7 @@
 			id="form-meta-page"
 			class="grid form-meta form-meta-page"
 			method="POST"
-			action="/page/<%= render.page_id %>"
+			action="/page/<%= data.page_id %>"
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
@@ -10,7 +10,7 @@
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
-		src_image: render.src.cover,
+		src_image: data.src.cover,
 		}) %>
 	</fieldset>
 
@@ -19,7 +19,7 @@
 			<%~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'title',
-			text: render.title,
+			text: data.title,
 			placeholder: 'page-title',
 			rows: 2
 			}) %>
@@ -29,7 +29,7 @@
 			<%~ include('textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
-			text: render.desc,
+			text: data.desc,
 			placeholder: 'page-description',
 			}) %>
 		</h5>
@@ -51,7 +51,7 @@
 	</div>
 
 	<%~ include('fieldsetRadioMarkup', {
-		markup: render.markup,
+		markup: data.markup,
 		className: 'form-meta__fieldset'
 	}) %>
 

@@ -4,10 +4,10 @@
 	<% if (it.render.users && it.render.users.length) { %>
 	<div class="avatars-container">
 		<% render.users.forEach((user) => { %>
-		<%~ include("blocks/avatar", {
+		<%~  include("blocks/avatar", {
 		url: user.username,
 		src: user.src.avatar && user.src.avatar.webp64
-		}) %>
+		})  %>
 		<% }) %>
 	</div>
 	<% } %>

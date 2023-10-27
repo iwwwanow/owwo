@@ -2,7 +2,7 @@
 			id="form-meta"
 			class="grid form-meta form-meta-profile"
 			method="POST"
-			action="/<%= params.username %>"
+			action="/<%= data.username %>"
 			enctype="multipart/form-data">
 
 	<fieldset class="form-meta__fieldset_square">
@@ -11,7 +11,7 @@
 		form: 'user_meta-form',
 		name: 'avatar',
 		accept: 'image/*',
-		src_image: render.src.avatar && render.src.avatar.original,
+		src_image: data.src.avatar && data.src.avatar.original,
 		}) %>
 
 	</fieldset>
@@ -22,15 +22,15 @@
 			<%~ include('textarea', {
 			form: 'user_meta-form',
 			name: 'text',
-			text: render.text,
+			text: data.text,
 			placeholder: 'profile-text',
 			}) %>
 		</h4>
 
 	</fieldset>
 
-	<% const url_formaction = `/${params.username}` %>
-	<% const user_dir = `/public/data_uploads/users/${render.user_id}/` %>
+	<% const url_formaction = `/${data.username}` %>
+	<% const user_dir = `/public/data_uploads/users/${data.user_id}/` %>
 
 	<%~ include('fieldsetInputFile', { 
 		src: 'src', 
@@ -43,7 +43,7 @@
 	}) %>
 
 	<%~ include('fieldsetRadioMarkup', {
-		markup: render.markup,
+		markup: data.markup,
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
