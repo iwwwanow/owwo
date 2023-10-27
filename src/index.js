@@ -61,12 +61,12 @@ const server = Bun.serve({
     }
 
     if (url.pathname === "/") {
-      props.render = await Data.index();
-      console.log("inex-props:", props);
+      props.data = await Data.index();
 
+      // console.log("inex-props:", props);
       const html = eta.render("Index", props);
-      headers["Content-Type"] = "text/html";
 
+      headers["Content-Type"] = "text/html";
       return new Response(html, { headers });
     }
 

@@ -29,8 +29,12 @@ export default class Data {
       return (user.src = File.get_src("users", user.user_id));
     });
 
-    const render = { users };
-    return render;
+    const randomPages = sql("pages").select(["*"]).random(8).all();
+
+    const randomElements = sql("elements").select(["*"]).random(16).all();
+
+    const data = { users, pages: randomPages, elements: randomElements };
+    return data;
   }
 
   static async profile(username) {

@@ -1,22 +1,44 @@
 <% layout("LO") %>
 
 <div class="grid">
-	<% if (it.render.users && it.render.users.length) { %>
+	<% if (it.data.users && it.data.users.length) { %>
 	<div class="avatars-container">
-		<% render.users.forEach((user) => { %>
+		<% data.users.forEach((user) => { %>
 		<%~  include("avatar/avatar", {
 		url: user.username,
 		src: user.src.avatar && user.src.avatar.webp64
 		})  %>
 		<% }) %>
 	</div>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
 	<% } %>
 </div>
 
 <div class="grid">
-	<h6>random pages</h6>
+	<hr>
 </div>
 
 <div class="grid">
-	<h6>random elements</h6>
+	<% if (data.pages && !!data.pages.length) { %>
+	<% data.pages.forEach(function (page) { %>
+	<%~ include("card/cardPage", {page}) %>
+	<% }) %>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
+	<% } %>
+</div>
+
+<div class="grid">
+	<hr>
+</div>
+
+<div class="grid">
+	<%if (data.elements && data.elements.length) { %>
+	<% data.elements.forEach(function (element) { %>
+	<%~ include("card/cardElement", { it: element }) %>
+	<% }) %>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
+	<% } %>
 </div>

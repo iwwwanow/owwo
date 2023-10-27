@@ -169,6 +169,12 @@ export default function sql(table_name: string) {
       return this;
     },
 
+    random: function (input: number) {
+      query += "ORDER BY RANDOM()\n";
+      query += `LIMIT ${input};`;
+      return this;
+    },
+
     delete: function () {
       // TODO странно выглядит.
       db.exec("PRAGMA foreign_keys = ON;");
@@ -192,6 +198,7 @@ export default function sql(table_name: string) {
     },
 
     all: function (input) {
+      console.log(query);
       if (input) return db.query(query).all(input);
       let result = db.query(query).all();
       if (select_single) {
