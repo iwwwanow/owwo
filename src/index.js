@@ -45,6 +45,7 @@ const server = Bun.serve({
 
     if (url.pathname === "/") {
       const props = await new Props(req).init_index();
+      console.log("inex-props:", props);
       const html = eta.render("Index", props);
       return new Response(html, { headers: { "Content-Type": "text/html" } });
     }
@@ -67,21 +68,22 @@ const server = Bun.serve({
     if (url.pathname.split("/").at(1) === "page") {
       const props = await new Props(req).init_page();
       console.log("page-props:", props);
-      return new Response("page!");
+      const html = eta.render("Page", props);
+      return new Response(html, { headers: { "Content-Type": "text/html" } });
     }
 
     if (url.pathname.split("/").at(1) === "element") {
       const props = await new Props(req).init_element();
       console.log("element-props:", props);
-      return new Response("element!");
+      const html = eta.render("Element", props);
+      return new Response(html, { headers: { "Content-Type": "text/html" } });
     }
 
     if (url.pathname) {
       const props = await new Props(req).init_profile();
       console.log("profile-props:", props);
-      // const html = eta.render("Profile", props);
-      // console.log(html);
-      return new Response("user!");
+      const html = eta.render("Profile", props);
+      return new Response(html, { headers: { "Content-Type": "text/html" } });
     }
 
     return new Response("404!");

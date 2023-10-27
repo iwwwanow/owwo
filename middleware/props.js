@@ -73,9 +73,9 @@ export default class Props {
       .order("date_lastModify")
       .all();
 
-    // users.map((user) => {
-    // return (user.src = File.get_src("users", user.user_id));
-    // });
+    users.map((user) => {
+      return (user.src = File.get_src("users", user.user_id));
+    });
 
     props.render.users = users;
     return props;
@@ -88,11 +88,18 @@ export default class Props {
     };
 
     props.render = sql("users")
-      .select(["user_id", "date_creation", "date_lastModify", "text", "markup"])
+      .select([
+        "user_id",
+        "username",
+        "date_creation",
+        "date_lastModify",
+        "text",
+        "markup",
+      ])
       .where({ username: this.params.username })
       .get();
 
-    // this.render.src = File.get_src("users", this.render.user_id);
+    props.render.src = File.get_src("users", props.render.user_id);
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
@@ -102,10 +109,10 @@ export default class Props {
       .order("date_lastModify")
       .all({ $user_id: props.render.user_id });
 
-    // pages.forEach((page) => {
-    //   page.src = {};
-    //   page.src.cover = File.srcCover("pages", page.page_id);
-    // });
+    pages.forEach((page) => {
+      page.src = {};
+      page.src.cover = File.srcCover("pages", page.page_id);
+    });
 
     props.render.pages = pages;
     return props;

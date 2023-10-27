@@ -3,12 +3,12 @@
 <div class="grid profile">
 
 	<%~ include("blocks/avatar", {
-	url: params.username,
+	url: render.username,
 	src: render.src.avatar && render.src.avatar.webp190
 	}) %>
 
 	<div class="profile_username">
-		<h2><%= params.username %></h2>
+		<h2><%= render.username %></h2>
 		<%~ include("blocks/date", {render}) %>
 	</div>
 
@@ -31,7 +31,7 @@
 	<% } %>
 	<% if (it.client && client.type === 'owner') { %>
 	<form action="">
-		<%~ include("blocks/button_plus", {formaction: params.username})%>
+		<%~ include("blocks/button_plus", {formaction: render.username})%>
 	</form>
 	<% } %>
 
