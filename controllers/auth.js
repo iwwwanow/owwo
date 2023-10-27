@@ -72,9 +72,4 @@ export default class AuthController {
       headers: { "Set-Cookie": `auth=${jwt}` },
     });
   }
-
-  static async logout({ removeCookie, set }) {
-    removeCookie("auth");
-    set.redirect = "/";
-  }
 }

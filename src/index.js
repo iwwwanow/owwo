@@ -84,12 +84,20 @@ const server = Bun.serve({
         return await AuthController.authUser(req);
       }
       const html = eta.render("Login", props);
-      return new Response(html, { headers: { "Content-Type": "text/html" } });
+      headers["Content-Type"] = "text/html";
+      return new Response(html, { headers });
+    }
+
+    if (url.pathname === "/logout") {
+      headers["Set-Cookie"] =
+        "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT";
+      return Response.redirect("/", { headers });
     }
 
     if (url.pathname === "/signup") {
       const html = eta.render("Signup");
-      return new Response(html, { headers: { "Content-Type": "text/html" } });
+      headers["Content-Type"] = "text/html";
+      return new Response(html, { headers });
     }
 
     if (url.pathname.split("/").at(1) === "page") {

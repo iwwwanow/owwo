@@ -138,7 +138,6 @@ export default class Data {
       .where({ user_id: data.author_id })
       .get();
 
-    // FIX что это вообще?
     data.author.type = "owner";
 
     data.src = File.get_src("elements", element_id);
