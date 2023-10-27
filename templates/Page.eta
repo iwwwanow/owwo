@@ -1,12 +1,12 @@
-<% layout( "_layout" )%>
+<% layout( "LO" )%>
 
 <div class="grid page-info">
 	<div class="grid_break-end"">
 		<% if (data.title) { %>
 		<h1><%= data.title %></h1>
 		<% } %>
-		<%~ include("blocks/author", {data}) %>
-		<%~ include("blocks/date", {data}) %>
+		<%~ include("author/author", {data}) %>
+		<%~ include("date/date", {data}) %>
 		</div
 	>
 
@@ -22,7 +22,7 @@
 
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("blocks/cardElement", { it: element }) %>
+	<%~ include("card/cardElement", { it: element }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
@@ -32,7 +32,7 @@
 	<form action="">
 		<% const url_formaction = `/page/${data.page_id}` %>
 		<div class="card">
-			<%~ include('blocks/button_plus', { formaction: url_formaction }) %>
+			<%~ include('button/button_plus', { formaction: url_formaction }) %>
 		</div>
 	</form>
 	<% } %>

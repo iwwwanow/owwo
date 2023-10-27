@@ -1,5 +1,5 @@
 <fieldset class="fieldset-radio-markup <%= it.className || '' %>">
-	<%~ include('inputRadio', {
+	<%~ include('../input/inputRadio', {
 	name: 'markup',
 	value: 'grid',
 	check: markup
@@ -7,7 +7,7 @@
 
 	<h5>~ MARKUP ~</h5>
 
-	<%~ include('inputRadio', {
+	<%~ include('../input/inputRadio', {
 	name: 'markup',
 	value: 'list',
 	check: markup,

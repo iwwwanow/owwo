@@ -17,6 +17,13 @@ const server = Bun.serve({
       // "Cache-Control": "public, max-age=31536000",
     };
 
+    if (url.pathname.split("/").at(1) === "templates") {
+      const path = "." + url.pathname;
+      const file = Bun.file(path);
+      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
+      return new Response(file, { headers });
+    }
+
     if (url.pathname.split("/").at(1) === "public") {
       const path = "." + url.pathname;
       const file = Bun.file(path);
@@ -86,7 +93,7 @@ const server = Bun.serve({
     }
 
     if (url.pathname === "/signup") {
-      const html = eta.render("Signup");
+      const html = eta.render("Signup", props);
       headers["Content-Type"] = "text/html";
       return new Response(html, { headers });
     }

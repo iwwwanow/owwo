@@ -3,7 +3,7 @@
 <header class="grid">
 
 	<h5 class="header_logo-container">
-		<%~ include("logo")%>
+		<%~ include("../logo/logo")%>
 	</h5>
 
 	<% if (it.client && client.type === 'owner') { %>
@@ -62,11 +62,11 @@
 <% if (client.mode === 'editor') { %>
 
 <% if (data.username) { %>
-<%~ include('formMeta_profile', it) %>
+<%~ include('../formMeta/formMetaProfile', it) %>
 <% } else if (data.page_id) { %>
-<%~ include('formMeta_page', it) %>
+<%~ include('../formMeta/formMetaPage', it) %>
 <% } else if (data.element_id) { %>
-<%~ include('formMeta_element', it) %>
+<%~ include('../formMeta/formMetaElement', it) %>
 <% } %>
 
 <% } %>

@@ -6,7 +6,7 @@
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
-		<%~ include('inputFile', {
+		<%~ include('../input/inputFile', {
 		form: 'element_meta-form',
 		name: 'cover',
 		src_image: data.src.cover,
@@ -16,7 +16,7 @@
 
 	<fieldset class="card form-meta__fieldset">
 		<h5 style="height: 100%;">
-			<%~ include('textarea', {
+			<%~ include('../textarea/textarea', {
 			form: 'element_meta-form',
 			name: 'text',
 			text: data.text,
@@ -26,24 +26,24 @@
 	</fieldset>
 
 	<div class="card">
-		<%~ include('fieldsetInputFile', { 
+		<%~ include('../fieldset/fieldsetInputFile', { 
 			src: 'src',
 			className: 'form-meta__fieldset'
 		}) %>
 		<hr>
-		<%~ include('fieldsetInputFile', { 
+		<%~ include('../fieldset/fieldsetInputFile', { 
 			src: 'src',
 			className: 'form-meta__fieldset'
 		}) %>
 	</div>
 
 	<div class="card">
-		<%~ include('button', { 
+		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('button_delete', { text: 'удалить элемент' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить элемент' }) %>
 
 	</div>
 

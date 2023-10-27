@@ -6,7 +6,7 @@
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
-		<%~ include('inputFile', {
+		<%~ include('../input/inputFile', {
 		form: 'page_meta-form',
 		name: 'cover',
 		accept: 'image/*',
@@ -16,7 +16,7 @@
 
 	<fieldset class="card form-meta__fieldset">
 		<h4>
-			<%~ include('textarea', {
+			<%~ include('../textarea/textarea', {
 			form: 'page_meta-form',
 			name: 'title',
 			text: data.title,
@@ -26,7 +26,7 @@
 		</h4>
 
 		<h5 style="height: 100%;">
-			<%~ include('textarea', {
+			<%~ include('../textarea/textarea', {
 			form: 'page_meta-form',
 			name: 'desc',
 			text: data.desc,
@@ -37,32 +37,32 @@
 
 
 	<div class="card">
-		<%~ include('fieldsetInputFile', { 
+		<%~ include('../fieldset/fieldsetInputFile', { 
 			src: 'src',
 			className: 'form-meta__fieldset'
 		}) %>
 
 		<hr>
 
-		<%~ include('fieldsetInputFile', { 
+		<%~ include('../fieldset/fieldsetInputFile', { 
 			src: 'src',
 			className: 'form-meta__fieldset'
 		}) %>
 	</div>
 
-	<%~ include('fieldsetRadioMarkup', {
+	<%~ include('../fieldset/fieldsetRadioMarkup', {
 		markup: data.markup,
 		className: 'form-meta__fieldset'
 	}) %>
 
 	<div class="card">
 
-		<%~ include('button', { 
+		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('button_delete', { text: 'удалить профиль' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить профиль' }) %>
 	</div>
 
 	<hr>

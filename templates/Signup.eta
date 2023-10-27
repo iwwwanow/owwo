@@ -5,16 +5,16 @@
 	<form
 				method="POST"
 				action="/signup"
-				class="login_container">
+				class="login">
 
-		<%~ include("./blocks/inputText.eta", {
+		<%~ include("components/inputText", {
 		name: 'username',
 		placeholder: 'USERNAME',
 		id: 'signup_input-username',
 		required: true
 		})%>
 
-		<%~ include("./blocks/inputText.eta", {
+		<%~ include("components/inputText", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'PASSWORD',
@@ -22,7 +22,7 @@
 		required: true
 		})%>
 
-		<%~ include("./blocks/inputText.eta", {
+		<%~ include("components/inputText", {
 		name: 'confirm',
 		type: 'password',
 		placeholder: 'CONFIRM PASSWORD',
@@ -30,7 +30,7 @@
 		required: true
 		})%>
 
-		<%~ include("./blocks/button.eta", {
+		<%~ include("components/button", {
 		type: 'submit',
 		text: 'Зарегистрироваться',
 		})%>
@@ -38,15 +38,3 @@
 	</form>
 
 </div>
-
-
-<style>
-	.login_container {
-		grid-column: 1/span 2;
-
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-
-</style>

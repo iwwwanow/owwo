@@ -7,7 +7,7 @@
 
 	<fieldset class="form-meta__fieldset_square">
 
-		<%~ include('inputFile', {
+		<%~ include('../input/inputFile', {
 		form: 'user_meta-form',
 		name: 'avatar',
 		accept: 'image/*',
@@ -19,7 +19,7 @@
 	<fieldset class="form-meta__fieldset_square">
 
 		<h4 style="height: 100%;">
-			<%~ include('textarea', {
+			<%~ include('../textarea/textarea', {
 			form: 'user_meta-form',
 			name: 'text',
 			text: data.text,
@@ -32,28 +32,28 @@
 	<% const url_formaction = `/${data.username}` %>
 	<% const user_dir = `/public/data_uploads/users/${data.user_id}/` %>
 
-	<%~ include('fieldsetInputFile', { 
+	<%~ include('../fieldset/fieldsetInputFile', { 
 		src: 'src', 
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<%~ include('fieldsetInputFile', { 
+	<%~ include('../fieldset/fieldsetInputFile', { 
 		src: 'src',
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<%~ include('fieldsetRadioMarkup', {
+	<%~ include('../fieldset/fieldsetRadioMarkup', {
 		markup: data.markup,
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
 	<fieldset class="form-meta__fieldset_square form-meta__submit-buttons">
-		<%~ include('button', { 
+		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('button_delete', { text: 'удалить профиль' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить профиль' }) %>
 	</fieldset>
 
 	<hr>

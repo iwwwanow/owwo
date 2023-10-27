@@ -1,13 +1,13 @@
-<% layout("_layout") %>
+<% layout("LO") %>
 
 <div class="element list">
-	<%~ include("blocks/cardElement", { data, size: '80vh' }) %>
+	<%~ include("card/cardElement", { data, size: '80vh' }) %>
 </div>
 
 <div class="element-info grid">
 	<div class="grid_break-end">
-		<%~ include("blocks/author", {data}) %>
-		<%~ include("blocks/date", {data}) %>
+		<%~ include("author/author", {data}) %>
+		<%~ include("date/date", {data}) %>
 	</div>
 
 	<div class="grid_break-start">

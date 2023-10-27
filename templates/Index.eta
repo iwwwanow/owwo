@@ -1,10 +1,10 @@
-<% layout("_layout", {src_style: '/public/style.pages/index.css'}) %>
+<% layout("LO") %>
 
 <div class="grid">
 	<% if (it.render.users && it.render.users.length) { %>
 	<div class="avatars-container">
 		<% render.users.forEach((user) => { %>
-		<%~  include("blocks/avatar", {
+		<%~  include("avatar/avatar", {
 		url: user.username,
 		src: user.src.avatar && user.src.avatar.webp64
 		})  %>

@@ -1,10 +1,10 @@
 <fieldset class="fieldset-input-file <%= it.className || '' %>">
-	<%~ include('inputFile', {form: ''}) %>
+	<%~ include('../input/inputFile', {form: ''}) %>
 
 	<% if (true) { %>
 	<div class="fieldset-input-file_buttons">
-		<%~include('button_download', {})%>
-		<%~include('button_delete', {})%>
+		<%~include('../button/button_download', {})%>
+		<%~include('../button/button_delete', {})%>
 	</div>
 	<% } %>
 </fieldset>

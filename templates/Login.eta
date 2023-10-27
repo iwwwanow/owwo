@@ -1,4 +1,4 @@
-<% layout("_layout.eta")%>
+<% layout("_layout")%>
 
 <div class="grid">
 	<form
@@ -6,14 +6,14 @@
 				action="/login"
 				class="login">
 
-		<%~ include("./blocks/inputText.eta", {
+		<%~ include("components/inputText", {
 		name: 'username',
 		placeholder: 'USERNAME',
 		class: 'login__input-username',
 		required: true
 		})%>
 
-		<%~ include("./blocks/inputText.eta", {
+		<%~ include("components/inputText", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'PASSWORD',
@@ -21,7 +21,7 @@
 		required: true
 		})%>
 
-		<%~ include("./blocks/button.eta", {
+		<%~ include("components/button", {
 		text: 'Войти'
 		})%>
 	</form>
