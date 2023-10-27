@@ -18,7 +18,6 @@
 
 	<link rel="stylesheet" href="/public/style/color.css" />
 	<link rel="stylesheet" href="/public/style/font.css" />
-	<link rel="stylesheet" href="/public/style/font_custom.css" />
 
 	<link rel="stylesheet" href="/public/style.pages/login.css" />
 	<link rel="stylesheet" href="/public/style.pages/index.css" />

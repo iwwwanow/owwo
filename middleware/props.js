@@ -10,76 +10,89 @@ export default class Props {
     type: "viewer",
     mode: "viewer",
   };
-  render = {};
-  params;
+  params = {};
 
-  constructor(c) {
-    const { cookie, params, query } = c;
-
-    if (cookie) this.auth = cookie.auth;
-
-    if (!!params) {
-      this.params = {};
-      Object.keys(params).forEach((key) => {
-        this.params[key] = params[key];
-      });
-      if (this.auth) this.client.type = set_clientType(this);
+  constructor(req) {
+    const url = new URL(req.url);
+    const params = url.pathname.split("/");
+    if (params.length === 2) {
+      this.params.username = params[1];
+    } else if (params.length === 3) {
+      if (params[1] === "page") this.params.page_id = params[2];
+      if (params[1] === "element") this.params.element_id = params[2];
     }
-
-    if (query.mode) this.client.mode = query.mode;
+    // console.log(url.split("/"));
+    // const referer = req.headers.get("referer");
+    // const { cookie, params, query } = c;
+    // if (cookie) this.auth = cookie.auth;
+    // if (!!params) {
+    //   this.params = {};
+    //   Object.keys(params).forEach((key) => {
+    //     this.params[key] = params[key];
+    //   });
+    //   if (this.auth) this.client.type = set_clientType(this);
+    // }
+    // if (query.mode) this.client.mode = query.mode;
   }
 
-  date_local() {
-    const render = this.render;
-    const local = (date) => {
-      return new Date(date).toLocaleString("ru-RU");
-    };
-    this.render.date_creation = local(render.date_creation);
-    this.render.date_lastModify = local(render.date_lastModify);
-  }
+  // date_local() {
+  //   const render = this.render;
+  //   const local = (date) => {
+  //     return new Date(date).toLocaleString("ru-RU");
+  //   };
+  //   this.render.date_creation = local(render.date_creation);
+  //   this.render.date_lastModify = local(render.date_lastModify);
+  // }
 
   async init() {
-    // FIX
-    if (this.params.username === "favicon.ico") return;
     if (!this.params) {
       await this.init_index();
     } else if (this.params.username) {
-      await this.init_user();
+      await this.init_profile();
     } else if (this.params.page_id) {
       await this.init_page();
     } else if (this.params.element_id) {
       await this.init_element();
     }
 
-    this.date_local();
-    if (this.render.text)
-      this.render.html = DOMPurify.sanitize(marked.parse(this.render.text));
-    else if (this.render.desc)
-      this.render.html = DOMPurify.sanitize(marked.parse(this.render.desc));
-
-    return this;
+    // this.date_local();
+    // if (this.render.text)
+    //   this.render.html = DOMPurify.sanitize(marked.parse(this.render.text));
+    // else if (this.render.desc)
+    //   this.render.html = DOMPurify.sanitize(marked.parse(this.render.desc));
   }
 
   async init_index() {
+    const props = {
+      client: this.client,
+      render: {},
+    };
+
     const users = sql("users")
       .select(["user_id", "username"])
       .order("date_lastModify")
       .all();
 
-    users.map((user) => {
-      return (user.src = File.get_src("users", user.user_id));
-    });
+    // users.map((user) => {
+    // return (user.src = File.get_src("users", user.user_id));
+    // });
 
-    this.render.users = users;
+    props.render.users = users;
+    return props;
   }
 
-  async init_user() {
-    this.render = sql("users")
+  async init_profile() {
+    const props = {
+      client: this.client,
+      render: {},
+    };
+
+    props.render = sql("users")
       .select(["user_id", "date_creation", "date_lastModify", "text", "markup"])
       .where({ username: this.params.username })
       .get();
 
-    this.render.src = File.get_src("users", this.render.user_id);
+    // this.render.src = File.get_src("users", this.render.user_id);
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
@@ -87,19 +100,24 @@ export default class Props {
 
     const pages = pages_query
       .order("date_lastModify")
-      .all({ $user_id: this.render.user_id });
+      .all({ $user_id: props.render.user_id });
 
-    pages.forEach((page) => {
-      page.src = {};
-      page.src.cover = File.srcCover("pages", page.page_id);
-    });
+    // pages.forEach((page) => {
+    //   page.src = {};
+    //   page.src.cover = File.srcCover("pages", page.page_id);
+    // });
 
-    this.render.pages = pages;
-    return this;
+    props.render.pages = pages;
+    return props;
   }
 
   async init_page() {
-    this.render = sql("pages")
+    const props = {
+      client: this.client,
+      render: {},
+    };
+
+    props.render = sql("pages")
       .select([
         "page_id",
         "title",
@@ -110,20 +128,22 @@ export default class Props {
       ])
       .where({ page_id: this.params.page_id })
       .get();
-    this.render.src = File.get_src("pages", this.params.page_id);
-    this.render.authors = [];
+
+    // this.render.src = File.get_src("pages", this.params.page_id);
+    // this.render.authors = [];
 
     const authors = sql("authors")
       .select(["user_id", "type"])
       .where({ page_id: this.params.page_id })
       .all();
 
+    props.render.authors = [];
     authors.forEach((author) => {
       author.username = sql("users")
         .select("username")
         .where({ user_id: author.user_id })
         .get();
-      this.render.authors.push(author);
+      props.render.authors.push(author);
     });
 
     const elements_query = await sql().custom_all(
@@ -135,15 +155,15 @@ export default class Props {
       .all({ $page_id: this.params.page_id });
 
     elements.map((element) => {
-      element.src = File.get_src("elements", element.element_id);
+      // element.src = File.get_src("elements", element.element_id);
       if (element.text) {
         element.html = marked.parse(element.text);
       }
       return element;
     });
 
-    this.render.elements = elements;
-    return this;
+    props.render.elements = elements;
+    return props;
   }
 
   async init_element() {

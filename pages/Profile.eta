@@ -1,6 +1,4 @@
-<% layout("_layout.eta", {
-	src_stylePage: 'profile',
-	src_styleBlocks: ['avatar']}) %>
+<% layout("_layout.eta" ) %>
 
 <div class="grid profile">
 
