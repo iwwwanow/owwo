@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 
+import sql from "../lib/sql.ts";
+
 import check_uniqueUsername from "../middleware/check_unique-username.ts";
 import Password from "../middleware/password.ts";
-import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
 
 import * as jose from "jose";
@@ -37,8 +38,8 @@ export default class Auth {
     return;
   }
 
-  static async authUser(req) {
-    const body = req.body;
+  static async authUser(c) {
+    const body = c.body;
     const text = await Bun.readableStreamToText(body);
     const arr = text.split("&");
     const obj = {};
@@ -68,8 +69,13 @@ export default class Auth {
       .setExpirationTime("1h")
       .sign(secret);
 
-    return Response.redirect("/", {
-      headers: { "Set-Cookie": `auth=${jwt}` },
-    });
+    c.headers["Set-Cookie"] = `auth=${jwt}`;
+    return Response.redirect("/", { headers: c.headers });
+  }
+
+  static async logout(c) {
+    c.headers["Set-Cookie"] =
+      "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT";
+    return Response.redirect("/", { headers: c.headers });
   }
 }

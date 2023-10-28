@@ -23,7 +23,6 @@ export default class File {
   }
 
   static async write(file, dir, filename) {
-    console.log("write");
     const path = dir + filename;
     await Bun.write(path, file);
   }

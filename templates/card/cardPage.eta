@@ -7,7 +7,7 @@
 	<% if (page.title || page.desc || page.text) { %>
 	<div class="card-page__text-wrapper grid_break-end">
 		<div class="card-page__text-container border-inner">
-			<% if (title) { %>
+			<% if (page.title) { %>
 			<h4 class="card-page__title"><%= page.title %></h4>
 			<% } %>
 

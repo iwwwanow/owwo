@@ -2,7 +2,7 @@
 			id="form-meta-page"
 			class="grid form-meta form-meta-page"
 			method="POST"
-			action="/page/<%= data.page_id %>"
+			action="/page/<%= data.page_id %>?method=PUT"
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
@@ -10,14 +10,14 @@
 		form: 'form-meta-page',
 		name: 'cover',
 		accept: 'image/*',
-		src_image: data.src.cover,
+		src: data.src.cover && data.src.cover.original,
 		}) %>
 	</fieldset>
 
 	<fieldset class="card form-meta__fieldset">
 		<h4>
 			<%~ include('../textarea/textarea', {
-			form: 'page_meta-form',
+			form: 'form-meta-page',
 			name: 'title',
 			text: data.title,
 			placeholder: 'page-title',
@@ -27,7 +27,7 @@
 
 		<h5 style="height: 100%;">
 			<%~ include('../textarea/textarea', {
-			form: 'page_meta-form',
+			form: 'form-meta-page',
 			name: 'desc',
 			text: data.desc,
 			placeholder: 'page-description',
@@ -38,14 +38,20 @@
 
 	<div class="card">
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-page',
+			name: 'style',
+			accept: '.css',
+			src: data.src.style,
 			className: 'form-meta__fieldset'
 		}) %>
 
 		<hr>
 
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-page',
+			name: 'script',
+			accept: '.js',
+			src: data.src.script,
 			className: 'form-meta__fieldset'
 		}) %>
 	</div>
@@ -62,7 +68,7 @@
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить профиль' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить страницу' }) %>
 	</div>
 
 	<hr>

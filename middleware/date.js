@@ -1,4 +1,4 @@
-import sql from "./sql";
+import sql from "../lib/sql";
 
 export default class dbDate {
   static async update({ user_id, page_id, element_id }) {

@@ -2,7 +2,7 @@
 			id="form-meta-profile"
 			class="grid form-meta form-meta-profile"
 			method="POST"
-			action="/<%= data.username %>"
+			action="/<%= data.username %>?method=PUT"
 			enctype="multipart/form-data">
 
 	<fieldset class="form-meta__fieldset_square">
@@ -33,16 +33,16 @@
 	<% const user_dir = `/public/data_uploads/users/${data.user_id}/` %>
 
 	<%~ include('../fieldset/fieldsetInputFile', { 
-		name: 'style',
 		form: 'form-meta-profile',
+		name: 'style',
 		accept: '.css',
 		src: data.src.style, 
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
 	<%~ include('../fieldset/fieldsetInputFile', { 
-		name: 'script',
 		form: 'form-meta-profile',
+		name: 'script',
 		accept: '.js',
 		src: data.src.script,
 		className: 'form-meta__fieldset_square' 

@@ -22,7 +22,7 @@
 
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("card/cardElement", { it: element }) %>
+	<%~ include("card/cardElement", { element }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>

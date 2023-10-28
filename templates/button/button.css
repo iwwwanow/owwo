@@ -21,6 +21,16 @@
 .button_download a {
   color: inherit;
 }
+.button_plus {
+  padding: 32px;
+  height: 100%;
+}
+.button_plus path {
+  fill: var(--grey-dark);
+}
+.button_plus:hover path {
+  fill: var(--white);
+}
 .button > h6 {
   color: var(--color);
   overflow-wrap: break-word;

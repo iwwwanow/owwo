@@ -1,183 +1,82 @@
 import * as jose from "jose";
 
-import SQL from "../middleware/sql.ts";
-
-await SQL().init();
-
-import Data from "../middleware/data.middleware.js";
 import { eta } from "../config/eta.ts";
+
+import Render from "../controllers/render.controller.js";
 import Auth from "../controllers/auth.controller.js";
-import Profile from "../controllers/Profile.controller.js";
+import Profile from "../controllers/profile.controller.js";
+import Page from "../controllers/page.controller.js";
+import Element from "../controllers/element.controller.js";
+
 import File from "../middleware/file.middleware.js";
+import Data from "../middleware/data.middleware.js";
+import sql from "../lib/sql.ts";
+import Static from "../controllers/static.controller.js";
+import checkAuth from "../middleware/auth.middleware.js";
+await sql().init();
 
 const server = Bun.serve({
   port: 8080,
   async fetch(req) {
-    const url = new URL(req.url);
-
-    let method;
-    if (url.search && url.searchParams.get("method"))
-      method = url.searchParams.get("method");
-
-    const headers = {
-      // "Cache-Control": "public, max-age=31536000",
-    };
-
-    if (url.pathname.split("/").at(1) === "templates") {
-      const path = "." + url.pathname;
-      const file = Bun.file(path);
-      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
-      return new Response(file, { headers });
-    }
-
-    if (url.pathname.split("/").at(1) === "public") {
-      if (method === "DELETE") {
-        const referer = req.headers.get("referer");
-        console.log(url.pathname);
-        await File.remove(url.pathname);
-        return Response.redirect(referer, { headers });
-      } else {
-        const path = "." + url.pathname;
-        const file = Bun.file(path);
-        headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
-        return new Response(file, { headers });
-      }
-    }
-
-    if (url.pathname === "/favicon.ico") {
-      const path = "./public/favicon.ico";
-      const file = Bun.file(path);
-      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
-      return new Response(file, { headers });
-    }
-
-    const props = {
-      client: {
-        auth: false,
-        type: "viewer",
-        mode: "viewer",
+    const c = {
+      url: new URL(req.url),
+      method: req.method,
+      headers: {
+        // "Cache-Control": "public, max-age=31536000",
+      },
+      cookie: req.headers.get("cookie"),
+      props: {
+        client: {
+          auth: false,
+          type: "viewer",
+          mode: "viewer",
+        },
       },
     };
 
-    const cookie = req.headers.get("cookie");
-    if (cookie) {
-      const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-      const jwt = cookie.split("=").at(1);
-      try {
-        const { payload } = await jose.jwtVerify(jwt, secret);
-        props.client.auth = payload;
-      } catch (e) {
-        console.log("jwt auth error");
-        headers["Set-Cookie"] =
-          "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT";
-      }
+    if (c.url.search && c.url.searchParams.get("method"))
+      c.method = c.url.searchParams.get("method");
+
+    if (c.url.pathname.split("/").at(1) === "templates") return Static.send(c);
+
+    if (c.url.pathname.split("/").at(1) === "public") {
+      if (c.method === "DELETE") return await Static.delete(c);
+      else return Static.send(c);
     }
 
-    if (url.pathname === "/") {
-      props.data = await Data.index();
+    if (c.url.pathname === "/favicon.ico") return Static.send(c);
 
-      // console.log("inex-props:", props);
-      const html = eta.render("Index", props);
+    if (c.cookie) c.props.client.auth = await checkAuth(c);
 
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
+    if (c.url.pathname === "/about") return Render.about(c);
+
+    if (c.url.pathname === "/login") {
+      if (c.method === "POST") return await Auth.authUser(c);
+      else return await Render.login(c);
     }
 
-    if (url.pathname === "/about") {
-      // console.log("about-props:", props);
-      const html = eta.render("About", props);
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
+    if (c.url.pathname === "/logout") return await Auth.logout(c);
+
+    if (c.url.pathname === "/signup") return await Render.signup(c);
+
+    if (c.url.pathname === "/") return Render.index(c);
+
+    if (c.url.pathname.split("/").at(1) === "page") {
+      if (c.method === "PUT") {
+        return Page.update(req);
+      } else if (c.method === "POST") {
+        return Element.create(c);
+      } else return Render.page(c);
     }
 
-    if (url.pathname === "/login") {
-      if (req.method === "POST") {
-        return await Auth.authUser(req);
-      }
-      const html = eta.render("Login", props);
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
+    if (c.url.pathname.split("/").at(1) === "element") {
+      return Render.element(c);
     }
 
-    if (url.pathname === "/logout") {
-      headers["Set-Cookie"] =
-        "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT";
-      return Response.redirect("/", { headers });
-    }
-
-    if (url.pathname === "/signup") {
-      const html = eta.render("Signup", props);
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
-    }
-
-    if (url.pathname.split("/").at(1) === "page") {
-      const page_id = url.pathname.split("/").at(2);
-
-      props.data = await Data.page(page_id);
-
-      if (
-        props.client.auth &&
-        props.data.authors.find(
-          (author) => author.user_id === props.client.auth.user_id
-        )
-      ) {
-        props.client.type = "owner";
-        if (url.search && url.searchParams.get("mode"))
-          props.client.mode = url.searchParams.get("mode");
-      }
-
-      // console.log("page-props:", props);
-      const html = eta.render("Page", props);
-
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
-    }
-
-    if (url.pathname.split("/").at(1) === "element") {
-      const element_id = url.pathname.split("/").at(2);
-
-      props.data = await Data.element(element_id);
-
-      if (
-        props.client.auth &&
-        props.data.author_id === props.client.auth.user_id
-      ) {
-        props.client.type = "owner";
-        if (url.search && url.searchParams.get("mode"))
-          props.client.mode = url.searchParams.get("mode");
-      }
-
-      // console.log("element-props:", props);
-      const html = eta.render("Element", props);
-
-      headers["Content-Type"] = "text/html";
-      return new Response(html, { headers });
-    }
-
-    if (url.pathname) {
-      const username = url.pathname.split("/").at(1);
-
+    if (c.url.pathname) {
       if (req.method === "POST") {
         return await Profile.update(req);
-      }
-
-      props.data = await Data.profile(username);
-
-      if (
-        props.client.auth &&
-        props.client.auth.user_id === props.data.user_id
-      ) {
-        props.client.type = "owner";
-        if (url.search && url.searchParams.get("mode"))
-          props.client.mode = url.searchParams.get("mode");
-      }
-
-      // console.log("profile-props:", props);
-      const html = eta.render("Profile", props);
-      headers["Content-Type"] = "text/html";
-
-      return new Response(html, { headers });
+      } else return await Render.profile(c);
     }
 
     return new Response("404!");

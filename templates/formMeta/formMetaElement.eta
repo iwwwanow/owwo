@@ -2,12 +2,12 @@
 			id="form-meta-element"
 			class="grid form-meta form-meta-element"
 			method="POST"
-			action="/element/<%= data.element_id %>"
+			action="/element/<%= data.element_id %>?method=PUT"
 			enctype="multipart/form-data">
 
 	<fieldset class="card form-meta__fieldset">
 		<%~ include('../input/inputFile', {
-		form: 'element_meta-form',
+		form: 'form-meta-element',
 		name: 'cover',
 		src_image: data.src.cover,
 		accept: 'image/*',
@@ -17,7 +17,7 @@
 	<fieldset class="card form-meta__fieldset">
 		<h5 style="height: 100%;">
 			<%~ include('../textarea/textarea', {
-			form: 'element_meta-form',
+			form: 'form-meta-element',
 			name: 'text',
 			text: data.text,
 			placeholder: 'element-text',
@@ -27,12 +27,20 @@
 
 	<div class="card">
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-element',
+			name: 'style',
+			accept: '.css',
+			src: data.src.style,
 			className: 'form-meta__fieldset'
 		}) %>
+
 		<hr>
+
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-element',
+			name: 'script',
+			accept: '.js',
+			src: data.src.script,
 			className: 'form-meta__fieldset'
 		}) %>
 	</div>

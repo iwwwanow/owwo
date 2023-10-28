@@ -2,27 +2,24 @@ import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
 import File from "./file.middleware";
-import sql from "./sql";
-import set_clientType from "./set_clientType";
-
-import * as jose from "jose";
+import sql from "../lib/sql";
 
 export default class Data {
   static source(input, fileName) {
-    const makeDir = (e) => {
-      let dir = `./public/data_uploads/`;
-      if (e.user_id) return dir + "users/" + e.user_id;
-      else if (e.page_id) return dir + "pages/" + e.page_id;
-      else if (e.element_id) return dir + "elements/" + e.element_id;
-    };
-
-    if (Array.isArray(input)) {
-      let dir = `./public/data_uploads/pages/`;
-      input.map((e) => {
-        e.src = File.src(makeDir(e), fileName);
-      });
-    }
-    return input;
+    // const makeDir = (e) => {
+    //   let dir = `./public/data_uploads/`;
+    //   if (e.user_id) return dir + "users/" + e.user_id;
+    //   else if (e.page_id) return dir + "pages/" + e.page_id;
+    //   else if (e.element_id) return dir + "elements/" + e.element_id;
+    // };
+    //
+    // if (Array.isArray(input)) {
+    //   let dir = `./public/data_uploads/pages/`;
+    //   input.map((e) => {
+    //     e.src = File.src(makeDir(e), fileName);
+    //   });
+    // }
+    // return input;
   }
 
   // date_local() {
@@ -39,15 +36,25 @@ export default class Data {
       .select(["user_id", "username"])
       .order("date_lastModify")
       .all();
-    this.source(users, "avatar");
 
-    const randomPages = sql("pages").select(["*"]).random(8).all();
-    this.source(randomPages, "cover");
+    users.map((user) => {
+      const dir = `./public/data_uploads/users/${user.user_id}/`;
+      user.src = File.sources(dir);
+    });
 
-    const randomElements = sql("elements").select(["*"]).random(16).all();
-    this.source(randomElements, "cover");
+    const pages = sql("pages").select(["*"]).random(8).all();
+    pages.map((page) => {
+      const dir = `./public/data_uploads/pages/${page.page_id}/`;
+      page.src = File.sources(dir);
+    });
 
-    const data = { users, pages: randomPages, elements: randomElements };
+    const elements = sql("elements").select(["*"]).random(16).all();
+    elements.map((element) => {
+      const dir = `./public/data_uploads/elements/${element.element_id}/`;
+      element.src = File.sources(dir);
+    });
+
+    const data = { users, pages, elements };
     return data;
   }
 
@@ -98,7 +105,8 @@ export default class Data {
       .where({ page_id })
       .get();
 
-    data.src = File.get_src("pages", page_id);
+    const dir = `./public/data_uploads/pages/${page_id}`;
+    data.src = File.sources(dir);
 
     const authors = sql("authors")
       .select(["user_id", "type"])

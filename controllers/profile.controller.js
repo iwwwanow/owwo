@@ -1,7 +1,6 @@
 import File from "../middleware/file.middleware.js";
-import sql from "../middleware/sql.ts";
+import sql from "../lib/sql.js";
 import dbDate from "../middleware/date.js";
-import checkOwner from "../middleware/check_owner.js";
 
 import * as fs from "node:fs";
 import sharp from "sharp";
@@ -18,14 +17,10 @@ export default class Profile {
     const formDataObj = {};
     formdata.forEach((value, key) => (formDataObj[key] = value));
 
-    const { avatar, text, style, script, markup } = formDataObj;
-
     const user_id = sql("users").select("user_id").where({ username }).get();
-
+    const { avatar, text, style, script, markup } = formDataObj;
     const dir = `./public/data_uploads/users/${user_id}/`;
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
     if (avatar.size) {
       const extention = avatar.type.split("/").at(1);
@@ -36,19 +31,18 @@ export default class Profile {
 
       const webp64 = await sharp(buf, { animated: true })
         .webp()
-        .resize(64, 64, { fit: "cover" })
+        .resize(64, 64, { fit: "cover", withoutEnlargement: true })
         .toBuffer();
       await File.write(webp64, dir, "avatar@webp64.webp");
 
       const webp190 = await sharp(buf, { animated: true })
         .webp()
-        .resize(190, 190, { fit: "cover" })
+        .resize(190, 190, { fit: "cover", withoutEnlargement: true })
         .toBuffer();
       await File.write(webp190, dir, "avatar@webp190.webp");
     }
 
     if (style.size) {
-      console.log("write");
       await File.remove(dir, "style");
       await File.write(style, dir, "style.css");
     }
@@ -58,42 +52,25 @@ export default class Profile {
       await File.write(script, dir, "script.js");
     }
 
-    return Response.redirect(referer);
+    // console.log(markup);
 
-    // const {
-    //   set,
-    //   params: { username },
-    //   body,
-    // } = c;
-    // checkOwner.check(c);
+    try {
+      sql("users")
+        .update({ text, markup, date_lastModify: Date.now() })
+        .where({ user_id })
+        .run();
+    } catch (e) {
+      throw new Error("запись не удалась(");
+    }
 
-    // if (!!avatar.size) {
-    //   await File.removeImage("users", user_id, "avatar");
-    //   await File.write_image("users", avatar, "avatar", user_id);
-    // }
-
-    // await File.write("users", script, "script", user_id);
-    // await File.write("users", style, "style", user_id);
-
-    // try {
-    //   sql("users")
-    //     .update({ text, markup, date_lastModify: Date.now() })
-    //     .where({ user_id })
-    //     .run();
-    // } catch (e) {
-    //   throw new Error("запись не удалась(");
-    // }
-    //
     // dbDate.update(user_id);
-    //
-    // const referer = c.request.headers.get("referer");
-    // set.redirect = referer;
-    // return;
+
+    return Response.redirect(referer);
   }
 
   static async delete(c) {
     // FIX REF
-    checkOwner.check(c);
+    // checkOwner.check(c);
     const { set, params, removeCookie } = c;
     const user_id = sql("users")
       .select("user_id")
