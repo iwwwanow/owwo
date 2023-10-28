@@ -2,7 +2,7 @@
 
 <div class="button-plus_container card">
 	<button
-					class="button-plus_button border__outter"
+					class="button-plus_button border-outter"
 					formaction="<%= formaction %>"
 					formmethod="POST">
 		<%~ include('./svg/+') %>

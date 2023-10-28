@@ -9,7 +9,7 @@
 			 <%=checked%> />
 
 <label
-			 class="input-radio_label border__outter"
+			 class="input-radio_label border-outter"
 			 for="<%= value %>">
 	<h6>
 		<div class="circle"></div>

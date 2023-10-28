@@ -1,11 +1,8 @@
-<% layout("_layout") %>
+<% layout("LO") %>
 
 <div class="grid">
 	<div>
 		<h2 class="about-text">Открытая multimedia библиотека.</h2>
-		<h4><a
-				 href="https://www.figma.com/file/Ct5UKPnWoPJsj4JXQMH6eo/owwo?type=design&node-id=56%3A211&mode=design&t=saIu58KpgjYEFIt2-1">figma</a>
-		</h4>
 		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
 	</div>
 

@@ -1,35 +1,31 @@
-<% if (it.render) it = it.render %>
-<% const size = it.size || '600px' %>
 <% let type = 'text' %>
-<% if (it.src && it.src.cover) type = 'image' %>
+<% if (element.src && element.src.cover) type = 'image' %>
 
-<div id="<%= it.element_id %>" class="card-element <%= type %> ">
+<div id="<%= element.element_id %>" class="card border-outter card-element <%= type %> ">
 
-	<% if (it.src && it.src.cover) { %>
+	<% if (element.src && element.src.cover) { %>
 
-	<div class="card-element_img border__outter">
-		<a href="/element/<%= it.element_id %>">
-			<img src="<%= it.src.cover %>" alt="">
+	<div class="card-element__img">
+		<a href="/element/<%= element.element_id %>">
+			<img src="<%= element.src.cover.original %>" alt="">
 		</a>
 	</div>
 
 	<% } else { %>
 
 	<a
-		 class="card-element_link border__outter"
-		 style="display: block; text-decoration: none;"
-		 href="/element/<%= it.element_id %>">
-		<h2 style="margin: 0;"> # </h2>
+		 class="card-element__link"
+		 href="/element/<%= element.element_id %>">
+		<h2>#</h2>
 	</a>
 
 	<% } %>
 
-	<% /* FIX НЕ ВЫВОДИТЬ HTML ПРИ РАЗМЕТКЕ LIST */ %>
-	<% if (it.html) { %>
-	<div class="card-element_html"><%~ it.html %></div>
+	<% if (element.html) { %>
+	<div class="card-element__html"><%~ element.html %></div>
 	<% } %>
-	<% if (it.text) { %>
-	<div class="card-element_text"><%~ it.text %></div>
+	<% if (element.text) { %>
+	<div class="card-element__text"><%~ element.text %></div>
 	<% } %>
 
 </div>

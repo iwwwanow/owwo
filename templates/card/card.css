@@ -1,112 +1,16 @@
 .card {
   width: 100%;
   height: 288px;
-
   display: flex;
-  gap: 8px;
-  flex-direction: column;
-
-  /* TODO Удалить. свойство для отлаки */
-  /* border: 1px solid var(--grey-light); */
-}
-.card:hover {
-  /* border: 1px solid var(--white); */
+  align-items: center;
+  justify-content: center;
 }
 
-/* GRID */
-.grid .card-element_html {
-  display: none;
-}
+/* CARD-PAGE */
 
-.grid .card-element {
-  position: relative;
-  height: 288px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.grid .card-element_img {
-  height: 100%;
-}
-
-.grid .card-element_img img {
+/* CARD-ELEMENT */
+.card-element__link {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.grid .card-element_link {
-  height: 100%;
-}
-
-/* FIX ПОДВОПРОСНАЯ ДВИЖУХА */
-.grid .card-element_text {
-  position: absolute;
-  display: flex;
-
-  width: 100%;
-  max-height: 100%;
-  overflow: hidden;
-  padding: 8px 4px;
-
-  pointer-events: none;
-
-  flex-direction: column;
-  justify-content: flex-start;
-
-  mix-blend-mode: luminosity;
-  color: var(--grey-dark);
-  opacity: 0.1;
-}
-
-.grid .card-element:hover .card-element_text {
-  opacity: 1;
-}
-
-/* LIST */
-.list .card-element_text {
-  display: none;
-}
-
-.list .card-element {
-  width: 100%;
-  grid-column: 1/-1;
-  display: flex;
-  gap: 16px;
-}
-
-.list .card-element.text {
-  flex-direction: column;
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.list .card-element.text .card-element_link {
-  width: fit-content;
-}
-
-.list .card-element_img {
-  height: min-content;
-  width: fit-content;
-}
-
-.list .card-element_html {
-  max-width: 602px;
-}
-
-@media screen and (max-width: 1268px) {
-  .list .image .card-element_html {
-    max-width: 396px;
-  }
-}
-
-@media screen and (max-width: 858px) {
-  .list .card-element {
-    flex-direction: column;
-  }
-
-  .list .card-element_html {
-    max-width: 100%;
-  }
+  text-decoration: none !important;
 }

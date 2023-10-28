@@ -1,4 +1,4 @@
-<% layout("_layout")%>
+<% layout("LO")%>
 
 <div class="grid">
 	<form
@@ -6,14 +6,14 @@
 				action="/login"
 				class="login">
 
-		<%~ include("components/inputText", {
+		<%~ include("input/inputText", {
 		name: 'username',
 		placeholder: 'USERNAME',
 		class: 'login__input-username',
 		required: true
 		})%>
 
-		<%~ include("components/inputText", {
+		<%~ include("input/inputText", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'PASSWORD',
@@ -21,7 +21,7 @@
 		required: true
 		})%>
 
-		<%~ include("components/button", {
+		<%~ include("button/button", {
 		text: 'Войти'
 		})%>
 	</form>

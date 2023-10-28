@@ -198,7 +198,6 @@ export default function sql(table_name: string) {
     },
 
     all: function (input) {
-      console.log(query);
       if (input) return db.query(query).all(input);
       let result = db.query(query).all();
       if (select_single) {

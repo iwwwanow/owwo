@@ -1,4 +1,4 @@
-<% layout("_layout")%>
+<% layout("LO")%>
 
 <div class="grid">
 
@@ -7,14 +7,14 @@
 				action="/signup"
 				class="login">
 
-		<%~ include("components/inputText", {
+		<%~ include("input/inputText", {
 		name: 'username',
 		placeholder: 'USERNAME',
 		id: 'signup_input-username',
 		required: true
 		})%>
 
-		<%~ include("components/inputText", {
+		<%~ include("input/inputText", {
 		name: 'password',
 		type: 'password',
 		placeholder: 'PASSWORD',
@@ -22,7 +22,7 @@
 		required: true
 		})%>
 
-		<%~ include("components/inputText", {
+		<%~ include("input/inputText", {
 		name: 'confirm',
 		type: 'password',
 		placeholder: 'CONFIRM PASSWORD',
@@ -30,7 +30,7 @@
 		required: true
 		})%>
 
-		<%~ include("components/button", {
+		<%~ include("button/button", {
 		type: 'submit',
 		text: 'Зарегистрироваться',
 		})%>

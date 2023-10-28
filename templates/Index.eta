@@ -22,7 +22,7 @@
 <div class="grid">
 	<% if (data.pages && !!data.pages.length) { %>
 	<% data.pages.forEach(function (page) { %>
-	<%~ include("card/cardPage", {page}) %>
+	<%~ include("card/cardPage", { page }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
@@ -36,7 +36,7 @@
 <div class="grid">
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("card/cardElement", { it: element }) %>
+	<%~ include("card/cardElement", { element }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>

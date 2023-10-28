@@ -1,14 +1,29 @@
 import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
-import File from "./file";
+import File from "./file.middleware";
 import sql from "./sql";
 import set_clientType from "./set_clientType";
 
 import * as jose from "jose";
 
 export default class Data {
-  constructor() {}
+  static source(input, fileName) {
+    const makeDir = (e) => {
+      let dir = `./public/data_uploads/`;
+      if (e.user_id) return dir + "users/" + e.user_id;
+      else if (e.page_id) return dir + "pages/" + e.page_id;
+      else if (e.element_id) return dir + "elements/" + e.element_id;
+    };
+
+    if (Array.isArray(input)) {
+      let dir = `./public/data_uploads/pages/`;
+      input.map((e) => {
+        e.src = File.src(makeDir(e), fileName);
+      });
+    }
+    return input;
+  }
 
   // date_local() {
   //   const render = this.render;
@@ -24,14 +39,13 @@ export default class Data {
       .select(["user_id", "username"])
       .order("date_lastModify")
       .all();
-
-    users.map((user) => {
-      return (user.src = File.get_src("users", user.user_id));
-    });
+    this.source(users, "avatar");
 
     const randomPages = sql("pages").select(["*"]).random(8).all();
+    this.source(randomPages, "cover");
 
     const randomElements = sql("elements").select(["*"]).random(16).all();
+    this.source(randomElements, "cover");
 
     const data = { users, pages: randomPages, elements: randomElements };
     return data;
