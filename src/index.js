@@ -25,6 +25,7 @@ const server = Bun.serve({
         // "Cache-Control": "public, max-age=31536000",
       },
       cookie: req.headers.get("cookie"),
+      referer: req.headers.get("referer"),
       props: {
         client: {
           auth: false,
@@ -74,7 +75,7 @@ const server = Bun.serve({
     }
 
     if (c.url.pathname) {
-      if (req.method === "POST") {
+      if (c.method === "PUT") {
         return await Profile.update(req);
       } else return await Render.profile(c);
     }

@@ -26,8 +26,9 @@ export default class Render {
         c.props.client.mode = c.url.searchParams.get("mode");
     }
 
-    // console.log("profile-props:", props);
+    console.log("profile-props:", c.props);
     const html = eta.render("Profile", c.props);
+    console.log(c.headers);
     c.headers["Content-Type"] = "text/html";
 
     return new Response(html, { headers: c.headers });

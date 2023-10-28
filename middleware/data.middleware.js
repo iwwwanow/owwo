@@ -74,6 +74,8 @@ export default class Data {
     const dir = `./public/data_uploads/users/${render.user_id}`;
     render.src = File.sources(dir);
 
+    render.html = DOMPurify.sanitize(marked.parse(render.text));
+
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
     );
