@@ -5,23 +5,6 @@ import File from "./file.middleware";
 import sql from "../lib/sql";
 
 export default class Data {
-  static source(input, fileName) {
-    // const makeDir = (e) => {
-    //   let dir = `./public/data_uploads/`;
-    //   if (e.user_id) return dir + "users/" + e.user_id;
-    //   else if (e.page_id) return dir + "pages/" + e.page_id;
-    //   else if (e.element_id) return dir + "elements/" + e.element_id;
-    // };
-    //
-    // if (Array.isArray(input)) {
-    //   let dir = `./public/data_uploads/pages/`;
-    //   input.map((e) => {
-    //     e.src = File.src(makeDir(e), fileName);
-    //   });
-    // }
-    // return input;
-  }
-
   // date_local() {
   //   const render = this.render;
   //   const local = (date) => {
@@ -74,7 +57,7 @@ export default class Data {
     const dir = `./public/data_uploads/users/${data.user_id}`;
     data.src = File.sources(dir);
 
-    data.html = DOMPurify.sanitize(marked.parse(data.text));
+    if (data.text) data.html = DOMPurify.sanitize(marked.parse(data.text));
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
@@ -107,7 +90,7 @@ export default class Data {
       .where({ page_id })
       .get();
 
-    data.html = DOMPurify.sanitize(marked.parse(data.desc));
+    if (data.desc) data.html = DOMPurify.sanitize(marked.parse(data.desc));
 
     const dir = `./public/data_uploads/pages/${page_id}`;
     data.src = File.sources(dir);

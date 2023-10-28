@@ -1,4 +1,4 @@
-import sql from "./sql";
+import sql from "../lib/sql.ts";
 
 export default class checkOwner {
   static async check(c) {

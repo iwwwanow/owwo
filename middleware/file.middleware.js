@@ -1,5 +1,4 @@
 import * as fs from "node:fs";
-import sharp from "sharp";
 
 export default class File {
   static sources(dir) {

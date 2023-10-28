@@ -59,7 +59,7 @@
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить профиль' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить профиль', url: `/${data.username}` }) %>
 	</fieldset>
 
 	<hr>

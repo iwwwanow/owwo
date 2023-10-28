@@ -68,7 +68,10 @@
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить страницу' }) %>
+		<%~ include('../button/button_delete', {
+			text: 'удалить страницу',
+			url: `/page/${data.page_id}`
+			}) %>
 	</div>
 
 	<hr>

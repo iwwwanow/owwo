@@ -3,6 +3,8 @@ import sharp from "sharp";
 
 import sql from "../lib/sql.js";
 import File from "../middleware/file.middleware.js";
+import Element from "./element.controller.js";
+import Body from "../middleware/body.middleware.js";
 import * as fs from "node:fs";
 
 import dbDate from "../middleware/date.js";
@@ -10,39 +12,36 @@ import dbDate from "../middleware/date.js";
 export default class Page {
   static async create(c) {
     // checkOwner.check(c);
-    // const { cookie, set } = c;
-    // const page_id = uuidv4();
-    //
-    // sql("pages")
-    //   .insert({
-    //     page_id,
-    //     date_creation: Date.now(),
-    //     date_lastModify: Date.now(),
-    //   })
-    //   .run();
-    //
-    // sql("authors")
-    //   .update({ user_id: cookie.auth.user_id, type: "owner" })
-    //   .where({ page_id })
-    //   .run();
-    //
+
+    const page_id = uuidv4();
+    const user_id = c.props.client.auth.user_id;
+
+    sql("pages")
+      .insert({
+        page_id,
+        date_creation: Date.now(),
+        date_lastModify: Date.now(),
+      })
+      .run();
+
+    sql("authors").update({ user_id, type: "owner" }).where({ page_id }).run();
+
     // dbDate.update({ page_id });
-    //
-    // set.redirect = `/page/${page_id}`;
-    // return;
+
+    return Response.redirect(`/page/${page_id}`);
   }
 
   static async update(req) {
+    // checkOwner.check(c);
+
     const url = new URL(req.url);
     const page_id = url.pathname.split("/").at(2);
 
     const referer = req.headers.get("referer");
 
-    const formdata = await req.formData();
-    const formDataObj = {};
-    formdata.forEach((value, key) => (formDataObj[key] = value));
+    const body = Body(await req.formData());
 
-    const { cover, title, desc, style, script, markup } = formDataObj;
+    const { cover, title, desc, style, script, markup } = body;
     const dir = `./public/data_uploads/pages/${page_id}/`;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
@@ -75,60 +74,36 @@ export default class Page {
         .update({ title, desc, markup, date_lastModify: Date.now() })
         .where({ page_id })
         .run();
+
+      // dbDate.update({ page_id: params.page_id });
     } catch (e) {
       throw new Error("запись не удалась(");
     }
 
     return Response.redirect(referer);
-
-    // checkOwner.check(c);
-    //
-    // const { set, params, body, request } = c;
-    // const { title, desc, cover, script, style, markup } = body;
-    //
-    // if (!!cover.size) await File.removeImage("pages", params.page_id, "cover");
-    //
-    // await File.write("pages", cover, "cover", params.page_id);
-    // await File.write("pages", script, "script", params.page_id);
-    // await File.write("pages", style, "style", params.page_id);
-    //
-    // sql("pages")
-    //   .update({ title, desc, markup, date_lastModify: Date.now() })
-    //   .where({ page_id: params.page_id })
-    //   .run();
-    //
-    // dbDate.update({ page_id: params.page_id });
-    //
-    // const referer = c.request.headers.get("referer");
-    // set.redirect = referer;
-    // return;
   }
 
   static async delete(c) {
     // checkOwner.check(c);
-    // const { set, params, cookie } = c;
-    //
-    // const connections = sql("connections")
-    //   .select("element_id")
-    //   .where({ page_id: params.page_id })
-    //   .all();
-    // if (connections.length) {
-    //   connections.forEach(async (element_id) => {
-    //     sql("elements").delete().where({ element_id }).run();
-    //     await File.removeDir("elements", element_id);
-    //   });
-    // }
-    //
-    // await File.removeDir("pages", params.page_id);
-    // sql("pages").delete().where({ page_id: params.page_id }).run();
-    //
-    // set.redirect = `/${cookie.auth.username}`;
+    const page_id = c.url.pathname.split("/").at(2);
+    await this.deleteSingle(page_id);
+    return Response.redirect(`/${c.props.client.auth.username}`);
   }
 
-  static async removeFile(c) {
-    //   checkOwner.check(c);
-    //   const { set, params } = c;
-    //   await File.removeFile("pages", params.page_id, params.file);
-    //   set.redirect = `/page/${params.page_id}`;
+  static async deleteSingle(page_id) {
+    const connections = sql("connections")
+      .select("element_id")
+      .where({ page_id })
+      .all();
+    if (connections.length) {
+      connections.forEach(async (element_id) => {
+        await Element.deleteSingle(element_id);
+      });
+    }
+
+    sql("pages").delete().where({ page_id }).run();
+
+    const dir = `/public/data_uploads/pages/${page_id}`;
+    await File.remove(dir);
   }
 }

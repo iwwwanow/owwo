@@ -9,7 +9,7 @@
 		<%~ include('../input/inputFile', {
 		form: 'form-meta-element',
 		name: 'cover',
-		src: data.src.cover.original,
+		src: data.src && data.src.cover && data.src.cover.original,
 		accept: 'image/*',
 		}) %>
 	</fieldset>
@@ -51,7 +51,10 @@
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить элемент' }) %>
+		<%~ include('../button/button_delete', {
+			text: 'удалить элемент',
+			url: `/element/${data.element_id}`
+			}) %>
 
 	</div>
 

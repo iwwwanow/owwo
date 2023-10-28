@@ -1,13 +1,11 @@
+import * as fs from "node:fs";
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 
 import sql from "../lib/sql.js";
-
 import File from "../middleware/file.middleware.js";
+import Body from "../middleware/body.middleware.js";
 
-import * as fs from "node:fs";
-
-// import checkOwner from "../middleware/check_owner.js";
 // import dbDate from "../middleware/date.js";
 
 export default class Element {
@@ -32,15 +30,15 @@ export default class Element {
   }
 
   static async update(req) {
+    // checkOwner
+
     const url = new URL(req.url);
     const element_id = url.pathname.split("/").at(2);
     const referer = req.headers.get("referer");
 
-    const formdata = await req.formData();
-    const formDataObj = {};
-    formdata.forEach((value, key) => (formDataObj[key] = value));
+    const body = Body(await req.formData());
 
-    const { cover, text, style, script } = formDataObj;
+    const { cover, text, style, script } = body;
     const dir = `./public/data_uploads/elements/${element_id}/`;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
@@ -77,44 +75,21 @@ export default class Element {
       throw new Error("запись не удалась(");
     }
 
-    return Response.redirect(referer);
-
-    // checkOwner.check(c);
-    // const { set, params, body } = c;
-    // const { text, cover, script, style } = body;
-    //
-    // if (!!cover.size)
-    //   await File.removeImage("elements", params.element_id, "cover");
-    //
-    // await File.write("elements", cover, "cover", params.element_id);
-    // await File.write("elements", script, "script", params.element_id);
-    // await File.write("elements", style, "style", params.element_id);
-    //
-    // sql("elements")
-    //   .update({ text, date_lastModify: Date.now() })
-    //   .where({ element_id: params.element_id })
-    //   .run();
-    //
     // dbDate.update({ element_id: params.element_id });
-    //
-    // const referer = c.request.headers.get("referer");
-    // set.redirect = referer;
-    // // set.redirect = `/element/${params.element_id}`;
+
+    return Response.redirect(referer);
   }
 
   static async delete(c) {
     // checkOwner.check(c);
-    // const { set, params, cookie } = c;
-    // await File.removeDir("elements", params.element_id);
-    // // TODO Удаляется ли connection?
-    // sql("elements").delete().where({ element_id: params.element_id }).run();
-    // set.redirect = `/${cookie.username}`;
+    const element_id = c.url.pathname.split("/").at(2);
+    await this.deleteSingle(element_id);
+    return Response.redirect(`/${c.props.client.auth.username}`);
   }
 
-  static async removeFile(c) {
-    // checkOwner.check(c);
-    // const { set, params } = c;
-    // await File.removeFile("elements", params.element_id, params.file);
-    // set.redirect = `/element/${params.element_id}`;
+  static async deleteSingle(element_id) {
+    const dir = `/public/data_uploads/elements/${element_id}`;
+    sql("elements").delete().where({ element_id }).run();
+    await File.remove(dir);
   }
 }

@@ -2,23 +2,23 @@ import File from "../middleware/file.middleware.js";
 import sql from "../lib/sql.js";
 import dbDate from "../middleware/date.js";
 
+import DOMPurify from "isomorphic-dompurify";
+
 import * as fs from "node:fs";
 import sharp from "sharp";
-// import Body from "../middleware/body.middleware.js";
+import Body from "../middleware/body.middleware.js";
 
 export default class Profile {
   static async update(req) {
     const url = new URL(req.url);
     const username = url.pathname.split("/").at(1);
+    const user_id = sql("users").select("user_id").where({ username }).get();
 
     const referer = req.headers.get("referer");
 
-    const formdata = await req.formData();
-    const formDataObj = {};
-    formdata.forEach((value, key) => (formDataObj[key] = value));
+    const body = Body(await req.formData());
 
-    const user_id = sql("users").select("user_id").where({ username }).get();
-    const { avatar, text, style, script, markup } = formDataObj;
+    const { avatar, text, style, script, markup } = body;
     const dir = `./public/data_uploads/users/${user_id}/`;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
@@ -51,8 +51,6 @@ export default class Profile {
       await File.remove(dir, "script");
       await File.write(script, dir, "script.js");
     }
-
-    // console.log(markup);
 
     try {
       sql("users")
