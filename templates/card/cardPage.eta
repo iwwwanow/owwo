@@ -22,10 +22,11 @@
 	</div>
 	<% } %>
 
+	<%console.log(page.src)%>
 	<% if (page.src && page.src.cover) { %>
 	<img
 			 class="card-page__image grid_break-start"
-			 src="<%= page.src.cover.original %>"
+			 src="<%= page.src.cover.webp190 %>"
 			 alt="cover">
 	<% } %>
 </a>

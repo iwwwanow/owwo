@@ -10,7 +10,6 @@ export default class Render {
 
     c.headers["Content-Type"] = "text/html";
     return new Response(html, { headers: c.headers });
-    // return new Response("text", { headers: c.headers });
   }
 
   static async profile(c) {
@@ -72,7 +71,6 @@ export default class Render {
 
     // console.log("element-props:", c.props);
     const html = eta.render("Element", c.props);
-
     c.headers["Content-Type"] = "text/html";
     return new Response(html, { headers: c.headers });
   }
@@ -94,5 +92,16 @@ export default class Render {
     return new Response(html, { headers: c.headers });
   }
 
-  static error({ code, error }) {}
+  static async error(c, e) {
+    c.props.e = e;
+    const html = eta.render("Error", c.props);
+    c.headers["Content-Type"] = "text/html";
+    return new Response(html, { headers: c.headers });
+  }
+
+  static async page404(c) {
+    const html = eta.render("404", c.props);
+    c.headers["Content-Type"] = "text/html";
+    return new Response(html, { headers: c.headers });
+  }
 }

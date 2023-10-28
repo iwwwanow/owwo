@@ -26,44 +26,48 @@ export default async function Router(req) {
     },
   };
 
-  const p = c.url.pathname;
-  console.log(p.split("/"));
+  const p = c.url.pathname.split("/");
+  p.shift();
+  const p1 = p.shift();
+  const p2 = p.shift();
 
   if (c.url.search && c.url.searchParams.get("method"))
     c.method = c.url.searchParams.get("method");
 
-  if (c.url.pathname.split("/").at(1) === "templates") return Static.send(c);
+  if (p1 === "templates") return Static.send(c);
 
-  if (c.url.pathname.split("/").at(1) === "public") {
+  if (p1 === "public") {
     if (c.method === "DELETE") return await Static.delete(c);
     else return Static.send(c);
   }
 
-  if (c.url.pathname === "/favicon.ico") return Static.send(c);
+  if (p1 === "favicon.ico") return Static.send(c);
 
   if (c.cookie) c.props.client.auth = await checkAuth(c);
 
-  if (c.url.pathname === "/about") return Render.about(c);
+  if (p1 === "404") return await Render.page404(c);
 
-  if (c.url.pathname === "/login") {
+  if (p1 === "about") return Render.about(c);
+
+  if (p1 === "login") {
     if (c.method === "POST") {
       c.body = req.body;
       return await Auth.authUser(c);
     } else return await Render.login(c);
   }
 
-  if (c.url.pathname === "/logout") return await Auth.logout(c);
+  if (p1 === "logout") return await Auth.logout(c);
 
-  if (c.url.pathname === "/signup") {
+  if (p1 === "signup") {
     if (c.method === "POST") {
       c.body = req.body;
       return await User.create(c);
     } else return await Render.signup(c);
   }
 
-  if (c.url.pathname === "/") return Render.index(c);
+  if (!p1) return Render.index(c);
 
-  if (c.url.pathname.split("/").at(1) === "page") {
+  if (p1 === "page") {
     if (c.method === "PUT") {
       return Page.update(req);
     } else if (c.method === "POST") {
@@ -73,7 +77,7 @@ export default async function Router(req) {
     } else return Render.page(c);
   }
 
-  if (c.url.pathname.split("/").at(1) === "element") {
+  if (p1 === "element") {
     if (c.method === "PUT") {
       return Element.update(req);
     } else if (c.method === "DELETE") {
@@ -81,15 +85,19 @@ export default async function Router(req) {
     } else return Render.element(c);
   }
 
-  if (c.url.pathname) {
-    if (c.method === "PUT") {
-      return await Profile.update(req);
-    } else if (c.method === "POST") {
-      return Page.create(c);
-    } else if (c.method === "DELETE") {
-      return User.delete(c);
-    } else return await Render.profile(c);
+  if (p1 && !p2) {
+    try {
+      if (c.method === "PUT") {
+        return await Profile.update(req);
+      } else if (c.method === "POST") {
+        return Page.create(c);
+      } else if (c.method === "DELETE") {
+        return User.delete(c);
+      } else return await Render.profile(c);
+    } catch (e) {
+      return await Render.error(c, e);
+    }
   }
 
-  return new Response("404!");
+  return Response.redirect("/404");
 }

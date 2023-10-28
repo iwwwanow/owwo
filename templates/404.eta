@@ -1,0 +1,7 @@
+<% layout("LO") %>
+
+<div class="grid">
+	<div>
+		<h1 style="font-family: 'Cormorant', serif; color: var(--red);">404</h1>
+	</div>
+</div>
