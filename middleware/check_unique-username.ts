@@ -1,4 +1,4 @@
-import SQL from "../controllers/sql.ts";
+import sql from "./sql";
 
 export default function (username: string) {
   const db_username = SQL("users").select("username").where({ username }).get();

@@ -2,7 +2,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import check_uniqueUsername from "../middleware/check_unique-username.ts";
 import Password from "../middleware/password.ts";
-import sql from "./sql.ts";
+import sql from "../middleware/sql.ts";
+import dbDate from "../middleware/date.js";
+
+import * as jose from "jose";
 
 export default class AuthController {
   static async createUser(c) {
@@ -11,14 +14,20 @@ export default class AuthController {
 
     Password.confirm(password, confirm);
 
+    const user_id = uuidv4();
+
     try {
       sql("users")
         .insert({
-          user_id: uuidv4(),
+          user_id,
           username,
           password: await Bun.password.hash(password),
+          date_creation: Date.now(),
+          date_lastModify: Date.now(),
         })
         .run();
+
+      dbDate.update({ user_id });
     } catch (e) {
       check_uniqueUsername(username);
       throw new Error("failed to add the user");
@@ -28,9 +37,17 @@ export default class AuthController {
     return;
   }
 
-  static async authUser(c) {
-    const { body, jwt, setCookie, set } = c;
-    const { username, password } = body;
+  static async authUser(req) {
+    const body = req.body;
+    const text = await Bun.readableStreamToText(body);
+    const arr = text.split("&");
+    const obj = {};
+    arr.forEach((item) => {
+      item = item.split("=");
+      obj[item[0]] = item[1];
+    });
+
+    const { username, password } = obj;
 
     let user;
     try {
@@ -44,14 +61,15 @@ export default class AuthController {
 
     await Password.verify(password, user.password);
 
-    setCookie("auth", await jwt.sign({ user_id: user.user_id, username }));
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
-    set.redirect = "/";
-    return;
-  }
+    const jwt = await new jose.SignJWT({ user_id: user.user_id, username })
+      .setProtectedHeader({ alg: "HS256" })
+      .setExpirationTime("1h")
+      .sign(secret);
 
-  static async logout({ removeCookie, set }) {
-    removeCookie("auth");
-    set.redirect = "/";
+    return Response.redirect("/", {
+      headers: { "Set-Cookie": `auth=${jwt}` },
+    });
   }
 }

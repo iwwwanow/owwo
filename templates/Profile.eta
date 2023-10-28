@@ -1,0 +1,38 @@
+<% layout("LO" ) %>
+
+<div class="grid profile">
+
+	<%~ include("avatar/avatar", {
+	url: data.username,
+	src: data.src.avatar && data.src.avatar.webp190
+	}) %>
+
+	<div class="profile_username">
+		<h2><%= data.username %></h2>
+		<%~ include("date/date", {data}) %>
+	</div>
+
+	<% if (data.html) { %>
+	<div class="profile_desc grid_break-start">
+		<%~data.html%>
+	</div>
+	<% } %>
+
+</div>
+
+<div class="profile_pages <%= data.markup %>">
+
+	<% if (data.pages && !!data.pages.length) { %>
+	<% data.pages.forEach(function (page) { %>
+	<%~ include("card/cardPage", {page}) %>
+	<% }) %>
+	<% } else { %>
+	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
+	<% } %>
+	<% if (it.client && client.type === 'owner') { %>
+	<form action="">
+		<%~ include("button/button_plus", {formaction: data.username})%>
+	</form>
+	<% } %>
+
+</div>

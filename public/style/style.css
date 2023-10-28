@@ -1,5 +1,10 @@
+:root {
+  --gap-v: 8px;
+  --gap-h: 4px;
+}
+
 hr {
   grid-column: 1/ -1;
-  border-top: 2px solid var(--grey-light);
-  margin: 8px 0;
+  border-top: 1px solid var(--grey-light);
+  margin: 4px 0;
 }

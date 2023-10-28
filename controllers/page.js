@@ -1,61 +1,84 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { eta } from "../config/eta";
+import sql from "../middleware/sql.ts";
 import File from "../middleware/file.ts";
-import sql from "./sql.ts";
+import dbDate from "../middleware/date.js";
+import checkOwner from "../middleware/check_owner.js";
 
 export default class PageController {
-  static async index(c) {
-    const { params } = c;
-
-    c.page = sql("pages")
-      .select(["page_id", "title", "desc"])
-      .where({ page_id: params.page_id })
-      .get();
-
-    c.page.cover_src = await File.src("pages", params.page_id);
-
-    return eta.render("page", c);
-  }
-
   static async create(c) {
+    checkOwner.check(c);
     const { cookie, set } = c;
+    const page_id = uuidv4();
 
-    sql("pages").insert({ page_id: uuidv4(), title: "title" }).run();
-    const last_pageId = sql("pages").select_last("page_id").get();
-
-    sql("authors")
-      .update({ user_id: cookie.user_id })
-      .where({ page_id: last_pageId })
+    sql("pages")
+      .insert({
+        page_id,
+        date_creation: Date.now(),
+        date_lastModify: Date.now(),
+      })
       .run();
 
-    set.redirect = `/${cookie.username}`;
+    sql("authors")
+      .update({ user_id: cookie.auth.user_id, type: "owner" })
+      .where({ page_id })
+      .run();
+
+    dbDate.update({ page_id });
+
+    set.redirect = `/page/${page_id}`;
     return;
   }
 
   static async update(c) {
-    const { set, params, body } = c;
-    const { title, desc, media } = body;
+    checkOwner.check(c);
 
-    // TODO можно внести правки, если пользователь незалогинен. исправь это. незалогиненый пользователь имеет доступ только к контроллеру INDEX
-    await File.write(media, params.page_id);
+    const { set, params, body, request } = c;
+    const { title, desc, cover, script, style, markup } = body;
+
+    if (!!cover.size) await File.removeImage("pages", params.page_id, "cover");
+
+    await File.write("pages", cover, "cover", params.page_id);
+    await File.write("pages", script, "script", params.page_id);
+    await File.write("pages", style, "style", params.page_id);
 
     sql("pages")
-      .update({ title, desc })
+      .update({ title, desc, markup, date_lastModify: Date.now() })
       .where({ page_id: params.page_id })
       .run();
 
-    set.redirect = `/page/${params.page_id}`;
+    dbDate.update({ page_id: params.page_id });
+
+    const referer = c.request.headers.get("referer");
+    set.redirect = referer;
     return;
   }
 
   static async delete(c) {
+    checkOwner.check(c);
     const { set, params, cookie } = c;
 
-    await File.remove(params.page_id);
+    const connections = sql("connections")
+      .select("element_id")
+      .where({ page_id: params.page_id })
+      .all();
+    if (connections.length) {
+      connections.forEach(async (element_id) => {
+        sql("elements").delete().where({ element_id }).run();
+        await File.removeDir("elements", element_id);
+      });
+    }
 
+    await File.removeDir("pages", params.page_id);
     sql("pages").delete().where({ page_id: params.page_id }).run();
 
-    set.redirect = `/${cookie.username}`;
+    set.redirect = `/${cookie.auth.username}`;
+  }
+
+  static async removeFile(c) {
+    checkOwner.check(c);
+    const { set, params } = c;
+    await File.removeFile("pages", params.page_id, params.file);
+    set.redirect = `/page/${params.page_id}`;
   }
 }

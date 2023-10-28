@@ -1,0 +1,52 @@
+<form
+			id="form-meta-element"
+			class="grid form-meta form-meta-element"
+			method="POST"
+			action="/element/<%= data.element_id %>"
+			enctype="multipart/form-data">
+
+	<fieldset class="card form-meta__fieldset">
+		<%~ include('../input/inputFile', {
+		form: 'element_meta-form',
+		name: 'cover',
+		src_image: data.src.cover,
+		accept: 'image/*',
+		}) %>
+	</fieldset>
+
+	<fieldset class="card form-meta__fieldset">
+		<h5 style="height: 100%;">
+			<%~ include('../textarea/textarea', {
+			form: 'element_meta-form',
+			name: 'text',
+			text: data.text,
+			placeholder: 'element-text',
+			}) %>
+		</h5>
+	</fieldset>
+
+	<div class="card">
+		<%~ include('../fieldset/fieldsetInputFile', { 
+			src: 'src',
+			className: 'form-meta__fieldset'
+		}) %>
+		<hr>
+		<%~ include('../fieldset/fieldsetInputFile', { 
+			src: 'src',
+			className: 'form-meta__fieldset'
+		}) %>
+	</div>
+
+	<div class="card">
+		<%~ include('../button/button', { 
+			text: 'сохранить изменения',
+			className: "form-meta__submit-button" 
+		}) %>
+
+		<%~ include('../button/button_delete', { text: 'удалить элемент' }) %>
+
+	</div>
+
+	<hr>
+
+</form>

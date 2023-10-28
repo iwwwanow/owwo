@@ -1,0 +1,15 @@
+<div class="date-container">
+	<h6 style="color: var(--grey-medium);"><%= data.date_creation %></h6>
+	<h6 style="color: var(--grey-light);"><%= data.date_lastModify %></h6>
+</div>
+
+<style>
+	.date-container {
+		height: min-content;
+	}
+
+	.date-container * {
+		height: min-content;
+	}
+
+</style>

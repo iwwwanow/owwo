@@ -1,0 +1,12 @@
+.avatar {
+  display: block;
+  height: fit-content;
+  text-decoration: none !important;
+  grid-column: auto;
+}
+
+@media screen and (max-width: 444px) {
+  .avatar {
+    grid-column: 1/-1;
+  }
+}
