@@ -13,7 +13,7 @@
 		<% if (data.desc) { %>
 		<div class="
 			 grid_break-start">
-		<h5><%= data.html %></h5>
+		<h5><%~ data.html %></h5>
 	</div>
 	<% } %>
 </div>

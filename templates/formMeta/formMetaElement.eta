@@ -9,7 +9,7 @@
 		<%~ include('../input/inputFile', {
 		form: 'form-meta-element',
 		name: 'cover',
-		src_image: data.src.cover,
+		src: data.src.cover.original,
 		accept: 'image/*',
 		}) %>
 	</fieldset>

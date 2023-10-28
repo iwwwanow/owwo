@@ -5,7 +5,7 @@ export default class Render {
   static async index(c) {
     c.props.data = await Data.index();
 
-    console.log("index-props:", c.props);
+    // console.log("index-props:", c.props);
     const html = eta.render("Index", c.props);
 
     c.headers["Content-Type"] = "text/html";
@@ -26,9 +26,8 @@ export default class Render {
         c.props.client.mode = c.url.searchParams.get("mode");
     }
 
-    console.log("profile-props:", c.props);
+    // console.log("profile-props:", c.props);
     const html = eta.render("Profile", c.props);
-    console.log(c.headers);
     c.headers["Content-Type"] = "text/html";
 
     return new Response(html, { headers: c.headers });
@@ -71,7 +70,7 @@ export default class Render {
         c.props.client.mode = c.url.searchParams.get("mode");
     }
 
-    console.log("element-props:", c.props);
+    // console.log("element-props:", c.props);
     const html = eta.render("Element", c.props);
 
     c.headers["Content-Type"] = "text/html";

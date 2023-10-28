@@ -1,6 +1,5 @@
 <% layout("LO") %>
 
-<% console.log(it) %>
 <div class="element list">
 	<%~ include("card/cardElement", { element: it.data, size: '80vh' }) %>
 </div>

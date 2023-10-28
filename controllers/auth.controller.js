@@ -40,6 +40,7 @@ export default class Auth {
 
   static async authUser(c) {
     const body = c.body;
+    console.log(c.body);
     const text = await Bun.readableStreamToText(body);
     const arr = text.split("&");
     const obj = {};

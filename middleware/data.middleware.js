@@ -59,7 +59,7 @@ export default class Data {
   }
 
   static async profile(username) {
-    const render = sql("users")
+    const data = sql("users")
       .select([
         "user_id",
         "username",
@@ -71,10 +71,10 @@ export default class Data {
       .where({ username })
       .get();
 
-    const dir = `./public/data_uploads/users/${render.user_id}`;
-    render.src = File.sources(dir);
+    const dir = `./public/data_uploads/users/${data.user_id}`;
+    data.src = File.sources(dir);
 
-    render.html = DOMPurify.sanitize(marked.parse(render.text));
+    data.html = DOMPurify.sanitize(marked.parse(data.text));
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
@@ -82,16 +82,16 @@ export default class Data {
 
     const pages = pages_query
       .order("date_lastModify")
-      .all({ $user_id: render.user_id });
+      .all({ $user_id: data.user_id });
 
     pages.forEach((page) => {
       page.src = {};
-      const dir = `./public/data_uploads/pages/${page.page_id}`;
+      const dir = `./public/data_uploads/pages/${data.page_id}`;
       page.src = File.sources(dir);
     });
 
-    render.pages = pages;
-    return render;
+    data.pages = pages;
+    return data;
   }
 
   static async page(page_id) {
@@ -106,6 +106,8 @@ export default class Data {
       ])
       .where({ page_id })
       .get();
+
+    data.html = DOMPurify.sanitize(marked.parse(data.desc));
 
     const dir = `./public/data_uploads/pages/${page_id}`;
     data.src = File.sources(dir);
@@ -169,7 +171,8 @@ export default class Data {
 
     data.author.type = "owner";
 
-    data.src = File.get_src("elements", element_id);
+    const dir = `./public/data_uploads/elements/${data.element_id}`;
+    data.src = File.sources(dir);
     return data;
   }
 }

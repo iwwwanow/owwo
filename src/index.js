@@ -52,8 +52,10 @@ const server = Bun.serve({
     if (c.url.pathname === "/about") return Render.about(c);
 
     if (c.url.pathname === "/login") {
-      if (c.method === "POST") return await Auth.authUser(c);
-      else return await Render.login(c);
+      if (c.method === "POST") {
+        c.body = req.body;
+        return await Auth.authUser(c);
+      } else return await Render.login(c);
     }
 
     if (c.url.pathname === "/logout") return await Auth.logout(c);
@@ -71,12 +73,16 @@ const server = Bun.serve({
     }
 
     if (c.url.pathname.split("/").at(1) === "element") {
-      return Render.element(c);
+      if (c.method === "PUT") {
+        return Element.update(req);
+      } else return Render.element(c);
     }
 
     if (c.url.pathname) {
       if (c.method === "PUT") {
         return await Profile.update(req);
+      } else if (c.method === "POST") {
+        return Page.create(c);
       } else return await Render.profile(c);
     }
 
