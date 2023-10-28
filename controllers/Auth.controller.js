@@ -7,7 +7,7 @@ import dbDate from "../middleware/date.js";
 
 import * as jose from "jose";
 
-export default class AuthController {
+export default class Auth {
   static async createUser(c) {
     const { body, set } = c;
     const { username, password, confirm } = body;

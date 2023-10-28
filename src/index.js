@@ -6,7 +6,8 @@ await SQL().init();
 
 import Data from "../middleware/data.middleware.js";
 import { eta } from "../config/eta.ts";
-import AuthController from "../controllers/auth.js";
+import Auth from "../controllers/auth.controller.js";
+import Profile from "../controllers/Profile.controller.js";
 
 const server = Bun.serve({
   port: 8080,
@@ -114,7 +115,7 @@ const server = Bun.serve({
           props.client.mode = url.searchParams.get("mode");
       }
 
-      console.log("page-props:", props);
+      // console.log("page-props:", props);
       const html = eta.render("Page", props);
 
       headers["Content-Type"] = "text/html";
@@ -135,7 +136,7 @@ const server = Bun.serve({
           props.client.mode = url.searchParams.get("mode");
       }
 
-      console.log("element-props:", props);
+      // console.log("element-props:", props);
       const html = eta.render("Element", props);
 
       headers["Content-Type"] = "text/html";
@@ -145,8 +146,9 @@ const server = Bun.serve({
     if (url.pathname) {
       const username = url.pathname.split("/").at(1);
 
-      console.log(url);
-      console.log(url.searchParams);
+      if (req.method === "POST") {
+        return await Profile.update(req);
+      }
 
       props.data = await Data.profile(username);
 
@@ -159,8 +161,7 @@ const server = Bun.serve({
           props.client.mode = url.searchParams.get("mode");
       }
 
-      console.log("profile-props:", props);
-
+      // console.log("profile-props:", props);
       const html = eta.render("Profile", props);
       headers["Content-Type"] = "text/html";
 

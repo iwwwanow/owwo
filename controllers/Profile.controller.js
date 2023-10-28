@@ -1,43 +1,50 @@
-import File from "../middleware/file.ts";
+import File from "../middleware/file.middleware.js";
 import sql from "../middleware/sql.ts";
 import dbDate from "../middleware/date.js";
 import checkOwner from "../middleware/check_owner.js";
 
-export default class UserController {
-  static async update(c) {
-    const {
-      set,
-      params: { username },
-      body,
-    } = c;
-    checkOwner.check(c);
+export default class Profile {
+  static async update(req) {
+    const url = new URL(req.url);
 
-    const { avatar, text, script, style, markup } = body;
+    const body = req.body;
+    console.log(url);
 
-    const user_id = sql("users").select("user_id").where({ username }).get();
+    return Response.redirect("/");
 
-    if (!!avatar.size) {
-      await File.removeImage("users", user_id, "avatar");
-      await File.write_image("users", avatar, "avatar", user_id);
-    }
+    // const {
+    //   set,
+    //   params: { username },
+    //   body,
+    // } = c;
+    // checkOwner.check(c);
 
-    await File.write("users", script, "script", user_id);
-    await File.write("users", style, "style", user_id);
+    // const { avatar, text, script, style, markup } = body;
 
-    try {
-      sql("users")
-        .update({ text, markup, date_lastModify: Date.now() })
-        .where({ user_id })
-        .run();
-    } catch (e) {
-      throw new Error("запись не удалась(");
-    }
+    // const user_id = sql("users").select("user_id").where({ username }).get();
 
-    dbDate.update(user_id);
+    // if (!!avatar.size) {
+    //   await File.removeImage("users", user_id, "avatar");
+    //   await File.write_image("users", avatar, "avatar", user_id);
+    // }
 
-    const referer = c.request.headers.get("referer");
-    set.redirect = referer;
-    return;
+    // await File.write("users", script, "script", user_id);
+    // await File.write("users", style, "style", user_id);
+
+    // try {
+    //   sql("users")
+    //     .update({ text, markup, date_lastModify: Date.now() })
+    //     .where({ user_id })
+    //     .run();
+    // } catch (e) {
+    //   throw new Error("запись не удалась(");
+    // }
+    //
+    // dbDate.update(user_id);
+    //
+    // const referer = c.request.headers.get("referer");
+    // set.redirect = referer;
+    // return;
   }
 
   static async delete(c) {
