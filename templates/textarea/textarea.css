@@ -25,5 +25,6 @@
 .textarea:focus {
   color: var(--black);
   background-color: var(--white);
-  border-color: var(--black);
+  outline: 1px solid var(--black);
+  /* border-color: var(--black); */
 }

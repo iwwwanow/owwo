@@ -35,8 +35,8 @@
 	<link rel="stylesheet" href="/templates/input/input.css" />
 	<link rel="stylesheet" href="/templates/textarea/textarea.css" />
 
-	<% if (it.render && render.src && render.src.style) { %>
-	<link rel="stylesheet" href="<%=render.src.style%>" />
+	<% if (it.data && data.src && data.src.style) { %>
+	<link rel="stylesheet" href="<%= data.src.style %>" />
 	<% } %>
 </head>
 
@@ -47,8 +47,8 @@
 		<%~ include("footer/footer", it )%>
 	</div>
 
-	<% if (it.render && render.src && render.src.script) { %>
-	<script src="<%=render.src.script%>"></script>
+	<% if (it.data && data.src && data.src.script) { %>
+	<script src="<%= data.src.script %>"></script>
 	<% } %>
 </body>
 

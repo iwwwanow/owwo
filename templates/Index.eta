@@ -16,10 +16,6 @@
 </div>
 
 <div class="grid">
-	<hr>
-</div>
-
-<div class="grid">
 	<% if (data.pages && !!data.pages.length) { %>
 	<% data.pages.forEach(function (page) { %>
 	<%~ include("card/cardPage", { page }) %>
@@ -27,10 +23,6 @@
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
 	<% } %>
-</div>
-
-<div class="grid">
-	<hr>
 </div>
 
 <div class="grid">

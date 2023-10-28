@@ -1,17 +1,17 @@
 <form
-			id="form-meta"
+			id="form-meta-profile"
 			class="grid form-meta form-meta-profile"
 			method="POST"
-			action="/<%= data.username %>"
+			action="/<%= data.username %>?method=PUT"
 			enctype="multipart/form-data">
 
 	<fieldset class="form-meta__fieldset_square">
 
 		<%~ include('../input/inputFile', {
-		form: 'user_meta-form',
+		form: 'form-meta-profile',
 		name: 'avatar',
 		accept: 'image/*',
-		src_image: data.src.avatar && data.src.avatar.original,
+		src: data.src.avatar && data.src.avatar.original,
 		}) %>
 
 	</fieldset>
@@ -20,7 +20,7 @@
 
 		<h4 style="height: 100%;">
 			<%~ include('../textarea/textarea', {
-			form: 'user_meta-form',
+			form: 'form-meta-profile',
 			name: 'text',
 			text: data.text,
 			placeholder: 'profile-text',
@@ -33,12 +33,18 @@
 	<% const user_dir = `/public/data_uploads/users/${data.user_id}/` %>
 
 	<%~ include('../fieldset/fieldsetInputFile', { 
-		src: 'src', 
+		form: 'form-meta-profile',
+		name: 'style',
+		accept: '.css',
+		src: data.src.style, 
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
 	<%~ include('../fieldset/fieldsetInputFile', { 
-		src: 'src',
+		form: 'form-meta-profile',
+		name: 'script',
+		accept: '.js',
+		src: data.src.script,
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
@@ -53,7 +59,7 @@
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить профиль' }) %>
+		<%~ include('../button/button_delete', { text: 'удалить профиль', url: `/${data.username}` }) %>
 	</fieldset>
 
 	<hr>

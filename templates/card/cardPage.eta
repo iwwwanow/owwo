@@ -7,7 +7,7 @@
 	<% if (page.title || page.desc || page.text) { %>
 	<div class="card-page__text-wrapper grid_break-end">
 		<div class="card-page__text-container border-inner">
-			<% if (title) { %>
+			<% if (page.title) { %>
 			<h4 class="card-page__title"><%= page.title %></h4>
 			<% } %>
 
@@ -22,10 +22,11 @@
 	</div>
 	<% } %>
 
+	<%console.log(page.src)%>
 	<% if (page.src && page.src.cover) { %>
 	<img
 			 class="card-page__image grid_break-start"
-			 src="<%= page.src.cover.original %>"
+			 src="<%= page.src.cover.webp190 %>"
 			 alt="cover">
 	<% } %>
 </a>

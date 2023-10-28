@@ -1,7 +1,7 @@
 <% layout("LO") %>
 
 <div class="element list">
-	<%~ include("card/cardElement", { data, size: '80vh' }) %>
+	<%~ include("card/cardElement", { element: it.data, size: '80vh' }) %>
 </div>
 
 <div class="element-info grid">
