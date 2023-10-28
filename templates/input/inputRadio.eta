@@ -1,0 +1,18 @@
+<% const checked = it.value === it.check ? 'checked' : '' %>
+
+<input
+			 class="input-radio"
+			 type="radio"
+			 id="<%= value %>"
+			 name="<%= name %>"
+			 value="<%= value %>"
+			 <%=checked%> />
+
+<label
+			 class="input-radio_label border-outter"
+			 for="<%= value %>">
+	<h6>
+		<div class="circle"></div>
+		<%= value %>
+	</h6>
+</label>

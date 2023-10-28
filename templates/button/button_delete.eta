@@ -1,0 +1,3 @@
+<button class="button button_delete border-outter">
+	<h6><%=  it.text || 'удалить' %></h6>
+</button>

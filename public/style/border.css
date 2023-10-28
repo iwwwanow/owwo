@@ -1,26 +1,26 @@
-.border__outter,
-.border__input {
+.border-outter,
+.border-input {
   outline: 0;
   border-width: 1px;
   border-style: solid;
   border-color: var(--grey-light);
 }
 
-.border__input {
+.border-input {
   overflow: hidden;
 }
 
-.border__outter:hover,
-.border__input:hover {
+.border-outter:hover,
+.border-input:hover {
   border-style: solid;
   border-color: var(--grey-dark);
 }
 
-.border__input {
+.border-input {
   border-style: dashed;
 }
 
-.border__inner {
+.border-inner {
   outline: 0;
   border-width: 1px;
   border-style: solid;
@@ -29,14 +29,14 @@
 
 /* MOBILE */
 @media screen and (max-width: 444px) {
-  .border__outter,
-  .border__input,
-  .border__outter:hover,
-  .border__input:hover {
+  .border-outter,
+  .border-input,
+  .border-outter:hover,
+  .border-input:hover {
     border-radius: 4px;
   }
 
-  .border__inner {
+  .border-inner {
     border-radius: 2px;
   }
 }
