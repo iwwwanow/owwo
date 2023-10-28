@@ -18,6 +18,9 @@
 .button_delete {
   --color: var(--red);
 }
+.button_download a {
+  color: inherit;
+}
 .button > h6 {
   color: var(--color);
   overflow-wrap: break-word;

@@ -2,15 +2,10 @@ import * as fs from "node:fs";
 import sharp from "sharp";
 
 export default class File {
-  static async write() {}
-
-  static async write_image() {}
-
   static sources(dir) {
     let result = {};
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
-        console.log(file);
         const filePath = dir.substring(1) + "/" + file;
         const name_full = file.split(".").at(0);
         const variant = name_full?.split("@").at(1) || "original";
@@ -26,6 +21,27 @@ export default class File {
     }
     return result;
   }
+
+  static async write(file, dir, filename) {
+    console.log("write");
+    const path = dir + filename;
+    await Bun.write(path, file);
+  }
+
+  static async remove(dir, filename) {
+    if (!filename) {
+      fs.rmSync("." + dir, { recursive: true, force: true });
+    } else {
+      fs.readdirSync(dir).forEach((file) => {
+        if (file.split(".").at(0).split("@").at(0) === filename) {
+          const path = dir + file;
+          fs.rmSync(path, { recursive: true, force: true });
+        }
+      });
+    }
+  }
+
+  static async write_image() {}
 
   static get_src() {
     return {};

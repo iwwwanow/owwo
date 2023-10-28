@@ -36,16 +36,15 @@
 		name: 'style',
 		form: 'form-meta-profile',
 		accept: '.css',
-		src: 'src', 
+		src: data.src.style, 
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<%console.log(data.src)%>
 	<%~ include('../fieldset/fieldsetInputFile', { 
 		name: 'script',
 		form: 'form-meta-profile',
 		accept: '.js',
-		src: 'src',
+		src: data.src.script,
 		className: 'form-meta__fieldset_square' 
 	}) %>
 

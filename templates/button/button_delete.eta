@@ -1,3 +1,6 @@
-<button class="button button_delete border-outter">
+<button
+				formmethod="POST"
+				formaction="<%= it.url %>?method=DELETE"
+				class="button button_delete border-outter">
 	<h6><%=  it.text || 'удалить' %></h6>
 </button>

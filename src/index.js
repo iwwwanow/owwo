@@ -8,11 +8,16 @@ import Data from "../middleware/data.middleware.js";
 import { eta } from "../config/eta.ts";
 import Auth from "../controllers/auth.controller.js";
 import Profile from "../controllers/Profile.controller.js";
+import File from "../middleware/file.middleware.js";
 
 const server = Bun.serve({
   port: 8080,
   async fetch(req) {
     const url = new URL(req.url);
+
+    let method;
+    if (url.search && url.searchParams.get("method"))
+      method = url.searchParams.get("method");
 
     const headers = {
       // "Cache-Control": "public, max-age=31536000",
@@ -26,10 +31,17 @@ const server = Bun.serve({
     }
 
     if (url.pathname.split("/").at(1) === "public") {
-      const path = "." + url.pathname;
-      const file = Bun.file(path);
-      headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
-      return new Response(file, { headers });
+      if (method === "DELETE") {
+        const referer = req.headers.get("referer");
+        console.log(url.pathname);
+        await File.remove(url.pathname);
+        return Response.redirect(referer, { headers });
+      } else {
+        const path = "." + url.pathname;
+        const file = Bun.file(path);
+        headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
+        return new Response(file, { headers });
+      }
     }
 
     if (url.pathname === "/favicon.ico") {

@@ -27,48 +27,35 @@ export default class Profile {
       fs.mkdirSync(dir, { recursive: true });
     }
 
-    const write = async (filename, file) => {
-      const path = dir + filename;
-      await Bun.write(path, file);
-    };
-
-    const remove = async (filename) => {
-      fs.readdirSync(dir).forEach((file) => {
-        if (file.split(".").at(0).split("@").at(0) === filename) {
-          const path = dir + file;
-          fs.rmSync(path, { recursive: true, force: true });
-        }
-      });
-    };
-
     if (avatar.size) {
       const extention = avatar.type.split("/").at(1);
       const buf = await avatar.arrayBuffer();
 
-      await remove("avatar");
-      await write(`avatar.${extention}`, avatar);
+      await File.remove(dir, "avatar");
+      await File.write(avatar, dir, `avatar.${extention}`);
 
       const webp64 = await sharp(buf, { animated: true })
         .webp()
         .resize(64, 64, { fit: "cover" })
         .toBuffer();
-      await write("avatar@webp64.webp", webp64);
+      await File.write(webp64, dir, "avatar@webp64.webp");
 
       const webp190 = await sharp(buf, { animated: true })
         .webp()
         .resize(190, 190, { fit: "cover" })
         .toBuffer();
-      await write("avatar@webp190.webp", webp190);
+      await File.write(webp190, dir, "avatar@webp190.webp");
     }
 
     if (style.size) {
-      await remove("style");
-      await write("style.css", style);
+      console.log("write");
+      await File.remove(dir, "style");
+      await File.write(style, dir, "style.css");
     }
 
     if (script.size) {
-      await remove("script");
-      await write("script.js", script);
+      await File.remove(dir, "script");
+      await File.write(script, dir, "script.js");
     }
 
     return Response.redirect(referer);

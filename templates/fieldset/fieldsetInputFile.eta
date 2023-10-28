@@ -2,8 +2,8 @@
 	<%~ include('../input/inputFile', {form, name, accept}) %>
 	<% if (src) { %>
 	<div class="fieldset-input-file_buttons">
-		<%~include('../button/button_download', {})%>
-		<%~include('../button/button_delete', {})%>
+		<%~include('../button/button_download', {url: src})%>
+		<%~include('../button/button_delete', {url: src})%>
 	</div>
 	<% } %>
 </fieldset>
