@@ -1,0 +1,7 @@
+<a href="/">
+	<img
+		class="logo"
+		src="/public/assets/logo.svg"
+		alt="logo"
+	>
+</a>

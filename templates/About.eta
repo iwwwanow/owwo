@@ -1,0 +1,18 @@
+<% layout("LO") %>
+
+<div class="grid">
+	<div>
+		<h2 class="about-text">Открытая multimedia библиотека.</h2>
+		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
+	</div>
+
+	<div class="autograph-container">
+		<h5>Иванов Кирилл</h5>
+		<h5>Москва</h5>
+		<h5>2024</h5>
+		<h5>*</h5>
+		<a class="about__me" href="/effectivnayarabota1">
+			<h6 style="color: var(--red);">⚆ᗝ⚆_₽</h6>
+		</a>
+	</div>
+</div>

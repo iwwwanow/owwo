@@ -1,0 +1,6 @@
+<button
+				class="button button_download border-outter"
+				formmethod="GET"
+				formaction="<%= it.url || 'download-url' %>">
+	<h6><%= it.text || 'скачать'%></h6>
+</button>

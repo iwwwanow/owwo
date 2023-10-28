@@ -1,0 +1,21 @@
+<% layout("LO") %>
+
+<div class="element list">
+	<%~ include("card/cardElement", { data, size: '80vh' }) %>
+</div>
+
+<div class="element-info grid">
+	<div class="grid_break-end">
+		<%~ include("author/author", {data}) %>
+		<%~ include("date/date", {data}) %>
+	</div>
+
+	<div class="grid_break-start">
+		<h6>
+			Страница:
+			<a
+				 href="/page/<%= data.page %>"
+				 style="color: var(--black);"><%= data.page %></a>
+		</h6>
+	</div>
+</div>

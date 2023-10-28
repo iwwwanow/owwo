@@ -1,0 +1,32 @@
+<% layout("LO")%>
+
+<div class="grid">
+	<form
+				method="POST"
+				action="/login"
+				class="login">
+
+		<%~ include("input/inputText", {
+		name: 'username',
+		placeholder: 'USERNAME',
+		class: 'login__input-username',
+		required: true
+		})%>
+
+		<%~ include("input/inputText", {
+		name: 'password',
+		type: 'password',
+		placeholder: 'PASSWORD',
+		class: 'login__input-password',
+		required: true
+		})%>
+
+		<%~ include("button/button", {
+		text: 'Войти'
+		})%>
+	</form>
+
+	<h6>
+		<a href="/signup">Регистрация</a>
+	</h6>
+</div>

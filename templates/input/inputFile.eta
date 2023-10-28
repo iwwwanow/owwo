@@ -1,0 +1,20 @@
+<% const name = it.name || 'input-file' %>
+<% const src = it.src || false %>
+<% const accept = it.accept || '' %>
+
+<label
+			 for="<%= name %>"
+			 class="input-file-label border-input">
+	<h6 class="input-file-label__text"><%= name %></h6>
+	<% if (src) { %>
+	<img class="input-file-lable__image" src="<%= src %>" alt="">
+	<%} %>
+</label>
+
+<input
+			 type="file"
+			 id="<%= name %>"
+			 class="input-file"
+			 form="<%= form %>"
+			 name="<%= name %>"
+			 accept="<%= accept %>" />

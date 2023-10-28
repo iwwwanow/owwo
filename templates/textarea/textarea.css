@@ -1,0 +1,29 @@
+.textarea {
+  width: 100%;
+  height: 100%;
+  display: block;
+  resize: none;
+
+  padding: 4px;
+
+  color: var(--grey-dark);
+  background-color: var(--grey-light);
+
+  font-style: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+}
+
+.textarea:-moz-placeholder {
+  color: var(--grey-medium);
+}
+
+.textarea::-webkit-input-placeholder {
+  color: var(--grey-medium);
+}
+
+.textarea:focus {
+  color: var(--black);
+  background-color: var(--white);
+  border-color: var(--black);
+}

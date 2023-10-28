@@ -1,0 +1,31 @@
+<% let type = 'text' %>
+<% if (element.src && element.src.cover) type = 'image' %>
+
+<div id="<%= element.element_id %>" class="card border-outter card-element <%= type %> ">
+
+	<% if (element.src && element.src.cover) { %>
+
+	<div class="card-element__img">
+		<a href="/element/<%= element.element_id %>">
+			<img src="<%= element.src.cover.original %>" alt="">
+		</a>
+	</div>
+
+	<% } else { %>
+
+	<a
+		 class="card-element__link"
+		 href="/element/<%= element.element_id %>">
+		<h2>#</h2>
+	</a>
+
+	<% } %>
+
+	<% if (element.html) { %>
+	<div class="card-element__html"><%~ element.html %></div>
+	<% } %>
+	<% if (element.text) { %>
+	<div class="card-element__text"><%~ element.text %></div>
+	<% } %>
+
+</div>
