@@ -7,7 +7,7 @@
 
 	<fieldset class="card form-meta__fieldset">
 		<%~ include('../input/inputFile', {
-		form: 'page_meta-form',
+		form: 'form-meta-page',
 		name: 'cover',
 		accept: 'image/*',
 		src_image: data.src.cover,

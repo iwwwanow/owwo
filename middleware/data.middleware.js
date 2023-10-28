@@ -64,7 +64,8 @@ export default class Data {
       .where({ username })
       .get();
 
-    render.src = File.get_src("users", render.user_id);
+    const dir = `./public/data_uploads/users/${render.user_id}`;
+    render.src = File.sources(dir);
 
     const pages_query = await sql().custom_all(
       "innerJoin_pages_authors_$userId"
@@ -76,7 +77,8 @@ export default class Data {
 
     pages.forEach((page) => {
       page.src = {};
-      page.src.cover = File.srcCover("pages", page.page_id);
+      const dir = `./public/data_uploads/pages/${page.page_id}`;
+      page.src = File.sources(dir);
     });
 
     render.pages = pages;

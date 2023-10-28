@@ -80,7 +80,7 @@ const server = Bun.serve({
 
     if (url.pathname === "/login") {
       if (req.method === "POST") {
-        return await AuthController.authUser(req);
+        return await Auth.authUser(req);
       }
       const html = eta.render("Login", props);
       headers["Content-Type"] = "text/html";
