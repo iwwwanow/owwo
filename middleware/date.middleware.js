@@ -1,8 +1,17 @@
 import sql from "../lib/sql";
 
-export default class dbDate {
+export default class DateMiddleware {
+  static format(seconds) {
+    return new Date(seconds).toLocaleString("ru-RU");
+  }
+
   static async update({ user_id, page_id, element_id }) {
-    if (page_id) {
+    if (user_id) {
+      sql("users")
+        .update({ date_lastModify: Date.now() })
+        .where({ user_id })
+        .run();
+    } else if (page_id) {
       const author_ids = sql("authors")
         .select("user_id")
         .where({ page_id })

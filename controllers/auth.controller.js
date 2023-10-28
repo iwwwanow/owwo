@@ -1,9 +1,7 @@
+import * as jose from "jose";
+
 import sql from "../lib/sql.ts";
 import Password from "../middleware/password.ts";
-
-import dbDate from "../middleware/date.js";
-
-import * as jose from "jose";
 
 export default class Auth {
   static async authUser(c) {

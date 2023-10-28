@@ -1,13 +1,13 @@
+import * as fs from "node:fs";
+
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 
 import sql from "../lib/sql.js";
 import File from "../middleware/file.middleware.js";
+import DateMiddleware from "../middleware/date.middleware.js";
 import Element from "./element.controller.js";
 import Body from "../middleware/body.middleware.js";
-import * as fs from "node:fs";
-
-import dbDate from "../middleware/date.js";
 
 export default class Page {
   static async create(c) {
@@ -25,8 +25,7 @@ export default class Page {
       .run();
 
     sql("authors").update({ user_id, type: "owner" }).where({ page_id }).run();
-
-    // dbDate.update({ page_id });
+    DateMiddleware.update({ page_id });
 
     return Response.redirect(`/page/${page_id}`);
   }
@@ -75,7 +74,7 @@ export default class Page {
         .where({ page_id })
         .run();
 
-      // dbDate.update({ page_id: params.page_id });
+      DateMiddleware.update({ page_id });
     } catch (e) {
       throw new Error("запись не удалась(");
     }

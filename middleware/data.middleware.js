@@ -2,18 +2,10 @@ import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
 import File from "./file.middleware";
+import DateMiddleware from "./date.middleware";
 import sql from "../lib/sql";
 
 export default class Data {
-  // date_local() {
-  //   const render = this.render;
-  //   const local = (date) => {
-  //     return new Date(date).toLocaleString("ru-RU");
-  //   };
-  //   this.render.date_creation = local(render.date_creation);
-  //   this.render.date_lastModify = local(render.date_lastModify);
-  // }
-
   static async index() {
     const users = sql("users")
       .select(["user_id", "username"])
@@ -54,8 +46,13 @@ export default class Data {
       .where({ username })
       .get();
 
+    if (!data) throw new Error("username not found");
+
     const dir = `./public/data_uploads/users/${data.user_id}`;
     data.src = File.sources(dir);
+
+    data.date_creation = DateMiddleware.format(data.date_creation);
+    data.date_lastModify = DateMiddleware.format(data.date_lastModify);
 
     if (data.text) data.html = DOMPurify.sanitize(marked.parse(data.text));
 
@@ -94,6 +91,9 @@ export default class Data {
 
     const dir = `./public/data_uploads/pages/${page_id}`;
     data.src = File.sources(dir);
+
+    data.date_creation = DateMiddleware.format(data.date_creation);
+    data.date_lastModify = DateMiddleware.format(data.date_lastModify);
 
     const authors = sql("authors")
       .select(["user_id", "type"])
@@ -140,6 +140,9 @@ export default class Data {
       ])
       .where({ element_id })
       .get();
+
+    data.date_creation = DateMiddleware.format(data.date_creation);
+    data.date_lastModify = DateMiddleware.format(data.date_lastModify);
 
     data.page = sql("connections")
       .select("page_id")

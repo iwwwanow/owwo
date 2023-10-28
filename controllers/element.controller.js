@@ -1,12 +1,12 @@
 import * as fs from "node:fs";
+
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 
 import sql from "../lib/sql.js";
-import File from "../middleware/file.middleware.js";
+import DateMiddleware from "../middleware/date.middleware.js";
 import Body from "../middleware/body.middleware.js";
-
-// import dbDate from "../middleware/date.js";
+import File from "../middleware/file.middleware.js";
 
 export default class Element {
   static create(c) {
@@ -23,8 +23,7 @@ export default class Element {
       .run();
 
     sql("connections").update({ page_id }).where({ element_id }).run();
-
-    // dbDate.update({ element_id });
+    DateMiddleware.update({ element_id });
 
     return Response.redirect(`/element/${element_id}`);
   }
@@ -71,11 +70,10 @@ export default class Element {
         .update({ text, date_lastModify: Date.now() })
         .where({ element_id })
         .run();
+      DateMiddleware.update({ element_id });
     } catch (e) {
-      throw new Error("запись не удалась(");
+      throw new Error("not writed");
     }
-
-    // dbDate.update({ element_id: params.element_id });
 
     return Response.redirect(referer);
   }
