@@ -34,7 +34,7 @@ export default class Auth {
 
     const jwt = await new jose.SignJWT({ user_id: user.user_id, username })
       .setProtectedHeader({ alg: "HS256" })
-      .setExpirationTime("1h")
+      .setExpirationTime("7d")
       .sign(secret);
 
     c.headers["Set-Cookie"] = `auth=${jwt}`;

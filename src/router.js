@@ -6,7 +6,7 @@ import Page from "../controllers/page.controller.js";
 import Element from "../controllers/element.controller.js";
 
 import Static from "../controllers/static.controller.js";
-import checkAuth from "../middleware/auth.middleware.js";
+import JWT from "../middleware/jwt.middleware.js";
 
 export default async function Router(req) {
   const c = {
@@ -44,7 +44,7 @@ export default async function Router(req) {
 
     if (p1 === "favicon.ico") return Static.send(c);
 
-    if (c.cookie) c.props.client.auth = await checkAuth(c);
+    if (c.cookie) c.props.client.auth = await JWT(c);
 
     if (p1 === "404") return await Render.page404(c);
 
