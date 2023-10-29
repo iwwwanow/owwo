@@ -50,7 +50,7 @@ export default class Data {
 
     if (!data) throw new Error("username not found");
 
-    const dir = `./public/data_uploads/users/${data.user_id}`;
+    const dir = `./public/data_uploads/users/${data.user_id}/`;
     data.src = File.sources(dir);
 
     data.date_creation = DateMiddleware.format(data.date_creation);
@@ -67,7 +67,7 @@ export default class Data {
       .all({ $user_id: data.user_id });
 
     pages.map((page) => {
-      const dir = `./public/data_uploads/pages/${page.page_id}`;
+      const dir = `./public/data_uploads/pages/${page.page_id}/`;
       page.src = File.sources(dir);
     });
 
@@ -90,7 +90,7 @@ export default class Data {
 
     if (data.desc) data.html = DOMPurify.sanitize(marked.parse(data.desc));
 
-    const dir = `./public/data_uploads/pages/${page_id}`;
+    const dir = `./public/data_uploads/pages/${page_id}/`;
     data.src = File.sources(dir);
 
     data.date_creation = DateMiddleware.format(data.date_creation);
@@ -119,7 +119,7 @@ export default class Data {
       .all({ $page_id: page_id });
 
     elements.map((element) => {
-      const dir = `./public/data_uploads/elements/${element.element_id}`;
+      const dir = `./public/data_uploads/elements/${element.element_id}/`;
       element.src = File.sources(dir);
       if (element.text) {
         if (element.text)
@@ -162,7 +162,7 @@ export default class Data {
 
     data.author.type = "owner";
 
-    const dir = `./public/data_uploads/elements/${data.element_id}`;
+    const dir = `./public/data_uploads/elements/${data.element_id}/`;
     data.src = File.sources(dir);
     return data;
   }

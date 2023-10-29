@@ -17,7 +17,7 @@
 
 	<% if (element.html && element.text) { %>
 	<div class="card-element__text-container">
-		<div class="card-element__html"><%~ element.html %></div>
+		<div class="html card-element__html"><%~ element.html %></div>
 		<div class="card-element__text"><%~ element.text %></div>
 	</div>
 	<% } %>
