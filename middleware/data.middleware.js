@@ -26,6 +26,8 @@ export default class Data {
     const elements = sql("elements").select(["*"]).random(16).all();
     elements.map((element) => {
       const dir = `./public/data_uploads/elements/${element.element_id}/`;
+      if (element.text)
+        element.html = DOMPurify.sanitize(marked.parse(element.text));
       element.src = File.sources(dir);
     });
 
@@ -117,9 +119,11 @@ export default class Data {
       .all({ $page_id: page_id });
 
     elements.map((element) => {
-      // element.src = File.get_src("elements", element.element_id);
+      const dir = `./public/data_uploads/elements/${element.element_id}`;
+      element.src = File.sources(dir);
       if (element.text) {
-        element.html = marked.parse(element.text);
+        if (element.text)
+          element.html = DOMPurify.sanitize(marked.parse(element.text));
       }
       return element;
     });
@@ -153,6 +157,8 @@ export default class Data {
       .select("username")
       .where({ user_id: data.author_id })
       .get();
+
+    if (data.text) data.html = DOMPurify.sanitize(marked.parse(data.text));
 
     data.author.type = "owner";
 

@@ -7,7 +7,7 @@
 		<h1><%= data.title %></h1>
 		<% } %>
 		<% if (data.src.cover) { %>
-		<img class=" page__cover" src="<%= data.src.cover.webp190 %>" alt="">
+		<img class=" page__cover" src="<%= data.src.cover.original %>" alt="">
 		<% } %>
 		<%~ include("author/author", {data}) %>
 		<%~ include("date/date", {data}) %>
@@ -25,7 +25,7 @@
 
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("card/cardElement", { element }) %>
+	<%~ include("card/cardElement", { element, mode: 'original' }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>

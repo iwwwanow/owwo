@@ -17,7 +17,6 @@
 
 <div class="grid">
 	<% if (data.pages && !!data.pages.length) { %>
-	<h2>Случайные странцы:</h2>
 	<% data.pages.forEach(function (page) { %>
 	<%~ include("card/cardPage", { page }) %>
 	<% }) %>
@@ -27,8 +26,11 @@
 </div>
 
 <div class="grid">
+	<hr>
+</div>
+
+<div class="grid">
 	<%if (data.elements && data.elements.length) { %>
-	<h2>Случайные элементы:</h2>
 	<% data.elements.forEach(function (element) { %>
 	<%~ include("card/cardElement", { element }) %>
 	<% }) %>
