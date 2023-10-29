@@ -64,9 +64,8 @@ export default class Data {
       .order("date_lastModify")
       .all({ $user_id: data.user_id });
 
-    pages.forEach((page) => {
-      page.src = {};
-      const dir = `./public/data_uploads/pages/${data.page_id}`;
+    pages.map((page) => {
+      const dir = `./public/data_uploads/pages/${page.page_id}`;
       page.src = File.sources(dir);
     });
 

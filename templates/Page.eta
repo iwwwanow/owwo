@@ -1,17 +1,20 @@
 <% layout( "LO" )%>
 
 <div class="grid page-info">
+
 	<div class="grid_break-end"">
 		<% if (data.title) { %>
 		<h1><%= data.title %></h1>
 		<% } %>
+		<% if (data.src.cover) { %>
+		<img class=" page__cover" src="<%= data.src.cover.webp190 %>" alt="">
+		<% } %>
 		<%~ include("author/author", {data}) %>
 		<%~ include("date/date", {data}) %>
-		</div
-	>
+	</div>
 
-		<% if (data.desc) { %>
-		<div class="
+	<% if (data.desc) { %>
+	<div class="
 			 grid_break-start">
 		<h5><%~ data.html %></h5>
 	</div>

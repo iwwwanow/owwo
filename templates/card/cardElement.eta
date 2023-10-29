@@ -1,24 +1,13 @@
 <% let type = 'text' %>
 <% if (element.src && element.src.cover) type = 'image' %>
 
-<div id="<%= element.element_id %>" class="card border-outter card-element <%= type %> ">
-
+<a
+	 class="card card-element border-outter"
+	 href="/element/<%= element.element_id %>">
 	<% if (element.src && element.src.cover) { %>
-
-	<div class="card-element__img">
-		<a href="/element/<%= element.element_id %>">
-			<img src="<%= element.src.cover.original %>" alt="">
-		</a>
-	</div>
-
+	<img class="card-element__img" src="<%= element.src.cover.webp190 %>" alt="">
 	<% } else { %>
-
-	<a
-		 class="card-element__link"
-		 href="/element/<%= element.element_id %>">
-		<h2>#</h2>
-	</a>
-
+	<h2>#</h2>
 	<% } %>
 
 	<% if (element.html) { %>
@@ -28,4 +17,4 @@
 	<div class="card-element__text"><%~ element.text %></div>
 	<% } %>
 
-</div>
+</a>

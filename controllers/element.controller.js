@@ -50,7 +50,8 @@ export default class Element {
 
       const webp190 = await sharp(buf, { animated: true })
         .webp()
-        .resize(190, 288, { fit: "cover", withoutEnlargement: true })
+        // .resize(190, 288, { fit: "cover", withoutEnlargement: true })
+        .resize(288, 288, { fit: "inside" })
         .toBuffer();
       await File.write(webp190, dir, "cover@webp190.webp");
     }

@@ -24,7 +24,7 @@
 
 	<% if (data.pages && !!data.pages.length) { %>
 	<% data.pages.forEach(function (page) { %>
-	<%~ include("card/cardPage", {page}) %>
+	<%~ include("card/cardPage", {page, mode: 'original'}) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
