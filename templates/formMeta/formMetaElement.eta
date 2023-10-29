@@ -2,22 +2,22 @@
 			id="form-meta-element"
 			class="grid form-meta form-meta-element"
 			method="POST"
-			action="/element/<%= data.element_id %>"
+			action="/element/<%= data.element_id %>?method=PUT"
 			enctype="multipart/form-data">
 
-	<fieldset class="card form-meta__fieldset">
+	<fieldset class="card form-meta__fieldset-image">
 		<%~ include('../input/inputFile', {
-		form: 'element_meta-form',
+		form: 'form-meta-element',
 		name: 'cover',
-		src_image: data.src.cover,
+		src: data.src && data.src.cover && data.src.cover.original,
 		accept: 'image/*',
 		}) %>
 	</fieldset>
 
-	<fieldset class="card form-meta__fieldset">
+	<fieldset class="card form-meta__text-container">
 		<h5 style="height: 100%;">
 			<%~ include('../textarea/textarea', {
-			form: 'element_meta-form',
+			form: 'form-meta-element',
 			name: 'text',
 			text: data.text,
 			placeholder: 'element-text',
@@ -25,27 +25,38 @@
 		</h5>
 	</fieldset>
 
-	<div class="card">
+	<div class="card form-meta__file-container">
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-element',
+			name: 'style',
+			accept: '.css',
+			src: data.src.style,
 			className: 'form-meta__fieldset'
 		}) %>
+
 		<hr>
+
 		<%~ include('../fieldset/fieldsetInputFile', { 
-			src: 'src',
+			form: 'form-meta-element',
+			name: 'script',
+			accept: '.js',
+			src: data.src.script,
 			className: 'form-meta__fieldset'
 		}) %>
 	</div>
 
-	<div class="card">
+	<fieldset class="card form-meta__buttons-container">
 		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить элемент' }) %>
+		<%~ include('../button/button_delete', {
+			text: 'удалить элемент',
+			url: `/element/${data.element_id}`
+			}) %>
 
-	</div>
+	</fieldset>
 
 	<hr>
 

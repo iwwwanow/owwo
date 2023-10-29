@@ -1,3 +1,5 @@
+<% const mode = it.mode || 'webp190' %>
+
 <a
 	 href="/page/<%= page.page_id %>"
 	 id="<%= page.page_id %>"
@@ -7,7 +9,7 @@
 	<% if (page.title || page.desc || page.text) { %>
 	<div class="card-page__text-wrapper grid_break-end">
 		<div class="card-page__text-container border-inner">
-			<% if (title) { %>
+			<% if (page.title) { %>
 			<h4 class="card-page__title"><%= page.title %></h4>
 			<% } %>
 
@@ -24,8 +26,8 @@
 
 	<% if (page.src && page.src.cover) { %>
 	<img
-			 class="card-page__image grid_break-start"
-			 src="<%= page.src.cover.original %>"
+			 class="card-page__img grid_break-start"
+			 src="<%= page.src.cover[mode] %>"
 			 alt="cover">
 	<% } %>
 </a>

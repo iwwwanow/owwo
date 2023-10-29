@@ -56,14 +56,14 @@ export default function sql(table_name: string) {
     },
 
     custom: async function (input: string) {
-      const path = `./middleware/sql_custom/${input}.sql`;
+      const path = `./lib/sql_custom/${input}.sql`;
       const file = Bun.file(path);
       const query = await file.text();
       this.run(query);
     },
 
     custom_all: async function (input: string) {
-      const path = `./middleware/sql_custom/${input}.sql`;
+      const path = `./lib/sql_custom/${input}.sql`;
       const file = Bun.file(path);
       query = await file.text();
       return this;

@@ -1,19 +1,27 @@
 <% layout( "LO" )%>
 
-<div class="grid page-info">
-	<div class="grid_break-end"">
+<div class="grid page__info">
+
+	<div class="grid_break-end page__cover-container"">
+		<% if (data.src.cover) { %>
+		<img class=" page__cover" src="<%= data.src.cover.original %>" alt="">
+		<% } %>
+		<div class="author-container">
+			<%~ include("author/author", {data}) %>
+			<%~ include("date/date", {data}) %>
+		</div>
+	</div>
+
+
+	<% if (data.desc || data.title) { %>
+	<div class="grid_break-start">
 		<% if (data.title) { %>
 		<h1><%= data.title %></h1>
 		<% } %>
-		<%~ include("author/author", {data}) %>
-		<%~ include("date/date", {data}) %>
-		</div
-	>
 
-		<% if (data.desc) { %>
-		<div class="
-			 grid_break-start">
-		<h5><%= data.html %></h5>
+		<% if (data.desc && data.html) { %>
+		<h5><%~ data.html %></h5>
+		<% } %>
 	</div>
 	<% } %>
 </div>
@@ -22,7 +30,7 @@
 
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("card/cardElement", { it: element }) %>
+	<%~ include("card/cardElement", { element, mode: 'original' }) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>
