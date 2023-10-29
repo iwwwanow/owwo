@@ -108,7 +108,7 @@
 }
 .list .card-element {
   grid-column: 1/-1;
-  height: 100%;
+  /* height: 100%; */
 
   flex-wrap: wrap;
   flex-direction: row;
@@ -128,6 +128,8 @@
   justify-content: center;
 }
 .grid .card-element__img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .list .card-element__img-container {

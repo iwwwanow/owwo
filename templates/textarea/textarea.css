@@ -26,5 +26,5 @@
   color: var(--black);
   background-color: var(--white);
   outline: 1px solid var(--black);
-  /* border-color: var(--black); */
+  border: none;
 }

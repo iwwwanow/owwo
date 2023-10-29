@@ -8,7 +8,7 @@
 		<% if (element.src && element.src.cover) { %>
 		<img
 				 class="card-element__img"
-				 src="<%= element.src.cover.original %>"
+				 src="<%= element.src.cover[mode] %>"
 				 alt="">
 		<% } else { %>
 		<h2 class="card-element__blank">#</h2>
