@@ -1,6 +1,7 @@
 /* TEXT */
 .input-text__input {
   width: 100%;
+  padding: 8px 4px;
 
   color: var(--grey-dark);
   background-color: var(--grey-light);
@@ -10,8 +11,11 @@
   text-transform: inherit;
 }
 
-.input-text__input {
-  padding: 8px 4px;
+.input-text__input:focus {
+  color: var(--black);
+  background-color: var(--white);
+  outline: 1px solid var(--black);
+  border: none;
 }
 
 .input-text__input::placeholder {

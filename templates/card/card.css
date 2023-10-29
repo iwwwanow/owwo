@@ -2,7 +2,7 @@
   position: relative;
 
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   display: flex;
   gap: var(--gap-v);
@@ -101,6 +101,7 @@
 }
 .grid .card-element {
   height: 100%;
+  overflow: hidden;
   justify-content: center;
 }
 .grid .card-element__blank {

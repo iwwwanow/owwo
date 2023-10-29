@@ -5,7 +5,7 @@
 			action="/page/<%= data.page_id %>?method=PUT"
 			enctype="multipart/form-data">
 
-	<fieldset class="card form-meta__fieldset">
+	<fieldset class="card form-meta__fieldset-image">
 		<%~ include('../input/inputFile', {
 		form: 'form-meta-page',
 		name: 'cover',
@@ -14,7 +14,7 @@
 		}) %>
 	</fieldset>
 
-	<fieldset class="card form-meta__fieldset">
+	<fieldset class="card form-meta__text-container">
 		<h4>
 			<%~ include('../textarea/textarea', {
 			form: 'form-meta-page',
@@ -36,7 +36,7 @@
 	</fieldset>
 
 
-	<div class="card">
+	<div class="card form-meta__file-container">
 		<%~ include('../fieldset/fieldsetInputFile', { 
 			form: 'form-meta-page',
 			name: 'style',
@@ -61,8 +61,7 @@
 		className: 'form-meta__fieldset'
 	}) %>
 
-	<div class="card">
-
+	<fieldset class="card form-meta__buttons-container">
 		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
@@ -72,7 +71,7 @@
 			text: 'удалить страницу',
 			url: `/page/${data.page_id}`
 			}) %>
-	</div>
+	</fieldset>
 
 	<hr>
 

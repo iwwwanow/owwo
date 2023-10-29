@@ -31,7 +31,7 @@
 .button_plus:hover path {
   fill: var(--white);
 }
-.button > h6 {
+.button > p {
   color: var(--color);
   overflow-wrap: break-word;
 }
@@ -39,18 +39,18 @@
   border-color: var(--color);
   background-color: var(--color);
 }
-.button:hover > h6 {
+.button:hover > p {
   color: var(--white);
   font-weight: 600;
 }
 
 .button_disabled,
 .button_disabled:hover,
-.button_disabled > h6 {
+.button_disabled > p {
   font-weight: normal;
   color: var(--white);
   background-color: var(--grey-medium);
 }
-.button_disabled:hover > h6 {
+.button_disabled:hover > p {
   font-weight: normal;
 }

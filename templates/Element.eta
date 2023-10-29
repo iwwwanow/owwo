@@ -5,7 +5,7 @@
 </div>
 
 <div class="element-info grid">
-	<div class="grid_break-end">
+	<div class="grid_break-end author-container">
 		<%~ include("author/author", {data}) %>
 		<%~ include("date/date", {data}) %>
 	</div>

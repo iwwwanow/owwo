@@ -4,7 +4,7 @@
 <% const className = it.class || '' %>
 <% const placeholder = it.placeholder || '' %>
 
-<h6 class="input-text">
+<p class="input-text">
 	<input
 				 autocomplete="off"
 				 autocapitalize="off"
@@ -17,4 +17,4 @@
 				 name="<%= it.name %>"
 				 placeholder="<%= placeholder %>">
 
-</h6>
+</p>

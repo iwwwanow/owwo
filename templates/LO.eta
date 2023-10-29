@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="/templates/About.css" />
 
 	<link rel="stylesheet" href="/templates/avatar/avatar.css" />
+	<link rel="stylesheet" href="/templates/author/author.css" />
 	<link rel="stylesheet" href="/templates/button/button.css" />
 	<link rel="stylesheet" href="/templates/card/card.css" />
 	<link rel="stylesheet" href="/templates/fieldset/fieldset.css" />

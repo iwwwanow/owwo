@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* gap: var(--gap-v); */
+  gap: var(--gap-v);
 }
 
 .fieldset-input-file_buttons {

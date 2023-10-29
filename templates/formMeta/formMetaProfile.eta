@@ -5,7 +5,7 @@
 			action="/<%= data.username %>?method=PUT"
 			enctype="multipart/form-data">
 
-	<fieldset class="form-meta__fieldset_square">
+	<fieldset class="form-meta__fieldset-image">
 
 		<%~ include('../input/inputFile', {
 		form: 'form-meta-profile',
@@ -16,7 +16,7 @@
 
 	</fieldset>
 
-	<fieldset class="form-meta__fieldset_square">
+	<fieldset class="form-meta__text-container">
 
 		<h4 style="height: 100%;">
 			<%~ include('../textarea/textarea', {
@@ -37,7 +37,7 @@
 		name: 'style',
 		accept: '.css',
 		src: data.src.style, 
-		className: 'form-meta__fieldset_square' 
+		className: 'form-meta__fieldset-file' 
 	}) %>
 
 	<%~ include('../fieldset/fieldsetInputFile', { 
@@ -45,7 +45,7 @@
 		name: 'script',
 		accept: '.js',
 		src: data.src.script,
-		className: 'form-meta__fieldset_square' 
+		className: 'form-meta__fieldset-file' 
 	}) %>
 
 	<%~ include('../fieldset/fieldsetRadioMarkup', {
@@ -53,13 +53,15 @@
 		className: 'form-meta__fieldset_square' 
 	}) %>
 
-	<fieldset class="form-meta__fieldset_square form-meta__submit-buttons">
+	<fieldset class="form-meta__buttons-container">
 		<%~ include('../button/button', { 
 			text: 'сохранить изменения',
 			className: "form-meta__submit-button" 
 		}) %>
 
-		<%~ include('../button/button_delete', { text: 'удалить профиль', url: `/${data.username}` }) %>
+		<%~ include('../button/button_delete', { 
+			text: 'удалить профиль',
+			url: `/${data.username}` }) %>
 	</fieldset>
 
 	<hr>

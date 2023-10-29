@@ -1,7 +1,7 @@
 <button class="button button_download border-outter">
-	<h6>
+	<p>
 		<a href="<%= it.url %>" download>
 			<%= it.text || 'скачать'%>
 		</a>
-	</h6>
+	</p>
 </button>
