@@ -13,7 +13,7 @@
 	</div>
 
 	<% if (data.html) { %>
-	<div class="profile_desc grid_break-start">
+	<div class="html profile_desc grid_break-start">
 		<%~data.html%>
 	</div>
 	<% } %>
