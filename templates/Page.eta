@@ -14,13 +14,13 @@
 
 
 	<% if (data.desc || data.title) { %>
-	<div class="grid_break-start">
+	<div class="html grid_break-start">
 		<% if (data.title) { %>
 		<h1><%= data.title %></h1>
 		<% } %>
 
 		<% if (data.desc && data.html) { %>
-		<h5><%~ data.html %></h5>
+		<%~ data.html %>
 		<% } %>
 	</div>
 	<% } %>

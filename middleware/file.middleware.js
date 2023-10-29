@@ -5,7 +5,7 @@ export default class File {
     let result = {};
     if (fs.existsSync(dir)) {
       fs.readdirSync(dir).forEach((file) => {
-        const filePath = dir.substring(1) + "/" + file;
+        const filePath = dir.substring(1) + file;
         const name_full = file.split(".").at(0);
         const variant = name_full?.split("@").at(1) || "original";
         const name = name_full?.split("@").at(0);
