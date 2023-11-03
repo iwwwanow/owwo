@@ -6,14 +6,14 @@ import Page from "../controllers/page.controller.js";
 import Element from "../controllers/element.controller.js";
 
 import Static from "../controllers/static.controller.js";
-import checkAuth from "../middleware/auth.middleware.js";
+import JWT from "../middleware/jwt.middleware.js";
 
 export default async function Router(req) {
   const c = {
     url: new URL(req.url),
     method: req.method,
     headers: {
-      // "Cache-Control": "public, max-age=31536000",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
     },
     cookie: req.headers.get("cookie"),
     referer: req.headers.get("referer"),
@@ -44,7 +44,7 @@ export default async function Router(req) {
 
     if (p1 === "favicon.ico") return Static.send(c);
 
-    if (c.cookie) c.props.client.auth = await checkAuth(c);
+    if (c.cookie) c.props.client.auth = await JWT(c);
 
     if (p1 === "404") return await Render.page404(c);
 

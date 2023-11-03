@@ -11,7 +11,8 @@ export default class Static {
       // поставить минимальный кеш, или как-нибудь его обновлять.
       // console.log(c.url.pathname.split("/").at(2));
     } else {
-      c.headers["Cache-Control"] = "public, max-age=31536000, must-revalidate";
+      // 12 hours cache
+      c.headers["Cache-Control"] = "public, max-age=432000, must-revalidate";
     }
     return new Response(file, { headers: c.headers });
   }
