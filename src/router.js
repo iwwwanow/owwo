@@ -13,7 +13,7 @@ export default async function Router(req) {
     url: new URL(req.url),
     method: req.method,
     headers: {
-      // "Cache-Control": "public, max-age=31536000",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
     },
     cookie: req.headers.get("cookie"),
     referer: req.headers.get("referer"),
