@@ -1,5 +1,5 @@
-.about-text {
-  color: var(--grey-dark);
+.about__text-container {
+  grid-column: 1 / span 2;
 }
 
 .autograph-container {
@@ -16,6 +16,11 @@ a.about__me {
 
 .autograph-container * {
   /* color: var(--red); */
+}
+@media screen and (max-width: 858px) {
+  .about__text-container {
+    grid-column: 1 / -1;
+  }
 }
 
 @media screen and (max-width: 360px) {
