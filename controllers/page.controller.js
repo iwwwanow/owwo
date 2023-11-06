@@ -27,7 +27,7 @@ export default class Page {
     sql("authors").update({ user_id, type: "owner" }).where({ page_id }).run();
     DateMiddleware.update({ page_id });
 
-    return Response.redirect(`/page/${page_id}`);
+    return Response.redirect(`/page/${page_id}?mode=editor`);
   }
 
   static async update(req) {

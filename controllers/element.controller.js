@@ -25,7 +25,7 @@ export default class Element {
     sql("connections").update({ page_id }).where({ element_id }).run();
     DateMiddleware.update({ element_id });
 
-    return Response.redirect(`/element/${element_id}`);
+    return Response.redirect(`/element/${element_id}?mode=editor`);
   }
 
   static async update(req) {
