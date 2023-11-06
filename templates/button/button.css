@@ -15,6 +15,9 @@
   color: var(--color);
   border-color: var(--color);
 }
+.button * {
+  margin: 0;
+}
 .button_delete {
   --color: var(--red);
 }

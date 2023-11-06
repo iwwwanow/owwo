@@ -33,12 +33,6 @@ export default class Profile {
         .resize(64, 64, { fit: "cover", withoutEnlargement: true })
         .toBuffer();
       await File.write(webp64, dir, "avatar@webp64.webp");
-
-      const webp190 = await sharp(buf, { animated: true })
-        .webp()
-        .resize(190, 190, { fit: "cover", withoutEnlargement: true })
-        .toBuffer();
-      await File.write(webp190, dir, "avatar@webp190.webp");
     }
 
     if (style.size) {

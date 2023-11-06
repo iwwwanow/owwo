@@ -4,7 +4,7 @@
 
 	<%~ include("avatar/avatar", {
 	url: data.username,
-	src: data.src.avatar && data.src.avatar.webp190
+	src: data.src.avatar && data.src.avatar.original
 	}) %>
 
 	<div class="profile_username">

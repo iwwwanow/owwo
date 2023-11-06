@@ -1,4 +1,4 @@
-<% const mode = it.mode || 'webp190' %>
+<% const mode = it.mode || 'webp288' %>
 
 <div
 		 class="card card-element">

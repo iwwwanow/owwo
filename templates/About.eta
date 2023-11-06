@@ -1,10 +1,28 @@
 <% layout("LO") %>
 
 <div class="grid">
-	<div>
-		<h2 class="about-text">Открытая multimedia библиотека.</h2>
-		<h4><a href="https://github.com/effektivnayarabota1/owwo">github</a></h4>
+	<div class="about__text-container">
+		<h2>Открытая multimedia библиотека.</h2>
+		<p>Введу некоторые пояснения.<br> На данный момент на платформе можно публиковать лишь изображения.
+			В профиле создаются
+			страницы, страницы собираются из элементов, все сортируется по дате изменения.
+		<p>
+			Текстовые инпуты поддерживают формат <a href="https://ru.wikipedia.org/wiki/Markdown"
+				 target="_blank">MARKDOWN</a>.
+		</p>
+		<p>
+			На каждую страницу можно разместить собственные скрипты и стили.
+		</p>
+		<p>На домашней странице собирается случайный контент со всего сайта, в оптимизированых превью. На всех остальных
+			страницах изображения загружаются в оригинальном размере, поэтому думайте над весом ваших изображений.<br>
+			Скорость ваших страниц зависит от вас лишь.</p>
+		<div style="display: flex; gap: 16px;">
+			<h5><a href="https://github.com/effektivnayarabota1/owwo" target="_blank">GitHub</a></h5>
+			<h5><a href="https://t.me/owwomoscow_channel" target="_blank">TelegramChannel</a></h5>
+			<h5><a href="https://t.me/iwwwanowww" target="_blank">Связь</a></h5>
+		</div>
 	</div>
+
 
 	<div class="autograph-container">
 		<h5>Иванов Кирилл</h5>
