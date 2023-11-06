@@ -1,4 +1,4 @@
-<% const mode = it.mode || 'webp190' %>
+<% const mode = it.mode || 'webp288' %>
 
 <a
 	 href="/page/<%= page.page_id %>"

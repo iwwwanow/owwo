@@ -48,12 +48,12 @@ export default class Element {
       await File.remove(dir, "cover");
       await File.write(cover, dir, `cover.${extention}`);
 
-      const webp190 = await sharp(buf, { animated: true })
+      const webp288 = await sharp(buf, { animated: true })
         .webp()
         // .resize(190, 288, { fit: "cover", withoutEnlargement: true })
-        .resize(288, 288, { fit: "inside" })
+        .resize(288, 288, { fit: "inside", withoutEnlargement: true })
         .toBuffer();
-      await File.write(webp190, dir, "cover@webp190.webp");
+      await File.write(webp288, dir, "cover@webp288.webp");
     }
 
     if (style.size) {
