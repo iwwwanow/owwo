@@ -162,7 +162,7 @@
   height: fit-content;
 }
 .grid .card-element__text {
-  opacity: 0.2;
+  opacity: 0.1;
   /* mix-blend-mode: luminosity; */
 }
 
@@ -175,7 +175,7 @@
 
 /* HOVER */
 .grid .card-element:hover .card-element__text {
-  opacity: 0.64;
+  opacity: 0.32;
 }
 .card-element:hover .card-element__blank {
   color: var(--grey-dark);
