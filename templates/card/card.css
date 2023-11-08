@@ -114,7 +114,8 @@
 
   flex-wrap: wrap;
   flex-direction: row;
-  gap: var(--gap-h);
+  column-gap: var(--gap-outter-h);
+  row-gap: var(--gap-outter-v);
 }
 
 /* IMG */

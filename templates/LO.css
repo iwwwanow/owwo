@@ -1,6 +1,9 @@
 :root {
   --gap-v: 6px;
   --gap-h: 4px;
+
+  --gap-outter-v: 24px;
+  --gap-outter-h: 16px;
 }
 
 .grid,
