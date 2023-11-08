@@ -18,6 +18,12 @@
 .button * {
   margin: 0;
 }
+.button_url__container:hover {
+  text-decoration: none;
+}
+.button_url {
+  --color: var(--blue);
+}
 .button_delete {
   --color: var(--red);
 }

@@ -4,7 +4,7 @@
 	<form
 				method="POST"
 				action="/login"
-				class="login">
+				class="login__form">
 
 		<%~ include("input/inputText", {
 		name: 'username',
@@ -24,9 +24,14 @@
 		<%~ include("button/button", {
 		text: 'Войти'
 		})%>
+
 	</form>
 
-	<h6>
-		<a href="/signup">Регистрация</a>
-	</h6>
+	<span class="login__signup-container">
+		<%~ include("button/button_url", {
+		text: 'Регистрация',
+		url: '/signup'
+		})%>
+	</span>
+
 </div>
