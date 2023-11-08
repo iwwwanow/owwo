@@ -31,8 +31,9 @@
   color: inherit;
 }
 .button_plus {
-  padding: 32px;
+  /* padding: 32px; */
   height: 100%;
+  min-height: 102px;
 }
 .button_plus path {
   fill: var(--grey-dark);
