@@ -52,7 +52,7 @@ export default class Page {
       await File.write(cover, dir, `cover.${extention}`);
 
       const webp288 = await sharp(buf, { animated: true })
-        .webp()
+        .webp({ quality: 100, smartSubsample: true })
         // .resize(190, 288, { fit: "cover", withoutEnlargement: true })
         .resize(288, 288, { fit: "inside", withoutEnlargement: true })
         .toBuffer();

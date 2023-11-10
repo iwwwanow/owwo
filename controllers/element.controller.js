@@ -48,13 +48,13 @@ export default class Element {
       await File.remove(dir, "cover");
       await File.write(cover, dir, `cover.${extention}`);
 
+      // const metadata = await sharp(buf).metadata();
+      // console.log(metadata);
+
       const webp288 = await sharp(buf, { animated: true })
-        .webp()
+        .webp({ quality: 100, smartSubsample: true })
         // .resize(190, 288, { fit: "cover", withoutEnlargement: true })
-        .resize(288, 288, {
-          fit: "inside",
-          withoutEnlargement: true,
-        })
+        .resize(288, 288, { fit: "outside", withoutEnlargement: true })
         .toBuffer();
       await File.write(webp288, dir, "cover@webp288.webp");
     }
