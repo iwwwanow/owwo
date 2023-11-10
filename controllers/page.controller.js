@@ -51,10 +51,27 @@ export default class Page {
       await File.remove(dir, "cover");
       await File.write(cover, dir, `cover.${extention}`);
 
+      const metadata = await sharp(buf).metadata();
+      let { width, height } = metadata;
+      if (width > height) {
+        width = undefined;
+        height = 288;
+      } else if (width < height) {
+        width = 190;
+        height = undefined;
+      } else {
+        width = 190;
+        height = undefined;
+      }
+
       const webp288 = await sharp(buf, { animated: true })
         .webp({ quality: 100, smartSubsample: true })
-        // .resize(190, 288, { fit: "cover", withoutEnlargement: true })
-        .resize(288, 288, { fit: "inside", withoutEnlargement: true })
+        // .resize(288, 288, { fit: "outside", withoutEnlargement: true })
+        .resize(width, height, {
+          // fit: "outside",
+          withoutEnlargement: true,
+          fastShrinkOnLoad: true,
+        })
         .toBuffer();
       await File.write(webp288, dir, "cover@webp288.webp");
     }
