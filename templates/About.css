@@ -21,10 +21,8 @@ a.about__me {
   .about__text-container {
     grid-column: 1 / -1;
   }
-}
-
-@media screen and (max-width: 360px) {
   .autograph-container {
+    grid-column: 1 / -1;
     align-items: flex-start;
   }
 }

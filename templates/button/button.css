@@ -18,6 +18,12 @@
 .button * {
   margin: 0;
 }
+.button_url__container:hover {
+  text-decoration: none;
+}
+.button_url {
+  --color: var(--blue);
+}
 .button_delete {
   --color: var(--red);
 }
@@ -25,8 +31,9 @@
   color: inherit;
 }
 .button_plus {
-  padding: 32px;
+  /* padding: 32px; */
   height: 100%;
+  min-height: 102px;
 }
 .button_plus path {
   fill: var(--grey-dark);

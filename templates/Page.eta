@@ -30,7 +30,10 @@
 
 	<%if (data.elements && data.elements.length) { %>
 	<% data.elements.forEach(function (element) { %>
-	<%~ include("card/cardElement", { element, mode: 'original' }) %>
+	<%~ include("card/cardElement", { 
+		element, 
+		mode: data.markup === 'grid' ? 'webp288' : 'original'
+		}) %>
 	<% }) %>
 	<% } else { %>
 	<h2 style="color: var(--grey-light);">(●´⌓`●)</h2>

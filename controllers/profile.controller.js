@@ -29,7 +29,7 @@ export default class Profile {
       await File.write(avatar, dir, `avatar.${extention}`);
 
       const webp64 = await sharp(buf, { animated: true })
-        .webp()
+        .webp({ quality: 100, smartSubsample: true })
         .resize(64, 64, { fit: "cover", withoutEnlargement: true })
         .toBuffer();
       await File.write(webp64, dir, "avatar@webp64.webp");
