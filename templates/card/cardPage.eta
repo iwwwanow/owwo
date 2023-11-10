@@ -7,6 +7,7 @@
 	 style="text-decoration: none;">
 
 	<% if (page.title || page.desc || page.text) { %>
+
 	<div class="card-page__text-wrapper grid_break-end">
 		<div class="card-page__text-container border-inner">
 			<% if (page.title) { %>
@@ -22,6 +23,7 @@
 			<% } %>
 		</div>
 	</div>
+
 	<% } %>
 
 	<% if (page.src && page.src.cover) { %>

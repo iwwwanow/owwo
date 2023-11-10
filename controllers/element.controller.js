@@ -7,6 +7,7 @@ import sql from "../lib/sql.js";
 import DateMiddleware from "../middleware/date.middleware.js";
 import Body from "../middleware/body.middleware.js";
 import File from "../middleware/file.middleware.js";
+import Image from "../middleware/image.middleware.js";
 
 export default class Element {
   static create(c) {
@@ -43,32 +44,15 @@ export default class Element {
 
     if (cover.size) {
       const extention = cover.type.split("/").at(1);
-      const buf = await cover.arrayBuffer();
+      const buffer = await cover.arrayBuffer();
 
       await File.remove(dir, "cover");
       await File.write(cover, dir, `cover.${extention}`);
 
-      const metadata = await sharp(buf).metadata();
-      let { width, height } = metadata;
-      if (width > height) {
-        width = undefined;
-        height = 288;
-      } else if (width < height) {
-        width = 190;
-        height = undefined;
-      } else {
-        width = 190;
-        height = undefined;
-      }
+      const card = new Image(buffer);
+      await card.convert("webp_card");
 
-      const webp288 = await sharp(buf, { animated: true })
-        .webp({ quality: 100, smartSubsample: true })
-        .resize(width, height, {
-          withoutEnlargement: true,
-          fastShrinkOnLoad: true,
-        })
-        .toBuffer();
-      await File.write(webp288, dir, "cover@webp288.webp");
+      await File.write(card.buffer, dir, "cover@webp288.webp");
     }
 
     if (style.size) {
