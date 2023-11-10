@@ -67,10 +67,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* HTML */
-.html > p:not(:last-child) {
-  margin-bottom: 2.4rem;
-}
 @media screen and (max-width: 444px) {
   :root {
     /* font-size: 80%; */

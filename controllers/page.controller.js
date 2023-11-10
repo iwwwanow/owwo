@@ -66,9 +66,7 @@ export default class Page {
 
       const webp288 = await sharp(buf, { animated: true })
         .webp({ quality: 100, smartSubsample: true })
-        // .resize(288, 288, { fit: "outside", withoutEnlargement: true })
         .resize(width, height, {
-          // fit: "outside",
           withoutEnlargement: true,
           fastShrinkOnLoad: true,
         })
