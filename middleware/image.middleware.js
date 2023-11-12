@@ -7,25 +7,25 @@ export default class Image {
 
   async convert(format) {
     switch (format) {
-      case "webp_64":
-        await this.webp_64();
+      case "webp64":
+        await this.webp64();
         break;
-      case "webp_card":
-        await this.webp_card();
+      case "webp288":
+        await this.webp288();
         break;
       default:
         throw new Error("need know format to convert");
     }
   }
 
-  async webp_64() {
+  async webp64() {
     this.buffer = await sharp(this.buffer, { animated: true })
       .webp({ quality: 100, smartSubsample: true })
       .resize(64, 64, { fit: "cover", withoutEnlargement: true })
       .toBuffer();
   }
 
-  async webp_card() {
+  async webp288() {
     const metadata = await sharp(this.buffer).metadata();
     let { width, height } = metadata;
     if (width > height) {

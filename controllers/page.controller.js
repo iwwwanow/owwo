@@ -53,7 +53,7 @@ export default class Page {
       await File.write(cover, dir, `cover.${extention}`);
 
       const card = new Image(buffer);
-      await card.convert("webp_card");
+      await card.convert("webp288");
 
       await File.write(card.buffer, dir, "cover@webp288.webp");
     }

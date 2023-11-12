@@ -31,7 +31,7 @@ if (fs.existsSync(dirUsers)) {
           }
 
           const avatar64 = new Image(buffer);
-          await avatar64.convert("webp_64");
+          await avatar64.convert("webp64");
 
           await File.write(avatar64.buffer, dir, "avatar@webp64.webp");
         });
@@ -39,5 +39,59 @@ if (fs.existsSync(dirUsers)) {
     });
   });
 }
-// удалить все изображения кроме ориги.
-// конвертировать оригу.
+
+// PAGES
+let dirPages = root + "pages/";
+if (fs.existsSync(dirPages)) {
+  const dirs = await getDirectories(dirPages);
+  dirs.forEach(async (dir) => {
+    dir = dirPages + dir + "/";
+    const files = await fs.promises.readdir(dir, { withFileTypes: true });
+    files.forEach(async (file) => {
+      const filename = file.name;
+      const path = dir + filename;
+      if (filename.split("@").length > 1) {
+        fs.rmSync(path);
+      } else {
+        fs.readFile(path, async (error, buffer) => {
+          if (error) {
+            console.error(error.message);
+          }
+
+          const card = new Image(buffer);
+          await card.convert("webp288");
+
+          await File.write(card.buffer, dir, "cover@webp288.webp");
+        });
+      }
+    });
+  });
+}
+
+// ELEMENTS
+let dirElements = root + "elements/";
+if (fs.existsSync(dirElements)) {
+  const dirs = await getDirectories(dirElements);
+  dirs.forEach(async (dir) => {
+    dir = dirElements + dir + "/";
+    const files = await fs.promises.readdir(dir, { withFileTypes: true });
+    files.forEach(async (file) => {
+      const filename = file.name;
+      const path = dir + filename;
+      if (filename.split("@").length > 1) {
+        fs.rmSync(path);
+      } else {
+        fs.readFile(path, async (error, buffer) => {
+          if (error) {
+            console.error(error.message);
+          }
+
+          const card = new Image(buffer);
+          await card.convert("webp288");
+
+          await File.write(card.buffer, dir, "cover@webp288.webp");
+        });
+      }
+    });
+  });
+}

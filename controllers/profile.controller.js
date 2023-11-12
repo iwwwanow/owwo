@@ -30,7 +30,7 @@ export default class Profile {
       await File.write(avatar, dir, `avatar.${extention}`);
 
       const avatar64 = new Image(buffer);
-      await avatar64.convert("webp_64");
+      await avatar64.convert("webp64");
 
       await File.write(avatar64.buffer, dir, "avatar@webp64.webp");
     }
