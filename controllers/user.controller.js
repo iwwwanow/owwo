@@ -66,4 +66,17 @@ export default class User {
       "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT";
     return Response.redirect("/", { headers: c.headers });
   }
+
+  static async delete_username(username) {
+    console.log(username);
+    const user_id = sql("users").select("user_id").where({ username }).get();
+    const page_ids = sql("authors").select("page_id").where({ user_id }).all();
+
+    page_ids.forEach(async (page_id) => await Page.deleteSingle(page_id));
+
+    const dir = `/public/data_uploads/users/${user_id}`;
+    File.remove(dir);
+
+    sql("users").delete().where({ user_id }).run();
+  }
 }
