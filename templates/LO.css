@@ -112,7 +112,7 @@
   .list {
     /* grid-template-columns: repeat(2, 160px); */
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px 8px;
+    gap: 8px;
   }
 }
 
