@@ -5,6 +5,7 @@ import sharp from "sharp";
 import Body from "../middleware/body.middleware.js";
 import DateMiddleware from "../middleware/date.middleware.js";
 import File from "../middleware/file.middleware.js";
+import Image from "../middleware/image.middleware.js";
 import sql from "../lib/sql.js";
 
 export default class Profile {
@@ -23,16 +24,15 @@ export default class Profile {
 
     if (avatar.size) {
       const extention = avatar.type.split("/").at(1);
-      const buf = await avatar.arrayBuffer();
+      const buffer = await avatar.arrayBuffer();
 
       await File.remove(dir, "avatar");
       await File.write(avatar, dir, `avatar.${extention}`);
 
-      const webp64 = await sharp(buf, { animated: true })
-        .webp({ quality: 100, smartSubsample: true })
-        .resize(64, 64, { fit: "cover", withoutEnlargement: true })
-        .toBuffer();
-      await File.write(webp64, dir, "avatar@webp64.webp");
+      const avatar64 = new Image(buffer);
+      await avatar64.convert("webp64");
+
+      await File.write(avatar64.buffer, dir, "avatar@webp64.webp");
     }
 
     if (style.size) {

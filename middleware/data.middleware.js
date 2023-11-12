@@ -1,6 +1,7 @@
 import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
+import Page from "../controllers/page.controller";
 import File from "./file.middleware";
 import DateMiddleware from "./date.middleware";
 import sql from "../lib/sql";
@@ -107,7 +108,8 @@ export default class Data {
         .select("username")
         .where({ user_id: author.user_id })
         .get();
-      data.authors.push(author);
+      if (author) data.authors.push(author);
+      else Page.deleteSingle(page_id);
     });
 
     const elements_query = await sql().custom_all(

@@ -39,6 +39,15 @@ export default class File {
     }
   }
 
+  static async removeVariant(path_file) {
+    const filename = path_file.split("/").at(-1);
+    if (filename.split("@").length > 1) {
+      fs.rmSync(path_file);
+      return true;
+    }
+    return false;
+  }
+
   static async write_image() {}
 
   static get_src() {
