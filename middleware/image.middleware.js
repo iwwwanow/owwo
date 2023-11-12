@@ -19,7 +19,10 @@ export default class Image {
   }
 
   async webp_64() {
-    console.log("webp_64");
+    this.buffer = await sharp(this.buffer, { animated: true })
+      .webp({ quality: 100, smartSubsample: true })
+      .resize(64, 64, { fit: "cover", withoutEnlargement: true })
+      .toBuffer();
   }
 
   async webp_card() {
