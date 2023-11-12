@@ -16,9 +16,6 @@
 	<% } %>
 </div>
 
-<div class="grid">
-	<hr>
-</div>
 
 <div class="grid">
 	<h5 style="grid-column: 1/-1;">Случайные страницы:</h5>
@@ -31,9 +28,6 @@
 	<% } %>
 </div>
 
-<div class="grid">
-	<hr>
-</div>
 
 <div class="grid">
 	<h5 style="grid-column: 1/-1;">Случайные элементы:</h5>
