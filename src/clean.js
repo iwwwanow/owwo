@@ -9,5 +9,5 @@ authors.forEach((author) => {
 
 const connections = sql("connections").select(["page_id", "element_id"]).all();
 connections.forEach((connection) => {
-  if (!connection.page_id) Element.deleteSingle(author.element_id);
+  if (!connection.page_id) Element.deleteSingle(connection.element_id);
 });
