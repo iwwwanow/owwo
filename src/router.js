@@ -70,7 +70,8 @@ export default async function Router(req) {
 
     if (p1 === "page") {
       if (c.method === "PUT") {
-        return PageController.update(req);
+        c.body = Body(await req.formData());
+        return PageController.update(c);
       } else if (c.method === "POST") {
         return Element.create(c);
       } else if (c.method === "DELETE") {

@@ -16,16 +16,11 @@ export default class PageController {
   static async create(c) {
     checkOwner.checkProfile(c);
 
-    const page_id = uuidv4();
-    const user_id = c.props.client.auth.user_id;
+    const page = new Page();
+    page.create();
 
-    sql("pages")
-      .insert({
-        page_id,
-        date_creation: Date.now(),
-        date_lastModify: Date.now(),
-      })
-      .run();
+    const page_id = page.id;
+    const user_id = c.props.client.auth.user_id;
 
     sql("authors").update({ user_id, type: "owner" }).where({ page_id }).run();
     DateMiddleware.update({ page_id });
@@ -33,55 +28,62 @@ export default class PageController {
     return Response.redirect(`/page/${page_id}?mode=editor`);
   }
 
-  static async update(req) {
-    // checkOwner.check(c);
+  static async update(c) {
+    console.log(c);
 
-    const url = new URL(req.url);
-    const page_id = url.pathname.split("/").at(2);
+    const page_id = c.url.pathname.split("/").at(2);
+    const page = new Page(page_id);
 
-    const referer = req.headers.get("referer");
+    if (c.props.client.auth) {
+      const authUserId = c.props.client.auth.user_id;
+      const permissions = page.getPermissions(authUserId);
+      if (permissions !== "owner")
+        throw new Error("not have permissions to modify this page");
+    } else throw new Error("not authentificated");
 
-    const body = Body(await req.formData());
+    // const body = Body(await req.formData());
 
-    const { cover, title, desc, style, script, markup } = body;
-    const dir = `./public/data_uploads/pages/${page_id}/`;
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    page.writeFile("buffer");
 
-    if (cover.size) {
-      const extention = cover.type.split("/").at(1);
-      const buffer = await cover.arrayBuffer();
-
-      await File.remove(dir, "cover");
-      await File.write(cover, dir, `cover.${extention}`);
-
-      const card = new Image(buffer);
-      await card.convert("webp288");
-
-      await File.write(card.buffer, dir, "cover@webp288.webp");
-    }
-
-    if (style.size) {
-      await File.remove(dir, "style");
-      await File.write(style, dir, "style.css");
-    }
-
-    if (script.size) {
-      await File.remove(dir, "script");
-      await File.write(script, dir, "script.js");
-    }
-
-    try {
-      sql("pages")
-        .update({ title, desc, markup, date_lastModify: Date.now() })
-        .where({ page_id })
-        .run();
-
-      DateMiddleware.update({ page_id });
-    } catch (e) {
-      throw new Error("запись не удалась(");
-    }
-
-    return Response.redirect(referer);
+    // const { cover, title, desc, style, script, markup } = body;
+    // const dir = `./public/data_uploads/pages/${page_id}/`;
+    // if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    //
+    // if (cover.size) {
+    //   const extention = cover.type.split("/").at(1);
+    //   const buffer = await cover.arrayBuffer();
+    //
+    //   await File.remove(dir, "cover");
+    //   await File.write(cover, dir, `cover.${extention}`);
+    //
+    //   const card = new Image(buffer);
+    //   await card.convert("webp288");
+    //
+    //   await File.write(card.buffer, dir, "cover@webp288.webp");
+    // }
+    //
+    // if (style.size) {
+    //   await File.remove(dir, "style");
+    //   await File.write(style, dir, "style.css");
+    // }
+    //
+    // if (script.size) {
+    //   await File.remove(dir, "script");
+    //   await File.write(script, dir, "script.js");
+    // }
+    //
+    // try {
+    //   sql("pages")
+    //     .update({ title, desc, markup, date_lastModify: Date.now() })
+    //     .where({ page_id })
+    //     .run();
+    //
+    //   DateMiddleware.update({ page_id });
+    // } catch (e) {
+    //   throw new Error("запись не удалась(");
+    // }
+    //
+    return Response.redirect(c.referer);
   }
 
   static async delete(c) {
