@@ -14,7 +14,7 @@
     "isomorphic-dompurify": "^1.9.0",
     "jose": "^5.0.1",
     "marked": "^9.1.2",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.1",
     "uuid": "^9.0.1"
   },
   "scripts": {
