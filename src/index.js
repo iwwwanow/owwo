@@ -1,8 +1,11 @@
-import sql from "../lib/sql.ts";
-import Router from "./router.js";
-await sql().init();
+import check_env from "../check_env.utils.js";
 
-if (!process.env.JWT_SECRET) throw new Error("need some secret");
+import sql from "../lib/sql.js";
+import Router from "./router.js";
+
+await check_env();
+
+await sql().init();
 
 const server = Bun.serve({
   port: 8080,
