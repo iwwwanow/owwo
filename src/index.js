@@ -1,4 +1,4 @@
-import check_env from "../check_env.utils.js";
+import check_env from "../utils/check_env.utils.js";
 
 import sql from "../lib/sql.js";
 import Router from "./router.js";
