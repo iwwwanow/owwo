@@ -2,7 +2,7 @@ import Render from "../controllers/render.controller.js";
 import Auth from "../controllers/auth.controller.js";
 import User from "../controllers/user.controller.js";
 import Profile from "../controllers/profile.controller.js";
-import Page from "../controllers/page.controller.js";
+import PageController from "../controllers/page.controller.js";
 import Element from "../controllers/element.controller.js";
 
 import Static from "../controllers/static.controller.js";
@@ -70,11 +70,12 @@ export default async function Router(req) {
 
     if (p1 === "page") {
       if (c.method === "PUT") {
-        return Page.update(req);
+        c.body = Body(await req.formData());
+        return PageController.update(c);
       } else if (c.method === "POST") {
         return Element.create(c);
       } else if (c.method === "DELETE") {
-        return Page.delete(c);
+        return PageController.delete(c);
       } else return Render.page(c);
     }
 
@@ -90,7 +91,7 @@ export default async function Router(req) {
       if (c.method === "PUT") {
         return await Profile.update(req);
       } else if (c.method === "POST") {
-        return Page.create(c);
+        return PageController.create(c);
       } else if (c.method === "DELETE") {
         return User.delete(c);
       } else return await Render.profile(c);
