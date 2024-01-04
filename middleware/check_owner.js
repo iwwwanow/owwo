@@ -13,10 +13,12 @@ export default class checkOwner {
     } else throw new Error("check owner error");
   }
 
-  static async checkUser(c) {
-    const { cookie, params } = c;
-    if (cookie.auth.username === params.username) return;
-    else throw new Error("check owner error");
+  static async checkProfile(c) {
+    if (c.props.client.auth) {
+      const authUsername = c.props.client.auth.username;
+      if (authUsername === c.url.pathname.split("/")[1]) return;
+    }
+    throw new Error("check owner error");
   }
 
   static async checkPage(c) {
