@@ -9,4 +9,6 @@ await sql().init();
 
 const app = owwo_app();
 
+app.get("/", (c) => c.send("home")).get("/owwo", (c) => c.send("owwo"));
+
 app.listen(8080);

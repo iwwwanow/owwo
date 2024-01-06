@@ -1,17 +1,42 @@
+class Context {
+  constructor() {}
+
+  send(i) {
+    return new Response(i);
+  }
+}
+
 export default function owwo_app() {
+  const routes_get = [];
+
   return {
     listen: function (port) {
       const serve = Bun.serve({
         port,
         async fetch(req) {
-          console.log(this);
-          return new Response("Hello world!");
+          const url = new URL(req.url);
+          const pathname = url.pathname;
+
+          const c = new Context(req);
+
+          for (const { route, cb } of routes_get) {
+            if (route === pathname) {
+              return cb(c);
+            }
+          }
+
+          return new Response("owwo_404-page");
         },
       });
 
       console.log(`OWWO IS RUNNING AT http://${serve.hostname}:${serve.port}`);
 
       return serve;
+    },
+
+    get: function (route, cb) {
+      routes_get.push({ route, cb });
+      return this;
     },
   };
 }
