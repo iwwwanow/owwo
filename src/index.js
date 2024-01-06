@@ -1,17 +1,12 @@
 import check_env from "../utils/check_env.utils.js";
 
 import sql from "../lib/sql.js";
-import Router from "../middleware/Router.middleware.js";
+import owwo_app from "../server/owwo_app.server.js";
 
 await check_env();
 
 await sql().init();
 
-const server = Bun.serve({
-  port: 8080,
-  async fetch(req) {
-    // return await Router(req);
-  },
-});
+const app = owwo_app();
 
-console.log(`OWWO IS RUNNING AT http://${server.hostname}:${server.port}`);
+app.listen(8080);
