@@ -6,7 +6,7 @@ class Context {
   }
 }
 
-export default function owwo_app() {
+export default function app() {
   const routes_get = [];
 
   return {

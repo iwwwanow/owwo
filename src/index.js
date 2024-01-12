@@ -1,14 +1,21 @@
 import check_env from "../utils/check_env.utils.js";
 
 import sql from "../lib/sql.js";
-import owwo_app from "../server/owwo_app.server.js";
+import app from "../server/app.server.js";
 
 await check_env();
 
 await sql().init();
 
-const app = owwo_app();
+const owwo = app();
 
-app.get("/", (c) => c.send("home")).get("/owwo", (c) => c.send("owwo"));
+owwo
+  .get("/", (c) => c.send("index"))
+  .get("/about", (c) => c.send("about"))
+  .get("/login", (c) => c.send("login"))
+  .get("/signup", (c) => c.send("signup"))
+  .get("/profile", (c) => c.send("profile"))
+  .get("/page", (c) => c.send("page"))
+  .get("/element", (c) => c.send("element"));
 
-app.listen(8080);
+owwo.listen(8080);
