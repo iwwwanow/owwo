@@ -1,1 +1,3 @@
+<% layout("LO") %>
+
 <h1>test</h1>

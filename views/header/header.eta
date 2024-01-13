@@ -1,4 +1,4 @@
-<% if (it.cookie && it.cookie.auth) it.auth = it.cookie.auth %>
+<% if (it.cookie?.auth) it.auth = it.cookie.auth %>
 
 <header class="grid">
 
@@ -6,9 +6,9 @@
 		<%~ include("../logo/logo")%>
 	</h5>
 
-	<% if (it.client && client.type === 'owner') { %>
+	<% if (it.client?.type === 'owner') { %>
 
-	<% if (client.mode === 'viewer') { %>
+	<% if (it.client?.mode === 'viewer') { %>
 	<h5 class="header_editor-link">
 		<% const query = '?mode=editor' %>
 		<% if (data.username) { %>
@@ -20,7 +20,7 @@
 		<% } %>
 	</h5>
 
-	<% } else if (client.mode === 'editor') { %>
+	<% } else if (it.client?.mode === 'editor') { %>
 
 	<h5 class="header_editor-link">
 		<% if (data.username) { %>
@@ -36,11 +36,11 @@
 	<% } %>
 
 	<div class="header_login-container">
-		<% if (it.client && client.auth && it.data && data.username === client.auth.username) { %>
+		<% if (it.client?.auth && it.data?.username === it.client?.auth?.username) { %>
 		<h5>
 			<a href="/logout">logout</a>
 		</h5>
-		<% } else if (it.client.auth) { %>
+		<% } else if (it.client?.auth) { %>
 		<h5>
 			<a
 				 href="/<%= client.auth.username %>"
@@ -57,7 +57,7 @@
 
 </header>
 
-<% if (it.client && client.type === 'owner') { %>
+<% if (it.client?.type === 'owner') { %>
 
 <% if (client.mode === 'editor') { %>
 
