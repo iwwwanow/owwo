@@ -1,8 +1,14 @@
 class Context {
   constructor() {}
-
   send(i) {
     return new Response(i);
+  }
+  html(html) {
+    return new Response(html, {
+      headers: {
+        "Content-Type": "text/html",
+      },
+    });
   }
 }
 
