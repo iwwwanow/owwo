@@ -1,6 +1,6 @@
 import check_env from "../utils/check_env.utils.js";
 
-import sql from "../lib/sql.js";
+import sql from "../data/sql/index.sql.ts";
 import app from "../server/app.server.js";
 
 import StaticController from "../controllers/static.controller.js";
