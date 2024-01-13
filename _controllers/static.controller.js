@@ -14,6 +14,7 @@ export default class Static {
     }
     return new Response(file, { headers: c.headers });
   }
+
   static async delete(c) {
     await File.remove(c.url.pathname);
     return Response.redirect(c.referer, { headers: c.headers });

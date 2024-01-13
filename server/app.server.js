@@ -1,8 +1,12 @@
 class Context {
-  constructor() {}
+  constructor(req) {
+    this.url = new URL(req.url);
+  }
+
   send(i) {
     return new Response(i);
   }
+
   html(html) {
     return new Response(html, {
       headers: {
@@ -26,7 +30,9 @@ export default function app() {
           const c = new Context(req);
 
           for (const { route, cb } of routes_get) {
-            if (route === pathname) {
+            const regex = new RegExp(route);
+
+            if (regex.test(pathname)) {
               return cb(c);
             }
           }
