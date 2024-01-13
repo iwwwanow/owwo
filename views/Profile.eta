@@ -1,4 +1,4 @@
-<% layout("LO" ) %>
+<% layout("layout") %>
 
 <div class="grid profile">
 

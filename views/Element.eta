@@ -1,4 +1,4 @@
-<% layout("LO") %>
+<% layout("layout") %>
 
 <div class="element list">
 	<%~ include("card/cardElement", { element: it.data, mode: 'original' }) %>

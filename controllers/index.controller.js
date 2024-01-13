@@ -1,8 +1,8 @@
 import render from "../middleware/render.middleware";
 
-export default class AboutController {
+export default class IndexController {
   static async index(c) {
-    const html = await render("About", {});
+    const html = await render("Index", {});
     return c.html(html);
   }
 }
