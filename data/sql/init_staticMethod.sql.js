@@ -1,6 +1,11 @@
 import { db } from "./index.sql.js";
 
 export default async function init_staticMethod() {
+  console.log("sql init");
+  // TODO при инициализации должна быть проверка по файлу. в этом файле будет вся разметка всей базы данных, всех таблиц. если чтото-недостает, контроллер дописывает это, переносит, сохраняя все данные.
+  // 	также должна быть проверка всех роутов для статических файлов.
+
+  return;
   db.exec("PRAGMA journal_mode = WAL;");
   db.exec("PRAGMA foreign_keys = ON;");
 

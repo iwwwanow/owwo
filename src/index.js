@@ -13,8 +13,8 @@ import PageController from "../controllers/page.controller.js";
 import ElementController from "../controllers/element.controller.js";
 
 await check_env();
-const sql = new SQL("new table");
-// await sql().init();
+// const sql = new SQL();
+await SQL.init();
 const owwo = app();
 
 owwo
