@@ -1,6 +1,6 @@
 import { db } from "./index.sql.js";
 
-export default async function init() {
+export default async function init_staticMethod() {
   db.exec("PRAGMA journal_mode = WAL;");
   db.exec("PRAGMA foreign_keys = ON;");
 

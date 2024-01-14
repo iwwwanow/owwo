@@ -1,4 +1,4 @@
-export default function update(input: { [key: string]: string }) {
+export default function update_query(input: { [key: string]: string }) {
   if (table_name) {
     query += `UPDATE ${table_name}\n`;
   }

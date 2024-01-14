@@ -2,7 +2,7 @@ type Columns = {
   [key: string]: string;
 };
 
-export default function tableCreate({
+export default function tableCreate_query({
   table_name,
   columns,
 }: {

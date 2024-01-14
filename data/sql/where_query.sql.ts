@@ -1,6 +1,6 @@
 type Input = { [key: string]: string };
 
-export default function where(input: Input) {
+export default function where_query(input: Input) {
   query += "WHERE ";
 
   Object.keys(input).forEach((column, i) => {

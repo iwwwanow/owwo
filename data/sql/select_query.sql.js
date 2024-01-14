@@ -1,4 +1,4 @@
-export default function select(input) {
+export default function select_query(input) {
   // TODO переделай инпут на ...args
   query = "";
 

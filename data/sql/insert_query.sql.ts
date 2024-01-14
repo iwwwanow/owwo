@@ -1,4 +1,4 @@
-export default function insert(input: { [key: string]: string }) {
+export default function insert_query(input: { [key: string]: string }) {
   if (table_name) {
     query += `INSERT INTO ${table_name} `;
   }

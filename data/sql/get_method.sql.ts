@@ -1,6 +1,6 @@
 import { db } from "./index.sql";
 
-export default function get():
+export default function get_method():
   | string
   | number
   | Boolean

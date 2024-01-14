@@ -1,6 +1,6 @@
 import check_env from "../utils/check_env.utils.js";
 
-import sql from "../data/sql/index.sql.ts";
+import SQL from "../data/sql/index.sql.ts";
 import app from "../server/app.server.js";
 
 import StaticController from "../controllers/static.controller.js";
@@ -13,7 +13,8 @@ import PageController from "../controllers/page.controller.js";
 import ElementController from "../controllers/element.controller.js";
 
 await check_env();
-await sql().init();
+const sql = new SQL("new table");
+// await sql().init();
 const owwo = app();
 
 owwo
