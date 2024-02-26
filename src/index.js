@@ -1,5 +1,7 @@
 import { App } from "./app/index.app";
 
+import { IndexController } from "./controllers/index.controller";
+
 const app = new App();
 
 app
@@ -27,6 +29,6 @@ app
     const { username } = c.params;
     return c.send(`username: ${username}`);
   })
-  .get("/", (c) => c.send("home"));
+  .get("/", IndexController.index);
 
 await app.listen(3000);
