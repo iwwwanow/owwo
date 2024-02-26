@@ -1,5 +1,7 @@
-import { App } from "./app";
+import { App } from "./app/index.app";
 
 const app = new App();
-await app.get("/", () => new Response("home"));
+
+app.get("/", (c) => c.send("home"));
+
 await app.listen(3000);

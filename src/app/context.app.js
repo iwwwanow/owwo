@@ -1,6 +1,7 @@
 export class Context {
   constructor(req) {
     this.url = new URL(req.url);
+    this.method = req.method;
   }
 
   send(i) {

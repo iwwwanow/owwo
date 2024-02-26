@@ -1,3 +1,4 @@
+import { routeCompare } from "./compare.util";
 import { Context } from "./context.app";
 
 export class App {
@@ -16,24 +17,31 @@ export class App {
     const serve = Bun.serve({
       port,
       async fetch(req) {
-        const url = new URL(req.url);
-        const pathname = url.pathname;
         const c = new Context(req);
-        for (const { route, cb } of app.routes.get) {
-          const regex = new RegExp(route);
-          if (regex.test(pathname)) {
-            return cb(c);
-          }
-        }
-        return new Response("owwo__404-page");
+        return routeCompare(c, app.routes);
       },
     });
     console.log(`OWWO IS RUNNING AT http://${serve.hostname}:${serve.port}`);
     return serve;
   }
 
-  async get(route, cb) {
+  get(route, cb) {
     this.routes.get.push({ route, cb });
+    return this;
+  }
+
+  post(route, cb) {
+    this.routes.post.push({ route, cb });
+    return this;
+  }
+
+  put(route, cb) {
+    this.routes.put.push({ route, cb });
+    return this;
+  }
+
+  delete(route, cb) {
+    this.routes.delete.push({ route, cb });
     return this;
   }
 }
