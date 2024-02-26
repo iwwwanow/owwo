@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { readdir } from "node:fs/promises";
 
 export const db = new Database("./src/data/db.sqlite", { create: true });
+db.exec("PRAGMA journal_mode = WAL;");
 
 export class SqlModel {
   static async migrate() {
@@ -11,8 +12,22 @@ export class SqlModel {
     const filePath = dir + fileName;
 
     const file = Bun.file(filePath);
-    const query = await file.text();
+    const queryText = await file.text();
 
-    console.log(query);
+    // const queryRows = queryText.split("\n\n");
+    const queryRows = queryText.split("/* statement */");
+
+    for (const row of queryRows) {
+      console.log(row);
+      const query = db.prepare(row);
+      query.run();
+    }
   }
 }
+
+// drop users
+// drop pages
+// drop elements
+// drop users pages drom pages elements
+// drop users pages trigger
+// drop pages element trigger
