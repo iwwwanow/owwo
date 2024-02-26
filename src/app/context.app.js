@@ -19,6 +19,10 @@ export class Context {
     return new Response(i);
   }
 
+  status(code) {
+    return new Response("", { status: code });
+  }
+
   html(html) {
     return new Response(html, {
       headers: {

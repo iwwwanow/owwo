@@ -1,34 +1,25 @@
 import { App } from "./app/index.app";
 
 import { IndexController } from "./controllers/index.controller";
+import { AboutController } from "./controllers/about.controller";
+import { LoginController } from "./controllers/login.controller";
+import { LogoutController } from "./controllers/logout.controller";
+import { PageController } from "./controllers/page.controller";
+import { ElementController } from "./controllers/element.controller";
+import { UserController } from "./controllers/user.controller";
 
 const app = new App();
 
 app
-  .get("/favicon.ico", (c) => {
-    return;
-  })
-  .get("/about", (c) => {
-    return c.send("about");
-  })
-  .get("/login", (c) => {
-    return c.send("login");
-  })
-  .get("/logout", (c) => {
-    return c.send("logout");
-  })
-  .get("/page/:pageId", (c) => {
-    const { pageId } = c.params;
-    return c.send(`page: ${pageId}`);
-  })
-  .get("/element/:elementId", (c) => {
-    const { elementId } = c.params;
-    return c.send(`element: ${elementId}`);
-  })
-  .get("/:username", (c) => {
-    const { username } = c.params;
-    return c.send(`username: ${username}`);
-  })
+  .get("/favicon.ico", (c) => console.log("favicon"))
+  .get("/public", (c) => console.log("public"))
+  .get("/views", (c) => console.log("views"))
+  .get("/about", AboutController.index)
+  .get("/login", LoginController.index)
+  .get("/logout", LogoutController.index)
+  .get("/page/:pageId", PageController.index)
+  .get("/element/:elementId", ElementController.index)
+  .get("/:username", UserController.index)
   .get("/", IndexController.index);
 
 await app.listen(3000);
