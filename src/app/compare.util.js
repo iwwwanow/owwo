@@ -17,15 +17,14 @@ export function routeCompare(c, appRoutes) {
     const routerArr = route.split("/");
     const pathArr = pathname.split("/");
 
+    const params = {};
+
     const regexArr = [];
     routerArr.forEach((p, index) => {
       if (p.startsWith(":")) {
         const paramName = p.substring(1);
         const paramValue = pathArr[index];
-
-        console.log(paramName, paramValue);
-
-        c.addParam(paramName, paramValue);
+        params[paramName] = paramValue;
         regexArr.push(`\\S+`);
       } else {
         regexArr.push(p);
@@ -34,7 +33,11 @@ export function routeCompare(c, appRoutes) {
 
     const regexStr = regexArr.join(`/`);
     const regex = new RegExp(regexStr);
-    if (regex.test(pathname)) return cb(c);
+
+    if (regex.test(pathname)) {
+      c.addParams(params);
+      return cb(c);
+    }
   }
 
   console.log(regex);

@@ -4,6 +4,10 @@ export class Context {
     this.method = req.method;
   }
 
+  addParams(params) {
+    this.params = params;
+  }
+
   addParam(name, value) {
     if (!name) throw new Error("Need paramName to set it to context");
     if (!value) throw new Error("Need paramValue to set it to context");
