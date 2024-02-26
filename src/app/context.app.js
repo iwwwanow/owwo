@@ -30,4 +30,8 @@ export class Context {
       },
     });
   }
+
+  sendFile(path) {
+    return new Response(Bun.file(path));
+  }
 }
