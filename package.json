@@ -18,9 +18,6 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "dev": "bun run --watch src/index.js",
-    "format": "bun run src/format.js",
-    "clean": "bun run src/clean.js",
-    "cleanUsers": "bun run src/cleanUsers.js"
+    "dev": "bun run --watch src/index.js"
   }
 }
