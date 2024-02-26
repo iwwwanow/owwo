@@ -19,11 +19,19 @@ export class Context {
     return new Response(i);
   }
 
+  status(code) {
+    return new Response("", { status: code });
+  }
+
   html(html) {
     return new Response(html, {
       headers: {
         "Content-Type": "text/html",
       },
     });
+  }
+
+  sendFile(path) {
+    return new Response(Bun.file(path));
   }
 }

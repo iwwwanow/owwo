@@ -40,10 +40,9 @@ export function routeCompare(c, appRoutes) {
     }
   }
 
-  console.log(regex);
-  console.log(pathname);
   const error = new Error("Not found");
   error.code = 404;
   throw error;
+
   // return new Response("owwo__404-page");
 }

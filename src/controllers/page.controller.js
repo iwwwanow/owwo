@@ -1,8 +1,9 @@
-import render from "../middleware/render.middleware";
+import { EtaModel } from "../models/Eta.model";
 
-export default class PageController {
+export class PageController {
   static async index(c) {
-    const html = await render("Page", {});
+    // const params = await Context.getParams(c)
+    const html = await EtaModel.getHtml("Page", {});
     return c.html(html);
   }
 }

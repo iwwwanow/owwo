@@ -1,9 +1,9 @@
 import { EtaModel } from "../models/Eta.model";
 
-export class IndexController {
+export class LogoutController {
   static async index(c) {
     // const params = await Context.getParams(c)
-    const html = await EtaModel.getHtml("Index", {});
+    const html = await EtaModel.getHtml("Logout", {});
     return c.html(html);
   }
 }
