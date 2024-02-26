@@ -1,0 +1,14 @@
+<% layout("layout") %>
+
+<div class="grid">
+
+	<div>
+		<h6 style="color: var(--blue);">
+			<%= e.code %>
+		</h6>
+		<h5 style="color: var(--red);">
+			<%= e %>
+		</h5>
+	</div>
+
+</div>
