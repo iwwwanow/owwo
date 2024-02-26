@@ -19,8 +19,6 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.js",
-    "format": "bun run src/format.js",
-    "clean": "bun run src/clean.js",
-    "cleanUsers": "bun run src/cleanUsers.js"
+    "start": "NODE_ENV=production bun run src/index.js"
   }
 }
