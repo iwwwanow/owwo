@@ -15,7 +15,7 @@ export class SqlModel {
     const queryText = await file.text();
 
     // const queryRows = queryText.split("\n\n");
-    const queryRows = queryText.split("/* statement */");
+    const queryRows = queryText.split("/* *** */");
 
     for (const row of queryRows) {
       console.log(row);
@@ -24,10 +24,3 @@ export class SqlModel {
     }
   }
 }
-
-// drop users
-// drop pages
-// drop elements
-// drop users pages drom pages elements
-// drop users pages trigger
-// drop pages element trigger
