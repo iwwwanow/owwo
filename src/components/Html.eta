@@ -1,0 +1,5 @@
+<% layout("layout") %>
+<% if (it.data?.html) { %>
+<%= console.log(data.html) %>
+<%= data.html %>
+<% } %>

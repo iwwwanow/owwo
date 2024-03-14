@@ -6,13 +6,8 @@ export class AboutController {
     const readmePath = "./README.md";
     const readmeMarkdown = new Markdown({ filePath: readmePath });
     const readmeHtml = await readmeMarkdown.getHtml();
-
-    console.log(readmeHtml);
-
+    const aboutPageHtml = await EtaModel.getHtml("Html", { html: readmeHtml });
     // const params = await Context.getParams(c)
-    // const html = await EtaModel.getHtml("About", {});
-    // const html =
-
-    return c.html(html);
+    return c.html(aboutPageHtml);
   }
 }

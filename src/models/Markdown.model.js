@@ -10,7 +10,6 @@ export class Markdown {
   async getHtml() {
     const { filePath } = this;
     if (filePath) {
-      console.log(filePath);
       const file = Bun.file(filePath);
       this.markdownString = await file.text();
       this.htmlString = await marked.parse(this.markdownString);

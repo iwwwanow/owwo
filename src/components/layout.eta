@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="theme-color" content="#e0e0e0" />
+	<title>OWWO</title>
+
+	<link
+				rel="apple-touch-icon"
+				sizes="180x180"
+				href="/public/favicon/apple-touch-icon.png" />
+	<link
+				rel="icon"
+				type="image/png"
+				sizes="32x32"
+				href="/public/favicon/favicon-32x32.png" />
+	<link
+				rel="icon"
+				type="image/png"
+				sizes="16x16"
+				href="/public/favicon/favicon-16x16.png" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+				href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300;1,700&display=swap"
+				rel="stylesheet" />
+	<link
+				href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+				rel="stylesheet" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+	<link rel="manifest" href="/public/favicon/site.webmanifest" />
+
+	<link rel="stylesheet" href="/public/style/reset.css" />
+	<link rel="stylesheet" href="/public/style/style.css" />
+	<link rel="stylesheet" href="/public/style/scrollbar.css" />
+	<link rel="stylesheet" href="/public/style/border.css" />
+
+	<link rel="stylesheet" href="/public/style/color.css" />
+	<link rel="stylesheet" href="/public/style/font.css" />
+
+	<link rel="stylesheet" href="/components/layout.css" />
+
+	<link rel="stylesheet" href="/components/Index.css" />
+	<link rel="stylesheet" href="/components/Profile.css" />
+	<link rel="stylesheet" href="/components/Page.css" />
+	<link rel="stylesheet" href="/components/Element.css" />
+	<link rel="stylesheet" href="/components/Login.css" />
+	<link rel="stylesheet" href="/components/About.css" />
+
+	<link rel="stylesheet" href="/components/avatar/avatar.css" />
+	<link rel="stylesheet" href="/components/author/author.css" />
+	<link rel="stylesheet" href="/components/button/button.css" />
+	<link rel="stylesheet" href="/components/card/card.css" />
+	<link rel="stylesheet" href="/components/fieldset/fieldset.css" />
+	<link rel="stylesheet" href="/components/footer/footer.css" />
+	<link rel="stylesheet" href="/components/formMeta/formMeta.css" />
+	<link rel="stylesheet" href="/components/header/header.css" />
+	<link rel="stylesheet" href="/components/input/input.css" />
+	<link rel="stylesheet" href="/components/textarea/textarea.css" />
+
+	<% if (it.data && data.src && data.src.style) { %>
+	<link rel="stylesheet" href="<%= data.src.style %>" />
+	<% } %>
+</head>
+
+<body>
+	<div class="wrapper">
+		<%~ include("header/header", it )%> <%~ body %> <%~
+      include("footer/footer", it )%>
+	</div>
+
+	<% if (it.data && data.src && data.src.script) { %>
+	<script src="<%= data.src.script %>"></script>
+	<% } %>
+</body>
+
+</html>
