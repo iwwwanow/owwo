@@ -1,4 +1,8 @@
 <% layout("layout") %>
 <% if (it.data?.html) { %>
-<%~ data.html %>
+<div class="grid">
+	<div style="max-width: 602px; grid-column: 1/-1;">
+		<%~ data.html %>
+	</div>
+</div>
 <% } %>
