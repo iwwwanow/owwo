@@ -1,9 +1,14 @@
+import { Markdown } from "../models/Markdown.model";
 import { EtaModel } from "../models/Eta.model";
 
 export class AboutController {
   static async index(c) {
-    // const params = await Context.getParams(c)
-    const html = await EtaModel.getHtml("About", {});
-    return c.html(html);
+    const readmePath = "./README.md";
+    const readmeMarkdown = new Markdown({ filePath: readmePath });
+    const readmeHtml = await readmeMarkdown.getHtml();
+    const aboutPageHtml = await EtaModel.getHtml("Html", {
+      data: { html: readmeHtml },
+    });
+    return c.html(aboutPageHtml);
   }
 }

@@ -15,7 +15,7 @@ const app = new App();
 app
   .get("/favicon.ico", StaticController.sendFile)
   .get("/public", StaticController.sendFile)
-  .get("/views", StaticController.sendFile);
+  .get("/components", StaticController.sendFile);
 
 app
   .get("/about", AboutController.index)
