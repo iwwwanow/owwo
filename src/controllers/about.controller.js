@@ -6,8 +6,9 @@ export class AboutController {
     const readmePath = "./README.md";
     const readmeMarkdown = new Markdown({ filePath: readmePath });
     const readmeHtml = await readmeMarkdown.getHtml();
-    const aboutPageHtml = await EtaModel.getHtml("Html", { html: readmeHtml });
-    // const params = await Context.getParams(c)
+    const aboutPageHtml = await EtaModel.getHtml("Html", {
+      data: { html: readmeHtml },
+    });
     return c.html(aboutPageHtml);
   }
 }
