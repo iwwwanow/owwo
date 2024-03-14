@@ -6,21 +6,26 @@ db.exec("PRAGMA journal_mode = WAL;");
 
 export class SqlModel {
   static async migrate() {
-    const dir = "./src/migrations/";
-    const files = await readdir(dir);
-    const fileName = files.at(-1);
-    const filePath = dir + fileName;
+    const migrationsPath = "./src/migrations/";
+    const migrationsDirs = await readdir(migrationsPath);
+    const migrationsLastDir = migrationsDirs.at(-1);
+    const migrationsLastDirPath = migrationsPath + migrationsLastDir;
 
-    const file = Bun.file(filePath);
-    const queryText = await file.text();
+    const migrationFilenames = await readdir(migrationsLastDirPath);
 
-    // const queryRows = queryText.split("\n\n");
-    const queryRows = queryText.split("/* *** */");
+    for (const fileName of migrationFilenames) {
+      const filePath = migrationsLastDirPath + "/" + fileName;
 
-    for (const row of queryRows) {
-      console.log(row);
-      const query = db.prepare(row);
-      query.run();
+      console.log(filePath);
+
+      const file = Bun.file(filePath);
+      const queryText = await file.text();
+      const queryRows = queryText.split("/* *** */");
+      for (const row of queryRows) {
+        console.log(row);
+        const query = db.prepare(row);
+        query.run();
+      }
     }
   }
 }
