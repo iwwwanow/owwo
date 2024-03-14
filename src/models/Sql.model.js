@@ -15,14 +15,10 @@ export class SqlModel {
 
     for (const fileName of migrationFilenames) {
       const filePath = migrationsLastDirPath + "/" + fileName;
-
-      console.log(filePath);
-
-      const file = Bun.file(filePath);
-      const queryText = await file.text();
-      const queryRows = queryText.split("/* *** */");
-      for (const row of queryRows) {
-        console.log(row);
+      const fileContent = Bun.file(filePath);
+      const fileText = await fileContent.text();
+      const queries = fileText.split("/* *** */");
+      for (const row of queries) {
         const query = db.prepare(row);
         query.run();
       }
