@@ -1,4 +1,5 @@
 import { EtaModel } from "../models/Eta.model";
+import { UserModel } from "../models/User.model";
 
 export class UserController {
   static async index(c) {
@@ -10,10 +11,22 @@ export class UserController {
 
   static async create(c) {
     const data = await c.getData();
+    const { username, password, ["confirm-password"]: confirmPassword } = data;
 
-    // TODO ВАЛИДАЦИЯ
+    if (password !== confirmPassword) {
+      const error = new Error("password mismatch");
+      throw error;
+    }
 
-    console.log(data);
+    try {
+      await UserModel.set(data);
+    } catch (e) {
+      // TODO redirect to signup with error
+      // TODO redirect with current input username
+      throw e;
+    }
+
+    // TODO redirect to index
     return c.html("create");
   }
 }

@@ -24,7 +24,7 @@
 		})%>
 
 		<%~ include("input/inputText", {
-		name: 'confirm',
+		name: 'confirm-password',
 		type: 'password',
 		placeholder: 'CONFIRM PASSWORD',
 		id: 'signup_input-confirm-password',
