@@ -11,7 +11,6 @@ CREATE TABLE
     ),
     password TEXT NOT NULL CHECK (
       length (password) >= 8
-      AND length (password) <= 64
       AND password NOT GLOB '*[^ -~]+$*'
     ),
     title TEXT CHECK (length (title) <= 64),

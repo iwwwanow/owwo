@@ -3,6 +3,7 @@
   "module": "src/index.js",
   "type": "module",
   "devDependencies": {
+    "@types/bun": "^1.0.10",
     "@types/uuid": "^9.0.5",
     "bun-types": "latest"
   },
