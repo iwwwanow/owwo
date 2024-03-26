@@ -1,4 +1,4 @@
-import { db } from "./Sql.model";
+import { db } from "./sql.model";
 
 export class ProtoModel {
   static queryDir = "./src/sql";
@@ -13,7 +13,8 @@ export class ProtoModel {
   static async queryRun(queryName, params) {
     const queryText = await this.getQueryText(queryName);
     const query = db.query(queryText);
-    await query.run(...params);
+    query.run(...params);
+    query.finalize();
     return;
   }
 }

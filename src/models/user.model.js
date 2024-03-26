@@ -1,6 +1,6 @@
 // import crypto from "crypto";
 
-import { ProtoModel } from "./Proto.model";
+import { ProtoModel } from "./proto.model";
 import { validatePasswordUtil } from "../utils/validate-password.utils";
 import { validateUsernameUtil } from "../utils/validate-username.utils";
 
@@ -18,7 +18,5 @@ export class UserModel extends ProtoModel {
       username,
       await Bun.password.hash(password),
     ]);
-
-    console.log("afterQuery");
   }
 }

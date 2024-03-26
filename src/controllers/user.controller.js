@@ -1,5 +1,5 @@
-import { EtaModel } from "../models/Eta.model";
-import { UserModel } from "../models/User.model";
+import { EtaModel } from "../models/eta.model";
+import { UserModel } from "../models/user.model";
 
 export class UserController {
   static async index(c) {
@@ -21,12 +21,13 @@ export class UserController {
     try {
       await UserModel.set(data);
     } catch (e) {
+      console.error(e);
       // TODO redirect to signup with error
       // TODO redirect with current input username
+      return c.redirect("signup");
       throw e;
     }
 
-    // TODO redirect to index
-    return c.html("create");
+    return c.redirect("login");
   }
 }

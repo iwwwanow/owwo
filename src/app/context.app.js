@@ -35,6 +35,10 @@ export class Context {
     });
   }
 
+  redirect(path) {
+    return Response.redirect(path);
+  }
+
   async #getFormData() {
     const formData = await this.#req.formData();
     return formData;
