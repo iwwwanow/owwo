@@ -5,7 +5,8 @@
 	<form
 				method="POST"
 				action="/signup"
-				class="login__form">
+				class="login__form"
+				enctype="multipart/form-data">
 
 		<%~ include("input/inputText", {
 		name: 'username',

@@ -7,4 +7,13 @@ export class UserController {
     const html = await EtaModel.getHtml("Profile", {});
     return c.html(html);
   }
+
+  static async create(c) {
+    const data = await c.getData();
+
+    // TODO ВАЛИДАЦИЯ
+
+    console.log(data);
+    return c.html("create");
+  }
 }
