@@ -34,6 +34,7 @@ export function routeCompare(c, appRoutes) {
     const regexStr = regexArr.join(`/`);
     const regex = new RegExp(regexStr);
 
+    // TODO что делает эта функция???
     if (regex.test(pathname)) {
       c.addParams(params);
       return cb(c);

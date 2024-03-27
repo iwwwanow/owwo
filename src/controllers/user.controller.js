@@ -1,3 +1,4 @@
+import * as jose from "jose";
 import { EtaModel } from "../models/eta.model";
 import { UserModel } from "../models/user.model";
 
@@ -15,7 +16,15 @@ export class UserController {
     try {
       const user = await UserModel.get(data);
       const { user_id: userId, username } = user;
-      console.log(user);
+
+      const jwtSecret = process.env.JWT_SECRET;
+      const secret = new TextEncoder().encode(jwtSecret);
+      const jwt = await new jose.SignJWT({ userId })
+        .setProtectedHeader({ alg: "HS256" })
+        .setExpirationTime("168h")
+        .sign(secret);
+
+      // console.log(jwt);
 
       return c.redirect("/");
     } catch (e) {
