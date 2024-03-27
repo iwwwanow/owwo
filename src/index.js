@@ -1,3 +1,5 @@
+import { checkEnvUtil } from "./utils/check_env.utils";
+
 import { App } from "./app/index.app";
 
 import { StaticController } from "./controllers/static.controller";
@@ -9,6 +11,8 @@ import { SignupController } from "./controllers/signup.controller";
 import { PageController } from "./controllers/page.controller";
 import { ElementController } from "./controllers/element.controller";
 import { UserController } from "./controllers/user.controller";
+
+await checkEnvUtil();
 
 const app = new App();
 
