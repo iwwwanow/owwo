@@ -5,12 +5,18 @@ import { App } from "./app/index.app";
 import { StaticController } from "./controllers/static.controller";
 import { IndexController } from "./controllers/index.controller";
 import { AboutController } from "./controllers/about.controller";
-import { LoginController } from "./controllers/login.controller";
-import { LogoutController } from "./controllers/logout.controller";
-import { SignupController } from "./controllers/signup.controller";
+import { AuthController } from "./controllers/auth.controller";
 import { PageController } from "./controllers/page.controller";
 import { ElementController } from "./controllers/element.controller";
 import { UserController } from "./controllers/user.controller";
+
+import { HomeView } from "./views/home.view";
+import { AboutView } from "./views/about.view";
+import { LoginView } from "./views/login.view";
+import { SignupView } from "./views/signup.view";
+import { UserView } from "./views/user.view";
+import { PageView } from "./views/page.view";
+import { ElementView } from "./views/element.view";
 
 import { checkAuthMiddleware } from "./middleware/check-auth.middleware";
 
@@ -20,21 +26,27 @@ const app = new App();
 
 app.use(checkAuthMiddleware);
 
+// STATIC
 app
   .get("/favicon.ico", StaticController.sendFile)
   .get("/public", StaticController.sendFile)
   .get("/components", StaticController.sendFile);
 
+// VIEWS
 app
-  .get("/about", AboutController.index)
-  .get("/login", LoginController.index)
-  .get("/logout", LogoutController.index)
-  .get("/signup", SignupController.index)
-  .get("/page/:pageId", PageController.index)
-  .get("/element/:elementId", ElementController.index)
-  .get("/:username", UserController.index)
-  .get("/", IndexController.index);
+  .get("/about", AboutView.index)
+  .get("/login", LoginView.index)
+  .get("/signup", SignupView.index)
+  .get("/page/:pageId", PageView.index)
+  .get("/element/:elementId", ElementView.index)
+  .get("/:username/delete", UserView.delete)
+  .get("/:username", UserView.index)
+  .get("/", HomeView.index);
 
-app.post("/login", UserController.login).post("/signup", UserController.create);
+// CONTROLLERS
+app
+  .get("/logout", AuthController.logout)
+  .post("/login", AuthController.login)
+  .post("/signup", UserController.create);
 
 await app.listen(3000);
