@@ -27,4 +27,6 @@ app
   .get("/:username", UserController.index)
   .get("/", IndexController.index);
 
+app.post("/login", UserController.login).post("/signup", UserController.create);
+
 await app.listen(3000);

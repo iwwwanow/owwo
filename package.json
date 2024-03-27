@@ -3,6 +3,7 @@
   "module": "src/index.js",
   "type": "module",
   "devDependencies": {
+    "@types/bun": "^1.0.10",
     "@types/uuid": "^9.0.5",
     "bun-types": "latest"
   },
@@ -10,6 +11,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "bun": "^1.0.35",
     "eta": "^3.4.0",
     "isomorphic-dompurify": "^1.9.0",
     "jose": "^5.0.1",

@@ -1,3 +1,3 @@
-import { SqlModel } from "../models/Sql.model";
+import { SqlModel } from "../models/sql.model";
 
 await SqlModel.migrate();

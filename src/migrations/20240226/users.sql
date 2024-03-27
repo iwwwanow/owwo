@@ -11,10 +11,9 @@ CREATE TABLE
     ),
     password TEXT NOT NULL CHECK (
       length (password) >= 8
-      AND length (password) <= 64
       AND password NOT GLOB '*[^ -~]+$*'
     ),
     title TEXT CHECK (length (title) <= 64),
     description TEXT CHECK (length (description) <= 160),
-    cover_blob BLOB
+    avatar_blob BLOB
   );

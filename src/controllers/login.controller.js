@@ -1,4 +1,4 @@
-import { EtaModel } from "../models/Eta.model";
+import { EtaModel } from "../models/eta.model";
 
 export class LoginController {
   static async index(c) {

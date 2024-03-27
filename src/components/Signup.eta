@@ -5,7 +5,8 @@
 	<form
 				method="POST"
 				action="/signup"
-				class="login__form">
+				class="login__form"
+				enctype="multipart/form-data">
 
 		<%~ include("input/inputText", {
 		name: 'username',
@@ -23,7 +24,7 @@
 		})%>
 
 		<%~ include("input/inputText", {
-		name: 'confirm',
+		name: 'confirm-password',
 		type: 'password',
 		placeholder: 'CONFIRM PASSWORD',
 		id: 'signup_input-confirm-password',

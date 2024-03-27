@@ -1,5 +1,5 @@
-import { Markdown } from "../models/Markdown.model";
-import { EtaModel } from "../models/Eta.model";
+import { Markdown } from "../models/markdown.model";
+import { EtaModel } from "../models/eta.model";
 
 export class AboutController {
   static async index(c) {

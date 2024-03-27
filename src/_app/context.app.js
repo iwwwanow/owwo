@@ -1,11 +1,7 @@
 export class Context {
-  #req;
-
   constructor(req) {
-    this.#req = req;
-    this.method = req.method;
     this.url = new URL(req.url);
-    this.body = req.body;
+    this.method = req.method;
   }
 
   addParams(params) {
@@ -33,22 +29,6 @@ export class Context {
         "Content-Type": "text/html",
       },
     });
-  }
-
-  redirect(path) {
-    return Response.redirect(path);
-  }
-
-  async #getFormData() {
-    const formData = await this.#req.formData();
-    return formData;
-  }
-
-  async getData() {
-    const formData = await this.#getFormData();
-    const json = JSON.stringify(formData);
-    const data = await JSON.parse(json);
-    return data;
   }
 
   sendFile(path) {
