@@ -14,6 +14,7 @@ export class UserController {
     const { username, password } = data;
     try {
       const user = await UserModel.get(data);
+      const { user_id: userId, username } = user;
       console.log(user);
       return c.redirect("/");
     } catch (e) {
