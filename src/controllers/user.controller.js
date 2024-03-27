@@ -1,5 +1,6 @@
 import { EtaModel } from "../models/eta.model";
 import { UserModel } from "../models/user.model";
+import { JwtUtils } from "../utils/jwt.utils";
 
 export class UserController {
   static async index(c) {
@@ -14,7 +15,9 @@ export class UserController {
     const { username, password } = data;
     try {
       const user = await UserModel.get(data);
-      console.log(user);
+      const { user_id: userId, username } = user;
+      const jwt = await JwtUtils.createJwt({ userId });
+      c.setHeader("Set-Cookie", `auth=${jwt}`);
       return c.redirect("/");
     } catch (e) {
       console.error(e);
@@ -34,8 +37,10 @@ export class UserController {
       await UserModel.set(data);
     } catch (e) {
       console.error(e);
+
       // TODO redirect to signup with error
       // TODO redirect with current input username
+
       return c.redirect("signup");
       throw e;
     }

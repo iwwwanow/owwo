@@ -1,7 +1,9 @@
-import { routeCompare } from "./compare.util";
+import { routeCompare } from "./compare.app";
 import { Context } from "./context.app";
 
 export class App {
+  #middlewares = [];
+
   constructor(port) {
     this.port = port;
     this.routes = {
@@ -12,12 +14,18 @@ export class App {
     };
   }
 
+  use(middleware) {
+    this.#middlewares.push(middleware);
+  }
+
   async listen(port) {
     const app = this;
+    const middlewares = this.#middlewares;
     const serve = Bun.serve({
       port,
       async fetch(req) {
         const c = new Context(req);
+        for (const middleware of middlewares) await middleware(c);
         return routeCompare(c, app.routes);
       },
     });

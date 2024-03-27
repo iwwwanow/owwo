@@ -1,3 +1,5 @@
+import { checkEnvUtil } from "./utils/check-env.utils";
+
 import { App } from "./app/index.app";
 
 import { StaticController } from "./controllers/static.controller";
@@ -10,7 +12,13 @@ import { PageController } from "./controllers/page.controller";
 import { ElementController } from "./controllers/element.controller";
 import { UserController } from "./controllers/user.controller";
 
+import { checkAuthMiddleware } from "./middleware/check-auth.middleware";
+
+await checkEnvUtil();
+
 const app = new App();
+
+app.use(checkAuthMiddleware);
 
 app
   .get("/favicon.ico", StaticController.sendFile)

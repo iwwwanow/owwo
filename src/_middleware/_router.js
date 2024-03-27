@@ -6,7 +6,7 @@ import PageController from "../controllers/page.controller.js";
 import Element from "../controllers/element.controller.js";
 
 import Static from "../controllers/static.controller.js";
-import JWT from "../middleware/jwt.middleware.js";
+import JWT from "../utils/jwt.utils.js";
 
 export default async function Router(req) {
   const c = {

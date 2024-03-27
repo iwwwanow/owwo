@@ -8,6 +8,12 @@ export class UserModel extends ProtoModel {
   static async get(params) {
     const { username, password } = params;
     const user = await super.queryGet("get-user", [username]);
+
+    if (!user) {
+      const error = new Error("user not exist");
+      throw error;
+    }
+
     const { password: hashedPassword } = user;
     const isPasswordMatch = await Bun.password.verify(password, hashedPassword);
     if (isPasswordMatch) {
