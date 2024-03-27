@@ -1,6 +1,6 @@
-import * as jose from "jose";
 import { EtaModel } from "../models/eta.model";
 import { UserModel } from "../models/user.model";
+import { JwtUtils } from "../utils/jwt.utils";
 
 export class UserController {
   static async index(c) {
@@ -16,16 +16,8 @@ export class UserController {
     try {
       const user = await UserModel.get(data);
       const { user_id: userId, username } = user;
-
-      const jwtSecret = process.env.JWT_SECRET;
-      const secret = new TextEncoder().encode(jwtSecret);
-      const jwt = await new jose.SignJWT({ userId })
-        .setProtectedHeader({ alg: "HS256" })
-        .setExpirationTime("168h")
-        .sign(secret);
-
-      // console.log(jwt);
-
+      const jwt = await JwtUtils.createJwt({ userId });
+      c.setHeader("Set-Cookie", `auth=${jwt}`);
       return c.redirect("/");
     } catch (e) {
       console.error(e);
@@ -45,8 +37,10 @@ export class UserController {
       await UserModel.set(data);
     } catch (e) {
       console.error(e);
+
       // TODO redirect to signup with error
       // TODO redirect with current input username
+
       return c.redirect("signup");
       throw e;
     }

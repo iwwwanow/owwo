@@ -1,5 +1,3 @@
-import check_env from "../utils/check_env.utils.js";
-
 import SQL from "../data/sql/index.sql.ts";
 import app from "../server/app.server.js";
 
@@ -12,8 +10,6 @@ import UserController from "../controllers/user.controller.js";
 import PageController from "../controllers/page.controller.js";
 import ElementController from "../controllers/element.controller.js";
 
-await check_env();
-// const sql = new SQL();
 await SQL.init();
 const owwo = app();
 

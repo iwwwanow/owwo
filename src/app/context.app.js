@@ -1,13 +1,38 @@
 export class Context {
   #req;
   #status = 200;
+  #statusText = "";
   #headers = {};
+  #cookies;
+  #options = {
+    status: this.#status,
+    statusText: this.#statusText,
+    headers: this.#headers,
+  };
+  #auth = {};
 
   constructor(req) {
     this.#req = req;
     this.method = req.method;
     this.url = new URL(req.url);
+    this.headers = req.headers;
     this.body = req.body;
+    this.#cookies = this.#getCookieObjFromReq(this.headers);
+  }
+
+  #getCookieObjFromReq(headers) {
+    if (headers) {
+      const cookieObj = {};
+      const cookieStr = headers.get("cookie");
+      if (cookieStr) {
+        const cookieArr = cookieStr.split("; ");
+        for (const cookieStr of cookieArr) {
+          const [cookieName, cookieValue] = cookieStr.split("=");
+          cookieObj[cookieName] = cookieValue;
+        }
+      }
+      return cookieObj;
+    }
   }
 
   setHeader(name, value) {
@@ -15,6 +40,30 @@ export class Context {
     if (!value)
       throw new Error("need header value to set new header in context");
     this.#headers[name] = value;
+  }
+
+  getHeader(name) {
+    if (!name) throw new Error("need header name to get header in context");
+    const header = this.headers.get(name);
+    return header;
+  }
+
+  getCookie(name) {
+    if (!name) throw new Error("need cookie name to get cookie in context");
+    const cookie = this.#cookies[name];
+    return cookie || null;
+  }
+
+  setAuthUserId(userId) {
+    this.#auth.userId = userId;
+  }
+
+  resetAuth() {
+    this.#auth = {};
+    this.setHeader(
+      "Set-Cookie",
+      "auth=deleted; expires=Thu, 16 Jul 1998 00:00:00 GMT"
+    );
   }
 
   async #getFormData() {
@@ -54,15 +103,15 @@ export class Context {
     return this.#response(html);
   }
 
-  redirect(path) {
-    return Response.redirect(path);
-  }
-
   sendFile(path) {
     return this.#response(Bun.file(path));
   }
 
+  redirect(path) {
+    return Response.redirect(path, this.#options);
+  }
+
   #response(body) {
-    return new Response(body, { headers: this.#headers, status: this.#status });
+    return new Response(body, this.#options);
   }
 }
