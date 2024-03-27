@@ -15,5 +15,5 @@ CREATE TABLE
     ),
     title TEXT CHECK (length (title) <= 64),
     description TEXT CHECK (length (description) <= 160),
-    cover_blob BLOB
+    avatar_blob BLOB
   );

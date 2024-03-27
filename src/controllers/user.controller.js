@@ -9,6 +9,18 @@ export class UserController {
     return c.html(html);
   }
 
+  static async login(c) {
+    const data = await c.getData();
+    const { username, password } = data;
+    try {
+      const user = await UserModel.get(data);
+      console.log(user);
+      return c.redirect("/");
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   static async create(c) {
     const data = await c.getData();
     const { username, password, ["confirm-password"]: confirmPassword } = data;
@@ -27,7 +39,6 @@ export class UserController {
       return c.redirect("signup");
       throw e;
     }
-
     return c.redirect("login");
   }
 }
