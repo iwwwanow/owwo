@@ -23,6 +23,12 @@ app
   .get("/public", StaticController.sendFile)
   .get("/components", StaticController.sendFile);
 
+// ACTIONS
+app
+  .get("/logout", AuthController.logout)
+  .post("/login", AuthController.login)
+  .post("/signup", UserController.create);
+
 // RENDERS
 app
   .get("/about", IndexController.renderAboutPage)
@@ -33,11 +39,5 @@ app
   .get("/:username/delete", UserController.renderUserDeletePage)
   .get("/:username", UserController.renderUserPage)
   .get("/", IndexController.renderHomePage);
-
-// ACTIONS
-app
-  .get("/logout", AuthController.logout)
-  .post("/login", AuthController.login)
-  .post("/signup", UserController.create);
 
 await app.listen(3000);

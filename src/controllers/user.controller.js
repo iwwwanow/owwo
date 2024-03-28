@@ -1,10 +1,12 @@
 import { UserModel } from "../models/user.model";
 import { JwtUtils } from "../utils/jwt.utils";
 import { UserView } from "../views/user.view";
+import { validatePasswordUtil } from "../utils/validate-password.utils";
+import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class UserController {
   static async renderUserPage(c) {
-    const html = await UserView.getAboutPageHtml(c);
+    const html = await UserView.getUserPageHtml(c);
     return c.html(html);
   }
 
@@ -22,8 +24,15 @@ export class UserController {
       throw error;
     }
 
+    validatePasswordUtil(password);
+    validateUsernameUtil(username);
+
     try {
-      await UserModel.set(data);
+      await UserModel.set({
+        userId: self.crypto.randomUUID(),
+        username,
+        password: await Bun.password.hash(password),
+      });
     } catch (e) {
       console.error(e);
       // TODO redirect with current input username
