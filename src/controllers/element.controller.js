@@ -1,9 +1,8 @@
-import { EtaModel } from "../models/eta.model";
+import { ElementView } from "../views/element.view";
 
 export class ElementController {
-  static async index(c) {
-    // const params = await Context.getParams(c)
-    const html = await EtaModel.getHtml("Element", {});
+  static async renderElementPage(c) {
+    const html = await ElementView.getElementPageHtml(c);
     return c.html(html);
   }
 }

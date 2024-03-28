@@ -1,9 +1,8 @@
-import { EtaModel } from "../models/eta.model";
+import { PageView } from "../views/page.view";
 
 export class PageController {
-  static async index(c) {
-    // const params = await Context.getParams(c)
-    const html = await EtaModel.getHtml("Page", {});
+  static async renderPagePage(c) {
+    const html = await PageView.getPageHtml(c);
     return c.html(html);
   }
 }

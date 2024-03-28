@@ -1,10 +1,14 @@
-import { EtaModel } from "../models/eta.model";
+import { HomeView } from "../views/home.view";
+import { AboutView } from "../views/about.view";
 
 export class IndexController {
-  static async index(c) {
-    // const params = await Context.getParams(c);
+  static async renderHomePage(c) {
+    const html = await HomeView.getHomePageHtml(c);
+    return c.html(html);
+  }
 
-    const html = await EtaModel.getHtml("Index", {});
+  static async renderAboutPage(c) {
+    const html = await AboutView.getAboutPageHtml(c);
     return c.html(html);
   }
 }

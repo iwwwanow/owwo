@@ -1,27 +1,18 @@
-import { EtaModel } from "../models/eta.model";
 import { UserModel } from "../models/user.model";
 import { JwtUtils } from "../utils/jwt.utils";
+import { UserView } from "../views/user.view";
+import { validatePasswordUtil } from "../utils/validate-password.utils";
+import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class UserController {
-  static async index(c) {
-    // const params = await Context.getParams(c)
-    console.log(c);
-    const html = await EtaModel.getHtml("Profile", {});
+  static async renderUserPage(c) {
+    const html = await UserView.getUserPageHtml(c);
     return c.html(html);
   }
 
-  static async login(c) {
-    const data = await c.getData();
-    const { username, password } = data;
-    try {
-      const user = await UserModel.get(data);
-      const { user_id: userId, username } = user;
-      const jwt = await JwtUtils.createJwt({ userId });
-      c.setHeader("Set-Cookie", `auth=${jwt}`);
-      return c.redirect("/");
-    } catch (e) {
-      console.error(e);
-    }
+  static async renderUserDeletePage(c) {
+    const html = await UserView.getUserDeletePageHtml(c);
+    return c.html(html);
   }
 
   static async create(c) {
@@ -33,16 +24,19 @@ export class UserController {
       throw error;
     }
 
+    validatePasswordUtil(password);
+    validateUsernameUtil(username);
+
     try {
-      await UserModel.set(data);
+      await UserModel.set({
+        userId: self.crypto.randomUUID(),
+        username,
+        password: await Bun.password.hash(password),
+      });
     } catch (e) {
       console.error(e);
-
-      // TODO redirect to signup with error
       // TODO redirect with current input username
-
       return c.redirect("signup");
-      throw e;
     }
     return c.redirect("login");
   }

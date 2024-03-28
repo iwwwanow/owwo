@@ -4,7 +4,7 @@ import app from "../server/app.server.js";
 import StaticController from "../controllers/static.controller.js";
 import IndexController from "../controllers/index.controller.js";
 import AboutController from "../controllers/about.controller.js";
-import LoginController from "../controllers/login.controller.js";
+import LoginController from "../controllers/auth.controller.js";
 import SignupController from "../controllers/signup.controller.js";
 import UserController from "../controllers/user.controller.js";
 import PageController from "../controllers/page.controller.js";
