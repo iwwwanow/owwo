@@ -1,6 +1,17 @@
-import { EtaModel } from "../models/eta.model";
+import { LoginView } from "../views/login.view";
+import { SignupView } from "../views/signup.view";
 
 export class AuthController {
+  static async renderLoginPage(c) {
+    const html = await LoginView.getLoginPageHtml(c);
+    return c.html(html);
+  }
+
+  static async renderSignupPage(c) {
+    const html = await SignupView.getSignupPageHtml(c);
+    return c.html(html);
+  }
+
   static async login(c) {
     const data = await c.getData();
     const { username, password } = data;
