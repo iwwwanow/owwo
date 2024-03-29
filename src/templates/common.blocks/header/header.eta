@@ -1,0 +1,5 @@
+<header class="grid">
+	<%~ include('../logo/logo') %>
+	<h1>editor</h1>
+	<h1>login</h1>
+</header>
