@@ -8,8 +8,8 @@ export class UserModel extends ProtoModel {
   }
 
   static async set(params) {
-    const { userId, username, password } = params;
+    const { username, password } = params;
 
-    await super.queryRun("set-user", [userId, username, password]);
+    await super.queryRun("set-user", [username, password]);
   }
 }

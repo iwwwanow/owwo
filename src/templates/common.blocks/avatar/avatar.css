@@ -1,0 +1,14 @@
+.avatar {
+  display: block;
+  height: fit-content;
+  min-width: 64px;
+  min-height: 64px;
+  text-decoration: none !important;
+  grid-column: auto;
+}
+
+@media screen and (max-width: 444px) {
+  .avatar {
+    grid-column: 1/-1;
+  }
+}

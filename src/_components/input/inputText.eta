@@ -1,0 +1,20 @@
+<% const required = props.required || '' %>
+<% const type = props.type || 'text' %>
+<% const id = props.id || '' %>
+<% const className = props.class || '' %>
+<% const placeholder = props.placeholder || '' %>
+
+<p class="input-text">
+	<input
+				 autocomplete="off"
+				 autocapitalize="off"
+
+				 id="<%= id %>"
+				 class="input-text__input <%= className %>"
+
+				 type="<%= type %>"
+				 <%= required && 'required' %>
+				 name="<%= props.name %>"
+				 placeholder="<%= placeholder %>">
+
+</p>

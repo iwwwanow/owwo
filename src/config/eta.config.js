@@ -1,10 +1,13 @@
 import * as path from "node:path";
 
-export const configEta = {
-  views: path.join(import.meta.dir, "../components"),
-  debug: true,
-  // TODO if developement, then FASLE
-  cache: false,
+const { NODE_ENV } = process.env;
+
+export const defaultEtaConfig = {
+  views: path.join("./src/templates"),
+  debug: NODE_ENV === "developement" ? false : true,
+  cache: NODE_ENV === "developement" ? true : false,
   // autoEscape: false,
+  varName: "props",
   useWith: true,
+  defaultExtension: ".eta",
 };

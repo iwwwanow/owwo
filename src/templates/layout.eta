@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<%~ include('head/index.head.eta')%>
+
+<body>
+	<div class="wrapper">
+		<%~ include('common.blocks/header/header', props) %> <%~ body %> <%~
+      include('common.blocks/footer/footer') %>
+	</div>
+</body>
+
+</html>

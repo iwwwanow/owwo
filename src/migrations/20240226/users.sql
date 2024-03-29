@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS users;
 /* *** */
 CREATE TABLE
   users (
-    user_id TEXT UNIQUE PRIMARY KEY,
     username TEXT UNIQUE NOT NULL CHECK (
       length (username) >= 4
       AND length (username) <= 64

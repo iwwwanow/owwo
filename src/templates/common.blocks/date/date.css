@@ -1,0 +1,7 @@
+.date-container {
+  height: min-content;
+}
+
+.date-container * {
+  height: min-content;
+}

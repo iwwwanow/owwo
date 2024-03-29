@@ -1,10 +1,9 @@
 import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
-export class Markdown {
-  constructor({ filePath, markdownString }) {
+export class MarkdownModel {
+  constructor(filePath) {
     this.filePath = filePath;
-    this.markdownString = markdownString;
   }
 
   async getHtml() {
@@ -14,6 +13,6 @@ export class Markdown {
       this.markdownString = await file.text();
       this.htmlString = await marked.parse(this.markdownString);
       return this.htmlString;
-    }
+    } else throw new Error("need filepath to get html from markdown");
   }
 }

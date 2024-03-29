@@ -1,17 +1,17 @@
 import { UserModel } from "../models/user.model";
 import { JwtUtils } from "../utils/jwt.utils";
-import { UserView } from "../views/user.view";
+import { EtaView } from "../views/eta.view";
 import { validatePasswordUtil } from "../utils/validate-password.utils";
 import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class UserController {
   static async renderUserPage(c) {
-    const html = await UserView.getUserPageHtml(c);
+    const html = await EtaView.getUserPageHtml(c);
     return c.html(html);
   }
 
   static async renderUserDeletePage(c) {
-    const html = await UserView.getUserDeletePageHtml(c);
+    const html = await EtaView.getUserDeletePageHtml(c);
     return c.html(html);
   }
 
@@ -29,7 +29,6 @@ export class UserController {
 
     try {
       await UserModel.set({
-        userId: self.crypto.randomUUID(),
         username,
         password: await Bun.password.hash(password),
       });

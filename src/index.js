@@ -21,7 +21,7 @@ app.use(checkAuthMiddleware);
 app
   .get("/favicon.ico", StaticController.sendFile)
   .get("/public", StaticController.sendFile)
-  .get("/components", StaticController.sendFile);
+  .get("/templates", StaticController.sendFile);
 
 // ACTIONS
 app

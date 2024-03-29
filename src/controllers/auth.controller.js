@@ -1,18 +1,17 @@
 import { UserModel } from "../models/user.model";
-import { LoginView } from "../views/login.view";
-import { SignupView } from "../views/signup.view";
+import { EtaView } from "../views/eta.view";
 import { JwtUtils } from "../utils/jwt.utils";
 import { validatePasswordUtil } from "../utils/validate-password.utils";
 import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class AuthController {
   static async renderLoginPage(c) {
-    const html = await LoginView.getLoginPageHtml(c);
+    const html = await EtaView.getHtml("login", c);
     return c.html(html);
   }
 
   static async renderSignupPage(c) {
-    const html = await SignupView.getSignupPageHtml(c);
+    const html = await EtaView.getHtml("signup", c);
     return c.html(html);
   }
 
@@ -38,9 +37,7 @@ export class AuthController {
         throw error;
       }
 
-      const { user_id: userId } = user;
-
-      const jwt = await JwtUtils.createJwt({ userId });
+      const jwt = await JwtUtils.createJwt({ username });
       c.setHeader("Set-Cookie", `auth=${jwt}`);
       return c.redirect("/");
     } catch (e) {

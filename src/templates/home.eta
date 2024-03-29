@@ -1,0 +1,5 @@
+<% layout('layout') %>
+
+<div class="grid">
+	<h1>owwo-home-content</h1>
+</div>

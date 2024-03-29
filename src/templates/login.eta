@@ -1,0 +1,38 @@
+<% layout("layout")%>
+
+<div class="grid">
+	<form
+				method="POST"
+				action="/login"
+				class="login__form"
+				enctype="multipart/form-data">
+
+		<%~ include("common.blocks/input-text/input-text", {
+		name: 'username',
+		placeholder: 'USERNAME',
+		class: 'login__input-username',
+		required: true
+		})%>
+
+		<%~ include("common.blocks/input-text/input-text", {
+		name: 'password',
+		type: 'password',
+		placeholder: 'PASSWORD',
+		class: 'login__input-password',
+		required: true
+		})%>
+
+		<%~ include("common.blocks/button/button", {
+		text: 'Войти'
+		})%>
+
+	</form>
+
+	<span class="login__signup-container">
+		<%~ include("common.blocks/button/button_url", {
+		text: 'Регистрация',
+		url: '/signup'
+		})%>
+	</span>
+
+</div>

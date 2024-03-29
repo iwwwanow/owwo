@@ -1,8 +1,8 @@
-import { PageView } from "../views/page.view";
+import { EtaView } from "../views/eta.view";
 
 export class PageController {
   static async renderPagePage(c) {
-    const html = await PageView.getPageHtml(c);
+    const html = await EtaView.getHtml(c);
     return c.html(html);
   }
 }
