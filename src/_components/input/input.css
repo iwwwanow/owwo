@@ -1,45 +1,4 @@
 /* TEXT */
-.input-text__input {
-  width: 100%;
-  padding: 8px 4px;
-
-  color: var(--grey-dark);
-  background-color: var(--grey-light);
-
-  font-style: inherit;
-  font-weight: inherit;
-  text-transform: inherit;
-}
-
-.input-text__input:focus {
-  color: var(--black);
-  background-color: var(--white);
-  outline: 1px solid var(--black);
-  border: none;
-}
-
-.input-text__input::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--grey-medium);
-  opacity: 1;
-  /* Firefox */
-}
-
-.input-text__input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: var(--grey-medium);
-}
-
-.input-text__input::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: var(--grey-medium);
-}
-
-@media screen and (max-width: 444px) {
-  .input-text__input {
-    border-radius: 4px;
-  }
-}
 
 /* FILE */
 .input-file {

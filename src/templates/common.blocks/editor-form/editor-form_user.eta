@@ -1,0 +1,68 @@
+<form
+			id="form-meta-profile"
+			class="grid form-meta form-meta-profile"
+			method="POST"
+			action="/<%= data.username %>?method=PUT"
+			enctype="multipart/form-data">
+
+	<fieldset class="form-meta__fieldset-image">
+
+		<%~ include('../input/inputFile', {
+		form: 'form-meta-profile',
+		name: 'avatar',
+		accept: 'image/*',
+		src: data.src.avatar && data.src.avatar.original,
+		}) %>
+
+	</fieldset>
+
+	<fieldset class="form-meta__text-container">
+
+		<h4 style="height: 100%;">
+			<%~ include('../textarea/textarea', {
+			form: 'form-meta-profile',
+			name: 'text',
+			text: data.text,
+			placeholder: 'profile-text',
+			}) %>
+		</h4>
+
+	</fieldset>
+
+	<% const url_formaction = `/${data.username}` %>
+	<% const user_dir = `/public/data_uploads/users/${data.user_id}/` %>
+
+	<%~ include('../fieldset/fieldsetInputFile', { 
+		form: 'form-meta-profile',
+		name: 'style',
+		accept: '.css',
+		src: data.src.style, 
+		className: 'form-meta__fieldset-file' 
+	}) %>
+
+	<%~ include('../fieldset/fieldsetInputFile', { 
+		form: 'form-meta-profile',
+		name: 'script',
+		accept: '.js',
+		src: data.src.script,
+		className: 'form-meta__fieldset-file' 
+	}) %>
+
+	<%~ include('../fieldset/fieldsetRadioMarkup', {
+		markup: data.markup,
+		className: 'form-meta__fieldset_square' 
+	}) %>
+
+	<fieldset class="form-meta__buttons-container">
+		<%~ include('../button/button', { 
+			text: 'сохранить изменения',
+			className: "form-meta__submit-button" 
+		}) %>
+
+		<%~ include('../button/button_delete', { 
+			text: 'удалить профиль',
+			url: `/${data.username}` }) %>
+	</fieldset>
+
+	<hr>
+</form>

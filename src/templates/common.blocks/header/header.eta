@@ -1,5 +1,5 @@
 <header class="grid">
 	<%~ include('../logo/logo') %>
-	<h1>editor</h1>
-	<h1>login</h1>
+	<%~ include('header__editor-button') %>
+	<%~ include('header__login-button') %>
 </header>

@@ -1,0 +1,78 @@
+<form
+			id="form-meta-page"
+			class="grid form-meta form-meta-page"
+			method="POST"
+			action="/page/<%= data.page_id %>?method=PUT"
+			enctype="multipart/form-data">
+
+	<fieldset class="card form-meta__fieldset-image">
+		<%~ include('../input/inputFile', {
+		form: 'form-meta-page',
+		name: 'cover',
+		accept: 'image/*',
+		src: data.src.cover && data.src.cover.original,
+		}) %>
+	</fieldset>
+
+	<fieldset class="card form-meta__text-container">
+		<h4>
+			<%~ include('../textarea/textarea', {
+			form: 'form-meta-page',
+			name: 'title',
+			text: data.title,
+			placeholder: 'page-title',
+			rows: 2
+			}) %>
+		</h4>
+
+		<h5 style="height: 100%;">
+			<%~ include('../textarea/textarea', {
+			form: 'form-meta-page',
+			name: 'desc',
+			text: data.desc,
+			placeholder: 'page-description',
+			}) %>
+		</h5>
+	</fieldset>
+
+
+	<div class="card form-meta__file-container">
+		<%~ include('../fieldset/fieldsetInputFile', { 
+			form: 'form-meta-page',
+			name: 'style',
+			accept: '.css',
+			src: data.src.style,
+			className: 'form-meta__fieldset'
+		}) %>
+
+		<hr>
+
+		<%~ include('../fieldset/fieldsetInputFile', { 
+			form: 'form-meta-page',
+			name: 'script',
+			accept: '.js',
+			src: data.src.script,
+			className: 'form-meta__fieldset'
+		}) %>
+	</div>
+
+	<%~ include('../fieldset/fieldsetRadioMarkup', {
+		markup: data.markup,
+		className: 'form-meta__fieldset'
+	}) %>
+
+	<fieldset class="card form-meta__buttons-container">
+		<%~ include('../button/button', { 
+			text: 'сохранить изменения',
+			className: "form-meta__submit-button" 
+		}) %>
+
+		<%~ include('../button/button_delete', {
+			text: 'удалить страницу',
+			url: `/page/${data.page_id}`
+			}) %>
+	</fieldset>
+
+	<hr>
+
+</form>

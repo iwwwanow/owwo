@@ -6,7 +6,7 @@ import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class AuthController {
   static async renderLoginPage(c) {
-    const html = await EtaView.getLoginPageHtml(c);
+    const html = await EtaView.getHtml("login", c);
     return c.html(html);
   }
 

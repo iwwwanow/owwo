@@ -1,0 +1,3 @@
+<button class="button border-outter <%= it.className || '' %>">
+	<p><%=  it.text || 'default-text' %></p>
+</button>
