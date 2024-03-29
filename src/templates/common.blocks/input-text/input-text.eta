@@ -1,8 +1,8 @@
-<% const required = it.required || '' %>
-<% const type = it.type || 'text' %>
-<% const id = it.id || '' %>
-<% const className = it.class || '' %>
-<% const placeholder = it.placeholder || '' %>
+<% const required = props.required || '' %>
+<% const type = props.type || 'text' %>
+<% const id = props.id || '' %>
+<% const className = props.class || '' %>
+<% const placeholder = props.placeholder || '' %>
 
 <p class="input-text">
 	<input
@@ -14,7 +14,7 @@
 
 				 type="<%= type %>"
 				 <%= required && 'required' %>
-				 name="<%= it.name %>"
+				 name="<%= props.name %>"
 				 placeholder="<%= placeholder %>">
 
 </p>

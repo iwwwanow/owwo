@@ -1,1 +1,16 @@
-<h5>login</h5>
+<div class="header__login-container">
+
+	<h5>
+
+		<% if (props.pathname === '/' && props.authUserUsername ) { %>
+		<% const username = props.authUserUsername %>
+		<a href="/<%= username %>"><%= username %></a>
+		<% } else if (!props.authUserUsername) { %>
+		<a href="/login">login</a>
+		<% } else { %>
+		<a href="/logout">logout</a>
+		<% } %>
+
+	</h5>
+
+</div>

@@ -29,7 +29,6 @@ export class UserController {
 
     try {
       await UserModel.set({
-        userId: self.crypto.randomUUID(),
         username,
         password: await Bun.password.hash(password),
       });

@@ -2,45 +2,48 @@ header * {
   text-transform: uppercase;
 }
 
-header .header_id-container {
+header .header__id-container {
   color: var(--grey-dark);
   grid-column: 2 / span 2;
 }
 
-.header_logo-container {
+.header__logo-container {
   width: fit-content;
   height: fit-content;
   min-height: 1em;
   position: relative;
 }
-.header_logo-container a {
+
+.header__logo-container a {
   height: 100%;
   display: block;
 }
-.header_logo-container img {
+
+.header__logo-container img {
   height: 100%;
 }
 
-.header_login-container {
+.header__login-container {
   grid-column-end: -1;
   grid-row-start: 1;
   display: flex;
   justify-content: flex-end;
 }
+
 @media screen and (max-width: 858px) {
-  header .header_id-container {
+  header .header__id-container {
     grid-column: 1 / -1;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .header_username-container {
+  .header__login-container {
     grid-row-start: 2;
   }
 }
 
 @media screen and (max-width: 444px) {
-  .header_editor-link {
+  .header__editor-link {
     grid-column: 1 / -1;
   }
 }

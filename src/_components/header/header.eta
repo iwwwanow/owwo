@@ -37,9 +37,6 @@
 
 	<div class="header_login-container">
 		<% if (it.client?.auth && it.data?.username === it.client?.auth?.username) { %>
-		<h5>
-			<a href="/logout">logout</a>
-		</h5>
 		<% } else if (it.client?.auth) { %>
 		<h5>
 			<a

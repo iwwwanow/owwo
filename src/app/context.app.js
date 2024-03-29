@@ -18,9 +18,6 @@ export class Context {
     this.headers = req.headers;
     this.body = req.body;
     this.#cookies = this.#getCookieObjFromReq(this.headers);
-    this.view = {
-      auth: this.getCookie("auth"),
-    };
   }
 
   #getCookieObjFromReq(headers) {

@@ -1,1 +1,7 @@
-<h5>editor</h5>
+<% console.log(props) %>
+
+<% if (props.authUserRights) { %>
+
+<h5>edit</h5>
+
+<% } %>

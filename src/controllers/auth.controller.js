@@ -11,7 +11,7 @@ export class AuthController {
   }
 
   static async renderSignupPage(c) {
-    const html = await EtaView.getSignupPageHtml(c);
+    const html = await EtaView.getHtml("signup", c);
     return c.html(html);
   }
 
@@ -37,9 +37,7 @@ export class AuthController {
         throw error;
       }
 
-      const { user_id: userId } = user;
-
-      const jwt = await JwtUtils.createJwt({ userId });
+      const jwt = await JwtUtils.createJwt({ username });
       c.setHeader("Set-Cookie", `auth=${jwt}`);
       return c.redirect("/");
     } catch (e) {
