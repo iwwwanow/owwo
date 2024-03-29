@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/templates/layout.css" />
 
 <link rel="stylesheet" href="/templates/home.css" />
+<link rel="stylesheet" href="/templates/blank.css" />
 <link rel="stylet.css" />
 
 <link rel="stylesheet" href="/templates/common.blocks/avatar/avatar.css" />

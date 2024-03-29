@@ -1,3 +1,4 @@
+import { MarkdownModel } from "../models/markdown.model";
 import { EtaView } from "../views/eta.view";
 
 export class IndexController {
@@ -7,7 +8,10 @@ export class IndexController {
   }
 
   static async renderAboutPage(c) {
-    const html = await PageProtoView.getAboutPageHtml(c);
+    const markdown = new MarkdownModel("./README.md");
+    const markdownHtml = await markdown.getHtml();
+
+    const html = await EtaView.getHtml("", c, markdownHtml);
     return c.html(html);
   }
 }
