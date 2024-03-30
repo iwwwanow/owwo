@@ -98,6 +98,10 @@ export class Context {
     return this.#response("");
   }
 
+  text(text) {
+    return this.send(text);
+  }
+
   html(html) {
     this.setHeader("Content-Type", "text/html");
     return this.#response(html);

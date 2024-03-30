@@ -1,18 +1,19 @@
 import { UserModel } from "../models/user.model";
-import { EtaView } from "../views/eta.view";
 import { JwtUtils } from "../utils/jwt.utils";
 import { validatePasswordUtil } from "../utils/validate-password.utils";
 import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class AuthController {
   static async renderLoginPage(c) {
-    const html = await EtaView.getHtml("login", c);
-    return c.html(html);
+    return c.text("login");
+    // const html = await EtaView.getHtml("login", c);
+    // return c.html(html);
   }
 
   static async renderSignupPage(c) {
-    const html = await EtaView.getHtml("signup", c);
-    return c.html(html);
+    return c.text("signup");
+    // const html = await EtaView.getHtml("signup", c);
+    // return c.html(html);
   }
 
   static async login(c) {

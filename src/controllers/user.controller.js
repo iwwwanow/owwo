@@ -1,18 +1,15 @@
 import { UserModel } from "../models/user.model";
 import { JwtUtils } from "../utils/jwt.utils";
-import { EtaView } from "../views/eta.view";
 import { validatePasswordUtil } from "../utils/validate-password.utils";
 import { validateUsernameUtil } from "../utils/validate-username.utils";
 
 export class UserController {
   static async renderUserPage(c) {
-    const html = await EtaView.getUserPageHtml(c);
-    return c.html(html);
+    return c.text("user");
   }
 
   static async renderUserDeletePage(c) {
-    const html = await EtaView.getUserDeletePageHtml(c);
-    return c.html(html);
+    return c.text("user-delete-page");
   }
 
   static async create(c) {
