@@ -1,8 +1,4 @@
-import { Eta } from "eta";
-import { defaultEtaConfig } from "../config/eta.config";
 import { JwtUtils } from "../utils/jwt.utils";
-
-const eta = new Eta(defaultEtaConfig);
 
 const getViewParams = async (context) => {
   const params = {};
@@ -20,7 +16,7 @@ const getViewParams = async (context) => {
   return params;
 };
 
-export class EtaView {
+export class ProtoView {
   static async getHtml(templateName, context, htmlString) {
     const params = await getViewParams(context);
 
@@ -29,10 +25,5 @@ export class EtaView {
       templateName = "blank";
       params.htmlString = htmlString;
     }
-
-    // console.log(params);
-
-    const html = eta.render(templateName, params);
-    return html;
   }
 }
