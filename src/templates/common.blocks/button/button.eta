@@ -1,3 +1,0 @@
-<button class="button border-outter <%= props.className || '' %>">
-	<p><%=  props.text || 'default-text' %></p>
-</button>

@@ -1,5 +1,0 @@
-<a href="<%= it.url %>" class="button_url__container">
-	<button class="button button_url border-outter <%= it.className || '' %>">
-		<p><%=  it.text || 'default-text' %></p>
-	</button>
-</a>
