@@ -1,10 +1,12 @@
 import { layoutConfig } from "../config/layout.config";
 
-class AppendHeaderRewriter {
+class AppendHeadRewriter {
   constructor(appendContent) {
     this.appendContent = appendContent;
   }
   element(element) {
+    // TODO замена заголовка, если он есть!
+    // console.log(this.appendContent);
     element.append(this.appendContent, { html: true });
   }
 }
@@ -23,6 +25,7 @@ class AppendCssRewriter {
     this.appendContent = appendContent;
   }
   element(element) {
+    this.appendContent = `<style>${this.appendContent}</style>`;
     element.append(this.appendContent, { html: true });
   }
 }
@@ -43,26 +46,16 @@ export class SveltePageView {
   }
 
   async getPageHtml() {
-    // TODO подстановка стилей, HEAD и собственно body в index.html в src
-
     const indexHtml = await this.#getIndexHtml();
 
     const rewriter = new HTMLRewriter()
-      .on(
-        "head",
-        // TODO переписать замену title
-        new AppendRewriter(this.componentHead)
-      )
-      .on("body", new AppendRewriter(this.componentBody))
-      .on("body", new AppendRewriter(this.componentCss));
+      .on("html", new AppendHeadRewriter(this.componentHead))
+      .on("html", new AppendBodyRewriter(this.componentBody))
+      .on("html", new AppendCssRewriter(this.componentCss));
 
     const pageHtml = rewriter.transform(indexHtml);
     console.log(pageHtml);
 
-    // TODO append body
-    // TODO append style
-
-    // const pageHtml = this.html + `<style>${this.css}</style>`;
     return pageHtml;
   }
 }
