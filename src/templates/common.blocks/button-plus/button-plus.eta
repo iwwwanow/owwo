@@ -1,5 +1,0 @@
-<button
-				class="button button_plus border-outter"
-				formmethod="POST">
-	<%~ include('./svg/+') %>
-</button>

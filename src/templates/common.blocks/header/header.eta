@@ -1,5 +1,0 @@
-<header class="grid">
-	<%~ include('../logo/logo') %>
-	<%~ include('header__editor-button', props) %>
-	<%~ include('header__login-button', props) %>
-</header>

@@ -1,8 +1,0 @@
-.page__cover-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.page__cover {
-  width: fit-content;
-}

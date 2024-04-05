@@ -1,3 +1,0 @@
-<button class="button button_disabled" disabled>
-	<p><%= it.text || 'button-text' %></p>
-</button>

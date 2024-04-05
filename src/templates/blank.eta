@@ -1,7 +1,0 @@
-<% layout('layout') %>
-
-<div class="grid">
-	<span class="html-string-container">
-		<%~  htmlString %>
-	</span>
-</div>

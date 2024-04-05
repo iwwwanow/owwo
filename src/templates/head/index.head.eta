@@ -1,9 +1,0 @@
-<head>
-	<%~ include('meta.head.eta')%>
-	<%~ include('title.head.eta')%>
-	<%~ include('favicon.head.eta')%>
-	<%~ include('googlefonts.head.eta')%>
-	<%~ include('manifest.head.eta')%>
-	<%~ include('global-style.head.eta')%>
-	<%~ include('blocks-style.head.eta')%>
-</head>

@@ -1,6 +1,4 @@
 import { routes } from "@stricjs/app";
-import { text, json } from "@stricjs/app/send";
+import { HomeController } from "../controllers/home.controller";
 
-export default routes()
-  .get("/", () => text("Welcome to Stric!"))
-  .post("/json", (ctx) => ctx.json().then(json));
+export default routes().get("/", HomeController.renderHomePage);

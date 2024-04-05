@@ -1,5 +1,0 @@
-<a href="<%= props.url %>" class="button_url__container">
-	<button class="button button_url border-outter <%= props.className || '' %>">
-		<p><%=  props.text || 'default-text' %></p>
-	</button>
-</a>
