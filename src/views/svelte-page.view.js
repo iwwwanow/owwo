@@ -6,7 +6,6 @@ class AppendHeadRewriter {
   }
   element(element) {
     // TODO замена заголовка, если он есть!
-    // console.log(this.appendContent);
     element.append(this.appendContent, { html: true });
   }
 }
@@ -54,7 +53,7 @@ export class SveltePageView {
       .on("html", new AppendCssRewriter(this.componentCss));
 
     const pageHtml = rewriter.transform(indexHtml);
-    console.log(pageHtml);
+    // console.log(pageHtml);
 
     return pageHtml;
   }
