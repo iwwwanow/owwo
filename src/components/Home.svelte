@@ -3,11 +3,6 @@
 </script>
 
 <Layout>
-  <h1>home</h1>
+  <div class="grid">all users 64/32px</div>
+  <div class="grid">owwo big-logo</div>
 </Layout>
-
-<style>
-  h1 {
-    color: red;
-  }
-</style>
