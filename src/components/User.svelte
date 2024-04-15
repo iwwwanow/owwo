@@ -7,6 +7,8 @@
 
 	import Card from "./Card.svelte";
 	import Button from "./Button.svelte";
+
+	export let text;
 </script>
 
 <Layout>
@@ -16,7 +18,7 @@
 			<h2>username</h2>
 			<Date />
 		</span>
-		<Text />
+		<Text {text} />
 	</div>
 
 	<div class="grid todo" style="color: red;">

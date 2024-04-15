@@ -5,11 +5,12 @@
 
 <Layout>
 	<div class="grid">
-		TODO all users 64/32px
-		<Avatar />
-		<Avatar />
-		<Avatar />
-		<Avatar />
+		<span class="users-container">
+			<Avatar size="32" />
+			<Avatar size="32" />
+			<Avatar size="32" />
+			<Avatar size="32" />
+		</span>
 	</div>
 	<div class="grid">
 		TODO redirect to effectivnayarabota1 page OWWO

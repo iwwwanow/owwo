@@ -6,7 +6,7 @@
 </script>
 
 <div class="date-container">
-	<h6 class="date_creation">{localCreationDate},</h6>
+	<h6 class="date_creation">{localCreationDate}</h6>
 	<h6 class="date_last">{localDate}</h6>
 </div>
 

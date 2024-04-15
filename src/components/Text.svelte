@@ -1,4 +1,7 @@
+<script>
+	export let text = "sometext";
+</script>
+
 <span>
-	<h5>text-block in html (markdown in db)</h5>
-	CLEANED!!!
+	{@html text}
 </span>
