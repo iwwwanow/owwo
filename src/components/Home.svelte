@@ -1,15 +1,16 @@
 <script>
 	import Layout from "./Layout.svelte";
 	import Avatar from "./Avatar.svelte";
+
+	export let users;
 </script>
 
 <Layout>
 	<div class="grid">
 		<span class="users-container">
-			<Avatar size="32" />
-			<Avatar size="32" />
-			<Avatar size="32" />
-			<Avatar size="32" />
+			{#each users as user}
+				<Avatar {user} type="blob" />
+			{/each}
 		</span>
 	</div>
 	<div class="grid">
@@ -17,3 +18,12 @@
 		<h1>owwo big-logo</h1>
 	</div>
 </Layout>
+
+<style>
+	.users-container {
+		grid-column: 1/-1;
+
+		display: flex;
+		flex-wrap: wrap;
+	}
+</style>

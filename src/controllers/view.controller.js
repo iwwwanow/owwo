@@ -1,4 +1,3 @@
-import {marked} from "marked";
 import {html} from "@stricjs/app/send";
 import {SveltePageView} from "../views/svelte-page.view.js";
 
@@ -19,7 +18,26 @@ export class ViewController {
 	}
 
 	static async renderHomePage() {
-		return ViewController.responsePageHtml(Home);
+		// TODO UserModel.getTestUser
+
+		const user = {
+			username: 'test-username',
+			avatar: {
+				blob: 'https://images.placeholders.dev/?width=32&height=32'
+			}
+		}
+
+		const users = []
+
+		for (let i = 0; i < 32; i++) {
+			users.push(user)
+		}
+
+		const props = {
+			users
+		}
+
+		return ViewController.responsePageHtml(Home, props);
 	}
 
 	static async renderAboutPage() {
@@ -35,15 +53,9 @@ export class ViewController {
 	}
 
 	static async renderUserPage() {
-		const props = {}
-
-		const testTextPath = "./src/data/test/text.md";
-		const testTextFile = Bun.file(testTextPath)
-		const testText = await testTextFile.text();
-
-		const html = marked.parse(testText)
-
-		props.text = html
+		const props = {
+			text: await TestModel.getHtml()
+		}
 
 		return ViewController.responsePageHtml(User, props);
 	}
