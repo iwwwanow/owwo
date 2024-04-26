@@ -8,17 +8,17 @@
 	import Card from "./Card.svelte";
 	import Button from "./Button.svelte";
 
-	export let text;
+	export let user;
 </script>
 
 <Layout>
 	<div class="grid user-info">
-		<Avatar />
+		<Avatar {user} type="w190" />
 		<span class="user-info__username-container">
 			<h2>username</h2>
 			<Date />
 		</span>
-		<Text {text} />
+		<Text text={user.text} />
 	</div>
 
 	<div class="grid todo" style="color: red;">

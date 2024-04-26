@@ -1,3 +1,6 @@
+import {marked} from "marked";
+import DOMPurify from 'isomorphic-dompurify';
+
 import {html} from "@stricjs/app/send";
 import {SveltePageView} from "../views/svelte-page.view.js";
 
@@ -10,6 +13,22 @@ import Page from "../components/Page.svelte";
 import Element from "../components/Element.svelte";
 import Error from "../components/Error.svelte";
 
+const testUserData = {
+	username: 'test-username',
+	avatar: {
+		blob: 'https://images.placeholders.dev/?width=32&height=32',
+		w190: 'https://images.placeholders.dev/?width=190&height=190'
+	},
+	text: 'test'
+}
+
+const testTextPath = './test/text.test.md'
+const testTextFile = Bun.file(testTextPath)
+const testTextMdString = await testTextFile.text()
+const testText = await marked.parse(testTextMdString)
+const testTextClean = DOMPurify.sanitize(testText);
+testUserData.text = testTextClean
+
 export class ViewController {
 	static async responsePageHtml(componentName, props) {
 		const pageView = new SveltePageView(componentName, props);
@@ -20,23 +39,11 @@ export class ViewController {
 	static async renderHomePage() {
 		// TODO UserModel.getTestUser
 
-		const user = {
-			username: 'test-username',
-			avatar: {
-				blob: 'https://images.placeholders.dev/?width=32&height=32'
-			}
-		}
-
 		const users = []
+		for (let i = 0; i < 32; i++)
+			users.push(testUserData)
 
-		for (let i = 0; i < 32; i++) {
-			users.push(user)
-		}
-
-		const props = {
-			users
-		}
-
+		const props = {users}
 		return ViewController.responsePageHtml(Home, props);
 	}
 
@@ -54,7 +61,7 @@ export class ViewController {
 
 	static async renderUserPage() {
 		const props = {
-			text: await TestModel.getHtml()
+			user: testUserData
 		}
 
 		return ViewController.responsePageHtml(User, props);
