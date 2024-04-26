@@ -1,7 +1,8 @@
 <script>
-	export let text = "sometext";
+	export let text;
+	export let className = "";
 </script>
 
-<span>
+<span class={className}>
 	{@html text}
 </span>

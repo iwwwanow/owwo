@@ -13,12 +13,12 @@
 
 <Layout>
 	<div class="grid user-info">
-		<Avatar {user} type="w190" />
+		<Avatar {user} type="w190" full="false" />
 		<span class="user-info__username-container">
 			<h2>username</h2>
 			<Date />
 		</span>
-		<Text text={user.text} />
+		<Text text={user.text} className="grid_break-start" />
 	</div>
 
 	<div class="grid todo" style="color: red;">
@@ -42,5 +42,41 @@
 <style>
 	.user-info__username-container > * {
 		margin: 0;
+	}
+	.user-info__username-container {
+		height: min-content;
+		grid-column: 2/4;
+	}
+
+	.user-info__username-container * {
+		margin: 0;
+	}
+
+	.user-info__username-container > h2 {
+		word-break: break-all;
+	}
+
+	@media screen and (max-width: 1268px) {
+		.user-info__username-container {
+			grid-column: auto;
+		}
+	}
+
+	@media screen and (max-width: 858px) {
+		.user-info__username-container {
+			grid-column: 2/4;
+		}
+	}
+
+	@media screen and (max-width: 650px) {
+		.user-info__username-container {
+			grid-column: 1/-1;
+		}
+	}
+
+	@media screen and (max-width: 444px) {
+		.user-info__username-container {
+			gap: 12px;
+		}
 	}
 </style>
