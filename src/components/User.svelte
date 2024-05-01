@@ -13,9 +13,9 @@
 
 <Layout>
 	<div class="grid user-info">
-		<Avatar {user} type="w190" full="false" />
+		<Avatar {user} type="w190" />
 		<span class="user-info__username-container">
-			<h2>username</h2>
+			<h2>{user.username}</h2>
 			<Date />
 		</span>
 		<Text text={user.text} className="grid_break-start" />
@@ -45,7 +45,7 @@
 	}
 	.user-info__username-container {
 		height: min-content;
-		grid-column: 2/4;
+		grid-column: 2/3;
 	}
 
 	.user-info__username-container * {
@@ -70,13 +70,18 @@
 
 	@media screen and (max-width: 650px) {
 		.user-info__username-container {
-			grid-column: 1/-1;
+			grid-column: 2/3;
 		}
 	}
 
 	@media screen and (max-width: 444px) {
 		.user-info__username-container {
 			gap: 12px;
+		}
+	}
+	@media screen and (max-width: 360px) {
+		.user-info__username-container {
+			grid-column: 1/-1;
 		}
 	}
 </style>

@@ -6,7 +6,6 @@
 
 <a class="avatar__link-container" href="/{user.username}">
 	<picture>
-		<source srcset="https://images.placeholders.dev/?width=1080&height=1080" />
 		<source srcset={user.avatar[type]} />
 		<source srcset="https://images.placeholders.dev/?width=64&height=64" />
 		<!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->

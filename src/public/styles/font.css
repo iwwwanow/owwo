@@ -74,6 +74,7 @@ a {
 
 pre {
 	padding: 16px 8px;
+	margin-bottom: 2.4rem;
 	white-space: pre-wrap;
 	word-break: break-all;
 	background-color: var(--light);
