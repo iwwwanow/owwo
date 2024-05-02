@@ -15,11 +15,21 @@ import Error from "../components/Error.svelte";
 
 const testUserData = {
 	username: 'test-username',
+	text: 'testUserText',
 	avatar: {
 		blob: 'https://images.placeholders.dev/?width=32&height=32',
 		w190: 'https://images.placeholders.dev/?width=190&height=190'
-	},
-	text: 'test'
+	}
+}
+
+const testPageData = {
+	pageId: 'test-page-id',
+	title: 'testPageTitle',
+	text: 'testPageText',
+	cover: {
+		original: 'https://images.placeholders.dev/?width=1080&height=1080',
+		w190: 'https://images.placeholders.dev/?width=190&height=288'
+	}
 }
 
 const testTextPath = './test/text.test.md'
@@ -27,7 +37,9 @@ const testTextFile = Bun.file(testTextPath)
 const testTextMdString = await testTextFile.text()
 const testText = await marked.parse(testTextMdString)
 const testTextClean = DOMPurify.sanitize(testText);
+
 testUserData.text = testTextClean
+testPageData.text = testTextClean
 
 export class ViewController {
 	static async responsePageHtml(componentName, props) {
@@ -61,7 +73,12 @@ export class ViewController {
 
 	static async renderUserPage() {
 		const props = {
-			user: testUserData
+			user: testUserData,
+			pages: [
+				testPageData,
+				testPageData,
+				testPageData
+			]
 		}
 
 		return ViewController.responsePageHtml(User, props);

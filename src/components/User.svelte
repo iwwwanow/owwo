@@ -9,6 +9,7 @@
 	import Button from "./Button.svelte";
 
 	export let user;
+	export let pages;
 </script>
 
 <Layout>
@@ -32,9 +33,9 @@
 	</div>
 
 	<div class="grid user__pages-container">
-		<Card style="vertical" />
-		<Card style="square" />
-		<Card style="horizontal" />
+		{#each pages as page}
+			<Card {page} />
+		{/each}
 		<Button style="plus" />
 	</div>
 </Layout>
