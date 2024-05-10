@@ -75,8 +75,9 @@ a {
 pre {
 	padding: 16px 8px;
 	margin-bottom: 2.4rem;
-	white-space: pre-wrap;
-	word-break: break-all;
+	/* white-space: pre-wrap; */
+	/* word-break: break-all; */
+	overflow-x: scroll;
 	background-color: var(--light);
 }
 

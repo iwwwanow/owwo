@@ -5,7 +5,7 @@
 <span>
 	<a class="avatar__link-container" href="/page/{page.pageId}">
 		<picture>
-			<source srcset={page.cover.original} />
+			<source srcset={page.cover.w190} />
 			<source srcset="https://images.placeholders.dev/?width=64&height=64" />
 			<!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
 			<!-- TODO нужно добавлять дополнительные разрешения для аватаров на хайрезах -->
