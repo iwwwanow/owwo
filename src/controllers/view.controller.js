@@ -15,31 +15,41 @@ import Error from "../components/Error.svelte";
 
 const testUserData = {
 	username: 'test-username',
-	text: 'testUserText',
+	text: {
+		markdown: 'testPageMarkdownText',
+		html: 'testPageHtmlText'
+	},
 	avatar: {
 		blob: 'https://images.placeholders.dev/?width=32&height=32',
-		w190: 'https://images.placeholders.dev/?width=190&height=190'
+		w190: 'https://images.placeholders.dev/?width=190&height=190',
 	}
 }
 
 const testPageData = {
 	pageId: 'test-page-id',
 	title: 'testPageTitle',
-	text: 'testPageText',
+	text: {
+		markdown: 'testPageMarkdownText',
+		html: 'testPageHtmlText'
+	},
 	cover: {
 		original: 'https://images.placeholders.dev/?width=1080&height=1080',
-		w190: 'https://images.placeholders.dev/?width=190&height=288'
+		w190: 'https://images.placeholders.dev/?width=190&height=288',
+		w190_2x: 'https://images.placeholders.dev/?width=380&height=576'
 	}
 }
 
 const testTextPath = './test/text.test.md'
 const testTextFile = Bun.file(testTextPath)
 const testTextMdString = await testTextFile.text()
-const testText = await marked.parse(testTextMdString)
-const testTextClean = DOMPurify.sanitize(testText);
+const testTextHtmlString = await marked.parse(testTextMdString)
+const testTextHtmlCleanString = DOMPurify.sanitize(testTextHtmlString);
 
-testUserData.text = testTextClean
-testPageData.text = testTextClean
+testUserData.text.markdown = testTextMdString
+testUserData.text.html = testTextHtmlCleanString
+
+testPageData.text.markdown = testTextMdString
+testPageData.text.html = testTextHtmlCleanString
 
 export class ViewController {
 	static async responsePageHtml(componentName, props) {
