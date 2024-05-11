@@ -17,7 +17,7 @@
     <Avatar {user} type="w190" />
     <span class="user-info__username-container">
       <h2>{user.username}</h2>
-      <Date />
+      <Date date={user.date} />
     </span>
     <Text text={user.text} className="grid_break-start" />
   </div>
