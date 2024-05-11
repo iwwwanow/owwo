@@ -41,9 +41,19 @@
     position: absolute;
     padding: 6px 8px;
 
-    display: block;
+    display: none;
     pointer-events: none;
+    user-select: none;
+
     color: var(--dark);
+    background-color: var(--white);
+    border: 1px solid var(--light);
+    mix-blend-mode: luminosity;
+    opacity: 0.96;
+  }
+
+  .card__wrapper:hover > .card__text-container {
+    display: block;
   }
 
   .card__text-header {
