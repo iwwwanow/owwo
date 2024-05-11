@@ -23,6 +23,7 @@ const testUserData = {
     blob: "https://images.placeholders.dev/?width=32&height=32",
     w190: "https://images.placeholders.dev/?width=190&height=190",
   },
+  date: {},
 };
 
 const testPageData = {
@@ -37,6 +38,7 @@ const testPageData = {
     w190: "https://images.placeholders.dev/?width=190&height=288",
     w190_2x: "https://images.placeholders.dev/?width=380&height=576",
   },
+  date: {},
 };
 
 const testTextPath = "./test/text.test.md";
@@ -50,6 +52,15 @@ testUserData.text.html = testTextHtmlCleanString;
 
 testPageData.text.markdown = testTextMdString;
 testPageData.text.html = testTextHtmlCleanString;
+
+const testLastDate = new Date(Date.now());
+const testCreationDate = new Date(Date.now() - 1000 * 60 * 60 * 24 * 30);
+
+testUserData.date.last = testLastDate;
+testUserData.date.creation = testCreationDate;
+
+testPageData.date.last = testLastDate;
+testPageData.date.creation = testCreationDate;
 
 const makeTextPreview = (text) => {
   if (text.lenth < 320) return text;
