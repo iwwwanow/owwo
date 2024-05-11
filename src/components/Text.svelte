@@ -4,5 +4,5 @@
 </script>
 
 <span class={className}>
-	{@html text}
+	{@html text.html}
 </span>
