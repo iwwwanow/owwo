@@ -1,8 +1,8 @@
 <script>
-  import Layout from "./Layout.svelte";
+  import BaseLayout from "../layouts/base.layout.svelte";
 </script>
 
-<Layout>
+<BaseLayout>
   <div class="grid">
     <h4>
       TODO если элементы со страницы кончились, предлагать перейти на следующую
@@ -59,7 +59,7 @@
   </div>
 
   <h1>HEADER, WO FOOTER</h1>
-</Layout>
+</BaseLayout>
 
 <style>
   .element-content {

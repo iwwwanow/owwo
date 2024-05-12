@@ -4,14 +4,14 @@ import DOMPurify from "isomorphic-dompurify";
 import { html } from "@stricjs/app/send";
 import { SveltePageView } from "../views/svelte-page.view.js";
 
-import Home from "../components/Home.svelte";
-import About from "../components/About.svelte";
-import Login from "../components/Login.svelte";
-import Signup from "../components/Signup.svelte";
-import User from "../components/User.svelte";
-import Page from "../components/Page.svelte";
-import Element from "../components/Element.svelte";
-import Error from "../components/Error.svelte";
+import Home from "../svelte/pages/Home.page.svelte";
+import About from "../svelte/pages/About.page.svelte";
+import Login from "../svelte/pages/Login.page.svelte";
+import Signup from "../svelte/pages/Signup.page.svelte";
+import User from "../svelte/pages/User.page.svelte";
+import Page from "../svelte/pages/Page.page.svelte";
+import Element from "../svelte/pages/Element.page.svelte";
+import Error from "../svelte/pages/Error.page.svelte";
 
 const testUserData = {
   username: "test-username",

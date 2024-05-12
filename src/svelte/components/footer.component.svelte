@@ -1,5 +1,5 @@
 <script>
-  import Hr from "./Hr.svelte";
+  import Hr from "./hr.component.svelte";
 </script>
 
 <footer class="grid footer">

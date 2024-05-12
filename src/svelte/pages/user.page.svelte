@@ -1,18 +1,18 @@
 <script>
-  import Layout from "./Layout.svelte";
+  import BaseLayout from "../layouts/base.layout.svelte";
 
-  import Avatar from "./avatar.svelte";
-  import Text from "./Text.svelte";
-  import Date from "./Date.svelte";
+  import Avatar from "../components/avatar.component.svelte";
+  import Text from "../components/text.component.svelte";
+  import Date from "../components/date.component.svelte";
 
-  import Card from "./Card.svelte";
-  import Button from "./Button.svelte";
+  import Card from "../components/card.component.svelte";
+  import Button from "../components/button.component.svelte";
 
   export let user;
   export let pages;
 </script>
 
-<Layout>
+<BaseLayout>
   <div class="grid user-info">
     <Avatar {user} type="w190" />
     <span class="user-info__username-container">
@@ -38,7 +38,7 @@
     {/each}
     <Button style="plus" />
   </div>
-</Layout>
+</BaseLayout>
 
 <style>
   .user-info__username-container > * {
