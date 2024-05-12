@@ -22,6 +22,7 @@ const testUserData = {
   avatar: {
     blob: "https://images.placeholders.dev/?width=32&height=32",
     w190: "https://images.placeholders.dev/?width=190&height=190",
+    w190_2x: "https://images.placeholders.dev/?width=380&height=380",
   },
   date: {},
 };
