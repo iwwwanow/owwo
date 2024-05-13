@@ -2,7 +2,7 @@
   export let page;
 </script>
 
-<a class="card__wrapper" href="/page/{page.pageId}">
+<a class="card__wrapper border_light" href="/page/{page.pageId}">
   <picture class="card__img-container">
     <source srcset="{page.cover.w190}, {page.cover.w190_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
@@ -47,7 +47,6 @@
 
     color: var(--dark);
     background-color: var(--white);
-    border: 1px solid var(--light);
     mix-blend-mode: luminosity;
     opacity: 0.96;
   }
