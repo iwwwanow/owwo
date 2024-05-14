@@ -6,7 +6,6 @@
 
 {#if style === "plus"}
   <button class="button button_plus border">
-    <h5>plus button</h5>
     <ButtonPlusSvg />
   </button>
 {:else}
@@ -21,5 +20,12 @@
   }
   .button_plus:hover {
     background-color: var(--dark);
+  }
+
+  .button_plus :global(path) {
+    fill: var(--medium);
+  }
+  .button_plus:hover :global(path) {
+    fill: var(--white);
   }
 </style>
