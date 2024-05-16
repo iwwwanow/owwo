@@ -17,7 +17,7 @@ const testUserData = {
   username: "test-username",
   avatar: {
     blob: "https://images.placeholders.dev/?width=32&height=32",
-    w1080: "hd",
+    w1080: "https://images.placeholders.dev/?width=1080&height=1080",
     w190: "https://images.placeholders.dev/?width=190&height=190",
     w190_2x: "https://images.placeholders.dev/?width=380&height=380",
   },
@@ -28,7 +28,18 @@ const testPageData = {
   title: "testPageTitle",
   cover: {
     blob: "blob",
-    original: "https://images.placeholders.dev/?width=1080&height=1080",
+    w1080: "https://images.placeholders.dev/?width=1080&height=1080",
+    w190: "https://images.placeholders.dev/?width=190&height=288",
+    w190_2x: "https://images.placeholders.dev/?width=380&height=576",
+  },
+};
+
+const testElementData = {
+  elementId: "test-element-id",
+  title: "testElementTitle",
+  cover: {
+    blob: "blob",
+    w1080: "https://images.placeholders.dev/?width=1080&height=1080",
     w190: "https://images.placeholders.dev/?width=190&height=288",
     w190_2x: "https://images.placeholders.dev/?width=380&height=576",
   },
@@ -72,6 +83,9 @@ testUserData.text = testTextData;
 testPageData.date = testDateData;
 testPageData.text = testTextData;
 
+testElementData.date = testDateData;
+testElementData.text = testTextData;
+
 export class ViewController {
   static async responsePageHtml(componentName, props) {
     const pageView = new SveltePageView(componentName, props);
@@ -113,6 +127,7 @@ export class ViewController {
   static async renderPagePage() {
     const props = {
       page: testPageData,
+      elements: [testElementData, testElementData, testElementData],
     };
 
     return ViewController.responsePageHtml(Page, props);

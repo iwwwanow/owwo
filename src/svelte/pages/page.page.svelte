@@ -1,7 +1,12 @@
 <script>
   import BaseLayout from "../layouts/base.layout.svelte";
+
   import Date from "../components/date.component.svelte";
+  import Card from "../components/card.component.svelte";
   import Text from "../components/text.component.svelte";
+
+  export let page;
+  export let elements;
 </script>
 
 <BaseLayout>
@@ -11,10 +16,10 @@
 
       <span>
         <h5>author username</h5>
-        <Date />
+        <Date date={page.date} />
       </span>
     </span>
-    <Text />
+    <Text text={page.text} />
   </div>
 
   <div class="grid todo" style="color: red;">
@@ -30,9 +35,8 @@
   </div>
 
   <div class="grid page__elements-container">
-    <span class="page__element-container">
-      <h5>vertical-element-image</h5>
-      <Text />
-    </span>
+    {#each elements as element}
+      <Card {element} />
+    {/each}
   </div>
 </BaseLayout>

@@ -4,7 +4,6 @@
   import Avatar from "../components/avatar.component.svelte";
   import Text from "../components/text.component.svelte";
   import Date from "../components/date.component.svelte";
-
   import Card from "../components/card.component.svelte";
   import Button from "../components/button.component.svelte";
 

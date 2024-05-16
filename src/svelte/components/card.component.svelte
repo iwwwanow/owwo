@@ -1,10 +1,17 @@
 <script>
   export let page;
+  export let element;
+
+  if (page && element) throw new Error("only one data type needed");
+
+  const dataType = page ? "page" : "element";
+  const data = page ? page : element;
+  data.id = page ? page.pageId : element.elementId;
 </script>
 
-<a class="card__wrapper border_light" href="/page/{page.pageId}">
+<a class="card__wrapper border_light" href="/{dataType}/{data.id}">
   <picture class="card__img-container">
-    <source srcset="{page.cover.w190}, {page.cover.w190_2x} 2x" />
+    <source srcset="{data.cover.w190}, {data.cover.w190_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
     <!-- TODO нужно добавлять дополнительные разрешения для аватаров на хайрезах -->
@@ -15,8 +22,8 @@
   </picture>
 
   <div class="card__text-container">
-    <h4 class="card__text-header">{page.title}</h4>
-    <h5>{page.text.preview}</h5>
+    <h4 class="card__text-header">{data.title}</h4>
+    <h5>{data.text.preview}</h5>
   </div>
 
   <!-- TODO как отображать хавер, чтобы он читался? Не всплывающее окно, а, кажется -->
