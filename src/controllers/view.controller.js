@@ -15,31 +15,31 @@ import Error from "../svelte/pages/Error.page.svelte";
 
 const testUserData = {
   username: "test-username",
-  text: {
-    markdown: "testPageMarkdownText",
-    html: "testPageHtmlText",
-  },
   avatar: {
     blob: "https://images.placeholders.dev/?width=32&height=32",
+    w1080: "hd",
     w190: "https://images.placeholders.dev/?width=190&height=190",
     w190_2x: "https://images.placeholders.dev/?width=380&height=380",
   },
-  date: {},
 };
 
 const testPageData = {
   pageId: "test-page-id",
   title: "testPageTitle",
-  text: {
-    markdown: "testPageMarkdownText",
-    html: "testPageHtmlText",
-  },
   cover: {
+    blob: "blob",
     original: "https://images.placeholders.dev/?width=1080&height=1080",
     w190: "https://images.placeholders.dev/?width=190&height=288",
     w190_2x: "https://images.placeholders.dev/?width=380&height=576",
   },
-  date: {},
+};
+
+const testLastDate = new Date(Date.now());
+const testCreationDate = new Date(Date.now() - 1000 * 60 * 60 * 24 * 30);
+
+const testDateData = {
+  creation: testCreationDate,
+  last: testLastDate,
 };
 
 const testTextPath = "./test/text.test.md";
@@ -47,21 +47,6 @@ const testTextFile = Bun.file(testTextPath);
 const testTextMdString = await testTextFile.text();
 const testTextHtmlString = await marked.parse(testTextMdString);
 const testTextHtmlCleanString = DOMPurify.sanitize(testTextHtmlString);
-
-testUserData.text.markdown = testTextMdString;
-testUserData.text.html = testTextHtmlCleanString;
-
-testPageData.text.markdown = testTextMdString;
-testPageData.text.html = testTextHtmlCleanString;
-
-const testLastDate = new Date(Date.now());
-const testCreationDate = new Date(Date.now() - 1000 * 60 * 60 * 24 * 30);
-
-testUserData.date.last = testLastDate;
-testUserData.date.creation = testCreationDate;
-
-testPageData.date.last = testLastDate;
-testPageData.date.creation = testCreationDate;
 
 const makeTextPreview = (text) => {
   if (text.lenth < 320) return text;
@@ -75,7 +60,17 @@ const makeTextPreview = (text) => {
   }
 };
 
-testPageData.text.preview = makeTextPreview(testTextMdString);
+const testTextData = {
+  markdown: testTextMdString,
+  html: testTextHtmlCleanString,
+  preview: makeTextPreview(testTextMdString),
+};
+
+testUserData.date = testDateData;
+testUserData.text = testTextData;
+
+testPageData.date = testDateData;
+testPageData.text = testTextData;
 
 export class ViewController {
   static async responsePageHtml(componentName, props) {
@@ -116,7 +111,11 @@ export class ViewController {
   }
 
   static async renderPagePage() {
-    return ViewController.responsePageHtml(Page);
+    const props = {
+      page: testPageData,
+    };
+
+    return ViewController.responsePageHtml(Page, props);
   }
 
   static async renderElementPage() {
