@@ -1,12 +1,12 @@
 <script>
-  export let user;
-  export let type;
-  if (!type) type = "blob";
+  export let data;
+  const dataType = data.pageId ? "page" : "element";
+  data.id = data.pageId || data.elementId;
 </script>
 
-<a class="avatar__link-container" href="/{user.username}">
+<a class="avatar__link-container" href="{dataType}/{data.id}">
   <picture>
-    <source srcset="{user.avatar[type]}, {user.avatar[`${type}_2x`]} 2x" />
+    <source srcset="{data.cover.w190}, {data.cover.w190} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
     <!-- TODO нужно добавлять дополнительные разрешения для аватаров на хайрезах -->
@@ -21,8 +21,5 @@
   .avatar__link-container {
     text-decoration: none !important;
     display: block;
-  }
-  .avatar__link-container:hover {
-    opacity: 0.8;
   }
 </style>

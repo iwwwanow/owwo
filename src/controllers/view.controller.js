@@ -14,6 +14,7 @@ import Element from "../svelte/pages/Element.page.svelte";
 import Error from "../svelte/pages/Error.page.svelte";
 
 const testUserData = {
+  // 24px only
   username: "test-username",
   avatar: {
     blob: "https://images.placeholders.dev/?width=32&height=32",
@@ -26,6 +27,29 @@ const testUserData = {
 const testPageData = {
   pageId: "test-page-id",
   title: "testPageTitle",
+  // open closed invite archived trashCan
+  pageType: "open",
+  users: [
+    {
+      ...testUserData,
+      // username: "EFFECTIVNAYARABOTA1",
+      username: "ChannelOfTheCultOfTheGoddessOfFlowers",
+      type: "owner",
+    },
+    // {
+    //   ...testUserData,
+    //   type: "editor",
+    // },
+    // {
+    //   ...testUserData,
+    //   type: "pusher",
+    // },
+    // {
+    //   ...testUserData,
+    //   // only on closed page
+    //   type: "viewer",
+    // },
+  ],
   cover: {
     blob: "blob",
     w1080: "https://images.placeholders.dev/?width=1080&height=1080",
@@ -37,6 +61,7 @@ const testPageData = {
 const testElementData = {
   elementId: "test-element-id",
   title: "testElementTitle",
+  user: "test-username",
   cover: {
     blob: "blob",
     w1080: "https://images.placeholders.dev/?width=1080&height=1080",

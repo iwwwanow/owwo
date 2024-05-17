@@ -1,7 +1,9 @@
 <script>
   import BaseLayout from "../layouts/base.layout.svelte";
 
+  import Avatar from "../components/avatar.component.svelte";
   import Date from "../components/date.component.svelte";
+  import Cover from "../components/cover.component.svelte";
   import Card from "../components/card.component.svelte";
   import Text from "../components/text.component.svelte";
 
@@ -11,15 +13,25 @@
 
 <BaseLayout>
   <div class="grid page-info">
+    <Cover data={page} />
     <span>
-      <h5>page cover</h5>
-
-      <span>
-        <h5>author username</h5>
+      {#if page.users.length === 1}
+        {@const user = page.users[0]}
+        <div style="float: inline-start;">
+          <Avatar {user} type="blob" />
+        </div>
         <Date date={page.date} />
-      </span>
+        <h3 style="word-break: break-all; margin-top: 1px; text-align: right;">
+          {user.username}
+        </h3>
+      {:else}
+        {#each page.users as user}
+          <Avatar {user} type="blob" />
+        {/each}
+        <Date date={page.date} />
+      {/if}
     </span>
-    <Text text={page.text} />
+    <Text text={page.text} className="grid_break-start" />
   </div>
 
   <div class="grid todo" style="color: red;">
