@@ -3,6 +3,4 @@
 	export let className = "";
 </script>
 
-<span class={className}>
-	{@html text.html}
-</span>
+{@html text.html}
