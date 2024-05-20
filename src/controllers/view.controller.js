@@ -37,19 +37,19 @@ const testPageData = {
 			// username: "IIChannelOfTheCultOfTheGoddessOfFlowers",
 			type: "owner",
 		},
-		// {
-		//   ...testUserData,
-		//   type: "editor",
-		// },
-		// {
-		//   ...testUserData,
-		//   type: "pusher",
-		// },
-		// {
-		//   ...testUserData,
-		//   // only on closed page
-		//   type: "viewer",
-		// },
+		{
+			...testUserData,
+			type: "editor",
+		},
+		{
+			...testUserData,
+			type: "pusher",
+		},
+		{
+			...testUserData,
+			// only on closed page
+			type: "viewer",
+		},
 	],
 	cover: {
 		blob: "blob",

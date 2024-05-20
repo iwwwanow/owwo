@@ -30,10 +30,17 @@
 						</h5>
 					</a>
 				{:else}
-					{#each page.users as user}
-						<Avatar {user} type="blob" />
-					{/each}
 					<Date date={page.date} />
+					{#each page.users as user}
+						<div class="page-info__user-container">
+							<Avatar {user} type="blob" />
+							<a href={user.username}>
+								<h5 style="word-break: break-all; text-align: left;">
+									{user.username}
+								</h5>
+							</a>
+						</div>
+					{/each}
 				{/if}
 			</span>
 		</div>
@@ -67,6 +74,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap-v);
+	}
+
+	.page-info__user-container {
+		display: flex;
 	}
 
 	@media screen and (max-width: 650px) {
