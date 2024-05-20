@@ -22,11 +22,13 @@
 						<Avatar {user} type="blob" />
 					</div>
 					<Date date={page.date} />
-					<h3
-						style="word-break: break-all; margin-top: 1px; text-align: right;"
-					>
-						{user.username}
-					</h3>
+					<a href={user.username}>
+						<h5
+							style="word-break: break-all; margin-top: 1px; text-align: right;"
+						>
+							{user.username}
+						</h5>
+					</a>
 				{:else}
 					{#each page.users as user}
 						<Avatar {user} type="blob" />
