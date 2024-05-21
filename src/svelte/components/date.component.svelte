@@ -6,14 +6,14 @@
 </script>
 
 <div class="date-container">
-  <h6 class="date_creation">{localCreationDate}</h6>
+  <h4 class="date_creation">{localCreationDate}</h4>
   <h6 class="date_last">{localDate}</h6>
 </div>
 
 <style>
   .date-container {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
   }
   .date_creation {
     color: var(--dark);

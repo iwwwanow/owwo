@@ -1,6 +1,7 @@
 <script>
   import BaseLayout from "../layouts/base.layout.svelte";
   import Avatar from "../components/avatar.component.svelte";
+  import UserInfo from "../components/user-info.component.svelte";
 
   export let users;
 </script>
@@ -9,7 +10,7 @@
   <div class="grid">
     <span class="users-container">
       {#each users as user}
-        <Avatar {user} type="blob" />
+        <UserInfo {user} type="avatar" />
       {/each}
     </span>
   </div>
