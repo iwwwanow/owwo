@@ -3,7 +3,7 @@
 ## Vel nec iras
 
 Lorem markdownum requiris in donavi rediit adspice deserto nomine et nunc in,
-fero *aequare*. Modo hasta parsque, et inde gnato mirumque audax et Didymeque.
+fero _aequare_. Modo hasta parsque, et inde gnato mirumque audax et Didymeque.
 Nisi dum corpora [deus sibi
 sororem](http://atra-diva.com/quamquampotentior.php). Negat tum pavetque
 haliaeetus quae!
@@ -39,7 +39,7 @@ Furor [at](http://semina.io/) quae Boeotia; sic deus mea equumque [nec fugit
 mare](http://iubent.net/)? Aliter exspectat at sine retia robora quin sunt: est.
 
 Achilles passos usus monte, tibi membrana villosis illa, non, bipennifer in
-fortes *prosit crimen saxa* laeva se. Fatis advertere, aere decurrere adspergine
+fortes _prosit crimen saxa_ laeva se. Fatis advertere, aere decurrere adspergine
 aera; est me quod [Latini](http://iacet-ut.net/naides), plenos. Partu communes
 arbore eunti gerebat alma triumphos tenus ligatis, unde. Potes hunc grandior
 conposuit tam neque, poenae nec mitisque et ardua memorique fores.

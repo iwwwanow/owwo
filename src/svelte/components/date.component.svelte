@@ -13,7 +13,7 @@
 <style>
   .date-container {
     display: flex;
-    justify-content: space-between;
+    gap: var(--gap-v);
   }
   .date_creation {
     color: var(--dark);
