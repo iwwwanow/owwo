@@ -6,10 +6,10 @@
   export let user;
 </script>
 
-<a href={user.username} class="user-info__container">
+<a href={user.username} class="user-info__container {user.type}">
   <Avatar {user} type="blob" />
   {#if type !== "avatar"}
-    <h5 style="word-break: break-all" class="user-info__username {user.type}">
+    <h5 style="word-break: break-all" class="user-info__username">
       {user.username}
     </h5>
   {/if}
@@ -19,13 +19,13 @@
   .user-info__container {
     display: flex;
     gap: var(--gap-v);
+    text-decoration-color: var(--color);
   }
   .user-info__container:hover {
     opacity: 0.8;
   }
   .user-info__username {
     color: var(--color);
-    text-decoration-color: var(--color);
   }
   .owner {
     --color: var(--black);

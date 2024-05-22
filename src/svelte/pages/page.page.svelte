@@ -30,9 +30,7 @@
       </span>
     </div>
 
-    <div class="page-info__page-text-container grid_break-start">
-      <Text text={page.text} />
-    </div>
+    <Text text={page.text} className="grid_break-start" />
   </div>
 
   <div class="grid todo" style="color: red;">
@@ -76,6 +74,13 @@
     }
     :global(.page-info__page-data-container > *) {
       width: calc(50% - calc(var(--gap-grid) / 2));
+    }
+  }
+  @media screen and (max-width: 360px) {
+    .page-info__page-data-container {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--grid-gap);
     }
   }
 </style>

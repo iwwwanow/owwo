@@ -1,6 +1,8 @@
 <script>
-	export let text;
-	export let className = "";
+  export let text;
+  export let className = "";
 </script>
 
-{@html text.html}
+<div class={className}>
+  {@html text.html}
+</div>
