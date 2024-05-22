@@ -17,6 +17,9 @@
     <div class="page-info__page-data-container">
       <Cover data={page} />
       <span class="page-info__users-container">
+        {#if page.title}
+          <h2 class="page-info__title">{page.title}</h2>
+        {/if}
         <Date date={page.date} />
         <Hr />
         {#if page.users.length === 1}
@@ -53,6 +56,13 @@
 </BaseLayout>
 
 <style>
+  .page-info__title {
+    /* TODO make it property cor color of cover */
+    margin: 0;
+    color: var(--light);
+    word-break: break-all;
+  }
+
   .page-info__page-data-container {
     display: flex;
     flex-direction: column;
