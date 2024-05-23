@@ -70,6 +70,8 @@
   }
 
   .page-info__users-container {
+    max-height: 288px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: var(--gap-h);
