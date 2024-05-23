@@ -88,9 +88,16 @@
   }
   @media screen and (max-width: 360px) {
     .page-info__page-data-container {
+      grid-column: 1 / end;
       flex-direction: column;
-      justify-content: space-between;
-      gap: var(--grid-gap);
+      gap: var(--gap-grid);
+    }
+    /* TODO переделать */
+    :global(.page-info__page-data-container > *) {
+      width: 100%;
+    }
+    :global(.user-info__container) {
+      max-width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 </style>
