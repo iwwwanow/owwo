@@ -17,7 +17,7 @@
     <div class="page-info__page-data-container">
       <Cover data={page} />
       {#if page.title}
-        <h2 class="page-info__title">{page.title}</h2>
+        <h4 class="page-info__title">{page.title}</h4>
       {/if}
       <Date date={page.date} />
       <Hr />
