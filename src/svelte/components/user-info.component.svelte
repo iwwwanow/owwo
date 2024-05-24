@@ -2,23 +2,20 @@
   import Avatar from "../components/avatar.component.svelte";
   import Hr from "./hr.component.svelte";
 
-  export let type;
   export let user;
 </script>
 
 <a href={user.username} class="user-info__container {user.type}">
-  <Avatar {user} type="blob" />
-  {#if type !== "avatar"}
-    <h5 style="word-break: break-all" class="user-info__username">
-      {user.username}
-    </h5>
-  {/if}
+  <Avatar {user} size="w16" />
+  <h5 style="word-break: break-all" class="user-info__username">
+    {user.username}
+  </h5>
 </a>
 
 <style>
   .user-info__container {
     display: flex;
-    gap: var(--gap-v);
+    gap: calc(var(--gap-grid) / 8);
     text-decoration-color: var(--color);
   }
   .user-info__container:hover {

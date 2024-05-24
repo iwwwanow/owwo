@@ -16,12 +16,12 @@
   <div class="grid page-info">
     <div class="page-info__page-data-container">
       <Cover data={page} />
+      {#if page.title}
+        <h2 class="page-info__title">{page.title}</h2>
+      {/if}
+      <Date date={page.date} />
+      <Hr />
       <span class="page-info__users-container">
-        {#if page.title}
-          <h2 class="page-info__title">{page.title}</h2>
-        {/if}
-        <Date date={page.date} />
-        <Hr />
         {#if page.users.length === 1}
           {@const user = page.users[0]}
           <UserInfo {user} />
@@ -59,7 +59,7 @@
   .page-info__title {
     /* TODO make it property cor color of cover */
     margin: 0;
-    color: var(--light);
+    color: var(--black);
     word-break: break-all;
   }
 
@@ -73,8 +73,9 @@
     max-height: 288px;
     overflow-y: auto;
     display: flex;
-    flex-direction: column;
-    gap: var(--gap-h);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--gap-grid) / 4);
   }
 
   @media screen and (max-width: 650px) {
