@@ -18,8 +18,4 @@
   .avatar {
     height: min-content;
   }
-
-  .avatar__image {
-    max-width: max-content;
-  }
 </style>
