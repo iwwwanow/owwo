@@ -33,7 +33,10 @@
       </span>
     </div>
 
-    <Text text={page.text} className="grid_break-start" />
+    {#if page.text}
+      <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
+      <Text text={page.text} className="grid_break-start" />
+    {/if}
   </div>
 
   <div class="grid todo" style="color: red;">
