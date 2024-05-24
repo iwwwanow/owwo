@@ -14,23 +14,25 @@
 
 <BaseLayout>
   <div class="grid page-info">
-    <div class="page-info__page-data-container">
+    <div class="page-info__data-wrapper">
       <Cover data={page} />
-      {#if page.title}
-        <h4 class="page-info__title">{page.title}</h4>
-      {/if}
-      <Date date={page.date} />
-      <Hr />
-      <span class="page-info__users-container">
-        {#if page.users.length === 1}
-          {@const user = page.users[0]}
-          <UserInfo {user} />
-        {:else}
-          {#each page.users as user}
-            <UserInfo {user} />
-          {/each}
+      <div class="page-info__data-container">
+        {#if page.title}
+          <h4 class="page-info__title">{page.title}</h4>
         {/if}
-      </span>
+        <Date date={page.date} />
+        <Hr />
+        <span class="page-info__users-container">
+          {#if page.users.length === 1}
+            {@const user = page.users[0]}
+            <UserInfo {user} />
+          {:else}
+            {#each page.users as user}
+              <UserInfo {user} />
+            {/each}
+          {/if}
+        </span>
+      </div>
     </div>
 
     {#if page.text}
@@ -66,7 +68,7 @@
     word-break: break-all;
   }
 
-  .page-info__page-data-container {
+  .page-info__data-wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--gap-v);
@@ -82,28 +84,25 @@
   }
 
   @media screen and (max-width: 650px) {
-    .page-info__page-data-container {
+    .page-info__data-wrapper {
       grid-column: 1/-1;
       flex-direction: row;
       justify-content: space-between;
       gap: var(--grid-gap);
     }
-    :global(.page-info__page-data-container > *) {
+    :global(.page-info__data-wrapper > *) {
       width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
   @media screen and (max-width: 360px) {
-    .page-info__page-data-container {
+    .page-info__data-wrapper {
       grid-column: 1 / end;
       flex-direction: column;
       gap: var(--gap-grid);
     }
     /* TODO переделать */
-    :global(.page-info__page-data-container > *) {
+    :global(.page-info__data-wrapper > *) {
       width: 100%;
-    }
-    :global(.user-info__container) {
-      max-width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 </style>
