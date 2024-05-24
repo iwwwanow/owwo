@@ -4,7 +4,7 @@
   if (!size) size = "blob";
 </script>
 
-<picture>
+<picture class="avatar">
   <source srcset="{user.avatar[size]}, {user.avatar[`${size}_2x`]} 2x" />
   <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
   <img
@@ -15,6 +15,10 @@
 </picture>
 
 <style>
+  .avatar {
+    height: min-content;
+  }
+
   .avatar__image {
     max-width: max-content;
   }

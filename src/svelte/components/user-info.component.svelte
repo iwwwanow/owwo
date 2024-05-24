@@ -2,14 +2,17 @@
   import Avatar from "../components/avatar.component.svelte";
   import Hr from "./hr.component.svelte";
 
+  export let type;
   export let user;
 </script>
 
 <a href={user.username} class="user-info__container {user.type}">
-  <Avatar {user} size="w16" />
-  <h5 style="word-break: break-all" class="user-info__username">
-    {user.username}
-  </h5>
+  <Avatar {user} size={type === "avatar" ? "w32" : "w16"} />
+  {#if type !== "avatar"}
+    <h5 style="word-break: break-all" class="user-info__username">
+      {user.username}
+    </h5>
+  {/if}
 </a>
 
 <style>
