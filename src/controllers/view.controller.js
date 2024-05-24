@@ -18,6 +18,10 @@ const testUserData = {
   username: "test-username",
   avatar: {
     blob: "https://images.placeholders.dev/?width=32&height=32",
+    w16: "https://images.placeholders.dev/?width=16&height=16",
+    w16_2x: "https://images.placeholders.dev/?width=32&height=32",
+    w32: "https://images.placeholders.dev/?width=32&height=32",
+    w32_2x: "https://images.placeholders.dev/?width=64&height=64",
     w1080: "https://images.placeholders.dev/?width=1080&height=1080",
     w190: "https://images.placeholders.dev/?width=190&height=190",
     w190_2x: "https://images.placeholders.dev/?width=380&height=380",
