@@ -6,6 +6,7 @@
   import Date from "../components/date.component.svelte";
   import Card from "../components/card.component.svelte";
   import Button from "../components/button.component.svelte";
+  import Hr from "../components/hr.component.svelte";
 
   export let user;
   export let pages;
@@ -13,12 +14,24 @@
 
 <BaseLayout>
   <div class="grid user-info">
-    <Avatar {user} size="w190" />
-    <span class="user-info__username-container">
-      <h2>{user.username}</h2>
-      <Date date={user.date} />
+    <span class="user-info__data-wrapper">
+      <Avatar {user} size="w190" />
+
+      <div class="user-info__data-container">
+        <h2 class="user-info__username">{user.username}</h2>
+        <Date date={user.date} />
+
+        {#if user.links}
+          <Hr />
+          <!-- TODO укороченное описание (для ссылок например) -->
+        {/if}
+      </div>
     </span>
-    <Text text={user.text} className="grid_break-start" />
+
+    {#if user.text}
+      <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
+      <Text text={user.text} className="grid_break-start" />
+    {/if}
   </div>
 
   <div class="grid todo" style="color: red;">
@@ -31,6 +44,8 @@
     </ul>
   </div>
 
+  <!-- TODO страницы, в которые пушил User -->
+
   <div class="grid user__pages-container">
     {#each pages as page}
       <Card {page} />
@@ -40,48 +55,40 @@
 </BaseLayout>
 
 <style>
-  .user-info__username-container > * {
+  .user-info__data-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-v);
+  }
+
+  .user-info__username {
     margin: 0;
-  }
-  .user-info__username-container {
-    height: min-content;
-    grid-column: 2/3;
-  }
-
-  .user-info__username-container * {
-    margin: 0;
-  }
-
-  .user-info__username-container > h2 {
-    word-break: break-all;
-  }
-
-  @media screen and (max-width: 1268px) {
-    .user-info__username-container {
-      grid-column: auto;
-    }
-  }
-
-  @media screen and (max-width: 858px) {
-    .user-info__username-container {
-      grid-column: 2/4;
-    }
   }
 
   @media screen and (max-width: 650px) {
-    .user-info__username-container {
-      grid-column: 2/3;
+    .user-info__data-wrapper {
+      grid-column: 1/-1;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: var(--grid-gap);
+    }
+    :global(.user-info__data-wrapper > *) {
+      width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 
-  @media screen and (max-width: 444px) {
-    .user-info__username-container {
-      gap: 12px;
-    }
-  }
   @media screen and (max-width: 360px) {
-    .user-info__username-container {
-      grid-column: 1/-1;
+    .user-info__data-wrapper {
+      grid-column: 1 / end;
+      flex-direction: column;
+      gap: var(--gap-grid);
+    }
+    /* TODO переделать */
+    :global(.user-info__user-data-container > *) {
+      width: 100%;
+    }
+    :global(.user-info__container) {
+      max-width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 </style>
