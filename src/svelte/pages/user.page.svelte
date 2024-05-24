@@ -13,7 +13,7 @@
 
 <BaseLayout>
   <div class="grid user-info">
-    <Avatar {user} type="w190" />
+    <Avatar {user} size="w190" />
     <span class="user-info__username-container">
       <h2>{user.username}</h2>
       <Date date={user.date} />
