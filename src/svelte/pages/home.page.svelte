@@ -8,7 +8,7 @@
 
 <BaseLayout>
   <div class="grid">
-    <span class="users-container">
+    <span class="home__users-container">
       {#each users as user}
         <UserInfo {user} type="avatar" />
       {/each}
@@ -38,10 +38,11 @@
 </BaseLayout>
 
 <style>
-  .users-container {
+  .home__users-container {
     grid-column: 1/-1;
 
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
   }
 </style>
