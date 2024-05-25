@@ -8,7 +8,7 @@
   <source srcset="{user.avatar[size]}, {user.avatar[`${size}_2x`]} 2x" />
   <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
   <img
-    class="avatar__image"
+    class="avatar__img"
     src="https://images.placeholders.dev/?width=64&height=64"
     alt="avatar"
   />
@@ -17,5 +17,9 @@
 <style>
   .avatar {
     height: min-content;
+  }
+  .avatar__img {
+    width: auto;
+    max-width: none;
   }
 </style>
