@@ -10,15 +10,12 @@
 </script>
 
 <a class="card__wrapper border_light" href="/{dataType}/{data.id}">
-  <picture class="card__img-container">
+  <picture class="card__cover-container">
+    <source srcset={data.cover.w190_2x} media="(max-width: 360px)" />
     <source srcset="{data.cover.w190}, {data.cover.w190_2x} 2x" />
-    <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
     <!-- TODO нужно добавлять дополнительные разрешения для аватаров на хайрезах -->
-    <img
-      src="https://images.placeholders.dev/?width=64&height=64"
-      alt="page card cover"
-    />
+    <img src={data.cover.w190} class="card__cover-img" alt="page card cover" />
   </picture>
 
   <div class="card__text-container">
@@ -64,5 +61,13 @@
 
   .card__text-header {
     margin-bottom: 4px;
+  }
+
+  .card__cover-container {
+    width: 100%;
+  }
+
+  .card__cover-img {
+    width: 100%;
   }
 </style>
