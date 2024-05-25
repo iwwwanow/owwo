@@ -6,6 +6,7 @@
 
 <a class="cover__link-container" href="{dataType}/{data.id}">
   <picture>
+    <source srcset={data.cover.w190_2x} media="(max-width: 360px)" />
     <source srcset="{data.cover.w190}, {data.cover.w190_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
