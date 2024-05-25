@@ -13,7 +13,7 @@
   <picture class="card__cover-container">
     <source srcset={data.cover.w190_2x} media="(max-width: 360px)" />
     <source srcset="{data.cover.w190}, {data.cover.w190_2x} 2x" />
-    <img src={data.cover.w190} class="card__cover-img" alt="page card cover" />
+    <img src={data.cover.w190} class="card__img" alt="page card cover" />
   </picture>
 
   <div class="card__text-container">
@@ -65,7 +65,18 @@
     width: 100%;
   }
 
-  .card__cover-img {
+  .card__img {
     width: 100%;
+  }
+
+  @media screen and (max-width: 360px) {
+    .card__wrapper {
+      height: 192px;
+    }
+    .card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 </style>
