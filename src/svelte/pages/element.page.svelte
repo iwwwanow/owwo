@@ -1,8 +1,8 @@
 <script>
-  import BaseLayout from "../layouts/base.layout.svelte";
+  import ElementLayout from "../layouts/element.layout.svelte";
 </script>
 
-<BaseLayout>
+<ElementLayout>
   <div class="grid">
     <h4>
       TODO если элементы со страницы кончились, предлагать перейти на следующую
@@ -57,9 +57,7 @@
     <h5>RANDOM SQUARE ELEMENT CARD FROM OWWO</h5>
     <h5>RANDOM HORIZONTAL ELEMENT CARD FROM OWWO</h5>
   </div>
-
-  <h1>HEADER, WO FOOTER</h1>
-</BaseLayout>
+</ElementLayout>
 
 <style>
   .element-content {
