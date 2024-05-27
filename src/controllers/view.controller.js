@@ -66,7 +66,7 @@ const testPageData = {
 const testElementData = {
   elementId: "test-element-id",
   title: "testElementTitle",
-  user: "test-username",
+  // content?
   cover: {
     blob: "blob",
     w1080: "https://images.placeholders.dev/?width=1080&height=1080",
@@ -113,6 +113,7 @@ testUserData.text = testTextData;
 testPageData.date = testDateData;
 testPageData.text = testTextData;
 
+testElementData.user = testUserData;
 testElementData.date = testDateData;
 testElementData.text = testTextData;
 
@@ -164,7 +165,11 @@ export class ViewController {
   }
 
   static async renderElementPage() {
-    return ViewController.responsePageHtml(Element);
+    const props = {
+      element: testElementData,
+      pages: [testPageData, testPageData, testPageData],
+    };
+    return ViewController.responsePageHtml(Element, props);
   }
 
   static async renderErrorPage() {
