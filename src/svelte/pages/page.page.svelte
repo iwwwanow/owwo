@@ -63,7 +63,7 @@
 <style>
   .page-info__title {
     /* TODO make it property cor color of cover */
-    margin: 0;
+    /* margin: 0; */
     color: var(--black);
     word-break: break-all;
   }
