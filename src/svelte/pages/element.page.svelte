@@ -1,8 +1,18 @@
 <script>
   import ElementLayout from "../layouts/element.layout.svelte";
+  import UserInfo from "../components/user-info.component.svelte";
+  import Date from "../components/date.component.svelte";
+  import Text from "../components/text.component.svelte";
+
+  export let element;
+  export let pages;
 </script>
 
 <ElementLayout>
+  <div class="element-content">
+    <h1>{element.title}</h1>
+  </div>
+
   <div class="grid">
     <h4>
       TODO если элементы со страницы кончились, предлагать перейти на следующую
@@ -14,20 +24,25 @@
     </h4>
   </div>
 
-  <div class="element-content">
-    <h1>element on the center of the page</h1>
-    <h3>CENTER OF THE SCREEN</h3>
-    <h3>full screen mode button</h3>
-    <h3>w100, 100vh-min</h3>
+  <div class="grid element-info__data-wrapper">
+    <div class="element-info__data-container">
+      {#if element.title}
+        <h2 class="element-info__title">{element.title}</h2>
+      {/if}
+      <UserInfo user={element.user} />
+      <Date date={element.date} />
+    </div>
+    <div class="element-info__pages-container">
+      <h5>other pages - column with wrap</h5>
+    </div>
   </div>
 
-  <div class="grid">
-    <span>
-      <h5>element-text html (markdown in db)</h5>
-      <h5>root page</h5>
-      <h5>other pages???</h5>
-    </span>
-    <h5>username + dates</h5>
+  <div class="grid element__text-container">
+    TODO 3 column width
+    {#if element.text}
+      <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
+      <Text text={element.text} className="element__text" />
+    {/if}
   </div>
 
   <div class="grid">
@@ -46,21 +61,16 @@
   </div>
 
   <div class="grid">
-    <h5>OWWO RANDOM ELEMENTS</h5>
-    <h5>RANDOM VERTICAL ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM SQUARE ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM HORIZONTAL ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM VERTICAL ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM SQUARE ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM HORIZONTAL ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM VERTICAL ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM SQUARE ELEMENT CARD FROM OWWO</h5>
-    <h5>RANDOM HORIZONTAL ELEMENT CARD FROM OWWO</h5>
+    <h5>OWWO RANDOM ELEMENT CARDS</h5>
   </div>
 </ElementLayout>
 
 <style>
   .element-content {
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
