@@ -17,6 +17,10 @@
     text-transform: uppercase;
   }
 
+  :global(.element-layout header) {
+    margin: auto 0 0;
+  }
+
   .header__logo-container {
     width: fit-content;
     height: fit-content;
