@@ -119,8 +119,6 @@ testElementData.date = testDateData;
 testElementData.text = testTextData;
 testElementData.navigationElements = [testElementData, testElementData];
 
-console.log(testElementData.navigationElements);
-
 testUserData.pages = [testPageData, testPageData, testPageData];
 testPageData.elements = [testElementData, testElementData, testElementData];
 testElementData.pages = [testPageData, testPageData, testPageData];
