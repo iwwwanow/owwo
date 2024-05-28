@@ -28,6 +28,17 @@ const testUserData = {
   },
 };
 
+const testCoverData = {
+  blob: "blob",
+  // TODO it may be smaller or bigger than HD
+  original: "https://images.placeholders.dev/?width=1080&height=1080",
+  w1080: "https://images.placeholders.dev/?width=1080&height=1080",
+  w10: "https://images.placeholders.dev/?width=10&height=16",
+  w10_2x: "https://images.placeholders.dev/?width=20&height=32",
+  w190: "https://images.placeholders.dev/?width=190&height=288",
+  w190_2x: "https://images.placeholders.dev/?width=380&height=576",
+};
+
 const testPageData = {
   pageId: "test-page-id",
   title: "testPageTitle",
@@ -55,24 +66,14 @@ const testPageData = {
       type: "viewer",
     },
   ],
-  cover: {
-    blob: "blob",
-    w1080: "https://images.placeholders.dev/?width=1080&height=1080",
-    w190: "https://images.placeholders.dev/?width=190&height=288",
-    w190_2x: "https://images.placeholders.dev/?width=380&height=576",
-  },
+  cover: testCoverData,
 };
 
 const testElementData = {
   elementId: "test-element-id",
   title: "testElementTitle",
   // content?
-  cover: {
-    blob: "blob",
-    w1080: "https://images.placeholders.dev/?width=1080&height=1080",
-    w190: "https://images.placeholders.dev/?width=190&height=288",
-    w190_2x: "https://images.placeholders.dev/?width=380&height=576",
-  },
+  cover: testCoverData,
 };
 
 const testLastDate = new Date(Date.now());
@@ -116,6 +117,9 @@ testPageData.text = testTextData;
 testElementData.user = testUserData;
 testElementData.date = testDateData;
 testElementData.text = testTextData;
+testElementData.navigationElements = [testElementData, testElementData];
+
+console.log(testElementData.navigationElements);
 
 testUserData.pages = [testPageData, testPageData, testPageData];
 testPageData.elements = [testElementData, testElementData, testElementData];
