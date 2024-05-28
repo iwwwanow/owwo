@@ -117,6 +117,10 @@ testElementData.user = testUserData;
 testElementData.date = testDateData;
 testElementData.text = testTextData;
 
+testUserData.pages = [testPageData, testPageData, testPageData];
+testPageData.elements = [testElementData, testElementData, testElementData];
+testElementData.pages = [testPageData, testPageData, testPageData];
+
 export class ViewController {
   static async responsePageHtml(componentName, props) {
     const pageView = new SveltePageView(componentName, props);
@@ -149,7 +153,6 @@ export class ViewController {
   static async renderUserPage() {
     const props = {
       user: testUserData,
-      pages: [testPageData, testPageData, testPageData],
     };
 
     return ViewController.responsePageHtml(User, props);
@@ -158,7 +161,6 @@ export class ViewController {
   static async renderPagePage() {
     const props = {
       page: testPageData,
-      elements: [testElementData, testElementData, testElementData],
     };
 
     return ViewController.responsePageHtml(Page, props);
@@ -167,7 +169,6 @@ export class ViewController {
   static async renderElementPage() {
     const props = {
       element: testElementData,
-      pages: [testPageData, testPageData, testPageData],
     };
     return ViewController.responsePageHtml(Element, props);
   }

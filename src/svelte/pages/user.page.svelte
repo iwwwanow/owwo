@@ -9,7 +9,6 @@
   import Hr from "../components/hr.component.svelte";
 
   export let user;
-  export let pages;
 </script>
 
 <BaseLayout>
@@ -47,7 +46,7 @@
   <!-- TODO страницы, в которые пушил User -->
 
   <div class="grid user__pages-container">
-    {#each pages as page}
+    {#each user.pages as page}
       <Card {page} />
     {/each}
     <Button style="plus" />

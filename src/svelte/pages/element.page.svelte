@@ -3,9 +3,9 @@
   import UserInfo from "../components/user-info.component.svelte";
   import Date from "../components/date.component.svelte";
   import Text from "../components/text.component.svelte";
+  import Hr from "../components/hr.component.svelte";
 
   export let element;
-  export let pages;
 </script>
 
 <ElementLayout>
@@ -31,6 +31,8 @@
       {/if}
       <UserInfo user={element.user} />
       <Date date={element.date} />
+      <Hr />
+      {#if element.pages}{/if}
     </div>
     <div class="element-info__pages-container">
       <h5>other pages - column with wrap</h5>

@@ -54,7 +54,7 @@
   </div>
 
   <div class="grid page__elements-container">
-    {#each elements as element}
+    {#each page.elements as element}
       <Card {element} />
     {/each}
   </div>
