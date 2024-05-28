@@ -9,7 +9,6 @@
   import Hr from "../components/hr.component.svelte";
 
   export let page;
-  export let elements;
 </script>
 
 <BaseLayout>
