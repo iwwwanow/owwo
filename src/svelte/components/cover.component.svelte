@@ -9,8 +9,6 @@
     <source srcset={data.cover.w190_2x} media="(max-width: 360px)" />
     <source srcset="{data.cover.w190}, {data.cover.w190_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
-    <!-- TODO либо сделать разные модификаторы блока, либо разнести по разным файлам -->
-    <!-- TODO нужно добавлять дополнительные разрешения для аватаров на хайрезах -->
     <img
       src="https://images.placeholders.dev/?width=64&height=64"
       alt="page-cover"
