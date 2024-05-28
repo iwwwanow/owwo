@@ -4,13 +4,15 @@
   import Date from "../components/date.component.svelte";
   import Text from "../components/text.component.svelte";
   import Hr from "../components/hr.component.svelte";
+  import PageInfo from "../components/page-info.component.svelte";
+  import Card from "../components/card.component.svelte";
 
   export let element;
 </script>
 
 <ElementLayout>
-  <div class="element-content">
-    <h1>{element.title}</h1>
+  <div class="element__content-wrapper">
+    <h1>element-content</h1>
   </div>
 
   <div class="grid">
@@ -32,19 +34,15 @@
       <UserInfo user={element.user} />
       <Date date={element.date} />
       <Hr />
-      {#if element.pages}{/if}
+      {#if element.pages}
+        <div class="element-info__pages-container">
+          {#each element.pages as page}
+            <PageInfo {page} />
+          {/each}
+        </div>
+      {/if}
     </div>
-    <div class="element-info__pages-container">
-      <h5>other pages - column with wrap</h5>
-    </div>
-  </div>
-
-  <div class="grid element__text-container">
-    TODO 3 column width
-    {#if element.text}
-      <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
-      <Text text={element.text} className="element__text" />
-    {/if}
+    <Text text={element.text} className="grid_break-start" />
   </div>
 
   <div class="grid">
@@ -55,6 +53,14 @@
     <h5>NEXT-ELEMENT-COVER</h5>
     <h5>NEXT ASCII ICON</h5>
   </div>
+
+  {#if element.navigationElements}
+    <div class="grid navigation-elements">
+      {#each element.navigationElements as navigationElement}
+        <Card element={navigationElement} />
+      {/each}
+    </div>
+  {/if}
 
   <div class="grid">
     <h5>TODO Зависит от количества колонок в сетке (от разрешения)</h5>
@@ -68,11 +74,18 @@
 </ElementLayout>
 
 <style>
-  .element-content {
+  .element__content-wrapper {
     width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .element-info__pages-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--gap-grid) / 4);
   }
 </style>
