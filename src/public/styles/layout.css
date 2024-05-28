@@ -19,7 +19,7 @@
 .grid,
 .list {
   --gap-grid: 16px;
-  --break-column: 6;
+  --break-column: 5;
 
   width: 100%;
 
