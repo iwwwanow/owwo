@@ -1,6 +1,5 @@
 <script>
   import Avatar from "../components/avatar.component.svelte";
-  import Hr from "./hr.component.svelte";
 
   export let type;
   export let user;
