@@ -5,7 +5,7 @@
 
 <a href="/page/{page.pageId}" class="page-info__container">
   <PageInfoCover cover={page.cover} />
-  <h5 style="word-break: break-all" class="user-info__username">
+  <h5 style="word-break: break-all" class="page-info__title">
     {page.title}
   </h5>
 </a>
