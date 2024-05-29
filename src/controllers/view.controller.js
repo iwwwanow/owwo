@@ -117,7 +117,12 @@ testPageData.text = testTextData;
 testElementData.user = testUserData;
 testElementData.date = testDateData;
 testElementData.text = testTextData;
-testElementData.navigationElements = [testElementData, testElementData];
+// TODO если не могу найти следующий элемент, предлагать следующую страницу
+// ИЛИ возвращение в профиль
+testElementData.navigationElements = {
+  prevElement: testElementData,
+  nextElement: testElementData,
+};
 
 testUserData.pages = [testPageData, testPageData, testPageData];
 testPageData.elements = [testElementData, testElementData, testElementData];
