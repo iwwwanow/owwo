@@ -1,14 +1,21 @@
 <script>
   import ElementInfoCover from "./element-info__cover.component.svelte";
   export let element;
+  export let type;
 </script>
 
-<a href="/element/{element.elementId}" class="element-info__container">
-  <ElementInfoCover cover={element.cover} />
-  <h5 style="word-break: break-all" class="element-info__title">
-    {element.title}
-  </h5>
-</a>
+{#if type === "cover"}
+  <a href="/element/{element.elementId}" class="element-info__container">
+    <ElementInfoCover cover={element.cover} {type} />
+  </a>
+{:else}
+  <a href="/element/{element.elementId}" class="element-info__container">
+    <ElementInfoCover cover={element.cover} />
+    <h5 style="word-break: break-all" class="element-info__title">
+      {element.title}
+    </h5>
+  </a>
+{/if}
 
 <style>
   .element-info__container {
