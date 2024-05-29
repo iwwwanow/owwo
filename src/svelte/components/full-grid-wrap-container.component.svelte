@@ -1,4 +1,12 @@
-<div class="grid full-grid-wrap-container__wrapper">
+<script>
+  export let limit;
+  let style;
+  if (limit) {
+    style = `max-height: ${limit}px; overflow: hidden`;
+  }
+</script>
+
+<div class="grid full-grid-wrap-container__wrapper" {style}>
   <span class="full-grid-wrap-container__container">
     <slot />
   </span>
@@ -10,7 +18,6 @@
     position: relative;
 
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
   }
 </style>
