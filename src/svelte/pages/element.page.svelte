@@ -9,69 +9,74 @@
   import ElementInfo from "../components/element-info.component.svelte";
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
   import Logo from "../components/logo.component.svelte";
+  import Header from "../components/header.component.svelte";
 
   export let element;
 </script>
 
 <ElementLayout>
   <div class="element__content-wrapper">
-    <h1>element-content</h1>
-  </div>
-
-  {#if element.navigationElements}
-    <div class="grid navigation-elements__container">
-      <span> TODO вынеси в отдельный компонент </span>
-      <span>
-        TODO поднеми на уровень экрана, чтобы эта полоска всегда была в поле
-        зрения
-      </span>
-      <span class="navigation-elements__element">
-        <h3 class="navigation-elements__symbol">◂</h3>
-        <ElementInfo element={element.navigationElements.prevElement} />
-      </span>
-      <span class="navigation-elements__element">
-        <ElementInfo element={element.navigationElements.nextElement} />
-        <h3 class="navigation-elements__symbol">▸</h3>
-      </span>
+    <div class="element__content-container">
+      <h1>element-content</h1>
     </div>
-  {/if}
-
-  <div class="grid element-info__data-wrapper">
-    <div class="element-info__data-container">
-      {#if element.title}
-        <h2 class="element-info__title">{element.title}</h2>
-      {/if}
-      <UserInfo user={element.user} />
-      <Date date={element.date} />
-      <Hr />
-      {#if element.pages}
-        <div class="element-info__pages-container">
-          {#each element.pages as page}
-            <PageInfo {page} />
-          {/each}
+    {#if element.navigationElements}
+      <div class="grid navigation-elements__wrapper">
+        <div class="navigation-elements__container">
+          <span class="navigation-elements__element">
+            <ElementInfo
+              element={element.navigationElements.prevElement}
+              leftSymbol="◂"
+            />
+          </span>
+          <span class="navigation-elements__element">
+            <ElementInfo
+              element={element.navigationElements.nextElement}
+              rightSymbol="▸"
+            />
+          </span>
         </div>
-      {/if}
-    </div>
-    <Text text={element.text} className="grid_break-start" />
+      </div>
+    {/if}
   </div>
 
-  // TODO quantity of elements to single string
+  <div class="wrapper element-layout">
+    <div class="grid element-info__data-wrapper">
+      <div class="element-info__data-container">
+        {#if element.title}
+          <h2 class="element-info__title">{element.title}</h2>
+        {/if}
+        <UserInfo user={element.user} />
+        <Date date={element.date} />
+        <Hr />
+        {#if element.pages}
+          <div class="element-info__pages-container">
+            {#each element.pages as page}
+              <PageInfo {page} />
+            {/each}
+          </div>
+        {/if}
+      </div>
+      <Text text={element.text} className="grid_break-start" />
+    </div>
 
-  <FullGridWrapContainer limit={32}>
-    <h2 class="random-elements__title">
-      {element.user.username}
-    </h2>
-    {#each element.randomUserElements as randomElement}
-      <ElementInfo element={randomElement} type="cover" />
-    {/each}
-  </FullGridWrapContainer>
+    <FullGridWrapContainer limit={32}>
+      <h2 class="random-elements__title">
+        {element.user.username}
+      </h2>
+      {#each element.randomUserElements as randomElement}
+        <ElementInfo element={randomElement} type="cover" />
+      {/each}
+    </FullGridWrapContainer>
 
-  <FullGridWrapContainer>
-    <Logo className="random-elements__title random-elements__logo" />
-    {#each element.randomOwwoElements as randomElement}
-      <ElementInfo element={randomElement} type="cover" />
-    {/each}
-  </FullGridWrapContainer>
+    <FullGridWrapContainer>
+      <Logo className="random-elements__title random-elements__logo" />
+      {#each element.randomOwwoElements as randomElement}
+        <ElementInfo element={randomElement} type="cover" />
+      {/each}
+    </FullGridWrapContainer>
+
+    <Header />
+  </div>
 </ElementLayout>
 
 <style>
@@ -95,8 +100,15 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  .element__content-container {
+    width: 100%;
+    min-height: calc(100vh - 32px);
+    display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .element-info__pages-container {
@@ -117,11 +129,17 @@
     gap: var(--gap-v);
   }
 
-  .navigation-elements__symbol {
-    color: var(--medium);
+  .navigation-elements__wrapper {
+    width: 100%;
+    padding: 8px;
   }
 
-  .navigation-elements__element:hover .navigation-elements__symbol {
-    color: black;
+  .navigation-elements__container {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: row;
+    row-gap: var(--gap-v);
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
   }
 </style>
