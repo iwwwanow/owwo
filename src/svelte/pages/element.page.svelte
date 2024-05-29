@@ -8,6 +8,7 @@
   import Card from "../components/card.component.svelte";
   import ElementInfo from "../components/element-info.component.svelte";
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
+  import Logo from "../components/logo.component.svelte";
 
   export let element;
 </script>
@@ -54,26 +55,19 @@
     <Text text={element.text} className="grid_break-start" />
   </div>
 
-  <div class="grid">
-    <h5>TODO Зависит от количества колонок в сетке (от разрешения)</h5>
-    <h5>TODO одна строчка</h5>
-    <h5>make element info image bigger (see on avatars on home page)</h5>
-    <h5>RANDOM USER ELEMENTS</h5>
-  </div>
+  // TODO quantity of elements to single string
 
-  <FullGridWrapContainer>
-    <h3 class="element__random-elements-container-title">
-      username-luminosity
-    </h3>
+  <FullGridWrapContainer limit={32}>
+    <h2 class="random-elements__title">
+      {element.user.username}
+    </h2>
     {#each element.randomUserElements as randomElement}
       <ElementInfo element={randomElement} type="cover" />
     {/each}
   </FullGridWrapContainer>
 
   <FullGridWrapContainer>
-    <h3 class="element__random-elements-container-title">
-      owwo-logo-luminosity
-    </h3>
+    <Logo className="random-elements__title random-elements__logo" />
     {#each element.randomOwwoElements as randomElement}
       <ElementInfo element={randomElement} type="cover" />
     {/each}
@@ -81,8 +75,20 @@
 </ElementLayout>
 
 <style>
-  .element__random-elements-container-title {
-    position: absolute;
+  :global(.random-elements__title) {
+    mix-blend-mode: difference;
+    pointer-events: none;
+    position: absolute !important;
+    top: var(--gap-v);
+    left: var(--gap-h);
+  }
+
+  :global(.random-elements__logo path) {
+    fill: var(--dark) !important;
+  }
+
+  :global(.random-elements__title) {
+    color: var(--dark) !important;
   }
 
   .element__content-wrapper {
