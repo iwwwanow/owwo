@@ -2,18 +2,17 @@
   import BaseLayout from "../layouts/base.layout.svelte";
   import Avatar from "../components/avatar.component.svelte";
   import UserInfo from "../components/user-info.component.svelte";
+  import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
 
   export let users;
 </script>
 
 <BaseLayout>
-  <div class="grid">
-    <span class="home__users-container">
-      {#each users as user}
-        <UserInfo {user} type="avatar" />
-      {/each}
-    </span>
-  </div>
+  <FullGridWrapContainer>
+    {#each users as user}
+      <UserInfo {user} type="avatar" />
+    {/each}
+  </FullGridWrapContainer>
 
   <div class="grid todo" style="color: red;">
     <ul>
@@ -36,13 +35,3 @@
     <h1>owwo big-logo</h1>
   </div>
 </BaseLayout>
-
-<style>
-  .home__users-container {
-    grid-column: 1/-1;
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-</style>

@@ -7,6 +7,7 @@
   import PageInfo from "../components/page-info.component.svelte";
   import Card from "../components/card.component.svelte";
   import ElementInfo from "../components/element-info.component.svelte";
+  import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
 
   export let element;
 </script>
@@ -60,39 +61,26 @@
     <h5>RANDOM USER ELEMENTS</h5>
   </div>
 
-  <div class="grid">
-    <span class="element__random-elements-container">
-      <h3 class="element__random-elements-container-title">
-        username-luminosity
-      </h3>
-      {#each element.randomUserElements as randomElement}
-        <ElementInfo element={randomElement} type="cover" />
-      {/each}
-    </span>
-  </div>
+  <FullGridWrapContainer>
+    <h3 class="element__random-elements-container-title">
+      username-luminosity
+    </h3>
+    {#each element.randomUserElements as randomElement}
+      <ElementInfo element={randomElement} type="cover" />
+    {/each}
+  </FullGridWrapContainer>
 
-  <div class="grid">
-    <span class="element__random-elements-container">
-      <h3 class="element__random-elements-container-title">
-        owwo-logo-luminosity
-      </h3>
-      {#each element.randomOwwoElements as randomElement}
-        <ElementInfo element={randomElement} type="cover" />
-      {/each}
-    </span>
-  </div>
+  <FullGridWrapContainer>
+    <h3 class="element__random-elements-container-title">
+      owwo-logo-luminosity
+    </h3>
+    {#each element.randomOwwoElements as randomElement}
+      <ElementInfo element={randomElement} type="cover" />
+    {/each}
+  </FullGridWrapContainer>
 </ElementLayout>
 
 <style>
-  .element__random-elements-container {
-    grid-column: 1/-1;
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   .element__random-elements-container-title {
     position: absolute;
   }
