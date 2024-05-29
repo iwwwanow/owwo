@@ -61,11 +61,42 @@
   </div>
 
   <div class="grid">
-    <h5>OWWO RANDOM ELEMENT CARDS, many rows</h5>
+    <span class="element__random-elements-container">
+      <h3 class="element__random-elements-container-title">
+        username-luminosity
+      </h3>
+      {#each element.randomUserElements as randomElement}
+        <ElementInfo element={randomElement} type="cover" />
+      {/each}
+    </span>
+  </div>
+
+  <div class="grid">
+    <span class="element__random-elements-container">
+      <h3 class="element__random-elements-container-title">
+        owwo-logo-luminosity
+      </h3>
+      {#each element.randomOwwoElements as randomElement}
+        <ElementInfo element={randomElement} type="cover" />
+      {/each}
+    </span>
   </div>
 </ElementLayout>
 
 <style>
+  .element__random-elements-container {
+    grid-column: 1/-1;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .element__random-elements-container-title {
+    position: absolute;
+  }
+
   .element__content-wrapper {
     width: 100%;
     min-height: 100vh;
