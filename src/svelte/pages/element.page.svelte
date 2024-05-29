@@ -6,6 +6,7 @@
   import Hr from "../components/hr.component.svelte";
   import PageInfo from "../components/page-info.component.svelte";
   import Card from "../components/card.component.svelte";
+  import ElementInfo from "../components/element-info.component.svelte";
 
   export let element;
 </script>
@@ -15,16 +16,23 @@
     <h1>element-content</h1>
   </div>
 
-  <div class="grid">
-    <h4>
-      TODO если элементы со страницы кончились, предлагать перейти на следующую
-      страницу
-    </h4>
-    <h4>
-      TODO ДЕЛАЙ ФИКСИРОВАННУЮ ШИРИНУ КАРТОЧЕК. Это сильно упростит верстку,
-      потом ты сможешь с ней побаловаться
-    </h4>
-  </div>
+  {#if element.navigationElements}
+    <div class="grid navigation-elements__container">
+      <span> TODO вынеси в отдельный компонент </span>
+      <span>
+        TODO поднеми на уровень экрана, чтобы эта полоска всегда была в поле
+        зрения
+      </span>
+      <span class="navigation-elements__element">
+        <h3 class="navigation-elements__symbol">◂</h3>
+        <ElementInfo element={element.navigationElements.prevElement} />
+      </span>
+      <span class="navigation-elements__element">
+        <ElementInfo element={element.navigationElements.nextElement} />
+        <h3 class="navigation-elements__symbol">▸</h3>
+      </span>
+    </div>
+  {/if}
 
   <div class="grid element-info__data-wrapper">
     <div class="element-info__data-container">
@@ -46,30 +54,14 @@
   </div>
 
   <div class="grid">
-    <h5>BACK ASCII ICON</h5>
-    <h5>PREV-ELEMENT-COVER</h5>
-    <h5>ОПИСАНИЕ "ЭЛЕМЕНТА"</h5>
-    <h5>СЛЕДУЮЩИЙ ЭЛЕМЕНТ</h5>
-    <h5>NEXT-ELEMENT-COVER</h5>
-    <h5>NEXT ASCII ICON</h5>
-  </div>
-
-  {#if element.navigationElements}
-    <div class="grid navigation-elements">
-      {#each element.navigationElements as navigationElement}
-        <Card element={navigationElement} />
-      {/each}
-    </div>
-  {/if}
-
-  <div class="grid">
     <h5>TODO Зависит от количества колонок в сетке (от разрешения)</h5>
     <h5>TODO одна строчка</h5>
+    <h5>make element info image bigger (see on avatars on home page)</h5>
     <h5>RANDOM USER ELEMENTS</h5>
   </div>
 
   <div class="grid">
-    <h5>OWWO RANDOM ELEMENT CARDS</h5>
+    <h5>OWWO RANDOM ELEMENT CARDS, many rows</h5>
   </div>
 </ElementLayout>
 
@@ -87,5 +79,24 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: calc(var(--gap-grid) / 4);
+  }
+
+  .navigation-elements__container * {
+    margin: 0;
+  }
+
+  .navigation-elements__element {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-v);
+  }
+
+  .navigation-elements__symbol {
+    color: var(--medium);
+  }
+
+  .navigation-elements__element:hover .navigation-elements__symbol {
+    color: black;
   }
 </style>
