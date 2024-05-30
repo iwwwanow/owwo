@@ -1,12 +1,12 @@
 <script>
   export let style;
 
-  import ButtonPlusSvg from "./svg/button_plus.svg.svelte";
+  import ButtonPlus from "../svgs/button_plus.svg.svelte";
 </script>
 
 {#if style === "plus"}
   <button class="button button_plus border">
-    <ButtonPlusSvg />
+    <ButtonPlus />
   </button>
 {:else}
   <h5>other style button</h5>
