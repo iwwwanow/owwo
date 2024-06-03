@@ -22,11 +22,11 @@
         <Date date={page.date} />
         <Hr />
         <span class="page-info__users-container">
-          {#if page.users.length === 1}
-            {@const user = page.users[0]}
+          {#if page.authors.length === 1}
+            {@const user = page.authors[0]}
             <UserInfo {user} />
           {:else}
-            {#each page.users as user}
+            {#each page.authors as user}
               <UserInfo {user} />
             {/each}
           {/if}
