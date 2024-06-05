@@ -1,7 +1,7 @@
 <script>
-  import Head from "../components/head.component.svelte";
-  import Header from "../components/header.component.svelte";
-  import Footer from "../components/footer.component.svelte";
+  import Head from "../fragments/head.fragment.svelte";
+  import Header from "../fragments/header.fragment.svelte";
+  import Footer from "../fragments/footer.fragment.svelte";
 </script>
 
 <svelte:head>

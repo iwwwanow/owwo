@@ -1,5 +1,5 @@
 <script>
-  import Logo from "./logo.component.svelte";
+  import Logo from "../components/logo.component.svelte";
 </script>
 
 <header class="grid">
