@@ -12,10 +12,10 @@ export const IMAGE_TEST_DATA_AVATAR = {
 };
 
 export const IMAGE_TEST_DATA_COVER = {
-  h32: "https://images.placeholders.dev/?width=22&height=32",
-  h32_2x: "https://images.placeholders.dev/?width=42&height=64",
   h16: "https://images.placeholders.dev/?width=10&height=16",
   h16_2x: "https://images.placeholders.dev/?width=22&height=32",
+  h32: "https://images.placeholders.dev/?width=22&height=32",
+  h32_2x: "https://images.placeholders.dev/?width=42&height=64",
   w190: "https://images.placeholders.dev/?width=190&height=288",
   w190_2x: "https://images.placeholders.dev/?width=380&height=576",
   w1080: "https://images.placeholders.dev/?width=1080&height=1080",
