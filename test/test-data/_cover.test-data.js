@@ -1,4 +1,5 @@
 export const COVER_TEST_DATA = {
+  id: "cover-id",
   blob: "blob",
   // TODO it may be smaller or bigger than HD
   original: "https://images.placeholders.dev/?width=1080&height=1080",
