@@ -1,7 +1,7 @@
 import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
-const testTextPath = "../test-assets/text.test-asset.md";
+const testTextPath = "./test/test-assets/text.test-asset.md";
 const testTextFile = Bun.file(testTextPath);
 const testTextMdString = await testTextFile.text();
 const testTextHtmlString = await marked.parse(testTextMdString);
