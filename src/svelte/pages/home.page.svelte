@@ -9,7 +9,7 @@
 <BaseLayout>
   <FullGridWrapContainer>
     {#each users as user}
-      <NodeInfo {user} type="avatar" />
+      <NodeInfo id={user.id} image={user.image} />
     {/each}
   </FullGridWrapContainer>
 
