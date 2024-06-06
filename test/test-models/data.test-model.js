@@ -30,6 +30,13 @@ export class DataTestModel {
     return nodeData;
   }
 
+  static async getNodesData(quantity) {
+    const nodes = [];
+    for (let i = 0; i < quantity; i++) nodes.push(await this.getNodeData());
+
+    return nodes;
+  }
+
   // static async getUserNodeData() {
   //   const userNodeData = NODE_TEST_DATA;
   //   userNodeData.image = IMAGE_TEST_DATA_AVATAR;
