@@ -1,24 +1,24 @@
 <script>
-  export let cover;
-  export let type;
+  export let image;
+  export let variant = "small";
 </script>
 
-{#if type === "cover"}
+{#if variant === "small"}
   <picture>
-    <source srcset="{cover.w22}, {cover.w22_2x} 2x" />
+    <source srcset="{image.h16}, {image.h16_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <img
       src="https://images.placeholders.dev/?width=64&height=64"
-      alt="page-cover"
+      alt="node-info__image"
     />
   </picture>
-{:else}
+{:else if variant == "big"}
   <picture>
-    <source srcset="{cover.w10}, {cover.w10_2x} 2x" />
+    <source srcset="{image.h32}, {image.h32_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />
     <img
       src="https://images.placeholders.dev/?width=64&height=64"
-      alt="page-cover"
+      alt="node-info__image"
     />
   </picture>
 {/if}
