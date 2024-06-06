@@ -23,23 +23,21 @@ export class ViewController {
   }
 
   static async renderHomePage() {
-    const users = await DataTestModel.getUserNodesData(32);
-    console.log(users);
-
+    const users = await DataTestModel.getNodesData(32);
     const props = { users };
-    return ViewController.responsePageHtml(Home, props);
+    return ViewController.responsePageHtml(HomePage, props);
   }
 
   static async renderAboutPage() {
-    return ViewController.responsePageHtml(About);
+    return ViewController.responsePageHtml(AboutPage);
   }
 
   static async renderLoginPage() {
-    return ViewController.responsePageHtml(Login);
+    return ViewController.responsePageHtml(LoginPage);
   }
 
   static async renderSignupPage() {
-    return ViewController.responsePageHtml(Signup);
+    return ViewController.responsePageHtml(SignupPage);
   }
 
   static async renderNodePage() {
