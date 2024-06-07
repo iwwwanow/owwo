@@ -3,8 +3,8 @@
 // import { ELEMENT_NODE_TEST_DATA } from "../test-data/element-node.test-data";
 // import { TEXT_TEST_DATA } from "../test-data/text.test-data";
 
-import { NODE_TEST_DATA } from "../test-data/node.test-data";
 import { META_TEST_DATA } from "../test-data/meta.test-data";
+import { MAIN_TEST_DATA } from "../test-data/main.test-data";
 import { DATE_TEST_DATA } from "../test-data/date.test-data";
 import {
   IMAGE_TEST_DATA_AVATAR,
@@ -16,13 +16,12 @@ export class DataTestModel {
     // const nodeData = NODE_TEST_DATA;
 
     const nodeData = Object.assign(
-      NODE_TEST_DATA,
       META_TEST_DATA,
+      MAIN_TEST_DATA,
       { image: IMAGE_TEST_DATA_AVATAR },
       { date: DATE_TEST_DATA }
     );
 
-    // nodeData.image = IMAGE_TEST_DATA_AVATAR;
     // nodeData.date = DATE_TEST_DATA;
     // HTML(ALLOWS JS) OR MARKDOWN ONLY
     // nodeData.content = CONTENT_TEST_DATA;
