@@ -14,22 +14,22 @@
   const { id } = node;
   const { image } = node;
   const { date } = node;
-  const { descriptoin } = node;
+  const { description } = node;
   const { childs } = node;
 </script>
 
 <BaseLayout>
   <div class="grid user-info">
-    <span class="user-info__data-wrapper">
+    <span class="meta-info__data-wrapper">
       <Image {image} {id} variant="w190" />
 
       <div class="user-info__data-container">
-        <h2 class="node-info__title">{node.title}</h2>
+        <h2 class="node-meta-info__title">{node.title}</h2>
         <Date {date} />
 
-        {#if descriptoin}
+        {#if description}
           <Hr />
-          <h5>{descriptoin}</h5>
+          {@html description}
           <!-- TODO укороченное описание (для ссылок например) -->
         {/if}
       </div>
