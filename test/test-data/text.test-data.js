@@ -1,26 +1,44 @@
 import { marked } from "marked";
 import DOMPurify from "isomorphic-dompurify";
 
-const testTextPath = "./test/test-assets/text.test-asset.md";
-const testTextFile = Bun.file(testTextPath);
-const testTextMdString = await testTextFile.text();
-const testTextHtmlString = await marked.parse(testTextMdString);
-const testTextHtmlCleanString = DOMPurify.sanitize(testTextHtmlString);
+const getMarkdown = async (filepath) => {
+  const textFile = Bun.file(filepath);
+  const textMdString = await textFile.text();
+  return textMdString;
+};
 
-const makeTextPreview = (text) => {
-  if (text.lenth < 320) return text;
+const getHtml = async (markdownString) => {
+  const textHtmlString = await marked.parse(markdownString);
+  const textHtmlCleanString = DOMPurify.sanitize(textHtmlString);
+  return textHtmlCleanString;
+};
+
+const cutText = (text, symbolsQuantity) => {
+  if (text.lenth < symbolsQuantity) return text;
   // TODO проверь итоговую длину строки? какбудто это неверно
   else {
     // const shortenString = text.slice(0, 240);
-    const shortenString = text.slice(0, 240);
+    const shortenString = text.slice(0, symbolsQuantity);
     const wordsArray = shortenString.split(" ");
     const outputString = wordsArray.slice(0, -1).join(" ") + "...";
     return outputString;
   }
 };
 
-export const TEXT_TEST_DATA = {
-  markdown: testTextMdString,
-  html: testTextHtmlCleanString,
-  preview: makeTextPreview(testTextMdString),
+const getTextObj = async (filepath) => {
+  const markdown = await getMarkdown(filepath);
+  const html = await getHtml(markdown);
+  const preview = cutText(markdown, 240);
+
+  return {
+    markdown,
+    html,
+    preview,
+  };
 };
+
+const textContentFilepath = "./test/test-assets/text-content.test-asset.md";
+const descriptionFilepath = "./test/test-assets/description.test-asset.md";
+
+export const TEXT_CONTENT_TEST_DATA = await getTextObj(textContentFilepath);
+export const DESCRIPTION_TEST_DATA = await getTextObj(descriptionFilepath);
