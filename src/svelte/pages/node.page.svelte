@@ -15,22 +15,23 @@
   const { image } = node;
   const { date } = node;
   const { description } = node;
+
+  const { meta } = node;
   const { childs } = node;
 </script>
 
 <BaseLayout>
-  <div class="grid user-info">
-    <span class="meta-info__data-wrapper">
+  <div class="grid node-wrapper">
+    <span class="node-info__data-wrapper">
       <Image {image} {id} variant="w190" />
 
-      <div class="user-info__data-container">
-        <h2 class="node-meta-info__title">{node.title}</h2>
+      <div class="node-info__data-container">
+        <h2 class="node-info__title">{node.title}</h2>
         <Date {date} />
 
         {#if description}
           <Hr />
           {@html description}
-          <!-- TODO укороченное описание (для ссылок например) -->
         {/if}
       </div>
     </span>
@@ -38,7 +39,7 @@
     {#if node.content}
       <!-- TODO это не описание, это контент. и храниться он должен в MD или HTML файле на локалке -->
       <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
-      <!-- <Text text={node.content} className="grid_break-start" /> -->
+      <Text text={node.content} className="grid_break-start" />
     {/if}
   </div>
 
@@ -65,39 +66,40 @@
 </BaseLayout>
 
 <style>
-  .user-info__data-wrapper {
+  .node-info__data-wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--gap-v);
   }
 
-  .user-info__username {
+  .node-info__title {
     margin: 0;
+    color: var(--dark);
   }
 
   @media screen and (max-width: 650px) {
-    .user-info__data-wrapper {
+    .node-info__data-wrapper {
       grid-column: 1/-1;
       flex-direction: row;
       justify-content: space-between;
       gap: var(--grid-gap);
     }
-    :global(.user-info__data-wrapper > *) {
+    :global(.node-info__data-wrapper > *) {
       width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 
   @media screen and (max-width: 360px) {
-    .user-info__data-wrapper {
+    .node-info__data-wrapper {
       grid-column: 1 / end;
       flex-direction: column;
       gap: var(--gap-grid);
     }
     /* TODO переделать */
-    :global(.user-info__user-data-container > *) {
+    :global(.node-info__data-wrapper > *) {
       width: 100%;
     }
-    :global(.user-info__container) {
+    :global(.node-info__container) {
       max-width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
