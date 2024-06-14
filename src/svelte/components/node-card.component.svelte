@@ -3,7 +3,7 @@
 
   export let node;
 
-  const { id } = node;
+  const { id } = node.meta;
   const { image } = node;
   const { title } = node;
   let { description } = node;
@@ -40,6 +40,7 @@
 <style>
   .card__wrapper {
     position: relative;
+    cursor: pointer;
     overflow: hidden;
     display: flex;
   }
