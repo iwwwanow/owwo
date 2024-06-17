@@ -8,6 +8,8 @@
   import Hr from "../components/hr.component.svelte";
 
   import NodeCard from "../components/node-card.component.svelte";
+  import NodeInfo from "../components/node-info.component.svelte";
+  import NodeInfoContainer from "../components/node-info__container.svelte";
 
   export let node;
 
@@ -17,7 +19,11 @@
   const { description } = node;
 
   const { meta } = node;
-  const { childs } = node;
+  const childs = meta.childs;
+  const authors = meta.authors;
+
+  console.log(authors);
+  console.log(childs);
 </script>
 
 <BaseLayout>
@@ -27,12 +33,23 @@
 
       <div class="node-info__data-container">
         <h2 class="node-info__title">{node.title}</h2>
-        <Date {date} />
+
+        {#if authors}
+          <Hr />
+          <NodeInfoContainer>
+            {#each authors as author}
+              <NodeInfo node={author} />
+            {/each}
+          </NodeInfoContainer>
+        {/if}
 
         {#if description?.html}
           <Hr />
           {@html description.html}
         {/if}
+
+        <Hr />
+        <Date {date} />
       </div>
     </span>
 
@@ -66,6 +83,12 @@
 </BaseLayout>
 
 <style>
+  .node-info__authors-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
   .node-info__data-wrapper {
     display: flex;
     flex-direction: column;

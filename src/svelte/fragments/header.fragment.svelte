@@ -1,8 +1,10 @@
 <script>
   import Logo from "../components/logo.component.svelte";
+
+  export let bottom = false;
 </script>
 
-<header class="grid">
+<header class="grid" style={bottom ? "margin: auto 0 0;" : ""}>
   <Logo />
 
   <h5 class="header__editor-link">editor</h5>

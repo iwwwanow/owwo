@@ -10,7 +10,7 @@
   export let image;
 
   if (node) {
-    id = node.id;
+    id = node.meta.id;
     title = node.title;
     image = node.image;
   }
@@ -38,6 +38,7 @@
 <style>
   .node-info__container {
     --color: var(--dark);
+    width: fit-content;
     display: flex;
     gap: calc(var(--gap-grid) / 8);
     text-decoration-color: var(--color);

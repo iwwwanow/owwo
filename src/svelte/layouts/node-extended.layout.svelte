@@ -1,5 +1,5 @@
 <script>
-  import Head from "../fragments/head.fragments.svelte";
+  import Head from "../fragments/head.fragment.svelte";
 </script>
 
 <svelte:head>
