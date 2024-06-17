@@ -1,6 +1,7 @@
 import { html } from "@stricjs/app/send";
 import { SveltePageView } from "../views/svelte-page.view.js";
 
+import { NodeModel } from "../models/node.model.js";
 import { DataTestModel } from "../../test/test-models/data.test-model.js";
 
 import HomePage from "../svelte/pages/home.page.svelte";
@@ -10,6 +11,7 @@ import SignupPage from "../svelte/pages/signup.page.svelte";
 import ErrorPage from "../svelte/pages/error.page.svelte";
 
 import NodePage from "../svelte/pages/node.page.svelte";
+import NodeExtendedPage from "../svelte/pages/node-extended.page.svelte";
 
 // import User from "../svelte/pages/User.page.svelte";
 // import Page from "../svelte/pages/Page.page.svelte";
@@ -23,7 +25,7 @@ export class ViewController {
   }
 
   static async renderHomePage() {
-    const users = await DataTestModel.getNodesData(32);
+    const users = await NodeModel.getNodes("user", 32);
     const props = { users };
     return ViewController.responsePageHtml(HomePage, props);
   }
@@ -40,12 +42,50 @@ export class ViewController {
     return ViewController.responsePageHtml(SignupPage);
   }
 
-  static async renderNodePage() {
-    const nodeData = await DataTestModel.getNodeData();
-    nodeData.childs = [nodeData, nodeData];
+  static async renderNodePage({ params }) {
+    const { nodeId } = params;
+    const nodeData = await NodeModel.get(nodeId);
     const props = { node: nodeData };
-    return ViewController.responsePageHtml(NodePage, props);
+    if (nodeData.meta.childs?.length) {
+      return ViewController.responsePageHtml(NodePage, props);
+    } else {
+      return ViewController.responsePageHtml(NodeExtendedPage, props);
+    }
   }
+
+  // static async renderNodePage({ params }) {
+  //   const { nodeId } = params;
+  //   if (nodeId === "username") {
+  //     const userNodeData = await DataTestModel.getUserNodeData();
+  //     const pageNodeData = await DataTestModel.getPageNodeData();
+  //
+  //     // TODO change childs to page node
+  //     userNodeData.childs = [pageNodeData, pageNodeData];
+  //
+  //     const props = { node: userNodeData };
+  //     return ViewController.responsePageHtml(NodePage, props);
+  //   } else if (nodeId === "page-id") {
+  //     const pageNodeData = await DataTestModel.getPageNodeData();
+  //
+  //     // TODO change childs to page node
+  //     pageNodeData.childs = [pageNodeData, pageNodeData];
+  //
+  //     const userNodeData = await DataTestModel.getUserNodeData();
+  //     pageNodeData.authors = [userNodeData, userNodeData];
+  //
+  //     const props = { node: pageNodeData };
+  //     return ViewController.responsePageHtml(NodePage, props);
+  //   }
+  // }
+
+  // static async renderNodePage({ params }) {
+  //   const { nodeId } = params;
+  //   console.log(nodeId);
+  //   const nodeData = await DataTestModel.getNodeData();
+  //   nodeData.childs = [nodeData, nodeData];
+  //   const props = { node: nodeData };
+  //   return ViewController.responsePageHtml(NodePage, props);
+  // }
 
   // static async renderUserPage() {
   //   const user = await DataTestModel.getUserNodeData();
