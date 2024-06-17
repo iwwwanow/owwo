@@ -10,8 +10,8 @@
 
   const IMAGE_VARIANT = "w190";
 
-  if (description?.length > 80) {
-    description = description.slice(0, 80) + " ...";
+  if (description?.markdown.length > 80) {
+    description.markdown = description.markdown.slice(0, 80) + " ...";
   }
 </script>
 
@@ -27,8 +27,8 @@
       {#if title}
         <h4 class="card__text-header">{title}</h4>
       {/if}
-      {#if description}
-        <h5>{description}</h5>
+      {#if description?.markdown}
+        <h5>{description.markdown}</h5>
       {/if}
     </div>
   {/if}

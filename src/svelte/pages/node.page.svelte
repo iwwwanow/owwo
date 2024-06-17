@@ -29,9 +29,9 @@
         <h2 class="node-info__title">{node.title}</h2>
         <Date {date} />
 
-        {#if description}
+        {#if description?.html}
           <Hr />
-          {@html description}
+          {@html description.html}
         {/if}
       </div>
     </span>
