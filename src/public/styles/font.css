@@ -75,6 +75,8 @@ a {
 }
 
 pre {
+  width: 100%;
+  max-width: 100%;
   padding: 16px 8px;
   margin-bottom: 2.4rem;
   /* white-space: pre-wrap; */
