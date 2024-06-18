@@ -3,7 +3,7 @@
 </script>
 
 <footer class="grid footer">
-  <Hr />
+  <Hr text="footer" />
 
   <h5>
     <a href="/about">о проекте</a>
