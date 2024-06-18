@@ -1,17 +1,18 @@
 <script>
   import NodeExtendedLayout from "../layouts/node-extended.layout.svelte";
-  import Date from "../components/date.component.svelte";
-  import Text from "../components/text.component.svelte";
   import Hr from "../components/hr.component.svelte";
   import NodeCard from "../components/node-card.component.svelte";
+
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
   import Logo from "../components/logo.component.svelte";
   import Header from "../fragments/header.fragment.svelte";
+
   import NodeExtendedContent from "../fragments/node-extended__content.fragment.svelte";
   import NodeNavigation from "../components/node-navigation.component.svelte";
 
-  import NodeLink from "../components/node-link.component.svelte";
-  import NodeLinkContainer from "../components/node-link.svelte";
+  import Text from "../components/text.component.svelte";
+  import NodeTitle from "../components/node-title.component.svelte";
+  import NodeInfo from "../components/node-info.component.svelte";
 
   export let node;
 
@@ -20,6 +21,16 @@
 </script>
 
 <NodeExtendedLayout>
+  <div class="grid todo" style="color: red;">
+    <ul>
+      <li>elements отображаются оригинальном формате</li>
+      <li>
+        возможность добавить скрипт из стандартной библиотеки, который меняет
+        верстку на extended
+      </li>
+    </ul>
+  </div>
+
   <NodeExtendedContent {content} />
 
   {#if node.navigationElements}
@@ -30,28 +41,13 @@
   {/if}
 
   <div class="wrapper node-extended__layout">
-    <div class="grid element-info__data-wrapper">
-      <div class="node-info__data-container">
-        {#if title}
-          <h2 class="node-info__title">{title}</h2>
-        {/if}
-
-        <Hr />
-
-        <NodeLink node={node.meta.author} />
-        {#if node.meta.parents}
-          <Hr />
-          <NodeLinkContainer>
-            {#each node.meta.parents as parent}
-              <NodeLink node={parent} />
-            {/each}
-          </NodeLinkContainer>
-        {/if}
-        <Hr />
-        <Date date={node.date} />
+    <span class="grid element-info__data-wrapper">
+      <NodeInfo {node} title={false} description={false} />
+      <div class="grid_break-start">
+        <NodeTitle title={node.title} />
+        <Text text={node.description} className="grid_break-start" />
       </div>
-      <Text text={node.description} className="grid_break-start" />
-    </div>
+    </span>
 
     <!-- <FullGridWrapContainer limit={32}> -->
     <!--   <h2 class="random-elements__title"> -->
@@ -88,9 +84,5 @@
 
   :global(.random-elements__title) {
     color: var(--dark) !important;
-  }
-
-  .node-info__title {
-    margin: 0;
   }
 </style>

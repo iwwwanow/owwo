@@ -7,10 +7,8 @@
   import Button from "../components/button.component.svelte";
   import Hr from "../components/hr.component.svelte";
 
+  import NodeInfo from "../components/node-info.component.svelte";
   import NodeCard from "../components/node-card.component.svelte";
-
-  import NodeLink from "../components/node-link.component.svelte";
-  import NodeLinkContainer from "../components/node-link.svelte";
 
   export let node;
 
@@ -22,37 +20,11 @@
   const { meta } = node;
   const childs = meta.childs;
   const authors = meta.authors;
-
-  console.log(authors);
-  console.log(childs);
 </script>
 
 <BaseLayout>
   <div class="grid node-wrapper">
-    <span class="node-info__data-wrapper">
-      <Image {image} {id} variant="w190" />
-
-      <div class="node-info__data-container">
-        <h2 class="node-info__title">{node.title}</h2>
-
-        {#if authors}
-          <Hr />
-          <NodeLinkContainer>
-            {#each authors as author}
-              <NodeLink node={author} />
-            {/each}
-          </NodeLinkContainer>
-        {/if}
-
-        {#if description?.html}
-          <Hr />
-          {@html description.html}
-        {/if}
-
-        <Hr />
-        <Date {date} />
-      </div>
-    </span>
+    <NodeInfo {node} />
 
     {#if node.content}
       <!-- TODO это не описание, это контент. и храниться он должен в MD или HTML файле на локалке -->
@@ -79,46 +51,7 @@
         <NodeCard node={childNode} />
       {/each}
     {/if}
+
     <Button style="plus" />
   </div>
 </BaseLayout>
-
-<style>
-  .node-info__data-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-v);
-  }
-
-  .node-info__title {
-    margin: 0;
-    color: var(--dark);
-  }
-
-  @media screen and (max-width: 650px) {
-    .node-info__data-wrapper {
-      grid-column: 1/-1;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: var(--grid-gap);
-    }
-    :global(.node-info__data-wrapper > *) {
-      width: calc(50% - calc(var(--gap-grid) / 2));
-    }
-  }
-
-  @media screen and (max-width: 360px) {
-    .node-info__data-wrapper {
-      grid-column: 1 / end;
-      flex-direction: column;
-      gap: var(--gap-grid);
-    }
-    /* TODO переделать */
-    :global(.node-info__data-wrapper > *) {
-      width: 100%;
-    }
-    :global(.node-info__container) {
-      max-width: calc(50% - calc(var(--gap-grid) / 2));
-    }
-  }
-</style>
