@@ -1,5 +1,5 @@
 <script>
-  import NodeInfoImage from "./node-info__image.component.svelte";
+  import NodeLinkImage from "./node-link__image.component.svelte";
 
   export let node;
   export let leftSymbol;
@@ -23,7 +23,7 @@
     <h5 class="node-info__symbol">{leftSymbol}</h5>
   {/if}
   {#if image}
-    <NodeInfoImage {image} variant={imageVariant} />
+    <NodeLinkImage {image} variant={imageVariant} />
   {/if}
   {#if title}
     <h5 style="word-break: break-all" class="element-info__title">

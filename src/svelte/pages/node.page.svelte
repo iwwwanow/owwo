@@ -8,8 +8,9 @@
   import Hr from "../components/hr.component.svelte";
 
   import NodeCard from "../components/node-card.component.svelte";
-  import NodeInfo from "../components/node-info.component.svelte";
-  import NodeInfoContainer from "../components/node-info__container.svelte";
+
+  import NodeLink from "../components/node-link.component.svelte";
+  import NodeLinkContainer from "../components/node-link.svelte";
 
   export let node;
 
@@ -36,11 +37,11 @@
 
         {#if authors}
           <Hr />
-          <NodeInfoContainer>
+          <NodeLinkContainer>
             {#each authors as author}
-              <NodeInfo node={author} />
+              <NodeLink node={author} />
             {/each}
-          </NodeInfoContainer>
+          </NodeLinkContainer>
         {/if}
 
         {#if description?.html}
@@ -83,12 +84,6 @@
 </BaseLayout>
 
 <style>
-  .node-info__authors-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
   .node-info__data-wrapper {
     display: flex;
     flex-direction: column;

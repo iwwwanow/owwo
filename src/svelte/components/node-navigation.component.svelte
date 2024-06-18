@@ -1,5 +1,5 @@
 <script>
-  import NodeInfo from "./node-info.component.svelte";
+  import NodeLink from "./node-link.component.svelte";
 
   export let prevNode;
   export let nextNode;
@@ -8,10 +8,10 @@
 <div class="grid navigation-elements__wrapper">
   <div class="navigation-elements__container">
     <span class="navigation-elements__element">
-      <NodeInfo element={prevNode} leftSymbol="◂" />
+      <NodeLink element={prevNode} leftSymbol="◂" />
     </span>
     <span class="navigation-elements__element">
-      <NodeInfo element={nextNode} rightSymbol="▸" />
+      <NodeLink element={nextNode} rightSymbol="▸" />
     </span>
   </div>
 </div>

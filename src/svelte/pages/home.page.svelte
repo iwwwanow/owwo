@@ -1,6 +1,6 @@
 <script>
   import BaseLayout from "../layouts/base.layout.svelte";
-  import NodeInfo from "../components/node-info.component.svelte";
+  import NodeLink from "../components/node-link.component.svelte";
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
 
   export let users;
@@ -9,7 +9,7 @@
 <BaseLayout>
   <FullGridWrapContainer>
     {#each users as user}
-      <NodeInfo id={user.meta.id} image={user.image} />
+      <NodeLink id={user.meta.id} image={user.image} />
     {/each}
   </FullGridWrapContainer>
 

@@ -1,6 +1,5 @@
 <script>
   import NodeExtendedLayout from "../layouts/node-extended.layout.svelte";
-  import NodeInfo from "../components/node-info.component.svelte";
   import Date from "../components/date.component.svelte";
   import Text from "../components/text.component.svelte";
   import Hr from "../components/hr.component.svelte";
@@ -10,7 +9,9 @@
   import Header from "../fragments/header.fragment.svelte";
   import NodeExtendedContent from "../fragments/node-extended__content.fragment.svelte";
   import NodeNavigation from "../components/node-navigation.component.svelte";
-  import NodeInfoContainer from "../components/node-info__container.svelte";
+
+  import NodeLink from "../components/node-link.component.svelte";
+  import NodeLinkContainer from "../components/node-link.svelte";
 
   export let node;
 
@@ -37,14 +38,14 @@
 
         <Hr />
 
-        <NodeInfo node={node.meta.author} />
+        <NodeLink node={node.meta.author} />
         {#if node.meta.parents}
           <Hr />
-          <NodeInfoContainer>
+          <NodeLinkContainer>
             {#each node.meta.parents as parent}
-              <NodeInfo node={parent} />
+              <NodeLink node={parent} />
             {/each}
-          </NodeInfoContainer>
+          </NodeLinkContainer>
         {/if}
         <Hr />
         <Date date={node.date} />
