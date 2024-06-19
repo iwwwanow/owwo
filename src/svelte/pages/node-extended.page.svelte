@@ -18,6 +18,18 @@
 
   const { title } = node;
   const { content } = node;
+
+  const siblingsArray = node.meta.siblings;
+  const siblingsLength = siblingsArray.length;
+  const currentSiblingId = node.meta.id;
+  const currentSiblingIndex = siblingsArray.findIndex((sibling, index) => {
+    if (sibling.meta.id === currentSiblingId) return index;
+    else return 0;
+  });
+
+  // TODO make it optional. only on js, client side
+  const prevSibling = siblingsArray[currentSiblingIndex - 1];
+  const nextSibling = siblingsArray[currentSiblingIndex + 1];
 </script>
 
 <NodeExtendedLayout>
@@ -33,10 +45,12 @@
 
   <NodeExtendedContent {content} />
 
-  {#if node.navigationElements}
+  {#if prevSibling || nextSibling}
     <NodeNavigation
-      prevNode={node.navigationElements.prevElement}
-      nextNode={node.navigationElements.nextElement}
+      current={currentSiblingIndex}
+      length={siblingsLength}
+      prevNode={prevSibling}
+      nextNode={nextSibling}
     />
   {/if}
 
