@@ -27,7 +27,6 @@ export class NodeModel {
       return pageNodeData;
     } else if (nodeId === TEST_NODE_ELEMENT_ID) {
       const elementNodeData = await this.getElementNodeTestData(nodeId);
-      const authorNodeData = await this.getAuthorTestData();
 
       const parentNodeData = await this.getParentNodeTestData(
         TEST_NODE_PAGE_ID
@@ -38,8 +37,21 @@ export class NodeModel {
         parentNodeData,
       ];
 
+      const authorNodeData = await this.getAuthorTestData();
       elementNodeData.meta.author = authorNodeData;
+
       elementNodeData.title = "element-node-title";
+
+      const siblingNodeData = await this.getSiblingNodeData(
+        TEST_NODE_ELEMENT_ID
+      );
+      elementNodeData.meta.siblings = [
+        siblingNodeData,
+        siblingNodeData,
+        siblingNodeData,
+      ];
+
+      elementNodeData.meta.id = TEST_NODE_ELEMENT_ID;
 
       return elementNodeData;
     }
@@ -118,6 +130,18 @@ export class NodeModel {
     };
 
     return childNodeData;
+  }
+
+  static async getSiblingNodeData(nodeId) {
+    const siblingNodeData = {
+      meta: {
+        id: nodeId,
+      },
+      ...(await DataTestModel.getNodeMainData()),
+      image: await DataTestModel.getNodeCoverData(),
+    };
+
+    return siblingNodeData;
   }
 
   static async getAuthorTestData() {
