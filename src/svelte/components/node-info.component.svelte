@@ -14,6 +14,7 @@
   export let title;
   export let author;
   export let authors;
+  export let parents;
   export let description;
   export let date;
 
@@ -24,6 +25,7 @@
     if (description === undefined) description = node.description;
     author = node.meta.author;
     authors = node.meta.authors;
+    parents = node.meta.parents;
     date = node.date;
   }
 
@@ -55,6 +57,15 @@
           <NodeLinkContainer>
             {#each authors as author}
               <NodeLink node={author} />
+            {/each}
+          </NodeLinkContainer>
+        {/if}
+
+        {#if parents}
+          <Hr text="pages" />
+          <NodeLinkContainer>
+            {#each parents as parent}
+              <NodeLink node={parent} />
             {/each}
           </NodeLinkContainer>
         {/if}
