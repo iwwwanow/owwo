@@ -3,15 +3,20 @@
 
   export let prevNode;
   export let nextNode;
+  export let current;
+  export let length;
 </script>
 
 <div class="grid navigation-elements__wrapper">
   <div class="navigation-elements__container">
     <span class="navigation-elements__element">
-      <NodeLink element={prevNode} leftSymbol="◂" />
+      <NodeLink node={prevNode} leftSymbol="◂" />
+    </span>
+    <span>
+      <h5>{current}/{length}</h5>
     </span>
     <span class="navigation-elements__element">
-      <NodeLink element={nextNode} rightSymbol="▸" />
+      <NodeLink node={nextNode} rightSymbol="▸" />
     </span>
   </div>
 </div>
