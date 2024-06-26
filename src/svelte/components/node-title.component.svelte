@@ -6,6 +6,6 @@
 
 <style>
   .node-title {
-    color: var(--dark);
+    color: var(--DARK);
   }
 </style>

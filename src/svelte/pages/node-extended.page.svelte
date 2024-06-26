@@ -93,10 +93,10 @@
   }
 
   :global(.random-elements__logo path) {
-    fill: var(--dark) !important;
+    fill: var(--DARK) !important;
   }
 
   :global(.random-elements__title) {
-    color: var(--dark) !important;
+    color: var(--DARK) !important;
   }
 </style>

@@ -47,8 +47,8 @@
     pointer-events: none;
     user-select: none;
 
-    color: var(--dark);
-    background-color: var(--white);
+    color: var(--DARK);
+    background-color: var(--WHITE);
     mix-blend-mode: luminosity;
     opacity: 0.96;
   }

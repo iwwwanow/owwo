@@ -37,12 +37,12 @@
 
 <style>
   .node-info__container {
-    --color: var(--dark);
+    --NODE-INFO-COLOR: var(--DARK);
     width: fit-content;
     display: flex;
     gap: calc(var(--gap-grid) / 8);
-    text-decoration-color: var(--color);
-    color: var(--color);
+    text-decoration-color: var(--NODE-INFO-COLOR);
+    color: var(--NODE-INFO-COLOR);
   }
   .node-info__container:hover {
     opacity: 0.8;

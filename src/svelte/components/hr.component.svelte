@@ -13,8 +13,8 @@
   fieldset {
     grid-column: 1/ -1;
     padding-left: 8px;
-    border-top: 1px solid var(--light);
-    color: var(--medium);
+    border-top: 1px solid var(--LIGHT);
+    color: var(--MEDIUM);
     margin: 12px 0 4px;
   }
   legend {

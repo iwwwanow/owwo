@@ -19,13 +19,13 @@
     min-height: 80px;
   }
   .button_plus:hover {
-    background-color: var(--dark);
+    background-color: var(--DARK);
   }
 
   .button_plus :global(path) {
-    fill: var(--medium);
+    fill: var(--MEDIUM);
   }
   .button_plus:hover :global(path) {
-    fill: var(--white);
+    fill: var(--WHITE);
   }
 </style>

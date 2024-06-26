@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="/public/styles/reset.css" />
 <link rel="stylesheet" href="/public/styles/scrollbar.css" />
 <link rel="stylesheet" href="/public/styles/border.css" />
+<link rel="stylesheet" href="/public/styles/font.css" />
 
 <link rel="stylesheet" href="/public/styles/layout.css" />
 
-<link rel="stylesheet" href="/public/styles/color.css" />
-<link rel="stylesheet" href="/public/styles/font.css" />
+<link rel="stylesheet" href="/public/styles/constants/color.constants.css" />
+<link rel="stylesheet" href="/public/styles/constants/spaces.constants.css" />

@@ -1,15 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-/* TODO some */
-
 :root {
   font-size: 62.5%;
 }
 
 * {
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
-  color: var(--dark);
+  color: var(--DARK);
 }
 
 p {
@@ -71,7 +69,7 @@ h6 {
 }
 
 a {
-  color: var(--blue);
+  color: var(--BLUE);
 }
 
 pre {
@@ -79,16 +77,14 @@ pre {
   max-width: 100%;
   padding: 16px 8px;
   margin-bottom: 2.4rem;
-  /* white-space: pre-wrap; */
-  /* word-break: break-all; */
   overflow-x: scroll;
-  background-color: var(--light);
+  background-color: var(--LIGHT);
 }
 
 code {
   font-size: 1.6em;
   font-family: "Roboto Mono", monospace;
-  color: var(--dark);
+  color: var(--DARK);
 }
 
 a:hover {

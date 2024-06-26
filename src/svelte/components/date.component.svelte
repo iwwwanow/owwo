@@ -16,9 +16,9 @@
     gap: var(--gap-v);
   }
   .date_creation {
-    color: var(--medium);
+    color: var(--MEDIUM);
   }
   .date_last {
-    color: var(--light);
+    color: var(--LIGHT);
   }
 </style>

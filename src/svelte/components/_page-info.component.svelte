@@ -12,11 +12,11 @@
 
 <style>
   .page-info__container {
-    --color: var(--dark);
+    --PAGE-INFO-COLOR: var(--DARK);
     display: flex;
     gap: calc(var(--gap-grid) / 8);
-    text-decoration-color: var(--color);
-    color: var(--color);
+    text-decoration-color: var(--PAGE-INFO-COLOR);
+    color: var(--PAGE-INFO-COLOR);
   }
   .page-info__container:hover {
     opacity: 0.8;

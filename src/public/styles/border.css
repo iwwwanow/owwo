@@ -2,32 +2,32 @@
   outline: 0;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--light);
+  border-color: var(--LIGHT);
 }
 
 .border:hover {
-  border-color: var(--dark);
+  border-color: var(--DARK);
 }
 
 .border_light {
   outline: 0;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--white);
+  border-color: var(--WHITE);
 }
 
 .border_light:hover {
-  border-color: var(--light);
+  border-color: var(--LIGHT);
 }
 
 .border_dashed {
   outline: 0;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--light);
+  border-color: var(--LIGHT);
 }
 
 .border_dashed:hover {
   border-style: solid;
-  border-color: var(--dark);
+  border-color: var(--DARK);
 }
