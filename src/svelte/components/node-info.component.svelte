@@ -88,7 +88,7 @@
   .node-info__data-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-v);
+    gap: var(--VERTICAL-GAP);
   }
 
   :global(.node-info .node-title) {
@@ -103,7 +103,7 @@
       gap: var(--grid-gap);
     }
     :global(.node-info__data-wrapper > *) {
-      width: calc(50% - calc(var(--gap-grid) / 2));
+      width: calc(50% - calc(var(--GRID-GAP) / 2));
     }
   }
 
@@ -111,14 +111,11 @@
     .node-info__data-wrapper {
       grid-column: 1 / end;
       flex-direction: column;
-      gap: var(--gap-grid);
+      gap: var(--GRID-GAP);
     }
     /* TODO переделать */
     :global(.node-info__data-wrapper > *) {
       width: 100%;
-    }
-    :global(.node-info__container) {
-      max-width: calc(50% - calc(var(--gap-grid) / 2));
     }
   }
 </style>

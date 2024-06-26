@@ -40,7 +40,7 @@
     --NODE-INFO-COLOR: var(--DARK);
     width: fit-content;
     display: flex;
-    gap: calc(var(--gap-grid) / 8);
+    gap: calc(var(--GRID-GAP) / 8);
     text-decoration-color: var(--NODE-INFO-COLOR);
     color: var(--NODE-INFO-COLOR);
   }

@@ -29,7 +29,7 @@
     {#if node.content}
       <!-- TODO это не описание, это контент. и храниться он должен в MD или HTML файле на локалке -->
       <!-- TODO пересмотри этот момент. страница выглядит сильно пустой без описания -->
-      <Text text={node.content} className="grid_break-start" />
+      <Text text={node.content} className="grid__right-content" />
     {/if}
   </div>
 

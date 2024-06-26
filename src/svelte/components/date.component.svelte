@@ -13,7 +13,7 @@
 <style>
   .date-container {
     display: flex;
-    gap: var(--gap-v);
+    gap: var(--VERTICAL-GAP);
   }
   .date_creation {
     color: var(--MEDIUM);

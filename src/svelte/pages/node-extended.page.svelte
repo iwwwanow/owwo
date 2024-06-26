@@ -57,9 +57,9 @@
   <div class="wrapper node-extended__layout">
     <span class="grid element-info__data-wrapper">
       <NodeInfo {node} title={false} description={false} />
-      <div class="grid_break-start">
+      <div class="grid__right-content">
         <NodeTitle title={node.title} />
-        <Text text={node.description} className="grid_break-start" />
+        <Text text={node.description} className="grid__right-content" />
       </div>
     </span>
 
@@ -88,8 +88,8 @@
     mix-blend-mode: difference;
     pointer-events: none;
     position: absolute !important;
-    top: var(--gap-v);
-    left: var(--gap-h);
+    top: var(--VERTICAL-GAP);
+    left: var(--HORIZONTAL-GAP);
   }
 
   :global(.random-elements__logo path) {
