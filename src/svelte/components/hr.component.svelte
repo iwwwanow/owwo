@@ -12,7 +12,7 @@
   hr,
   fieldset {
     grid-column: 1/ -1;
-    padding-left: 8px;
+    padding-left: var(--GRID-GAP-2);
     border-top: 1px solid var(--LIGHT);
     color: var(--MEDIUM);
     margin: 12px 0 4px;

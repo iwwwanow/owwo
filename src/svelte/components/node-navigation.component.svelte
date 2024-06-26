@@ -31,7 +31,7 @@
     grid-column: 1/-1;
     display: flex;
     flex-direction: row;
-    row-gap: var(--VERTICAL-GAP);
+    row-gap: var(--GRID-GAP-2);
     flex-wrap: wrap-reverse;
     justify-content: space-between;
   }
@@ -44,6 +44,6 @@
     width: fit-content;
     display: flex;
     flex-direction: row;
-    gap: var(--VERTICAL-GAP);
+    gap: var(--GRID-GAP-2);
   }
 </style>

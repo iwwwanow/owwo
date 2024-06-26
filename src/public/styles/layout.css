@@ -10,6 +10,11 @@
 
 .grid {
   --GRID-GAP: 16px;
+
+  --GRID-GAP-2: calc(var(--GRID-GAP) / 2);
+  --GRID-GAP-4: calc(var(--GRID-GAP) / 4);
+  --GRID-GAP-8: calc(var(--GRID-GAP) / 8);
+
   --SEPARATOR-COLUMN: 4;
 
   width: 100%;

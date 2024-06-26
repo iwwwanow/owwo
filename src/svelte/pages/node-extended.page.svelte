@@ -88,8 +88,8 @@
     mix-blend-mode: difference;
     pointer-events: none;
     position: absolute !important;
-    top: var(--VERTICAL-GAP);
-    left: var(--HORIZONTAL-GAP);
+    top: var(--GRID-GAP-2);
+    left: var(--GRID-GAP-4);
   }
 
   :global(.random-elements__logo path) {

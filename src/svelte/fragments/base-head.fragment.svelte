@@ -12,4 +12,3 @@
 <link rel="stylesheet" href="/public/styles/layout.css" />
 
 <link rel="stylesheet" href="/public/styles/constants/color.constants.css" />
-<link rel="stylesheet" href="/public/styles/constants/spaces.constants.css" />

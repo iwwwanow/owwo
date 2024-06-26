@@ -88,7 +88,7 @@
   .node-info__data-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--VERTICAL-GAP);
+    gap: var(--GRID-GAP-2);
   }
 
   :global(.node-info .node-title) {
@@ -100,10 +100,10 @@
       grid-column: 1/-1;
       flex-direction: row;
       justify-content: space-between;
-      gap: var(--grid-gap);
+      gap: var(--GRID-GAP);
     }
     :global(.node-info__data-wrapper > *) {
-      width: calc(50% - calc(var(--GRID-GAP) / 2));
+      width: calc(50% - var(--GRID-GAP-2));
     }
   }
 
