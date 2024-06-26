@@ -1,23 +1,24 @@
-import {plugin} from "bun";
+import { plugin } from "bun";
 
 await plugin({
-	name: "svelteRuntimePlugin",
-	async setup(build) {
-		const {compile} = await import("svelte/compiler");
+  name: "svelteRuntimePlugin",
+  async setup(build) {
+    const { compile } = await import("svelte/compiler");
 
-		build.onLoad({filter: /\.svelte$/}, async ({path}) => {
-			const file = await Bun.file(path).text();
-			const result = compile(file, {
-				filename: path,
-				generate: "ssr",
-			});
+    build.onLoad({ filter: /\.svelte$/ }, async ({ path }) => {
+      const file = await Bun.file(path).text();
 
-			const jsString = result.js.code;
+      const result = compile(file, {
+        filename: path,
+        generate: "ssr",
+      });
 
-			return {
-				contents: jsString,
-				loader: "js",
-			};
-		});
-	},
+      const jsString = result.js.code;
+
+      return {
+        contents: jsString,
+        loader: "js",
+      };
+    });
+  },
 });
