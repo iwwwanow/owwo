@@ -1,11 +1,3 @@
-:root {
-  --gap-v: 6px;
-  --gap-h: 4px;
-
-  /* --gap-outter-v: 24px; */
-  /* --gap-outter-h: 16px; */
-}
-
 .wrapper {
   padding: 16px 0 32px;
   min-height: 100vh;
