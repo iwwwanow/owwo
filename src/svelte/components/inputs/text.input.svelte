@@ -1,8 +1,9 @@
 <script>
   export let id;
   export let name;
-  export let placeholder = "";
+  export let type = "text";
   export let required = false;
+  export let placeholder = "";
 </script>
 
 <p class="text-input">
@@ -14,7 +15,7 @@
     {id}
     {name}
     {placeholder}
-    type="text"
+    {type}
   />
 </p>
 
