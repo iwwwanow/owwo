@@ -10,12 +10,18 @@
 На домашней странице собирается случайный контент со всего сайта, в оптимизированых превью. На всех остальных страницах изображения загружаются в оригинальном размере, поэтому думайте над весом ваших изображений.
 Скорость ваших страниц зависит от вас лишь.
 
-<br/>
-
-### [GitHub](https://github.com/effektivnayarabota1/owwo) [TelegramChannel](https://t.me/owwomoscow_channel) [Связь](https://t.me/iwwwanowww)
-
 ---
 
+<br/>
+
+### [GitHub](https://github.com/effektivnayarabota1/owwo)
+
+### [TelegramChannel](https://t.me/owwomoscow_channel)
+
+### [Связь](https://t.me/iwwwanowww)
+
+<br/>
+<br/>
 <br/>
 
 ##### Иванов Кирилл

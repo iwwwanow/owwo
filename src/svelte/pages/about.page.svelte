@@ -1,10 +1,12 @@
 <script>
-  import Base from "../layouts/base.layout.svelte";
   import BaseLayout from "../layouts/base.layout.svelte";
+  import Text from "../components/text.component.svelte";
+
+  export let text = "";
 </script>
 
 <BaseLayout>
   <div class="grid">
-    <div class="about-container">about markdown</div>
+    <Text {text} className="grid__left-content" />
   </div>
 </BaseLayout>

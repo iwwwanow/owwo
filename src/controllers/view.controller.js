@@ -3,6 +3,8 @@ import { SveltePageView } from "../views/svelte-page.view.js";
 
 import { NodeModel } from "../models/node.model.js";
 import { DataTestModel } from "../../test/test-models/data.test-model.js";
+import { getTextFileContentHelper } from "../helpers/get-text-file-content.helper.js";
+import { convertMdHtmlHelper } from "../helpers/convert-md-html.helper.js";
 
 import HomePage from "../svelte/pages/home.page.svelte";
 import AboutPage from "../svelte/pages/about.page.svelte";
@@ -32,7 +34,12 @@ export class ViewController {
   }
 
   static async renderAboutPage() {
-    return ViewController.responsePageHtml(AboutPage);
+    const ABOUT_FILEPATH = "./README.md";
+    const text = {};
+    text.markdown = await getTextFileContentHelper(ABOUT_FILEPATH);
+    text.html = await convertMdHtmlHelper(text.markdown);
+    const props = { text };
+    return ViewController.responsePageHtml(AboutPage, props);
   }
 
   static async renderLoginPage() {
