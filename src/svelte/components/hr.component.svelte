@@ -13,9 +13,9 @@
   fieldset {
     grid-column: 1/ -1;
     padding-left: var(--GRID-GAP-2);
+    margin: 12px 0 4px;
     border-top: 1px solid var(--LIGHT);
     color: var(--MEDIUM);
-    margin: 12px 0 4px;
   }
   legend {
     padding: 0 4px;

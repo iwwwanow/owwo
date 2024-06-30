@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/public/styles/reset.css" />
 <link rel="stylesheet" href="/public/styles/scrollbar.css" />
+<link rel="stylesheet" href="/public/styles/hr.css" />
 <link rel="stylesheet" href="/public/styles/border.css" />
 <link rel="stylesheet" href="/public/styles/font.css" />
 
