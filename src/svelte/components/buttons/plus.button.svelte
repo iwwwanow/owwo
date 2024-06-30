@@ -1,6 +1,4 @@
 <script>
-  export let style;
-
   import ButtonPlusSvg from "../../svgs/button_plus.svg.svelte";
 </script>
 
