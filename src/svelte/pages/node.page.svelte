@@ -4,7 +4,7 @@
   import Image from "../components/image.component.svelte";
   import Text from "../components/text.component.svelte";
   import Date from "../components/date.component.svelte";
-  import Button from "../components/button.component.svelte";
+  import PlusButton from "../components/buttons/plus.button.svelte";
   import Hr from "../components/hr.component.svelte";
 
   import NodeInfo from "../components/node-info.component.svelte";
@@ -52,6 +52,6 @@
       {/each}
     {/if}
 
-    <Button style="plus" />
+    <PlusButton />
   </div>
 </BaseLayout>
