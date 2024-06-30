@@ -21,6 +21,7 @@ export class ViewController {
   static async responsePageHtml(componentName, props) {
     const pageView = new SveltePageView(componentName, props);
     const pageHtml = await pageView.getPageHtml();
+
     return html(pageHtml);
   }
 
