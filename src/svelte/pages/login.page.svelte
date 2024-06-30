@@ -23,7 +23,7 @@
       <Button text="Войти" />
     </form>
     <span class="registration-button-container">
-      <Button text="Регистрация" url="/registration" />
+      <Button text="Регистрация" url="/signup" />
     </span>
   </div>
 </BaseLayout>
