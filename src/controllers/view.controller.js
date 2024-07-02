@@ -2,6 +2,7 @@ import { html } from "@stricjs/app/send";
 import { SveltePageView } from "../views/svelte-page.view.js";
 
 import { NodeModel } from "../models/node.model.js";
+import { ClientModel } from "../models/client.model.js";
 
 import HomePage from "../svelte/pages/home.page.svelte";
 import AboutPage from "../svelte/pages/about.page.svelte";
@@ -45,10 +46,31 @@ export class ViewController {
     return ViewController.responsePageHtml(SignupPage);
   }
 
-  static async renderNodePage({ params }) {
+  static async renderNodePage(c) {
+    const { req } = c;
+
+    const EDITOR_URL = new URL("", req.url);
+    EDITOR_URL.searchParams.set("editor", true);
+    console.log(`EDITOR URL: ${EDITOR_URL.href}`);
+
+    const client = new ClientModel();
+
+    const REQUEST_URL = new URL("", req.url);
+    if (REQUEST_URL.searchParams.has("editor", "true")) {
+      client.isEditor = true;
+
+      // client.type = 'creator'
+      // client.type = 'author'
+      // client.type = 'pusher'
+      // client.type = 'viewer'
+    }
+
+    const { params } = c;
     const { nodeId } = params;
+
     const nodeData = await NodeModel.get(nodeId);
-    const props = { node: nodeData };
+
+    const props = { client, node: nodeData };
     if (nodeData.meta.childs?.length) {
       return ViewController.responsePageHtml(NodePage, props);
     } else {
