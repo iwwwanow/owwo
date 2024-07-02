@@ -10,7 +10,4 @@ export default routes()
   .get("/login", ViewController.renderLoginPage)
   .get("/signup", ViewController.renderSignupPage)
   .get("/:nodeId", ViewController.renderNodePage);
-// .get("/:username", ViewController.renderUserPage)
-// .get("/page/:pageId", ViewController.renderPagePage)
-// .get("/element/:elementId", ViewController.renderElementPage)
 // .get("/error", ViewController.renderErrorPage);
