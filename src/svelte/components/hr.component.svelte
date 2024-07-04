@@ -1,9 +1,14 @@
 <script>
   export let text;
+  export let color;
+
+  const colorStyle = color ? `color: ${color}; border-color: ${color};` : "";
 </script>
 
 {#if text}
-  <fieldset><legend><h6>{text}</h6></legend></fieldset>
+  <fieldset style={colorStyle}>
+    <legend><h6>{text}</h6></legend>
+  </fieldset>
 {:else}
   <hr />
 {/if}
