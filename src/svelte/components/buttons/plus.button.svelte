@@ -1,10 +1,18 @@
 <script>
   import ButtonPlusSvg from "../../svgs/button_plus.svg.svelte";
+
+  export let variant;
 </script>
 
-<button class="button plus-button border">
-  <ButtonPlusSvg />
-</button>
+{#if variant === "small"}
+  <button class="border button plus-button plus-button_variant_small">
+    <h3 class="plus-button__text_variant_small">+</h3>
+  </button>
+{:else}
+  <button class="button plus-button border">
+    <ButtonPlusSvg />
+  </button>
+{/if}
 
 <style>
   .plus-button {
@@ -21,5 +29,20 @@
   }
   .plus-button:hover :global(path) {
     fill: var(--WHITE);
+  }
+
+  .plus-button_variant_small {
+    width: auto;
+    height: auto;
+    min-height: auto;
+    padding: 0 var(--GRID-GAP-2);
+    color: var(--MEDIUM);
+  }
+  .plus-button_variant_small:hover {
+    color: var(--WHITE);
+  }
+  .plus-button_variant_small * {
+    width: min-content;
+    margin: 0;
   }
 </style>
