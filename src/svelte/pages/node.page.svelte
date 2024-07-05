@@ -53,11 +53,8 @@
 
   <!-- TODO страницы, в которые пушил User -->
 
-  <div class="grid">
-    <Hr text="node-files"></Hr>
-  </div>
-
   <div class="grid user__pages-container">
+    <Hr text="node-files"></Hr>
     {#if childs}
       {#each childs as childNode}
         <NodeCard node={childNode} />
@@ -78,11 +75,8 @@
     </span>
   </div>
 
-  <div class="grid">
-    <Hr text="child-nodes"></Hr>
-  </div>
-
   <div class="grid user__pages-container">
+    <Hr text="child-nodes"></Hr>
     {#if childs}
       {#each childs as childNode}
         <NodeCard node={childNode} />
