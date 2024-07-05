@@ -1,0 +1,11 @@
+@import url("/public/styles/reset.css");
+
+@import url("/public/styles/scrollbar.css");
+@import url("/public/styles/layout.css");
+@import url("/public/styles/font.css");
+
+@import url("/public/styles/hr.css");
+@import url("/public/styles/border.css");
+
+@import url("/public/styles/constants/colors.constants.css");
+@import url("/public/styles/constants/spaces.constants.css");
