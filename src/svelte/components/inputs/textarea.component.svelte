@@ -7,7 +7,7 @@
   export let placeholder = "";
 </script>
 
-<p>
+<p class="textarea__wrapper">
   <textarea
     class="textarea"
     {id}
@@ -20,6 +20,11 @@
 </p>
 
 <style>
+  .textarea__wrapper {
+    height: 100%;
+    margin: 0;
+  }
+
   .textarea {
     width: 100%;
     height: 100%;

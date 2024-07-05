@@ -6,9 +6,9 @@
   export let placeholder = "";
 </script>
 
-<p class="text-input">
+<p class="text-input__wrapper">
   <input
-    class="text-input__input"
+    class="text-input"
     autocomplete="off"
     autocapitalize="off"
     {required}
@@ -20,7 +20,11 @@
 </p>
 
 <style>
-  .text-input__input {
+  .text-input__wrapper {
+    margin: 0;
+  }
+
+  .text-input {
     width: 100%;
     padding: 8px 4px;
 
@@ -32,31 +36,31 @@
     text-transform: inherit;
   }
 
-  .text-input__input:focus {
+  .text-input:focus {
     color: var(--black);
     background-color: var(--WHITE);
     outline: 1px solid var(--BLACK);
     border: none;
   }
 
-  .text-input__input::placeholder {
+  .text-input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--MEDIUM);
     opacity: 1;
     /* Firefox */
   }
 
-  .text-input__input:-ms-input-placeholder {
+  .text-input:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: var(--MEDIUM);
   }
 
-  .text-input__input::-ms-input-placeholder {
+  .text-input::-ms-input-placeholder {
     /* Microsoft Edge */
     color: var(--MEDIUM);
   }
   @media screen and (max-width: 444px) {
-    .text-input__input {
+    .text-input {
       border-radius: 4px;
     }
   }
