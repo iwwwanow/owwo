@@ -29,7 +29,7 @@
 </script>
 
 <BaseLayout>
-  <EditorForm {client} />
+  <EditorForm {client} {node} />
 
   <div class="grid node-wrapper">
     <NodeInfo {node} />
