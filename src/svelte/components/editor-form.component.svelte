@@ -1,47 +1,88 @@
 <script>
-  export let client;
+  import Hr from "./hr.component.svelte";
+  import TextInput from "./inputs/text.input.svelte";
+  import FileInput from "./inputs/file.input.svelte";
+  import Textarea from "./inputs/textarea.component.svelte";
+  import CardContainer from "./card-container.component.svelte";
 
+  export let node;
+  const {
+    image: { original: imageSrc },
+  } = node;
+
+  export let client;
   const { isEditor } = client;
+
+  const TITLE_INPUT_PLACEHOLDER = "title".toUpperCase();
+  const DESCRIPTION_TEXTAREA_PLACEHOLDER = "description".toUpperCase();
+  const CONTENT_TEXTAREA_PLACEHOLDER = "content".toUpperCase();
 </script>
 
 <div class="grid editor-form">
-  <h5>title</h5>
-  <h5>description</h5>
-  <h5>cover-input</h5>
+  <Hr text="editor-form" color="var(--ORANGE)" />
 
-  <span>
-    <h5>files-list_file-input-list</h5>
-    <h6>- чем отличается этот импут от следующего?</h6>
-    <h6>- что попадает в элементы?</h6>
-    <h6>
-      -- если в файлах есть index.html, то мы рендерим его в iframe в варианте
-      extended
-    </h6>
-    <h6>
-      - во всех остальных случаях мы рендерим каждый файл как отдельный элемент
-      в сетке?
-    </h6>
-    <h6>- элементы в сетке разделить на *node-files* и *child-nodes*</h6>
-    <h6>
-      - как должны именоваться файлы, которые будут чепляться за страницу?
-      стилии скрипты
-    </h6>
-    <h6>
-      - все файлы с расширением .css и .script - добавляются И на страницу И в
-      сетку нод
-    </h6>
-    <h6>
-      - по дефолту они попадают в общую базу, можно скрыть знаком приватности
-      (#/_)
-    </h6>
-  </span>
+  <fieldset>
+    <Hr text="cover-input" />
+    <CardContainer>
+      <FileInput name="cover-input" {imageSrc} />
 
-  <span>
-    <h5>content-big-input</h5>
-  </span>
+      <TextInput
+        id="editor-form__title-input"
+        name="title"
+        rows="auto"
+        required={false}
+        placeholder={TITLE_INPUT_PLACEHOLDER}
+      />
 
-  <span>
-    <h5>node-meta-input_parents-siblings-childs</h5>
-    <h6>root parents in placeholder input color??</h6>
-  </span>
+      <Textarea
+        id="editor-form__description-textarea"
+        name="description"
+        rows="auto"
+        required={false}
+        placeholder={DESCRIPTION_TEXTAREA_PLACEHOLDER}
+        text="240 limit???"
+      />
+    </CardContainer>
+  </fieldset>
+
+  <fieldset>
+    <Hr text="file-input" />
+    <CardContainer>
+      <FileInput />
+    </CardContainer>
+  </fieldset>
+
+  <fieldset class="grid__right-content">
+    <Hr text="content-textarea" />
+    <CardContainer>
+      <Textarea
+        id="editor-form__content-textarea"
+        name="content"
+        required={false}
+        placeholder={CONTENT_TEXTAREA_PLACEHOLDER}
+        text="no limit, markdown, width like an text input, position too"
+      />
+    </CardContainer>
+  </fieldset>
+
+  <Hr text="editor-form" color="var(--ORANGE)" />
 </div>
+
+<div class="grid editor-form">
+  <h5>
+    в самом верху инпут, размером в одну строку, как на нижнем объекте (с
+    возможностью просто добавть ссылку(external file)
+  </h5>
+  <h5>нужна возможность удалять файлы</h5>
+  <h5>
+    render вложенных файлов в инпуте. получится сделать так, чтобы они
+    обображались прямо под курсором?
+  </h5>
+  <h5>
+    у каждого типа файла будет своя иконка. изображениe, текст, аудио, видео и
+    ссылка (например на другой файл)
+  </h5>
+</div>
+
+<style>
+</style>
