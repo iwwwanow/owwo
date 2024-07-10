@@ -7,6 +7,6 @@
 
 <BaseLayout>
   <div class="grid">
-    <Text {text} className="grid__left-content" />
+    <Text {text} className="grid__right-content" />
   </div>
 </BaseLayout>
