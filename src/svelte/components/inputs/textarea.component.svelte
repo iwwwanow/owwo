@@ -23,6 +23,7 @@
   .textarea__wrapper {
     height: 100%;
     margin: 0;
+    visibility: visible;
   }
 
   .textarea {
