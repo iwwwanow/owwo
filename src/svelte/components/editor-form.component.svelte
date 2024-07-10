@@ -21,7 +21,7 @@
 <div class="grid editor-form">
   <Hr text="editor-form" color="var(--ORANGE)" />
 
-  <fieldset>
+  <fieldset class="main-inputs-fieldset">
     <Hr text="cover-input" />
     <CardContainer>
       <FileInput name="cover-input" {imageSrc} />
@@ -45,7 +45,7 @@
     </CardContainer>
   </fieldset>
 
-  <fieldset>
+  <fieldset class="file-input-fieldset">
     <Hr text="file-input" />
     <CardContainer>
       <FileInput />
@@ -65,7 +65,7 @@
     </CardContainer>
   </fieldset>
 
-  <Hr text="editor-form" color="var(--ORANGE)" />
+  <Hr text="***" color="var(--ORANGE)" />
 </div>
 
 <div class="grid editor-form">
@@ -85,4 +85,38 @@
 </div>
 
 <style>
+  .file-input-fieldset {
+    grid-column: 2/4;
+  }
+
+  @media screen and (max-width: 1680px) {
+    .file-input-fieldset {
+      grid-column: 2/3;
+    }
+  }
+
+  @media screen and (max-width: 1268px) {
+    .file-input-fieldset {
+      grid-column: 1/-1;
+      grid-row: 2/3;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .main-inputs-fieldset {
+      grid-column: 1/2;
+    }
+    .file-input-fieldset {
+      grid-column: 2/-1;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .main-inputs-fieldset {
+      grid-column: 1/-1;
+    }
+    .file-input-fieldset {
+      grid-column: 1/-1;
+    }
+  }
 </style>
