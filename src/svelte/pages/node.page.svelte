@@ -62,15 +62,6 @@
     {/if}
 
     <span class="add-node__container">
-      <div class="add-node__input-container">
-        <TextInput
-          id="add-node__input"
-          name="node-data"
-          required={true}
-          placeholder={ADD_NODE_INPUT_PLACEHOLDER}
-        />
-        <PlusButton variant="small" />
-      </div>
       <PlusButton />
     </span>
   </div>
@@ -83,7 +74,19 @@
       {/each}
     {/if}
 
-    <PlusButton />
+    <span class="add-node__container">
+      <div class="add-node__input-container">
+        <TextInput
+          id="add-node__input"
+          name="node-data"
+          required={true}
+          placeholder={ADD_NODE_INPUT_PLACEHOLDER}
+        />
+        <PlusButton variant="small" />
+      </div>
+
+      <PlusButton />
+    </span>
   </div>
 </BaseLayout>
 
@@ -98,6 +101,7 @@
     margin: 0;
   }
   .add-node__input-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: var(--GRID-GAP-4);
