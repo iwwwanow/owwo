@@ -21,6 +21,7 @@
 
 <style>
   .text-input__wrapper {
+    width: 100%;
     margin: 0;
   }
 
