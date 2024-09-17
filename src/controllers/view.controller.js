@@ -1,5 +1,7 @@
 import { html } from "@stricjs/app/send";
-import { SveltePageView } from "../views/svelte-page.view.js";
+// import { SveltePageView } from "../views/svelte-page.view.js";
+
+import { Bte } from "bun-template-engine";
 
 import { NodeModel } from "../models/node.model.js";
 import { ClientModel } from "../models/client.model.js";
@@ -15,11 +17,13 @@ import NodeExtendedPage from "../svelte/pages/node-extended.page.svelte";
 import { getTextFileContentHelper } from "../helpers/get-text-file-content.helper.js";
 import { convertMdHtmlHelper } from "../helpers/convert-md-html.helper.js";
 
-export class ViewController {
-  static async responsePageHtml(componentName, props) {
-    const pageView = new SveltePageView(componentName, props);
-    const pageHtml = await pageView.getPageHtml();
+// TODO to bte docs
+const bte = new Bte();
+await bte.init();
 
+export class ViewController {
+  static async responsePageHtml(svelteComponent, props) {
+    const pageHtml = await bte.getPageHtml(svelteComponent, props);
     return html(pageHtml);
   }
 
