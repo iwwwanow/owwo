@@ -18,6 +18,7 @@
     "bun": "^1.0.35",
     "drizzle-orm": "^0.30.6",
     "isomorphic-dompurify": "^2.7.0",
+    "bun-template-engine": "link:bun-template-engine",
     "marked": "^12.0.1",
     "sharp": "^0.33.1",
     "svelte": "^4.2.12"
