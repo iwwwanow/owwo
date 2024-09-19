@@ -33,6 +33,12 @@
     justify-content: flex-end;
   }
 
+  @media screen and (max-width: 650px) {
+    .header__editor-link {
+      grid-row: 2 / 3;
+    }
+  }
+
   @media screen and (max-width: 444px) {
     .header__editor-link {
       grid-column: 1 / -1;
@@ -41,7 +47,6 @@
 
   @media screen and (max-width: 360px) {
     .header__login-container {
-      grid-row-start: 2;
       justify-content: flex-start;
     }
   }
