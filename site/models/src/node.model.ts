@@ -1,4 +1,4 @@
-import { DataTestModel } from "../../test/test-models/data.test-model";
+import { DataTestModel } from "@test/mock";
 
 export class NodeModel {
   static async get(nodeId) {
