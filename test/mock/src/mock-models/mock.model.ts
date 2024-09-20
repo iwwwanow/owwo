@@ -3,14 +3,11 @@
 // import { ELEMENT_NODE_TEST_DATA } from "../test-data/element-node.test-data";
 // import { TEXT_TEST_DATA } from "../test-data/text.test-data";
 
-import { META_TEST_DATA } from "../test-data/meta.test-data";
-import { MAIN_TEST_DATA } from "../test-data/main.test-data";
-import { CONTENT_TEST_DATA } from "../test-data/content.test-data";
-import { DATE_TEST_DATA } from "../test-data/date.test-data";
-import {
-  IMAGE_TEST_DATA_AVATAR,
-  IMAGE_TEST_DATA_COVER,
-} from "../test-data/image.test-data";
+import { META_TEST_DATA } from "../index.js";
+import { MAIN_TEST_DATA } from "../index.js";
+import { CONTENT_TEST_DATA } from "../index.js";
+import { DATE_TEST_DATA } from "../index.js";
+import { IMAGE_TEST_DATA_AVATAR, IMAGE_TEST_DATA_COVER } from "../index.js";
 
 export class DataTestModel {
   static async getNodeMetaData({ nodeId }) {
