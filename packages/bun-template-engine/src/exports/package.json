@@ -1,0 +1,11 @@
+{
+  "name": "exports",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "plugin": "workspace:*"
+  }
+}

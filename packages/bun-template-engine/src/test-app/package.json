@@ -1,0 +1,12 @@
+{
+  "name": "test-app",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "test-templates": "workspace:*",
+    "rewriter": "workspace:*"
+  }
+}
