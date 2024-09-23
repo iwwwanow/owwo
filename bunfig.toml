@@ -1,1 +1,1 @@
-preload = ['./src/plugins/svelte-runtime.plugin.ts']
+preload = ['./site/plugins/svelte-runtime.plugin.ts']
