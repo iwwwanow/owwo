@@ -1,0 +1,12 @@
+{
+  "name": "entrypoint",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "test-app": "workspace:*",
+    "rewriter": "workspace:*"
+  }
+}
