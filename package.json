@@ -10,7 +10,8 @@
   },
   "workspaces": [
     "test/**/*",
-    "site/**/*"
+    "site/**/*",
+    "packages/**/*"
   ],
   "peerDependencies": {
     "typescript": "^5.0.0"
