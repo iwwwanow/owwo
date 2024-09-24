@@ -3,16 +3,16 @@ import { html } from "@stricjs/app/send";
 
 import { Bte } from "bun-template-engine";
 
-import { NodeModel } from "../models/node.model.js";
-import { ClientModel } from "../models/client.model.js";
+import { NodeModel } from "@site/models";
+import { ClientModel } from "@site/models";
 
-import HomePage from "../svelte/pages/home.page.svelte";
-import AboutPage from "../svelte/pages/about.page.svelte";
-import LoginPage from "../svelte/pages/login.page.svelte";
-import SignupPage from "../svelte/pages/signup.page.svelte";
+import HomePage from "@site/svelte-templates";
+import AboutPage from "@site/svelte-templates";
+import LoginPage from "@site/svelte-templates";
+import SignupPage from "@site/svelte-templates";
 
-import NodePage from "../svelte/pages/node.page.svelte";
-import NodeExtendedPage from "../svelte/pages/node-extended.page.svelte";
+import NodePage from "@site/svelte-templates";
+import NodeExtendedPage from "@site/svelte-templates";
 
 import { getTextFileContentHelper } from "../helpers/get-text-file-content.helper.js";
 import { convertMdHtmlHelper } from "../helpers/convert-md-html.helper.js";
