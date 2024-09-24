@@ -22,7 +22,6 @@
     "@stricjs/utils": "^2.0.7",
     "bun": "^1.0.35",
     "drizzle-orm": "^0.30.6",
-    "elysia": "^1.1.13",
     "isomorphic-dompurify": "^2.7.0",
     "marked": "^12.0.1",
     "sharp": "^0.33.1",
