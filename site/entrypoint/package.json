@@ -8,6 +8,6 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@site/elysia-app": "workspace:*"
+    "@site/stricjs-app": "workspace:*"
   }
 }
