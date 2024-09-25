@@ -8,6 +8,7 @@
   },
   "main": "src/index.ts",
   "dependencies": {
+		"@site/helpers": "workspace:*",
     "@site/models": "workspace:*",
     "@site/svelte-templates": "workspace:*"
   }
