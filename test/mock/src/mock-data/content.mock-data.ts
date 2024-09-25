@@ -37,6 +37,6 @@ const getTextObj = async (filepath) => {
   };
 };
 
-const contentFilepath = "./test/test-assets/content.test-asset.md";
+const contentFilepath = "./test/mock/src/mock-assets/content.mock-asset.md";
 
 export const CONTENT_TEST_DATA = await getTextObj(contentFilepath);

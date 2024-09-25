@@ -1,5 +1,5 @@
 // import { TEXT_CONTENT_TEST_DATA as DESCRIPTION_TEST_DATA } from "./text.test-data";
-import { DESCRIPTION_TEST_DATA } from "./text.test-data";
+import { DESCRIPTION_TEST_DATA } from "./text.mock-data";
 
 // 240 symbols long
 // 240lines, TODO test it
