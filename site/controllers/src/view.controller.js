@@ -6,16 +6,16 @@ import { Bte } from "bun-template-engine";
 import { NodeModel } from "@site/models";
 import { ClientModel } from "@site/models";
 
-import HomePage from "@site/svelte-templates";
-import AboutPage from "@site/svelte-templates";
-import LoginPage from "@site/svelte-templates";
-import SignupPage from "@site/svelte-templates";
+import { HomePage } from "@site/svelte-templates";
+import { AboutPage } from "@site/svelte-templates";
+import { LoginPage } from "@site/svelte-templates";
+import { SignupPage } from "@site/svelte-templates";
 
-import NodePage from "@site/svelte-templates";
-import NodeExtendedPage from "@site/svelte-templates";
+import { NodePage } from "@site/svelte-templates";
+import { NodeExtendedPage } from "@site/svelte-templates";
 
-import { getTextFileContentHelper } from "../helpers/get-text-file-content.helper.js";
-import { convertMdHtmlHelper } from "../helpers/convert-md-html.helper.js";
+import { getTextFileContentHelper } from "@site/helpers";
+import { convertMdHtmlHelper } from "@site/helpers";
 
 // TODO to bte docs
 const bte = new Bte();
