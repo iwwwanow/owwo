@@ -1,1 +1,1 @@
-import "@site/stricjs-app";
+import "@site/elysia-app";
