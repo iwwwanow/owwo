@@ -1,8 +1,12 @@
-import { file } from "@stricjs/app/send";
+// import { file } from "@stricjs/app/send";
+
+// TODO to consts
+const PUBLIC_PATH = "./site/public/";
 
 export class StaticController {
-  static async sendFile(ctx) {
-    const filePath = "./site/" + ctx.path;
-    return file(filePath);
+  static async sendFile({ param }) {
+    const filePath = PUBLIC_PATH + param;
+    console.log(filePath);
+    return Bun.file(filePath);
   }
 }
