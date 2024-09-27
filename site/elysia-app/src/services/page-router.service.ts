@@ -6,8 +6,8 @@ class PageRouterService {
     return console.log("TODO create favicon");
   }
 
-  static getPublic() {
-    return StaticController.sendFile();
+  static getPublic({ param }: { param: string }) {
+    return StaticController.sendFile({ param });
   }
 
   static getHomePage() {
