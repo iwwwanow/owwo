@@ -1,8 +1,15 @@
 import { Elysia } from "elysia";
+
 import { getLaunchText } from "./app.constants";
+import { PageRouterService } from "./services/index";
 
 const app = new Elysia()
-  .get("/", () => "Hello Elysia")
+  .get("/public/*", ({ params: { "*": filepathParam } }) => {
+    return PageRouterService.getPublic({ param: filepathParam });
+  })
+  .get("/", () => {
+    return PageRouterService.getHomePage();
+  })
   .get("/hello", "Do you miss me?")
   .listen(3000);
 
