@@ -26,8 +26,8 @@ class PageRouterService {
     return ViewController.renderSignupPage();
   }
 
-  static getNodePage() {
-    return ViewController.renderNodePage();
+  static getNodePage(nodeId: string) {
+    return ViewController.renderNodePage(nodeId);
   }
 
   static getErrorPage() {
