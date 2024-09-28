@@ -1,6 +1,6 @@
-import { routes } from "@stricjs/app";
 import { StaticController } from "@site/controllers";
 import { ViewController } from "@site/controllers";
+import { routes } from "@stricjs/app";
 
 export default routes()
   .get("/favicon.ico", () => console.log("TODO create favicon"))
