@@ -30,7 +30,7 @@
     "svelte": "^4.2.12"
   },
   "scripts": {
-    "dev": "bun --watch ./site/entrypoint/src/index.ts",
+    "dev": "NODE_ENV=developement bun --watch ./site/entrypoint/src/index.ts",
     "start": "NODE_ENV=production bun ./src/scripts/index.script.ts",
     "build": "bun ./src/scripts/build.script.ts",
     "test": "bun test"
