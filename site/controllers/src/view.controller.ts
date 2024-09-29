@@ -69,6 +69,8 @@ export class ViewController {
       testNodeIds.includes(nodeId)
     ) {
       const node = new NodeTestModel(nodeId);
+      await node.initData();
+      console.log(node.data);
       // nodeData = await NodeTestModel.getData();
     } else {
       nodeData = await NodeModel.get(nodeId);
