@@ -1,11 +1,16 @@
 import { DataTestModel } from "@test/mock";
 
+import type { NodeDataType } from "./node.test.model.interfaces";
+
 // TODO make parent class for node test model and node model
 export class NodeTestModel {
-  nodeType: "userNode" | "pageNode" | "elementNode";
+  type: "userNode" | "pageNode" | "elementNode";
+  data: NodeDataType = {
+    meta: null,
+  };
 
   constructor(nodeId: string) {
-    this.nodeType = this.getNodeType(nodeId);
+    this.type = this.getNodeType(nodeId);
   }
 
   private getNodeType(nodeId: string) {
@@ -20,88 +25,48 @@ export class NodeTestModel {
     throw new Error("nodeid is not match to any test route");
   }
 
-  async getData() {
-    if (this.nodeType === "userNode") return "usernodedata";
-    else if (this.nodeType === "pageNode") return "pagenodedata";
-    else if (this.nodeType === "elementNode") return "elementnodedata";
+  private async initUserNodeData() {
+    this.data = await this.getUserNodeData();
+  }
+
+  async initData() {
+    if (this.type === "userNode") await this.initUserNodeData();
+    else if (this.type === "pageNode") return "pagenodedata";
+    else if (this.type === "elementNode") return "elementnodedata";
 
     throw new Error("node type is not exist on getData function");
   }
 
-  // static async getData(nodeId) {
-  //
-  //   if (nodeId === TEST_NODE_USERNAME) {
-  //     const userNodeData = await this.getUserNodeTestData();
-  //     const childNodeData = await this.getChildNodeTestData(TEST_NODE_PAGE_ID);
-  //     userNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
-  //     return userNodeData;
-  //   } else if (nodeId === TEST_NODE_PAGE_ID) {
-  //     const pageNodeData = await this.getPageNodeTestData(nodeId);
-  //     const childNodeData =
-  //       await this.getChildNodeTestData(TEST_NODE_ELEMENT_ID);
-  //     pageNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
-  //
-  //     const authorNodeData = await this.getAuthorTestData();
-  //     pageNodeData.meta.authors = [
-  //       authorNodeData,
-  //       authorNodeData,
-  //       authorNodeData,
-  //     ];
-  //
-  //     return pageNodeData;
-  //   } else if (nodeId === TEST_NODE_ELEMENT_ID) {
-  //     const elementNodeData = await this.getElementNodeTestData(nodeId);
-  //
-  //     const parentNodeData =
-  //       await this.getParentNodeTestData(TEST_NODE_PAGE_ID);
-  //     elementNodeData.meta.parents = [
-  //       parentNodeData,
-  //       parentNodeData,
-  //       parentNodeData,
-  //     ];
-  //
-  //     const authorNodeData = await this.getAuthorTestData();
-  //     elementNodeData.meta.author = authorNodeData;
-  //
-  //     elementNodeData.title = "element-node-title";
-  //
-  //     const siblingNodeData =
-  //       await this.getSiblingNodeData(TEST_NODE_ELEMENT_ID);
-  //     elementNodeData.meta.siblings = [
-  //       siblingNodeData,
-  //       siblingNodeData,
-  //       siblingNodeData,
-  //     ];
-  //
-  //     elementNodeData.meta.id = TEST_NODE_ELEMENT_ID;
-  //
-  //     return elementNodeData;
-  //   }
-  // }
-  //
-  // static async getNodes(nodeType, quantity) {
-  //   const output = [];
-  //   const nodeData = await this.getUserNodeTestData();
-  //   for (let i = 0; i <= quantity; i++) {
-  //     if (nodeType === "user") output.push(nodeData);
-  //   }
-  //   return output;
-  // }
-  //
-  // static async getUserNodeTestData() {
-  //   const nodeId = process.env.TEST_NODE_USERNAME;
-  //
-  //   const userNodeData = {
-  //     meta: await DataTestModel.getNodeMetaData({ nodeId }),
-  //     ...(await DataTestModel.getNodeMainData({ title: nodeId })),
-  //     content: await DataTestModel.getNodeContentData(),
-  //     image: await DataTestModel.getNodeAvatarData(),
-  //     date: await DataTestModel.getNodeDateData(),
-  //   };
-  //
-  //   return userNodeData;
-  // }
-  //
+  private async getUserNodeData() {
+    const userNodeData = {
+      meta: await DataTestModel.getNodeMetaData({ nodeId }),
+      ...(await DataTestModel.getNodeMainData({ title: nodeId })),
+      content: await DataTestModel.getNodeContentData(),
+      image: await DataTestModel.getNodeAvatarData(),
+      date: await DataTestModel.getNodeDateData(),
+    };
+
+    const childNodeData = await this.getChildNodeTestData(TEST_NODE_PAGE_ID);
+    userNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
+    return userNodeData;
+  }
+
+  private async getPageNodeData() {
+    //     const pageNodeData = await this.getPageNodeTestData(nodeId);
+    //     const childNodeData =
+    //       await this.getChildNodeTestData(TEST_NODE_ELEMENT_ID);
+    //     pageNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
+    //
+    //     const authorNodeData = await this.getAuthorTestData();
+    //     pageNodeData.meta.authors = [
+    //       authorNodeData,
+    //       authorNodeData,
+    //       authorNodeData,
+    //     ];
+    //
+    //     return pageNodeData;
+  }
+
   // static async getPageNodeTestData() {
   //   const nodeId = process.env.TEST_NODE_PAGE_ID;
   //
@@ -115,7 +80,36 @@ export class NodeTestModel {
   //
   //   return pageNodeData;
   // }
-  //
+
+  private async getElementNodeData() {
+    //     const elementNodeData = await this.getElementNodeTestData(nodeId);
+    //
+    //     const parentNodeData =
+    //       await this.getParentNodeTestData(TEST_NODE_PAGE_ID);
+    //     elementNodeData.meta.parents = [
+    //       parentNodeData,
+    //       parentNodeData,
+    //       parentNodeData,
+    //     ];
+    //
+    //     const authorNodeData = await this.getAuthorTestData();
+    //     elementNodeData.meta.author = authorNodeData;
+    //
+    //     elementNodeData.title = "element-node-title";
+    //
+    //     const siblingNodeData =
+    //       await this.getSiblingNodeData(TEST_NODE_ELEMENT_ID);
+    //     elementNodeData.meta.siblings = [
+    //       siblingNodeData,
+    //       siblingNodeData,
+    //       siblingNodeData,
+    //     ];
+    //
+    //     elementNodeData.meta.id = TEST_NODE_ELEMENT_ID;
+    //
+    //     return elementNodeData;
+  }
+
   // static async getElementNodeTestData() {
   //   const nodeId = process.env.TEST_NODE_ELEMENT_ID;
   //
@@ -129,6 +123,7 @@ export class NodeTestModel {
   //
   //   return elementNodeData;
   // }
+
   //
   // static async getParentNodeTestData(nodeId) {
   //   const parentNodeData = {
