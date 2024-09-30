@@ -1,27 +1,33 @@
 // TODO how to do comment annotations on type params
 
+type NodeTypes = "userNode" | "pageNode" | "elementNode";
+
 type NodeIdType = string;
 
-type NodeDataType = {
+type NodeDataType = NodeMainDataType & {
   meta: NodeMetaType;
-  // 80 symbols max
-  title: string;
-  // 240 symbols max
-  description: string;
-  imageBlog: string;
-  image: NodeImageType;
-  content: NodeContentType;
-  data: NodeDateType;
+  image?: NodeImageType;
+  content?: NodeContentType;
+  date?: NodeDateType;
 };
 
 type NodeMetaType = {
   id: NodeIdType;
-  parents: Array<NodeIdType>;
-  childs: Array<NodeIdType>;
-  siblings: Array<NodeIdType>;
+  parents?: Array<NodeIdType>;
+  childs?: Array<NodeIdType>;
+  siblings?: Array<NodeIdType>;
+};
+
+type NodeMainDataType = {
+  // 80 symbols max
+  title: string;
+  // 240 symbols max
+  description: NodeContentType;
+  blob: string;
 };
 
 type NodeImageType = {
+  blob: string;
   original: string;
   h16: string;
   h16_2x: string;
@@ -44,3 +50,4 @@ type NodeDateType = {
 };
 
 export type { NodeDataType };
+export type { NodeTypes };
