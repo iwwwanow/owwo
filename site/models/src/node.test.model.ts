@@ -40,9 +40,17 @@ export class NodeTestModel {
     return;
   }
 
+  private async initPageNodeData() {
+    this.data.content = await this.getUserNodeContentData();
+    this.data.image = await this.getCoverData();
+    this.data.date = await this.getDateData();
+    this.data = { ...this.data, ...(await this.getUserNodeMainData()) };
+    return;
+  }
+
   async initData() {
     if (this.type === "userNode") return await this.initUserNodeData();
-    else if (this.type === "pageNode") return "pagenodedata";
+    else if (this.type === "pageNode") return await this.initPageNodeData();
     else if (this.type === "elementNode") return "elementnodedata";
 
     throw new Error("node type is not exist on getData function");
