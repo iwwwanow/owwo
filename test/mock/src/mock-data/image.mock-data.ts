@@ -12,6 +12,9 @@ export const IMAGE_TEST_DATA_AVATAR = {
 };
 
 export const IMAGE_TEST_DATA_COVER = {
+  blob: "https://images.placeholders.dev/?width=8&height=8",
+  // TODO it may be smaller or bigger than HD
+  original: "https://images.placeholders.dev/?width=1080&height=1080",
   h16: "https://images.placeholders.dev/?width=10&height=16",
   h16_2x: "https://images.placeholders.dev/?width=22&height=32",
   h32: "https://images.placeholders.dev/?width=22&height=32",
