@@ -27,6 +27,8 @@ const app = new Elysia()
     const {
       params: { nodeId },
     } = ctx;
+
+    // TODO pass url params to options
     return PageRouterService.getNodePage(nodeId);
   })
   .get("/error", () => {
