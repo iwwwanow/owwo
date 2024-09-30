@@ -26,7 +26,13 @@ export class ViewController {
   }
 
   static async renderHomePage() {
-    const users = await NodeModel.getNodes("user", 32);
+    // TODO add conditions to test data render
+    // const users = await NodeModel.getNodes("user", 32);
+    const TEST_USERS_QUANTITY = 128;
+    const nodeId = process.env["TEST_NODE_USERNAME"];
+    const node = new NodeTestModel(nodeId);
+    await node.initData();
+    const users = Array(TEST_USERS_QUANTITY).fill(node.data);
     const props = { users };
     return ViewController.responsePageHtml(HomePage, props);
   }
@@ -68,16 +74,18 @@ export class ViewController {
       process.env.NODE_ENV === "developement" &&
       testNodeIds.includes(nodeId)
     ) {
-      const node = new NodeTestModel(nodeId);
-      console.log("before init data");
-      await node.initData();
+      const node_user = new NodeTestModel(nodeId);
 
-      // nodeData = await NodeTestModel.getData();
+      await node_user.initData();
+      nodeData = node_user.data;
+
+      const node_page = new NodeTestModel(TEST_NODE_PAGE_ID);
+      await node_page.initData();
+
+      nodeData.meta.childs = Array(8).fill(node_page.data);
     } else {
       nodeData = await NodeModel.get(nodeId);
     }
-
-    console.log(nodeId);
 
     // const EDITOR_URL = new URL("", req.url);
     // EDITOR_URL.searchParams.set("editor", true);
@@ -94,12 +102,15 @@ export class ViewController {
     //   // client.type = 'viewer'
     // }
 
+    // TODO change node prop name to nodeData prop name
     const props = { client, node: nodeData };
-    if (nodeData.meta.childs?.length) {
-      return ViewController.responsePageHtml(NodePage, props);
-    } else {
-      return ViewController.responsePageHtml(NodeExtendedPage, props);
-    }
+
+    // if (node_user.data.meta.childs?.length) {
+    //   return ViewController.responsePageHtml(NodePage, props);
+    // }
+
+    return ViewController.responsePageHtml(NodePage, props);
+    // return ViewController.responsePageHtml(NodeExtendedPage, props);
   }
 
   static async renderErrorPage() {
