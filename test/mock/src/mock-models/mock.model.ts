@@ -2,7 +2,6 @@
 // import { PAGE_NODE_TEST_DATA } from "../test-data/page-node.test-data";
 // import { ELEMENT_NODE_TEST_DATA } from "../test-data/element-node.test-data";
 // import { TEXT_TEST_DATA } from "../test-data/text.test-data";
-
 import { META_TEST_DATA } from "../index.js";
 import { MAIN_TEST_DATA } from "../index.js";
 import { CONTENT_TEST_DATA } from "../index.js";
@@ -10,24 +9,6 @@ import { DATE_TEST_DATA } from "../index.js";
 import { IMAGE_TEST_DATA_AVATAR, IMAGE_TEST_DATA_COVER } from "../index.js";
 
 export class DataTestModel {
-  static async getNodeMetaData({ nodeId }) {
-    const nodeMetaData = META_TEST_DATA;
-    nodeMetaData.id = nodeId;
-    return META_TEST_DATA;
-  }
-  static async getNodeMainData() {
-    const nodeMainData = MAIN_TEST_DATA;
-    return nodeMainData;
-  }
-  static async getNodeContentData() {
-    return CONTENT_TEST_DATA;
-  }
-  static async getNodeAvatarData() {
-    return IMAGE_TEST_DATA_AVATAR;
-  }
-  static async getNodeCoverData() {
-    return IMAGE_TEST_DATA_COVER;
-  }
   static async getNodeDateData() {
     return DATE_TEST_DATA;
   }
