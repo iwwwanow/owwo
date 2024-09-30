@@ -69,14 +69,14 @@ export class ViewController {
       testNodeIds.includes(nodeId)
     ) {
       const node = new NodeTestModel(nodeId);
+      console.log("before init data");
       await node.initData();
-      console.log(node.data);
+
       // nodeData = await NodeTestModel.getData();
     } else {
       nodeData = await NodeModel.get(nodeId);
     }
 
-    console.log();
     console.log(nodeId);
 
     // const EDITOR_URL = new URL("", req.url);
