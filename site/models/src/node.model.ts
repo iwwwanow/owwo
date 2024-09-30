@@ -12,9 +12,8 @@ export class NodeModel {
       return userNodeData;
     } else if (nodeId === TEST_NODE_PAGE_ID) {
       const pageNodeData = await this.getPageNodeTestData(nodeId);
-      const childNodeData = await this.getChildNodeTestData(
-        TEST_NODE_ELEMENT_ID
-      );
+      const childNodeData =
+        await this.getChildNodeTestData(TEST_NODE_ELEMENT_ID);
       pageNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
 
       const authorNodeData = await this.getAuthorTestData();
@@ -28,9 +27,8 @@ export class NodeModel {
     } else if (nodeId === TEST_NODE_ELEMENT_ID) {
       const elementNodeData = await this.getElementNodeTestData(nodeId);
 
-      const parentNodeData = await this.getParentNodeTestData(
-        TEST_NODE_PAGE_ID
-      );
+      const parentNodeData =
+        await this.getParentNodeTestData(TEST_NODE_PAGE_ID);
       elementNodeData.meta.parents = [
         parentNodeData,
         parentNodeData,
@@ -42,9 +40,8 @@ export class NodeModel {
 
       elementNodeData.title = "element-node-title";
 
-      const siblingNodeData = await this.getSiblingNodeData(
-        TEST_NODE_ELEMENT_ID
-      );
+      const siblingNodeData =
+        await this.getSiblingNodeData(TEST_NODE_ELEMENT_ID);
       elementNodeData.meta.siblings = [
         siblingNodeData,
         siblingNodeData,
