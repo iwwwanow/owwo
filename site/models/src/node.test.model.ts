@@ -1,15 +1,22 @@
 import { DataTestModel } from "@test/mock";
+import { META_TEST_DATA } from "@test/mock";
+import { MAIN_TEST_DATA } from "@test/mock";
+import { CONTENT_TEST_DATA } from "@test/mock";
+import { IMAGE_TEST_DATA_AVATAR } from "@test/mock";
+import { IMAGE_TEST_DATA_COVER } from "@test/mock";
+import { DATE_TEST_DATA } from "@test/mock";
 
+import { NODE_INITIAL_DATA } from "./node.test.model.constants";
 import type { NodeDataType } from "./node.test.model.interfaces";
+import type { NodeTypes } from "./node.test.model.interfaces";
 
 // TODO make parent class for node test model and node model
 export class NodeTestModel {
-  type: "userNode" | "pageNode" | "elementNode";
-  data: NodeDataType = {
-    meta: null,
-  };
+  type: NodeTypes;
+  data: NodeDataType = NODE_INITIAL_DATA;
 
   constructor(nodeId: string) {
+    this.data.meta.id = nodeId;
     this.type = this.getNodeType(nodeId);
   }
 
@@ -26,29 +33,39 @@ export class NodeTestModel {
   }
 
   private async initUserNodeData() {
-    this.data = await this.getUserNodeData();
+    this.data.content = await this.getUserNodeContentData();
+    this.data.image = await this.getAvatarData();
+    this.data.date = await this.getDateData();
+    this.data = { ...this.data, ...(await this.getUserNodeMainData()) };
+    return;
   }
 
   async initData() {
-    if (this.type === "userNode") await this.initUserNodeData();
+    if (this.type === "userNode") return await this.initUserNodeData();
     else if (this.type === "pageNode") return "pagenodedata";
     else if (this.type === "elementNode") return "elementnodedata";
 
     throw new Error("node type is not exist on getData function");
   }
 
-  private async getUserNodeData() {
-    const userNodeData = {
-      meta: await DataTestModel.getNodeMetaData({ nodeId }),
-      ...(await DataTestModel.getNodeMainData({ title: nodeId })),
-      content: await DataTestModel.getNodeContentData(),
-      image: await DataTestModel.getNodeAvatarData(),
-      date: await DataTestModel.getNodeDateData(),
-    };
+  private async getUserNodeMainData() {
+    return MAIN_TEST_DATA;
+  }
 
-    const childNodeData = await this.getChildNodeTestData(TEST_NODE_PAGE_ID);
-    userNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
-    return userNodeData;
+  private async getUserNodeContentData() {
+    return CONTENT_TEST_DATA;
+  }
+
+  private async getAvatarData() {
+    return IMAGE_TEST_DATA_AVATAR;
+  }
+
+  private async getCoverData() {
+    return IMAGE_TEST_DATA_COVER;
+  }
+
+  private async getDateData() {
+    return DATE_TEST_DATA;
   }
 
   private async getPageNodeData() {
