@@ -13,6 +13,8 @@ type NodeDataType = NodeMainDataType & {
 
 type NodeMetaType = {
   id: NodeIdType;
+  author: NodeIdType;
+  authors?: Array<NodeIdType>;
   parents?: Array<NodeIdType>;
   childs?: Array<NodeIdType>;
   siblings?: Array<NodeIdType>;
