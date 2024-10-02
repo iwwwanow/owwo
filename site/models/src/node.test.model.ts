@@ -15,7 +15,9 @@ export class NodeTestModel {
   type: NodeTypes;
   data: NodeDataType = NODE_INITIAL_DATA;
 
-  constructor(nodeId: string) {
+  constructor({ nodeId }: { nodeId: string }) {
+    this.nodeId = nodeId;
+    console.log("constructor");
     this.data.meta.id = nodeId;
     this.type = this.getNodeType(nodeId);
   }
@@ -29,7 +31,7 @@ export class NodeTestModel {
     else if (nodeId === TEST_NODE_PAGE_ID) return "pageNode";
     else if (nodeId === TEST_NODE_ELEMENT_ID) return "elementNode";
 
-    throw new Error("nodeid is not match to any test route");
+    throw new Error("nodeid does not match to any test route");
   }
 
   private async initUserNodeData() {
