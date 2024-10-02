@@ -74,27 +74,33 @@ export class ViewController {
       process.env.NODE_ENV === "developement" &&
       testNodeIds.includes(nodeId)
     ) {
-      const node = new NodeTestModel(nodeId);
+      // const node = new NodeTestModel(nodeId);
+      //
+      // await node.initData();
+      // nodeData = node.data;
 
-      await node.initData();
-      nodeData = node.data;
+      // TODO изменил вложение свойства nodeId - с meta... на this.nodeId - заработало
+      // осталось причесать код
+      // можно попробовать продублировать свойство
 
       if (nodeId === TEST_NODE_PAGE_ID) {
-        const node_parent = new NodeTestModel(TEST_NODE_PAGE_ID);
-        await node_parent.initData();
-        nodeData.meta.parents = Array(8).fill(node_parent.data);
+        // const node_user = new NodeTestModel(TEST_NODE_USERNAME);
+        const node_user = new NodeTestModel({ nodeId: TEST_NODE_USERNAME });
+        // await node_user.initData();
+        // nodeData.meta.authors = Array(3).fill(node_user.data);
 
-        const node_user = new NodeTestModel(TEST_NODE_USERNAME);
-        await node_user.initData();
-        nodeData.meta.authors = Array(3).fill(node_user.data);
-        console.log(nodeData.meta.authors);
+        console.log(node_user.data.meta.id);
+        const node_parent = new NodeTestModel({ nodeId: TEST_NODE_PAGE_ID });
+        // await node_parent.initData();
+        // nodeData.meta.parents = Array(8).fill(node_parent.data);
+
+        console.log(node_user.nodeId);
+        console.log(node_parent.nodeId);
       }
 
-      // TODO ошибка после инициализации нового объекта. не понимаю почему
-      const node_child = new NodeTestModel(TEST_NODE_PAGE_ID);
-      await node_child.initData();
-
-      nodeData.meta.childs = Array(8).fill(node_child.data);
+      // const node_child = new NodeTestModel(TEST_NODE_PAGE_ID);
+      // await node_child.initData();
+      // nodeData.meta.childs = Array(8).fill(node_child.data);
     } else {
       nodeData = await NodeModel.get(nodeId);
     }
