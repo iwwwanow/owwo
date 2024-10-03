@@ -1,11 +1,3 @@
-import { DataTestModel } from "@test/mock";
-import { META_TEST_DATA } from "@test/mock";
-import { MAIN_TEST_DATA } from "@test/mock";
-import { CONTENT_TEST_DATA } from "@test/mock";
-import { IMAGE_TEST_DATA_AVATAR } from "@test/mock";
-import { IMAGE_TEST_DATA_COVER } from "@test/mock";
-import { DATE_TEST_DATA } from "@test/mock";
-
 import { NODE_INITIAL_DATA } from "./node.test.model.constants";
 import type { NodeDataType } from "./node.test.model.interfaces";
 import type { NodeTypes } from "./node.test.model.interfaces";
@@ -13,11 +5,11 @@ import type { NodeTypes } from "./node.test.model.interfaces";
 // TODO make parent class for node test model and node model
 export class NodeTestModel {
   type: NodeTypes;
+  nodeId: string;
   data: NodeDataType = NODE_INITIAL_DATA;
 
   constructor({ nodeId }: { nodeId: string }) {
     this.nodeId = nodeId;
-    console.log("constructor");
     this.data.meta.id = nodeId;
     this.type = this.getNodeType(nodeId);
   }
@@ -34,48 +26,12 @@ export class NodeTestModel {
     throw new Error("nodeid does not match to any test route");
   }
 
-  private async initUserNodeData() {
-    this.data.content = await this.getUserNodeContentData();
-    this.data.image = await this.getAvatarData();
-    this.data.date = await this.getDateData();
-    this.data = { ...this.data, ...(await this.getUserNodeMainData()) };
-    return;
-  }
-
   private async initPageNodeData() {
     this.data.content = await this.getUserNodeContentData();
     this.data.image = await this.getCoverData();
     this.data.date = await this.getDateData();
     this.data = { ...this.data, ...(await this.getUserNodeMainData()) };
     return;
-  }
-
-  async initData() {
-    if (this.type === "userNode") return await this.initUserNodeData();
-    else if (this.type === "pageNode") return await this.initPageNodeData();
-    else if (this.type === "elementNode") return "elementnodedata";
-
-    throw new Error("node type is not exist on getData function");
-  }
-
-  private async getUserNodeMainData() {
-    return MAIN_TEST_DATA;
-  }
-
-  private async getUserNodeContentData() {
-    return CONTENT_TEST_DATA;
-  }
-
-  private async getAvatarData() {
-    return IMAGE_TEST_DATA_AVATAR;
-  }
-
-  private async getCoverData() {
-    return IMAGE_TEST_DATA_COVER;
-  }
-
-  private async getDateData() {
-    return DATE_TEST_DATA;
   }
 
   private async getPageNodeData() {
