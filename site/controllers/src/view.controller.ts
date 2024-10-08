@@ -27,12 +27,10 @@ export class ViewController {
 
   static async renderHomePage() {
     // TODO add conditions to test data render
-    // const users = await NodeModel.getNodes("user", 32);
     const TEST_USERS_QUANTITY = 128;
-    const nodeId = process.env["TEST_NODE_USERNAME"];
-    const node = new NodeTestModel({ nodeId });
-    await node.initData();
-    const users = Array(TEST_USERS_QUANTITY).fill(node.data);
+    // const nodeId = process.env["TEST_NODE_USERNAME"];
+    const nodeData = await MockModel.getUserNodeData();
+    const users = Array(TEST_USERS_QUANTITY).fill(nodeData);
 
     const props = { users };
 
@@ -58,50 +56,11 @@ export class ViewController {
 
   static async renderNodePage(nodeId: string, options: RenderNodePageOptions) {
     const client = new ClientModel();
-    let nodeData;
-
-    // TODO move it to helpers or utils or application constants
-    // @globals/constants maybe
-    const { TEST_NODE_USERNAME, TEST_NODE_PAGE_ID, TEST_NODE_ELEMENT_ID } =
-      process.env;
-    const testNodeIds = [
-      TEST_NODE_USERNAME,
-      TEST_NODE_PAGE_ID,
-      TEST_NODE_ELEMENT_ID,
-    ];
+    const node = new NodeModel(nodeId);
+    const nodeData = await node.getData();
 
     // TODO to checkTest method
     // TODO move dev name to application constants
-    if (
-      process.env.NODE_ENV === "developement" &&
-      testNodeIds.includes(nodeId)
-    ) {
-      nodeData = await MockModel.getUserNodeData();
-
-      // const node = new NodeTestModel({ nodeId });
-      // await node.initData();
-      // nodeData = node.data;
-
-      // TODO изменил вложение свойства nodeId - с meta... на this.nodeId - заработало
-      // осталось причесать код
-      // можно попробовать продублировать свойство
-
-      if (nodeId === TEST_NODE_PAGE_ID) {
-        // const node_user = new NodeTestModel({ nodeId: TEST_NODE_USERNAME });
-        // await node_user.initData();
-        // nodeData.meta.authors = Array(3).fill(node_user.data);
-        //
-        // const node_parent = new NodeTestModel({ nodeId: TEST_NODE_PAGE_ID });
-        // await node_parent.initData();
-        // nodeData.meta.parents = Array(8).fill(node_parent.data);
-      }
-
-      // const node_child = new NodeTestModel({ nodeId: TEST_NODE_PAGE_ID });
-      // await node_child.initData();
-      // nodeData.meta.childs = Array(8).fill(node_child.data);
-    } else {
-      nodeData = await NodeModel.get(nodeId);
-    }
 
     // console.log(nodeData.meta.authors);
 
