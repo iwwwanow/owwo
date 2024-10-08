@@ -1,155 +1,85 @@
-import { DataTestModel } from "@test/mock";
+import { MockModel } from "./mock.model";
 
 export class NodeModel {
-  static async get(nodeId) {
+  nodeId: string;
+  testNodeIds: Array<string>;
+  testNodeUsername: string;
+  testNodePageId: string;
+  testNodeElementId: string;
+
+  constructor(nodeId: string) {
+    this.nodeId = nodeId;
+
+    // TODO move it to helpers or utils or application constants
+    // @globals/constants maybe
     const { TEST_NODE_USERNAME, TEST_NODE_PAGE_ID, TEST_NODE_ELEMENT_ID } =
       process.env;
 
-    if (nodeId === TEST_NODE_USERNAME) {
-      const userNodeData = await this.getUserNodeTestData();
-      const childNodeData = await this.getChildNodeTestData(TEST_NODE_PAGE_ID);
-      userNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
-      return userNodeData;
-    } else if (nodeId === TEST_NODE_PAGE_ID) {
-      const pageNodeData = await this.getPageNodeTestData(nodeId);
-      const childNodeData =
-        await this.getChildNodeTestData(TEST_NODE_ELEMENT_ID);
-      pageNodeData.meta.childs = [childNodeData, childNodeData, childNodeData];
+    // TODO check env function on app launch
+    // TODO зачем тестовые функции и переменные в конструкторе этого класса?
+    // 	нужно их вынести внаружу
 
-      const authorNodeData = await this.getAuthorTestData();
-      pageNodeData.meta.authors = [
-        authorNodeData,
-        authorNodeData,
-        authorNodeData,
-      ];
+    this.testNodeUsername = TEST_NODE_USERNAME as string;
+    this.testNodePageId = TEST_NODE_PAGE_ID as string;
+    this.testNodeElementId = TEST_NODE_ELEMENT_ID as string;
 
-      return pageNodeData;
-    } else if (nodeId === TEST_NODE_ELEMENT_ID) {
-      const elementNodeData = await this.getElementNodeTestData(nodeId);
+    this.testNodeIds = [
+      this.testNodeUsername,
+      this.testNodePageId,
+      this.testNodeElementId,
+    ];
+  }
 
-      const parentNodeData =
-        await this.getParentNodeTestData(TEST_NODE_PAGE_ID);
-      elementNodeData.meta.parents = [
-        parentNodeData,
-        parentNodeData,
-        parentNodeData,
-      ];
-
-      const authorNodeData = await this.getAuthorTestData();
-      elementNodeData.meta.author = authorNodeData;
-
-      elementNodeData.title = "element-node-title";
-
-      const siblingNodeData =
-        await this.getSiblingNodeData(TEST_NODE_ELEMENT_ID);
-      elementNodeData.meta.siblings = [
-        siblingNodeData,
-        siblingNodeData,
-        siblingNodeData,
-      ];
-
-      elementNodeData.meta.id = TEST_NODE_ELEMENT_ID;
-
-      return elementNodeData;
+  async getData() {
+    if (this.isTestData) {
+      return await this.getTestData();
     }
+
+    return await this.getDbData();
   }
 
-  static async getNodes(nodeType, quantity) {
-    const output = [];
-    const nodeData = await this.getUserNodeTestData();
-    for (let i = 0; i <= quantity; i++) {
-      if (nodeType === "user") output.push(nodeData);
+  private get isTestData() {
+    if (
+      process.env.NODE_ENV === "developement" &&
+      this.testNodeIds.includes(this.nodeId)
+    ) {
+      return true;
     }
-    return output;
+    return false;
   }
 
-  static async getUserNodeTestData() {
-    const nodeId = process.env.TEST_NODE_USERNAME;
-
-    const userNodeData = {
-      meta: await DataTestModel.getNodeMetaData({ nodeId }),
-      ...(await DataTestModel.getNodeMainData({ title: nodeId })),
-      content: await DataTestModel.getNodeContentData(),
-      image: await DataTestModel.getNodeAvatarData(),
-      date: await DataTestModel.getNodeDateData(),
-    };
-
-    return userNodeData;
+  private async getDbData() {
+    console.log(`getDbData for ${this.nodeId}`);
   }
 
-  static async getPageNodeTestData() {
-    const nodeId = process.env.TEST_NODE_PAGE_ID;
+  private async getTestData() {
+    let nodeData;
 
-    const pageNodeData = {
-      meta: await DataTestModel.getNodeMetaData({ nodeId }),
-      ...(await DataTestModel.getNodeMainData({ title: "page-title" })),
-      content: await DataTestModel.getNodeContentData(),
-      image: await DataTestModel.getNodeCoverData(),
-      date: await DataTestModel.getNodeDateData(),
-    };
+    // TODO to consts
+    const PAGE_QUANTITY = 7;
+    const AUTHORS_QUANTITY = 3;
+    const PARENTS_QUANTITY = 3;
 
-    return pageNodeData;
-  }
+    const nodeUserData = await MockModel.getUserNodeData();
+    const nodePageData = await MockModel.getPageNodeData();
 
-  static async getElementNodeTestData() {
-    const nodeId = process.env.TEST_NODE_ELEMENT_ID;
+    if (this.nodeId === this.testNodeUsername) {
+      nodeData = nodeUserData;
+      nodeData.meta.childs = Array(PAGE_QUANTITY).fill(nodePageData);
+    } else if (this.nodeId === this.testNodePageId) {
+      nodeData = nodePageData;
+      nodeData.meta.authors = Array(AUTHORS_QUANTITY).fill(nodeUserData);
+      nodeData.meta.childs = Array(PAGE_QUANTITY).fill(nodePageData);
 
-    const elementNodeData = {
-      meta: await DataTestModel.getNodeMetaData({ nodeId }),
-      ...(await DataTestModel.getNodeMainData()),
-      content: await DataTestModel.getNodeContentData(),
-      image: await DataTestModel.getNodeCoverData(),
-      date: await DataTestModel.getNodeDateData(),
-    };
+      // TODO render siblings
+      // TODO render extended page
 
-    return elementNodeData;
-  }
+      nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodePageData);
+      nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodeUserData);
+    } else if (this.nodeId === TEST_NODE_ELEMENT_ID) {
+      // TODO
+    }
 
-  static async getParentNodeTestData(nodeId) {
-    const parentNodeData = {
-      meta: {
-        id: nodeId,
-      },
-      ...(await DataTestModel.getNodeMainData()),
-      image: await DataTestModel.getNodeCoverData(),
-    };
-
-    return parentNodeData;
-  }
-
-  static async getChildNodeTestData(nodeId) {
-    const childNodeData = {
-      meta: {
-        id: nodeId,
-      },
-      ...(await DataTestModel.getNodeMainData()),
-      image: await DataTestModel.getNodeCoverData(),
-    };
-
-    return childNodeData;
-  }
-
-  static async getSiblingNodeData(nodeId) {
-    const siblingNodeData = {
-      meta: {
-        id: nodeId,
-      },
-      ...(await DataTestModel.getNodeMainData()),
-      image: await DataTestModel.getNodeCoverData(),
-    };
-
-    return siblingNodeData;
-  }
-
-  static async getAuthorTestData() {
-    const nodeId = process.env.TEST_NODE_USERNAME;
-
-    const authorNodeData = {
-      meta: await DataTestModel.getNodeMetaData({ nodeId }),
-      title: "username",
-      image: await DataTestModel.getNodeAvatarData(),
-    };
-
-    return authorNodeData;
+    return nodeData;
   }
 }

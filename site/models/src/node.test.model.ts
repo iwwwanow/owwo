@@ -26,13 +26,7 @@ export class NodeTestModel {
     throw new Error("nodeid does not match to any test route");
   }
 
-  private async initPageNodeData() {
-    this.data.content = await this.getUserNodeContentData();
-    this.data.image = await this.getCoverData();
-    this.data.date = await this.getDateData();
-    this.data = { ...this.data, ...(await this.getUserNodeMainData()) };
-    return;
-  }
+  private async initPageNodeData() {}
 
   private async getPageNodeData() {
     //     const pageNodeData = await this.getPageNodeTestData(nodeId);

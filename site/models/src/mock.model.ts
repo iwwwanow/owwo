@@ -12,9 +12,25 @@ class MockModel {
       date: await this.getDateData(),
       // TODO move it to initial data
       meta: {
+        id: process.env["TEST_NODE_USERNAME"],
         childs: [],
       },
       ...(await this.getUserNodeMainData()),
+      title: "node-username-title",
+    };
+  }
+
+  static async getPageNodeData() {
+    return {
+      content: await this.getContentData(),
+      image: await this.getCoverData(),
+      date: await this.getDateData(),
+      meta: {
+        id: process.env["TEST_NODE_PAGE_ID"],
+        childs: [],
+      },
+      ...(await this.getUserNodeMainData()),
+      title: "node-page-title",
     };
   }
 
