@@ -1,11 +1,14 @@
 import { Elysia } from "elysia";
 
-import { getLaunchText } from "./app.constants";
 import { LISTEN_PORT } from "./elysia-app.constants";
+import { getLaunchText } from "./helpers";
+import { checkEnvs } from "./helpers/check-envs.helper";
 import { PageRouterService } from "./services/index";
 
 // TODO toutes to consts
 // TODO link routes consts with a href consts
+
+checkEnvs();
 
 const app = new Elysia()
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
