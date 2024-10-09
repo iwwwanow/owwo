@@ -1,33 +1,18 @@
+import { PAGE_QUANTITY } from "./mock.constants";
+import { AUTHORS_QUANTITY } from "./mock.constants";
+import { PARENTS_QUANTITY } from "./mock.constants";
 import { MockModel } from "./mock.model";
 
 export class NodeModel {
   nodeId: string;
-  testNodeIds: Array<string>;
-  testNodeUsername: string;
-  testNodePageId: string;
-  testNodeElementId: string;
+  testNodeIds?: Record<string, string>;
 
   constructor(nodeId: string) {
     this.nodeId = nodeId;
 
-    // TODO move it to helpers or utils or application constants
-    // @globals/constants maybe
-    const { TEST_NODE_USERNAME, TEST_NODE_PAGE_ID, TEST_NODE_ELEMENT_ID } =
-      process.env;
-
-    // TODO check env function on app launch
-    // TODO зачем тестовые функции и переменные в конструкторе этого класса?
-    // 	нужно их вынести внаружу
-
-    this.testNodeUsername = TEST_NODE_USERNAME as string;
-    this.testNodePageId = TEST_NODE_PAGE_ID as string;
-    this.testNodeElementId = TEST_NODE_ELEMENT_ID as string;
-
-    this.testNodeIds = [
-      this.testNodeUsername,
-      this.testNodePageId,
-      this.testNodeElementId,
-    ];
+    if (process.env.NODE_ENV === "developement") {
+      this.initTestData();
+    }
   }
 
   async getData() {
@@ -38,10 +23,30 @@ export class NodeModel {
     return await this.getDbData();
   }
 
+  private initTestData() {
+    // TODO move it to helpers or utils or application constants
+    // @globals/constants maybe
+    const {
+      TEST_NODE_USERNAME: testNodeUsername,
+      TEST_NODE_PAGE_ID: testNodePageId,
+      TEST_NODE_ELEMENT_ID: testNodeElementId,
+    } = process.env;
+
+    this.testNodeIds = {
+      testNodeUsername,
+      testNodePageId,
+      testNodeElementId,
+    };
+  }
+
   private get isTestData() {
+    if (!this.testNodeIds) {
+      throw new Error("testNodeIds not provided");
+    }
+
     if (
       process.env.NODE_ENV === "developement" &&
-      this.testNodeIds.includes(this.nodeId)
+      Object.values(this.testNodeIds).includes(this.nodeId)
     ) {
       return true;
     }
@@ -55,18 +60,13 @@ export class NodeModel {
   private async getTestData() {
     let nodeData;
 
-    // TODO to consts
-    const PAGE_QUANTITY = 7;
-    const AUTHORS_QUANTITY = 3;
-    const PARENTS_QUANTITY = 3;
-
     const nodeUserData = await MockModel.getUserNodeData();
     const nodePageData = await MockModel.getPageNodeData();
 
-    if (this.nodeId === this.testNodeUsername) {
+    if (this.nodeId === this.testNodeIds.testNodeUsername) {
       nodeData = nodeUserData;
       nodeData.meta.childs = Array(PAGE_QUANTITY).fill(nodePageData);
-    } else if (this.nodeId === this.testNodePageId) {
+    } else if (this.nodeId === this.testNodeIds.testNodePageId) {
       nodeData = nodePageData;
       nodeData.meta.authors = Array(AUTHORS_QUANTITY).fill(nodeUserData);
       nodeData.meta.childs = Array(PAGE_QUANTITY).fill(nodePageData);
@@ -76,7 +76,7 @@ export class NodeModel {
 
       nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodePageData);
       nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodeUserData);
-    } else if (this.nodeId === TEST_NODE_ELEMENT_ID) {
+    } else if (this.nodeId === this.testNodeIds.testNodeElementId) {
       // TODO
     }
 
