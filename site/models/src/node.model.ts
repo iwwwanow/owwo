@@ -29,7 +29,7 @@ export class NodeModel {
     const {
       TEST_NODE_USERNAME: testNodeUsername,
       TEST_NODE_PAGE_ID: testNodePageId,
-      TEST_NODE_ELEMENT_ID: testNodeElementId,
+      TEST_NODE_EXTENDED_PAGE_ID: testNodeElementId,
     } = process.env;
 
     this.testNodeIds = {
@@ -62,6 +62,7 @@ export class NodeModel {
 
     const nodeUserData = await MockModel.getUserNodeData();
     const nodePageData = await MockModel.getPageNodeData();
+    const nodeExtendedPageData = await MockModel.getExtendedPageNodeData();
 
     if (this.nodeId === this.testNodeIds.testNodeUsername) {
       nodeData = nodeUserData;
@@ -69,7 +70,10 @@ export class NodeModel {
     } else if (this.nodeId === this.testNodeIds.testNodePageId) {
       nodeData = nodePageData;
       nodeData.meta.authors = Array(AUTHORS_QUANTITY).fill(nodeUserData);
-      nodeData.meta.childs = Array(PAGE_QUANTITY).fill(nodePageData);
+      nodeData.meta.childs = [
+        ...Array(PAGE_QUANTITY).fill(nodePageData),
+        ...Array(PAGE_QUANTITY).fill(nodeExtendedPageData),
+      ];
 
       // TODO render siblings
       // TODO render extended page
@@ -77,7 +81,10 @@ export class NodeModel {
       nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodePageData);
       nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodeUserData);
     } else if (this.nodeId === this.testNodeIds.testNodeElementId) {
-      // TODO
+      nodeData = nodeExtendedPageData;
+      nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodeExtendedPageData);
+      nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodePageData);
+      nodeData.meta.author = nodeUserData;
     }
 
     return nodeData;
