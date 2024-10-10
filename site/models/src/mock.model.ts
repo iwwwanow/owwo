@@ -34,6 +34,20 @@ class MockModel {
     };
   }
 
+  static async getExtendedPageNodeData() {
+    return {
+      content: await this.getContentData(),
+      image: await this.getCoverData(),
+      date: await this.getDateData(),
+      meta: {
+        id: process.env["TEST_NODE_EXTENDED_PAGE_ID"],
+        childs: [],
+      },
+      ...(await this.getUserNodeMainData()),
+      title: "node-extended-page-title",
+    };
+  }
+
   private static async getUserNodeMainData() {
     return MAIN_TEST_DATA;
   }
