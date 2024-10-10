@@ -59,11 +59,6 @@ export class ViewController {
     const node = new NodeModel(nodeId);
     const nodeData = await node.getData();
 
-    // TODO to checkTest method
-    // TODO move dev name to application constants
-
-    // console.log(nodeData.meta.authors);
-
     // const EDITOR_URL = new URL("", req.url);
     // EDITOR_URL.searchParams.set("editor", true);
     // console.log(`EDITOR URL: ${EDITOR_URL.href}`);
@@ -82,12 +77,11 @@ export class ViewController {
     // TODO change node prop name to nodeData prop name
     const props = { client, node: nodeData };
 
-    // if (node_user.data.meta.childs?.length) {
-    //   return ViewController.responsePageHtml(NodePage, props);
-    // }
+    if (!nodeData.meta.childs?.length) {
+      return ViewController.responsePageHtml(NodeExtendedPage, props);
+    }
 
     return ViewController.responsePageHtml(NodePage, props);
-    // return ViewController.responsePageHtml(NodeExtendedPage, props);
   }
 
   static async renderErrorPage() {
