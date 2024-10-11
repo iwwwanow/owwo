@@ -12,7 +12,7 @@ class MockModel {
       date: await this.getDateData(),
       // TODO move it to initial data
       meta: {
-        id: process.env["TEST_NODE_USERNAME"],
+        id: process.env["TEST_NODE_USERNAME"] as string,
         childs: [],
       },
       ...(await this.getUserNodeMainData()),
@@ -26,7 +26,7 @@ class MockModel {
       image: await this.getCoverData(),
       date: await this.getDateData(),
       meta: {
-        id: process.env["TEST_NODE_PAGE_ID"],
+        id: process.env["TEST_NODE_PAGE_ID"] as string,
         childs: [],
       },
       ...(await this.getUserNodeMainData()),
@@ -40,7 +40,7 @@ class MockModel {
       image: await this.getCoverData(),
       date: await this.getDateData(),
       meta: {
-        id: process.env["TEST_NODE_EXTENDED_PAGE_ID"],
+        id: process.env["TEST_NODE_EXTENDED_PAGE_ID"] as string,
         childs: [],
       },
       ...(await this.getUserNodeMainData()),
