@@ -7,7 +7,9 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@test/mock": "workspace:*"
+    "@test/mock": "workspace:*",
+    "@site/interfaces": "workspace:*",
+    "@site/constants": "workspace:*"
   },
   "main": "src/index.ts"
 }
