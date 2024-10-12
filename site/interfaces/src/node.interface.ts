@@ -54,3 +54,4 @@ type NodeDateType = {
 
 export type { NodeDataType };
 export type { NodeTypes };
+export type { NodeContentType };
