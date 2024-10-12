@@ -1,3 +1,4 @@
+import type { ComponentType } from "svelte";
 import { defaultBlankHtml } from "test-templates";
 
 class AppendHeadRewriter {
@@ -30,7 +31,10 @@ class AppendCssRewriter {
 }
 
 export class Bte {
-  constructor(blankHtmlPath) {
+  private blankHtmlPath: string;
+  blankHtmlPage?: string;
+
+  constructor(blankHtmlPath?: string) {
     // TODO можно импортировать сразу html-страницу,
     // без дополнительных преобразований
     // см документацию bun
@@ -44,9 +48,11 @@ export class Bte {
     this.blankHtmlPage = blankHtmlString;
   }
 
-  async getPageHtml(svelteComponent, props) {
+  async getPageHtml(svelteComponent: ComponentType, props) {
     // TODO если компонент не был проведен,
     // то возвращать бланковую html страницу
+
+    console.log(svelteComponent);
 
     const renderResult = svelteComponent.render(props);
 
