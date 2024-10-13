@@ -5,7 +5,6 @@ import { LISTEN_PORT } from "./elysia-app.constants";
 import { getLaunchText } from "./helpers";
 import { checkEnvs } from "./helpers/check-envs.helper";
 import { PageRouterService } from "./services/index";
-import { TestPage } from "./test-page.tsx";
 
 // TODO toutes to consts
 // TODO link routes consts with a href consts
@@ -14,9 +13,6 @@ checkEnvs();
 
 const app = new Elysia()
   .use(html())
-  .get("/jsx", () => {
-    return TestPage();
-  })
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
     return PageRouterService.getPublic({ param: filepathParam });
   })
