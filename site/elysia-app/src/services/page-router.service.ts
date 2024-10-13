@@ -11,27 +11,27 @@ class PageRouterService {
   }
 
   static getHomePage() {
-    return ViewController.renderHomePage();
+    return ViewController.getHomePage();
   }
 
   static getAboutPage() {
-    return ViewController.renderAboutPage();
+    return ViewController.getAboutPage();
   }
 
   static getLoginPage() {
-    return ViewController.renderLoginPage();
+    return ViewController.getLoginPage();
   }
 
   static getSignupPage() {
-    return ViewController.renderSignupPage();
+    return ViewController.getSignupPage();
   }
 
   static getNodePage(nodeId: string) {
-    return ViewController.renderNodePage(nodeId);
+    return ViewController.getNodePage(nodeId);
   }
 
   static getErrorPage() {
-    return ViewController.renderErrorPage();
+    return ViewController.getErrorPage();
   }
 }
 
