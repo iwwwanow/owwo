@@ -1,8 +1,0 @@
-{
-  "name": "test-templates",
-  "type": "module",
-  "main": "src/index.js",
-  "exports": {
-    ".": "./src/index.js"
-  }
-}
