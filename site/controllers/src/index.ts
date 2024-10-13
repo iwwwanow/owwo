@@ -1,2 +1,2 @@
-export * from "./static.controller.js";
-export * from "./view.controller.js";
+export * from "./static.controller";
+export * from "./view.controller";

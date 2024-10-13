@@ -12,16 +12,13 @@ import { NodeExtendedPage } from "@site/svelte-templates";
 import { ErrorPage } from "@site/svelte-templates";
 import { html } from "@stricjs/app/send";
 import { Bte } from "bun-template-engine";
-import type { CompileResult } from "svelte/compiler";
 
 // TODO to bte docs
 const bte = new Bte();
 await bte.init();
 
 export class ViewController {
-  static async responsePageHtml(svelteComponent: CompileResult, props) {
-    console.log(svelteComponent);
-
+  static async responsePageHtml(svelteComponent, props) {
     // TODO svetle page type
 
     const pageHtml = await bte.getPageHtml(svelteComponent, props);
