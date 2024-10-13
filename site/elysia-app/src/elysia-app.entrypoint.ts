@@ -15,7 +15,6 @@ checkEnvs();
 const app = new Elysia()
   .use(html())
   .get("/jsx", () => {
-    console.log(TestPage());
     return TestPage();
   })
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
