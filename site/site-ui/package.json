@@ -4,10 +4,7 @@
   "license": "BSD-3-Clause",
   "type": "module",
   "exports": {
-    "fragments": "./src/fragments/index.ts",
-    "layouts": "./src/layouts/index.ts",
-    "svgs": "./src/svgs/index.ts",
-    "pages": "./src/pages/index.ts"
+    ".": "./src/index.ts"
   },
   "main": "src/index.ts"
 }
