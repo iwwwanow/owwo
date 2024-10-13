@@ -1,9 +1,11 @@
+import { html } from "@elysiajs/html";
 import { Elysia } from "elysia";
 
 import { LISTEN_PORT } from "./elysia-app.constants";
 import { getLaunchText } from "./helpers";
 import { checkEnvs } from "./helpers/check-envs.helper";
 import { PageRouterService } from "./services/index";
+import { TestPage } from "./test-page.tsx";
 
 // TODO toutes to consts
 // TODO link routes consts with a href consts
@@ -11,6 +13,11 @@ import { PageRouterService } from "./services/index";
 checkEnvs();
 
 const app = new Elysia()
+  .use(html())
+  .get("/jsx", () => {
+    console.log(TestPage());
+    return TestPage();
+  })
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
     return PageRouterService.getPublic({ param: filepathParam });
   })

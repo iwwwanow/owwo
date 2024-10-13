@@ -8,7 +8,8 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "elysia": "^1.1.16",
-    "@site/controllers": "workspace:*"
+    "@elysiajs/html": "^1.1.1",
+    "@site/controllers": "workspace:*",
+    "elysia": "^1.1.16"
   }
 }
