@@ -1,0 +1,11 @@
+@media screen and (max-width: 650px) {
+  .main-inputs-fieldset {
+    grid-column: 1/2;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .main-inputs-fieldset {
+    grid-column: 1/-1;
+  }
+}

@@ -1,0 +1,37 @@
+.button {
+  --color: var(--DARK);
+
+  padding: 8px;
+  width: 100%;
+  /* height: fit-content; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-transform: uppercase;
+  background-color: white;
+
+  border-color: var(--color);
+}
+.button > p {
+  color: var(--color);
+}
+.button * {
+  margin: 0;
+}
+.button:hover {
+  border-color: var(--color);
+  background-color: var(--color);
+}
+.button:hover > p {
+  color: var(--WHITE);
+  font-weight: 600;
+}
+
+.button_url {
+  --color: var(--BLUE);
+}
+.button__url-container:hover {
+  text-decoration: none;
+}

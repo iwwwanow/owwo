@@ -1,0 +1,33 @@
+.node-info__data-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--GRID-GAP-2);
+}
+
+:global(.node-info .node-title) {
+  margin: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .node-info__data-wrapper {
+    grid-column: 1/-1;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--GRID-GAP);
+  }
+  :global(.node-info__data-wrapper > *) {
+    width: calc(50% - var(--GRID-GAP-2));
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .node-info__data-wrapper {
+    grid-column: 1 / end;
+    flex-direction: column;
+    gap: var(--GRID-GAP);
+  }
+  /* TODO переделать */
+  :global(.node-info__data-wrapper > *) {
+    width: 100%;
+  }
+}
