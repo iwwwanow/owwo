@@ -3,29 +3,27 @@ import { convertMdHtmlHelper } from "@site/helpers";
 import { NodeModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
-import { HomePage } from "@site/svelte-templates";
-import { AboutPage } from "@site/svelte-templates";
-import { LoginPage } from "@site/svelte-templates";
-import { SignupPage } from "@site/svelte-templates";
-import { NodePage } from "@site/svelte-templates";
-import { NodeExtendedPage } from "@site/svelte-templates";
-import { ErrorPage } from "@site/svelte-templates";
-import { html } from "@stricjs/app/send";
-import { Bte } from "bun-template-engine";
+import { HomePage } from "@site/site-ui";
 
-// TODO to bte docs
-const bte = new Bte();
-await bte.init();
+// import { HomePage } from "@site/svelte-templates";
+// import { AboutPage } from "@site/svelte-templates";
+// import { LoginPage } from "@site/svelte-templates";
+// import { SignupPage } from "@site/svelte-templates";
+// import { NodePage } from "@site/svelte-templates";
+// import { NodeExtendedPage } from "@site/svelte-templates";
+// import { ErrorPage } from "@site/svelte-templates";
 
 export class ViewController {
-  static async responsePageHtml(svelteComponent, props) {
-    // TODO svetle page type
+  // static async responsePageHtml(svelteComponent, props) {
+  //   // TODO svetle page type
+  //
+  //   const pageHtml = await bte.getPageHtml(svelteComponent, props);
+  //   return html(pageHtml);
+  // }
 
-    const pageHtml = await bte.getPageHtml(svelteComponent, props);
-    return html(pageHtml);
-  }
+  static async getHomePage() {
+    console.log("get home page");
 
-  static async renderHomePage() {
     // TODO add conditions to test data render
     const TEST_USERS_QUANTITY = 128;
     // const nodeId = process.env["TEST_NODE_USERNAME"];
@@ -37,7 +35,7 @@ export class ViewController {
     return ViewController.responsePageHtml(HomePage, props);
   }
 
-  static async renderAboutPage() {
+  static async getAboutPage() {
     const client = new ClientModel();
 
     const ABOUT_FILEPATH = "./README.md";
@@ -54,14 +52,14 @@ export class ViewController {
     return ViewController.responsePageHtml(AboutPage, props);
   }
 
-  static async renderLoginPage() {
+  static async getLoginPage() {
     const client = new ClientModel();
     const props = { client };
 
     return ViewController.responsePageHtml(LoginPage, props);
   }
 
-  static async renderSignupPage() {
+  static async getSignupPage() {
     const client = new ClientModel();
     const props = { client };
 
@@ -69,7 +67,7 @@ export class ViewController {
   }
 
   // static async renderNodePage(nodeId: string, options: RenderNodePageOptions) {
-  static async renderNodePage(nodeId: string) {
+  static async getNodePage(nodeId: string) {
     const client = new ClientModel();
     const node = new NodeModel(nodeId);
     const nodeData = await node.getData();
@@ -99,7 +97,7 @@ export class ViewController {
     return ViewController.responsePageHtml(NodePage, props);
   }
 
-  static async renderErrorPage() {
+  static async getErrorPage() {
     const client = new ClientModel();
     const props = { client };
     return ViewController.responsePageHtml(ErrorPage, props);
