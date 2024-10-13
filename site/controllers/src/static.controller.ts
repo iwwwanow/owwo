@@ -1,5 +1,3 @@
-// import { file } from "@stricjs/app/send";
-
 // TODO to consts
 const PUBLIC_PATH = "./site/public/";
 
