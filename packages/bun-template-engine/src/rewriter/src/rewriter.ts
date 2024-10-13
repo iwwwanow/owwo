@@ -33,13 +33,9 @@ export class Bte {
 
     const renderResult = svelteComponent.render(props);
 
-    console.log(renderResult);
-
     this.head = renderResult.head;
     this.body = renderResult.html;
     this.css = renderResult.css.code;
-
-    type Test = HTMLRewriterTypes.HTMLRewriterContentHandlers;
 
     const rewriter = new HTMLRewriter()
       .on("html", new AppendHeadRewriter(this.head))
