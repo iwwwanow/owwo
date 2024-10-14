@@ -1,6 +1,6 @@
 type CardContainerProps = {
   className: string;
-  children: JSX.Element;
+  children: Array<JSX.Element>;
 };
 
 type CardContainerType = (props: CardContainerProps) => JSX.Element;
