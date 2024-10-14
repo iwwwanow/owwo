@@ -8,6 +8,8 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@ui/hr": "workspaces:*"
+    "@ui/hr": "workspace:*",
+    "@ui/input": "workspace:*",
+    "@ui/card-container": "workspace:*"
   }
 }

@@ -1,8 +1,8 @@
-import Hr from "@ui/hr";
+import { Hr } from "@ui/hr";
 
-import { ContentTextareaFieldset } from "./fieldsets";
-import { MainInputsFieldset } from "./fieldsets";
-import { FileInputFieldset } from "./fieldsets";
+import { ContentTextareaFieldset } from "./component-parts";
+import { MainInputsFieldset } from "./component-parts";
+import { FileInputFieldset } from "./component-parts";
 
 // TODO
 // в самом верху инпут, размером в одну строку, как на нижнем объекте (с

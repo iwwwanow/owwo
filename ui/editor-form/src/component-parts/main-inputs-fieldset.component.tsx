@@ -1,12 +1,13 @@
-import Hr from "@ui/hr";
+import { CardContainer } from "@ui/card-container";
+import { Hr } from "@ui/hr";
+import { FileInput } from "@ui/input";
+import { TextInput } from "@ui/input";
+import { Textarea } from "@ui/input";
 
 import { TITLE_INPUT_PLACEHOLDER } from "../editor-form.constants";
 import { DESCRIPTION_TEXTAREA_PLACEHOLDER } from "../editor-form.constants";
-import CardContainer from "./card-container.component.svelte";
-import FileInput from "./inputs/file.input.svelte";
-import TextInput from "./inputs/text.input.svelte";
-import Textarea from "./inputs/textarea.component.svelte";
 
+// TODO interfaces
 const MainInputsFieldset = (props) => {
   const { imageSrc } = props;
 
