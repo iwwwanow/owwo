@@ -1,8 +1,6 @@
 type DateComponentProps = {
-  date: {
-    last: Date;
-    creation: Date;
-  };
+  // TODO interface
+  date: any;
 };
 
 type DateComponentType = (props: DateComponentProps) => JSX.Element;
