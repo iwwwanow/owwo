@@ -1,7 +1,8 @@
 type TextareaProps = {
   id: string;
   name: string;
-  rows?: number;
+  // TODO use html-prop types on all input components
+  rows?: string | number;
   text?: string;
   required?: boolean;
   placeholder?: string;
