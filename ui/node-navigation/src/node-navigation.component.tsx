@@ -1,4 +1,5 @@
-import NodeLink from "./node-link.component.svelte";
+import { NodeLink } from "@ui/node-link";
+
 import type { NodeNavigationType } from "./node-navigation.interface";
 
 const NodeNavigation: NodeNavigationType = (props) => {

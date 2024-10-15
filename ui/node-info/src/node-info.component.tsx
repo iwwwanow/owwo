@@ -4,7 +4,7 @@ import { DateComponent } from "@ui/date";
 import { Hr } from "@ui/hr";
 import { Image } from "@ui/image";
 import { NodeLink } from "@ui/node-link";
-import { NodeLinkContainer } from "@ui/node-link";
+import { NodeLinkContainer } from "@ui/node-link-container";
 import { NodeTitle } from "@ui/node-title";
 
 import type { NodeInfoType } from "./node-info.interface";

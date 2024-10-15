@@ -1,5 +1,5 @@
 // TODO need parts refactoring
-import NodeLinkImage from "./node-link__image.component.svelte";
+import { NodeLinkImage } from "./node-link-image";
 
 const NodeLink = (props) => {
   let { node, leftSymbol, rightSymbol, id, title, image } = props;
