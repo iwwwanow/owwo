@@ -1,3 +1,3 @@
-export * from "./content-textarea-fieldset.component";
-export * from "./file-input-fieldset.component";
-export * from "./main-inputs-fieldset.component";
+export * from "./content-textarea-fieldset/index.ts";
+export * from "./file-input-fieldset/index.ts";
+export * from "./main-inputs-fieldset/index.ts";

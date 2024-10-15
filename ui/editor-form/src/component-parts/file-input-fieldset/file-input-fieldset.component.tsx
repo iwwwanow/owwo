@@ -1,8 +1,7 @@
-import Hr from "@ui/hr";
-
-import CardContainer from "./card-container.component.svelte";
-import FileInput from "./inputs/file.input.svelte";
-import Textarea from "./inputs/textarea.component.svelte";
+import { CardContainer } from "@ui/card-container";
+import { Hr } from "@ui/hr";
+import { FileInput } from "@ui/input";
+import { Textarea } from "@ui/input";
 
 const FileInputFieldset = (props) => {
   return (

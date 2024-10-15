@@ -4,8 +4,8 @@ import { FileInput } from "@ui/input";
 import { TextInput } from "@ui/input";
 import { Textarea } from "@ui/input";
 
-import { TITLE_INPUT_PLACEHOLDER } from "../editor-form.constants";
-import { DESCRIPTION_TEXTAREA_PLACEHOLDER } from "../editor-form.constants";
+import { TITLE_INPUT_PLACEHOLDER } from "./main-inputs-fieldset.constants";
+import { DESCRIPTION_TEXTAREA_PLACEHOLDER } from "./main-inputs-fieldset.constants";
 
 // TODO interfaces
 const MainInputsFieldset = (props) => {

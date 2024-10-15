@@ -1,8 +1,8 @@
-import Hr from "@ui/hr";
+import { CardContainer } from "@ui/card-container";
+import { Hr } from "@ui/hr";
+import { Textarea } from "@ui/input";
 
-import { CONTENT_TEXTAREA_PLACEHOLDER } from "../editor-form.constants";
-import CardContainer from "./card-container.component.svelte";
-import Textarea from "./inputs/textarea.component.svelte";
+import { CONTENT_TEXTAREA_PLACEHOLDER } from "./content-textarea-fieldset.constants";
 
 const ContentTextareaFieldset = (props) => {
   return (
