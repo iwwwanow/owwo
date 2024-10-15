@@ -1,5 +1,6 @@
-import Image from "./image.component.svelte";
-import { IMAGE_VARIANT } from "./node-card.constants";
+// TODO - check markup of this component - if all right - rm unused
+// import Image from "./image.component.svelte";
+// import { IMAGE_VARIANT } from "./node-card.constants";
 // TODO use image variant
 import type { NodeCardType } from "./node-card.interface";
 
