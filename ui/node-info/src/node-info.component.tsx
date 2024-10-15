@@ -1,12 +1,13 @@
 // TODO needs refactoring
 // - разнести на parts
-import Date from "./date.component.svelte";
-import Hr from "./hr.component.svelte";
-import Image from "./image.component.svelte";
+import { DateComponent } from "@ui/date";
+import { Hr } from "@ui/hr";
+import { Image } from "@ui/image";
+import { NodeLink } from "@ui/node-link";
+import { NodeLinkContainer } from "@ui/node-link";
+import { NodeTitle } from "@ui/node-title";
+
 import type { NodeInfoType } from "./node-info.interface";
-import NodeLink from "./node-link.component.svelte";
-import NodeLinkContainer from "./node-link__container.component.svelte";
-import NodeTitle from "./node-title.component.svelte";
 
 const NodeInfo: NodeInfoType = (props) => {
   let { node, id, image, title, author, authors, parents, description, date } =
@@ -74,7 +75,7 @@ const NodeInfo: NodeInfoType = (props) => {
           {date && (
             <>
               <Hr text="last-modification/creation date" />
-              <Date date={date} />
+              <DateComponent date={date} />
             </>
           )}
         </div>
@@ -82,3 +83,5 @@ const NodeInfo: NodeInfoType = (props) => {
     </span>;
   }
 };
+
+export { NodeInfo };

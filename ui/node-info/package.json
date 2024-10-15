@@ -6,5 +6,12 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "dependencies": {
+    "@ui/date": "workspace:*",
+    "@ui/hr": "workspace:*",
+    "@ui/image": "workspace:*",
+    "@ui/node-link": "workspace:*",
+    "@ui/node-title": "workspace:*"
+  }
 }
