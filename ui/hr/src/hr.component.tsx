@@ -1,4 +1,7 @@
-const Hr = (props) => {
+import type { HrType } from "./hr.interface";
+
+// TODO add color to default hr component (WO text)
+const Hr: HrType = (props) => {
   const { text, color } = props;
   const colorStyle = color ? `color: ${color}; border-color: ${color};` : "";
 
