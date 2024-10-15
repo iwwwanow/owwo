@@ -1,3 +1,6 @@
+// TODO ignore file ts
+// TODO move logo sources here - add directory to tsignore
+
 const LogoSvg = () => {
   return (
     <svg
@@ -73,3 +76,5 @@ const LogoSvg = () => {
     </svg>
   );
 };
+
+export { LogoSvg };
