@@ -1,6 +1,6 @@
 type HrProps = {
   text?: string;
-  color: string;
+  color?: string;
 };
 
 type HrType = (props: HrProps) => JSX.Element;
