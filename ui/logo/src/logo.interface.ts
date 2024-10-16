@@ -1,6 +1,6 @@
 type LogoComponentProps = {
-  href: string;
-  className: string;
+  href?: string;
+  className?: string;
 };
 
 type LogoComponentType = (props: LogoComponentProps) => JSX.Element;
