@@ -6,5 +6,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "dependencies": {
+    "@ui/hr": "workspace:*",
+    "@ui/logo": "workspace:*"
+  }
 }
