@@ -5,8 +5,3 @@
   export let text = "";
 </script>
 
-<BaseLayout>
-  <div class="grid">
-    <Text {text} className="grid__right-content" />
-  </div>
-</BaseLayout>
