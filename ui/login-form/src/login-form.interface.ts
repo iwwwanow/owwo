@@ -1,6 +1,6 @@
 type LoginFormProps = {
   action: string;
-  children: JSX.Element;
+  children: JSX.Element | Array<JSX.Element>;
 };
 
 // TODO make generic for functional components???
