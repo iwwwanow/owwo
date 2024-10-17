@@ -10,7 +10,6 @@
   "dependencies": {
     "@site/helpers": "workspace:*",
     "@site/models": "workspace:*",
-    "@site/svelte-templates": "workspace:*",
-    "@site/site-ui": "workspace:*"
+    "@site/svelte-templates": "workspace:*"
   }
 }
