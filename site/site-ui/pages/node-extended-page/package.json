@@ -6,5 +6,18 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "dependencies": {
+    "@ui/full-grid-wrap-container": "workspace:*",
+    "@ui/hr": "workspace:*",
+    "@ui/logo": "workspace:*",
+    "@ui/node-card": "workspace:*",
+    "@ui/node-info": "workspace:*",
+    "@ui/node-navigation": "workspace:*",
+    "@ui/node-title": "workspace:*",
+    "@ui/text": "workspace:*",
+    "@site-ui/header-fragment": "workspace:*",
+    "@site-ui/node-extended-fragment": "workspace:*",
+    "@site-ui/extended-layout": "workspace:*"
+  }
 }

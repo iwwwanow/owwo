@@ -1,0 +1,15 @@
+:global(.random-elements__title) {
+  mix-blend-mode: difference;
+  pointer-events: none;
+  position: absolute !important;
+  top: var(--GRID-GAP-2);
+  left: var(--GRID-GAP-4);
+}
+
+:global(.random-elements__logo path) {
+  fill: var(--DARK) !important;
+}
+
+:global(.random-elements__title) {
+  color: var(--DARK) !important;
+}
