@@ -1,9 +1,9 @@
+import { HomePage } from "@site-ui/home-page";
 import { getTextFileContentHelper } from "@site/helpers";
 import { convertMdHtmlHelper } from "@site/helpers";
 import { NodeModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
-import { HomePage } from "@site/site-ui";
 
 // import { HomePage } from "@site/svelte-templates";
 // import { AboutPage } from "@site/svelte-templates";
@@ -22,8 +22,6 @@ export class ViewController {
   // }
 
   static async getHomePage() {
-    console.log("get home page");
-
     // TODO add conditions to test data render
     const TEST_USERS_QUANTITY = 128;
     // const nodeId = process.env["TEST_NODE_USERNAME"];
@@ -32,7 +30,11 @@ export class ViewController {
 
     const props = { users };
 
-    return ViewController.responsePageHtml(HomePage, props);
+    // TODO
+    // 1. на продакшене должен быть оптимизированый СБИЛЖЕННЫЙ css.
+    // 2. в дев режиме нужно собирать все стили в кучу и отправлять под каждым компонентом
+
+    return HomePage(props);
   }
 
   static async getAboutPage() {
