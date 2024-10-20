@@ -1,8 +1,10 @@
+import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
 import { ContentTextareaFieldset } from "./editor-form__content-textarea-fieldset";
 import { FileInputFieldset } from "./editor-form__file-input-fieldset";
 import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";
+import Style from "./full-grid-wrap-container.style.css";
 
 // TODO
 // в самом верху инпут, размером в одну строку, как на нижнем объекте (с
@@ -26,13 +28,16 @@ const EditorForm = (props) => {
   const { isEditor } = client;
 
   return (
-    <div class="grid editor-form">
-      <Hr text="editor-form" color="var(--ORANGE)" />
-      <MainInputsFieldset imageSrc={imageSrc} />
-      <FileInputFieldset />
-      <ContentTextareaFieldset />
-      <Hr text="***" color="var(--ORANGE)" />
-    </div>
+    <>
+      <div class="grid editor-form">
+        <Hr text="editor-form" color="var(--ORANGE)" />
+        <MainInputsFieldset imageSrc={imageSrc} />
+        <FileInputFieldset />
+        <ContentTextareaFieldset />
+        <Hr text="***" color="var(--ORANGE)" />
+      </div>
+      <CssModule filepath={Style} />
+    </>
   );
 };
 

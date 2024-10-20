@@ -1,4 +1,7 @@
+import { CssModule } from "@ui/css-module";
+
 import type { DateComponentType } from "./date.interface";
+import Style from "./date.style.css";
 
 const DateComponent: DateComponentType = (props) => {
   const { date } = props;
@@ -7,10 +10,13 @@ const DateComponent: DateComponentType = (props) => {
   const localCreationDate = date.creation.toLocaleDateString("ru-RU");
 
   return (
-    <div class="date-container">
-      <h5 class="date_creation">{localCreationDate}</h5>
-      <h6 class="date_last">{localDate}</h6>
-    </div>
+    <>
+      <div class="date-container">
+        <h5 class="date_creation">{localCreationDate}</h5>
+        <h6 class="date_last">{localDate}</h6>
+      </div>
+      <CssModule filepath={Style} />
+    </>
   );
 };
 

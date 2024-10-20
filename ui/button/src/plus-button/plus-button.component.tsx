@@ -1,6 +1,9 @@
 import { PlusButtonSvg } from "@assets/svg";
 
+import { CssModule } from "@ui/css-module";
+
 import type { PlusButtonType } from "./plus-button.interface";
+import Style from "./plus-button.style.css";
 
 const PlusButton: PlusButtonType = (props) => {
   const { variant } = props;
@@ -14,9 +17,12 @@ const PlusButton: PlusButtonType = (props) => {
   }
 
   return (
-    <button class="button plus-button border">
-      <PlusButtonSvg />
-    </button>
+    <>
+      <button class="button plus-button border">
+        <PlusButtonSvg />
+      </button>
+      <CssModule filepath={Style} />
+    </>
   );
 };
 

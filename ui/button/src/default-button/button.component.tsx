@@ -1,4 +1,7 @@
+import { CssModule } from "@ui/css-module";
+
 import type { ButtonType } from "./button.interface";
+import Style from "./button.style.css";
 
 const Button: ButtonType = (props) => {
   const { url, text } = props;
@@ -14,9 +17,12 @@ const Button: ButtonType = (props) => {
   }
 
   return (
-    <button class="button border">
-      <p>{text}</p>
-    </button>
+    <>
+      <button class="button border">
+        <p>{text}</p>
+      </button>
+      <CssModule filepath={Style} />
+    </>
   );
 };
 
