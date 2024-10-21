@@ -1,5 +1,6 @@
 // TODO needs refactoring
 // - разнести на parts
+import { CssModule } from "@ui/css-module";
 import { DateComponent } from "@ui/date";
 import { Hr } from "@ui/hr";
 import { Image } from "@ui/image";
@@ -8,6 +9,7 @@ import { NodeLinkContainer } from "@ui/node-link-container";
 import { NodeTitle } from "@ui/node-title";
 
 import type { NodeInfoType } from "./node-info.interface";
+import Style from "./node-info.style.css";
 
 const NodeInfo: NodeInfoType = (props) => {
   let { node, id, image, title, author, authors, parents, description, date } =
@@ -28,60 +30,67 @@ const NodeInfo: NodeInfoType = (props) => {
   const isDataExist = !!image || isTextDataExist;
 
   if (isDataExist) {
-    <span class="node-info node-info__data-wrapper">
-      {image && <Image image={image} id={id} variant="w190" />}
-      {isTextDataExist && (
-        <div class="node-info__data-container">
-          {title && <NodeTitle title={title} />}
+    return (
+      <>
+        <span class="node-info node-info__data-wrapper">
+          {image && <Image image={image} id={id} variant="w190" />}
+          {isTextDataExist && (
+            <div class="node-info__data-container">
+              {title && <NodeTitle title={title} />}
 
-          {author && (
-            <>
-              <Hr text="author:" />
-              <NodeLinkContainer>
-                <NodeLink node={author} />
-              </NodeLinkContainer>
-            </>
-          )}
+              {author && (
+                <>
+                  <Hr text="author:" />
+                  <NodeLinkContainer>
+                    <NodeLink node={author} />
+                  </NodeLinkContainer>
+                </>
+              )}
 
-          {authors && (
-            <>
-              <Hr text="authors" />
-              <NodeLinkContainer>
-                {authors.map((author) => (
-                  <NodeLink node={author} />
-                ))}
-              </NodeLinkContainer>
-            </>
-          )}
+              {authors && (
+                <>
+                  <Hr text="authors" />
+                  <NodeLinkContainer>
+                    {authors.map((author) => (
+                      <NodeLink node={author} />
+                    ))}
+                  </NodeLinkContainer>
+                </>
+              )}
 
-          {parents && (
-            <>
-              <Hr text="pages" />
-              <NodeLinkContainer>
-                {parents.map((parent) => (
-                  <NodeLink node={parent} />
-                ))}
-              </NodeLinkContainer>
-            </>
-          )}
+              {parents && (
+                <>
+                  <Hr text="pages" />
+                  <NodeLinkContainer>
+                    {parents.map((parent) => (
+                      <NodeLink node={parent} />
+                    ))}
+                  </NodeLinkContainer>
+                </>
+              )}
 
-          {description?.html && (
-            <>
-              <Hr text="description" />
-              {description.html}
-            </>
-          )}
+              {description?.html && (
+                <>
+                  <Hr text="description" />
+                  {description.html}
+                </>
+              )}
 
-          {date && (
-            <>
-              <Hr text="last-modification/creation date" />
-              <DateComponent date={date} />
-            </>
+              {date && (
+                <>
+                  <Hr text="last-modification/creation date" />
+                  <DateComponent date={date} />
+                </>
+              )}
+            </div>
           )}
-        </div>
-      )}
-    </span>;
+        </span>
+        <CssModule filepath={Style} />
+      </>
+    );
   }
+
+  return null;
 };
 
 export { NodeInfo };

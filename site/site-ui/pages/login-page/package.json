@@ -11,6 +11,7 @@
     "@site-ui/base-layout": "workspace:*",
     "@ui/button": "workspace:*",
     "@ui/input": "workspace:*",
-    "@ui/login-form": "workspace:*"
+    "@ui/login-form": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }

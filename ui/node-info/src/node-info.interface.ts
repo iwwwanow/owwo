@@ -12,6 +12,6 @@ type NodeInfoProps = {
   date: string;
 };
 
-type NodeInfoType = (props: NodeInfoProps) => JSX.Element;
+type NodeInfoType = (props: NodeInfoProps) => JSX.Element | null;
 
 export type { NodeInfoType };

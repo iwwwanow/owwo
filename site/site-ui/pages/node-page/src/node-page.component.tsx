@@ -1,6 +1,7 @@
 import { BaseLayout } from "@site-ui/base-layout";
 
 import { PlusButton } from "@ui/button";
+import { CssModule } from "@ui/css-module";
 import { Date } from "@ui/date";
 import { EditorForm } from "@ui/editor-form";
 import { Hr } from "@ui/hr";
@@ -11,6 +12,7 @@ import { NodeInfo } from "@ui/node-info";
 import { Text } from "@ui/text";
 
 import type { NodePageType } from "./node-page.interface";
+import Style from "./node-page.style.css";
 
 const NodePage: NodePageType = (props) => {
   const { node, client } = props;
@@ -86,6 +88,7 @@ const NodePage: NodePageType = (props) => {
           </span>
         </div>
       </BaseLayout>
+      <CssModule filepath={Style} />
     </>
   );
 };

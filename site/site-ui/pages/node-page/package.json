@@ -17,6 +17,7 @@
     "@ui/node-card": "workspace:*",
     "@ui/node-info": "workspace:*",
     "@ui/text": "workspace:*",
-    "@site-ui/base-layout": "workspace:*"
+    "@site-ui/base-layout": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }

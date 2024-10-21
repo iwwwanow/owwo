@@ -1,4 +1,7 @@
+import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
+
+import Style from "./footer-fragment.style.css";
 
 const FooterFragment = () => {
   return (
@@ -10,6 +13,8 @@ const FooterFragment = () => {
           <a href="/about">о проекте</a>
         </h5>
       </footer>
+
+      <CssModule filepath={Style} />
     </>
   );
 };

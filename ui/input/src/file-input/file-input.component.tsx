@@ -1,4 +1,7 @@
+import { CssModule } from "@ui/css-module";
+
 import type { FileInputType } from "./file-input.interface";
+import Style from "./file-input.style.css";
 
 const FileInput: FileInputType = (props) => {
   // TODO default params to const
@@ -28,6 +31,8 @@ const FileInput: FileInputType = (props) => {
         type="file"
         class="file-input"
       />
+
+      <CssModule filepath={Style} />
     </>
   );
 };

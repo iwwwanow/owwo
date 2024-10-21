@@ -3,5 +3,6 @@
 }
 
 .footer * {
+  /* TODO - заголовок HR - тоже стал uppercase - так и должно быть? */
   text-transform: uppercase;
 }

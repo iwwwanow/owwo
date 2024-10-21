@@ -9,3 +9,7 @@ fieldset {
 legend {
   padding: 0 4px;
 }
+legend * {
+  /* TODO important - лучше удалить, пересмотри */
+  text-transform: lowercase !important;
+}

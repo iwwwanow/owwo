@@ -3,6 +3,7 @@ import { NodeExtendedLayout } from "@site-ui/extended-layout";
 import { HeaderFragment } from "@site-ui/header-fragment";
 import { NodeExtendedFragment } from "@site-ui/node-extended-fragment";
 
+import { CssModule } from "@ui/css-module";
 import { FullGridWrapContainer } from "@ui/full-grid-wrap-container";
 import { Hr } from "@ui/hr";
 import { Logo } from "@ui/logo";
@@ -13,6 +14,7 @@ import { NodeTitle } from "@ui/node-title";
 import { Text } from "@ui/text";
 
 import type { NodeExtendedPageType } from "./node-extended-page.interface";
+import Style from "./node-extended-page.style.css";
 
 // TODO much comments - for what?
 const NodeExtendedPage: NodeExtendedPageType = (props) => {
@@ -85,6 +87,7 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
           <HeaderFragment bottom />
         </div>
       </NodeExtendedLayout>
+      <CssModule filepath={Style} />
     </>
   );
 };

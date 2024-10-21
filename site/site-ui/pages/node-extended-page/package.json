@@ -18,6 +18,7 @@
     "@ui/text": "workspace:*",
     "@site-ui/header-fragment": "workspace:*",
     "@site-ui/node-extended-fragment": "workspace:*",
-    "@site-ui/extended-layout": "workspace:*"
+    "@site-ui/extended-layout": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }
