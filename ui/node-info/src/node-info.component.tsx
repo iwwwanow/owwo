@@ -29,6 +29,9 @@ const NodeInfo: NodeInfoType = (props) => {
   const isTextDataExist = !!title || !!authors || !!description || !!date;
   const isDataExist = !!image || isTextDataExist;
 
+  // TODO на странице http://localhost:3000/testnodeusername
+  // 	между заголовком и описанием есть ";" - убрать её
+
   if (isDataExist) {
     return (
       <>
