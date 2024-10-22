@@ -8,7 +8,7 @@ const NodeTitle: NodeTitleType = (props) => {
 
   return (
     <>
-      <h2 class="node-title">{title}</h2>;
+      <h2 class="node-title">{title}</h2>
       <CssModule filepath={Style} />
     </>
   );

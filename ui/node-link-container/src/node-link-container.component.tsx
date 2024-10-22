@@ -7,7 +7,7 @@ const NodeLinkContainer = (props) => {
 
   return (
     <>
-      <div class="node-info__container">{children}</div>;
+      <div class="node-info__container">{children}</div>
       <CssModule filepath={Style} />
     </>
   );
