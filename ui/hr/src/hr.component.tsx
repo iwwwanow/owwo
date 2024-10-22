@@ -12,7 +12,7 @@ const Hr: HrType = (props) => {
   if (text) {
     return (
       <>
-        <fieldset style={colorStyle}>
+        <fieldset class="hr_fieldset" style={colorStyle}>
           <legend>
             <h6>{text}</h6>
           </legend>
