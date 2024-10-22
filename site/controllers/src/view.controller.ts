@@ -1,4 +1,10 @@
+import { AboutPage } from "@site-ui/about-page";
+import { ErrorPage } from "@site-ui/error-page";
 import { HomePage } from "@site-ui/home-page";
+import { LoginPage } from "@site-ui/login-page";
+import { NodeExtendedPage } from "@site-ui/node-extended-page";
+import { NodePage } from "@site-ui/node-page";
+import { SignupPage } from "@site-ui/signup-page";
 import { getTextFileContentHelper } from "@site/helpers";
 import { convertMdHtmlHelper } from "@site/helpers";
 import { NodeModel } from "@site/models";
@@ -51,21 +57,21 @@ export class ViewController {
 
     const props = { client, text };
 
-    return ViewController.responsePageHtml(AboutPage, props);
+    return AboutPage(props);
   }
 
   static async getLoginPage() {
     const client = new ClientModel();
     const props = { client };
 
-    return ViewController.responsePageHtml(LoginPage, props);
+    return LoginPage(props);
   }
 
   static async getSignupPage() {
     const client = new ClientModel();
     const props = { client };
 
-    return ViewController.responsePageHtml(SignupPage, props);
+    return SignupPage(props);
   }
 
   // static async renderNodePage(nodeId: string, options: RenderNodePageOptions) {
@@ -93,15 +99,17 @@ export class ViewController {
     const props = { client, node: nodeData };
 
     if (!nodeData?.meta.childs?.length) {
-      return ViewController.responsePageHtml(NodeExtendedPage, props);
+      return NodeExtendedPage(props);
     }
 
-    return ViewController.responsePageHtml(NodePage, props);
+    return NodePage(props);
+
+    // return ViewController.responsePageHtml(NodePage, props);
   }
 
   static async getErrorPage() {
     const client = new ClientModel();
     const props = { client };
-    return ViewController.responsePageHtml(ErrorPage, props);
+    return ErrorPage(props);
   }
 }
