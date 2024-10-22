@@ -1,10 +1,10 @@
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
+import Style from "./editor-form.style.css";
 import { ContentTextareaFieldset } from "./editor-form__content-textarea-fieldset";
 import { FileInputFieldset } from "./editor-form__file-input-fieldset";
 import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";
-import Style from "./full-grid-wrap-container.style.css";
 
 // TODO
 // в самом верху инпут, размером в одну строку, как на нижнем объекте (с
