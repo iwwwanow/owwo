@@ -5,12 +5,16 @@ const Image: ImageType = (props) => {
 
   // TODO devide srcssets to constants on init component layer
 
+  const imageId = `image-${id}`;
+  const imageSrcset = `${image[`${variant}_2x`]}`;
+  const image2xSrcset = `${image[variant]}, ${image[`${variant}_2x`]} 2x`;
+
   // <!-- TODO 2x: -->
   return (
     <picture>
-      <source srcset={image[`${variant}_2x`]} media="(max-width: 360px)" />
-      <source srcset="{image[variant]}, {image[`${variant}_2x`]} 2x" />
-      <img id={`image-${id}`} src={image.original} alt="page-cover" />
+      <source srcset={imageSrcset} media="(max-width: 360px)" />
+      <source srcset={image2xSrcset} />
+      <img id={imageId} src={image.original} alt="page-cover" />
     </picture>
   );
 };

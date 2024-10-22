@@ -14,10 +14,11 @@ const NodeLink = (props) => {
   }
 
   const imageVariant = title ? "small" : "big";
+  const nodeLinkHref = `/${id}`;
 
   return (
     <>
-      <a href="/{id}" class="node-info__container">
+      <a href={nodeLinkHref} class="node-info__container">
         {leftSymbol && <h5 class="node-info__symbol">{leftSymbol}</h5>}
 
         {image && <NodeLinkImage image={image} variant={imageVariant} />}

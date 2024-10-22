@@ -22,12 +22,14 @@ const NodeCard: NodeCardType = (props) => {
   // <!-- TODO как отображать хавер, чтобы он читался? Не всплывающее окно, а, кажется -->
   // <!-- это называется POP-UP, размером в 2 колонки -->
 
+  const image2xSrcset = `${image.w190}, ${image.w190_2x} 2x`;
+
   return (
     <>
       <a class="card__wrapper border_light" href={id}>
         <picture class="card__cover-container">
           <source srcset={image.w190_2x} media="(max-width: 360px)" />
-          <source srcset="{image.w190}, {image.w190_2x} 2x" />
+          <source srcset={image2xSrcset} />
           <img src={image.original} class="card__img" alt="page card cover" />
         </picture>
         {(title || description) && (
