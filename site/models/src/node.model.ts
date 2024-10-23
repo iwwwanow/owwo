@@ -94,7 +94,7 @@ export class NodeModel {
       // TODO meybe объединить authors in single author array?
 
       nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodePageData);
-      nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodeUserData);
+      nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodePageData);
     } else if (this.nodeId === this.testNodeIds["testNodeExtendedPageId"]) {
       nodeData = nodeExtendedPageData;
       nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodeExtendedPageData);
