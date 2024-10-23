@@ -1,5 +1,7 @@
 .element__content-wrapper {
   width: 100%;
+  padding: var(--2-GRID-GAP);
+  /* TODO change px to vars */
   min-height: calc(100vh - 32px);
   display: flex;
   flex-direction: column;

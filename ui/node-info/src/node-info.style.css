@@ -11,9 +11,11 @@
 @media screen and (max-width: 650px) {
   .node-info__data-wrapper {
     grid-column: 1/-1;
-    flex-direction: row;
+    /* TODO пересмотри этот момент */
+    flex-direction: column;
     justify-content: space-between;
     gap: var(--GRID-GAP);
+    margin-bottom: var(--2-GRID-GAP);
   }
   :global(.node-info__data-wrapper > *) {
     width: calc(50% - var(--GRID-GAP-2));
