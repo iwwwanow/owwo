@@ -51,19 +51,22 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
   // <!--   {/each} -->
   // <!-- </FullGridWrapContainer> -->
 
+  {
+    /* <li>elements отображаются оригинальном формате</li> */
+  }
+  {
+    /* <li> */
+  }
+  {
+    /*   возможность добавить скрипт из стандартной библиотеки, который */
+  }
+  {
+    /*   меняет верстку на extended */
+  }
+
   return (
     <>
       <NodeExtendedLayout>
-        <div class="grid todo" style="color: red;">
-          <ul>
-            <li>elements отображаются оригинальном формате</li>
-            <li>
-              возможность добавить скрипт из стандартной библиотеки, который
-              меняет верстку на extended
-            </li>
-          </ul>
-        </div>
-
         <NodeExtendedFragment content={content} />
 
         {(prevSibling || nextSibling) && (
