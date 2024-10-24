@@ -87,7 +87,7 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
             </div>
           </span>
 
-          <HeaderFragment bottom />
+          <HeaderFragment position="bottom" />
         </div>
       </NodeExtendedLayout>
       <CssModule filepath={Style} />

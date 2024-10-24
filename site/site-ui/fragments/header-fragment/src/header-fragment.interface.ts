@@ -1,5 +1,7 @@
+type HeaderPositionType = "bottom";
+
 type HeaderFragmentProps = {
-  isBottomPosition?: boolean;
+  position?: HeaderPositionType;
 };
 
 type HeaderFragmentType = (props: HeaderFragmentProps) => JSX.Element;

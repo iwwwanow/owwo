@@ -6,11 +6,14 @@ import type { HeaderFragmentType } from "./header-fragment.interface";
 import Style from "./header-fragment.style.css";
 
 const HeaderFragment: HeaderFragmentType = (props) => {
-  const { isBottomPosition = false } = props;
+  const { position } = props;
+
+  const isBottomPosition = position === "bottom";
+  const headerStyle = isBottomPosition ? "margin: auto 0 0;" : "";
 
   return (
     <>
-      <header class="grid" style={isBottomPosition ? "margin: auto 0 0;" : ""}>
+      <header class="grid" style={headerStyle}>
         {isBottomPosition && <Hr text="header" />}
 
         <LogoComponent />
