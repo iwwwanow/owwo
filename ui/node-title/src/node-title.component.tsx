@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { NodeTitleType } from "./node-title.interface";
-import Style from "./node-title.style.css";
+import Style from "./node-title.module.css";
 
 const NodeTitle: NodeTitleType = (props) => {
   const { title } = props;
