@@ -8,6 +8,6 @@
 }
 
 /* TODO Это лишнее свойство? пока отключаю */
-/* .node-info__container:hover { */
-/*   opacity: 0.8; */
-/* } */
+.node-info__container:hover {
+  opacity: 0.8;
+}

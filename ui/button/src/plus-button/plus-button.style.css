@@ -7,10 +7,10 @@
   background-color: var(--DARK);
 }
 
-.plus-button :global(path) {
+.plus-button path {
   fill: var(--MEDIUM);
 }
-.plus-button:hover :global(path) {
+.plus-button:hover path {
   fill: var(--WHITE);
 }
 
