@@ -1,10 +1,11 @@
 // TODO need parts refactoring
 import { CssModule } from "@ui/css-module";
 
+import type { NodeLinkType } from "./node-link.interface";
 import Style from "./node-link.module.css";
 import { NodeLinkImage } from "./node-link__image";
 
-const NodeLink = (props) => {
+const NodeLink: NodeLinkType = (props) => {
   let { node, leftSymbol, rightSymbol, id, title, image } = props;
 
   if (node) {

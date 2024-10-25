@@ -15,5 +15,8 @@
     "@ui/node-link": "workspace:*",
     "@ui/node-title": "workspace:*",
     "@ui/node-link-container": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*"
   }
 }

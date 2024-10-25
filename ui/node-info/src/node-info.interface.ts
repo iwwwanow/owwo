@@ -1,15 +1,20 @@
+import type { NodeDataType } from "@site/interfaces";
+import type { NodeImageType } from "@site/interfaces";
+import type { NodeContentType } from "@site/interfaces";
+import type { NodeDateType } from "@site/interfaces";
+
 // TODO interfaces
 
 type NodeInfoProps = {
-  node: any;
+  node: NodeDataType;
   id: string;
   title: string;
-  image: string;
-  author: string;
-  authors: string;
-  parents: string;
-  description: string;
-  date: string;
+  image?: NodeImageType;
+  author?: NodeDataType;
+  authors?: Array<NodeDataType>;
+  parents?: Array<NodeDataType>;
+  description: NodeContentType;
+  date?: NodeDateType;
 };
 
 type NodeInfoType = (props: NodeInfoProps) => JSX.Element | null;

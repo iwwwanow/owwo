@@ -1,6 +1,6 @@
-import type { NodeLinkType } from "../node-link.interface";
+import type { NodeLinkImageType } from "./node-link-image.interface";
 
-const NodeLinkImage: NodeLinkType = (props) => {
+const NodeLinkImage: NodeLinkImageType = (props) => {
   const { variant = "small", image } = props;
 
   if (variant === "big") {

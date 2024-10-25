@@ -1,13 +1,15 @@
-// TODO props
+import type { NodeDataType } from "@site/interfaces";
+import type { NodeImageType } from "@site/interfaces";
 
-type NodeLinkImageVariants = "small" | "big";
-
-type NodeLinkImageProps = {
-  variant: NodeLinkImageVariants;
-  // TODO image type
-  image: string;
+type NodeLinkProps = {
+  node: NodeDataType;
+  leftSymbol?: string;
+  rightSymbol?: string;
+  id: string;
+  title: string;
+  image?: NodeImageType;
 };
 
-type NodeLinkType = (props: NodeLinkImageProps) => JSX.Element;
+type NodeLinkType = (props: NodeLinkProps) => JSX.Element;
 
 export type { NodeLinkType };
