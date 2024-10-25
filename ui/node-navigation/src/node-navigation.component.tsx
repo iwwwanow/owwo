@@ -2,7 +2,7 @@ import { CssModule } from "@ui/css-module";
 import { NodeLink } from "@ui/node-link";
 
 import type { NodeNavigationType } from "./node-navigation.interface";
-import Style from "./node-navigation.style.css";
+import Style from "./node-navigation.module.css";
 
 const NodeNavigation: NodeNavigationType = (props) => {
   const { prevNode, nextNode, current, length } = props;

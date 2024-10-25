@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { TextareaType } from "./textarea.interface";
-import Style from "./textarea.style.css";
+import Style from "./textarea.module.css";
 
 const Textarea: TextareaType = (props) => {
   const {

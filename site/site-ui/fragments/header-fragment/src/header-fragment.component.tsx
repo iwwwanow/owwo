@@ -3,7 +3,7 @@ import { Hr } from "@ui/hr";
 import { LogoComponent } from "@ui/logo";
 
 import type { HeaderFragmentType } from "./header-fragment.interface";
-import Style from "./header-fragment.style.css";
+import Style from "./header-fragment.module.css";
 
 const HeaderFragment: HeaderFragmentType = (props) => {
   const { position } = props;

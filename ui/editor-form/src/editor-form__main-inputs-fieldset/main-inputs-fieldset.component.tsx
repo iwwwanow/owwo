@@ -7,7 +7,7 @@ import { Textarea } from "@ui/input";
 
 import { TITLE_INPUT_PLACEHOLDER } from "./main-inputs-fieldset.constants";
 import { DESCRIPTION_TEXTAREA_PLACEHOLDER } from "./main-inputs-fieldset.constants";
-import Style from "./main-inputs-fieldset.style.css";
+import Style from "./main-inputs-fieldset.module.css";
 
 // TODO interfaces
 const MainInputsFieldset = (props) => {

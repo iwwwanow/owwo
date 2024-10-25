@@ -3,7 +3,7 @@ import { BaseHeadFragment } from "@site-ui/base-head-fragment";
 import { CssModule } from "@ui/css-module";
 
 import type { NodeExtendedLayoutType } from "./node-extended-layout.interface";
-import Style from "./node-extended-layout.style.css";
+import Style from "./node-extended-layout.module.css";
 
 const NodeExtendedLayout: NodeExtendedLayoutType = (props) => {
   const { children } = props;

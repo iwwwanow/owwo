@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { FullGridWrapContainerType } from "./full-grid-wrap-container.interface";
-import Style from "./full-grid-wrap-container.style.css";
+import Style from "./full-grid-wrap-container.module.css";
 
 const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
   const { limit, children } = props;

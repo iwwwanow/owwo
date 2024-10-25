@@ -14,7 +14,7 @@ import { NodeTitle } from "@ui/node-title";
 import { Text } from "@ui/text";
 
 import type { NodeExtendedPageType } from "./node-extended-page.interface";
-import Style from "./node-extended-page.style.css";
+import Style from "./node-extended-page.module.css";
 
 // TODO much comments - for what?
 const NodeExtendedPage: NodeExtendedPageType = (props) => {

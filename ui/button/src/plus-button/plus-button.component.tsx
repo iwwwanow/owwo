@@ -3,7 +3,7 @@ import { PlusButtonSvg } from "@assets/svg";
 import { CssModule } from "@ui/css-module";
 
 import type { PlusButtonType } from "./plus-button.interface";
-import Style from "./plus-button.style.css";
+import Style from "./plus-button.module.css";
 
 const PlusButton: PlusButtonType = (props) => {
   const { variant } = props;

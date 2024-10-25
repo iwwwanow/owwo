@@ -9,7 +9,7 @@ import { NodeLinkContainer } from "@ui/node-link-container";
 import { NodeTitle } from "@ui/node-title";
 
 import type { NodeInfoType } from "./node-info.interface";
-import Style from "./node-info.style.css";
+import Style from "./node-info.module.css";
 
 const NodeInfo: NodeInfoType = (props) => {
   let { node, id, image, title, author, authors, parents, description, date } =

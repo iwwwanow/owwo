@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { CardContainerType } from "./card-container.interface";
-import Style from "./card-container.style.css";
+import Style from "./card-container.module.css";
 
 const CardContainer: CardContainerType = (props) => {
   let { className, children } = props;

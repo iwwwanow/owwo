@@ -1,6 +1,6 @@
 import { CssModule } from "@ui/css-module";
 
-import Style from "./node-link-container.style.css";
+import Style from "./node-link-container.module.css";
 
 const NodeLinkContainer = (props) => {
   const { children } = props;

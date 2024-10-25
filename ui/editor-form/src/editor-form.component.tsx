@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
-import Style from "./editor-form.style.css";
+import Style from "./editor-form.module.css";
 import { ContentTextareaFieldset } from "./editor-form__content-textarea-fieldset";
 import { FileInputFieldset } from "./editor-form__file-input-fieldset";
 import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";

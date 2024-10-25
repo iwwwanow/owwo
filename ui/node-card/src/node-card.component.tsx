@@ -5,7 +5,7 @@ import { CssModule } from "@ui/css-module";
 // import { IMAGE_VARIANT } from "./node-card.constants";
 // TODO use image variant
 import type { NodeCardType } from "./node-card.interface";
-import Style from "./node-card.style.css";
+import Style from "./node-card.module.css";
 
 const NodeCard: NodeCardType = (props) => {
   const { node } = props;

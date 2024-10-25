@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { FileInputType } from "./file-input.interface";
-import Style from "./file-input.style.css";
+import Style from "./file-input.module.css";
 
 const FileInput: FileInputType = (props) => {
   // TODO default params to const

@@ -12,7 +12,7 @@ import { NodeInfo } from "@ui/node-info";
 import { Text } from "@ui/text";
 
 import type { NodePageType } from "./node-page.interface";
-import Style from "./node-page.style.css";
+import Style from "./node-page.module.css";
 
 const NodePage: NodePageType = (props) => {
   const { node, client } = props;

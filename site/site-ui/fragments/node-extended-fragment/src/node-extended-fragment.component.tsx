@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { NodeExtendedFragmentType } from "./node-extended-fragment.interface";
-import Style from "./node-extended-fragment.style.css";
+import Style from "./node-extended-fragment.module.css";
 import { ContentString } from "./node-extended__content-string";
 
 const NodeExtendedFragment: NodeExtendedFragmentType = (props) => {

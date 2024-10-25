@@ -4,7 +4,7 @@ import { Hr } from "@ui/hr";
 import { FileInput } from "@ui/input";
 import { Textarea } from "@ui/input";
 
-import Style from "./file-input-fieldset.style.css";
+import Style from "./file-input-fieldset.module.css";
 
 const FileInputFieldset = (props) => {
   return (

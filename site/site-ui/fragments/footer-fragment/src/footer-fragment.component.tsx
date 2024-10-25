@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
-import Style from "./footer-fragment.style.css";
+import Style from "./footer-fragment.module.css";
 
 const FooterFragment = () => {
   return (

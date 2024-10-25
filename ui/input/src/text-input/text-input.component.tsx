@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { TextInputType } from "./text-input.interface";
-import Style from "./text-input.style.css";
+import Style from "./text-input.module.css";
 
 // TODO whats wrong with autocapitalize? maybe do declaration?
 

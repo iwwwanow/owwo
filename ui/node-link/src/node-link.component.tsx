@@ -1,7 +1,7 @@
 // TODO need parts refactoring
 import { CssModule } from "@ui/css-module";
 
-import Style from "./node-link.style.css";
+import Style from "./node-link.module.css";
 import { NodeLinkImage } from "./node-link__image";
 
 const NodeLink = (props) => {

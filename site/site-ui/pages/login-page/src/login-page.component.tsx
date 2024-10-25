@@ -6,7 +6,7 @@ import { TextInput } from "@ui/input";
 import { LoginForm } from "@ui/login-form";
 
 import type { LoginPageType } from "./login-page.interface";
-import Style from "./login-page.style.css";
+import Style from "./login-page.module.css";
 
 const LoginPage: LoginPageType = () => {
   // TODO to constants

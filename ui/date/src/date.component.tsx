@@ -1,7 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
 import type { DateComponentType } from "./date.interface";
-import Style from "./date.style.css";
+import Style from "./date.module.css";
 
 const DateComponent: DateComponentType = (props) => {
   const { date } = props;
