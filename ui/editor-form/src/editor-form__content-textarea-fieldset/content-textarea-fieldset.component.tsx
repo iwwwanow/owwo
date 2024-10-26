@@ -5,6 +5,7 @@ import { Textarea } from "@ui/input";
 import { CONTENT_TEXTAREA_PLACEHOLDER } from "./content-textarea-fieldset.constants";
 
 const ContentTextareaFieldset = (props) => {
+  // TODO interface
   return (
     <fieldset class="grid__right-content content-textarea-fieldset">
       <Hr text="content-textarea" />
