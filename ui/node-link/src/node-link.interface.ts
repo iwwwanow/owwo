@@ -5,8 +5,8 @@ type NodeLinkProps = {
   node: NodeDataType;
   leftSymbol?: string;
   rightSymbol?: string;
-  id: string;
-  title: string;
+  id?: string;
+  title?: string;
   image?: NodeImageType;
 };
 

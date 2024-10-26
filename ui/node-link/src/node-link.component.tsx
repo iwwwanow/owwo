@@ -6,6 +6,8 @@ import Style from "./node-link.module.css";
 import { NodeLinkImage } from "./node-link__image";
 
 const NodeLink: NodeLinkType = (props) => {
+  // TODO Зачем ты дублируешь данные приходящие в пропасах и данные NodeData?
+  // TODO так есть в нескольких конмпонентах. лучше оставить данные только с NodeData
   let { node, leftSymbol, rightSymbol, id, title, image } = props;
 
   if (node) {

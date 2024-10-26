@@ -11,6 +11,7 @@
     "@ui/hr": "workspace:*",
     "@ui/input": "workspace:*",
     "@ui/card-container": "workspace:*",
-    "@ui/css-module": "workspace:*"
+    "@ui/css-module": "workspace:*",
+    "@site/interfaces": "workspace:*"
   }
 }

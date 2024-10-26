@@ -1,8 +1,10 @@
+import type { NodeDataType } from "@site/interfaces";
+
 type NodeNavigationProps = {
-  prevNode: string;
-  nextNode: string;
-  current: string;
-  length: string;
+  prevNode: NodeDataType;
+  nextNode: NodeDataType;
+  current: number;
+  length: number;
 };
 
 type NodeNavigationType = (props: NodeNavigationProps) => JSX.Element;
