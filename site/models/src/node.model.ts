@@ -65,6 +65,7 @@ export class NodeModel {
 
   private async getDbData() {
     console.log(`getDbData for ${this.nodeId}`);
+    return null as unknown as NodeDataType;
   }
 
   private async getTestData() {
