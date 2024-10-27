@@ -1,5 +1,5 @@
-// TODO ignore file ts
-// TODO move logo sources here - add directory to tsignore
+// TODO aff .svg.tsx to exclude on tsconfig
+// @ts-nocheck
 
 const LogoSvg = () => {
   return (
