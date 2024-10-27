@@ -17,7 +17,7 @@ const NodeLink: NodeLinkType = (props) => {
     image = node.image;
   }
 
-  const imageVariant = title ? "small" : "big";
+  const imageVariant = isTitleNeeded ? "small" : "big";
   const nodeLinkHref = `/${id}`;
 
   return (
