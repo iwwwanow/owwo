@@ -1,8 +1,8 @@
+import type { NodeContentType } from "@site/interfaces";
+
 type TextProps = {
-  text: {
-    html: string;
-  };
-  className: string;
+  text: NodeContentType;
+  className?: string;
 };
 
 type TextType = (props: TextProps) => JSX.Element;

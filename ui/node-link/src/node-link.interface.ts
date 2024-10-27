@@ -3,6 +3,9 @@ import type { NodeImageType } from "@site/interfaces";
 
 type NodeLinkProps = {
   node: NodeDataType;
+
+  isTitleNeeded?: boolean;
+
   leftSymbol?: string;
   rightSymbol?: string;
   id?: string;

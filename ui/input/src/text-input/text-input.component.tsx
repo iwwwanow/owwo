@@ -13,6 +13,7 @@ const TextInput: TextInputType = (props) => {
         <input
           class="text-input"
           autocomplete="off"
+          // @ts-expect-error not assignable
           autocapitalize="off"
           required={required}
           id={id}

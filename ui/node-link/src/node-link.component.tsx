@@ -6,11 +6,12 @@ import Style from "./node-link.module.css";
 import { NodeLinkImage } from "./node-link__image";
 
 const NodeLink: NodeLinkType = (props) => {
-  // TODO Зачем ты дублируешь данные приходящие в пропасах и данные NodeData?
-  // TODO так есть в нескольких конмпонентах. лучше оставить данные только с NodeData
+  // TODO вот это не нравится
   let { node, leftSymbol, rightSymbol, id, title, image } = props;
+  const { isTitleNeeded = true } = props;
 
   if (node) {
+    // TODO вот это не нравится
     id = node.meta.id;
     title = node.title;
     image = node.image;
@@ -26,7 +27,7 @@ const NodeLink: NodeLinkType = (props) => {
 
         {image && <NodeLinkImage image={image} variant={imageVariant} />}
 
-        {title && (
+        {isTitleNeeded && title && (
           <h5 style="word-break: break-all" class="element-info__title">
             {title}
           </h5>

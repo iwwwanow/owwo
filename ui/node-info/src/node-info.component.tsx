@@ -12,19 +12,31 @@ import type { NodeInfoType } from "./node-info.interface";
 import Style from "./node-info.module.css";
 
 const NodeInfo: NodeInfoType = (props) => {
-  let { node, id, image, title, author, authors, parents, description, date } =
-    props;
+  const { node } = props;
+  const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
 
-  if (node) {
-    id = node.meta.id;
-    image = node.image;
-    if (title === undefined) title = node.title;
-    if (description === undefined) description = node.description;
-    author = node.meta.author;
-    authors = node.meta.authors;
-    parents = node.meta.parents;
-    date = node.date;
-  }
+  // let { node, id, image, title, author, authors, parents, description, date } =
+  //   props;
+
+  // if (node) {
+  //   id = node.meta.id;
+  //   image = node.image;
+  //   if (title === undefined) title = node.title;
+  //   if (description === undefined) description = node.description;
+  //   author = node.meta.author;
+  //   authors = node.meta.authors;
+  //   parents = node.meta.parents;
+  //   date = node.date;
+  // }
+
+  const id = node.meta.id;
+  const image = node.image;
+  const title = node.title;
+  const description = node.description;
+  const author = node.meta.author;
+  const authors = node.meta.authors;
+  const parents = node.meta.parents;
+  const date = node.date;
 
   const isTextDataExist = !!title || !!authors || !!description || !!date;
   const isDataExist = !!image || isTextDataExist;
@@ -39,7 +51,7 @@ const NodeInfo: NodeInfoType = (props) => {
           {image && <Image image={image} id={id} variant="w190" />}
           {isTextDataExist && (
             <div class="node-info__data-container">
-              {title && <NodeTitle title={title} />}
+              {isTitleNeeded && <NodeTitle title={title} />}
 
               {author && (
                 <>
@@ -72,7 +84,7 @@ const NodeInfo: NodeInfoType = (props) => {
                 </>
               )}
 
-              {description?.html && (
+              {isDescriptionNeeded && description?.html && (
                 <>
                   <Hr text="description" />
                   {description.html}

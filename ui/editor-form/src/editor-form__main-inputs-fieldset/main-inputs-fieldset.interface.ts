@@ -1,5 +1,5 @@
 type MainInputsFieldsetProps = {
-  imageSrc: string;
+  imageSrc?: string;
 };
 
 type MainInputsFieldsetType = (props: MainInputsFieldsetProps) => JSX.Element;

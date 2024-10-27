@@ -1,7 +1,7 @@
 // TODO interfaces
 type FullGridWrapContainerProps = {
-  children: JSX.Element;
-  limit: number;
+  children: JSX.Element | Array<JSX.Element>;
+  limit?: number;
 };
 
 type FullGridWrapContainerType = (

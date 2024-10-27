@@ -20,9 +20,8 @@ import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";
 //     ссылка (например на другой файл)
 
 const EditorForm: EditorFormType = (props) => {
-  const { node, client } = props;
+  const { node } = props;
   const imageSrc = node.image?.original;
-  const { isEditor } = client;
 
   return (
     <>

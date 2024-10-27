@@ -7,13 +7,17 @@ import type { NodeDateType } from "@site/interfaces";
 
 type NodeInfoProps = {
   node: NodeDataType;
-  id: string;
-  title: string;
+
+  isTitleNeeded?: boolean;
+  isDescriptionNeeded?: boolean;
+
+  id?: string;
+  title?: string;
   image?: NodeImageType;
   author?: NodeDataType;
   authors?: Array<NodeDataType>;
   parents?: Array<NodeDataType>;
-  description: NodeContentType;
+  description?: NodeContentType;
   date?: NodeDateType;
 };
 

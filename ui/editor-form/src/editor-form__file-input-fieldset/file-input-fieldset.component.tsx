@@ -4,17 +4,23 @@ import { Hr } from "@ui/hr";
 import { FileInput } from "@ui/input";
 import { Textarea } from "@ui/input";
 
+import { TEXTAREA_ID } from "./file-input-fieldset.constants";
+import { TEXTAREA_NAME } from "./file-input-fieldset.constants";
+import type { FileInputFieldsetType } from "./file-input-fieldset.interface";
 import Style from "./file-input-fieldset.module.css";
 
-const FileInputFieldset = (props) => {
+const FileInputFieldset: FileInputFieldsetType = (props) => {
   // TODO inteface
+
+  const { text } = props;
+
   return (
     <>
       <fieldset class="file-input-fieldset">
         <Hr text="file-input" />
         <CardContainer>
           <span class="editor-form__files-textarea-container">
-            <Textarea text="blaaa" />
+            <Textarea id={TEXTAREA_ID} name={TEXTAREA_NAME} text={text} />
           </span>
           <FileInput />
         </CardContainer>
