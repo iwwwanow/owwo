@@ -1,8 +1,8 @@
-header * {
+.header * {
   text-transform: uppercase;
 }
 
-:global(.element-layout header) {
+.element-layout header {
   margin: auto 0 0;
 }
 
@@ -28,5 +28,9 @@ header * {
 @media screen and (max-width: 360px) {
   .header__login-container {
     justify-content: flex-start;
+  }
+
+  .header__editor-link {
+    grid-row: 3 / 4;
   }
 }
