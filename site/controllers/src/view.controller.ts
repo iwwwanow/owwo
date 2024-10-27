@@ -5,19 +5,10 @@ import { LoginPage } from "@site-ui/login-page";
 import { NodeExtendedPage } from "@site-ui/node-extended-page";
 import { NodePage } from "@site-ui/node-page";
 import { SignupPage } from "@site-ui/signup-page";
-import { getTextFileContentHelper } from "@site/helpers";
-import { convertMdHtmlHelper } from "@site/helpers";
+import { getAboutPageContent } from "@site/getters";
 import { NodeModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
-
-// import { HomePage } from "@site/svelte-templates";
-// import { AboutPage } from "@site/svelte-templates";
-// import { LoginPage } from "@site/svelte-templates";
-// import { SignupPage } from "@site/svelte-templates";
-// import { NodePage } from "@site/svelte-templates";
-// import { NodeExtendedPage } from "@site/svelte-templates";
-// import { ErrorPage } from "@site/svelte-templates";
 
 export class ViewController {
   // static async responsePageHtml(svelteComponent, props) {
@@ -46,16 +37,8 @@ export class ViewController {
   static async getAboutPage() {
     const client = new ClientModel();
 
-    const ABOUT_FILEPATH = "./README.md";
-    const text: { markdown: string; html: string } = {
-      markdown: "blank-markdown-about-text",
-      html: "blank-html-about-text",
-    };
-
-    text.markdown = await getTextFileContentHelper(ABOUT_FILEPATH);
-    text.html = await convertMdHtmlHelper(text.markdown);
-
-    const props = { client, text };
+    const aboutPageContent = await getAboutPageContent();
+    const props = { client, aboutPageContent };
 
     return AboutPage(props);
   }
@@ -76,7 +59,12 @@ export class ViewController {
 
   // static async renderNodePage(nodeId: string, options: RenderNodePageOptions) {
   static async getNodePage(nodeId: string) {
-    const client = new ClientModel();
+    // TODO make dev mode for client; for testing
+    // clientType and etc
+    // client-page-privelegies
+
+    const client = new ClientModel({ isEditor: true });
+
     const node = new NodeModel(nodeId);
     const nodeData = await node.getData();
 
