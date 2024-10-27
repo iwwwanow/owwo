@@ -10,7 +10,7 @@ const CssModule: CssModuleType = async (props) => {
     return <style>{stileText}</style>;
   }
 
-  return null;
+  return <></>;
 };
 
 export { CssModule };
