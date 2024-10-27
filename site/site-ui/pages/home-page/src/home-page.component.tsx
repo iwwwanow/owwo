@@ -12,7 +12,7 @@ const HomePage: HomePageType = (props) => {
     <BaseLayout>
       <FullGridWrapContainer>
         {users.map((user) => (
-          <NodeLink id={user.meta.id} image={user.image} />
+          <NodeLink node={user} isTitleNeeded={false} />
         ))}
       </FullGridWrapContainer>
 

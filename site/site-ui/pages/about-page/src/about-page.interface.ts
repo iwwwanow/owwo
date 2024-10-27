@@ -1,5 +1,7 @@
+import type { NodeContentType } from "@site/interfaces";
+
 type AboutPageProps = {
-  text?: string;
+  aboutPageContent: NodeContentType;
 };
 
 type AboutPageType = (props: AboutPageProps) => JSX.Element;

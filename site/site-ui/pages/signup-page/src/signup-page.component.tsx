@@ -9,7 +9,7 @@ import { PASSWORD_PLACEHOLDER } from "./signup-page.constants";
 import { CONFIRM_PLACEHOLDER } from "./signup-page.constants";
 import type { SignupPageType } from "./signup-page.interface";
 
-const SignupPage: SignupPageType = (props) => {
+const SignupPage: SignupPageType = () => {
   return (
     <BaseLayout>
       <div class="grid">

@@ -10,6 +10,7 @@
   "dependencies": {
     "@site-ui/base-layout": "workspace:*",
     "@ui/node-link": "workspace:*",
+    "@site/interfaces": "workspace:*",
     "@ui/full-grid-wrap-container": "workspace:*"
   }
 }
