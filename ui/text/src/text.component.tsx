@@ -8,7 +8,7 @@ const Text: TextType = (props) => {
 
   return (
     <>
-      <div class={`text ${className}`}>{text.html}</div>;
+      <div class={`text ${className}`}>{text.html}</div>
       <CssModule filepath={Style} />
     </>
   );

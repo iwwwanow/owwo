@@ -9,7 +9,7 @@ const ContentString: ContentStringType = (props) => {
   // TODO render html string raw (dirty)
   return (
     <>
-      <div class="element__content-container">{html}</div>;
+      <div class="element__content-container">{html}</div>
       <CssModule filepath={Style} />
     </>
   );
