@@ -1,6 +1,10 @@
+### 28.10
+
+- [ ] - забросить interfaces в devDependencies
+
 ### 27.10
 
-- [ ] - node-extended-page - ошибка в конце абзаца (символ ;)
+- [x] - node-extended-page - ошибка в конце абзаца (символ ;)
 - [ ] - создание аккаунта - drizzle orm
 
 ### 26.10
