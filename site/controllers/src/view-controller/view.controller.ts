@@ -10,7 +10,7 @@ import { NodeModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
 
-export class ViewController {
+class ViewController {
   // static async responsePageHtml(svelteComponent, props) {
   //   // TODO svetle page type
   //
@@ -101,3 +101,5 @@ export class ViewController {
     return ErrorPage(props);
   }
 }
+
+export { ViewController };
