@@ -9,7 +9,9 @@
   "main": "src/index.ts",
   "dependencies": {
     "@site-ui/base-layout": "workspace:*",
-    "@site/interfaces": "workspace:*",
     "@ui/text": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*"
   }
 }

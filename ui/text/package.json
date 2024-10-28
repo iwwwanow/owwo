@@ -7,8 +7,8 @@
     ".": "./src/index.ts"
   },
   "main": "src/index.ts",
-  "dependencies": {
-    "@ui/css-module": "workspace:*",
-    "@site/interfaces": "workspace:*"
+  "devDependencies": {
+    "@site/interfaces": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }

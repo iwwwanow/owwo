@@ -12,14 +12,16 @@
     "@ui/hr": "workspace:*",
     "@ui/logo": "workspace:*",
     "@ui/node-card": "workspace:*",
-    "@site/interfaces": "workspace:*",
     "@ui/node-info": "workspace:*",
     "@ui/node-navigation": "workspace:*",
     "@ui/node-title": "workspace:*",
     "@ui/text": "workspace:*",
     "@site-ui/header-fragment": "workspace:*",
     "@site-ui/node-extended-fragment": "workspace:*",
-    "@site-ui/extended-layout": "workspace:*",
+    "@site-ui/extended-layout": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*",
     "@ui/css-module": "workspace:*"
   }
 }

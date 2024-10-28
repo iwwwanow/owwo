@@ -8,7 +8,9 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@site-ui/base-head-fragment": "workspace:*",
+    "@site-ui/base-head-fragment": "workspace:*"
+  },
+  "devDependencies": {
     "@ui/css-module": "workspace:*"
   }
 }

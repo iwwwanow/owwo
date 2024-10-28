@@ -10,8 +10,10 @@
   "dependencies": {
     "@ui/hr": "workspace:*",
     "@ui/input": "workspace:*",
-    "@ui/card-container": "workspace:*",
-    "@ui/css-module": "workspace:*",
-    "@site/interfaces": "workspace:*"
+    "@ui/card-container": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }

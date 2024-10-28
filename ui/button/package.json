@@ -8,7 +8,9 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@assets/svg": "workspace:*",
+    "@assets/svg": "workspace:*"
+  },
+  "devDependencies": {
     "@ui/css-module": "workspace:*"
   }
 }

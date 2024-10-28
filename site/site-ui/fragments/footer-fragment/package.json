@@ -8,7 +8,9 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@ui/hr": "workspace:*",
+    "@ui/hr": "workspace:*"
+  },
+  "devDependencies": {
     "@ui/css-module": "workspace:*"
   }
 }

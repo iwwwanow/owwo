@@ -6,7 +6,7 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "dependencies": {
+  "devDependencies": {
     "@site/interfaces": "workspace:*"
   },
   "main": "src/index.ts"

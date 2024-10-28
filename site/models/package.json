@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "@test/mock": "workspace:*",
-    "@site/interfaces": "workspace:*",
     "@site/constants": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*"
   },
   "main": "src/index.ts"
 }

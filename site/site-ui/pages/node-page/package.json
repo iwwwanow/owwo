@@ -17,8 +17,10 @@
     "@ui/node-card": "workspace:*",
     "@ui/node-info": "workspace:*",
     "@ui/text": "workspace:*",
-    "@site-ui/base-layout": "workspace:*",
-    "@site/interfaces": "workspace:*",
-    "@ui/css-module": "workspace:*"
+    "@site-ui/base-layout": "workspace:*"
+  },
+  "devDependencies": {
+    "@ui/css-module": "workspace:*",
+    "@site/interfaces": "workspace:*"
   }
 }

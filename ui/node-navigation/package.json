@@ -8,8 +8,10 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@ui/node-link": "workspace:*",
-    "@ui/css-module": "workspace:*",
-    "@site/interfaces": "workspace:*"
+    "@ui/node-link": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*",
+    "@ui/css-module": "workspace:*"
   }
 }
