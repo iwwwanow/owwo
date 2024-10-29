@@ -1,4 +1,7 @@
 import { BaseLayout } from "@site-ui/base-layout";
+import { USERNAME_INPUT_NAME } from "@site/constants";
+import { PASSWORD_INPUT_NAME } from "@site/constants";
+import { CONFIRM_PASSWORD_INPUT_NAME } from "@site/constants";
 
 import { Button } from "@ui/button";
 import { TextInput } from "@ui/input";
@@ -16,20 +19,20 @@ const SignupPage: SignupPageType = () => {
         <LoginForm action="signup">
           <TextInput
             id="signup__input-username"
-            name="username"
+            name={USERNAME_INPUT_NAME}
             required={true}
             placeholder={LOGIN_PLACEHOLDER}
           />
           <TextInput
             id="signup__input-password"
-            name="password"
+            name={PASSWORD_INPUT_NAME}
             type="password"
             required={true}
             placeholder={PASSWORD_PLACEHOLDER}
           />
           <TextInput
             id="signup__input-confirm-password"
-            name="password"
+            name={CONFIRM_PASSWORD_INPUT_NAME}
             type="password"
             required={true}
             placeholder={CONFIRM_PLACEHOLDER}

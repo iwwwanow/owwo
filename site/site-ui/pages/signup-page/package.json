@@ -8,6 +8,7 @@
   },
   "main": "src/index.ts",
   "dependencies": {
+    "@site/constants": "workspace:*",
     "@site-ui/base-layout": "workspace:*",
     "@ui/login-form": "workspace:*",
     "@ui/input": "workspace:*",
