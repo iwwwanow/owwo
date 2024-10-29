@@ -8,6 +8,7 @@
   },
   "main": "src/index.ts",
   "dependencies": {
+    "@site/constants": "workspace:*",
     "@elysiajs/html": "^1.1.1",
     "@site/controllers": "workspace:*",
     "elysia": "^1.1.16"
