@@ -1,16 +1,11 @@
 import { html } from "@elysiajs/html";
 import { Elysia } from "elysia";
 
-import { LISTEN_PORT } from "./elysia-app.constants";
-import { getLaunchText } from "./helpers";
-import { checkEnvs } from "./helpers/check-envs.helper";
+import { LISTEN_PORT } from "./elysia.constants";
+import { getSignupData } from "./getters";
+import { SignupPostType } from "./interfaces";
 import { PageRouterService } from "./services";
 import { SignupService } from "./services";
-
-// TODO toutes to consts
-// TODO link routes consts with a href consts
-
-checkEnvs();
 
 const app = new Elysia()
   .use(html())
@@ -43,27 +38,16 @@ const app = new Elysia()
     return PageRouterService.getNodePage(nodeId);
   })
 
-  .post("/signup", () => {
-    return SignupService.processPostRequest();
-  })
+  .post(
+    "/signup",
+    (ctx) => {
+      const signupData = getSignupData(ctx.body);
+
+      return SignupService.processPostRequest();
+    },
+    SignupPostType,
+  )
 
   .listen(LISTEN_PORT);
 
-if (!app?.server?.url) {
-  console.error(app);
-  throw new Error(`error on elysia-app launch`);
-}
-
-const {
-  server: { url },
-} = app;
-
-//   .get("/public/*", )
-//   .get("/", )
-//   .get("/about", )
-//   .get("/login", )
-//   .get("/signup", )
-//   .get("/:nodeId", );
-//   .get("/error", );
-
-console.log(getLaunchText(url));
+export { app };
