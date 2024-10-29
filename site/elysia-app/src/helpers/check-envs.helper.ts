@@ -1,7 +1,5 @@
-import { REQUIRED_ENV_NAMES } from "../elysia-app.constants";
-
-const getEnvErrorMessage = (envName: string) =>
-  `need "${envName}" env variable`;
+import { REQUIRED_ENV_NAMES } from "../elysia.constants";
+import { getEnvErrorMessage } from "../getters";
 
 const checkEnvs = () => {
   for (const ENV_NAME of REQUIRED_ENV_NAMES) {

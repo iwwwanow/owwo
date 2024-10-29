@@ -1,1 +1,1 @@
-export * from "./get-launch-text.helper";
+export * from "./check-envs.helper";
