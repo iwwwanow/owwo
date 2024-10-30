@@ -1,8 +1,9 @@
 import { SignupController } from "@site/controllers";
+import type { SignupData } from "@site/interfaces";
 
 class SignupService {
-  static processPostRequest() {
-    SignupController.processSignup();
+  static processPostRequest(signupData: SignupData) {
+    SignupController.processSignup(signupData);
   }
 }
 

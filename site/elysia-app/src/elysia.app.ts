@@ -42,8 +42,7 @@ const app = new Elysia()
     "/signup",
     (ctx) => {
       const signupData = getSignupData(ctx.body);
-
-      return SignupService.processPostRequest();
+      return SignupService.processPostRequest(signupData);
     },
     SignupPostType,
   )

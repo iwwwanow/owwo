@@ -11,6 +11,7 @@
     "@site/constants": "workspace:*",
     "@elysiajs/html": "^1.1.1",
     "@site/controllers": "workspace:*",
+    "@site/interfaces": "workspace:*",
     "elysia": "^1.1.16"
   }
 }
