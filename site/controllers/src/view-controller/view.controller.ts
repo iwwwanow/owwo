@@ -6,7 +6,7 @@ import { NodeExtendedPage } from "@site-ui/node-extended-page";
 import { NodePage } from "@site-ui/node-page";
 import { SignupPage } from "@site-ui/signup-page";
 import { getAboutPageContent } from "@site/getters";
-import { NodeModel } from "@site/models";
+import { NodeTestModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
 
@@ -65,7 +65,7 @@ class ViewController {
 
     const client = new ClientModel({ isEditor: true });
 
-    const node = new NodeModel(nodeId);
+    const node = new NodeTestModel(nodeId);
     const nodeData = await node.getData();
 
     // const EDITOR_URL = new URL("", req.url);
