@@ -1,7 +1,19 @@
+### 30.10
+
+- остановился на account-model writeData()
+
+- [ ] - можно ли те интерфейсы, которые я прописываю в @site/interfaces вынести в глобал, чтобы не импортировать их в каждый пакет?
+- [ ] - нужно както разнести node-model & node-test-model
+  - [ ] - на том уровне, где создается новая нода (new NodeMode) - делать проветку и выводить или new NodeTestMode или new NodeModel
+  - [ ] - можно создать у них общий прототип - типа node.proto.model
+
 ### 29.10
 
-- [ ] - how to convert t (from elysia; typebox?) types to basic type - like string
-- [ ] - не понимаю, как будет осуществляться проверка
+- [ ] - architecture refactoring
+  - сделай один монолитный сервис. раздели на ресклько уровней - ui/application/infrastructure. все зависимости должны идти вовнутрь
+
+- [x] - how to convert t (from elysia; typebox?) types to basic type - like string
+- [x] - не понимаю, как будет осуществляться проверка
 - [ ] - пиши в бд
 
 - [ ] - попробуй прокинуть ошибку типа, посмотри что будет

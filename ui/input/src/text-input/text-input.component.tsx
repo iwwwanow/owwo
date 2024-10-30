@@ -11,6 +11,7 @@ const TextInput: TextInputType = (props) => {
     <>
       <p class="text-input__wrapper">
         <input
+          value="test-input-value"
           class="text-input"
           autocomplete="off"
           // @ts-expect-error not assignable
