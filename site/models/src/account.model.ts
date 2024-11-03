@@ -1,6 +1,6 @@
 import { mainDb } from "@db/main";
+import { accountsTable } from "@db/main";
 import type { SignupData } from "@site/interfaces";
-import { sql } from "drizzle-orm";
 
 class AccountModel {
   signupData: SignupData;
@@ -10,11 +10,10 @@ class AccountModel {
   }
 
   async writeData() {
-    const query = sql`select "hello world" as text`;
-    const result = mainDb.get<{ text: string }>(query);
-    console.log(result);
+    const { username, password } = this.signupData;
+    await mainDb.insert(accountsTable).values({ username, password });
 
-    console.log(this.signupData);
+    // console.log(mainDb);
   }
 }
 

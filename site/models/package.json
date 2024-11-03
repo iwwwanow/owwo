@@ -9,8 +9,7 @@
   "dependencies": {
     "@test/mock": "workspace:*",
     "@site/constants": "workspace:*",
-    "@db/main": "workspace:*",
-    "drizzle-orm": "^0.36.0"
+    "@db/main": "workspace:*"
   },
   "devDependencies": {
     "@site/interfaces": "workspace:*"
