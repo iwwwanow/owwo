@@ -24,6 +24,7 @@
     "dev": "NODE_ENV=developement bun --watch ./site/entrypoint/src/index.ts",
     "start": "NODE_ENV=production bun ./src/scripts/index.script.ts",
     "build": "bun ./src/scripts/build.script.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "dk:main": "cd db/main/ && bun drizzle-kit"
   }
 }
