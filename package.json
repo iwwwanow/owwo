@@ -25,5 +25,8 @@
     "build": "bun ./src/scripts/build.script.ts",
     "test": "bun test",
     "dk:main": "cd db/main/ && bun drizzle-kit"
+  },
+  "override": {
+    "@sinclair/typebox": "0.32.4"
   }
 }
