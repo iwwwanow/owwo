@@ -9,7 +9,9 @@
   "main": "src/index.ts",
   "dependencies": {
     "@site/constants": "workspace:*",
+    "@db/main": "workspace:*",
     "@elysiajs/html": "^1.1.1",
+    "drizzle-typebox": "^0.1.1",
     "@site/controllers": "workspace:*",
     "@site/interfaces": "workspace:*",
     "elysia": "^1.1.16"
