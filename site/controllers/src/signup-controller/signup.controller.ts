@@ -1,5 +1,5 @@
+import { AccountModel } from "@db/main";
 import type { SignupData } from "@site/interfaces";
-import { AccountModel } from "@site/models";
 
 class SignupController {
   static async processSignup(signupData: SignupData) {

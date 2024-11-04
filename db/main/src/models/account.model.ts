@@ -12,8 +12,6 @@ class AccountModel {
   async writeData() {
     const { username, password } = this.signupData;
     await mainDb.insert(accountsTable).values({ username, password });
-
-    // console.log(mainDb);
   }
 }
 
