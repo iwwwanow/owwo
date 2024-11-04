@@ -1,14 +1,29 @@
 import { html } from "@elysiajs/html";
 import { Elysia } from "elysia";
 
+import { signupDto } from "./dto";
 import { LISTEN_PORT } from "./elysia.constants";
-import { getSignupData } from "./getters";
-import { SignupPostType } from "./interfaces";
 import { PageRouterService } from "./services";
 import { SignupService } from "./services";
 
 const app = new Elysia()
   .use(html())
+
+  .onError((ctx) => {
+    const { error, code } = ctx;
+    // TODO можно для каждой проверки валидации написать свой текст ошибки
+    // и выводить её на клиент
+    // https://elysiajs.com/essential/validation.html#onerror
+
+    // TODO сделать локализацию в виде json для передачи ошибок на клиент
+    // можно в текущих макетах добавить поле error, на самом верху странице, под шапкой. чтобы при ошибке отображать ту странциу, с которой она ушла, только с ТЕКСТОМ ЭТОЙ ОШИБКИ
+    if (code === "VALIDATION") {
+      console.error(error);
+      console.error("error-validation-handing");
+      return "<>error-validation-handing</>";
+      // return error.message;
+    }
+  })
 
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
     return PageRouterService.getPublic({ param: filepathParam });
@@ -41,10 +56,12 @@ const app = new Elysia()
   .post(
     "/signup",
     (ctx) => {
-      const signupData = getSignupData(ctx.body);
+      const signupData = ctx.body;
       return SignupService.processPostRequest(signupData);
     },
-    SignupPostType,
+    {
+      body: signupDto,
+    },
   )
 
   .listen(LISTEN_PORT);
