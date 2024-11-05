@@ -1,7 +1,7 @@
 import { html } from "@elysiajs/html";
+import { signupDto } from "@site/dto";
 import { Elysia } from "elysia";
 
-import { signupDto } from "./dto";
 import { LISTEN_PORT } from "./elysia.constants";
 import { PageRouterService } from "./services";
 import { SignupService } from "./services";

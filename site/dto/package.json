@@ -1,5 +1,5 @@
 {
-  "name": "@site/elysia-app",
+  "name": "@site/dto",
   "version": "0.0.1",
   "license": "BSD-3-Clause",
   "type": "module",
@@ -8,10 +8,13 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@site/dto": "workspace:*",
-    "@elysiajs/html": "^1.1.1",
-    "@site/controllers": "workspace:*",
-    "@site/interfaces": "workspace:*",
+    "@db/main": "workspace:*",
+    "drizzle-typebox": "^0.1.1"
+  },
+  "devDependencies": {
     "elysia": "^1.1.16"
+  },
+  "peerDependencies": {
+    "elysia": "*"
   }
 }
