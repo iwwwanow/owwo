@@ -1,3 +1,18 @@
+### 05.11
+
+- [ ] - смотри как сделанны dto - models https://elysiajs.com/essential/validation#reference-model
+- https://elysiajs.com/essential/structure#model-injection
+- [ ] - сделай проветку env по аналогии - https://catalins.tech/validate-environment-variables-with-zod/
+- [ ] - подробно изучить typebox - полюбому можно зашить в схему проверку password и confirm-password
+  - https://github.com/sinclairzx81/typebox#formatregistry
+  - https://github.com/sinclairzx81/typebox#error-function
+  - https://github.com/jtlapp/typebox-validators
+  - https://github.com/erfanium/fetch-typebox
+  - должен быть какойто функционал коллбэков
+  - https://dev.to/franciscomendes10866/node-typescript-json-schema-validation-using-typebox-2oee
+
+- [ ] - не трать на это больше времени, пиши вручную, без схемы
+
 ### 04.11
 
 - [ ] в TypeBox добавить провеку схожести паролей
