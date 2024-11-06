@@ -23,6 +23,16 @@ const app = new Elysia()
       return "<>error-validation-handing</>";
       // return error.message;
     }
+
+    console.error(error);
+    console.error("error-common-handing");
+    return "<>error-common-handing</>";
+  })
+
+  .get("/favicon.ico", () => {
+    // TODO
+    console.log("need to provide favicon");
+    return "bla";
   })
 
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
