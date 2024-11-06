@@ -1,8 +1,10 @@
 import { SignupController } from "@site/controllers";
-import type { SignupData } from "@site/interfaces";
+import type { SignupDtoType } from "@site/dto";
 
 class SignupService {
-  static processPostRequest(signupData: SignupData) {
+  static processPostRequest(signupData: SignupDtoType) {
+    // TODO все проверки на уровне сервисов.
+    // TODO на уровень контроллера только те данные, которые ему нужны
     SignupController.processSignup(signupData);
   }
 }
