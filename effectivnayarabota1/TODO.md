@@ -1,3 +1,10 @@
+### 06.11
+
+- [ ] - валидация из схемы - только входящих данных
+- [ ] - валидация, требующая хоть какойто минимальной логики - на уровне service в elysia
+
+- !!! https://habr.com/ru/articles/855734/
+
 ### 05.11
 
 - [ ] - смотри как сделанны dto - models https://elysiajs.com/essential/validation#reference-model
