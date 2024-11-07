@@ -9,25 +9,32 @@ import { SignupService } from "./services";
 const app = new Elysia()
   .use(html())
 
-  .onError((ctx) => {
-    const { error, code } = ctx;
-    // TODO можно для каждой проверки валидации написать свой текст ошибки
-    // и выводить её на клиент
-    // https://elysiajs.com/essential/validation.html#onerror
+  .onError(
+    (ctx) => {
+      const { error, code } = ctx;
+      // TODO render error-code on client
 
-    // TODO сделать локализацию в виде json для передачи ошибок на клиент
-    // можно в текущих макетах добавить поле error, на самом верху странице, под шапкой. чтобы при ошибке отображать ту странциу, с которой она ушла, только с ТЕКСТОМ ЭТОЙ ОШИБКИ
-    if (code === "VALIDATION") {
+      // TODO можно для каждой проверки валидации написать свой текст ошибки
+      // и выводить её на клиент
+      // https://elysiajs.com/essential/validation.html#onerror
+
+      // TODO сделать локализацию в виде json для передачи ошибок на клиент
+      // можно в текущих макетах добавить поле error, на самом верху странице, под шапкой. чтобы при ошибке отображать ту странциу, с которой она ушла, только с ТЕКСТОМ ЭТОЙ ОШИБКИ
+      if (code === "VALIDATION") {
+        console.error(error);
+        console.error("error-validation-handing");
+        return `<>${error}</>`;
+      }
+
       console.error(error);
-      console.error("error-validation-handing");
-      return "<>error-validation-handing</>";
-      // return error.message;
-    }
-
-    console.error(error);
-    console.error("error-common-handing");
-    return "<>error-common-handing</>";
-  })
+      return `<>${error.clientMessage}</>`;
+    },
+    // {
+    // TODO create error dto
+    //   // error: t.Object(),
+    //   // code: t.Number(),
+    // },
+  )
 
   .get("/favicon.ico", () => {
     // TODO
