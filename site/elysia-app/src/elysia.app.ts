@@ -11,7 +11,12 @@ const app = new Elysia()
 
   .onError(
     (ctx) => {
-      const { error, code } = ctx;
+      const { error, code, redirect } = ctx;
+
+      console.log("ERROR ON ON ERROR HANDLER:");
+
+      // TODO перенаправлять пользователя на ту же страницу, где была совершена обишка, только с объектом уведомнелия
+
       // TODO render error-code on client
 
       // TODO можно для каждой проверки валидации написать свой текст ошибки
@@ -20,6 +25,7 @@ const app = new Elysia()
 
       // TODO сделать локализацию в виде json для передачи ошибок на клиент
       // можно в текущих макетах добавить поле error, на самом верху странице, под шапкой. чтобы при ошибке отображать ту странциу, с которой она ушла, только с ТЕКСТОМ ЭТОЙ ОШИБКИ
+
       if (code === "VALIDATION") {
         console.error(error);
         console.error("error-validation-handing");
@@ -27,7 +33,13 @@ const app = new Elysia()
       }
 
       console.error(error);
-      return `<>${error.clientMessage}</>`;
+      console.error(error.clientMessage);
+
+      // return redirect("/");
+      // return `<>${error.clientMessage}</>`;
+      // return new Response(error.toString());
+
+      return new Response("hi");
     },
     // {
     // TODO create error dto
@@ -73,8 +85,8 @@ const app = new Elysia()
   .post(
     "/signup",
     (ctx) => {
-      const signupData = ctx.body;
-      return SignupService.processPostRequest(signupData);
+      const { redirect, body: signupData } = ctx;
+      return SignupService.processPostRequest({ signupData, redirect });
     },
     {
       body: signupDto,
