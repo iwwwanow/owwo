@@ -3,60 +3,17 @@ import { signupDto } from "@site/dto";
 import { Elysia } from "elysia";
 
 import { LISTEN_PORT } from "./elysia.constants";
+import { onErrorHelper } from "./helpers";
 import { PageRouterService } from "./services";
 import { SignupService } from "./services";
 
-const app = new Elysia()
+const pagesService = new Elysia({ name: "Service.Pages" })
   .use(html())
-
-  .onError(
-    (ctx) => {
-      const { error, code, redirect } = ctx;
-
-      console.log("ERROR ON ON ERROR HANDLER:");
-
-      // TODO перенаправлять пользователя на ту же страницу, где была совершена обишка, только с объектом уведомнелия
-
-      // TODO render error-code on client
-
-      // TODO можно для каждой проверки валидации написать свой текст ошибки
-      // и выводить её на клиент
-      // https://elysiajs.com/essential/validation.html#onerror
-
-      // TODO сделать локализацию в виде json для передачи ошибок на клиент
-      // можно в текущих макетах добавить поле error, на самом верху странице, под шапкой. чтобы при ошибке отображать ту странциу, с которой она ушла, только с ТЕКСТОМ ЭТОЙ ОШИБКИ
-
-      if (code === "VALIDATION") {
-        console.error(error);
-        console.error("error-validation-handing");
-        return `<>${error}</>`;
-      }
-
-      console.error(error);
-      console.error(error.clientMessage);
-
-      // return redirect("/");
-      // return `<>${error.clientMessage}</>`;
-      // return new Response(error.toString());
-
-      return new Response("hi");
-    },
-    // {
-    // TODO create error dto
-    //   // error: t.Object(),
-    //   // code: t.Number(),
-    // },
-  )
-
-  .get("/favicon.ico", () => {
-    // TODO
-    console.log("need to provide favicon");
-    return "bla";
-  })
 
   .get("/public/*", ({ params: { "*": filepathParam } }) => {
     return PageRouterService.getPublic({ param: filepathParam });
   })
+
   .get("/", () => {
     return PageRouterService.getHomePage();
   })
@@ -80,6 +37,16 @@ const app = new Elysia()
       params: { nodeId },
     } = ctx;
     return PageRouterService.getNodePage(nodeId);
+  });
+
+const app = new Elysia()
+  .onError(onErrorHelper)
+  .use(pagesService)
+
+  .get("/favicon.ico", () => {
+    // TODO
+    console.log("need to provide favicon");
+    return "bla";
   })
 
   .post(
