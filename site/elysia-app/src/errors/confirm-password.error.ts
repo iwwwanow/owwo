@@ -4,6 +4,8 @@ export class ConfirmPasswordError extends Error {
   clientMessage = "confirm-password missmatch";
 
   constructor() {
-    super("error on site_elysia-app_signup-service");
+    super(
+      "error on site_elysia-app_signup-service, confirm-passwork-missmatch",
+    );
   }
 }
