@@ -1,38 +1,33 @@
-import { StaticController } from "@site/controllers";
+import { html } from "@elysiajs/html";
 import { ViewController } from "@site/controllers";
+import { Elysia } from "elysia";
 
-class PageRouterService {
-  static getFavicon() {
-    return console.log("TODO create favicon");
-  }
+export const routerService = new Elysia({ name: "router-service" })
+  .use(html())
 
-  static getPublic({ param }: { param: string }) {
-    return StaticController.sendFile({ param });
-  }
-
-  static getHomePage() {
+  .get("/", () => {
     return ViewController.getHomePage();
-  }
+  })
 
-  static getAboutPage() {
-    return ViewController.getAboutPage();
-  }
-
-  static getLoginPage() {
+  .get("/login", () => {
     return ViewController.getLoginPage();
-  }
-
-  static getSignupPage() {
+  })
+  .get("/signup", () => {
     return ViewController.getSignupPage();
-  }
+  })
 
-  static getNodePage(nodeId: string) {
-    return ViewController.getNodePage(nodeId);
-  }
+  .get("/about", () => {
+    return ViewController.getAboutPage();
+  })
 
-  static getErrorPage() {
+  .get("/error", () => {
+    // TODO remove
     return ViewController.getErrorPage();
-  }
-}
+  })
 
-export { PageRouterService };
+  .get("/:nodeId", (ctx) => {
+    const {
+      params: { nodeId },
+    } = ctx;
+    return ViewController.getNodePage(nodeId);
+  });
