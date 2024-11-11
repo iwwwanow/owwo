@@ -1,7 +1,7 @@
 import type { BunFile } from "bun";
 
 type SendFileProps = {
-  param: string;
+  filepath: string;
 };
 
 type SendFileReturnType = Promise<BunFile>;
