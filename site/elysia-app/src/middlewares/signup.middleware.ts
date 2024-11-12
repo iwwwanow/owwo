@@ -31,7 +31,12 @@ export class SignupMiddleware {
       await SignupController.processSignup({ username, password });
 
       // TODO success message
-      return redirect("/");
+      const redirectSearchparams = new URLSearchParams();
+      redirectSearchparams.append("success-message", "test-client-message");
+      const redirectSearchparamsString = redirectSearchparams.toString();
+      const redirectHref = `/?${redirectSearchparamsString}`;
+
+      return redirect(redirectHref);
     } catch (error) {
       // TODO check error type and rende it on client
 
