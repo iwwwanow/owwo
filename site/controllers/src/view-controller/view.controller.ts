@@ -95,9 +95,14 @@ class ViewController {
     // return ViewController.responsePageHtml(NodePage, props);
   }
 
-  static async getErrorPage() {
+  // TODO interfaces
+  static async getErrorPage(errorProps: {
+    errorMessage: string;
+    errorCode?: number;
+  }) {
     const client = new ClientModel();
-    const props = { client };
+    const props = { client, ...errorProps };
+
     return ErrorPage(props);
   }
 }
