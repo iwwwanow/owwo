@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@site-ui/base-head-fragment": "workspace:*",
+    "@ui/hr": "workspace:*",
     "@site-ui/header-fragment": "workspace:*",
     "@site-ui/footer-fragment": "workspace:*"
   }

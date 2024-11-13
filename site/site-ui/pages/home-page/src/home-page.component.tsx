@@ -6,10 +6,11 @@ import { NodeLink } from "@ui/node-link";
 import type { HomePageType } from "./home-page.interface";
 
 const HomePage: HomePageType = (props) => {
+  const { clientData } = props;
   const { users } = props;
 
   return (
-    <BaseLayout>
+    <BaseLayout clientData={clientData}>
       <FullGridWrapContainer>
         {users.map((user) => (
           <NodeLink node={user} isTitleNeeded={false} />

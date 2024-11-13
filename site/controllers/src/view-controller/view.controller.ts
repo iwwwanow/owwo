@@ -18,14 +18,16 @@ class ViewController {
   //   return html(pageHtml);
   // }
 
-  static async getHomePage() {
+  static async getHomePage({ successMessage }) {
     // TODO add conditions to test data render
     const TEST_USERS_QUANTITY = 128;
     // const nodeId = process.env["TEST_NODE_USERNAME"];
     const nodeData = await MockModel.getUserNodeData();
     const users = Array(TEST_USERS_QUANTITY).fill(nodeData);
 
-    const props = { users };
+    const clientData = { successMessage };
+
+    const props = { clientData, users };
 
     // TODO
     // 1. на продакшене должен быть оптимизированый СБИЛЖЕННЫЙ css.
