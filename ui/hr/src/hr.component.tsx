@@ -22,7 +22,7 @@ const Hr: HrType = (props) => {
     );
   }
 
-  return <hr />;
+  return <hr style={colorStyle} />;
 };
 
 export { Hr };
