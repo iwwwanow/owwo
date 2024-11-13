@@ -1,6 +1,6 @@
 import { CONFIRM_PASSWORD_INPUT_NAME } from "@site/constants";
 import { SignupController } from "@site/controllers";
-import type { SignupDtoType } from "@site/dto";
+import type { SignupBodyDtoType } from "@site/dto";
 import type { redirect as RedirectType } from "elysia";
 
 import { UniqueUsernameError } from "../errors";
@@ -10,7 +10,7 @@ import { UNIQUE_USERNAME_ORM_ERROR_MESSAGE } from "./signup.constants";
 
 // TODO move to interfaces
 type PropsType = {
-  signupData: SignupDtoType;
+  signupData: SignupBodyDtoType;
   redirect: RedirectType;
 };
 

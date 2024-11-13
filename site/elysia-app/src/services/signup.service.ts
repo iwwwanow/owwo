@@ -10,7 +10,5 @@ export const signupService = new Elysia({ name: "signup-service" }).post(
     const { redirect, body: signupData } = ctx;
     return SignupMiddleware.processPostRequest({ signupData, redirect });
   },
-  {
-    body: signupDto,
-  },
+  signupDto,
 );

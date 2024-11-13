@@ -16,9 +16,10 @@ const additionalFieldsSchema = t.Object({
   [CONFIRM_PASSWORD_INPUT_NAME]: t.String(),
 });
 
-const signupDto = t.Composite([tableFieldsSchema, additionalFieldsSchema]);
+const signupBodyDto = t.Composite([tableFieldsSchema, additionalFieldsSchema]);
 
-type SignupDtoType = Static<typeof signupDto>;
+export type SignupBodyDtoType = Static<typeof signupBodyDto>;
 
-export { signupDto };
-export type { SignupDtoType };
+export const signupDto = {
+  body: signupBodyDto,
+};
