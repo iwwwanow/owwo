@@ -1,3 +1,20 @@
+### 14.11
+
+- остановился на @site/ui
+
+- [ ] - меняю импорты для node-next moduleResolution
+- [ ] - tsc
+- [ ] - merge
+- [ ] - todos
+- [ ] - merge
+- [ ] - tests
+- [ ] - merge
+
+- почему модели в @site?
+
+- [ ] - добавить на extended layout success-message component
+- [ ] - либо вытащить это все в layout-constructor, либо создать client-data-component
+
 ### 13.11
 
 - test query link:
