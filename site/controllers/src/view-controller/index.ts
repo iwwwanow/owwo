@@ -1,1 +1,1 @@
-export * from "./view.controller";
+export * from "./view.controller.js";

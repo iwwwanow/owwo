@@ -3,10 +3,10 @@ import { SignupController } from "@site/controllers";
 import type { SignupBodyDtoType } from "@site/dto";
 import type { redirect as RedirectType } from "elysia";
 
-import { UniqueUsernameError } from "../errors";
-import { ConfirmPasswordError } from "../errors";
-import { confirmPasswordValidator } from "../validators";
-import { UNIQUE_USERNAME_ORM_ERROR_MESSAGE } from "./signup.constants";
+import { UniqueUsernameError } from "../errors/index.js";
+import { ConfirmPasswordError } from "../errors/index.js";
+import { confirmPasswordValidator } from "../validators/index.js";
+import { UNIQUE_USERNAME_ORM_ERROR_MESSAGE } from "./signup.constants.js";
 
 // TODO move to interfaces
 type PropsType = {

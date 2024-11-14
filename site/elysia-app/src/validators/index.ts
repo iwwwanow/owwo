@@ -1,1 +1,1 @@
-export * from "./confirm-password.validator";
+export * from "./confirm-password.validator.js";

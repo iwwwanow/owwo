@@ -1,3 +1,3 @@
-export * from "./static-controller";
-export * from "./view-controller";
-export * from "./signup-controller";
+export * from "./static-controller/index.js";
+export * from "./view-controller/index.js";
+export * from "./signup-controller/index.js";

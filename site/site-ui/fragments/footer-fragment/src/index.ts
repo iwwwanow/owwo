@@ -1,1 +1,1 @@
-export * from "./footer-fragment.component";
+export * from "./footer-fragment.component.js";

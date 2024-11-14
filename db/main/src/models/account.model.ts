@@ -1,3 +1,4 @@
+// TODO inner package use relative import paths
 import { mainDb } from "@db/main";
 import { accountsTable } from "@db/main";
 import type { SignupData } from "@site/interfaces";

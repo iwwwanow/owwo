@@ -1,1 +1,1 @@
-export * from "./static.controller";
+export * from "./static.controller.js";

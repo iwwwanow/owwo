@@ -1,1 +1,1 @@
-export * from "./elysia.entrypoint";
+export * from "./elysia.entrypoint.js";

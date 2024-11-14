@@ -1,4 +1,4 @@
-import type { ClientModeConstructorType } from "./client.model.interface";
+import type { ClientModeConstructorType } from "./client.model.interface.js";
 
 export class ClientModel {
   isEditor: boolean = false;

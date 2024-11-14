@@ -2,7 +2,7 @@ import { getTextFileContentHelper } from "@site/helpers";
 import { convertMdHtmlHelper } from "@site/helpers";
 import type { NodeContentType } from "@site/interfaces";
 
-import { ABOUT_FILEPATH } from "./about-page-content.constants";
+import { ABOUT_FILEPATH } from "./about-page-content.constants.js";
 
 const getAboutPageContent = async (): Promise<NodeContentType> => {
   const aboutPageContent = {

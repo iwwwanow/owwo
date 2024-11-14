@@ -1,1 +1,1 @@
-export * from "./db.bootstrap";
+export * from "./db.bootstrap.js";

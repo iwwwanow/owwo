@@ -2,7 +2,7 @@
 import { signupDto } from "@site/dto";
 import { Elysia } from "elysia";
 
-import { SignupMiddleware } from "../middlewares";
+import { SignupMiddleware } from "../middlewares/index.js";
 
 export const signupService = new Elysia({ name: "signup-service" }).post(
   "/signup",

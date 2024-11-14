@@ -2,7 +2,7 @@ import { t } from "elysia";
 
 const homeRouteQueryDto = t.Optional(
   t.Object({
-    "success-message": t.String(),
+    "success-message": t.Optional(t.String()),
   }),
 );
 

@@ -3,7 +3,7 @@ import { AUTHORS_QUANTITY } from "@site/constants";
 import { PARENTS_QUANTITY } from "@site/constants";
 import type { NodeDataType } from "@site/interfaces";
 
-import { MockModel } from "./mock.model";
+import { MockModel } from "./mock.model.js";
 
 class NodeTestModel {
   nodeId: string;

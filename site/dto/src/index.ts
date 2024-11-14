@@ -1,3 +1,3 @@
-export * from "./home-route.dto";
+export * from "./home-route.dto.js";
 
-export * from "./signup.dto";
+export * from "./signup.dto.js";

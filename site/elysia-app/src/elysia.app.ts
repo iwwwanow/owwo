@@ -1,11 +1,11 @@
 import { Elysia } from "elysia";
 
-import { LISTEN_PORT } from "./elysia.constants";
-import { onErrorHelper } from "./helpers";
-import { routerService } from "./services";
-import { signupService } from "./services";
-import { faviconService } from "./services";
-import { staticService } from "./services";
+import { LISTEN_PORT } from "./elysia.constants.js";
+import { onErrorHelper } from "./helpers/index.js";
+import { routerService } from "./services/index.js";
+import { signupService } from "./services/index.js";
+import { faviconService } from "./services/index.js";
+import { staticService } from "./services/index.js";
 
 const app = new Elysia()
   .onError(onErrorHelper)

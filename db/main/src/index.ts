@@ -1,3 +1,3 @@
-export * from "./db";
-export * from "./schema";
-export * from "./models";
+export * from "./db/index.js";
+export * from "./schema/index.js";
+export * from "./models/index.js";

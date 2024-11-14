@@ -1,7 +1,7 @@
 import { Database } from "bun:sqlite";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 
-import { DB_FILE_NAME } from "../../drizzle.constants";
+import { DB_FILE_NAME } from "../../drizzle.constants.js";
 
 const sqlite = new Database(
   Bun.resolveSync(`../../${DB_FILE_NAME}`, import.meta.dir),

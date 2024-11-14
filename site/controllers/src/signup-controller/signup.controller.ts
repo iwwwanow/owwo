@@ -1,6 +1,6 @@
 import { AccountModel } from "@db/main";
 
-import type { SignupDataType } from "./signup.interface";
+import type { SignupDataType } from "./signup.interface.js";
 
 class SignupController {
   static async processSignup(signupData: SignupDataType) {
