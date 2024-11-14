@@ -10,6 +10,7 @@
   "dependencies": {
     "@site-ui/base-head-fragment": "workspace:*",
     "@ui/hr": "workspace:*",
+    "@site/interfaces": "workspace:*",
     "@site-ui/header-fragment": "workspace:*",
     "@site-ui/footer-fragment": "workspace:*"
   }
