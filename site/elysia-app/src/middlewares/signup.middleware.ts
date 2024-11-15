@@ -36,7 +36,8 @@ export class SignupMiddleware {
       const redirectHref = `/?${redirectSearchparamsString}`;
 
       return redirect(redirectHref);
-    } catch (error) {
+    } catch (e) {
+      const error = e as Error;
       // TODO check error type and rende it on client
 
       if (error.message === UNIQUE_USERNAME_ORM_ERROR_MESSAGE) {
