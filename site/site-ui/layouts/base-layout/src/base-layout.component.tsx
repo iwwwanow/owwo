@@ -7,8 +7,7 @@ import { SuccessMessage } from "./success-message/index.js";
 
 const BaseLayout: BaseLayoutType = (props) => {
   const { children } = props;
-
-  const { successMessage } = clientData;
+  const successMessage = props.clientData?.successMessage;
 
   return (
     <>
