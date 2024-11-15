@@ -100,7 +100,7 @@ class ViewController {
   // TODO interfaces
   static async getErrorPage(errorProps: {
     errorMessage: string;
-    errorCode?: number;
+    errorCode?: string | number;
   }) {
     const client = new ClientModel();
     const props = { client, ...errorProps };

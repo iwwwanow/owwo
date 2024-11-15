@@ -1,6 +1,6 @@
 type ErrorPageProps = {
   errorMessage: string;
-  errorCode?: number;
+  errorCode?: string | number;
 };
 
 type ErrorPageType = (props: ErrorPageProps) => JSX.Element;
