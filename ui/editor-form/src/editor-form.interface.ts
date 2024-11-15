@@ -1,9 +1,9 @@
 import type { NodeDataType } from "@site/interfaces";
-import type { ClientType } from "@site/interfaces";
+import type { ClientDataType } from "@site/interfaces";
 
 type EditorFormProps = {
   node: NodeDataType;
-  client: ClientType;
+  client: ClientDataType;
 };
 
 type EditorFormType = (props: EditorFormProps) => JSX.Element;

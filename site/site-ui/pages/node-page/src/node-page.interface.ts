@@ -1,10 +1,10 @@
 import type { NodeDataType } from "@site/interfaces";
-import type { ClientType } from "@site/interfaces";
+import type { ClientDataType } from "@site/interfaces";
 
 // TODO interfaces
 type NodePageProps = {
   node: NodeDataType;
-  client: ClientType;
+  client: ClientDataType;
 };
 
 type NodePageType = (props: NodePageProps) => JSX.Element;
