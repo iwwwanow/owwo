@@ -30,10 +30,10 @@ export const routerService = new Elysia({ name: "router-service" })
     return ViewController.getAboutPage();
   })
 
-  .get("/error", () => {
-    // TODO remove or provide props from searchparams
-    return ViewController.getErrorPage();
-  })
+  // .get("/error", () => {
+  //   // TODO remove or provide props from searchparams
+  //   return ViewController.getErrorPage();
+  // })
 
   .get("/:nodeId", (ctx) => {
     const {

@@ -30,7 +30,6 @@ export class SignupMiddleware {
     try {
       await SignupController.processSignup({ username, password });
 
-      // TODO success message
       const redirectSearchparams = new URLSearchParams();
       redirectSearchparams.append("success-message", "test-client-message");
       const redirectSearchparamsString = redirectSearchparams.toString();
@@ -40,7 +39,6 @@ export class SignupMiddleware {
     } catch (error) {
       // TODO check error type and rende it on client
 
-      // TODO to const
       if (error.message === UNIQUE_USERNAME_ORM_ERROR_MESSAGE) {
         throw new UniqueUsernameError();
       }
