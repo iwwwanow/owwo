@@ -3,7 +3,7 @@
     // Enable latest features
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
-    "module": "NodeNext",
+    "module": "ESNext",
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "jsxImportSource": "@kitajs/html",
@@ -17,7 +17,7 @@
     "allowJs": false,
 
     // Bundler mode
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
