@@ -1,5 +1,6 @@
-// TODO create parent class for all client errors
-export class ConfirmPasswordError extends Error {
+import { ClientError } from "./_client.error";
+
+export class ConfirmPasswordError extends ClientError {
   // TODO locales
   clientMessage = "confirm-password missmatch";
 

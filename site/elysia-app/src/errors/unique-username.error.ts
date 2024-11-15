@@ -1,5 +1,6 @@
-// TODO create parent class for all client errors
-export class UniqueUsernameError extends Error {
+import { ClientError } from "./_client.error";
+
+export class UniqueUsernameError extends ClientError {
   // TODO locales
   clientMessage = "username is not unique";
 
