@@ -4,6 +4,8 @@ import { CssModule } from "@ui/css-module";
 import type { NodeLinkType } from "./node-link.interface";
 import Style from "./node-link.module.css";
 import { NodeLinkImage } from "./node-link__image";
+import { NodeLinkSymbol } from "./node-link__symbol";
+import { NodeLinkTitle } from "./node-link__title";
 
 const NodeLink: NodeLinkType = (props) => {
   // TODO вот это не нравится
@@ -23,17 +25,10 @@ const NodeLink: NodeLinkType = (props) => {
   return (
     <>
       <a href={nodeLinkHref} class="node-info__container">
-        {leftSymbol && <h5 class="node-info__symbol">{leftSymbol}</h5>}
-
+        {leftSymbol && <NodeLinkSymbol symbol={leftSymbol} />}
         {image && <NodeLinkImage image={image} variant={imageVariant} />}
-
-        {isTitleNeeded && title && (
-          <h5 style="word-break: break-all" class="element-info__title">
-            {title}
-          </h5>
-        )}
-
-        {rightSymbol && <h5 class="node-info__symbol">{rightSymbol}</h5>}
+        {isTitleNeeded && title && <NodeLinkTitle title={title} />}
+        {rightSymbol && <NodeLinkSymbol symbol={rightSymbol} />}
       </a>
       <CssModule filepath={Style} />
     </>
