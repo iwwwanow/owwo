@@ -1,3 +1,2 @@
-import { relations } from "drizzle-orm/relations";
-
+// import { relations } from "drizzle-orm/relations";
 import "./schema.js";

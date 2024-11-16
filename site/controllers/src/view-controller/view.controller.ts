@@ -10,6 +10,8 @@ import { NodeTestModel } from "@site/models";
 import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
 
+import type { GetHomePageProps } from "./view.interfaces";
+
 class ViewController {
   // static async responsePageHtml(svelteComponent, props) {
   //   // TODO svetle page type
@@ -18,7 +20,7 @@ class ViewController {
   //   return html(pageHtml);
   // }
 
-  static async getHomePage({ successMessage }) {
+  static async getHomePage({ successMessage }: GetHomePageProps) {
     // TODO add conditions to test data render
     const TEST_USERS_QUANTITY = 128;
     // const nodeId = process.env["TEST_NODE_USERNAME"];
