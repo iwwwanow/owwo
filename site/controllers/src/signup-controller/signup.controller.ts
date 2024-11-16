@@ -1,4 +1,4 @@
-import { AccountModel } from "@db/main";
+import { AccountModel } from "@site/models";
 
 import type { SignupDataType } from "./signup.interface.js";
 

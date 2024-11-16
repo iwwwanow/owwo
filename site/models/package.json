@@ -9,7 +9,8 @@
   "dependencies": {
     "@test/mock": "workspace:*",
     "@site/constants": "workspace:*",
-    "@db/main": "workspace:*"
+    "@db/main": "workspace:*",
+    "@site/dto": "workspace:*"
   },
   "devDependencies": {
     "@site/interfaces": "workspace:*"

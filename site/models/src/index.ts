@@ -1,3 +1,4 @@
-export * from "./node.test.model.js";
-export * from "./client.model.js";
-export * from "./mock.model.js";
+export * from "./node.test.model";
+export * from "./client.model";
+export * from "./mock.model";
+export * from "./account.model";
