@@ -3,9 +3,7 @@ import { drizzle } from "drizzle-orm/bun-sqlite";
 
 import { DB_FILE_NAME } from "../../drizzle.constants";
 
-const sqlite = new Database(
-  Bun.resolveSync(`../../${DB_FILE_NAME}`, import.meta.dir),
-);
-const mainDb = drizzle({ client: sqlite, casing: "snake_case" });
+const dbPath = Bun.resolveSync(`../../${DB_FILE_NAME}`, import.meta.dir);
+const sqlite = new Database(dbPath);
 
-export { mainDb };
+export const mainDb = drizzle({ client: sqlite, casing: "snake_case" });
