@@ -4,4 +4,3 @@ export * from "./node-content.interface.js";
 export * from "./node-image.interface.js";
 export * from "./node-date.interface.js";
 export * from "./client-data.interface.js";
-export * from "./_signup-data.interface.js";
