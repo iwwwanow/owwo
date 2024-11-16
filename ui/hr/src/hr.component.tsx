@@ -1,4 +1,3 @@
-// TODO можно сделать компонент-обертку. один из пропсов будет - css-file-path
 import { CssModule } from "@ui/css-module";
 
 import type { HrType } from "./hr.interface";
