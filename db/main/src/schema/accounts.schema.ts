@@ -2,8 +2,7 @@ import * as t from "drizzle-orm/sqlite-core";
 import { sqliteTable } from "drizzle-orm/sqlite-core";
 
 export const accountsTable = sqliteTable(
-  // TODO fix naming
-  "acconts",
+  "accounts",
   {
     id: t.int().primaryKey({ autoIncrement: true }),
     username: t.text().notNull().unique(),
