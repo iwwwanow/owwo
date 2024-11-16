@@ -4,7 +4,6 @@ import { createInsertSchema } from "drizzle-typebox";
 import type { Static } from "elysia";
 import { t } from "elysia";
 
-// TODO добавить поле confirm-password в валидацию типов
 const __signupValidationSchema = createInsertSchema(accountsTable);
 
 const tableFieldsSchema = t.Pick(__signupValidationSchema, [
@@ -18,6 +17,7 @@ const additionalFieldsSchema = t.Object({
 
 const signupBodyDto = t.Composite([tableFieldsSchema, additionalFieldsSchema]);
 
+export type SignupDataType = Static<typeof tableFieldsSchema>;
 export type SignupBodyDtoType = Static<typeof signupBodyDto>;
 
 export const signupDto = {
