@@ -1,3 +1,8 @@
+### 17.11
+
+- [ ] - move all @site/interfaces deps to devDeps
+- [ ] - укороченная версия NodeData
+
 ### 16.11
 
 - работаю над TODO, список за 14е число
