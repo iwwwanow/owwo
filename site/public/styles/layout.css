@@ -101,7 +101,7 @@
     grid-template-columns: 1fr;
   }
 
-  /* TODO костыль */
+  /* BUG костыль */
   .grid__left-content,
   .grid__right-content {
     grid-column-start: 1;

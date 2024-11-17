@@ -1,6 +1,7 @@
+import type { NodeContentType } from "@site/interfaces";
+
 type NodeExtendedFragmentProps = {
-  // TODO interface (content-interface-global-type)
-  content: any;
+  content: NodeContentType;
 };
 
 type NodeExtendedFragmentType = (

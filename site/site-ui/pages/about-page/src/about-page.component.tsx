@@ -7,7 +7,6 @@ import type { AboutPageType } from "./about-page.interface";
 const AboutPage: AboutPageType = (props) => {
   const { aboutPageContent } = props;
 
-  // TODO type
   return (
     <BaseLayout>
       <div class="grid">

@@ -7,7 +7,7 @@ import { Button } from "@ui/button";
 import { TextInput } from "@ui/input";
 import { LoginForm } from "@ui/login-form";
 
-import { LOGIN_PLACEHOLDER } from "./signup-page.constants";
+import { USERNAME_PLACEHOLDER } from "./signup-page.constants";
 import { PASSWORD_PLACEHOLDER } from "./signup-page.constants";
 import { CONFIRM_PLACEHOLDER } from "./signup-page.constants";
 import type { SignupPageType } from "./signup-page.interface";
@@ -21,7 +21,7 @@ const SignupPage: SignupPageType = () => {
             id="signup__input-username"
             name={USERNAME_INPUT_NAME}
             required={true}
-            placeholder={LOGIN_PLACEHOLDER}
+            placeholder={USERNAME_PLACEHOLDER}
           />
           <TextInput
             id="signup__input-password"

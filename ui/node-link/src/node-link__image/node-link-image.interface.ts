@@ -4,7 +4,6 @@ type NodeLinkImageVariants = "small" | "big";
 
 type NodeLinkImageProps = {
   variant: NodeLinkImageVariants;
-  // TODO image type
   image: NodeImageType;
 };
 

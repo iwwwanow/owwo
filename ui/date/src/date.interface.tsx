@@ -1,6 +1,7 @@
+import type { NodeDateType } from "@site/interfaces";
+
 type DateComponentProps = {
-  // TODO interface
-  date: any;
+  date: NodeDateType;
 };
 
 type DateComponentType = (props: DateComponentProps) => JSX.Element;

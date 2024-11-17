@@ -1,32 +1,34 @@
 import { BaseLayout } from "@site-ui/base-layout";
+import { LOGIN_ROUTE_PATH } from "@site/constants";
+import { SIGNUP_ROUTE_PATH } from "@site/constants";
+import { USERNAME_INPUT_NAME } from "@site/constants";
+import { PASSWORD_INPUT_NAME } from "@site/constants";
 
 import { Button } from "@ui/button";
 import { CssModule } from "@ui/css-module";
 import { TextInput } from "@ui/input";
 import { LoginForm } from "@ui/login-form";
 
+import { USERNAME_PLACEHOLDER } from "./login-page.constants";
+import { PASSWORD_PLACEHOLDER } from "./login-page.constants";
 import type { LoginPageType } from "./login-page.interface";
 import Style from "./login-page.module.css";
 
 const LoginPage: LoginPageType = () => {
-  // TODO to constants
-  const LOGIN_PLACEHOLDER = "username".toUpperCase();
-  const PASSWORD_PLACEHOLDER = "password".toUpperCase();
-
   return (
     <>
       <BaseLayout>
         <div class="grid">
-          <LoginForm action="/login">
+          <LoginForm action={LOGIN_ROUTE_PATH}>
             <TextInput
               id="login__input-username"
-              name="username"
+              name={USERNAME_INPUT_NAME}
               required={true}
-              placeholder={LOGIN_PLACEHOLDER}
+              placeholder={USERNAME_PLACEHOLDER}
             />
             <TextInput
               id="login__input-password"
-              name="password"
+              name={PASSWORD_INPUT_NAME}
               type="password"
               required={true}
               placeholder={PASSWORD_PLACEHOLDER}
@@ -35,7 +37,7 @@ const LoginPage: LoginPageType = () => {
           </LoginForm>
 
           <span class="registration-button-container">
-            <Button text="Регистрация" url="/signup" />
+            <Button text="Регистрация" url={SIGNUP_ROUTE_PATH} />
           </span>
         </div>
       </BaseLayout>

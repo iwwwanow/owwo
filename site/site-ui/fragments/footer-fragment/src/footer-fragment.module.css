@@ -1,9 +1,7 @@
 .footer {
   margin: auto 0 0;
-  /* padding-bottom: var(--GRID-GAP); */
 }
 
 .footer * {
-  /* TODO - заголовок HR - тоже стал uppercase - так и должно быть? */
   text-transform: uppercase;
 }

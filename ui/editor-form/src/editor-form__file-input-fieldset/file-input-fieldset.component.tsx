@@ -10,8 +10,6 @@ import type { FileInputFieldsetType } from "./file-input-fieldset.interface";
 import Style from "./file-input-fieldset.module.css";
 
 const FileInputFieldset: FileInputFieldsetType = (props) => {
-  // TODO inteface
-
   const { text } = props;
 
   return (
