@@ -11,6 +11,7 @@ import { MockModel } from "@site/models";
 import { ClientModel } from "@site/models";
 
 import type { GetHomePageProps } from "./view.interfaces";
+import type { GetErrorPageProps } from "./view.interfaces";
 
 class ViewController {
   // static async responsePageHtml(svelteComponent, props) {
@@ -99,11 +100,7 @@ class ViewController {
     // return ViewController.responsePageHtml(NodePage, props);
   }
 
-  // TODO interfaces
-  static async getErrorPage(errorProps: {
-    errorMessage: string;
-    errorCode?: string | number;
-  }) {
+  static async getErrorPage(errorProps: GetErrorPageProps) {
     const client = new ClientModel();
     const props = { client, ...errorProps };
 
