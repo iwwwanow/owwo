@@ -8,7 +8,8 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@ui/hr": "workspace:*"
+    "@ui/hr": "workspace:*",
+    "@site/constants": "workspace:*"
   },
   "devDependencies": {
     "@ui/css-module": "workspace:*"

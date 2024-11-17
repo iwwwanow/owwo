@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@ui/hr": "workspace:*",
+    "@site/constants": "workspace:*",
     "@ui/logo": "workspace:*"
   },
   "devDependencies": {

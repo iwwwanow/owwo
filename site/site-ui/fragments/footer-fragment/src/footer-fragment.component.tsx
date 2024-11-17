@@ -1,3 +1,5 @@
+import { ABOUT_ROUTE_PATH } from "@site/constants";
+
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
@@ -10,7 +12,7 @@ const FooterFragment = () => {
         <Hr text="footer" />
 
         <h5>
-          <a href="/about">о проекте</a>
+          <a href={ABOUT_ROUTE_PATH}>о проекте</a>
         </h5>
       </footer>
 

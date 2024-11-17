@@ -1,3 +1,6 @@
+import { LOGIN_ROUTE_PATH } from "@site/constants";
+import { HOME_ROUTE_PATH } from "@site/constants";
+
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 import { LogoComponent } from "@ui/logo";
@@ -21,10 +24,10 @@ const HeaderFragment: HeaderFragmentType = (props) => {
     <>
       <header class={headerClass} style={headerStyle}>
         {isBottomPosition && <Hr text="header" />}
-        <LogoComponent />
+        <LogoComponent href={HOME_ROUTE_PATH} />
         <h5 class="header__editor-link">editor</h5>
         <h5 class="header__login-container">
-          <a href="/login">login</a>
+          <a href={LOGIN_ROUTE_PATH}>login</a>
         </h5>
       </header>
       <CssModule filepath={Style} />
