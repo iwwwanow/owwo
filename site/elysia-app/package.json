@@ -11,7 +11,11 @@
     "@site/dto": "workspace:*",
     "@elysiajs/html": "^1.1.1",
     "@site/controllers": "workspace:*",
-    "@site/interfaces": "workspace:*",
+    "@site/constants": "workspace:*",
+    "@site/locales": "workspace:*",
     "elysia": "^1.1.16"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*"
   }
 }

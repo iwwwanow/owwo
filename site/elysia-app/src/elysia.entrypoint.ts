@@ -2,9 +2,6 @@ import { app } from "./elysia.app.js";
 import { getLaunchText } from "./getters/index.js";
 import { checkEnvs } from "./helpers/index.js";
 
-// TODO toutes to consts
-// TODO link routes consts with a href consts
-
 checkEnvs();
 
 if (!app?.server?.url) {
