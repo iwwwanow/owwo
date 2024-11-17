@@ -1,15 +1,17 @@
 import { html } from "@elysiajs/html";
+import { HOME_ROUTE_PATH } from "@site/constants";
+import { LOGIN_ROUTE_PATH } from "@site/constants";
+import { SIGNUP_ROUTE_PATH } from "@site/constants";
+import { ABOUT_ROUTE_PATH } from "@site/constants";
 import { ViewController } from "@site/controllers";
 import { homeRouteDto } from "@site/dto";
 import { Elysia } from "elysia";
-
-// TODO link query names in dto and место, где они формируются
 
 export const routerService = new Elysia({ name: "router-service" })
   .use(html())
 
   .get(
-    "/",
+    HOME_ROUTE_PATH,
     (ctx) => {
       const { query } = ctx;
       const { ["success-message"]: successMessage } = query;
@@ -19,21 +21,16 @@ export const routerService = new Elysia({ name: "router-service" })
     homeRouteDto,
   )
 
-  .get("/login", () => {
+  .get(LOGIN_ROUTE_PATH, () => {
     return ViewController.getLoginPage();
   })
-  .get("/signup", () => {
+  .get(SIGNUP_ROUTE_PATH, () => {
     return ViewController.getSignupPage();
   })
 
-  .get("/about", () => {
+  .get(ABOUT_ROUTE_PATH, () => {
     return ViewController.getAboutPage();
   })
-
-  // .get("/error", () => {
-  //   // TODO remove or provide props from searchparams
-  //   return ViewController.getErrorPage();
-  // })
 
   .get("/:nodeId", (ctx) => {
     const {
