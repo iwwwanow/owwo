@@ -1,5 +1,7 @@
 import { accountsTable } from "@db/main";
 import { CONFIRM_PASSWORD_INPUT_NAME } from "@site/constants";
+import { USERNAME_INPUT_NAME } from "@site/constants";
+import { PASSWORD_INPUT_NAME } from "@site/constants";
 import { createInsertSchema } from "drizzle-typebox";
 import type { Static } from "elysia";
 import { t } from "elysia";
@@ -7,8 +9,8 @@ import { t } from "elysia";
 const __signupValidationSchema = createInsertSchema(accountsTable);
 
 const tableFieldsSchema = t.Pick(__signupValidationSchema, [
-  "username",
-  "password",
+  USERNAME_INPUT_NAME,
+  PASSWORD_INPUT_NAME,
 ]);
 
 const additionalFieldsSchema = t.Object({
