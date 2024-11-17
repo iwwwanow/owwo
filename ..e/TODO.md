@@ -1,5 +1,7 @@
 ### 17.11
 
+- продолжай заниматься TODO
+
 - [ ] - move all @site/interfaces deps to devDeps
 - [ ] - укороченная версия NodeData
 
