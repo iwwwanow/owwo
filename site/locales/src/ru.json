@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "client": {
+      "uniqueUsername": "username is not unique"
+    }
+  }
+}
