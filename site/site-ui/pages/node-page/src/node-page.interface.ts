@@ -1,9 +1,8 @@
 import type { NodeDataType } from "@site/interfaces";
 import type { ClientDataType } from "@site/interfaces";
 
-// TODO interfaces
 type NodePageProps = {
-  node: NodeDataType;
+  nodeData: NodeDataType;
   client: ClientDataType;
 };
 

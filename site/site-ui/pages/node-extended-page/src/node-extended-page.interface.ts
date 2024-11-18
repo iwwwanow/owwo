@@ -1,7 +1,7 @@
 import type { NodeDataType } from "@site/interfaces";
 
 type NodeExtendedPageProps = {
-  node: NodeDataType;
+  nodeData: NodeDataType;
 };
 
 type NodeExtendedPageType = (props: NodeExtendedPageProps) => JSX.Element;

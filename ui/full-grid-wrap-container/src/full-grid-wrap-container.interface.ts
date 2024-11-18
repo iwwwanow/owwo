@@ -1,4 +1,3 @@
-// TODO interfaces
 type FullGridWrapContainerProps = {
   children: JSX.Element | Array<JSX.Element>;
   limit?: number;

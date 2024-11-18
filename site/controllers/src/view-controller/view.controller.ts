@@ -64,10 +64,7 @@ class ViewController {
 
   // static async renderNodePage(nodeId: string, options: RenderNodePageOptions) {
   static async getNodePage(nodeId: string) {
-    // TODO make dev mode for client; for testing
-    // clientType and etc
-    // client-page-privelegies
-
+    // TODO dev mode is editor true
     const client = new ClientModel({ isEditor: true });
 
     const node = new NodeTestModel(nodeId);
@@ -88,16 +85,13 @@ class ViewController {
     //   // client.type = 'viewer'
     // }
 
-    // TODO change node prop name to nodeData prop name
-    const props = { client, node: nodeData };
+    const props = { client, nodeData };
 
     if (!nodeData?.meta.childs?.length) {
       return NodeExtendedPage(props);
     }
 
     return NodePage(props);
-
-    // return ViewController.responsePageHtml(NodePage, props);
   }
 
   static async getErrorPage(errorProps: GetErrorPageProps) {

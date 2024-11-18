@@ -5,12 +5,7 @@ import Style from "./full-grid-wrap-container.module.css";
 
 const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
   const { limit, children } = props;
-
-  // TODO whats wrong with style?
-  let style = "";
-  if (limit) {
-    style = `max-height: ${limit}px; overflow: hidden`;
-  }
+  const style = limit ? `max-height: ${limit}px; overflow: hidden` : "";
 
   return (
     <>

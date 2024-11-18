@@ -1,4 +1,3 @@
-// TODO need parts refactoring
 import { CssModule } from "@ui/css-module";
 
 import type { NodeLinkType } from "./node-link.interface";
@@ -8,16 +7,12 @@ import { NodeLinkSymbol } from "./node-link__symbol";
 import { NodeLinkTitle } from "./node-link__title";
 
 const NodeLink: NodeLinkType = (props) => {
-  // TODO вот это не нравится
-  let { node, leftSymbol, rightSymbol, id, title, image } = props;
-  const { isTitleNeeded = true } = props;
+  const { node, leftSymbol, rightSymbol } = props;
 
-  if (node) {
-    // TODO вот это не нравится
-    id = node.meta.id;
-    title = node.title;
-    image = node.image;
-  }
+  const { isTitleNeeded = true } = props;
+  const id = props.id || node.meta.id;
+  const title = props.title || node.title;
+  const image = props.image || node.image;
 
   const imageVariant = isTitleNeeded ? "small" : "big";
   const nodeLinkHref = `/${id}`;

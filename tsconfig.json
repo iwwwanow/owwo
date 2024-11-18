@@ -7,8 +7,6 @@
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "jsxImportSource": "@kitajs/html",
-    // "jsxFactory": "Html.createElement",
-    // "jsxFragmentFactory": "Html.Fragment",
     "plugins": [
       { "name": "@kitajs/ts-html-plugin" },
       { "name": "typescript-plugin-css-modules" }

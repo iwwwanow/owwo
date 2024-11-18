@@ -17,9 +17,7 @@ const getHtml = async (markdownString: string): Promise<string> => {
 
 const cutText = (text: string, symbolsQuantity: number): string => {
   if (text.length < symbolsQuantity) return text;
-  // TODO проверь итоговую длину строки? какбудто это неверно
   else {
-    // const shortenString = text.slice(0, 240);
     const shortenString = text.slice(0, symbolsQuantity);
     const wordsArray = shortenString.split(" ");
     const outputString = wordsArray.slice(0, -1).join(" ") + "...";

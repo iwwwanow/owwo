@@ -3,8 +3,6 @@ import type { ImageType } from "./image.interface";
 const Image: ImageType = (props) => {
   const { image, id, variant } = props;
 
-  // TODO devide srcssets to constants on init component layer
-
   const imageId = `image-${id}`;
   const imageSrcset = `${image[`${variant}_2x`]}`;
   const image2xSrcset = `${image[variant]}, ${image[`${variant}_2x`]} 2x`;
