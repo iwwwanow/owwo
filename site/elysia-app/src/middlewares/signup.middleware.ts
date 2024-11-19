@@ -1,18 +1,11 @@
 import { CONFIRM_PASSWORD_INPUT_NAME } from "@site/constants";
 import { SignupController } from "@site/controllers";
-import type { SignupBodyDtoType } from "@site/dto";
-import type { redirect as RedirectType } from "elysia";
 
-import { UniqueUsernameError } from "../errors/index.js";
-import { ConfirmPasswordError } from "../errors/index.js";
-import { confirmPasswordValidator } from "../validators/index.js";
-import { UNIQUE_USERNAME_ORM_ERROR_MESSAGE } from "./signup.constants.js";
-
-// TODO move to interfaces
-type PropsType = {
-  signupData: SignupBodyDtoType;
-  redirect: RedirectType;
-};
+import { UniqueUsernameError } from "../errors/index";
+import { ConfirmPasswordError } from "../errors/index";
+import { confirmPasswordValidator } from "../validators/index";
+import { UNIQUE_USERNAME_ORM_ERROR_MESSAGE } from "./signup.constants";
+import type { PropsType } from "./signup.interfaces";
 
 export class SignupMiddleware {
   static async processPostRequest(props: PropsType) {
@@ -38,14 +31,14 @@ export class SignupMiddleware {
       return redirect(redirectHref);
     } catch (e) {
       const error = e as Error;
-      // TODO check error type and rende it on client
+
+      console.error("ERROR ON SIGNUP SERVICE:");
+      console.error(error);
 
       if (error.message === UNIQUE_USERNAME_ORM_ERROR_MESSAGE) {
         throw new UniqueUsernameError();
       }
 
-      console.error("ERROR ON SIGNUP SERVICE:");
-      console.error(error);
       throw new Error("signup-controller undefined error");
     }
   }
