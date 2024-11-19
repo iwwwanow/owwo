@@ -12,7 +12,6 @@ const LogoComponent: LogoComponentType = (props) => {
 
   const classNameString = `logo__container${className}`;
 
-  // TODO why i cant use {href} and вынужден use href={href}
   return (
     <>
       <a href={href} class={classNameString}>

@@ -10,7 +10,6 @@ class MockModel {
       content: await this.getContentData(),
       image: await this.getAvatarData(),
       date: await this.getDateData(),
-      // TODO move it to initial data
       meta: {
         id: process.env["TEST_NODE_USERNAME"] as string,
         childs: [],

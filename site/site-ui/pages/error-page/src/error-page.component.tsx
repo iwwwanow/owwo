@@ -7,7 +7,6 @@ import type { ErrorPageType } from "./error-page.interface";
 const ErrorPage: ErrorPageType = (props) => {
   const { errorMessage, errorCode } = props;
 
-  /* TODO layout */
   return (
     <BaseLayout>
       <div class="grid">

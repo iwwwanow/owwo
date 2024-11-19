@@ -90,10 +90,6 @@ class NodeTestModel {
         ...Array(PAGE_QUANTITY).fill(nodeExtendedPageData),
       ];
 
-      // TODO render siblings
-      // TODO render extended page
-      // TODO meybe объединить authors in single author array?
-
       nodeData.meta.siblings = Array(PAGE_QUANTITY).fill(nodePageData);
       nodeData.meta.parents = Array(PARENTS_QUANTITY).fill(nodePageData);
     } else if (this.nodeId === this.testNodeIds["testNodeExtendedPageId"]) {

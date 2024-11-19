@@ -1,4 +1,3 @@
-// TODO где еще используется dto?
 import { SIGNUP_ROUTE_PATH } from "@site/constants";
 import { signupDto } from "@site/dto";
 import { Elysia } from "elysia";
