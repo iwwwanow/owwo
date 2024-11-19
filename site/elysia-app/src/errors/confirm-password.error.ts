@@ -1,13 +1,12 @@
 import { ruLocale } from "@site/locales";
 
-import { ClientError } from "./_client.error";
+import { ClientErrorAbstractClass } from "../interfaces";
 
-export class ConfirmPasswordError extends ClientError {
+export class ConfirmPasswordError extends ClientErrorAbstractClass {
   clientMessage = ruLocale.errors.client.uniqueUsername;
 
   constructor() {
     super(
-      // TODO to locales
       "error on site_elysia-app_signup-service, confirm-passwork-missmatch",
     );
   }
