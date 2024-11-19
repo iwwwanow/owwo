@@ -1,14 +1,9 @@
-// TODO move it interface to global
-// global types
-type NonNullable<T> = Exclude<T, null | undefined>;
-
 type TextareaProps = {
-	// TODO rename on all html -attr props like this: (use css properties)
-  id: NonNullable<JSX.HtmlTextAreaTag["id"]>;
-  name: NonNullable<JSX.HtmlTextAreaTag["name"]>;
+  id: Exists<JSX.HtmlTextAreaTag["id"]>;
+  name: Exists<JSX.HtmlTextAreaTag["name"]>;
   rows: JSX.HtmlTextAreaTag["rows"];
-  text?: string;
-  required: ;
+  text: JSX.HtmlTextAreaTag["children"];
+  required: JSX.HtmlTextAreaTag["required"];
   placeholder: JSX.HtmlTextAreaTag["placeholder"];
 };
 

@@ -1,11 +1,8 @@
-// TODO нужно пересмотреть необходимые пропсы для всех инпутов.
-// как они обычно связываются с формой? должны быть необходимые атрибуты
-
 type FileInputProps = {
-  id?: string;
-  name?: string;
-  accept?: string;
-  required?: boolean;
+  id: Exists<JSX.HtmlInputTag["id"]>;
+  name: Exists<JSX.HtmlInputTag["name"]>;
+  accept: Exists<JSX.HtmlInputTag["accept"]>;
+  required: JSX.HtmlInputTag["required"];
   imageSrc?: string;
 };
 

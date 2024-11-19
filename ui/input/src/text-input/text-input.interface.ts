@@ -1,12 +1,9 @@
-// TODO использовать для всех аттрибутов HTML-типы.
-
 type TextInputProps = {
-  id: string;
-  name: string;
-  type?: string;
-  rows?: string;
-  required?: boolean;
-  placeholder?: string;
+  id: Exists<JSX.HtmlInputTag["id"]>;
+  name: Exists<JSX.HtmlInputTag["name"]>;
+  type: JSX.HtmlInputTag["type"];
+  required: JSX.HtmlInputTag["required"];
+  placeholder: JSX.HtmlInputTag["placeholder"];
 };
 
 type TextInputType = (props: TextInputProps) => JSX.Element;
