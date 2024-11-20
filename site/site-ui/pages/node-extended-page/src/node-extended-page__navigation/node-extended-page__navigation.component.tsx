@@ -12,7 +12,6 @@ const NodeExtendedPageNavigation: NodeExtendedPageNavigationType = (props) => {
       else return 0;
     });
 
-    // TODO make it optional. only on js, client side
     const prevSibling = siblings[currentSiblingIndex - 1];
     const nextSibling = siblings[currentSiblingIndex + 1];
 

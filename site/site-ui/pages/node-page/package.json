@@ -10,7 +10,7 @@
   "dependencies": {
     "@ui/button": "workspace:*",
     "@ui/date": "workspace:*",
-    "@ui/editor-form": "workspace:*",
+    "@site-ui/editor-form": "workspace:*",
     "@ui/hr": "workspace:*",
     "@ui/image": "workspace:*",
     "@ui/input": "workspace:*",

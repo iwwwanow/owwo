@@ -1,8 +1,8 @@
 import { BaseLayout } from "@site-ui/base-layout";
+import { EditorForm } from "@site-ui/editor-form";
 
 import { PlusButton } from "@ui/button";
 import { CssModule } from "@ui/css-module";
-import { EditorForm } from "@ui/editor-form";
 import { Hr } from "@ui/hr";
 import { TextInput } from "@ui/input";
 import { NodeCard } from "@ui/node-card";
@@ -32,18 +32,6 @@ const NodePage: NodePageType = (props) => {
           {node.content && (
             <Text text={node.content} className="grid__right-content" />
           )}
-        </div>
-        <div class="grid todo" style="color: red;">
-          <ul>
-            <li>pages отображаются только в формате GRID</li>
-            <li>
-              возможность добавить скрипт из стандартной библиотеки, который
-              меняет верстку на LIST
-            </li>
-            <li>
-              возможность добавлять url на файл. чтобы он рендерился на странице
-            </li>
-          </ul>
         </div>
         <div class="grid user__pages-container">
           <Hr text="node-files"></Hr>
