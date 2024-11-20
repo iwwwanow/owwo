@@ -1,7 +1,7 @@
-// TODO use node global type
+import type { NodeDataType } from "@site/interfaces";
+
 type NodeCardProps = {
-  // TODO interfaces
-  node: any;
+  nodeData: NodeDataType;
 };
 
 type NodeCardType = (props: NodeCardProps) => JSX.Element;
