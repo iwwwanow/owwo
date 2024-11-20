@@ -1,9 +1,11 @@
+import type { NodeImageType } from "@site/interfaces";
+
+type AllowedVariants = "h16" | "h32" | "w190";
+
 type ImageProps = {
-  // TODO image interface from glogals
-  image: any;
+  image: NodeImageType;
   id: string;
-  // TODO image variang from globals
-  variant: string;
+  variant: AllowedVariants;
 };
 
 type ImageType = (props: ImageProps) => JSX.Element;
