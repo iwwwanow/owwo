@@ -10,6 +10,5 @@ hr,
   padding: 0 4px;
 }
 .hr_fieldset legend * {
-  /* TODO important - лучше удалить, пересмотри */
   text-transform: lowercase !important;
 }

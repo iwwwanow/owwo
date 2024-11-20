@@ -7,7 +7,6 @@ const Image: ImageType = (props) => {
   const imageSrcset = `${image[`${variant}_2x`]}`;
   const image2xSrcset = `${image[variant]}, ${image[`${variant}_2x`]} 2x`;
 
-  // <!-- TODO 2x: -->
   return (
     <picture>
       <source srcset={imageSrcset} media="(max-width: 360px)" />
