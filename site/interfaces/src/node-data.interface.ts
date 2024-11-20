@@ -4,10 +4,8 @@ import type { NodeImageType } from "./node-image.interface";
 import type { NodeMetaType } from "./node-meta.interface";
 
 type NodeMainDataType = {
-  // 80 symbols max
-  title: string;
-  // 240 symbols max
-  description: NodeContentType;
+  title: string; // 80 symbols max
+  description: NodeContentType; // 240 symbols max
   blob: string;
 };
 
