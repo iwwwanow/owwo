@@ -7,6 +7,4 @@ type NodeLinkImageProps = {
   image: NodeImageType;
 };
 
-type NodeLinkImageType = (props: NodeLinkImageProps) => JSX.Element;
-
-export type { NodeLinkImageType };
+export type NodeLinkImageType = (props: NodeLinkImageProps) => JSX.Element;

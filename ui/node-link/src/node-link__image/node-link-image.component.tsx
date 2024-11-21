@@ -1,41 +1,11 @@
 import type { NodeLinkImageType } from "./node-link-image.interface";
+import { NodeLinkImageBig } from "./node-link-image_big";
+import { NodeLinkImageSmall } from "./node-link-image_small";
 
 const NodeLinkImage: NodeLinkImageType = (props) => {
   const { variant = "small", image } = props;
-
-  if (variant === "big") {
-    const imageSrcset = `${image.h32}, ${image.h32_2x} 2x`;
-    // TODO change mock data
-    // TODO provede 2x image logic to picture
-    const image2xSrcset = `https://images.placeholders.dev/?width=64&height=64`;
-
-    return (
-      <picture>
-        <source srcset={imageSrcset} />
-        <source srcset={image2xSrcset} />
-        <img
-          src="https://images.placeholders.dev/?width=64&height=64"
-          alt="node-info__image"
-        />
-      </picture>
-    );
-  }
-
-  const imageSrcset = `${image.h16}, ${image.h16_2x} 2x`;
-  // TODO change mock data
-  // TODO provede 2x image logic to picture
-  const image2xSrcset = `https://images.placeholders.dev/?width=64&height=64`;
-
-  return (
-    <picture>
-      <source srcset={imageSrcset} />
-      <source srcset={image2xSrcset} />
-      <img
-        src="https://images.placeholders.dev/?width=64&height=64"
-        alt="node-info__image"
-      />
-    </picture>
-  );
+  if (variant === "big") return <NodeLinkImageBig image={image} />;
+  return <NodeLinkImageSmall image={image} />;
 };
 
 export { NodeLinkImage };
