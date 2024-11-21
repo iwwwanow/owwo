@@ -10,6 +10,6 @@
   "devDependencies": {
     "@ui/css-module": "workspace:*",
     "@site/interfaces": "workspace:*",
-    "@site/contants": "workspace:*"
+    "@site/constants": "workspace:*"
   }
 }
