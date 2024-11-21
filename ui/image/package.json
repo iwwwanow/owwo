@@ -9,5 +9,8 @@
   "devDependencies": {
     "@site/interfaces": "workspace:*"
   },
+  "dependencies": {
+    "@site/constants": "workspace:*"
+  },
   "main": "src/index.ts"
 }

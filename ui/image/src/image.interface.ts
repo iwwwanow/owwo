@@ -1,6 +1,10 @@
+import type { IMAGE_VARIANT_NAME } from "@site/constants";
 import type { NodeImageType } from "@site/interfaces";
 
-type AllowedVariants = "h16" | "h32" | "w190";
+type AllowedVariants =
+  | IMAGE_VARIANT_NAME.height16px
+  | IMAGE_VARIANT_NAME.height32px
+  | IMAGE_VARIANT_NAME.width190px;
 
 type ImageProps = {
   image: NodeImageType;
