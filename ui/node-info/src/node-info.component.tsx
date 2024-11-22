@@ -1,33 +1,20 @@
-// TODO needs refactoring
-// - разнести на parts
+import { IMAGE_VARIANT_NAME } from "@site/constants";
+
 import { CssModule } from "@ui/css-module";
-import { DateComponent } from "@ui/date";
-import { Hr } from "@ui/hr";
 import { Image } from "@ui/image";
-import { NodeLink } from "@ui/node-link";
-import { NodeLinkContainer } from "@ui/node-link-container";
 import { NodeTitle } from "@ui/node-title";
 
 import type { NodeInfoType } from "./node-info.interface";
 import Style from "./node-info.module.css";
+import { NodeInfoAuthor } from "./node-info__author";
+import { NodeInfoAuthors } from "./node-info__authors";
+import { NodeInfoDate } from "./node-info__date";
+import { NodeInfoDescription } from "./node-info__description";
+import { NodeInfoParents } from "./node-info__parents";
 
 const NodeInfo: NodeInfoType = (props) => {
   const { node } = props;
   const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
-
-  // let { node, id, image, title, author, authors, parents, description, date } =
-  //   props;
-
-  // if (node) {
-  //   id = node.meta.id;
-  //   image = node.image;
-  //   if (title === undefined) title = node.title;
-  //   if (description === undefined) description = node.description;
-  //   author = node.meta.author;
-  //   authors = node.meta.authors;
-  //   parents = node.meta.parents;
-  //   date = node.date;
-  // }
 
   const id = node.meta.id;
   const image = node.image;
@@ -41,62 +28,27 @@ const NodeInfo: NodeInfoType = (props) => {
   const isTextDataExist = !!title || !!authors || !!description || !!date;
   const isDataExist = !!image || isTextDataExist;
 
-  // TODO на странице http://localhost:3000/testnodeusername
-  // 	между заголовком и описанием есть ";" - убрать её
-
   if (isDataExist) {
     return (
       <>
         <span class="node-info node-info__data-wrapper">
-          {image && <Image image={image} id={id} variant="w190" />}
+          {image && (
+            <Image
+              image={image}
+              id={id}
+              variant={IMAGE_VARIANT_NAME.width190px}
+            />
+          )}
           {isTextDataExist && (
             <div class="node-info__data-container">
               {isTitleNeeded && <NodeTitle title={title} />}
-
-              {author && (
-                <>
-                  <Hr text="author:" />
-                  <NodeLinkContainer>
-                    <NodeLink node={author} />
-                  </NodeLinkContainer>
-                </>
-              )}
-
-              {authors && (
-                <>
-                  <Hr text="authors" />
-                  <NodeLinkContainer>
-                    {authors.map((author) => (
-                      <NodeLink node={author} />
-                    ))}
-                  </NodeLinkContainer>
-                </>
-              )}
-
-              {parents && (
-                <>
-                  <Hr text="pages" />
-                  <NodeLinkContainer>
-                    {parents.map((parent) => (
-                      <NodeLink node={parent} />
-                    ))}
-                  </NodeLinkContainer>
-                </>
-              )}
-
+              {author && <NodeInfoAuthor author={author} />}
+              {authors && <NodeInfoAuthors authors={authors} />}
+              {parents && <NodeInfoParents parents={parents} />}
               {isDescriptionNeeded && description?.html && (
-                <>
-                  <Hr text="description" />
-                  {description.html}
-                </>
+                <NodeInfoDescription description={description} />
               )}
-
-              {date && (
-                <>
-                  <Hr text="last-modification/creation date" />
-                  <DateComponent date={date} />
-                </>
-              )}
+              {date && <NodeInfoDate date={date} />}
             </div>
           )}
         </span>

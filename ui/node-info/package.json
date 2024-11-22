@@ -12,6 +12,7 @@
     "@ui/hr": "workspace:*",
     "@ui/image": "workspace:*",
     "@ui/node-link": "workspace:*",
+    "@site/constants": "workspace:*",
     "@ui/node-title": "workspace:*",
     "@ui/node-link-container": "workspace:*"
   },
