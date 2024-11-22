@@ -1,6 +1,3 @@
-// TODO aff .svg.tsx to exclude on tsconfig
-// @ts-nocheck
-
 const LogoSvg = () => {
   return (
     <svg

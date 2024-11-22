@@ -29,5 +29,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": true
-  }
+  },
+  "exclude": ["*.svg.tsx"]
 }
