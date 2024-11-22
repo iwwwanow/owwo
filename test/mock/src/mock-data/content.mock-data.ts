@@ -1,4 +1,3 @@
-// TODO - почему функции дублируются с text-mock-data?
 import type { NodeContentType } from "@site/interfaces";
 import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";

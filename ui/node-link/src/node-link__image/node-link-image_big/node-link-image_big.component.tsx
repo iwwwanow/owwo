@@ -7,8 +7,6 @@ export const NodeLinkImageBig: NodeLinkImageBigType = ({ image }) => {
   const imageHeight32px2xSource = image[IMAGE_VARIANT_NAME.height32px2x];
 
   const imageSrcset = `${imageHeight32pxSource}, ${imageHeight32px2xSource} 2x`;
-  // TODO change mock data
-  // TODO provede 2x image logic to picture
   const image2xSrcset = `https://images.placeholders.dev/?width=64&height=64`;
 
   return (

@@ -3,8 +3,6 @@ import type { NodeImageType } from "@site/interfaces";
 import type { NodeContentType } from "@site/interfaces";
 import type { NodeDateType } from "@site/interfaces";
 
-// TODO interfaces
-
 type NodeInfoProps = {
   node: NodeDataType;
 
