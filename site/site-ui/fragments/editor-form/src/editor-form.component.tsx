@@ -1,6 +1,7 @@
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
 
+import { IMAGE_VARIANT_NAME } from "@site/constants";
 import type { EditorFormType } from "./editor-form.interface";
 import Style from "./editor-form.module.css";
 import { ContentTextareaFieldset } from "./editor-form__content-textarea-fieldset";
@@ -9,7 +10,7 @@ import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";
 
 const EditorForm: EditorFormType = (props) => {
   const { node } = props;
-  const imageSrc = node.image?.original;
+  const imageSrc = node.image?[IMAGE_VARIANT_NAME.original];
 
   return (
     <>
