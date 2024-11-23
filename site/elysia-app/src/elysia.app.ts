@@ -2,7 +2,7 @@ import { ViewController } from "@site/controllers";
 import { Elysia } from "elysia";
 
 import { LISTEN_PORT } from "./elysia.constants.js";
-import { ClientError } from "./errors/_client.error.js";
+import { ClientErrorAbstractClass } from "./interfaces/client-error.interface.js";
 import { routerService } from "./services/index.js";
 import { signupService } from "./services/index.js";
 import { faviconService } from "./services/index.js";
@@ -11,9 +11,9 @@ import { staticService } from "./services/index.js";
 const app = new Elysia()
   .onError((ctx) => {
     const { error: e, code } = ctx;
-    const error = e as unknown as ClientError | Error;
+    const error = e as unknown as ClientErrorAbstractClass | Error;
 
-    if (error instanceof ClientError) {
+    if (error instanceof ClientErrorAbstractClass) {
       return ViewController.getErrorPage({
         errorMessage: error.clientMessage,
         errorCode: code,
