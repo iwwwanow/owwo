@@ -10,7 +10,9 @@
   "dependencies": {
     "@site/helpers": "workspace:*",
     "@site/models": "workspace:*",
-    "@site/interfaces": "workspace:*",
     "@site/getters": "workspace:*"
+  },
+  "devDependencies": {
+    "@site/interfaces": "workspace:*"
   }
 }
