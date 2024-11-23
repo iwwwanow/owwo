@@ -1,4 +1,4 @@
-import { IMAGE_VARIANT_NAME } from "@site/constants";
+import { IMAGE_VARIANT_NAME } from "@globals/constants";
 
 type NodeImageType = {
   [IMAGE_VARIANT_NAME.blob]: string;

@@ -1,4 +1,4 @@
-import { IMAGE_VARIANT_NAME } from "@site/constants";
+import { IMAGE_VARIANT_NAME } from "@globals/constants";
 
 import { CssModule } from "@ui/css-module";
 import { Image } from "@ui/image";
@@ -13,17 +13,17 @@ import { NodeInfoDescription } from "./node-info__description";
 import { NodeInfoParents } from "./node-info__parents";
 
 const NodeInfo: NodeInfoType = (props) => {
-  const { node } = props;
+  const { nodeData } = props;
   const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
 
-  const id = node.meta.id;
-  const image = node.image;
-  const title = node.title;
-  const description = node.description;
-  const author = node.meta.author;
-  const authors = node.meta.authors;
-  const parents = node.meta.parents;
-  const date = node.date;
+  const id = nodeData.meta.id;
+  const image = nodeData.image;
+  const title = nodeData.title;
+  const description = nodeData.description;
+  const author = nodeData.meta.author;
+  const authors = nodeData.meta.authors;
+  const parents = nodeData.meta.parents;
+  const date = nodeData.date;
 
   const isTextDataExist = !!title || !!authors || !!description || !!date;
   const isDataExist = !!image || isTextDataExist;

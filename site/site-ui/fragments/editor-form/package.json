@@ -10,6 +10,7 @@
   "dependencies": {
     "@ui/hr": "workspace:*",
     "@site/constants": "workspace:*",
+    "@globals/constants": "workspace:*",
     "@ui/input": "workspace:*",
     "@ui/card-container": "workspace:*"
   },

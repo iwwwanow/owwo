@@ -1,4 +1,4 @@
-import type { IMAGE_VARIANT_NAME } from "@site/constants";
+import type { IMAGE_VARIANT_NAME } from "@globals/constants";
 import type { NodeImageType } from "@site/interfaces";
 
 type AllowedVariants =

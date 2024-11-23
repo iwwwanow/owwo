@@ -1,4 +1,4 @@
-import { IMAGE_VARIANT_NAME } from "@site/constants";
+import { IMAGE_VARIANT_NAME } from "@globals/constants";
 
 import type { ImageType } from "./image.interface";
 

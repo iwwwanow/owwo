@@ -10,7 +10,8 @@
     "@site/interfaces": "workspace:*"
   },
   "dependencies": {
-    "@site/constants": "workspace:*"
+    "@site/constants": "workspace:*",
+    "@globals/constants": "workspace:*"
   },
   "main": "src/index.ts"
 }
