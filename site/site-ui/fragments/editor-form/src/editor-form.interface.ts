@@ -2,7 +2,7 @@ import type { NodeDataType } from "@site/interfaces";
 import type { ClientDataType } from "@site/interfaces";
 
 type EditorFormProps = {
-  node: NodeDataType;
+  nodeData: NodeDataType;
   client: ClientDataType;
 };
 

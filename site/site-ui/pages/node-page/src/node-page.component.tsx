@@ -14,9 +14,9 @@ import type { NodePageType } from "./node-page.interface";
 import Style from "./node-page.module.css";
 
 const NodePage: NodePageType = (props) => {
-  const { node, client } = props;
+  const { nodeData, client } = props;
 
-  const { meta } = node;
+  const { meta } = nodeData;
   const childs = meta.childs;
 
   const { isEditor } = client;
@@ -24,18 +24,19 @@ const NodePage: NodePageType = (props) => {
   return (
     <>
       <BaseLayout>
-        {isEditor ? <EditorForm client={client} node={node} /> : <></>}
+        {isEditor ? <EditorForm client={client} nodeData={nodeData} /> : <></>}
 
         <div class="grid node-wrapper">
-          <NodeInfo node={node} />
+          <NodeInfo nodeData={nodeData} />
 
-          {node.content && (
-            <Text text={node.content} className="grid__right-content" />
+          {nodeData.content && (
+            <Text text={nodeData.content} className="grid__right-content" />
           )}
         </div>
         <div class="grid user__pages-container">
           <Hr text="node-files"></Hr>
-          {childs && childs.map((childNode) => <NodeCard node={childNode} />)}
+          {childs &&
+            childs.map((childNode) => <NodeCard nodeData={childNode} />)}
 
           <span class="add-node__container">
             <PlusButton />
@@ -43,7 +44,8 @@ const NodePage: NodePageType = (props) => {
         </div>
         <div class="grid user__pages-container">
           <Hr text="child-nodes"></Hr>
-          {childs && childs.map((childNode) => <NodeCard node={childNode} />)}
+          {childs &&
+            childs.map((childNode) => <NodeCard nodeData={childNode} />)}
 
           <span class="add-node__container">
             <div class="add-node__input-container">

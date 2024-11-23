@@ -4,7 +4,7 @@ import type { NodeContentType } from "@site/interfaces";
 import type { NodeDateType } from "@site/interfaces";
 
 type NodeInfoProps = {
-  node: NodeDataType;
+  nodeData: NodeDataType;
 
   isTitleNeeded?: boolean;
   isDescriptionNeeded?: boolean;

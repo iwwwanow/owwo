@@ -11,13 +11,13 @@
 @media screen and (max-width: 650px) {
   .node-info__data-wrapper {
     grid-column: 1/-1;
-    /* TODO пересмотри этот момент */
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     gap: var(--GRID-GAP);
     margin-bottom: var(--2-GRID-GAP);
   }
-  :global(.node-info__data-wrapper > *) {
+
+  .node-info__data-wrapper > * {
     width: calc(50% - var(--GRID-GAP-2));
   }
 }
@@ -28,8 +28,8 @@
     flex-direction: column;
     gap: var(--GRID-GAP);
   }
-  /* TODO переделать */
-  :global(.node-info__data-wrapper > *) {
+
+  .node-info__data-wrapper > * {
     width: 100%;
   }
 }

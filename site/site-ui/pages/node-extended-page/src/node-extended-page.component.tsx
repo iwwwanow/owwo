@@ -12,12 +12,12 @@ import Style from "./node-extended-page.module.css";
 import { NodeExtendedPageNavigation } from "./node-extended-page__navigation";
 
 const NodeExtendedPage: NodeExtendedPageType = (props) => {
-  const { node } = props;
+  const { nodeData } = props;
 
-  const { content } = node;
+  const { content } = nodeData;
 
-  const siblings = node.meta.siblings;
-  const currentSiblingId = node.meta.id;
+  const siblings = nodeData.meta.siblings;
+  const currentSiblingId = nodeData.meta.id;
 
   return (
     <>
@@ -32,13 +32,16 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
         <div class="wrapper node-extended__layout">
           <span class="grid element-info__data-wrapper">
             <NodeInfo
-              node={node}
+              nodeData={nodeData}
               isTitleNeeded={false}
               isDescriptionNeeded={false}
             />
             <div class="grid__right-content">
-              <NodeTitle title={node.title} />
-              <Text text={node.description} className="grid__right-content" />
+              <NodeTitle title={nodeData.title} />
+              <Text
+                text={nodeData.description}
+                className="grid__right-content"
+              />
             </div>
           </span>
 
