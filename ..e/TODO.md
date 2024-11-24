@@ -1,8 +1,18 @@
+### 24.11
+
+- закончил tsc
+
+- [ ] - migration
+- [ ] - tests
+- [ ] - merge
+- [ ] - tsc
+- [ ] - merge
+
 ### 23.11
 
 - закончил TODO
 
-- [ ] - tsc - 29 errors
+- [x] - tsc - 29 errors
 
 ### 22.11
 
@@ -69,12 +79,8 @@
 - [x] - merge
 - [x] - todos
 - [x] - merge
-- [ ] - tsc
-- [ ] - merge
-- [ ] - tests
-- [ ] - merge
-- [ ] - tsc
-- [ ] - merge
+- [x] - tsc
+- [x] - merge
 
 - почему модели в @site?
 
