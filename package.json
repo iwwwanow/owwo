@@ -25,7 +25,7 @@
     "start": "NODE_ENV=production bun ./src/scripts/index.script.ts",
     "build": "bun ./src/scripts/build.script.ts",
     "test": "bun test",
-    "dk:main": "cd db/main/ && bun drizzle-kit"
+    "db:main": "cd db/main/ && bun drizzle-kit"
   },
   "override": {
     "@sinclair/typebox": "0.32.4"
