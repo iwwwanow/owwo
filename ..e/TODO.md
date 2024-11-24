@@ -2,7 +2,7 @@
 
 - закончил tsc
 
-- [ ] - migration
+- [x] - migration
 - [ ] - tests
 - [ ] - merge
 - [ ] - tsc
