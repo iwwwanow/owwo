@@ -20,7 +20,11 @@ const FileInputFieldset: FileInputFieldsetType = (props) => {
           <span class="editor-form__files-textarea-container">
             <Textarea id={TEXTAREA_ID} name={TEXTAREA_NAME} text={text} />
           </span>
-          <FileInput />
+          <FileInput
+            id="editor-form__file-input"
+            name="file-input"
+            accept="*"
+          />
         </CardContainer>
       </fieldset>
       <CssModule filepath={Style} />

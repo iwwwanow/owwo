@@ -22,7 +22,7 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
   return (
     <>
       <NodeExtendedLayout>
-        <NodeExtendedFragment content={content} />
+        {content ? <NodeExtendedFragment content={content} /> : <></>}
 
         <NodeExtendedPageNavigation
           siblings={siblings}

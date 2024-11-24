@@ -18,11 +18,15 @@ const MainInputsFieldset: MainInputsFieldsetType = (props) => {
       <fieldset class="main-inputs-fieldset">
         <Hr text="cover-input" />
         <CardContainer>
-          <FileInput name="cover-input" imageSrc={imageSrc} />
+          <FileInput
+            id="editor-form__cover-input"
+            accept="image/*"
+            name="cover-input"
+            imageSrc={imageSrc}
+          />
           <TextInput
             id="editor-form__title-input"
             name="title"
-            rows="auto"
             required={false}
             placeholder={TITLE_INPUT_PLACEHOLDER}
           />

@@ -7,7 +7,9 @@ const Textarea: TextareaType = (props) => {
   const {
     id,
     name,
-    rows = 8,
+    // TODO - check
+    // rows = 8,
+    rows = "auto",
     text = "",
     required = false,
     placeholder = "",
