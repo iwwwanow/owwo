@@ -3,9 +3,10 @@ import { sqliteTable } from "drizzle-orm/sqlite-core";
 
 import { USERNAME_COLUMN_NAME } from "./accounts.constants";
 import { PASSWORD_COLUMN_NAME } from "./accounts.constants";
+import { ACCOUNTS_TABLE_NAME } from "./accounts.constants";
 
 export const accountsTable = sqliteTable(
-  "accounts",
+  ACCOUNTS_TABLE_NAME,
   {
     id: t.int().primaryKey({ autoIncrement: true }),
     [USERNAME_COLUMN_NAME]: t.text().notNull().unique(),

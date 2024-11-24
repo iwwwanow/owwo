@@ -1,6 +1,6 @@
 import { defineConfig } from "drizzle-kit";
 
-import { DB_FILE_NAME } from "./drizzle.constants.js";
+import { DB_FILE_NAME } from "./drizzle.constants";
 
 export default defineConfig({
   out: "./drizzle",

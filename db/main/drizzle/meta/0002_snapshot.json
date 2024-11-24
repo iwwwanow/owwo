@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "9e4a6c44-d3f1-40e8-bac2-bd544391d5f2",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "75924700-6c73-4a6c-8b90-5b58227fead3",
+  "prevId": "b58cc779-764a-4ab1-8bbe-f4504fdb1191",
   "tables": {
     "accounts": {
       "name": "accounts",
@@ -55,7 +55,9 @@
   "enums": {},
   "_meta": {
     "schemas": {},
-    "tables": {},
+    "tables": {
+      "\"blablabla\"": "\"accounts\""
+    },
     "columns": {}
   },
   "internal": {
