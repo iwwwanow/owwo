@@ -1,9 +1,15 @@
+### 25.11
+
+- [ ] - захешировать пароль
+- [ ] - signup test
+  - [ ] - чтение из базы данных (accounts model). получение строки по юсернейму
+
 ### 24.11
 
 - закончил tsc
 
 - [x] - migration
-- [ ] - tests
+- [ ] - signup-tests
 - [ ] - merge
 - [ ] - tsc
 - [ ] - merge
