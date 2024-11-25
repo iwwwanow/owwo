@@ -6,7 +6,7 @@ class SignupController {
   static async processSignup(signupData: SignupDataType) {
     const account = new AccountModel(signupData);
     const writeDataResult = await account.writeData();
-    console.log("writeDataResult: ", writeDataResult);
+    return writeDataResult;
   }
 }
 
