@@ -19,7 +19,7 @@ const additionalFieldsSchema = t.Object({
 
 const signupBodyDto = t.Composite([tableFieldsSchema, additionalFieldsSchema]);
 
-export type SignupDataType = Static<typeof tableFieldsSchema>;
+export type AccountDataType = Static<typeof tableFieldsSchema>;
 export type SignupBodyDtoType = Static<typeof signupBodyDto>;
 
 export const signupDto = {
