@@ -1,3 +1,5 @@
+import { AccountModel } from "@site/models";
+import { password } from "bun";
 import { describe } from "bun:test";
 import { expect } from "bun:test";
 import { test } from "bun:test";
@@ -5,18 +7,23 @@ import { mock } from "bun:test";
 
 import { SignupController } from "./signup.controller";
 
+const randomUuid = self.crypto.randomUUID();
+
 const signupMockData = mock(() => ({
-  username: "mock-username",
-  password: "mock-password",
+  username: randomUuid,
+  password: randomUuid,
 }));
 
 describe("signup-controller-test", () => {
   test("process-signup-test", async () => {
-    const signupData = signupMockData();
-    await SignupController.processSignup(signupData);
+    const accountData = signupMockData();
+    await SignupController.processSignup(accountData);
 
-    // TODO получение результата записи, он должен совпадать с тем, что мы отправили на запись
+    const account = new AccountModel(accountData);
+    const accountDbData = await account.getData();
 
-    //     expect(2 + 2).toBe(5);
+    expect(accountDbData[0]).toMatchObject(accountData);
+
+    await account.deleteData();
   });
 });
