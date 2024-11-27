@@ -1,5 +1,4 @@
 import { AccountModel } from "@site/models";
-import { password } from "bun";
 import { describe } from "bun:test";
 import { expect } from "bun:test";
 import { test } from "bun:test";

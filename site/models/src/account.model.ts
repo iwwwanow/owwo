@@ -15,16 +15,24 @@ class AccountModel {
   }
 
   async getData() {
-    return mainDb
-      .select()
-      .from(accountsTable)
-      .where(eq(accountsTable.username, this.accountData.username));
+    return AccountModel.getData(this.accountData.username);
   }
 
   async deleteData() {
+    return AccountModel.deleteData(this.accountData.username);
+  }
+
+  static async deleteData(username: string): Promise<void> {
     return mainDb
       .delete(accountsTable)
-      .where(eq(accountsTable.username, this.accountData.username));
+      .where(eq(accountsTable.username, username));
+  }
+
+  static async getData(username: string) {
+    return mainDb
+      .select()
+      .from(accountsTable)
+      .where(eq(accountsTable.username, username));
   }
 }
 
