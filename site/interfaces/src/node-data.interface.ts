@@ -6,6 +6,7 @@ import type { NodeMetaType } from "./node-meta.interface";
 type NodeMainDataType = {
   title: string; // 80 symbols max
   description: NodeContentType; // 240 symbols max
+  // TODO заменить блоб на avatar-id/cover-id
   blob: string;
 };
 
