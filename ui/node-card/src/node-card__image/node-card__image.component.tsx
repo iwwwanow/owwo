@@ -1,11 +1,11 @@
-import { IMAGE_VARIANT_NAME } from "@globals/constants";
+import { ImageVariantName } from "@globals/constants";
 
 import type { NodeCardImageType } from "./node-card__image.interfaces";
 
 export const NodeCardImage: NodeCardImageType = ({ image }) => {
-  const imageWidth190pxSource = image[IMAGE_VARIANT_NAME.width190px];
-  const imageWidth190px2xSource = image[IMAGE_VARIANT_NAME.width190px2x];
-  const imageOriginalSource = image[IMAGE_VARIANT_NAME.original];
+  const imageWidth190pxSource = image[ImageVariantName.WIDTH_190PX];
+  const imageWidth190px2xSource = image[ImageVariantName.WIDTH_190PX_2X];
+  const imageOriginalSource = image[ImageVariantName.ORIGINAL];
 
   const image2xSrcset = `${imageWidth190pxSource}, ${imageWidth190px2xSource} 2x`;
 

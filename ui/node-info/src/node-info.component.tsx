@@ -1,4 +1,4 @@
-import { IMAGE_VARIANT_NAME } from "@globals/constants";
+import { ImageVariantName } from "@globals/constants";
 
 import { CssModule } from "@ui/css-module";
 import { Image } from "@ui/image";
@@ -36,7 +36,7 @@ const NodeInfo: NodeInfoType = (props) => {
             <Image
               image={image}
               id={id}
-              variant={IMAGE_VARIANT_NAME.width190px}
+              variant={ImageVariantName.WIDTH_190PX}
             />
           )}
           {isTextDataExist && (

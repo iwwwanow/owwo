@@ -1,4 +1,4 @@
-import { IMAGE_VARIANT_NAME } from "@globals/constants";
+import { ImageVariantName } from "@globals/constants";
 
 import { CssModule } from "@ui/css-module";
 import { Hr } from "@ui/hr";
@@ -11,7 +11,7 @@ import { MainInputsFieldset } from "./editor-form__main-inputs-fieldset";
 
 const EditorForm: EditorFormType = (props) => {
   const { nodeData } = props;
-  const imageSrc = nodeData.image?.[IMAGE_VARIANT_NAME.original];
+  const imageSrc = nodeData.image?.[ImageVariantName.ORIGINAL];
 
   return (
     <>
