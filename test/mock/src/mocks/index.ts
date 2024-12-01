@@ -6,3 +6,4 @@ export * from "./node-meta.mock";
 export * from "./symbol.mock";
 export * from "./node-image.mock";
 export * from "./children.mock";
+export * from "./node-date.mock";
