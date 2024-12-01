@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@ui/css-module": "workspace:*",
-    "@site/interfaces": "workspace:*"
+    "@site/interfaces": "workspace:*",
+    "@test/mock": "workspace:*"
   }
 }
