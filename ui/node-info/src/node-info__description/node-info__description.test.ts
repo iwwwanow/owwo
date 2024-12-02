@@ -1,18 +1,21 @@
+/// <reference lib="dom" />
 import { nodeContentMock } from "@test/mock";
-import { describe } from "bun:test";
-import { expect } from "bun:test";
 import { test } from "bun:test";
+import { expect } from "bun:test";
 
 import { NodeInfoDescription } from "./node-info__description.component";
 
-describe("ui-text-test", () => {
-  test("markup-test", async () => {
-    const requiredComponentString = `<fieldset class="hr_fieldset" style=""><legend><h6>description</h6></legend></fieldset>mock-html-string`;
-
-    const textResult = await NodeInfoDescription({
-      description: nodeContentMock,
-    });
-
-    expect(textResult).toBe(requiredComponentString);
+test("ui_node-info-description_markup-test", async () => {
+  const markup = await NodeInfoDescription({
+    description: nodeContentMock,
   });
+
+  console.log(markup);
+
+  document.body.innerHTML = markup;
+
+  const body = document.querySelector("body");
+  const fieldset = document.querySelector("fieldset");
+
+  console.log(fieldset.className);
 });

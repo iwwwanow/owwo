@@ -10,7 +10,7 @@ describe("ui-text-test", () => {
   test("markup-test", async () => {
     const requiredComponentString = `<div class="text ${classnameMock}">${nodeContentMock.html}</div>`;
 
-    const markupTest = new JsxMarkupTest({
+    const jsxMarkupTest = new JsxMarkupTest({
       requiredComponentString,
       renderedComponentString: await Text({
         text: nodeContentMock,
@@ -18,6 +18,6 @@ describe("ui-text-test", () => {
       }),
     });
 
-    markupTest.process();
+    jsxMarkupTest.process();
   });
 });
