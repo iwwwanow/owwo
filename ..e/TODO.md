@@ -1,3 +1,8 @@
+### 03.12
+
+- занимаюсь node-title-component.test
+- ориентируюсь на node-info-description.test
+
 ### 02.12
 
 - работаю над node-info-description-test
