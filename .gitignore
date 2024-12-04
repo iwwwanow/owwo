@@ -40,3 +40,4 @@ jspm_packages/
 .env.local
 
 *.sqlite
+/effectivnayarabota1
