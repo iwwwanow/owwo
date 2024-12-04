@@ -18,13 +18,11 @@ describe("ui, text", async () => {
 
   if (!textContainer) throw new Error("text component not found by classname");
 
-  console.log(markup);
-
-  test("test classname", async () => {
+  test("classname", async () => {
     expect(textContainer.className).toBe(`text ${classnameMock}`);
   });
 
-  test("test inner html", async () => {
+  test("inner html", async () => {
     expect(textContainer.innerHTML).toBe(nodeContentMock.html);
   });
 });

@@ -15,12 +15,12 @@ describe("ui, node info description", async () => {
   document.body.innerHTML = markup;
   const fieldset = document.querySelector("fieldset");
 
-  test("test hr content", async () => {
+  test("hr content", async () => {
     const h6 = document.querySelector("h6");
     expect(h6?.innerHTML).toBe(HR_TITLE);
   });
 
-  test("test inner html", async () => {
+  test("inner html", async () => {
     if (fieldset) {
       document.body.removeChild(fieldset);
       return expect(document.body.innerHTML).toBe(nodeContentMock.html);
