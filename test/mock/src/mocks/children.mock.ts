@@ -1,1 +1,1 @@
-export const childrenMock = "<>children-data</>";
+export const childrenMock = "children-data";
