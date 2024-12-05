@@ -1,8 +1,10 @@
 import { ImageVariantName } from "@globals/constants";
 
+import { IMAGE_ALT } from "./node-link-image_big.constants";
 import type { NodeLinkImageBigType } from "./node-link-image_big.interfaces";
 
 export const NodeLinkImageBig: NodeLinkImageBigType = ({ image }) => {
+  // TODO refactor
   const imageHeight32pxSource = image[ImageVariantName.HEIGHT_32PX];
   const imageHeight32px2xSource = image[ImageVariantName.HEIGHT_32PX_2X];
 
@@ -15,7 +17,7 @@ export const NodeLinkImageBig: NodeLinkImageBigType = ({ image }) => {
     <picture>
       <source srcset={imageSrcset} />
       <source srcset={image2xSrcset} />
-      <img src={image2xSrcset} alt="node-info__image" />
+      <img src={image2xSrcset} alt={IMAGE_ALT} />
     </picture>
   );
 };

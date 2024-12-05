@@ -4,7 +4,6 @@ import { expect } from "bun:test";
 import { test } from "bun:test";
 
 import { NodeNavigation } from "./node-navigation.component";
-import { nodeNavigationRequiredTestString } from "./node-navigation.required-test-string";
 
 describe("ui, node navigation", async () => {
   const CURRENT_NUMBER = 3;
