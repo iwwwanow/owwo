@@ -9,14 +9,14 @@ type NodeInfoProps = {
   isTitleNeeded?: boolean;
   isDescriptionNeeded?: boolean;
 
-  id?: string;
-  title?: string;
-  image?: NodeImageType;
-  author?: NodeDataType;
-  authors?: Array<NodeDataType>;
-  parents?: Array<NodeDataType>;
-  description?: NodeContentType;
-  date?: NodeDateType;
+  // id?: string;
+  // title?: string;
+  // image?: NodeImageType;
+  // author?: NodeDataType;
+  // authors?: Array<NodeDataType>;
+  // parents?: Array<NodeDataType>;
+  // description?: NodeContentType;
+  // date?: NodeDateType;
 };
 
 type NodeInfoType = (props: NodeInfoProps) => JSX.Element | null;

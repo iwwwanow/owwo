@@ -4,6 +4,8 @@ import { CssModule } from "@ui/css-module";
 import { Image } from "@ui/image";
 import { NodeTitle } from "@ui/node-title";
 
+import { hasTextDataHelper } from "./helpers";
+import { hasDataHelper } from "./helpers";
 import type { NodeInfoType } from "./node-info.interface";
 import Style from "./node-info.module.css";
 import { NodeInfoAuthor } from "./node-info__author";
@@ -12,7 +14,7 @@ import { NodeInfoDate } from "./node-info__date";
 import { NodeInfoDescription } from "./node-info__description";
 import { NodeInfoParents } from "./node-info__parents";
 
-const NodeInfo: NodeInfoType = (props) => {
+export const NodeInfo: NodeInfoType = (props) => {
   const { nodeData } = props;
   const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
 
@@ -25,10 +27,10 @@ const NodeInfo: NodeInfoType = (props) => {
   const parents = nodeData.meta.parents;
   const date = nodeData.date;
 
-  const isTextDataExist = !!title || !!authors || !!description || !!date;
-  const isDataExist = !!image || isTextDataExist;
+  const hasTextData = hasTextDataHelper({ title, authors, description, date });
+  const hasData = hasDataHelper({ image, hasTextData });
 
-  if (isDataExist) {
+  if (hasData) {
     return (
       <>
         <span class="node-info node-info__data-wrapper">
@@ -39,7 +41,7 @@ const NodeInfo: NodeInfoType = (props) => {
               variant={ImageVariantName.WIDTH_190PX}
             />
           )}
-          {isTextDataExist && (
+          {hasTextData && (
             <div class="node-info__data-container">
               {isTitleNeeded && <NodeTitle title={title} />}
               {author && <NodeInfoAuthor author={author} />}
@@ -59,5 +61,3 @@ const NodeInfo: NodeInfoType = (props) => {
 
   return null;
 };
-
-export { NodeInfo };
