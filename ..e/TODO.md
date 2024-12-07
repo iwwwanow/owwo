@@ -1,3 +1,7 @@
+### 07.12
+
+- занимаюсь ui node info test
+
 ### 06.12
 
 - работаю над ui, node info
