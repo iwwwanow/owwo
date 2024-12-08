@@ -7,10 +7,6 @@ import { test } from "bun:test";
 import { NodeInfo } from "./node-info.component";
 
 describe("ui, node info", async () => {
-  // hasData?
-  // - jsx.element
-  // - null
-
   const markup = await NodeInfo({
     nodeData: nodeDataMock,
   });
@@ -60,8 +56,6 @@ describe("ui, node info", async () => {
     expect(pictures.length).toBe(0);
   });
 
-  // node-info__data-container classname
-
   test("classname 2, has text true", async () => {
     const markup = await NodeInfo({
       nodeData: nodeDataMock,
@@ -75,7 +69,6 @@ describe("ui, node info", async () => {
     expect(nodeInfoDataConteiners.length).toBe(1);
   });
 
-  // hasTextdata - text data exist
   test("has text false", async () => {
     const markup = await NodeInfo({
       nodeData: {
@@ -140,7 +133,7 @@ describe("ui, node info", async () => {
     const hrFieldsetsArray = Array.from(hrFieldsets);
     const findedAuthorHr = hrFieldsetsArray.find((hrFieldset) => {
       const h6 = hrFieldset.querySelector("h6");
-      return h6?.innerHTML === "author:";
+      return h6?.innerHTML === "author";
     });
 
     expect(Boolean(findedAuthorHr)).toBe(true);
@@ -164,14 +157,177 @@ describe("ui, node info", async () => {
     const hrFieldsetsArray = Array.from(hrFieldsets);
     const findedAuthorHr = hrFieldsetsArray.find((hrFieldset) => {
       const h6 = hrFieldset.querySelector("h6");
-      return h6?.innerHTML === "author:";
+      return h6?.innerHTML === "author";
     });
 
     expect(Boolean(findedAuthorHr)).toBe(false);
   });
 
-  // authors?
+  test("autor true", async () => {
+    const NUMBER_OF_AUTHORS = 3;
+
+    const markup = await NodeInfo({
+      nodeData: {
+        ...nodeDataMock,
+        meta: {
+          ...nodeDataMock.meta,
+          authors: Array(NUMBER_OF_AUTHORS).fill(nodeDataMock),
+        },
+      },
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "authors";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(true);
+  });
+
+  test("autor false", async () => {
+    const markup = await NodeInfo({
+      nodeData: {
+        ...nodeDataMock,
+        meta: {
+          ...nodeDataMock.meta,
+        },
+      },
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "authors:";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(false);
+  });
+
   // parents?
-  // isDescriptionNeeded && description?.html
-  // date?
+  test("parents true", async () => {
+    const NUMBER_OF_PARENTS = 3;
+
+    const markup = await NodeInfo({
+      nodeData: {
+        ...nodeDataMock,
+        meta: {
+          ...nodeDataMock.meta,
+          parents: Array(NUMBER_OF_PARENTS).fill(nodeDataMock),
+        },
+      },
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "pages";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(true);
+  });
+
+  test("parents false", async () => {
+    const markup = await NodeInfo({
+      nodeData: {
+        ...nodeDataMock,
+        meta: {
+          ...nodeDataMock.meta,
+        },
+      },
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "pages";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(false);
+  });
+
+  test("is description needed true", async () => {
+    const markup = await NodeInfo({
+      nodeData: nodeDataMock,
+      isDescriptionNeeded: true,
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "description";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(true);
+  });
+
+  test("is description needed false", async () => {
+    const markup = await NodeInfo({
+      nodeData: nodeDataMock,
+      isDescriptionNeeded: false,
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "description";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(false);
+  });
+
+  test("date true", async () => {
+    const markup = await NodeInfo({
+      nodeData: nodeDataMock,
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "last-modification/creation date";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(true);
+  });
+
+  test("date false", async () => {
+    const markup = await NodeInfo({
+      nodeData: {
+        ...nodeDataMock,
+        date: undefined,
+      },
+    });
+    // @ts-expect-error
+    document.body.innerHTML = markup;
+
+    const hrFieldsets = document.querySelectorAll(".hr_fieldset");
+    const hrFieldsetsArray = Array.from(hrFieldsets);
+    const findedAuthorsHr = hrFieldsetsArray.find((hrFieldset) => {
+      const h6 = hrFieldset.querySelector("h6");
+      return h6?.innerHTML === "last-modification/creation date";
+    });
+
+    expect(Boolean(findedAuthorsHr)).toBe(false);
+  });
 });

@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "devDependencies": {
     "@ui/css-module": "workspace:*",
+    "@test/mock": "workspace:*",
     "@site/interfaces": "workspace:*"
   },
   "dependencies": {

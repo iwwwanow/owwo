@@ -13,6 +13,6 @@ describe("ui, node info author", async () => {
     const hr = document.querySelector(".hr_fieldset");
     const h6 = hr?.querySelector("h6");
     // TODO to constants
-    expect(h6?.innerHTML).toBe("author:");
+    expect(h6?.innerHTML).toBe("author");
   });
 });
