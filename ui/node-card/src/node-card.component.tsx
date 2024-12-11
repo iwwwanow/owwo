@@ -1,5 +1,6 @@
 import { CssModule } from "@ui/css-module";
 
+import { DescriptionFormatter } from "./formatters";
 import type { NodeCardType } from "./node-card.interface";
 import Style from "./node-card.module.css";
 import { NodeCardImage } from "./node-card__image";
@@ -13,9 +14,8 @@ const NodeCard: NodeCardType = (props) => {
   const { title } = nodeData;
   const { description } = nodeData;
 
-  if (description?.markdown.length > 80) {
-    description.markdown = description.markdown.slice(0, 80) + " ...";
-  }
+  const formattedDescription =
+    DescriptionFormatter.shortestPreview(description);
 
   return (
     <>
@@ -23,7 +23,10 @@ const NodeCard: NodeCardType = (props) => {
         {image && <NodeCardImage image={image} />}
 
         {(title || description) && (
-          <NodeCardTextContent title={title} description={description} />
+          <NodeCardTextContent
+            title={title}
+            description={formattedDescription}
+          />
         )}
       </a>
       <CssModule filepath={Style} />
