@@ -3,7 +3,7 @@ import { CssModule } from "@ui/css-module";
 import type { LoginFormType } from "./login-form.interface";
 import Style from "./login-form.module.css";
 
-const LoginForm: LoginFormType = (props) => {
+export const LoginForm: LoginFormType = (props) => {
   const { action, children } = props;
 
   return (
@@ -15,5 +15,3 @@ const LoginForm: LoginFormType = (props) => {
     </>
   );
 };
-
-export { LoginForm };

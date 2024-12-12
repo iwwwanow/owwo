@@ -11,6 +11,7 @@
     "@assets/svg": "workspace:*"
   },
   "devDependencies": {
-    "@ui/css-module": "workspace:*"
+    "@ui/css-module": "workspace:*",
+    "@test/mock": "workspace:*"
   }
 }

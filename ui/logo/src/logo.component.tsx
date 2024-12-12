@@ -2,15 +2,15 @@ import { LogoSvg } from "@assets/svg";
 
 import { CssModule } from "@ui/css-module";
 
+import { getClassname } from "./getters";
+import { HOME_ROUTE_PATH } from "./logo.constants";
 import type { LogoComponentType } from "./logo.interface";
 import Style from "./logo.module.css";
 
-const HOME_ROUTE_PATH = "/";
-
-const LogoComponent: LogoComponentType = (props) => {
+export const LogoComponent: LogoComponentType = (props) => {
   const { href = HOME_ROUTE_PATH, className = "" } = props;
 
-  const classNameString = `logo__container${className}`;
+  const classNameString = getClassname(className);
 
   return (
     <>
@@ -21,5 +21,3 @@ const LogoComponent: LogoComponentType = (props) => {
     </>
   );
 };
-
-export { LogoComponent };
