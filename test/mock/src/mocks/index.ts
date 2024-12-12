@@ -7,3 +7,4 @@ export * from "./symbol.mock";
 export * from "./node-image.mock";
 export * from "./children.mock";
 export * from "./node-date.mock";
+export * from "./href.mock";
