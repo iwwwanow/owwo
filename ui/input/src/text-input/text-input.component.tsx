@@ -3,7 +3,7 @@ import { CssModule } from "@ui/css-module";
 import type { TextInputType } from "./text-input.interface";
 import Style from "./text-input.module.css";
 
-const TextInput: TextInputType = (props) => {
+export const TextInput: TextInputType = (props) => {
   const { id, name, type = "text", required = false, placeholder = "" } = props;
   return (
     <>
@@ -25,5 +25,3 @@ const TextInput: TextInputType = (props) => {
     </>
   );
 };
-
-export { TextInput };

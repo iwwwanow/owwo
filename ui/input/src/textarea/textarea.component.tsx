@@ -1,5 +1,7 @@
 import { CssModule } from "@ui/css-module";
 
+import { TEXTAREA_CLASSNAME } from "./textarea.constants";
+import { TEXTAREA_WRAPPER_CLASSNAME } from "./textarea.constants";
 import type { TextareaType } from "./textarea.interface";
 import Style from "./textarea.module.css";
 
@@ -17,9 +19,9 @@ const Textarea: TextareaType = (props) => {
 
   return (
     <>
-      <p class="textarea__wrapper">
+      <p class={TEXTAREA_WRAPPER_CLASSNAME}>
         <textarea
-          class="textarea"
+          class={TEXTAREA_CLASSNAME}
           id={id}
           spellcheck="false"
           name={name}
