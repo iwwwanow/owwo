@@ -8,3 +8,8 @@ export * from "./node-image.mock";
 export * from "./children.mock";
 export * from "./node-date.mock";
 export * from "./href.mock";
+export * from "./name.mock";
+export * from "./id.mock";
+export * from "./number.mock";
+export * from "./text.mock";
+export * from "./placeholder.mock";
