@@ -3,7 +3,7 @@ import { CssModule } from "@ui/css-module";
 import type { FullGridWrapContainerType } from "./full-grid-wrap-container.interface";
 import Style from "./full-grid-wrap-container.module.css";
 
-const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
+export const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
   const { limit, children } = props;
   const style = limit ? `max-height: ${limit}px; overflow: hidden` : "";
 
@@ -16,5 +16,3 @@ const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
     </>
   );
 };
-
-export { FullGridWrapContainer };

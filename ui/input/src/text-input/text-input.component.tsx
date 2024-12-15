@@ -9,6 +9,7 @@ export const TextInput: TextInputType = (props) => {
     <>
       <p class="text-input__wrapper">
         <input
+          // TODO what? test too
           value="test-input-value"
           class="text-input"
           autocomplete="off"

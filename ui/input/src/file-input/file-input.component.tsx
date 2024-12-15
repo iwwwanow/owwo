@@ -3,7 +3,7 @@ import { CssModule } from "@ui/css-module";
 import type { FileInputType } from "./file-input.interface";
 import Style from "./file-input.module.css";
 
-const FileInput: FileInputType = (props) => {
+export const FileInput: FileInputType = (props) => {
   const { id, name, accept, required = false, imageSrc } = props;
 
   return (
@@ -16,18 +16,17 @@ const FileInput: FileInputType = (props) => {
       </label>
 
       <input
-        form="form"
         id={id}
+        class="file-input"
+        // TODO ?
+        form="form"
         required={required}
         name={name}
         accept={accept}
         type="file"
-        class="file-input"
       />
 
       <CssModule filepath={Style} />
     </>
   );
 };
-
-export { FileInput };

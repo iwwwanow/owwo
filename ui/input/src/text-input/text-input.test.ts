@@ -25,37 +25,37 @@ describe("ui, text input", async () => {
   if (!container) throw new Error("container not found by tagname");
 
   test("classname", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(container.className).toBe("text-input__wrapper");
   });
 
   const input = container.querySelector("input");
   if (!input) throw new Error("input not found by tagname");
 
   test("input value", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.value).toBe("test-input-value");
   });
   test("input classname", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.className).toBe("text-input");
   });
   test("input autocomplete", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.autocomplete).toBe("off");
   });
   test("input autocapitalize", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.getAttribute("autocapitalize")).toBe("off");
   });
   test("input required", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.required).toBe(requiredMock);
   });
   test("input id", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.id).toBe(idMock);
   });
   test("input name", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.name).toBe(nameMock);
   });
   test("input placeholder", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.placeholder).toBe(placeholderMock);
   });
   test("input type", async () => {
-    expect(container.className).toBe("card__wrapper border_light");
+    expect(input.type).toBe(typeMock);
   });
 });
