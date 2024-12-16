@@ -2,10 +2,11 @@ import { CssModule } from "@ui/css-module";
 
 import type { CardContainerType } from "./card-container.interface";
 import Style from "./card-container.module.css";
+import { getClassName } from "./getters";
 
-const CardContainer: CardContainerType = (props) => {
+export const CardContainer: CardContainerType = (props) => {
   let { className, children } = props;
-  className = `card-container${className ? " " + className : ""}`;
+  className = getClassName(className);
 
   return (
     <>
@@ -14,5 +15,3 @@ const CardContainer: CardContainerType = (props) => {
     </>
   );
 };
-
-export { CardContainer };

@@ -5,7 +5,7 @@ import { expect } from "bun:test";
 import { describe } from "bun:test";
 import { test } from "bun:test";
 
-import { getClassname } from "./getters";
+import { getClassName } from "./getters";
 import { LogoComponent } from "./logo.component";
 import { LOGO_CLASSNAME } from "./logo.constants";
 import { HOME_ROUTE_PATH } from "./logo.constants";
@@ -26,7 +26,7 @@ describe("ui, logo", async () => {
   });
 
   test("classname", async () => {
-    const expectedClassname = getClassname(classnameMock);
+    const expectedClassname = getClassName(classnameMock);
     expect(logoConteiner.className).toBe(expectedClassname);
   });
 
