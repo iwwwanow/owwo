@@ -5,14 +5,17 @@ import { CssModule } from "@ui/css-module";
 import type { PlusButtonType } from "./plus-button.interface";
 import Style from "./plus-button.module.css";
 
-const PlusButton: PlusButtonType = (props) => {
+export const PlusButton: PlusButtonType = (props) => {
   const { variant } = props;
 
   if (variant === "small") {
     return (
-      <button class="border button plus-button plus-button_variant_small">
-        <h3 class="plus-button__text_variant_small">+</h3>
-      </button>
+      <>
+        <button class="border button plus-button plus-button_variant_small">
+          <h3 class="plus-button__text_variant_small">+</h3>
+        </button>
+        <CssModule filepath={Style} />
+      </>
     );
   }
 
@@ -25,5 +28,3 @@ const PlusButton: PlusButtonType = (props) => {
     </>
   );
 };
-
-export { PlusButton };

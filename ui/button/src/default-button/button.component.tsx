@@ -3,7 +3,7 @@ import { CssModule } from "@ui/css-module";
 import type { ButtonType } from "./button.interface";
 import Style from "./button.module.css";
 
-const Button: ButtonType = (props) => {
+export const Button: ButtonType = (props) => {
   const { url, text } = props;
 
   if (url) {
@@ -25,5 +25,3 @@ const Button: ButtonType = (props) => {
     </>
   );
 };
-
-export { Button };
