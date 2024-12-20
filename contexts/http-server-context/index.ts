@@ -1,13 +1,11 @@
 export class HttpServerContext {
-  constructor({ HttpServierAdapter }) {
-    this.httpServierAdapter = new HttpServierAdapter();
+  constructor(adapter) {
+    this.adapter = new adapter();
   }
 
   async init() {
-    this.listen();
-  }
+    this.adapter.get("/", new Response("hello world"));
 
-  private async listen() {
-    this.httpServierAdapter.listen(400);
+    this.adapter.listen(3000);
   }
 }

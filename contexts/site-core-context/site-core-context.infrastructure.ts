@@ -1,9 +1,9 @@
-export class SiteCoreContextInfrastructure {
+export class SiteCoreContext {
   constructor({ HttpServerContext, HttpServierAdapter }) {
-    this.httpServerContext = new HttpServerContext({ HttpServierAdapter });
+    this.httpServerContext = new HttpServerContext(HttpServierAdapter);
   }
 
   async init() {
-    this.httpServerContext.init();
+    await this.httpServerContext.init();
   }
 }

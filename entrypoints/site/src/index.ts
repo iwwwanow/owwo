@@ -1,8 +1,8 @@
 import { BunHttpServerAdapter } from "../../../adapters/bun-http-server-adapter";
 import { HttpServerContext } from "../../../contexts/http-server-context";
-import { SiteCoreContextInfrastructure } from "../../../contexts/site-core-context";
+import { SiteCoreContext } from "../../../contexts/site-core-context";
 
-const siteCoreContext = new SiteCoreContextInfrastructure({
+const siteCoreContext = new SiteCoreContext({
   HttpServerContext,
   HttpServierAdapter: BunHttpServerAdapter,
 });
