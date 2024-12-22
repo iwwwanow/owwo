@@ -1,0 +1,16 @@
+{
+  "name": "@adapters/bun-http-server",
+  "version": "0.0.1",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@contexts/site-core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@contexts/site-core": "*"
+  }
+}

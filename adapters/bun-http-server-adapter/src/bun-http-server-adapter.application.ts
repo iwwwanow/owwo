@@ -1,6 +1,6 @@
-import type { HttpServerPort } from "../../contexts/http-server-context";
+import type { HttpServerAdapterPort } from "@contexts/site-core";
 
-export class BunHttpServerAdapter implements HttpServerPort {
+export class BunHttpServerAdapter implements HttpServerAdapterPort {
   static: Record<string, Response> = {};
 
   constructor() {}
