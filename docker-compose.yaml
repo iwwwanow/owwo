@@ -1,30 +1,9 @@
 services:
   site:
-    image: node:19
+    image: oven/bun:latest
     volumes:
       - ./:/workspace
-      - yarn:/.yarn/berry
     working_dir: /workspace
-    entrypoint: yarn workspace @site/app dev
+    entrypoint: bun site:dev
     ports:
       - "3000:3000"
-
-  blog:
-    image: node:19
-    volumes:
-      - ./:/workspace
-      - yarn:/.yarn/berry
-    working_dir: /workspace
-    entrypoint: yarn workspace @blog/app dev
-    ports:
-      - "3000:3000"
-
-  prices:
-    image: node:19
-    volumes:
-      - ./:/workspace
-      - yarn:/.yarn/berry
-    working_dir: /workspace
-    entrypoint: yarn workspace @prices/service-entrypoint dev
-    env_file:
-      - ./.env
