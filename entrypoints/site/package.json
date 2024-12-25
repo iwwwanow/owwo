@@ -9,8 +9,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@contexts/site-core": "workspace:*",
-    "@contexts/http-server": "workspace:*",
-    "@contexts/site-view": "workspace:*",
-		"@adapters/bun-http-server": "workspace:*"
+    "@adapters/bun-http-server": "workspace:*",
+    "@adapters/kitajs": "workspace:*"
   }
 }

@@ -1,11 +1,7 @@
-import type { HttpServerAdapterPortConstructor } from "./ports";
-import type { HttpServerContextPortConstructor } from "./ports";
-import type { SiteViewAdapterPortConstructor } from "./ports";
-import type { SiteViewContextPortConstructor } from "./ports";
+import type { HttpServerContext } from "./ports";
+import type { SiteViewContext } from "./ports";
 
 export interface SiteCoreContextConstructor {
-  HttpServerContext: HttpServerContextPortConstructor;
-  HttpServierAdapter: HttpServerAdapterPortConstructor;
-  SiteViewContext: SiteViewContextPortConstructor;
-  SiteViewAdapter: SiteViewAdapterPortConstructor;
+  HttpServerContext: Constructor<HttpServerContext>;
+  SiteViewContext: Constructor<SiteViewContext>;
 }

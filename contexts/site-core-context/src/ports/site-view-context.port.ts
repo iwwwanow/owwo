@@ -1,9 +1,5 @@
-import type { SiteViewAdapterPortConstructor } from "./site-view-adapter.port";
-
-export interface SiteViewContextPortConstructor {
-  new (adapter: SiteViewAdapterPortConstructor): SiteViewContextPort;
-}
-
-export interface SiteViewContextPort {
+export interface SiteViewContext {
   init(): Promise<void>;
+
+  getHomePage(homePageData): Promise<string>;
 }

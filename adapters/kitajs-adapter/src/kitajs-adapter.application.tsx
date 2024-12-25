@@ -1,8 +1,11 @@
-import type { SiteViewAdapterPort } from "@contexts/site-core";
+import type { SiteViewContext } from "@contexts/site-core";
 
-export class KitajsAdapter implements SiteViewAdapterPort {
-  // TODO type
-  async getHomePage(homePageData: any): Promise<string> {
+export class KitajsAdapter implements SiteViewContext {
+  async init(): Promise<void> {
+    console.log("init kita js adapter");
+  }
+
+  async getHomePage(homePageData): Promise<string> {
     return "<h1>home-page</h1>";
   }
 }

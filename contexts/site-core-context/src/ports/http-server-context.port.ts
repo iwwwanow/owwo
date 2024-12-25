@@ -1,9 +1,9 @@
-import type { HttpServerAdapterPortConstructor } from "./http-server-adapter.port";
-
-export interface HttpServerContextPortConstructor {
-  new (adapter: HttpServerAdapterPortConstructor): HttpServerContextPort;
+export interface InitProps {
+  port: number;
 }
 
-export interface HttpServerContextPort {
-  init(): Promise<void>;
+export abstract class HttpServerContext {
+  abstract init({ port }: InitProps): Promise<void>;
+  abstract listen(port: number): { url: URL };
+  abstract get(route: string, response: Response): void;
 }
