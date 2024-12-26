@@ -1,12 +1,9 @@
-import type { HttpServerContext } from "@contexts/site-core";
+import type { HttpServerPort } from "@contexts/site-core";
 import type { InitProps } from "@contexts/site-core";
+import type { RouteHandlerType } from "@contexts/site-core";
 
-export class BunHttpServerAdapter implements HttpServerContext {
-  private isInitialazed: boolean = false;
-  private isRoutesInitialazed: boolean = false;
-  private isListening: boolean = false;
-
-  static: Record<string, Response> = {};
+export class BunHttpServerAdapter implements HttpServerPort {
+  routes: Record<string, RouteHandlerType> = {};
 
   async init({ port }: InitProps) {
     this.listen(port);
@@ -14,13 +11,23 @@ export class BunHttpServerAdapter implements HttpServerContext {
   }
 
   listen(port: number) {
+    const adapterRoutes = this.routes;
+
     const { url } = Bun.serve({
       port: port,
-      static: this.static,
       // static: {
       //   "/": new Response("Hello World"),
       // },
-      fetch(_req: Request) {
+      fetch(req: Request) {
+        const url = new URL(req.url);
+        console.log(url);
+        const { pathname } = url;
+
+        const findedRouteHandler = adapterRoutes[pathname];
+        if (findedRouteHandler) {
+          return findedRouteHandler(req);
+        }
+
         return new Response("404!");
       },
     });
@@ -28,7 +35,8 @@ export class BunHttpServerAdapter implements HttpServerContext {
     return { url };
   }
 
-  get(route: string, response: Response) {
-    this.static[route] = response;
+  get(route: string, routeHandler: RouteHandlerType) {
+    this.routes[route] = routeHandler;
+    return this;
   }
 }

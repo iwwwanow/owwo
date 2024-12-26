@@ -1,6 +1,6 @@
-import type { SiteViewContext } from "@contexts/site-core";
+import type { SiteViewPort } from "@contexts/site-core";
 
-export class KitajsAdapter implements SiteViewContext {
+export class KitajsAdapter implements SiteViewPort {
   async init(): Promise<void> {
     console.log("init kita js adapter");
   }
