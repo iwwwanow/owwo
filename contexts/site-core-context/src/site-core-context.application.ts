@@ -1,13 +1,11 @@
-import type { HttpServerContext } from "./ports";
-import type { SiteViewContext } from "./ports";
+import type { HttpServerPort } from "./ports";
+import type { SiteViewPort } from "./ports";
+import { SITE_PORT } from "./site-core-context.constants";
 import type { SiteCoreContextConstructor } from "./site-core-context.interfaces";
 
-// TODO env & const & fallback
-const PORT = 3000;
-
 export class SiteCoreContext {
-  httpServerContext: HttpServerContext;
-  siteViewContext: SiteViewContext;
+  httpServerContext: HttpServerPort;
+  siteViewContext: SiteViewPort;
 
   constructor({
     HttpServerContext,
@@ -20,7 +18,12 @@ export class SiteCoreContext {
   async init() {
     await this.siteViewContext.init();
 
-    this.httpServerContext.get("/", new Response("helloooo world"));
-    await this.httpServerContext.init({ port: PORT });
+    this.httpServerContext
+      .get("/", async (_) => new Response("helloooo world"))
+      .get("/bla", async (_) => new Response("bla1"))
+      .get("/blaaa", async (_) => new Response("bla2"))
+      .get("/bla/:symbol", async (_) => new Response("bla2"));
+
+    await this.httpServerContext.init({ port: SITE_PORT });
   }
 }
