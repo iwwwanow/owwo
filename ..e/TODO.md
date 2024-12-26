@@ -1,6 +1,10 @@
+# 26.12
+
+- [ ] - compare route helper
+
 # 25.12
 
-- [ ] - make protos for contexts
+- [-] - make protos for contexts
 - [ ] - make dynamic routes with request obj
 - [ ] - how i can check get routes before initial?
 
