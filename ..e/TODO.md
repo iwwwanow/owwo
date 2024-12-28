@@ -1,3 +1,8 @@
+# 27.12
+
+- [ ] - compare route helper
+- getSlugHelper
+
 # 26.12
 
 - [ ] - compare route helper
