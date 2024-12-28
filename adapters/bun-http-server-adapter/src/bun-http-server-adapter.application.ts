@@ -2,6 +2,8 @@ import type { HttpServerPort } from "@contexts/site-core";
 import type { InitProps } from "@contexts/site-core";
 import type { RouteHandlerType } from "@contexts/site-core";
 
+import { checkSlugHelper } from "./helpers";
+
 export class BunHttpServerAdapter implements HttpServerPort {
   routes: Record<string, RouteHandlerType> = {};
 
@@ -20,7 +22,6 @@ export class BunHttpServerAdapter implements HttpServerPort {
       // },
       fetch(req: Request) {
         const url = new URL(req.url);
-        console.log(url);
         const { pathname } = url;
 
         const findedRouteHandler = adapterRoutes[pathname];
@@ -35,8 +36,16 @@ export class BunHttpServerAdapter implements HttpServerPort {
     return { url };
   }
 
+  // /\/bla\/\S+/gm
   get(route: string, routeHandler: RouteHandlerType) {
-    this.routes[route] = routeHandler;
+    const hasSlug = checkSlugHelper(route);
+
+    if (!hasSlug) {
+      this.routes[route] = routeHandler;
+    } else {
+      console.log(`${route} has slug`);
+    }
+
     return this;
   }
 }

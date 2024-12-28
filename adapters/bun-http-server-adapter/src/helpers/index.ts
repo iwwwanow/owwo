@@ -1,1 +1,1 @@
-export * from "./compare-route.helper";
+export * from "./check-slug.helper";
