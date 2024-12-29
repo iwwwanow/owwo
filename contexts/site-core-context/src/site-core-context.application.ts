@@ -22,7 +22,8 @@ export class SiteCoreContext {
       .get("/", async (_) => new Response("helloooo world"))
       .get("/bla", async (_) => new Response("bla1"))
       .get("/blaaa", async (_) => new Response("bla2"))
-      .get("/bla/:symbol", async (_) => new Response("bla2"));
+      .get("/bla/:symbol", async (_) => new Response("bla3"))
+      .get("/bla/:symbol/bla2/:symbol2", async (_) => new Response("bla4"));
 
     await this.httpServerContext.init({ port: SITE_PORT });
   }

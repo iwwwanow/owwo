@@ -3,6 +3,8 @@ import type { InitProps } from "@contexts/site-core";
 import type { RouteHandlerType } from "@contexts/site-core";
 
 import { checkSlugHelper } from "./helpers";
+import { getRouteSlugsHelper } from "./helpers";
+import { getRouteRegexHelper } from "./helpers";
 
 export class BunHttpServerAdapter implements HttpServerPort {
   routes: Record<string, RouteHandlerType> = {};
@@ -43,7 +45,9 @@ export class BunHttpServerAdapter implements HttpServerPort {
     if (!hasSlug) {
       this.routes[route] = routeHandler;
     } else {
-      console.log(`${route} has slug`);
+      const routeSlugs = getRouteSlugsHelper(route);
+      const routeRegex = getRouteRegexHelper(route, routeSlugs);
+      console.log(routeRegex);
     }
 
     return this;
