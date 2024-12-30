@@ -18,12 +18,23 @@ export class SiteCoreContext {
   async init() {
     await this.siteViewContext.init();
 
-    this.httpServerContext
-      .get("/", async (_) => new Response("helloooo world"))
-      .get("/bla", async (_) => new Response("bla1"))
-      .get("/blaaa", async (_) => new Response("bla2"))
-      .get("/bla/:symbol", async (_) => new Response("bla3"))
-      .get("/bla/:symbol/bla2/:symbol2", async (_) => new Response("bla4"));
+    this.httpServerContext.addRoute(
+      "/",
+      async (_) => new Response("home page"),
+      { slug: "nodeId" },
+    );
+
+    this.httpServerContext.addRoute(
+      "/node",
+      async (_) => new Response("home page"),
+      { slug: "nodeId" },
+    );
+
+    this.httpServerContext.addRoute(
+      "/favicon.ico",
+      // TODO
+      async (_) => new Response("favicon"),
+    );
 
     await this.httpServerContext.init({ port: SITE_PORT });
   }

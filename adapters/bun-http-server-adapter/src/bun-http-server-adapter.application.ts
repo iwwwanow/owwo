@@ -1,13 +1,16 @@
 import type { HttpServerPort } from "@contexts/site-core";
 import type { InitProps } from "@contexts/site-core";
 import type { RouteHandlerType } from "@contexts/site-core";
+import type { RouteOptionsType } from "@contexts/site-core";
 
-import { checkSlugHelper } from "./helpers";
-import { getRouteSlugsHelper } from "./helpers";
-import { getRouteRegexHelper } from "./helpers";
+type RouteType = {
+  route: string;
+  handler: RouteHandlerType;
+  options: RouteOptionsType;
+};
 
 export class BunHttpServerAdapter implements HttpServerPort {
-  routes: Record<string, RouteHandlerType> = {};
+  routes: Array<RouteType> = [];
 
   async init({ port }: InitProps) {
     this.listen(port);
@@ -26,9 +29,36 @@ export class BunHttpServerAdapter implements HttpServerPort {
         const url = new URL(req.url);
         const { pathname } = url;
 
-        const findedRouteHandler = adapterRoutes[pathname];
-        if (findedRouteHandler) {
-          return findedRouteHandler(req);
+        const findRoute = (pathname: string) => {
+          const findedRoute = adapterRoutes.find((route) => {
+            return pathname.includes(route.route);
+          });
+          return findedRoute;
+        };
+
+        const getSlugValue = (pathname, route) => {
+          const slug = pathname
+            .split(route)
+            .filter((i) => i)
+            .at(-1);
+          return slug;
+        };
+
+        const findedRoute = findRoute(pathname);
+        if (findedRoute) {
+          if (findedRoute?.options?.slug) {
+            const findedRouteSlugValue = getSlugValue(
+              pathname,
+              findedRoute.route,
+            );
+            console.log(findedRoute.route, findedRouteSlugValue);
+            return findedRoute.handler({
+              params: { [findedRoute.options.slug]: findedRouteSlugValue },
+              ...req,
+            });
+          }
+
+          return findedRoute.handler(req);
         }
 
         return new Response("404!");
@@ -38,18 +68,28 @@ export class BunHttpServerAdapter implements HttpServerPort {
     return { url };
   }
 
-  // /\/bla\/\S+/gm
-  get(route: string, routeHandler: RouteHandlerType) {
-    const hasSlug = checkSlugHelper(route);
+  addRoute(
+    route: string,
+    routeHandler: RouteHandlerType,
+    routeOptions: RouteOptionsType,
+  ) {
+    // TODO check route exist and error if exist
 
-    if (!hasSlug) {
-      this.routes[route] = routeHandler;
-    } else {
-      const routeSlugs = getRouteSlugsHelper(route);
-      const routeRegex = getRouteRegexHelper(route, routeSlugs);
-      console.log(routeRegex);
-    }
+    this.routes.push({
+      route,
+      handler: routeHandler,
+      options: routeOptions,
+    });
 
-    return this;
+    const routesSortFunction = (routeA: RouteType, routeB: RouteType) => {
+      const filtredRouteA = routeA.route.split("/").filter((item) => item);
+      const filtredRouteB = routeB.route.split("/").filter((item) => item);
+
+      if (filtredRouteA.length < filtredRouteB.length) return 1;
+      else if (filtredRouteA.length > filtredRouteB.length) return -1;
+      return 0;
+    };
+
+    this.routes = this.routes.sort(routesSortFunction);
   }
 }
