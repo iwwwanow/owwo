@@ -16,25 +16,40 @@ export class SiteCoreContext {
   }
 
   async init() {
+    // TODO объявление 404 page - обязательное
+    // TODO можно сделать это объявление обязательным при инициализации
+
     await this.siteViewContext.init();
 
-    this.httpServerContext.addRoute(
-      "/",
-      async (_) => new Response("home page"),
-      { slug: "nodeId" },
-    );
+    const homePageHandler = async (req: Request) => {
+      const reqUrl = new URL(req.url);
+      const { pathname } = reqUrl;
+      const nodeId = pathname.split("/").filter((i) => i)[0];
 
-    this.httpServerContext.addRoute(
-      "/node",
-      async (_) => new Response("home page"),
-      { slug: "nodeId" },
-    );
+      if (nodeId) {
+        return new Response(`node page ${nodeId}`);
+      }
 
-    this.httpServerContext.addRoute(
-      "/favicon.ico",
+      return new Response("index page");
+    };
+
+    this.httpServerContext.addRoute({
+      path: "/",
+      handler: homePageHandler,
+      options: { slug: true },
+    });
+
+    this.httpServerContext.addRoute({
+      path: "/node",
+      handler: async (_) => new Response("node page"),
+      options: { slug: true },
+    });
+
+    this.httpServerContext.addRoute({
+      path: "/favicon.ico",
       // TODO
-      async (_) => new Response("favicon"),
-    );
+      handler: async (_) => new Response("favicon"),
+    });
 
     await this.httpServerContext.init({ port: SITE_PORT });
   }
