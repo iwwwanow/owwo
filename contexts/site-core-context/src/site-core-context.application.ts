@@ -1,17 +1,16 @@
 import type { HttpServerPort } from "./ports";
 import type { SiteViewPort } from "./ports";
-import { indexPageRouteHandler } from "./route-handlers";
-import { loginPageRouteHandler } from "./route-handlers";
-import { signupPageRouteHandler } from "./route-handlers";
-import { aboutPageRouteHandler } from "./route-handlers";
-import { faviconRouteHandler } from "./route-handlers";
-import { publicRouteHandler } from "./route-handlers";
+import { PageRoutesService } from "./services";
+import { StaticRoutesService } from "./services";
+import type { Service } from "./services/service.interface";
 import { SITE_PORT } from "./site-core-context.constants";
 import type { SiteCoreContextConstructor } from "./site-core-context.interfaces";
 
 export class SiteCoreContext {
   httpServerContext: HttpServerPort;
   siteViewContext: SiteViewPort;
+  pageRoutesService: Service;
+  staticRoutesService: Service;
 
   constructor({
     HttpServerContext,
@@ -19,6 +18,13 @@ export class SiteCoreContext {
   }: SiteCoreContextConstructor) {
     this.httpServerContext = new HttpServerContext();
     this.siteViewContext = new SiteViewContext();
+
+    this.pageRoutesService = new PageRoutesService({
+      httpServerContext: this.httpServerContext,
+    });
+    this.staticRoutesService = new StaticRoutesService({
+      httpServerContext: this.httpServerContext,
+    });
   }
 
   async init() {
@@ -28,35 +34,7 @@ export class SiteCoreContext {
 
     await this.siteViewContext.init();
 
-    this.httpServerContext.addRoute({
-      path: "/",
-      handler: indexPageRouteHandler,
-    });
-
-    this.httpServerContext.addRoute({
-      path: "/login",
-      handler: loginPageRouteHandler,
-    });
-
-    this.httpServerContext.addRoute({
-      path: "/signup",
-      handler: signupPageRouteHandler,
-    });
-
-    this.httpServerContext.addRoute({
-      path: "/about",
-      handler: aboutPageRouteHandler,
-    });
-
-    this.httpServerContext.addRoute({
-      path: "/favicon.ico",
-      handler: faviconRouteHandler,
-    });
-
-    this.httpServerContext.addRoute({
-      path: "/public",
-      handler: publicRouteHandler,
-    });
+    this.pageRoutesService.init();
 
     await this.httpServerContext.init({ port: SITE_PORT });
   }
