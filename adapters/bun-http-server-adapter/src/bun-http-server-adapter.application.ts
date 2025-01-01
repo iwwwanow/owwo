@@ -27,11 +27,15 @@ export class BunHttpServerAdapter implements HttpServerPort {
 
         const findedRoute = findRouteHelper(routes, pathname);
 
-        if (findedRoute) {
-          return findedRoute.handler(req);
+        try {
+          if (findedRoute) {
+            return findedRoute.handler(req);
+          }
+        } catch (error) {
+          if ((error.code = 404)) return new Response("page not found");
         }
 
-        return new Response("404!");
+        return new Response("internal server error");
       },
     });
 
