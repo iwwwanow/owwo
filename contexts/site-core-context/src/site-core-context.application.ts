@@ -28,13 +28,10 @@ export class SiteCoreContext {
   }
 
   async init() {
-    // TODO объявление 404 page - обязательное
-    // TODO для 404 на уровне адаптера добавить tryCatch блок, который будет в случае ошибки возвращать пользователю страницу 404, например. эти страницы и эти хендлеры добавляются при инициализации модуля
-    // TODO можно сделать это объявление обязательным при инициализации
-
     await this.siteViewContext.init();
 
     this.pageRoutesService.init();
+    this.staticRoutesService.init();
 
     await this.httpServerContext.init({ port: SITE_PORT });
   }
