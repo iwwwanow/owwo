@@ -8,16 +8,13 @@ interface HanderRequest extends Request {
   };
 }
 
-export type RouteHandlerType = (req: HanderRequest) => Promise<Response>;
-
-export type RouteOptionsType = {
-  slug?: boolean;
-};
+export type RouteHandlerType = (
+  req: HanderRequest,
+) => Promise<Response> | Response;
 
 export type RouteType = {
   path: string;
   handler: RouteHandlerType;
-  options?: RouteOptionsType;
 };
 
 export abstract class HttpServerPort {
