@@ -1,5 +1,11 @@
 import type { HttpServerPort } from "./ports";
 import type { SiteViewPort } from "./ports";
+import { indexPageRouteHandler } from "./route-handlers";
+import { loginPageRouteHandler } from "./route-handlers";
+import { signupPageRouteHandler } from "./route-handlers";
+import { aboutPageRouteHandler } from "./route-handlers";
+import { faviconRouteHandler } from "./route-handlers";
+import { publicRouteHandler } from "./route-handlers";
 import { SITE_PORT } from "./site-core-context.constants";
 import type { SiteCoreContextConstructor } from "./site-core-context.interfaces";
 
@@ -17,38 +23,39 @@ export class SiteCoreContext {
 
   async init() {
     // TODO объявление 404 page - обязательное
+    // TODO для 404 на уровне адаптера добавить tryCatch блок, который будет в случае ошибки возвращать пользователю страницу 404, например. эти страницы и эти хендлеры добавляются при инициализации модуля
     // TODO можно сделать это объявление обязательным при инициализации
 
     await this.siteViewContext.init();
 
-    const homePageHandler = async (req: Request) => {
-      const reqUrl = new URL(req.url);
-      const { pathname } = reqUrl;
-      const nodeId = pathname.split("/").filter((i) => i)[0];
-
-      if (nodeId) {
-        return new Response(`node page ${nodeId}`);
-      }
-
-      return new Response("index page");
-    };
-
     this.httpServerContext.addRoute({
       path: "/",
-      handler: homePageHandler,
-      options: { slug: true },
+      handler: indexPageRouteHandler,
     });
 
     this.httpServerContext.addRoute({
-      path: "/node",
-      handler: async (_) => new Response("node page"),
-      options: { slug: true },
+      path: "/login",
+      handler: loginPageRouteHandler,
+    });
+
+    this.httpServerContext.addRoute({
+      path: "/signup",
+      handler: signupPageRouteHandler,
+    });
+
+    this.httpServerContext.addRoute({
+      path: "/about",
+      handler: aboutPageRouteHandler,
     });
 
     this.httpServerContext.addRoute({
       path: "/favicon.ico",
-      // TODO
-      handler: async (_) => new Response("favicon"),
+      handler: faviconRouteHandler,
+    });
+
+    this.httpServerContext.addRoute({
+      path: "/public",
+      handler: publicRouteHandler,
     });
 
     await this.httpServerContext.init({ port: SITE_PORT });
