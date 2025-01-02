@@ -1,5 +1,11 @@
+export type HttpServerErrorHandlers = {
+  pageNotFoundErrorHandler: RouteHandlerType;
+  internalServerErrorHandler: RouteHandlerType;
+};
+
 export interface InitProps {
   port: number;
+  errorHandlers: HttpServerErrorHandlers;
 }
 
 interface HanderRequest extends Request {
