@@ -1,9 +1,9 @@
+import type { Service } from "../interfaces";
 import type { HttpServerPort } from "../ports";
 import { indexPageRouteHandler } from "../route-handlers";
 import { loginPageRouteHandler } from "../route-handlers";
 import { signupPageRouteHandler } from "../route-handlers";
 import { aboutPageRouteHandler } from "../route-handlers";
-import type { Service } from "./service.interface";
 
 export class PageRoutesService implements Service {
   httpServerContext: HttpServerPort;

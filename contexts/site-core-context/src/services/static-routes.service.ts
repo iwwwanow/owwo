@@ -1,7 +1,7 @@
+import type { Service } from "../interfaces/service.interface";
 import type { HttpServerPort } from "../ports";
 import { faviconRouteHandler } from "../route-handlers";
 import { publicRouteHandler } from "../route-handlers";
-import type { Service } from "./service.interface";
 
 export class StaticRoutesService implements Service {
   httpServerContext: HttpServerPort;
