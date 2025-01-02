@@ -1,4 +1,6 @@
-export class NotFoundError extends Error {
+import { SiteError } from "../interfaces";
+
+export class NotFoundError extends SiteError {
   code: number;
 
   constructor() {
