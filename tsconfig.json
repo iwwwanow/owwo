@@ -4,16 +4,23 @@
 
     // Enable latest features
     "lib": ["ESNext", "DOM"],
+
     "target": "ESNext",
+
     "module": "ESNext",
+
     "moduleDetection": "force",
     "jsx": "react-jsx",
-    "jsxImportSource": "@kitajs/html",
-    "plugins": [
-      { "name": "@kitajs/ts-html-plugin" },
-      { "name": "typescript-plugin-css-modules" }
-    ],
-    "types": ["@kitajs/html/htmx.d.ts"],
+
+    // "jsxImportSource": "@kitajs/html",
+
+    // "plugins": [
+    //   { "name": "@kitajs/ts-html-plugin" },
+    //   { "name": "typescript-plugin-css-modules" }
+    // ],
+    // "types": ["@kitajs/html/htmx.d.ts"],
+
+    "types": ["node", "bun"],
     "allowJs": false,
 
     // Bundler mode
@@ -32,5 +39,13 @@
     "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": true
   },
+
+  "include": [
+    "Globals.d.ts",
+    "entrypoints/**/*",
+    "contexts/**/*",
+    "adapters/**/*"
+  ],
+
   "exclude": ["*.svg.tsx"]
 }
