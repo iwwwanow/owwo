@@ -5,7 +5,7 @@ export class KitajsAdapter implements SiteViewPort {
     console.log("init kita js adapter");
   }
 
-  async getHomePage(homePageData): Promise<string> {
+  async getHomePage(): Promise<string> {
     return "<h1>home-page</h1>";
   }
 }
