@@ -20,17 +20,18 @@ export class SiteCoreContext {
   }: SiteCoreContextConstructor) {
     this.httpServerContext = new HttpServerContext();
     this.siteViewContext = new SiteViewContext();
-
-    this.pageRoutesService = new PageRoutesService({
-      httpServerContext: this.httpServerContext,
-    });
-    this.staticRoutesService = new StaticRoutesService({
-      httpServerContext: this.httpServerContext,
-    });
   }
 
   async init() {
     await this.siteViewContext.init();
+
+    this.pageRoutesService = new PageRoutesService({
+      httpServerContext: this.httpServerContext,
+      siteViewContext: this.siteViewContext,
+    });
+    this.staticRoutesService = new StaticRoutesService({
+      httpServerContext: this.httpServerContext,
+    });
 
     this.pageRoutesService.init();
     this.staticRoutesService.init();

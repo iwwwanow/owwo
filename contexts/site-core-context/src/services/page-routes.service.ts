@@ -1,5 +1,6 @@
 import type { Service } from "../interfaces";
 import type { HttpServerPort } from "../ports";
+import type { SiteViewPort } from "../ports";
 import { indexPageRouteHandler } from "../route-handlers";
 import { loginPageRouteHandler } from "../route-handlers";
 import { signupPageRouteHandler } from "../route-handlers";
@@ -7,9 +8,17 @@ import { aboutPageRouteHandler } from "../route-handlers";
 
 export class PageRoutesService implements Service {
   httpServerContext: HttpServerPort;
+  siteViewContext: SiteViewPort;
 
-  constructor({ httpServerContext }: { httpServerContext: HttpServerPort }) {
+  constructor({
+    httpServerContext,
+    siteViewContext,
+  }: {
+    httpServerContext: HttpServerPort;
+    siteViewContext: SiteViewPort;
+  }) {
     this.httpServerContext = httpServerContext;
+    this.siteViewContext = siteViewContext;
   }
 
   init() {
@@ -22,7 +31,7 @@ export class PageRoutesService implements Service {
   private initIndexPageRoute() {
     this.httpServerContext.addRoute({
       path: "/",
-      handler: indexPageRouteHandler,
+      handler: (req) => indexPageRouteHandler(req, this.siteViewContext),
     });
   }
 

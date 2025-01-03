@@ -1,6 +1,10 @@
 import { NotFoundError } from "../errors";
+import type { SiteViewPort } from "../ports";
 
-export const indexPageRouteHandler = (req: Request) => {
+export const indexPageRouteHandler = async (
+  req: Request,
+  siteViewContext: SiteViewPort,
+) => {
   const reqUrl = new URL(req.url);
   const { pathname } = reqUrl;
   const params = pathname.split("/").filter((i) => i);
@@ -13,5 +17,10 @@ export const indexPageRouteHandler = (req: Request) => {
     return new Response(`node page ${nodeId}`);
   }
 
-  return new Response("index page");
+  const homePageMarkup = await siteViewContext.getHomePage();
+  return new Response(homePageMarkup, {
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
 };
