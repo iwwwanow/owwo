@@ -1,3 +1,5 @@
+preload='./adapters/svelte-adapter/src/plugins/svelte.plugin.ts'
+
 [test]
 preload = "./happydom.ts"
 # coverage = true
