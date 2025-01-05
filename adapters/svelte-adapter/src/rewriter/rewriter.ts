@@ -1,5 +1,3 @@
-import { defaultBlankHtml } from "test-templates";
-
 import { AppendBodyRewriter } from "./append-body.rewriter";
 import { AppendCssRewriter } from "./append-css.rewriter";
 import { AppendHeadRewriter } from "./append-head.rewriter";
@@ -13,12 +11,12 @@ export class SvelteRewriter {
   body?: string;
   css?: string;
 
-  constructor(blankHtmlPath?: string) {
+  constructor(blankHtmlPath: string) {
     // TODO можно импортировать сразу html-страницу,
     // без дополнительных преобразований
     // см документацию bun
 
-    this.blankHtmlPath = blankHtmlPath || defaultBlankHtml;
+    this.blankHtmlPath = blankHtmlPath;
   }
 
   async init() {

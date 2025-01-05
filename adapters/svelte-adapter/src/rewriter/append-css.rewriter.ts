@@ -1,4 +1,4 @@
-class AppendCssRewriter {
+export class AppendCssRewriter {
   constructor(appendContent) {
     this.appendContent = appendContent;
   }
@@ -7,5 +7,3 @@ class AppendCssRewriter {
     element.append(this.appendContent, { html: true });
   }
 }
-
-export { AppendCssRewriter };

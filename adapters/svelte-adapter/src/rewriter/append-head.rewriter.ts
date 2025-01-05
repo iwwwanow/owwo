@@ -1,4 +1,4 @@
-class AppendHeadRewriter
+export class AppendHeadRewriter
   implements HTMLRewriterTypes.HTMLRewriterElementContentHandlers
 {
   appendContent: string;
@@ -12,5 +12,3 @@ class AppendHeadRewriter
     element.append(this.appendContent, { html: true });
   }
 }
-
-export { AppendHeadRewriter };

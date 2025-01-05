@@ -1,4 +1,4 @@
-type SvelteComponentType = {
+export type SvelteComponentType = {
   render: RenderType;
   $$render: VoidFunction;
 };
@@ -15,7 +15,4 @@ type RenderReturnType = {
   };
 };
 
-type PropsType = Record<string, any>;
-
-export type { SvelteComponentType };
-export type { PropsType };
+export type PropsType = Record<string, any>;

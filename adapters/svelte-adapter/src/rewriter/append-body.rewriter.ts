@@ -1,4 +1,4 @@
-class AppendBodyRewriter {
+export class AppendBodyRewriter {
   constructor(appendContent) {
     this.appendContent = appendContent;
   }
@@ -6,5 +6,3 @@ class AppendBodyRewriter {
     element.append(this.appendContent, { html: true });
   }
 }
-
-export { AppendBodyRewriter };
