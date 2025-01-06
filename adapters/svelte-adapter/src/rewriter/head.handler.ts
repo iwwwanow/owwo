@@ -1,13 +1,11 @@
-export class AppendHeadRewriter
-  implements HTMLRewriterTypes.HTMLRewriterElementContentHandlers
-{
+export class HeadHandler {
   appendContent: string;
 
   constructor(appendContent: string) {
     this.appendContent = appendContent;
   }
 
-  element(element) {
+  element(element: HTMLRewriterTypes.Element) {
     // TODO замена заголовка, если он есть!
     element.append(this.appendContent, { html: true });
   }

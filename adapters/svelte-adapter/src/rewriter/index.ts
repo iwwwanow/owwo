@@ -1,1 +1,1 @@
-export * from "./rewriter";
+export * from "./svelte-html-page.rewriter";

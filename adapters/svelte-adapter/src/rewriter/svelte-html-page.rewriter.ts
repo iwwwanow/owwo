@@ -1,15 +1,11 @@
-import { AppendBodyRewriter } from "./append-body.rewriter";
-import { AppendCssRewriter } from "./append-css.rewriter";
-import { AppendHeadRewriter } from "./append-head.rewriter";
-import type { SvelteComponentType } from "./rewriter.interfaces";
+import { BodyHandler } from "./body.handler";
+import { CssHandler } from "./css.handler";
+import { HeadHandler } from "./head.handler";
+import type { SvelteComponentType } from "./svelte-html-page.interfaces";
 
 export class SvelteRewriter {
   private blankHtmlPath: string;
   blankHtmlPage?: string;
-
-  head?: string;
-  body?: string;
-  css?: string;
 
   constructor(blankHtmlPath: string) {
     // TODO можно импортировать сразу html-страницу,
@@ -25,20 +21,23 @@ export class SvelteRewriter {
     this.blankHtmlPage = blankHtmlString;
   }
 
-  async getPageHtml(svelteComponent: SvelteComponentType, props) {
+  async getPageHtml<PageProps>(
+    svelteComponent: SvelteComponentType,
+    props: PageProps,
+  ) {
     // TODO если компонент не был проведен,
     // то возвращать бланковую html страницу
 
-    const renderResult = svelteComponent.render(props);
+    const renderResult = svelteComponent.render<PageProps>(props);
 
-    this.head = renderResult.head;
-    this.body = renderResult.html;
-    this.css = renderResult.css.code;
+    const head = renderResult.head;
+    const body = renderResult.html;
+    const css = renderResult.css.code;
 
     const rewriter = new HTMLRewriter()
-      .on("html", new AppendHeadRewriter(this.head))
-      .on("html", new AppendBodyRewriter(this.body))
-      .on("html", new AppendCssRewriter(this.css));
+      .on("html", new HeadHandler(head))
+      .on("html", new BodyHandler(body))
+      .on("html", new CssHandler(css));
 
     const pageHtml = rewriter.transform(this.blankHtmlPage);
     return pageHtml;
