@@ -1,5 +1,5 @@
 export type SvelteComponentType = {
-  render: <P>(props: P) => RenderReturnType;
+  render: <P>(props?: P) => RenderReturnType;
 };
 
 type RenderReturnType = {

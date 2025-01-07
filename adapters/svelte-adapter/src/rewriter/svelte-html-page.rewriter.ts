@@ -1,11 +1,11 @@
-import { BodyHandler } from "./body.handler";
-import { CssHandler } from "./css.handler";
-import { HeadHandler } from "./head.handler";
+import { BodyHandler } from "./handlers";
+import { CssHandler } from "./handlers";
+import { HeadHandler } from "./handlers";
 import type { SvelteComponentType } from "./svelte-html-page.interfaces";
 
 export class SvelteRewriter {
   private blankHtmlPath: string;
-  blankHtmlPage?: string;
+  blankHtmlPage: string;
 
   constructor(blankHtmlPath: string) {
     // TODO можно импортировать сразу html-страницу,
@@ -23,7 +23,7 @@ export class SvelteRewriter {
 
   async getPageHtml<PageProps>(
     svelteComponent: SvelteComponentType,
-    props: PageProps,
+    props?: PageProps,
   ) {
     // TODO если компонент не был проведен,
     // то возвращать бланковую html страницу
