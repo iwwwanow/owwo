@@ -17,7 +17,7 @@ export const indexPageRouteHandler = async (
     return new Response(`node page ${nodeId}`);
   }
 
-  const homePageMarkup = await siteViewContext.getHomePage();
+  const homePageMarkup = await siteViewContext.getIndexPage();
   return new Response(homePageMarkup, {
     headers: {
       "Content-Type": "text/html",
