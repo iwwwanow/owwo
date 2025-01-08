@@ -1,4 +1,4 @@
-export class BodyHandler {
+export class OnHeadHandler {
   appendContent: string;
 
   constructor(appendContent: string) {
@@ -6,6 +6,7 @@ export class BodyHandler {
   }
 
   element(element: HTMLRewriterTypes.Element) {
+    // TODO замена заголовка, если он есть!
     element.append(this.appendContent, { html: true });
   }
 }

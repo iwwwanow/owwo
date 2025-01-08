@@ -1,9 +1,9 @@
-import { BodyHandler } from "./handlers";
-import { CssHandler } from "./handlers";
-import { HeadHandler } from "./handlers";
-import type { SvelteComponentType } from "./svelte-html-page.interfaces";
+import { OnBodyHandler } from "../handlers";
+import { OnCssHandler } from "../handlers";
+import { OnHeadHandler } from "../handlers";
+import type { SvelteComponentType } from "../interfaces";
 
-export class SvelteRewriter {
+export class PageRewriterService {
   private blankHtmlPath: string;
   blankHtmlPage: string;
 
@@ -35,9 +35,9 @@ export class SvelteRewriter {
     const css = renderResult.css.code;
 
     const rewriter = new HTMLRewriter()
-      .on("html", new HeadHandler(head))
-      .on("html", new BodyHandler(body))
-      .on("html", new CssHandler(css));
+      .on("html", new OnHeadHandler(head))
+      .on("html", new OnBodyHandler(body))
+      .on("html", new OnCssHandler(css));
 
     const pageHtml = rewriter.transform(this.blankHtmlPage);
     return pageHtml;

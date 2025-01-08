@@ -1,17 +1,17 @@
 import type { SiteViewPort } from "@contexts/site-core";
 
-import { IndexPage } from "./pages";
-import { SvelteRewriter } from "./rewriter";
+// import { IndexPage } from "./pages";
+import { PageRewriterService } from "./services";
+import { IndexPage } from "./templates";
+import { commonHtml } from "./templates";
 
 export class SvelteAdapter implements SiteViewPort {
-  private svelteRewriter: SvelteRewriter;
+  private svelteRewriter: PageRewriterService;
 
   async init(): Promise<void> {
     console.log("init svelte adapter");
 
-    this.svelteRewriter = new SvelteRewriter(
-      "./adapters/svelte-adapter/src/templates/html/index.html",
-    );
+    this.svelteRewriter = new PageRewriterService(commonHtml);
     await this.svelteRewriter.init();
   }
 
