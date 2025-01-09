@@ -1,8 +1,7 @@
-<script type="ts">
+<script>
   import BaseLayout from "../layouts/base.layout.svelte";
   import NodeLink from "../components/node-link.component.svelte";
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
-  import ts from "typescript";
 
   export let users;
 </script>
