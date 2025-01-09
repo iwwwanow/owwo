@@ -12,6 +12,7 @@
     "typescript-plugin-css-modules": "^5.1.0"
   },
   "workspaces": [
+    "tests/**/*",
     "contexts/**/*",
     "adapters/**/*",
     "entrypoints/**/*"
