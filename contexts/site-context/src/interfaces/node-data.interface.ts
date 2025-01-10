@@ -10,7 +10,7 @@ export type NodeMainDataType = {
   blob: string;
 };
 
-type NodeDataType = NodeMainDataType & {
+export type NodeDataType = NodeMainDataType & {
   meta: NodeMetaType;
   image?: NodeImageType;
   content?: NodeContentType;
