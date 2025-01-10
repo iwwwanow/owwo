@@ -6,7 +6,7 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "devDependencies": {
+  "dependencies": {
     "@contexts/site-core": "workspace:*"
   },
   "main": "src/index.ts"
