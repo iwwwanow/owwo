@@ -15,8 +15,12 @@ export class SvelteAdapter implements SiteViewPort {
     await this.svelteRewriter.init();
   }
 
-  async getIndexPage(): Promise<string> {
-    const indexPageHtml = await this.svelteRewriter.getPageHtml(IndexPage);
+  async getIndexPage(props): Promise<string> {
+    const { users } = props;
+
+    const indexPageHtml = await this.svelteRewriter.getPageHtml(IndexPage, {
+      users,
+    });
     return indexPageHtml;
   }
 }
