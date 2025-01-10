@@ -1,3 +1,5 @@
+import { nodeDataMock } from "@tests/site";
+
 import { NotFoundError } from "../errors";
 import type { SiteViewPort } from "../ports";
 
@@ -17,7 +19,10 @@ export const indexPageRouteHandler = async (
     return new Response(`node page ${nodeId}`);
   }
 
-  const homePageMarkup = await siteViewContext.getIndexPage();
+  const homePageMarkup = await siteViewContext.getIndexPage({
+    users: [nodeDataMock, nodeDataMock, nodeDataMock],
+  });
+
   return new Response(homePageMarkup, {
     headers: {
       "Content-Type": "text/html",
