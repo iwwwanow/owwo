@@ -1,8 +1,8 @@
+import { pageNotFoundPageHandler } from "./handlers";
+import { internalServerErrorPageHandler } from "./handlers";
 import type { Service } from "./interfaces/service.interface";
 import type { HttpServerPort } from "./ports";
 import type { SiteViewPort } from "./ports";
-import { pageNotFoundPageRouteHandler } from "./route-handlers";
-import { internalServerErrorPageRouteHandler } from "./route-handlers";
 import { PageRoutesService } from "./services";
 import { StaticRoutesService } from "./services";
 import { SITE_PORT } from "./site-core-context.constants";
@@ -39,8 +39,8 @@ export class SiteCoreContext {
     await this.httpServerContext.init({
       port: SITE_PORT,
       errorHandlers: {
-        pageNotFoundErrorHandler: pageNotFoundPageRouteHandler,
-        internalServerErrorHandler: internalServerErrorPageRouteHandler,
+        pageNotFoundErrorHandler: pageNotFoundPageHandler,
+        internalServerErrorHandler: internalServerErrorPageHandler,
       },
     });
   }

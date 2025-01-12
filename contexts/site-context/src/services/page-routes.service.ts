@@ -1,10 +1,10 @@
+import { indexPageHandler } from "../handlers";
+import { loginPageHandler } from "../handlers";
+import { signupPageRouteHandler } from "../handlers";
+import { aboutPageHandler } from "../handlers";
 import type { Service } from "../interfaces";
 import type { HttpServerPort } from "../ports";
 import type { SiteViewPort } from "../ports";
-import { indexPageRouteHandler } from "../route-handlers";
-import { loginPageRouteHandler } from "../route-handlers";
-import { signupPageRouteHandler } from "../route-handlers";
-import { aboutPageRouteHandler } from "../route-handlers";
 
 export class PageRoutesService implements Service {
   httpServerContext: HttpServerPort;
@@ -31,14 +31,14 @@ export class PageRoutesService implements Service {
   private initIndexPageRoute() {
     this.httpServerContext.addRoute({
       path: "/",
-      handler: (req) => indexPageRouteHandler(req, this.siteViewContext),
+      handler: (req) => indexPageHandler(req, this.siteViewContext),
     });
   }
 
   private initLoginPageRoute() {
     this.httpServerContext.addRoute({
       path: "/login",
-      handler: loginPageRouteHandler,
+      handler: loginPageHandler,
     });
   }
 
@@ -52,7 +52,7 @@ export class PageRoutesService implements Service {
   private initAboutPageRoute() {
     this.httpServerContext.addRoute({
       path: "/about",
-      handler: aboutPageRouteHandler,
+      handler: aboutPageHandler,
     });
   }
 }

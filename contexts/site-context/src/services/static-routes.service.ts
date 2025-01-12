@@ -1,7 +1,7 @@
+import { faviconHandler } from "../handlers";
+import { publicRouteHandler } from "../handlers";
 import type { Service } from "../interfaces/service.interface";
 import type { HttpServerPort } from "../ports";
-import { faviconRouteHandler } from "../route-handlers";
-import { publicRouteHandler } from "../route-handlers";
 
 export class StaticRoutesService implements Service {
   httpServerContext: HttpServerPort;
@@ -18,7 +18,7 @@ export class StaticRoutesService implements Service {
   private initFaviconStaticRoute() {
     this.httpServerContext.addRoute({
       path: "/favicon.ico",
-      handler: faviconRouteHandler,
+      handler: faviconHandler,
     });
   }
 
