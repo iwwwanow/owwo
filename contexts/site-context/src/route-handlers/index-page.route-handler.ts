@@ -1,7 +1,6 @@
-import { nodeDataMock } from "@tests/site";
-
 import { NotFoundError } from "../errors";
 import type { SiteViewPort } from "../ports";
+import { nodeDataMock } from "../tests";
 
 export const indexPageRouteHandler = async (
   req: Request,

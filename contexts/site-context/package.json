@@ -6,11 +6,5 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "devDependencies": {
-    "@tests/site": "workspace:*"
-  },
-  "peerDependencies": {
-    "@tests/site": "*"
-  },
   "main": "src/index.ts"
 }

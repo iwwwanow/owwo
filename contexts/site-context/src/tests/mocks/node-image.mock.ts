@@ -1,5 +1,5 @@
-import { ImageVariantName } from "@contexts/site-core";
-import type { NodeImageType } from "@contexts/site-core";
+import { ImageVariantName } from "../../constants";
+import type { NodeImageType } from "../../interfaces";
 
 export const nodeImageMock: NodeImageType = {
   [ImageVariantName.Blob]: "https://images.placeholders.dev/?width=8&height=8",
