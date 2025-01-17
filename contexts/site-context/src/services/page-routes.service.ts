@@ -38,21 +38,21 @@ export class PageRoutesService implements Service {
   private initLoginPageRoute() {
     this.httpServerContext.addRoute({
       path: "/login",
-      handler: loginPageHandler,
+      handler: (req) => loginPageHandler(req, this.siteViewContext),
     });
   }
 
   private initSignupPageRoute() {
     this.httpServerContext.addRoute({
       path: "/signup",
-      handler: signupPageRouteHandler,
+      handler: (req) => signupPageRouteHandler(req, this.siteViewContext),
     });
   }
 
   private initAboutPageRoute() {
     this.httpServerContext.addRoute({
       path: "/about",
-      handler: aboutPageHandler,
+      handler: (req) => aboutPageHandler(req, this.siteViewContext),
     });
   }
 }
