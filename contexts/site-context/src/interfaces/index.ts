@@ -7,3 +7,5 @@ export * from "./node-date.interface";
 export * from "./node-id.interface";
 export * from "./node-image.interface";
 export * from "./node-meta.interface";
+
+export * from "./index-page.interface";
