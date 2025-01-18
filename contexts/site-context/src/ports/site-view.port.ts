@@ -1,7 +1,9 @@
+import type { IndexPageProps } from "../interfaces";
+
 export interface SiteViewPort {
   init(): Promise<void>;
 
-  getIndexPage(): Promise<string>;
+  getIndexPage(props: IndexPageProps): Promise<string>;
 
   getLoginPage(): Promise<string>;
 
