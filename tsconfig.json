@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
+    "isolatedModules": true,
 
     // Enable latest features
     "lib": ["ESNext", "DOM"],
