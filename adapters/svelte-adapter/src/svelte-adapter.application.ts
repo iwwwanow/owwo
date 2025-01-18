@@ -1,6 +1,6 @@
 import type { SiteViewPort } from "@contexts/site-core";
+import type { IndexPageProps } from "@contexts/site-core";
 
-// import { IndexPage } from "./pages";
 import { PageRewriterService } from "./services";
 import { IndexPage } from "./templates";
 import { LoginPage } from "./templates";
@@ -21,7 +21,7 @@ export class SvelteAdapter implements SiteViewPort {
     await this.svelteRewriter.init();
   }
 
-  async getIndexPage(props): Promise<string> {
+  async getIndexPage(props: IndexPageProps): Promise<string> {
     const indexPageHtml = await this.svelteRewriter.getPageHtml(
       IndexPage,
       props,
