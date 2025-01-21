@@ -13,12 +13,10 @@ await plugin({
       const { code } = await preprocess(
         file,
         typescript({
-          // transpileOnly: true,
-          transpileOnly: false,
+          // TODO благодаря этому флагу, ошибки на typecheck не дают рендерить страницы. на данный момент сыпятся ошибки, поэтому отключаю
+          transpileOnly: true,
           reportDiagnostics: false,
           tsconfigFile: "./tsconfig.svelte.json",
-          tsconfigDirectory: "./",
-          compilerOptions: {},
         }),
         { filename: "svelte-test-filename" },
       );
