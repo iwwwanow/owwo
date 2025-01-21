@@ -23,24 +23,6 @@ await plugin({
         { filename: "svelte-test-filename" },
       );
 
-      console.log(code);
-
-      // const result = await typescript({ transpileOnly: true }).script({
-      //   content: file,
-      //   filename: "test-filename",
-      //   attributes: false,
-      // });
-      //
-      // console.log(result.code);
-
-      // console.log("COMMON MARKUP:");
-      // console.log(file);
-      //
-      // const content = compile(file, {
-      //   filename: path,
-      //   generate: "ssr",
-      // });
-
       const content = compile(code, {
         filename: path,
         generate: "ssr",
