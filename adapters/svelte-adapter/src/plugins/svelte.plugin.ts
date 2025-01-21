@@ -4,47 +4,50 @@ await plugin({
   name: "svelte loader",
   async setup(build) {
     const { compile } = await import("svelte/compiler");
-    const { sveltePreprocess } = await import("svelte-preprocess");
+    const { preprocess } = await import("svelte/compiler");
+    const { typescript } = await import("@forks/svelte-preprocess/src");
 
     build.onLoad({ filter: /\.svelte$/ }, async ({ path }) => {
       const file = await Bun.file(path).text();
 
-      const preprocessResult = sveltePreprocess({
-        typescript: {},
-      });
+      const { code } = await preprocess(
+        file,
+        typescript({
+          // transpileOnly: true,
+          transpileOnly: false,
+          reportDiagnostics: false,
+          tsconfigFile: "./tsconfig.svelte.json",
+          tsconfigDirectory: "./",
+          compilerOptions: {},
+        }),
+        { filename: "svelte-test-filename" },
+      );
 
-      const preprocessMarup = (
-        await preprocessResult.markup({ content: file, filename: path })
-      ).code;
+      console.log(code);
 
-      console.log(preprocessMarup);
+      // const result = await typescript({ transpileOnly: true }).script({
+      //   content: file,
+      //   filename: "test-filename",
+      //   attributes: false,
+      // });
+      //
+      // console.log(result.code);
 
-      const content = compile(preprocessMarup, {
+      // console.log("COMMON MARKUP:");
+      // console.log(file);
+      //
+      // const content = compile(file, {
+      //   filename: path,
+      //   generate: "ssr",
+      // });
+
+      const content = compile(code, {
         filename: path,
         generate: "ssr",
-      }).js.code;
+      });
 
-      // const result = sveltePreprocess({
-      //   typescript: {},
-      // });
-      // const markup = await result.markup({ content: file, filename: path });
-      // const script = await result.script({
-      //   content: file,
-      //   filename: path,
-      //   attributes: false,
-      //   markup,
-      // });
-      // console.log(script);
-      // const style = await result.style({
-      //   content: file,
-      //   filename: path,
-      //   attributes: false,
-      //   markup,
-      // });
-
-      // and return the compiled source code as "js"
       return {
-        contents: content,
+        contents: content.js.code,
         loader: "ts",
       };
     });
