@@ -3,8 +3,8 @@ import { plugin } from "bun";
 await plugin({
   name: "svelte loader",
   async setup(build) {
-    const { compile } = await import("svelte/compiler");
-    const { preprocess } = await import("svelte/compiler");
+    const { compile } = await import("@forks/svelte/compiler");
+    const { preprocess } = await import("@forks/svelte/compiler");
     const { typescript } = await import("@forks/svelte-preprocess/src");
 
     build.onLoad({ filter: /\.svelte$/ }, async ({ path }) => {
