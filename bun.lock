@@ -52,9 +52,9 @@
         "@contexts/site-core": "workspace:*",
       },
     },
-    "forks/svelte": {
+    "forks/svelte-3.59.2_builded": {
       "name": "@forks/svelte",
-      "version": "3.59.1",
+      "version": "3.59.2",
       "devDependencies": {
         "@ampproject/remapping": "^0.3.0",
         "@jridgewell/sourcemap-codec": "^1.4.15",
@@ -97,6 +97,30 @@
         "typescript": "^3.7.5",
         "util": "^0.12.5",
       },
+    },
+    "forks/svelte-3.59.2_builded/action": {
+      "name": "@forks/svelte_action",
+    },
+    "forks/svelte-3.59.2_builded/animate": {
+      "name": "@forks/svelte_animate",
+    },
+    "forks/svelte-3.59.2_builded/easing": {
+      "name": "@forks/svelte_easing",
+    },
+    "forks/svelte-3.59.2_builded/elements": {
+      "name": "@forks/svelte_elements",
+    },
+    "forks/svelte-3.59.2_builded/internal": {
+      "name": "@forks/svelte_internal",
+    },
+    "forks/svelte-3.59.2_builded/motion": {
+      "name": "@forks/svelte_motion",
+    },
+    "forks/svelte-3.59.2_builded/store": {
+      "name": "@forks/svelte_store",
+    },
+    "forks/svelte-3.59.2_builded/transition": {
+      "name": "@forks/svelte_transition",
     },
     "forks/svelte-preprocess-3.9.12": {
       "name": "@forks/svelte-preprocess",
@@ -212,30 +236,6 @@
         "svelte": "^3.12.1",
         "svelte-preprocess": "^3.2.0",
       },
-    },
-    "forks/svelte/action": {
-      "name": "@forks/svelte_action",
-    },
-    "forks/svelte/animate": {
-      "name": "@forks/svelte_animate",
-    },
-    "forks/svelte/easing": {
-      "name": "@forks/svelte_easing",
-    },
-    "forks/svelte/elements": {
-      "name": "@forks/svelte_elements",
-    },
-    "forks/svelte/internal": {
-      "name": "@forks/svelte_internal",
-    },
-    "forks/svelte/motion": {
-      "name": "@forks/svelte_motion",
-    },
-    "forks/svelte/store": {
-      "name": "@forks/svelte_store",
-    },
-    "forks/svelte/transition": {
-      "name": "@forks/svelte_transition",
     },
   },
   "packages": {
@@ -475,25 +475,25 @@
 
     "@eslint/js": ["@eslint/js@8.57.1", "", {}, "sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q=="],
 
-    "@forks/svelte": ["@forks/svelte@workspace:forks/svelte"],
+    "@forks/svelte": ["@forks/svelte@workspace:forks/svelte-3.59.2_builded"],
 
     "@forks/svelte-preprocess": ["@forks/svelte-preprocess@workspace:forks/svelte-preprocess-3.9.12"],
 
-    "@forks/svelte_action": ["@forks/svelte_action@workspace:forks/svelte/action"],
+    "@forks/svelte_action": ["@forks/svelte_action@workspace:forks/svelte-3.59.2_builded/action"],
 
-    "@forks/svelte_animate": ["@forks/svelte_animate@workspace:forks/svelte/animate"],
+    "@forks/svelte_animate": ["@forks/svelte_animate@workspace:forks/svelte-3.59.2_builded/animate"],
 
-    "@forks/svelte_easing": ["@forks/svelte_easing@workspace:forks/svelte/easing"],
+    "@forks/svelte_easing": ["@forks/svelte_easing@workspace:forks/svelte-3.59.2_builded/easing"],
 
-    "@forks/svelte_elements": ["@forks/svelte_elements@workspace:forks/svelte/elements"],
+    "@forks/svelte_elements": ["@forks/svelte_elements@workspace:forks/svelte-3.59.2_builded/elements"],
 
-    "@forks/svelte_internal": ["@forks/svelte_internal@workspace:forks/svelte/internal"],
+    "@forks/svelte_internal": ["@forks/svelte_internal@workspace:forks/svelte-3.59.2_builded/internal"],
 
-    "@forks/svelte_motion": ["@forks/svelte_motion@workspace:forks/svelte/motion"],
+    "@forks/svelte_motion": ["@forks/svelte_motion@workspace:forks/svelte-3.59.2_builded/motion"],
 
-    "@forks/svelte_store": ["@forks/svelte_store@workspace:forks/svelte/store"],
+    "@forks/svelte_store": ["@forks/svelte_store@workspace:forks/svelte-3.59.2_builded/store"],
 
-    "@forks/svelte_transition": ["@forks/svelte_transition@workspace:forks/svelte/transition"],
+    "@forks/svelte_transition": ["@forks/svelte_transition@workspace:forks/svelte-3.59.2_builded/transition"],
 
     "@happy-dom/global-registrator": ["@happy-dom/global-registrator@15.11.7", "", { "dependencies": { "happy-dom": "^15.11.7" } }, "sha512-mfOoUlIw8VBiJYPrl5RZfMzkXC/z7gbSpi2ecycrj/gRWLq2CMV+Q+0G+JPjeOmuNFgg0skEIzkVFzVYFP6URw=="],
 
