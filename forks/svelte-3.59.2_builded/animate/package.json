@@ -1,0 +1,7 @@
+{
+  "name": "@forks/svelte_animate",
+  "main": "./index",
+  "module": "./index.mjs",
+  "types": "./index.d.ts"
+}
+
