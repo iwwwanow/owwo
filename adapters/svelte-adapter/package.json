@@ -7,12 +7,10 @@
     ".": "./src/index.ts"
   },
   "main": "src/index.ts",
-  "dependencies": {
-    "@forks/svelte-preprocess": "workspace:*",
-    "@forks/svelte": "workspace:*"
-  },
   "devDependencies": {
-    "@contexts/site-core": "workspace:*"
+    "@contexts/site-core": "workspace:*",
+    "svelte-preprocess": "workspace:*",
+    "svelte": "3.59.2"
   },
   "peerDependencies": {
     "@contexts/site-core": "*"
