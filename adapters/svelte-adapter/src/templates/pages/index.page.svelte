@@ -1,11 +1,11 @@
 <script lang="ts">
   import type { NodeDataType } from "@contexts/site-core";
 
-  import BaseLayout from "../layouts/base.layout.svelte";
+  import { BaseLayout } from "../layouts";
   import NodeLink from "../components/node-link.component.svelte";
   import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
 
-  export let users: NodeDataType;
+  export let users: Array<NodeDataType>;
 </script>
 
 <BaseLayout>
