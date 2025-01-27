@@ -53,9 +53,6 @@
       },
     },
   },
-  "patchedDependencies": {
-    "svelte-preprocess@3.9.12": "patches/svelte-preprocess@3.9.12.patch",
-  },
   "packages": {
     "@adapters/bun-http-server": ["@adapters/bun-http-server@workspace:adapters/bun-http-server-adapter"],
 
