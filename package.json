@@ -25,5 +25,8 @@
   },
   "override": {
     "@sinclair/typebox": "0.32.4"
+  },
+  "patchedDependencies": {
+    "svelte-preprocess@3.9.12": "patches/svelte-preprocess@3.9.12.patch"
   }
 }

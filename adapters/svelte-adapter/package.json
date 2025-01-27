@@ -8,8 +8,8 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@forks/svelte-preprocess": "workspace:*",
-    "@forks/svelte": "workspace:*"
+    "svelte-preprocess": "3.9.12",
+    "svelte": "3.59.2"
   },
   "devDependencies": {
     "@contexts/site-core": "workspace:*"
