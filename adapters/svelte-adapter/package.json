@@ -8,7 +8,7 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "svelte-preprocess": "3.9.12",
+    "svelte-preprocess": "4.10.7",
     "svelte": "3.59.2"
   },
   "devDependencies": {
