@@ -1,13 +1,17 @@
-<script>
+<script lang="ts">
+  import type { NodeImageType } from "@contexts/site-core";
+  import type { NodeDataType } from "@contexts/site-core";
+
   import NodeLinkImage from "./node-link__image.component.svelte";
 
-  export let node;
-  export let leftSymbol;
-  export let rightSymbol;
+  export let node: NodeDataType | undefined;
 
-  export let id;
-  export let title;
-  export let image;
+  export let leftSymbol: string | undefined;
+  export let rightSymbol: string | undefined;
+
+  export let id: string | undefined;
+  export let title: string | undefined;
+  export let image: NodeImageType | undefined;
 
   if (node) {
     id = node.meta.id;

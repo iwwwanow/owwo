@@ -2,8 +2,8 @@
   import type { NodeDataType } from "@contexts/site-core";
 
   import { BaseLayout } from "../layouts";
-  import NodeLink from "../components/node-link.component.svelte";
-  import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
+  import { NodeLink } from "../components";
+  import { FullGridWrapContainer } from "../components";
 
   export let users: Array<NodeDataType>;
 </script>
