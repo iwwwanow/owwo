@@ -1,5 +1,10 @@
-<script>
-  export let className;
+<script lang="ts">
+  import type { CardContainerProps } from "./card-container.svelte";
+
+  export let props: CardContainerProps;
+
+  let { className } = props;
+
   className = `card-container${className ? " " + className : ""}`;
 </script>
 

@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+  import type { ButtonVariant } from "./button_plus.svelte";
   import ButtonPlusSvg from "../../svgs/button_plus.svg.svelte";
 
-  export let variant;
+  export let variant: ButtonVariant = "common";
 </script>
 
 {#if variant === "small"}

@@ -1,6 +1,6 @@
-<script>
-  export let text = "default-text";
-  export let url = "";
+<script lang="ts">
+  export let text: string = "default-text";
+  export let url: string = "";
 </script>
 
 {#if !url}
