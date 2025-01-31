@@ -1,8 +1,10 @@
 <script lang="ts">
-  import type { ButtonVariant } from "./button_plus.svelte";
+  import type { ButtonPlusProps } from "./button_plus.svelte";
   import ButtonPlusSvg from "../../svgs/button_plus.svg.svelte";
 
-  export let variant: ButtonVariant = "common";
+  export let props: ButtonPlusProps;
+
+  const { variant = "common" } = props;
 </script>
 
 {#if variant === "small"}

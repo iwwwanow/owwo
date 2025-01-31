@@ -1,6 +1,8 @@
 <script lang="ts">
-  export let text: string = "default-text";
-  export let url: string = "";
+  import type { ButtonProps } from "./button.svelte";
+  export let props: ButtonProps;
+
+  const { text, url } = props;
 </script>
 
 {#if !url}

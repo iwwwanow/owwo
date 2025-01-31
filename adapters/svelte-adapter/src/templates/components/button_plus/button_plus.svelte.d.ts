@@ -1,9 +1,11 @@
 import type { SvelteComponentTyped } from "svelte";
 
-export type ButtonVariant = "common" | "small";
+type ButtonPlusVariant = "common" | "small";
 
-class NodeLinkType extends SvelteComponentTyped<{
-  variant: ButtonVariant;
-}> {}
+export interface ButtonPlusProps {
+  variant: ButtonPlusVariant;
+}
+
+class NodeLinkType extends SvelteComponentTyped<ButtonPlusProps> {}
 
 export default NodeLinkType;
