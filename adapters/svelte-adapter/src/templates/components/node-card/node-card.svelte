@@ -1,14 +1,20 @@
-<script>
+<script lang="ts">
+  import type { NodeCardProps } from "./node-card.svelte";
   import Image from "./image.component.svelte";
 
-  export let node;
+  export let props: NodeCardProps;
+
+  const { node } = props;
 
   const { id } = node.meta;
   const { image } = node;
   const { title } = node;
   let { description } = node;
 
+  // TODO это зачем?
   const IMAGE_VARIANT = "w190";
+
+  // TODO почему я тут не использую Image component???
 
   if (description?.markdown.length > 80) {
     description.markdown = description.markdown.slice(0, 80) + " ...";

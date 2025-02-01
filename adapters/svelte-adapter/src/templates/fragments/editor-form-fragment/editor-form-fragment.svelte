@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Hr from "./hr.component.svelte";
 
   import EditorFormFileInputFieldset from "./editor-form__file-input-fieldset.component.svelte";

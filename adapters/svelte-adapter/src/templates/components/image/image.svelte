@@ -1,7 +1,9 @@
-<script>
-  export let image;
-  export let id;
-  export let variant;
+<script lang="ts">
+  import type { ImageProps } from "./image.svelte";
+
+  export let props: ImageProps;
+
+  const { image, id, variant } = props;
 </script>
 
 <picture>

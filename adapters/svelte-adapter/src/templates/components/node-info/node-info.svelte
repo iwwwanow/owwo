@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import type { NodeInfoProps } from "./node-info.svelte";
+
   import Hr from "./hr.component.svelte";
   import Date from "./date.component.svelte";
   import Image from "./image.component.svelte";
@@ -7,27 +9,19 @@
   import NodeLink from "./node-link.component.svelte";
   import NodeLinkContainer from "./node-link__container.component.svelte";
 
-  export let node;
+  export let props: NodeInfoProps;
 
-  export let id;
-  export let image;
-  export let title;
-  export let author;
-  export let authors;
-  export let parents;
-  export let description;
-  export let date;
+  let { node } = props;
 
-  if (node) {
-    id = node.meta.id;
-    image = node.image;
-    if (title === undefined) title = node.title;
-    if (description === undefined) description = node.description;
-    author = node.meta.author;
-    authors = node.meta.authors;
-    parents = node.meta.parents;
-    date = node.date;
-  }
+  const id = node.meta.id;
+  const image = node.image;
+  const title = node.title;
+  const description = node.description;
+  const author = node.meta.author;
+  // TODO почему бы не объединить author и authors?
+  const authors = node.meta.authors;
+  const parents = node.meta.parents;
+  const date = node.date;
 
   const isTextDataExist = !!title || !!authors || !!description || !!date;
   const isDataExist = !!image || isTextDataExist;

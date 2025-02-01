@@ -1,10 +1,16 @@
-<script>
+<script lang="ts">
   import LogoSvg from "../svgs/logo.svg.svelte";
-  export let className;
-  export let href = "/";
+  import type { LogoProps } from "./logo.svelte";
+  import { getComponentClassname } from "./getters";
+
+  export let props: LogoProps;
+  // TODO rename
+  const { className: classname, href = "/" } = props;
+
+  const componentClassname = getComponentClassname(classname);
 </script>
 
-<a {href} class="logo__container{className ? ` ${className}` : ''}">
+<a {href} class={componentClassname}>
   <LogoSvg />
 </a>
 

@@ -1,12 +1,16 @@
-<script>
-  export let text;
-  export let color;
+<script lang="ts">
+  import type { HrProps } from "./hr.svelte";
+  import { getComponentColorStyle } from "./getters";
 
-  const colorStyle = color ? `color: ${color}; border-color: ${color};` : "";
+  export let props: HrProps;
+
+  const { text, color } = props;
+
+  const componentColorStyle = getComponentColorStyle(color);
 </script>
 
 {#if text}
-  <fieldset style={colorStyle}>
+  <fieldset style={componentColorStyle}>
     <legend><h6>{text}</h6></legend>
   </fieldset>
 {:else}

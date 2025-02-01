@@ -1,5 +1,7 @@
-<script>
-  export let action;
+<script lang="ts">
+  import type { LoginFormProps } from "./login-form.svelte";
+  export let props: LoginFormProps;
+  const { action } = props;
 </script>
 
 <form method="POST" {action} class="login-form">

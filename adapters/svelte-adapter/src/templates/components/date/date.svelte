@@ -1,5 +1,9 @@
-<script>
-  export let date;
+<script lang="ts">
+  import type { DateProps } from "./date.svelte";
+
+  export let props: DateProps;
+
+  const { date } = props;
 
   const localDate = date.last.toLocaleDateString("ru-RU");
   const localCreationDate = date.creation.toLocaleDateString("ru-RU");

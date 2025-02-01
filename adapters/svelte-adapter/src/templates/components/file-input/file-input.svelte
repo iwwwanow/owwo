@@ -1,9 +1,9 @@
-<script>
-  export let id = "file-input-id";
-  export let name = "file-input";
-  export let accept = "image/*";
-  export let required = false;
-  export let imageSrc;
+<script lang="ts">
+  import type { FileInputProps } from "./file-input.svelte";
+
+  export let props: FileInputProps;
+
+  const { id, name, accept, required, imageSrc } = props;
 </script>
 
 <label for={id} class="border file-input__label">

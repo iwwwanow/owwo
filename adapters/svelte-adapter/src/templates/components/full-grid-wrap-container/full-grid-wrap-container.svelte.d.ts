@@ -1,5 +1,10 @@
-import type { SvelteComponentType } from "../rewriter/svelte-html-page.interfaces"
+import type { SvelteComponentTyped } from "svelte";
 
-const FullGridWrapContainerType: SvelteComponentType
+export interface FullGridWrapContainerProps {
+  limit: number;
+  style: string;
+}
 
-export default FullGridWrapContainerType
+class FullGridWrapContainerType extends SvelteComponentTyped<FullGridWrapContainerProps> {}
+
+export default FullGridWrapContainerType;
