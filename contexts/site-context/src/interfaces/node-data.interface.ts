@@ -12,7 +12,7 @@ export type NodeMainDataType = {
 
 export type NodeDataType = NodeMainDataType & {
   meta: NodeMetaType;
-  image?: NodeImageType;
+  image: NodeImageType;
   content?: NodeContentType;
   date?: NodeDateType;
 };

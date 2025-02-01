@@ -1,13 +1,13 @@
-import { ImageVariantName } from "@globals/constants";
+import { ImageVariantName } from "../constants";
 
 export type NodeImageType = {
-  [ImageVariantName.BLOB]: string;
-  [ImageVariantName.ORIGINAL]: string;
-  [ImageVariantName.HEIGHT_16PX]: string;
-  [ImageVariantName.HEIGHT_16PX_2X]: string;
-  [ImageVariantName.HEIGHT_32PX]: string;
-  [ImageVariantName.HEIGHT_32PX_2X]: string;
-  [ImageVariantName.WIDTH_1080PX]: string;
-  [ImageVariantName.WIDTH_190PX]: string;
-  [ImageVariantName.WIDTH_190PX_2X]: string;
+  [ImageVariantName.Blob]: string;
+  [ImageVariantName.Original]: string;
+  [ImageVariantName.Height_16px]: string;
+  [ImageVariantName.Height_16px_2x]: string;
+  [ImageVariantName.Height_32px]: string;
+  [ImageVariantName.Height_32px_2x]: string;
+  [ImageVariantName.Width_1080px]: string;
+  [ImageVariantName.Width_190px]: string;
+  [ImageVariantName.Width_190px_2x]: string;
 };
