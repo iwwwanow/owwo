@@ -1,19 +1,17 @@
 <script lang="ts">
   import type { NodeLinkProps } from "./node-link.svelte";
+  import type { ImageVariantType } from "./node-link.svelte";
 
   import NodeLinkImage from "./node-link__image.component.svelte";
 
   export let props: NodeLinkProps;
 
-  let { node, leftSymbol, rightSymbol, id, title, image } = props;
+  const { node, leftSymbol, rightSymbol } = props;
 
-  if (node) {
-    id = node.meta.id;
-    title = node.title;
-    image = node.image;
-  }
+  const { id } = node.meta;
+  const { title, image } = node;
 
-  const imageVariant = title ? "small" : "big";
+  const imageVariant: ImageVariantType = title ? "small" : "big";
 </script>
 
 <a href="/{id}" class="node-info__container">

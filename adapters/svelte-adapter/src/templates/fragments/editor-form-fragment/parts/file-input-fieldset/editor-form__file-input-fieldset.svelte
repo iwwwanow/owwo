@@ -1,16 +1,18 @@
-<script>
-  import Hr from "./hr.component.svelte";
-  import CardContainer from "./card-container.component.svelte";
-  import FileInput from "./inputs/file.input.svelte";
-  import Textarea from "./inputs/textarea.component.svelte";
+<script lang="ts">
+  import { Hr } from "../../../../components";
+  import { CardContainer } from "../../../../components";
+  import { FileInput } from "../../../../components";
+  import { Textarea } from "../../../../components";
 </script>
 
 <fieldset class="file-input-fieldset">
   <Hr text="file-input" />
   <CardContainer>
     <span class="editor-form__files-textarea-container">
+      <!-- TODO props -->
       <Textarea text="blaaa" />
     </span>
+    <!-- TODO props -->
     <FileInput />
   </CardContainer>
 </fieldset>

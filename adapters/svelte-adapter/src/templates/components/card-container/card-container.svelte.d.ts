@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte";
 
 export interface CardContainerProps {
-  className: string;
+  className?: string;
 }
 
 class CardContainerType extends SvelteComponentTyped<CardContainerProps> {}

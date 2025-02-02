@@ -1,9 +1,9 @@
-<script>
-  import Hr from "./hr.component.svelte";
-  import CardContainer from "./card-container.component.svelte";
-  import FileInput from "./inputs/file.input.svelte";
-  import TextInput from "./inputs/text.input.svelte";
-  import Textarea from "./inputs/textarea.component.svelte";
+<script lang="ts">
+  import { Hr } from "../../../../components";
+  import { CardContainer } from "../../../../components";
+  import { FileInput } from "../../../../components";
+  import { TextInput } from "../../../../components";
+  import { Textarea } from "../../../../components";
 
   const TITLE_INPUT_PLACEHOLDER = "title".toUpperCase();
   const DESCRIPTION_TEXTAREA_PLACEHOLDER = "description".toUpperCase();
@@ -19,6 +19,7 @@
     <TextInput
       id="editor-form__title-input"
       name="title"
+			<!-- TODO props? -->
       rows="auto"
       required={false}
       placeholder={TITLE_INPUT_PLACEHOLDER}
@@ -27,6 +28,7 @@
     <Textarea
       id="editor-form__description-textarea"
       name="description"
+			<!-- TODO props? -->
       rows="auto"
       required={false}
       placeholder={DESCRIPTION_TEXTAREA_PLACEHOLDER}

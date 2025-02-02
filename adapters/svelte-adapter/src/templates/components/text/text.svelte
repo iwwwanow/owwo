@@ -1,6 +1,7 @@
-<script>
-  export let text;
-  export let className = "";
+<script lang="ts">
+  import type { TextProps } from "./text.svelte";
+  export let props: TextProps;
+  const { text, className } = props;
 </script>
 
 <div class="text {className}">

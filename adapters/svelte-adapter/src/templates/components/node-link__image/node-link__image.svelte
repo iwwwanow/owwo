@@ -1,6 +1,7 @@
-<script>
-  export let image;
-  export let variant = "small";
+<script lang="ts">
+  import type { NodeLinkImageProps } from "./node-link__image.svelte";
+  export let props: NodeLinkImageProps;
+  const { image, variant } = props;
 </script>
 
 {#if variant === "small"}
@@ -12,7 +13,7 @@
       alt="node-info__image"
     />
   </picture>
-{:else if variant == "big"}
+{:else if variant === "big"}
   <picture>
     <source srcset="{image.h32}, {image.h32_2x} 2x" />
     <source srcset="https://images.placeholders.dev/?width=64&height=64" />

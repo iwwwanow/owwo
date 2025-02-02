@@ -1,10 +1,14 @@
-<script>
-  export let id;
-  export let name;
-  export let rows = 8;
-  export let text = "";
-  export let required = false;
-  export let placeholder = "";
+<script lang="ts">
+  import type { TextareaProps } from "./textarea.svelte";
+  export let props: TextareaProps;
+  const {
+    id,
+    name,
+    rows = 8,
+    text = "",
+    required = false,
+    placeholder = "",
+  } = props;
 </script>
 
 <p class="textarea__wrapper">

@@ -1,10 +1,8 @@
-<script>
+<script lang="ts">
   import NodeLink from "./node-link.component.svelte";
-
-  export let prevNode;
-  export let nextNode;
-  export let current;
-  export let length;
+  import type { NodeNavigationProps } from "./node-navigation.svelte";
+  export let props: NodeNavigationProps;
+  const { prevNode, nextNode, current, length } = props;
 </script>
 
 <div class="grid navigation-elements__wrapper">

@@ -1,9 +1,7 @@
-<script>
-  export let id;
-  export let name;
-  export let type = "text";
-  export let required = false;
-  export let placeholder = "";
+<script lang="ts">
+  import type { TextInputProps } from "./text-input.svelte";
+  export let props: TextInputProps;
+  const { id, name, type = "text", required = false, placeholder = "" } = props;
 </script>
 
 <p class="text-input__wrapper">

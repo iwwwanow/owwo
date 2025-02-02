@@ -1,14 +1,16 @@
 <script lang="ts">
   import type { CardContainerProps } from "./card-container.svelte";
+  import { getComponentClassname } from "./getters";
 
   export let props: CardContainerProps;
 
-  let { className } = props;
+  // TODO namings
+  let { className: classname } = props;
 
-  className = `card-container${className ? " " + className : ""}`;
+  const componentClassname = getComponentClassname(classname);
 </script>
 
-<span class={className}>
+<span class={componentClassname}>
   <slot />
 </span>
 

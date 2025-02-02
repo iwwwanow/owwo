@@ -2,15 +2,13 @@ import type { NodeImageType } from "@contexts/site-core";
 import type { NodeDataType } from "@contexts/site-core";
 import type { SvelteComponentTyped } from "svelte";
 
+export type ImageVariantType = "small" | "big";
+
 export interface NodeLinkProps {
-  node?: NodeDataType;
+  node: NodeDataType;
 
   leftSymbol?: string;
   rightSymbol?: string;
-
-  id?: string;
-  title?: string;
-  image?: NodeImageType;
 }
 
 class NodeLinkType extends SvelteComponentTyped<NodeLinkProps> {}

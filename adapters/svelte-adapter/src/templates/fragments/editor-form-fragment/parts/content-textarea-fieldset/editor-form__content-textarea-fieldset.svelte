@@ -1,7 +1,7 @@
-<script>
-  import Hr from "./hr.component.svelte";
-  import CardContainer from "./card-container.component.svelte";
-  import Textarea from "./inputs/textarea.component.svelte";
+<script lang="ts">
+  import { Hr } from "../../../../components";
+  import { CardContainer } from "../../../../components";
+  import { Textarea } from "../../../../components";
 
   const CONTENT_TEXTAREA_PLACEHOLDER = "content".toUpperCase();
 </script>
