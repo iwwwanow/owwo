@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { NodeDataType } from "@contexts/site-core";
+  import type { IndexPageProps } from "./index-page.svelte";
 
-  import { BaseLayout } from "../layouts";
-  import { NodeLink } from "../components";
-  import { FullGridWrapContainer } from "../components";
+  import { BaseLayout } from "../../layouts";
+  import { NodeLink } from "../../components";
+  import { FullGridWrapContainer } from "../../components";
 
-  export let users: Array<NodeDataType>;
+  export let props: IndexPageProps;
+  const { users } = props;
 </script>
 
 <BaseLayout>

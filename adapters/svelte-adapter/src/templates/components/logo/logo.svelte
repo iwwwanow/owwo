@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LogoSvg from "../svgs/logo.svg.svelte";
+  import { LogoSvg } from "../../svgs";
   import type { LogoProps } from "./logo.svelte";
   import { getComponentClassname } from "./getters";
 

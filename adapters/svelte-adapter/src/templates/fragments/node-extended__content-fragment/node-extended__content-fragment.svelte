@@ -1,7 +1,9 @@
-<script>
-  import StringContent from "./node-extended__content_string.fragment.svelte";
+<script lang="ts">
+  import type { NodeExtendedContentFragmentProps } from "./node-extended__content-fragment.svelte";
+  import { ContentPart } from "./parts";
 
-  export let content;
+  export let props: NodeExtendedContentFragmentProps;
+  const { content } = props;
 
   const html = content.html;
   const contentType = typeof html;
@@ -9,7 +11,7 @@
 
 <div class="element__content-wrapper">
   {#if contentType === "string"}
-    <StringContent {html} />
+    <ContentPart {html} />
   {/if}
 </div>
 

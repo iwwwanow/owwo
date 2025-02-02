@@ -1,15 +1,15 @@
-<script>
-  import BaseHead from "../fragments/base-head.fragment.svelte";
-  import Header from "../fragments/header.fragment.svelte";
-  import Footer from "../fragments/footer.fragment.svelte";
+<script lang="ts">
+  import { BaseHeadFragment } from "../../fragments";
+  import { HeaderFragment } from "../../fragments";
+  import { FooterFragment } from "../../fragments";
 </script>
 
 <svelte:head>
-  <BaseHead />
+  <BaseHeadFragment />
 </svelte:head>
 
 <body class="wrapper">
-  <Header />
-  <slot />
-  <Footer />
+  <HeaderFragment />
+  <!-- <slot /> -->
+  <!-- <FooterFragment /> -->
 </body>

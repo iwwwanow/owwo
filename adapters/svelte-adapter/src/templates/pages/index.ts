@@ -1,7 +1,7 @@
-export { default as AboutPage } from "./about.page.svelte";
-export { default as ErrorPage } from "./error.page.svelte";
-export { default as IndexPage } from "./index.page.svelte";
-export { default as LoginPage } from "./login.page.svelte";
-export { default as NodeExtendedPage } from "./node-extended.page.svelte";
-export { default as NodePage } from "./node.page.svelte";
-export { default as SignupPage } from "./signup.page.svelte";
+export * from "./about-page";
+export * from "./error-page";
+export * from "./index-page";
+export * from "./login-page";
+export * from "./node-extended-page";
+export * from "./node-page";
+export * from "./signup-page";

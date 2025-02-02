@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NodeLink from "./node-link.component.svelte";
+  import { NodeLink } from "../";
   import type { NodeNavigationProps } from "./node-navigation.svelte";
   export let props: NodeNavigationProps;
   const { prevNode, nextNode, current, length } = props;

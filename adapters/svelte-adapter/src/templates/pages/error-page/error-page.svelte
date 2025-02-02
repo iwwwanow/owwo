@@ -1,5 +1,5 @@
-<script>
-  import BaseLayout from "../layouts/base.layout.svelte";
+<script lang="ts">
+  import { BaseLayout } from "../../layouts";
 </script>
 
 <BaseLayout>

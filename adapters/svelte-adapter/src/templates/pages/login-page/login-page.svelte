@@ -1,9 +1,11 @@
-<script>
-  import BaseLayout from "../layouts/base.layout.svelte";
-  import LoginForm from "../components/login-form.component.svelte";
-  import TextInput from "../components/inputs/text.input.svelte";
-  import Button from "../components/buttons/default.button.svelte";
+<script lang="ts">
+  import { BaseLayout } from "../../layouts";
+  // TODO to fragments?
+  import { LoginForm } from "../../components";
+  import { TextInput } from "../../components";
+  import { Button } from "../../components";
 
+  // TODO to constants?
   const LOGIN_PLACEHOLDER = "username".toUpperCase();
   const PASSWORD_PLACEHOLDER = "password".toUpperCase();
 </script>

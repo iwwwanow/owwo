@@ -9,7 +9,7 @@ import { AboutPage } from "./templates";
 import { ErrorPage } from "./templates";
 import { NodeExtendedPage } from "./templates";
 import { NodePage } from "./templates";
-import { commonHtml } from "./templates";
+import { CommonHtml } from "./templates";
 
 export class SvelteAdapter implements SiteViewPort {
   private svelteRewriter: PageRewriterService;
@@ -17,7 +17,7 @@ export class SvelteAdapter implements SiteViewPort {
   async init(): Promise<void> {
     console.log("init svelte adapter");
 
-    this.svelteRewriter = new PageRewriterService(commonHtml);
+    this.svelteRewriter = new PageRewriterService(CommonHtml);
     await this.svelteRewriter.init();
   }
 

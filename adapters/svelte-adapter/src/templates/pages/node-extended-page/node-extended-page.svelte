@@ -1,24 +1,28 @@
-<script>
-  import NodeExtendedLayout from "../layouts/node-extended.layout.svelte";
-  import Hr from "../components/hr.component.svelte";
-  import NodeCard from "../components/node-card.component.svelte";
+<script lang="ts">
+  import type { NodeExtendedPageProps } from "./node-extended-page.svelte";
+  import { NodeExtendedLayout } from "../../layouts";
+  import { Hr } from "../../components";
+  import { NodeCard } from "../../components";
 
-  import FullGridWrapContainer from "../components/full-grid-wrap-container.component.svelte";
-  import Logo from "../components/logo.component.svelte";
-  import Header from "../fragments/header.fragment.svelte";
+  import { FullGridWrapContainer } from "../../components";
+  import { Logo } from "../../components";
+  import { HeaderFragment } from "../../fragments";
 
-  import NodeExtendedContent from "../fragments/node-extended__content.fragment.svelte";
-  import NodeNavigation from "../components/node-navigation.component.svelte";
+  import { NodeExtendedContentFragment } from "../../fragments";
+  // TODO to fragments?
+  import { NodeNavigation } from "../../components";
 
-  import Text from "../components/text.component.svelte";
-  import NodeTitle from "../components/node-title.component.svelte";
-  import NodeInfo from "../components/node-info.component.svelte";
+  import { Text } from "../../components";
+  import { NodeTitle } from "../../components";
+  import { NodeInfo } from "../../components";
 
-  export let node;
+  export let props: NodeExtendedPageProps;
+  const { node } = props;
 
   const { title } = node;
   const { content } = node;
 
+  // TODO refactor
   const siblingsArray = node.meta.siblings;
   const siblingsLength = siblingsArray.length;
   const currentSiblingId = node.meta.id;
@@ -43,7 +47,7 @@
     </ul>
   </div>
 
-  <NodeExtendedContent {content} />
+  <NodeExtendedContentFragment {content} />
 
   {#if prevSibling || nextSibling}
     <NodeNavigation
@@ -79,7 +83,7 @@
     <!--   {/each} -->
     <!-- </FullGridWrapContainer> -->
 
-    <Header bottom />
+    <HeaderFragment position="bottom" />
   </div>
 </NodeExtendedLayout>
 

@@ -1,13 +1,14 @@
 <script lang="ts">
   import type { NodeInfoProps } from "./node-info.svelte";
 
-  import Hr from "./hr.component.svelte";
-  import Date from "./date.component.svelte";
-  import Image from "./image.component.svelte";
+  // TODO to fragments
+  import { Hr } from "../";
+  import { DateComponent } from "../";
+  import { Image } from "../";
 
-  import NodeTitle from "./node-title.component.svelte";
-  import NodeLink from "./node-link.component.svelte";
-  import NodeLinkContainer from "./node-link__container.component.svelte";
+  import { NodeTitle } from "../";
+  import { NodeLink } from "../";
+  import { NodeLinkContainer } from "../";
 
   export let props: NodeInfoProps;
 
@@ -71,7 +72,7 @@
 
         {#if date}
           <Hr text="last-modification/creation date" />
-          <Date {date} />
+          <DateComponent {date} />
         {/if}
       </div>
     {/if}

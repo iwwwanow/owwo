@@ -1,5 +1,7 @@
-<script>
-  export let html;
+<script lang="ts">
+  import type { ContentPartProps } from "./content-part.svelte";
+  export let props: ContentPartProps;
+  const { html } = props;
 </script>
 
 <div class="element__content-container">

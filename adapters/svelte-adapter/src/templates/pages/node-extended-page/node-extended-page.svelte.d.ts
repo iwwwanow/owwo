@@ -1,5 +1,10 @@
-import type { SvelteComponentType } from "../rewriter/svelte-html-page.interfaces"
+import type { NodeDataType } from "@contexts/site-core";
+import type { SvelteComponentTyped } from "svelte";
 
-const NodeExtendedPage: SvelteComponentType
+export interface NodeExtendedPageProps {
+  node: NodeDataType;
+}
 
-export default NodeExtendedPage
+class CType extends SvelteComponentTyped<NodeExtendedPageProps> {}
+
+export default CType;

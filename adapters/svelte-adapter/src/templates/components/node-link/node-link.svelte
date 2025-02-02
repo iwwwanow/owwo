@@ -2,7 +2,7 @@
   import type { NodeLinkProps } from "./node-link.svelte";
   import type { ImageVariantType } from "./node-link.svelte";
 
-  import NodeLinkImage from "./node-link__image.component.svelte";
+  import { NodeLinkImage } from "../";
 
   export let props: NodeLinkProps;
 

@@ -1,9 +1,9 @@
-<script>
-  import BaseHead from "../fragments/base-head.fragment.svelte";
+<script lang="ts">
+  import { BaseHeadFragment } from "../../fragments";
 </script>
 
 <svelte:head>
-  <BaseHead />
+  <BaseHeadFragment />
 </svelte:head>
 
 <body class="node-extended-layout">

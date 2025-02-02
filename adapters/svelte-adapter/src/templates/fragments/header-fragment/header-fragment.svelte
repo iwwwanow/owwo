@@ -1,12 +1,17 @@
-<script>
-  import Logo from "../components/logo.component.svelte";
-  import Hr from "../components/hr.component.svelte";
+<script lang="ts">
+  import type { HeaderFragmentProps } from "./header-fragment.svelte";
 
-  export let bottom = false;
+  import { Logo } from "../../components";
+  import { Hr } from "../../components";
+
+  export let props: HeaderFragmentProps;
+  const position = props?.position;
+
+  export let isBottomPosition = position === "bottom";
 </script>
 
-<header class="grid" style={bottom ? "margin: auto 0 0;" : ""}>
-  {#if bottom}
+<header class="grid" style={isBottomPosition ? "margin: auto 0 0;" : ""}>
+  {#if isBottomPosition}
     <Hr text="header" />
   {/if}
 

@@ -28,7 +28,7 @@ export class PageRewriterService {
     // TODO если компонент не был проведен,
     // то возвращать бланковую html страницу
 
-    const renderResult = svelteComponent.render<PageProps>(props);
+    const renderResult = svelteComponent.render<PageProps>({ props });
 
     const head = renderResult.head;
     const body = renderResult.html;

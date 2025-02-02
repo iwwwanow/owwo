@@ -1,1 +1,1 @@
-export { default as commonHtml } from "./common.html";
+export * from "./common";

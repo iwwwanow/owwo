@@ -1,19 +1,21 @@
-<script>
-  import BaseLayout from "../layouts/base.layout.svelte";
+<script lang="ts">
+  import type { NodePageProps } from "./node-page.svelte";
 
-  import EditorForm from "../components/editor-form.component.svelte";
-  import NodeInfo from "../components/node-info.component.svelte";
-  import NodeCard from "../components/node-card.component.svelte";
+  import { BaseLayout } from "../../layouts";
 
-  import Image from "../components/image.component.svelte";
-  import Text from "../components/text.component.svelte";
-  import Date from "../components/date.component.svelte";
-  import PlusButton from "../components/buttons/plus.button.svelte";
-  import TextInput from "../components/inputs/text.input.svelte";
-  import Hr from "../components/hr.component.svelte";
+  import { EditorFormFragment } from "../../fragments";
+  import { NodeInfo } from "../../components";
+  import { NodeCard } from "../../components";
 
-  export let node;
-  export let client;
+  import { Image } from "../../components";
+  import { Text } from "../../components";
+  import { Date } from "../../components";
+  import { ButtonPlus } from "../../components";
+  import { TextInput } from "../../components";
+  import { Hr } from "../../components";
+
+  export let props: NodePageProps;
+  const { node, client } = props;
 
   const { id } = node;
   const { image } = node;
@@ -29,7 +31,7 @@
 </script>
 
 <BaseLayout>
-  <EditorForm {client} {node} />
+  <EditorFormFragment {client} {node} />
 
   <div class="grid node-wrapper">
     <NodeInfo {node} />
@@ -65,7 +67,7 @@
     {/if}
 
     <span class="add-node__container">
-      <PlusButton />
+      <ButtonPlus />
     </span>
   </div>
 
@@ -85,10 +87,10 @@
           required={true}
           placeholder={ADD_NODE_INPUT_PLACEHOLDER}
         />
-        <PlusButton variant="small" />
+        <ButtonPlus variant="small" />
       </div>
 
-      <PlusButton />
+      <ButtonPlus />
     </span>
   </div>
 </BaseLayout>

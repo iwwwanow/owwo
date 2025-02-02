@@ -1,1 +1,2 @@
-export { default as BaseLayout } from "./base.layout.svelte";
+export * from "./base-layout";
+export * from "./node-extended-layout";

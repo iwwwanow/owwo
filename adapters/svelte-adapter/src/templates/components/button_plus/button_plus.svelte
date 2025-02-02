@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ButtonPlusProps } from "./button_plus.svelte";
-  import ButtonPlusSvg from "../../svgs/button_plus.svg.svelte";
+  import { ButtonPlusSvg } from "../../svgs";
 
   export let props: ButtonPlusProps;
 

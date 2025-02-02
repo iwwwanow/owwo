@@ -1,16 +1,20 @@
 <script lang="ts">
-  import Hr from "./hr.component.svelte";
+  import type { EditorFormFragmentsProps } from "./editor-form-fragment.svelte";
 
-  import EditorFormFileInputFieldset from "./editor-form__file-input-fieldset.component.svelte";
-  import EditorFormContentTextareaFieldset from "./editor-form__content-textarea-fieldset.component.svelte";
-  import EditorFormMainInputsFieldset from "./editor-form__main-inputs-fieldset.component.svelte";
+  import { Hr } from "../../components";
 
-  export let node;
+  import { EditorFormFileInputFieldset } from "./parts";
+  import { EditorFormContentTextareaFieldset } from "./parts";
+  import { EditorFormMainInputsFieldset } from "./parts";
+
+  export let props: EditorFormFragmentsProps;
+
+  const { node, client } = props;
+
   const {
     image: { original: imageSrc },
   } = node;
 
-  export let client;
   const { isEditor } = client;
 </script>
 

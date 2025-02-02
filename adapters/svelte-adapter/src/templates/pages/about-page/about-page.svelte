@@ -1,8 +1,10 @@
-<script>
-  import BaseLayout from "../layouts/base.layout.svelte";
-  import Text from "../components/text.component.svelte";
+<script lang="ts">
+  import type { AboutPageProps } from "./about-page.svelte";
+  import { BaseLayout } from "../../layouts";
+  import { Text } from "../../components";
 
-  export let text = "";
+  export let props: AboutPageProps;
+  const { text = "" } = props;
 </script>
 
 <BaseLayout>

@@ -19,7 +19,6 @@
     <TextInput
       id="editor-form__title-input"
       name="title"
-			<!-- TODO props? -->
       rows="auto"
       required={false}
       placeholder={TITLE_INPUT_PLACEHOLDER}
@@ -28,7 +27,6 @@
     <Textarea
       id="editor-form__description-textarea"
       name="description"
-			<!-- TODO props? -->
       rows="auto"
       required={false}
       placeholder={DESCRIPTION_TEXTAREA_PLACEHOLDER}

@@ -1,5 +1,7 @@
-import type { SvelteComponentType } from "../rewriter/svelte-html-page.interfaces"
+import type { SvelteComponentTyped } from "svelte";
 
-const LoginPage: SvelteComponentType
+export interface LoginPageProps {}
 
-export default LoginPage
+class CType extends SvelteComponentTyped<LoginPageProps> {}
+
+export default CType;

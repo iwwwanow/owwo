@@ -1,5 +1,7 @@
-import type { SvelteComponentType } from "../rewriter/svelte-html-page.interfaces"
+import type { SvelteComponentTyped } from "svelte";
 
-const SignupPage: SvelteComponentType
+export interface CProps {}
 
-export default SignupPage
+class CType extends SvelteComponentTyped<CProps> {}
+
+export default CType;
