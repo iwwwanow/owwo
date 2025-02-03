@@ -10,6 +10,6 @@
 
 <body class="wrapper">
   <HeaderFragment />
-  <!-- <slot /> -->
-  <!-- <FooterFragment /> -->
+  <slot />
+  <FooterFragment />
 </body>

@@ -2,9 +2,8 @@
   import type { HrProps } from "./hr.svelte";
   import { getComponentColorStyle } from "./getters";
 
-  export let props: HrProps;
-
-  const { text, color } = props;
+  export let text: HrProps["text"];
+  export let color: HrProps["color"];
 
   const componentColorStyle = getComponentColorStyle(color);
 </script>

@@ -3,10 +3,9 @@
   import type { LogoProps } from "./logo.svelte";
   import { getComponentClassname } from "./getters";
 
-  export let props: LogoProps;
-  // TODO rename
-  const { className: classname, href = "/" } = props;
+  export let props: LogoProps = {};
 
+  const { classname, href = "/" } = props;
   const componentClassname = getComponentClassname(classname);
 </script>
 

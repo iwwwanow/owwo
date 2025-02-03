@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte";
 
 export interface LogoProps {
-  className?: string;
+  classname?: string;
   href?: string;
 }
 
