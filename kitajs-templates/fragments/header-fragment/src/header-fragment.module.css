@@ -1,0 +1,36 @@
+.header * {
+  text-transform: uppercase;
+}
+
+.element-layout header {
+  margin: auto 0 0;
+}
+
+.header__login-container {
+  grid-column-end: -1;
+  /* grid-row-start: 1; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 650px) {
+  .header__editor-link {
+    grid-row: 2 / 3;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .header__editor-link {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header__login-container {
+    justify-content: flex-start;
+  }
+
+  .header__editor-link {
+    grid-row: 3 / 4;
+  }
+}

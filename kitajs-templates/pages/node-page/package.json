@@ -1,0 +1,26 @@
+{
+  "name": "@site-ui/node-page",
+  "version": "0.0.1",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "src/index.ts",
+  "dependencies": {
+    "@ui/button": "workspace:*",
+    "@ui/date": "workspace:*",
+    "@site-ui/editor-form": "workspace:*",
+    "@ui/hr": "workspace:*",
+    "@ui/image": "workspace:*",
+    "@ui/input": "workspace:*",
+    "@ui/node-card": "workspace:*",
+    "@ui/node-info": "workspace:*",
+    "@ui/text": "workspace:*",
+    "@site-ui/base-layout": "workspace:*"
+  },
+  "devDependencies": {
+    "@ui/css-module": "workspace:*",
+    "@site/interfaces": "workspace:*"
+  }
+}

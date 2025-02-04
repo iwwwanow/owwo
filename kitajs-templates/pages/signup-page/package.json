@@ -1,0 +1,17 @@
+{
+  "name": "@site-ui/signup-page",
+  "version": "0.0.1",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "src/index.ts",
+  "dependencies": {
+    "@site/constants": "workspace:*",
+    "@site-ui/base-layout": "workspace:*",
+    "@ui/login-form": "workspace:*",
+    "@ui/input": "workspace:*",
+    "@ui/button": "workspace:*"
+  }
+}

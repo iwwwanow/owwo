@@ -10,6 +10,7 @@
   "dependencies": {
     "@contexts/site-core": "workspace:*",
     "@adapters/bun-http-server": "workspace:*",
-    "@adapters/svelte": "workspace:*"
+    "@adapters/svelte": "workspace:*",
+    "@adapters/kitajs": "workspace:*"
   }
 }

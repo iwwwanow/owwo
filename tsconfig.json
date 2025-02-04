@@ -13,16 +13,13 @@
 
     "moduleDetection": "force",
     "jsx": "react-jsx",
+    "jsxImportSource": "@kitajs/html",
 
-    // "jsxImportSource": "@kitajs/html",
-
-    // "plugins": [
-    //   { "name": "@kitajs/ts-html-plugin" },
-    //   { "name": "typescript-plugin-css-modules" }
-    // ],
-    // "types": ["@kitajs/html/htmx.d.ts"],
-
-    "types": ["node", "bun"],
+    "plugins": [
+      { "name": "@kitajs/ts-html-plugin" },
+      { "name": "typescript-plugin-css-modules" }
+    ],
+    "types": ["@kitajs/html/htmx.d.ts", "node", "bun"],
     "allowJs": false,
 
     // Bundler mode
