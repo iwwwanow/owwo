@@ -1,0 +1,12 @@
+.node-link__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(var(--GRID-GAP) / 4);
+}
+@media screen and (max-width: 360px) {
+  .node-link__container {
+    max-width: 100%;
+    gap: calc(var(--GRID-GAP));
+  }
+}
