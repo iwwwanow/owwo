@@ -23,6 +23,9 @@
   ],
   "scripts": {
     "site:dev": "NODE_ENV=developement bun --watch ./entrypoints/site/src/index.ts",
+    "site:build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
+    "site:build-docker": "docker build -f docker/site.Dockerfile -t owwo/site:latest .",
+    "system:build-docker": "docker build -f docker/system.Dockerfile -t owwo/system:latest .",
     "test": "bun test"
   },
   "override": {
