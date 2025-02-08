@@ -5,7 +5,7 @@ services:
       - UPLOADS_PATH=${UPLOADS_PATH}
     volumes:
       - shared-volume:${UPLOADS_PATH}:ro
-      - ../:/site
+      - ../../:/site
     working_dir: /site
     entrypoint: bun site:dev
     ports:

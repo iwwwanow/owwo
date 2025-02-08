@@ -4,33 +4,6 @@ import { nodeDataMock } from "../tests";
 
 const MOCK_USERS_QUANTITY = 128;
 
-const indexPageMockData = {
-  users: Array(MOCK_USERS_QUANTITY).fill(nodeDataMock),
-};
-
-const nodePageMockData = {
-  node: {
-    ...nodeDataMock,
-    meta: {
-      childs: Array(3).fill(nodeDataMock),
-      parents: Array(4).fill(nodeDataMock),
-    },
-  },
-  client: {},
-};
-
-const nodeExtendedPageMockData = {
-  node: {
-    ...nodeDataMock,
-    meta: {
-      childs: Array(3).fill(nodeDataMock),
-      parents: Array(4).fill(nodeDataMock),
-      siblings: Array(7).fill(nodeDataMock),
-    },
-  },
-  client: {},
-};
-
 export const indexPageHandler = async (
   req: Request,
   siteViewContext: SiteViewPort,
