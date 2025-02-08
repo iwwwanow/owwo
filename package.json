@@ -24,8 +24,10 @@
   "scripts": {
     "site:dev": "NODE_ENV=developement bun --watch ./entrypoints/site/src/index.ts",
     "site:build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
-    "site:build-docker": "docker build -f docker/site.Dockerfile -t owwo/site:latest .",
-    "system:build-docker": "docker build -f docker/system.Dockerfile -t owwo/system:latest .",
+    "site:build-image": "docker build -f docker/site.Dockerfile -t owwo/site:latest .",
+    "system:build-image": "docker build -f docker/system.Dockerfile -t owwo/system:latest .",
+    "compose:dev": "docker compose --env-file .env -f ./docker/dev.docker-compose.yaml up",
+    "compose:prod": "docker compose --env-file .env -f ./docker/prod.docker-compose.yaml up",
     "test": "bun test"
   },
   "override": {
