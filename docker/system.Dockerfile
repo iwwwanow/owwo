@@ -1,5 +1,8 @@
 FROM alpine:latest
 
+ARG UPLOADS_PATH=/home/uploads
+ENV UPLOADS_PATH=$UPLOADS_PATH
+
 RUN apk update &&\
     apk add --no-cache openssh
 
@@ -11,19 +14,18 @@ RUN adduser -D -s /sbin/nologin -G sftpusers appuser
 
 RUN echo "appuser:secret" | chpasswd
 
-# RUN mkdir -p /home/appuser/upload && chown root:root /home/appuser && chmod 755 /home/appuser
-RUN mkdir -p /home/uploads/appuser &&\
-    chown root:root /home/uploads &&\
-    chmod 755 /home/uploads
+RUN mkdir -p $UPLOADS_PATH/appuser &&\
+    chown root:root $UPLOADS_PATH &&\
+    chmod 755 $UPLOADS_PATH
 
-RUN chown appuser:sftpusers /home/uploads/appuser
+RUN chown appuser:sftpusers $UPLOADS_PATH/appuser
 
 RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config &&\
     sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config &&\
     echo "" >> /etc/ssh/sshd_config &&\
     echo "Subsystem sftp internal-sftp" >> /etc/ssh/sshd_config &&\
     echo "Match Group sftpusers" >> /etc/ssh/sshd_config &&\
-    echo "    ChrootDirectory /home/uploads" >> /etc/ssh/sshd_config &&\
+    echo "    ChrootDirectory $UPLOADS_PATH" >> /etc/ssh/sshd_config &&\
     echo "    ForceCommand internal-sftp" >> /etc/ssh/sshd_config &&\
     echo "    X11Forwarding no" >> /etc/ssh/sshd_config &&\
     echo "    AllowTCPForwarding no" >> /etc/ssh/sshd_config

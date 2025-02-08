@@ -1,0 +1,23 @@
+services:
+  site:
+    image: oven/bun:latest
+    environment:
+      - UPLOADS_PATH=${UPLOADS_PATH}
+    volumes:
+      - shared-volume:${UPLOADS_PATH}:ro
+      - ../:/site
+    working_dir: /site
+    entrypoint: bun site:dev
+    ports:
+      - "3000:3000"
+  system:
+    environment:
+      - UPLOADS_PATH=${UPLOADS_PATH}
+    image: owwo/system:latest
+    volumes:
+      - shared-volume:${UPLOADS_PATH}
+    ports:
+      - "2222:22"
+
+volumes:
+  shared-volume:
