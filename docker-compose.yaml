@@ -1,9 +1,0 @@
-services:
-  site:
-    image: oven/bun:latest
-    volumes:
-      - ./:/workspace
-    working_dir: /workspace
-    entrypoint: bun site:dev
-    ports:
-      - "3000:3000"
