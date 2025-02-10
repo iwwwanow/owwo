@@ -15,11 +15,7 @@
     "typescript": "5.7.3"
   },
   "workspaces": [
-    "forks/**/*",
-    "tests/**/*",
-    "contexts/**/*",
-    "adapters/**/*",
-    "entrypoints/**/*"
+    "site/**/*"
   ],
   "scripts": {
     "site:dev": "NODE_ENV=developement bun --watch ./entrypoints/site/src/index.ts",

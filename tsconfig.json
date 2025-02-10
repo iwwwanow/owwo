@@ -39,13 +39,7 @@
     "noPropertyAccessFromIndexSignature": true
   },
 
-  "include": [
-    "Globals.d.ts",
-    "tests/**/*",
-    "contexts/**/*",
-    "adapters/**/*",
-    "entrypoints/**/*"
-  ],
+  "include": ["Globals.d.ts", "site/**/*"],
 
   "exclude": ["*.svg.tsx"]
 }
