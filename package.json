@@ -15,15 +15,15 @@
     "typescript": "5.7.3"
   },
   "workspaces": [
-    "site/**/*"
+    "src/**/*"
   ],
   "scripts": {
-    "site:dev": "NODE_ENV=developement bun --watch ./entrypoints/site/src/index.ts",
-    "site:build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
-    "site:build-image": "docker build -f ./site/docker/site.Dockerfile -t owwo/site:latest .",
-    "system:build-image": "docker build -f ./site/docker/system.Dockerfile -t owwo/system:latest .",
-    "compose:dev": "docker compose --env-file .env -f ./site/docker/dev.docker-compose.yaml up",
-    "compose:prod": "docker compose --env-file .env -f ./site/docker/prod.docker-compose.yaml up",
+    "dev": "NODE_ENV=developement bun --watch ./src/entrypoints/src/server.entrypoint.ts",
+    "build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
+    "build-image": "docker build -f ./site/docker/site.Dockerfile -t owwo/site:latest .",
+    "build-system-image": "docker build -f ./site/docker/system.Dockerfile -t owwo/system:latest .",
+    "compose-dev": "docker compose --env-file .env -f ./site/docker/dev.docker-compose.yaml up",
+    "compose-prod": "docker compose --env-file .env -f ./site/docker/prod.docker-compose.yaml up",
     "test": "bun test"
   },
   "override": {
