@@ -1,1 +1,1 @@
-export * from "./directory.controller";
+export * from "./resource.controller";
