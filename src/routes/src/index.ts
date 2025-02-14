@@ -1,1 +1,2 @@
-export * from "./site.routes";
+export * from "./routes";
+export * from "./interfaces";
