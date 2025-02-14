@@ -17,6 +17,6 @@ Bun.serve({
 
 console.log("Server running on http://localhost:3000");
 
-registerIndexRoutes(app);
-registerApiRoutes(app);
 registerStaticRoutes(app);
+registerApiRoutes(app);
+registerIndexRoutes(app);

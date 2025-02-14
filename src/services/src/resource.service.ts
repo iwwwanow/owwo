@@ -1,10 +1,16 @@
 import { ResourceRepository } from "@site/repositories";
 
+import { getUploadsPath } from "./getters";
+import { getResourcePath } from "./getters";
+
 export class ResourceService {
   static async get(req: Request) {
-    console.log("req on resourece service");
-    // TODO get path from req
-    const path = "bla";
-    const resourceData = ResourceRepository.get(path);
+    const reqUrl = new URL(req.url);
+    const { pathname: reqPathname } = reqUrl;
+
+    const uploadsPath = getUploadsPath();
+    const resourcePath = getResourcePath(uploadsPath, reqPathname);
+
+    const resourceData = ResourceRepository.get(resourcePath);
   }
 }
