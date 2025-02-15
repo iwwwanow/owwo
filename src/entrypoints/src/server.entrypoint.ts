@@ -1,6 +1,4 @@
-import { registerIndexRoutes } from "@site/routes";
-import { registerApiRoutes } from "@site/routes";
-import { registerStaticRoutes } from "@site/routes";
+import { registerRoutes } from "@site/routes";
 
 import { getRouter } from "./getters";
 import { getApp } from "./getters";
@@ -17,6 +15,4 @@ Bun.serve({
 
 console.log("Server running on http://localhost:3000");
 
-registerStaticRoutes(app);
-registerApiRoutes(app);
-registerIndexRoutes(app);
+registerRoutes(app);

@@ -11,6 +11,6 @@ export class ResourceService {
     const uploadsPath = getUploadsPath();
     const resourcePath = getResourcePath(uploadsPath, reqPathname);
 
-    const resourceData = await ResourceRepository.get(resourcePath);
+    const resourceData = await ResourceRepository.getResourceData(resourcePath);
   }
 }

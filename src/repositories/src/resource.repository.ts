@@ -4,7 +4,7 @@ import { readdir } from "fs/promises";
 import { join } from "path";
 
 export class ResourceRepository {
-  static async get(path: string): Resource {
+  static async getResourceData(path: string): Resource {
     console.log("get resource on repository by path");
     const dirData = await readdir(path);
     console.log(dirData);
