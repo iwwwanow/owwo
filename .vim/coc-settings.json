@@ -1,0 +1,6 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "tsserver.log": "normal",
+  "tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+  "tsserver.useLocalTsdk": true
+}
