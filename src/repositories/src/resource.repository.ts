@@ -5,7 +5,6 @@ import { join } from "path";
 
 export class ResourceRepository {
   static async getResourceData(path: string): Resource {
-    console.log("get resource on repository by path");
     const dirData = await readdir(path);
     console.log(dirData);
     for (const data of dirData) {
