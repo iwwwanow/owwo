@@ -1,0 +1,10 @@
+  .date-container {
+    display: flex;
+    gap: var(--GRID-GAP-2);
+  }
+  .date_creation {
+    color: var(--MEDIUM);
+  }
+  .date_last {
+    color: var(--LIGHT);
+  }
