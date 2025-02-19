@@ -3,7 +3,7 @@ import { CssModule } from "../../components";
 import { Hr } from "../../components";
 import { TextInput } from "../../components";
 import { NodeCard } from "../../components";
-import { NodeInfo } from "../../components";
+import { ResourceInfo } from "../../components";
 import { Text } from "../../components";
 import { EditorForm } from "../../fragments";
 import { BaseLayout } from "../../layouts";
@@ -25,7 +25,7 @@ const NodePage: NodePageType = (props) => {
         {isEditor ? <EditorForm client={client} nodeData={nodeData} /> : <></>}
 
         <div class="grid node-wrapper">
-          <NodeInfo nodeData={nodeData} />
+          <ResourceInfo nodeData={nodeData} />
 
           {nodeData.content && (
             <Text text={nodeData.content} className="grid__right-content" />

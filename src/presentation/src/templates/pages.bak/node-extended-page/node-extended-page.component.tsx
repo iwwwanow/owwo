@@ -1,5 +1,5 @@
 import { CssModule } from "../../components";
-import { NodeInfo } from "../../components";
+import { ResourceInfo } from "../../components";
 import { NodeTitle } from "../../components";
 import { Text } from "../../components";
 import { HeaderFragment } from "../../fragments";
@@ -29,7 +29,7 @@ const NodeExtendedPage: NodeExtendedPageType = (props) => {
 
         <div class="wrapper node-extended__layout">
           <span class="grid element-info__data-wrapper">
-            <NodeInfo
+            <ResourceInfo
               nodeData={nodeData}
               isTitleNeeded={false}
               isDescriptionNeeded={false}

@@ -1,1 +1,5 @@
-export interface ResourcePageProps {}
+// TODO import if from models
+
+export interface ResourcePageProps {
+  resourceData: ResourceDataType;
+}
