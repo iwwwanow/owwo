@@ -7,7 +7,7 @@ export class ResourceController {
   static async get(req: Request) {
     // TODO
     const resourceData = ResourceService.get(req);
-    const html = ResourcePage(resourceData);
+    const html = ResourcePage({ resourceData });
     const response = getResponseHtml(html);
     return response;
   }
