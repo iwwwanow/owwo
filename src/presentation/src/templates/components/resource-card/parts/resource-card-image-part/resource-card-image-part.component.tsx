@@ -1,7 +1,7 @@
 import { ImageSourceGetter } from "./getters";
-import type { NodeCardImageType } from "./node-card__image.interfaces";
+import type { NodeCardImageProps } from "./resource-card-image-part.interfaces";
 
-export const NodeCardImage: NodeCardImageType = ({ image }) => {
+export const ResourceCardImage: Component<NodeCardImageProps> = ({ image }) => {
   const { imageWidth190px2xSource, image2xSrcset, imageOriginalSource } =
     ImageSourceGetter.componentVariants(image);
 

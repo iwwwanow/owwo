@@ -1,17 +1,13 @@
-import type { ImageVariantName } from "@globals/constants";
-import type { NodeImageType } from "@site/interfaces";
+import type { ImageVariantName } from "@site/models";
+import type { NodeImageType } from "@site/models";
 
 type AllowedVariants =
-  | ImageVariantName.HEIGHT_16PX
-  | ImageVariantName.HEIGHT_32PX
-  | ImageVariantName.WIDTH_190PX;
+  | ImageVariantName.Height_16px
+  | ImageVariantName.Height_32px
+  | ImageVariantName.Width_190px;
 
-type ImageProps = {
+export interface ImageProps {
   image: NodeImageType;
   id: string;
   variant: AllowedVariants;
-};
-
-type ImageType = (props: ImageProps) => JSX.Element;
-
-export type { ImageType };
+}

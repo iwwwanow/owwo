@@ -2,7 +2,7 @@ import { PlusButton } from "../../components";
 import { CssModule } from "../../components";
 import { Hr } from "../../components";
 import { TextInput } from "../../components";
-import { NodeCard } from "../../components";
+import { ResourceCard } from "../../components";
 import { ResourceInfo } from "../../components";
 import { Text } from "../../components";
 import { EditorForm } from "../../fragments";
@@ -34,7 +34,7 @@ const NodePage: NodePageType = (props) => {
         <div class="grid user__pages-container">
           <Hr text="node-files"></Hr>
           {childs &&
-            childs.map((childNode) => <NodeCard nodeData={childNode} />)}
+            childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
 
           <span class="add-node__container">
             <PlusButton />
@@ -43,7 +43,7 @@ const NodePage: NodePageType = (props) => {
         <div class="grid user__pages-container">
           <Hr text="child-nodes"></Hr>
           {childs &&
-            childs.map((childNode) => <NodeCard nodeData={childNode} />)}
+            childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
 
           <span class="add-node__container">
             <div class="add-node__input-container">

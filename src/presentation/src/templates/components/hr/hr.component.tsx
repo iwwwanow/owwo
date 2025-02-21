@@ -1,8 +1,8 @@
 import { CssModule } from "../";
-import type { HrType } from "./hr.interface";
+import type { HrProps } from "./hr.interface";
 import Style from "./hr.module.css";
 
-const Hr: HrType = (props) => {
+export const Hr: Component<HrProps> = (props) => {
   const { text, color } = props;
   const colorStyle = color ? `color: ${color}; border-color: ${color};` : "";
 
@@ -21,5 +21,3 @@ const Hr: HrType = (props) => {
 
   return <hr style={colorStyle} />;
 };
-
-export { Hr };

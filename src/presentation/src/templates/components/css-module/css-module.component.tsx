@@ -1,6 +1,6 @@
-import type { CssModuleType } from "./css-module.interface";
+import type { CssModuleProps } from "./css-module.interface";
 
-export const CssModule: CssModuleType = async (props) => {
+export const CssModule: Component<CssModuleProps> = async (props) => {
   if (process.env.NODE_ENV === "developement") {
     const { filepath } = props;
 

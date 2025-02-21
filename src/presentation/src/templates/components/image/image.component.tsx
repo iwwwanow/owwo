@@ -1,7 +1,7 @@
 import { ImageVariantName } from "../../globals";
-import type { ImageType } from "./image.interface";
+import type { ImageProps } from "./image.interface";
 
-const Image: ImageType = (props) => {
+export const Image: Component<ImageProps> = (props) => {
   const { image, id, variant } = props;
 
   const imageId = `image-${id}`;
@@ -18,5 +18,3 @@ const Image: ImageType = (props) => {
     </picture>
   );
 };
-
-export { Image };

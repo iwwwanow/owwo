@@ -6,4 +6,4 @@ declare interface Constructor<T> {
   new (): T;
 }
 
-declare type Page<T> = (props: T) => JSX.Element;
+declare type Component<T> = (props: T) => JSX.Element;

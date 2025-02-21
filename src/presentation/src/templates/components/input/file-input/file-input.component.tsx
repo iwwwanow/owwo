@@ -1,8 +1,8 @@
 import { CssModule } from "../../";
-import type { FileInputType } from "./file-input.interface";
+import type { FileInputProps } from "./file-input.interface";
 import Style from "./file-input.module.css";
 
-export const FileInput: FileInputType = (props) => {
+export const FileInput: Component<FileInputProps> = (props) => {
   const { id, name, accept, required = false, imageSrc } = props;
 
   return (

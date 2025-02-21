@@ -1,9 +1,9 @@
 import { PlusButtonSvg } from "../../../svg";
 import { CssModule } from "../../css-module";
-import type { PlusButtonType } from "./plus-button.interface";
+import type { PlusButtonProps } from "./plus-button.interface";
 import Style from "./plus-button.module.css";
 
-export const PlusButton: PlusButtonType = (props) => {
+export const PlusButton: Component<PlusButtonProps> = (props) => {
   const { variant } = props;
 
   if (variant === "small") {

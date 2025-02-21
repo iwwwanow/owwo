@@ -1,9 +1,9 @@
 import { CssModule } from "../";
-import type { CardContainerType } from "./card-container.interface";
+import type { CardContainerProps } from "./card-container.interface";
 import Style from "./card-container.module.css";
 import { getClassName } from "./getters";
 
-export const CardContainer: CardContainerType = (props) => {
+export const CardContainer: Component<CardContainerProps> = (props) => {
   let { className, children } = props;
   className = getClassName(className);
 

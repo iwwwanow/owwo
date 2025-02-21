@@ -1,9 +1,5 @@
 type PlusButtonVariants = "small";
 
-type PlusButtonProps = {
+export interface PlusButtonProps {
   variant?: PlusButtonVariants;
-};
-
-type PlusButtonType = (props: PlusButtonProps) => JSX.Element;
-
-export type { PlusButtonType };
+}

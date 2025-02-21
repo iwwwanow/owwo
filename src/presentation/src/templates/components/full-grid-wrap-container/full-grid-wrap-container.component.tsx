@@ -1,9 +1,11 @@
 import { CssModule } from "../";
-import type { FullGridWrapContainerType } from "./full-grid-wrap-container.interface";
+import type { FullGridWrapContainerProps } from "./full-grid-wrap-container.interface";
 import Style from "./full-grid-wrap-container.module.css";
 import { getStyle } from "./getters";
 
-export const FullGridWrapContainer: FullGridWrapContainerType = (props) => {
+export const FullGridWrapContainer: Component<FullGridWrapContainerProps> = (
+  props,
+) => {
   const { limit, children } = props;
   const style = getStyle(limit);
 

@@ -1,9 +1,8 @@
 import { CssModule } from "../../css-module";
-
-import type { ButtonType } from "./button.interface";
+import type { ButtonProps } from "./button.interface";
 import Style from "./button.module.css";
 
-export const Button: ButtonType = (props) => {
+export const Button: Component<ButtonProps> = (props) => {
   const { url, text } = props;
 
   if (url) {

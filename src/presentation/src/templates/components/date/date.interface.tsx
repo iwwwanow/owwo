@@ -1,9 +1,5 @@
-import type { NodeDateType } from "@site/interfaces";
+import type { NodeDateType } from "@site/models";
 
-type DateComponentProps = {
+export interface DateComponentProps {
   date: NodeDateType;
-};
-
-type DateComponentType = (props: DateComponentProps) => JSX.Element;
-
-export type { DateComponentType };
+}

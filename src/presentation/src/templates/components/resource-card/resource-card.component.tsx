@@ -1,11 +1,11 @@
 import { CssModule } from "../";
 import { DescriptionFormatter } from "./formatters";
-import type { NodeCardType } from "./node-card.interface";
 import Style from "./node-card.module.css";
-import { NodeCardImage } from "./node-card__image";
-import { NodeCardTextContent } from "./node-card__text-content";
+import { ResourceCardImage } from "./parts";
+import { NodeCardTextContent } from "./parts";
+import type { NodeCardType } from "./resource-card.interface";
 
-const NodeCard: NodeCardType = (props) => {
+export const ResourceCard: NodeCardType = (props) => {
   const { nodeData } = props;
 
   const { id } = nodeData.meta;
@@ -19,7 +19,7 @@ const NodeCard: NodeCardType = (props) => {
   return (
     <>
       <a class="card__wrapper border_light" href={id}>
-        {image && <NodeCardImage image={image} />}
+        {image && <ResourceCardImage image={image} />}
 
         {(title || description) && (
           <NodeCardTextContent
@@ -32,5 +32,3 @@ const NodeCard: NodeCardType = (props) => {
     </>
   );
 };
-
-export { NodeCard };

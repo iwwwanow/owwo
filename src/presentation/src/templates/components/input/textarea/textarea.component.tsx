@@ -1,10 +1,10 @@
 import { CssModule } from "../../";
 import { TEXTAREA_CLASSNAME } from "./textarea.constants";
 import { TEXTAREA_WRAPPER_CLASSNAME } from "./textarea.constants";
-import type { TextareaType } from "./textarea.interface";
+import type { TextareaProps } from "./textarea.interface";
 import Style from "./textarea.module.css";
 
-const Textarea: TextareaType = (props) => {
+export const Textarea: Component<TextareaProps> = (props) => {
   const {
     id,
     name,
@@ -35,5 +35,3 @@ const Textarea: TextareaType = (props) => {
     </>
   );
 };
-
-export { Textarea };

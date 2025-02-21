@@ -1,8 +1,8 @@
 import { CssModule } from "../";
-import type { DateComponentType } from "./date.interface";
+import type { DateComponentProps } from "./date.interface";
 import Style from "./date.module.css";
 
-const DateComponent: DateComponentType = (props) => {
+const DateComponent: Component<DateComponentProps> = (props) => {
   const { date } = props;
 
   const localDate = date.last.toLocaleDateString("ru-RU");
