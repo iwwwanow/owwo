@@ -1,4 +1,4 @@
-import { NodeNavigation } from "../../../components";
+import { ResourceNavigation } from "../../../components";
 import type { NodeExtendedPageNavigationType } from "./node-extended-page__navigation.interface";
 
 const NodeExtendedPageNavigation: NodeExtendedPageNavigationType = (props) => {
@@ -16,7 +16,7 @@ const NodeExtendedPageNavigation: NodeExtendedPageNavigationType = (props) => {
 
     if (prevSibling || nextSibling) {
       return (
-        <NodeNavigation
+        <ResourceNavigation
           current={currentSiblingIndex}
           length={siblingsLength}
           prevNode={prevSibling}

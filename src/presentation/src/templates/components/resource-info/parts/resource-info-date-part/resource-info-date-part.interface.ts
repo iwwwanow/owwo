@@ -1,7 +1,5 @@
-import type { NodeDateType } from "@site/interfaces";
+import type { NodeDateType } from "@site/models";
 
-type NodeInfoDateProps = {
+export interface ResourceInfoDateProps {
   date: NodeDateType;
-};
-
-export type NodeInfoDateType = (props: NodeInfoDateProps) => JSX.Element;
+}

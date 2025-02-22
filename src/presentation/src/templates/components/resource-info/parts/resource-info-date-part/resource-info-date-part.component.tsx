@@ -1,8 +1,10 @@
-import { DateComponent } from "../../";
-import { Hr } from "../../";
-import type { NodeInfoDateType } from "./node-info__date.interface";
+import { DateComponent } from "../../../";
+import { Hr } from "../../../";
+import type { ResourceInfoDateProps } from "./resource-info-date-part.interface";
 
-export const NodeInfoDate: NodeInfoDateType = ({ date }) => (
+export const ResourceInfoDatePart: Component<ResourceInfoDateProps> = ({
+  date,
+}) => (
   <>
     <Hr text="last-modification/creation date" />
     <DateComponent date={date} />

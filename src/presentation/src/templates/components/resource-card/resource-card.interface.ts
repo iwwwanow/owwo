@@ -1,9 +1,5 @@
-import type { NodeDataType } from "@site/interfaces";
+import type { NodeDataType } from "@site/models";
 
-type NodeCardProps = {
+export interface NodeCardProps {
   nodeData: NodeDataType;
-};
-
-type NodeCardType = (props: NodeCardProps) => JSX.Element;
-
-export type { NodeCardType };
+}

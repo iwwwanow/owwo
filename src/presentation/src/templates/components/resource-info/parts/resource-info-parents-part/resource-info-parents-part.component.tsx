@@ -1,15 +1,17 @@
-import { Hr } from "../../";
-import { NodeLink } from "../../";
-import { NodeLinkContainer } from "../../";
-import type { NodeInfoParentsType } from "./node-info__parents.interface";
+import { Hr } from "../../../";
+import { ResourceLink } from "../../../";
+import { ResourceLinkContainer } from "../../../";
+import type { ResourceInfoParentsProps } from "./resource-info-parents-part.interface";
 
-export const NodeInfoParents: NodeInfoParentsType = ({ parents }) => (
+export const ResourceInfoParentsPart: Component<ResourceInfoParentsProps> = ({
+  parents,
+}) => (
   <>
     <Hr text="pages" />
-    <NodeLinkContainer>
+    <ResourceLinkContainer>
       {parents.map((parent) => (
-        <NodeLink node={parent} />
+        <ResourceLink node={parent} />
       ))}
-    </NodeLinkContainer>
+    </ResourceLinkContainer>
   </>
 );

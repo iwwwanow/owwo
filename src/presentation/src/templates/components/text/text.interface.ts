@@ -1,10 +1,6 @@
-import type { NodeContentType } from "@site/interfaces";
+import type { NodeContentType } from "@site/models";
 
-type TextProps = {
+export interface TextProps {
   text: NodeContentType;
   className?: string;
-};
-
-type TextType = (props: TextProps) => JSX.Element;
-
-export type { TextType };
+}

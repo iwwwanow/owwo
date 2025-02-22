@@ -1,6 +1,3 @@
-type NodeLinkContainerProps = {
+export interface ResourceLinkContainerProps {
   children: JSX.Element | Array<JSX.Element>;
-};
-
-type NodeLinkContainerType = (props: NodeLinkContainerProps) => JSX.Element;
-export type { NodeLinkContainerType };
+}

@@ -1,9 +1,9 @@
 import { CssModule } from "../";
-import { NodeLink } from "../";
-import type { NodeNavigationType } from "./node-navigation.interface";
+import { ResourceLink } from "../";
 import Style from "./node-navigation.module.css";
+import type { NodeNavigationProps } from "./resource-navigation.interface";
 
-const NodeNavigation: NodeNavigationType = (props) => {
+export const ResourceNavigation: Component<NodeNavigationProps> = (props) => {
   const { prevNode, nextNode, current, length } = props;
 
   return (
@@ -11,7 +11,7 @@ const NodeNavigation: NodeNavigationType = (props) => {
       <div class="grid navigation-elements__wrapper">
         <div class="navigation-elements__container">
           <span class="navigation-elements__element">
-            <NodeLink node={prevNode} leftSymbol="◂" />
+            <ResourceLink node={prevNode} leftSymbol="◂" />
           </span>
           <span>
             <h5>
@@ -19,7 +19,7 @@ const NodeNavigation: NodeNavigationType = (props) => {
             </h5>
           </span>
           <span class="navigation-elements__element">
-            <NodeLink node={nextNode} rightSymbol="▸" />
+            <ResourceLink node={nextNode} rightSymbol="▸" />
           </span>
         </div>
       </div>
@@ -27,5 +27,3 @@ const NodeNavigation: NodeNavigationType = (props) => {
     </>
   );
 };
-
-export { NodeNavigation };

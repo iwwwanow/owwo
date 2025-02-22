@@ -1,8 +1,10 @@
 import { CssModule } from "../";
-import type { NodeLinkContainerType } from "./node-link-container.interface";
+import type { ResourceLinkContainerProps } from "./node-link-container.interface";
 import Style from "./node-link-container.module.css";
 
-const NodeLinkContainer: NodeLinkContainerType = (props) => {
+export const ResourceLinkContainer: Component<ResourceLinkContainerProps> = (
+  props,
+) => {
   const { children } = props;
 
   return (
@@ -12,5 +14,3 @@ const NodeLinkContainer: NodeLinkContainerType = (props) => {
     </>
   );
 };
-
-export { NodeLinkContainer };

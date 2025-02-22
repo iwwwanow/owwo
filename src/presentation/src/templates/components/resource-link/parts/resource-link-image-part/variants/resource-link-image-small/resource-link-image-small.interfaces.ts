@@ -1,9 +1,5 @@
-import type { NodeImageType } from "@site/interfaces";
+import type { NodeImageType } from "@site/models";
 
-type NodeLinkImageSmallProps = {
+export interface ResourceLinkImageSmallProps {
   image: NodeImageType;
-};
-
-export type NodeLinkImageSmallType = (
-  props: NodeLinkImageSmallProps,
-) => JSX.Element;
+}

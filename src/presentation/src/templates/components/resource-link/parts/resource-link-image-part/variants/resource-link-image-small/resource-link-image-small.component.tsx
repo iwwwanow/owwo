@@ -1,7 +1,10 @@
-import { ImageVariantName } from "../../../../globals";
-import type { NodeLinkImageSmallType } from "./node-link-image_small.interfaces";
+import { ImageVariantName } from "@site/models";
 
-export const NodeLinkImageSmall: NodeLinkImageSmallType = ({ image }) => {
+import type { ResourceLinkImageSmallProps } from "./resource-link-image-small.interfaces";
+
+export const ResourceLinkImageSmall: Component<ResourceLinkImageSmallProps> = ({
+  image,
+}) => {
   const imageHeight16pxSource = image[ImageVariantName.Height_16px];
   const imageHeight16px2xSource = image[ImageVariantName.Height_16px_2x];
 

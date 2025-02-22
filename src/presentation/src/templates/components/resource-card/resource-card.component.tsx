@@ -3,9 +3,9 @@ import { DescriptionFormatter } from "./formatters";
 import Style from "./node-card.module.css";
 import { ResourceCardImage } from "./parts";
 import { NodeCardTextContent } from "./parts";
-import type { NodeCardType } from "./resource-card.interface";
+import type { NodeCardProps } from "./resource-card.interface";
 
-export const ResourceCard: NodeCardType = (props) => {
+export const ResourceCard: Component<NodeCardProps> = (props) => {
   const { nodeData } = props;
 
   const { id } = nodeData.meta;

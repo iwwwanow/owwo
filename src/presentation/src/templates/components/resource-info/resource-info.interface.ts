@@ -1,9 +1,9 @@
-import type { NodeDataType } from "@site/interfaces";
-import type { NodeImageType } from "@site/interfaces";
-import type { NodeContentType } from "@site/interfaces";
-import type { NodeDateType } from "@site/interfaces";
+import type { NodeImageType } from "@site/models";
+import type { NodeContentType } from "@site/models";
+import type { NodeDateType } from "@site/models";
+import type { NodeDataType } from "@site/models";
 
-type NodeInfoProps = {
+export interface ResourceInfoProps {
   nodeData: NodeDataType;
 
   isTitleNeeded?: boolean;
@@ -17,8 +17,4 @@ type NodeInfoProps = {
   // parents?: Array<NodeDataType>;
   // description?: NodeContentType;
   // date?: NodeDateType;
-};
-
-type NodeInfoType = (props: NodeInfoProps) => JSX.Element | null;
-
-export type { NodeInfoType };
+}

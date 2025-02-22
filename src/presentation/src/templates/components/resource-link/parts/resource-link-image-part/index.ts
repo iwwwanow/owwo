@@ -1,1 +1,1 @@
-export * from "./node-link-image.component";
+export * from "./resource-link-image-part.component";

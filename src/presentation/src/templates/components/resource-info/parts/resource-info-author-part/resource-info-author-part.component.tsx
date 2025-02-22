@@ -1,13 +1,15 @@
-import { Hr } from "../../";
-import { NodeLink } from "../../";
-import { NodeLinkContainer } from "../../";
-import type { NodeInfoAuthorType } from "./node-info__author.interface";
+import { Hr } from "../../../";
+import { ResourceLink } from "../../../";
+import { ResourceLinkContainer } from "../../../";
+import type { ResourceInfoAuthorProps } from "./resource-info-author-part.interface";
 
-export const NodeInfoAuthor: NodeInfoAuthorType = ({ author }) => (
+export const ResourceInfoAuthorPart: Component<ResourceInfoAuthorProps> = ({
+  author,
+}) => (
   <>
     <Hr text="author" />
-    <NodeLinkContainer>
-      <NodeLink node={author} />
-    </NodeLinkContainer>
+    <ResourceLinkContainer>
+      <ResourceLink node={author} />
+    </ResourceLinkContainer>
   </>
 );

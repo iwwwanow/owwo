@@ -1,11 +1,11 @@
 import { CssModule } from "../";
-import type { NodeLinkType } from "./node-link.interface";
 import Style from "./node-link.module.css";
-import { NodeLinkImage } from "./node-link__image";
-import { NodeLinkSymbol } from "./node-link__symbol";
-import { NodeLinkTitle } from "./node-link__title";
+import { ResourceLinkImagePart } from "./parts";
+import { ResourceLinkSymbolPart } from "./parts";
+import { ResourceLinkTitlePart } from "./parts";
+import type { ResourceLinkProps } from "./resource-link.interface";
 
-const NodeLink: NodeLinkType = (props) => {
+export const ResourceLink: Component<ResourceLinkProps> = (props) => {
   const { node, leftSymbol, rightSymbol } = props;
 
   const { isTitleNeeded = true } = props;
@@ -19,14 +19,14 @@ const NodeLink: NodeLinkType = (props) => {
   return (
     <>
       <a href={nodeLinkHref} class="node-info__container">
-        {leftSymbol && <NodeLinkSymbol symbol={leftSymbol} />}
-        {image && <NodeLinkImage image={image} variant={imageVariant} />}
-        {isTitleNeeded && title && <NodeLinkTitle title={title} />}
-        {rightSymbol && <NodeLinkSymbol symbol={rightSymbol} />}
+        {leftSymbol && <ResourceLinkSymbolPart symbol={leftSymbol} />}
+        {image && (
+          <ResourceLinkImagePart image={image} variant={imageVariant} />
+        )}
+        {isTitleNeeded && title && <ResourceLinkTitlePart title={title} />}
+        {rightSymbol && <ResourceLinkSymbolPart symbol={rightSymbol} />}
       </a>
       <CssModule filepath={Style} />
     </>
   );
 };
-
-export { NodeLink };

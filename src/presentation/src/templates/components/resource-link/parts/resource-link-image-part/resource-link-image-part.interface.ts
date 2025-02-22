@@ -2,9 +2,7 @@ import type { NodeImageType } from "@site/interfaces";
 
 type NodeLinkImageVariants = "small" | "big";
 
-type NodeLinkImageProps = {
+export interface ResourceLinkImageProps {
   variant: NodeLinkImageVariants;
   image: NodeImageType;
-};
-
-export type NodeLinkImageType = (props: NodeLinkImageProps) => JSX.Element;
+}

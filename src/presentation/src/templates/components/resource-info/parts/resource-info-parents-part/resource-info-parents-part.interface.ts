@@ -1,7 +1,5 @@
-import type { NodeDataType } from "@site/interfaces";
+import type { NodeDataType } from "@site/models";
 
-type NodeInfoParentsProps = {
+export interface ResourceInfoParentsProps {
   parents: Array<NodeDataType>;
-};
-
-export type NodeInfoParentsType = (props: NodeInfoParentsProps) => JSX.Element;
+}

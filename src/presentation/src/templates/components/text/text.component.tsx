@@ -1,8 +1,8 @@
 import { CssModule } from "../";
-import type { TextType } from "./text.interface";
+import type { TextProps } from "./text.interface";
 import Style from "./text.module.css";
 
-const Text: TextType = (props) => {
+export const Text: Component<TextProps> = (props) => {
   const { text, className = "" } = props;
 
   return (
@@ -12,5 +12,3 @@ const Text: TextType = (props) => {
     </>
   );
 };
-
-export { Text };

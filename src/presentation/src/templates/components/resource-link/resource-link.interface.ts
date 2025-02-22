@@ -1,7 +1,7 @@
-import type { NodeDataType } from "@site/interfaces";
-import type { NodeImageType } from "@site/interfaces";
+import type { NodeDataType } from "@site/models";
+import type { NodeImageType } from "@site/models";
 
-type NodeLinkProps = {
+export interface ResourceLinkProps {
   node: NodeDataType;
 
   isTitleNeeded?: boolean;
@@ -11,8 +11,4 @@ type NodeLinkProps = {
   id?: string;
   title?: string;
   image?: NodeImageType;
-};
-
-type NodeLinkType = (props: NodeLinkProps) => JSX.Element;
-
-export type { NodeLinkType };
+}

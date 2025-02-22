@@ -1,5 +1,5 @@
 import { FullGridWrapContainer } from "../../components";
-import { NodeLink } from "../../components";
+import { ResourceLink } from "../../components";
 import { BaseLayout } from "../../layouts";
 import type { HomePageType } from "./home-page.interface";
 
@@ -11,7 +11,7 @@ const HomePage: HomePageType = (props) => {
     <BaseLayout clientData={clientData}>
       <FullGridWrapContainer>
         {users.map((user) => (
-          <NodeLink node={user} isTitleNeeded={false} />
+          <ResourceLink node={user} isTitleNeeded={false} />
         ))}
       </FullGridWrapContainer>
 

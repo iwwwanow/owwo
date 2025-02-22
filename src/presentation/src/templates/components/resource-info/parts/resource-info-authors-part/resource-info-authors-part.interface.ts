@@ -1,7 +1,5 @@
-import type { NodeDataType } from "@site/interfaces";
+import type { NodeDataType } from "@site/models";
 
-type NodeInfoAuthorsProps = {
+export interface ResourceInfoAuthorsProps {
   authors: Array<NodeDataType>;
-};
-
-export type NodeInfoAuthorsType = (props: NodeInfoAuthorsProps) => JSX.Element;
+}

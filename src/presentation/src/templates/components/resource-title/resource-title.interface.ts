@@ -1,5 +1,3 @@
-type NodeTitleProps = {
+export interface ResourceTitleProps {
   title: string;
-};
-
-export type ResourceTitleType = (props: NodeTitleProps) => JSX.Element;
+}

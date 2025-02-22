@@ -1,18 +1,18 @@
 import { CssModule } from "../../components";
 import { Image } from "../../components";
-import { NodeTitle } from "../../components";
+import { ResourceTitle } from "../../components";
 import { ImageVariantName } from "../../globals";
 import { hasTextDataHelper } from "./helpers";
 import { hasDataHelper } from "./helpers";
-import type { NodeInfoType } from "./node-info.interface";
 import Style from "./node-info.module.css";
-import { NodeInfoAuthor } from "./node-info__author";
-import { NodeInfoAuthors } from "./node-info__authors";
-import { NodeInfoDate } from "./node-info__date";
-import { NodeInfoDescription } from "./node-info__description";
-import { NodeInfoParents } from "./node-info__parents";
+import { ResourceInfoAuthorPart } from "./parts";
+import { ResourceInfoAuthorsPart } from "./parts";
+import { ResourceInfoDatePart } from "./parts";
+import { ResourceInfoDescriptionPart } from "./parts";
+import { ResourceInfoParentsPart } from "./parts";
+import type { ResourceInfoProps } from "./resource-info.interface";
 
-export const ResourceInfo: NodeInfoType = (props) => {
+export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
   const { nodeData } = props;
   const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
 
@@ -41,14 +41,14 @@ export const ResourceInfo: NodeInfoType = (props) => {
           )}
           {hasTextData && (
             <div class="node-info__data-container">
-              {isTitleNeeded && <NodeTitle title={title} />}
-              {author && <NodeInfoAuthor author={author} />}
-              {authors && <NodeInfoAuthors authors={authors} />}
-              {parents && <NodeInfoParents parents={parents} />}
+              {isTitleNeeded && <ResourceTitle title={title} />}
+              {author && <ResourceInfoAuthorPart author={author} />}
+              {authors && <ResourceInfoAuthorsPart authors={authors} />}
+              {parents && <ResourceInfoParentsPart parents={parents} />}
               {isDescriptionNeeded && description?.html && (
-                <NodeInfoDescription description={description} />
+                <ResourceInfoDescriptionPart description={description} />
               )}
-              {date && <NodeInfoDate date={date} />}
+              {date && <ResourceInfoDatePart date={date} />}
             </div>
           )}
         </span>

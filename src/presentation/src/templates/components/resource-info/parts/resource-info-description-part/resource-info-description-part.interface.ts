@@ -1,9 +1,5 @@
-import type { NodeContentType } from "@site/interfaces";
+import type { NodeContentType } from "@site/models";
 
-type NodeInfoDescriptionProps = {
+export interface ResourceInfoDescriptionProps {
   description: NodeContentType;
-};
-
-export type NodeInfoDescriptionType = (
-  props: NodeInfoDescriptionProps,
-) => JSX.Element;
+}

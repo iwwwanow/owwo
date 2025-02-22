@@ -1,8 +1,11 @@
-import { ImageVariantName } from "../../../../globals";
-import { IMAGE_ALT } from "./node-link-image_big.constants";
-import type { NodeLinkImageBigType } from "./node-link-image_big.interfaces";
+import { ImageVariantName } from "@site/models";
 
-export const NodeLinkImageBig: NodeLinkImageBigType = ({ image }) => {
+import { IMAGE_ALT } from "./resource-link-image-big.constants";
+import type { ResourceLinkImageBigProps } from "./resource-link-image-big.interfaces";
+
+export const ResourceLinkImageBig: Component<ResourceLinkImageBigProps> = ({
+  image,
+}) => {
   // TODO refactor
   const imageHeight32pxSource = image[ImageVariantName.Height_32px];
   const imageHeight32px2xSource = image[ImageVariantName.Height_32px_2x];
