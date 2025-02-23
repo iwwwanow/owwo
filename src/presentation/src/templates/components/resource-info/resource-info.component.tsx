@@ -1,16 +1,17 @@
+import { ImageVariantName } from "@site/models";
+
 import { CssModule } from "../../components";
 import { Image } from "../../components";
 import { ResourceTitle } from "../../components";
-import { ImageVariantName } from "../../globals";
 import { hasTextDataHelper } from "./helpers";
 import { hasDataHelper } from "./helpers";
-import Style from "./node-info.module.css";
 import { ResourceInfoAuthorPart } from "./parts";
 import { ResourceInfoAuthorsPart } from "./parts";
 import { ResourceInfoDatePart } from "./parts";
 import { ResourceInfoDescriptionPart } from "./parts";
 import { ResourceInfoParentsPart } from "./parts";
 import type { ResourceInfoProps } from "./resource-info.interface";
+import Style from "./resource-info.module.css";
 
 export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
   const { nodeData } = props;

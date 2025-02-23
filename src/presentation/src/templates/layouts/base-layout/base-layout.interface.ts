@@ -1,10 +1,6 @@
-import type { ClientDataType } from "@site/interfaces";
+import type { ClientDataType } from "@site/models";
 
-type BaseLayoutProps = {
+export interface BaseLayoutProps {
   clientData?: ClientDataType;
   children: JSX.Element | Array<JSX.Element>;
-};
-
-type BaseLayoutType = (props: BaseLayoutProps) => JSX.Element;
-
-export type { BaseLayoutType };
+}

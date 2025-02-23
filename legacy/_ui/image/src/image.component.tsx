@@ -1,4 +1,4 @@
-import { ImageVariantName } from "@globals/constants";
+import { ImageVariantName } from "@site/models";
 
 import type { ImageType } from "./image.interface";
 
@@ -9,7 +9,7 @@ const Image: ImageType = (props) => {
   const imageSrcset = `${image[`${variant}_2x`]}`;
   const image2xSrcset = `${image[variant]}, ${image[`${variant}_2x`]} 2x`;
 
-  const imageOriginalSource = image[ImageVariantName.ORIGINAL];
+  const imageOriginalSource = image[ImageVariantName.Original];
 
   return (
     <picture>

@@ -13,53 +13,57 @@ import Style from "./resource-page.module.css";
 const ADD_NODE_INPUT_PLACEHOLDER = "bla";
 
 export const ResourcePage: Component<ResourcePageProps> = (props) => {
-  const { resourceData } = props;
+  console.log(props);
 
-  const { meta } = nodeData;
-  const childs = meta.childs;
+  return <h1>bla</h1>;
 
-  const { isEditor } = client;
-
-  return (
-    <>
-      <BaseLayout>
-        <div class="grid node-wrapper">
-          <ResourceInfo nodeData={nodeData} />
-
-          {resourceData.content && (
-            <Text text={nodeData.content} className="grid__right-content" />
-          )}
-        </div>
-        <div class="grid user__pages-container">
-          <Hr text="node-files"></Hr>
-          {childs &&
-            childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
-
-          <span class="add-node__container">
-            <PlusButton />
-          </span>
-        </div>
-        <div class="grid user__pages-container">
-          <Hr text="child-nodes"></Hr>
-          {childs &&
-            childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
-
-          <span class="add-node__container">
-            <div class="add-node__input-container">
-              <TextInput
-                id="add-node__input"
-                name="node-data"
-                required={true}
-                placeholder={ADD_NODE_INPUT_PLACEHOLDER}
-              />
-              <PlusButton variant="small" />
-            </div>
-
-            <PlusButton />
-          </span>
-        </div>
-      </BaseLayout>
-      <CssModule filepath={Style} />
-    </>
-  );
+  // const { resourceData } = props;
+  //
+  // const { meta } = nodeData;
+  // const childs = meta.childs;
+  //
+  // const { isEditor } = client;
+  //
+  // return (
+  //   <>
+  //     <BaseLayout>
+  //       <div class="grid node-wrapper">
+  //         <ResourceInfo nodeData={nodeData} />
+  //
+  //         {resourceData.content && (
+  //           <Text text={nodeData.content} className="grid__right-content" />
+  //         )}
+  //       </div>
+  //       <div class="grid user__pages-container">
+  //         <Hr text="node-files"></Hr>
+  //         {childs &&
+  //           childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
+  //
+  //         <span class="add-node__container">
+  //           <PlusButton />
+  //         </span>
+  //       </div>
+  //       <div class="grid user__pages-container">
+  //         <Hr text="child-nodes"></Hr>
+  //         {childs &&
+  //           childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
+  //
+  //         <span class="add-node__container">
+  //           <div class="add-node__input-container">
+  //             <TextInput
+  //               id="add-node__input"
+  //               name="node-data"
+  //               required={true}
+  //               placeholder={ADD_NODE_INPUT_PLACEHOLDER}
+  //             />
+  //             <PlusButton variant="small" />
+  //           </div>
+  //
+  //           <PlusButton />
+  //         </span>
+  //       </div>
+  //     </BaseLayout>
+  //     <CssModule filepath={Style} />
+  //   </>
+  // );
 };

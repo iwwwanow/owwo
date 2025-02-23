@@ -1,4 +1,5 @@
-import { ImageVariantName } from "../../globals";
+import { ImageVariantName } from "@site/models";
+
 import type { ImageProps } from "./image.interface";
 
 export const Image: Component<ImageProps> = (props) => {

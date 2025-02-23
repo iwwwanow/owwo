@@ -1,6 +1,6 @@
 import { CssModule } from "../";
-import Style from "./node-title.module.css";
 import type { ResourceTitleProps } from "./resource-title.interface";
+import Style from "./resource-title.module.css";
 
 export const ResourceTitle: Component<ResourceTitleProps> = (props) => {
   const { title } = props;

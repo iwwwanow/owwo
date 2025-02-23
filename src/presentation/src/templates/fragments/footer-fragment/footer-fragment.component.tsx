@@ -4,7 +4,7 @@ import Style from "./footer-fragment.module.css";
 
 const ABOUT_ROUTE_PATH = "about";
 
-const FooterFragment = () => {
+export const FooterFragment = () => {
   return (
     <>
       <footer class="grid footer">
@@ -19,5 +19,3 @@ const FooterFragment = () => {
     </>
   );
 };
-
-export { FooterFragment };

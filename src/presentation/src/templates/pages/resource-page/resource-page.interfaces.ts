@@ -1,5 +1,5 @@
-// TODO import if from models
+import { NodeDataType } from "@site/models";
 
 export interface ResourcePageProps {
-  resourceData: ResourceDataType;
+  resourceData: NodeDataType;
 }

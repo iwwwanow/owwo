@@ -1,2 +1,2 @@
-export * from "./plus-button.svg.tsx";
-export * from "./logo.svg.tsx";
+export * from "./plus-button.svg";
+export * from "./logo.svg";

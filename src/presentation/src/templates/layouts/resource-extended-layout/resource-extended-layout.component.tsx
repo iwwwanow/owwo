@@ -1,9 +1,11 @@
 import { CssModule } from "../../components";
 import { BaseHeadFragment } from "../../fragments";
-import type { NodeExtendedLayoutType } from "./node-extended-layout.interface";
-import Style from "./node-extended-layout.module.css";
+import type { NodeExtendedLayoutProps } from "./resouce-extended-layout.interface";
+import Style from "./resource-extended-layout.module.css";
 
-const NodeExtendedLayout: NodeExtendedLayoutType = (props) => {
+export const ResourceExtendedLayout: Component<NodeExtendedLayoutProps> = (
+  props,
+) => {
   const { children } = props;
 
   return (
@@ -16,5 +18,3 @@ const NodeExtendedLayout: NodeExtendedLayoutType = (props) => {
     </>
   );
 };
-
-export { NodeExtendedLayout };

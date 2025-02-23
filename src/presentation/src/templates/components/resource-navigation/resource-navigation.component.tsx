@@ -1,7 +1,7 @@
 import { CssModule } from "../";
 import { ResourceLink } from "../";
-import Style from "./node-navigation.module.css";
 import type { NodeNavigationProps } from "./resource-navigation.interface";
+import Style from "./resource-navigation.module.css";
 
 export const ResourceNavigation: Component<NodeNavigationProps> = (props) => {
   const { prevNode, nextNode, current, length } = props;

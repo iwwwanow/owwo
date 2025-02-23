@@ -1,6 +1,5 @@
-import type { NodeImageType } from "@site/interfaces";
-
-import { ImageVariantName } from "../../../../globals";
+import type { NodeImageType } from "@site/models";
+import { ImageVariantName } from "@site/models";
 
 export class ImageSourceGetter {
   static componentVariants(image: NodeImageType) {
@@ -21,17 +20,17 @@ export class ImageSourceGetter {
   }
 
   static width190pxSource(image: NodeImageType) {
-    const imageWidth190pxSource = image[ImageVariantName.WIDTH_190PX];
+    const imageWidth190pxSource = image[ImageVariantName.Width_190px];
     return imageWidth190pxSource;
   }
 
   static width190px2xSource(image: NodeImageType) {
-    const imageWidth190px2xSource = image[ImageVariantName.WIDTH_190PX_2X];
+    const imageWidth190px2xSource = image[ImageVariantName.Width_190px_2x];
     return imageWidth190px2xSource;
   }
 
   static originalSource(image: NodeImageType) {
-    const imageOriginalSource = image[ImageVariantName.ORIGINAL];
+    const imageOriginalSource = image[ImageVariantName.Original];
     return imageOriginalSource;
   }
 

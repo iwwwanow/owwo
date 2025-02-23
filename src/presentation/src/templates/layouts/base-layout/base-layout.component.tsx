@@ -1,10 +1,10 @@
 import { BaseHeadFragment } from "../../fragments";
 import { FooterFragment } from "../../fragments";
 import { HeaderFragment } from "../../fragments";
-import type { BaseLayoutType } from "./base-layout.interface";
+import type { BaseLayoutProps } from "./base-layout.interface";
 import { SuccessMessage } from "./success-message/index.js";
 
-const BaseLayout: BaseLayoutType = (props) => {
+export const BaseLayout: Component<BaseLayoutProps> = (props) => {
   const { children } = props;
   const successMessage = props.clientData?.successMessage;
 
@@ -26,5 +26,3 @@ const BaseLayout: BaseLayoutType = (props) => {
     </>
   );
 };
-
-export { BaseLayout };

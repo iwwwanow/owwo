@@ -1,9 +1,9 @@
 import { CssModule } from "../";
 import { DescriptionFormatter } from "./formatters";
-import Style from "./node-card.module.css";
 import { ResourceCardImage } from "./parts";
 import { NodeCardTextContent } from "./parts";
 import type { NodeCardProps } from "./resource-card.interface";
+import Style from "./resource-card.module.css";
 
 export const ResourceCard: Component<NodeCardProps> = (props) => {
   const { nodeData } = props;

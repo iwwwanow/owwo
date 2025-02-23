@@ -1,4 +1,4 @@
-const BaseHeadFragment = () => {
+export const BaseHeadFragment = () => {
   return (
     <>
       <meta charset="UTF-8" />
@@ -11,5 +11,3 @@ const BaseHeadFragment = () => {
     </>
   );
 };
-
-export { BaseHeadFragment };

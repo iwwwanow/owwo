@@ -1,9 +1,9 @@
 import { CssModule } from "../";
-import Style from "./node-link.module.css";
 import { ResourceLinkImagePart } from "./parts";
 import { ResourceLinkSymbolPart } from "./parts";
 import { ResourceLinkTitlePart } from "./parts";
 import type { ResourceLinkProps } from "./resource-link.interface";
+import Style from "./resource-link.module.css";
 
 export const ResourceLink: Component<ResourceLinkProps> = (props) => {
   const { node, leftSymbol, rightSymbol } = props;
