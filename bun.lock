@@ -21,7 +21,6 @@
       "name": "@site/controllers",
       "version": "0.0.1",
       "dependencies": {
-        "@site/presentation": "workspace:*",
         "@site/services": "workspace:*",
       },
     },
@@ -58,6 +57,7 @@
       "name": "@site/services",
       "version": "0.0.1",
       "dependencies": {
+        "@site/presentation": "workspace:*",
         "@site/repositories": "workspace:*",
       },
     },
