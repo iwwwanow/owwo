@@ -1,4 +1,4 @@
-export enum ImageVariantName {
+export enum ImageVariantEnum {
   Blob = "blob",
   Original = "original",
   Height_16px = "h16",
