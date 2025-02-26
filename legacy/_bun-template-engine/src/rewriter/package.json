@@ -1,8 +1,0 @@
-{
-  "name": "rewriter",
-  "type": "module",
-  "main": "src/index.ts",
-  "exports": {
-    ".": "./src/index.ts"
-  }
-}

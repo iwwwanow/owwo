@@ -1,6 +1,0 @@
-.card-container {
-  height: var(--CARD-HEIGHT);
-  display: flex;
-  flex-direction: column;
-  gap: var(--GRID-GAP-2);
-}

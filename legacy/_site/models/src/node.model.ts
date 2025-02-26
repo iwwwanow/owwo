@@ -1,3 +1,0 @@
-class NodeModel {}
-
-export { NodeModel };

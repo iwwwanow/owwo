@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "client": {
-      "uniqueUsername": "имя пользователя занято",
-      "confirmPassword": "пароли не совпадают"
-    }
-  }
-}

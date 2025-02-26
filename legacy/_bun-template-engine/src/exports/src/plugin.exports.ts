@@ -1,1 +1,0 @@
-export { btePlugin } from "plugin";
