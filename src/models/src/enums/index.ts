@@ -1,3 +1,3 @@
-export * from "./image-variant.enum";
-export * from "./page-variant.enum";
-export * from "./resource-variant.enum";
+export * from "./image-variant.enum.js";
+export * from "./page-variant.enum.js";
+export * from "./resource-variant.enum.js";
