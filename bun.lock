@@ -24,16 +24,16 @@
         "@site/services": "workspace:*",
       },
     },
+    "src/domain": {
+      "name": "@site/domain",
+      "version": "0.0.1",
+    },
     "src/entrypoints": {
       "name": "@site/entrypoints",
       "version": "0.0.1",
       "dependencies": {
         "@site/routes": "workspace:*",
       },
-    },
-    "src/models": {
-      "name": "@site/models",
-      "version": "0.0.1",
     },
     "src/presentation": {
       "name": "@site/presentation",
@@ -43,7 +43,7 @@
       "name": "@site/repositories",
       "version": "0.0.1",
       "dependencies": {
-        "@site/models": "workspace:*",
+        "@site/domain": "workspace:*",
       },
     },
     "src/routes": {
@@ -135,9 +135,9 @@
 
     "@site/controllers": ["@site/controllers@workspace:src/controllers"],
 
-    "@site/entrypoints": ["@site/entrypoints@workspace:src/entrypoints"],
+    "@site/domain": ["@site/domain@workspace:src/domain"],
 
-    "@site/models": ["@site/models@workspace:src/models"],
+    "@site/entrypoints": ["@site/entrypoints@workspace:src/entrypoints"],
 
     "@site/presentation": ["@site/presentation@workspace:src/presentation"],
 
