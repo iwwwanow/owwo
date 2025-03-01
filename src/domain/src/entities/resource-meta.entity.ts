@@ -12,7 +12,7 @@ export class ResourceMetaEntity {
 
   constructor(resourceMetaDto: ResourceMetaDto) {
     this.validate();
-    Object.assign(resourceMetaDto, this);
+    Object.assign(this, resourceMetaDto);
   }
 
   private validate() {

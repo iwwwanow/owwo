@@ -5,9 +5,11 @@ export class ContentEntity {
   public markdown: string;
   public preview: string;
 
+  static PREVIEW_SYMBOLS_LIMIT = 64;
+
   constructor(content: ContentDto) {
     this.validate();
-    Object.assign(content, this);
+    Object.assign(this, content);
   }
 
   private validate() {
