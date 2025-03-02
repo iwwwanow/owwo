@@ -58,12 +58,14 @@ export class ResourceRepository {
       children = await this.loadChildrenByPath();
     }
 
-    const resourceDto = new ResourceAggregate({
+    const resourceAggregate = new ResourceAggregate({
       meta,
       content,
       cover,
       children,
     });
+
+    const resourceDto = resourceAggregate.getDto();
     return resourceDto;
   }
 
