@@ -20,6 +20,11 @@ export class ResourceAggregate {
   }
 
   getDto(): ResourceDto {
-    return this;
+    return {
+      meta: this.meta,
+      content: this.content,
+      cover: this.cover,
+      children: this.children,
+    };
   }
 }
