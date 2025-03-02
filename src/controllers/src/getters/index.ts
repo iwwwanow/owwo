@@ -1,1 +1,1 @@
-export * from "./response-html.getter";
+export * from "./response-html.getter.js";

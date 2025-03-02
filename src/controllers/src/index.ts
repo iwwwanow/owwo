@@ -1,1 +1,1 @@
-export * from "./resource.controller";
+export * from "./controllers/index.js";
