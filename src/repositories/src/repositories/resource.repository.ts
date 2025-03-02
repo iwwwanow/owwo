@@ -7,6 +7,8 @@ import { PageVariantEnum } from "@site/domain";
 import { ReserverdFilenamesEnum } from "@site/domain";
 import type { ContentDto } from "@site/domain";
 import { ImageVariantEnum } from "@site/domain";
+import { CoverDto } from "@site/domain";
+import { ResourceDto } from "@site/domain";
 import { BunFile } from "bun";
 import DOMPurify from "dompurify";
 import { readdir } from "fs/promises";
@@ -18,8 +20,7 @@ import { stat } from "node:fs/promises";
 import { readFile } from "node:fs/promises";
 import { join } from "path";
 
-import { CoverDto } from "../../domain/src/interfaces/cover-dto.interface.js";
-import { getUploadsPath } from "./getters/index.js";
+import { getUploadsPath } from "../getters/index.js";
 
 interface GetByPathOptions {
   recursive: boolean;
@@ -39,7 +40,7 @@ export class ResourceRepository {
   async getByPath(
     resourcePath: string,
     options: GetByPathOptions = DEFAULT_OPTIONS,
-  ): Promise<ResourceAggregate> {
+  ): Promise<ResourceDto> {
     this.#ralativePath = resourcePath;
     this.#uploadsPath = getUploadsPath();
     this.#fullPath = join(this.#uploadsPath, this.#ralativePath);
@@ -57,7 +58,13 @@ export class ResourceRepository {
       children = await this.loadChildrenByPath();
     }
 
-    return new ResourceAggregate({ meta, content, cover, children });
+    const resourceDto = new ResourceAggregate({
+      meta,
+      content,
+      cover,
+      children,
+    });
+    return resourceDto;
   }
 
   private async getMetaByPath(): Promise<ResourceMetaEntity> {

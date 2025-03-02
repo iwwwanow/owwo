@@ -1,1 +1,1 @@
-export * from "./resource.repository";
+export * from "./repositories/index.js";
