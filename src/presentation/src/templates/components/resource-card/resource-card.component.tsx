@@ -6,26 +6,21 @@ import type { NodeCardProps } from "./resource-card.interface.js";
 import Style from "./resource-card.module.css";
 
 export const ResourceCard: Component<NodeCardProps> = (props) => {
-  const { nodeData } = props;
+  console.log(props);
+  const { resourceData } = props;
 
-  const { id } = nodeData.meta;
-  const { image } = nodeData;
-  const { title } = nodeData;
-  const { description } = nodeData;
-
-  const formattedDescription =
-    DescriptionFormatter.shortestPreview(description);
+  const id = resourceData.meta.path;
+  const { cover } = resourceData;
+  const title = resourceData.meta.title;
+  const { content } = resourceData;
 
   return (
     <>
       <a class="card__wrapper border_light" href={id}>
-        {image && <ResourceCardImage image={image} />}
+        {cover && <ResourceCardImage image={cover} />}
 
-        {(title || description) && (
-          <NodeCardTextContent
-            title={title}
-            description={formattedDescription}
-          />
+        {(title || content) && (
+          <NodeCardTextContent title={title} description={content.preview} />
         )}
       </a>
       <CssModule filepath={Style} />

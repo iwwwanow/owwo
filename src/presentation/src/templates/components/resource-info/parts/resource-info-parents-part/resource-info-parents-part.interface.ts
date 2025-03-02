@@ -1,5 +1,5 @@
-import type { NodeDataType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
 
 export interface ResourceInfoParentsProps {
-  parents: Array<NodeDataType>;
+  parents: Array<ResourceDto>;
 }

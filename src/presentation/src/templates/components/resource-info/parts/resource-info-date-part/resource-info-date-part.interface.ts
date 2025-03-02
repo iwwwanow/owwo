@@ -1,5 +1,5 @@
-import type { NodeDateType } from "@site/models";
+import type { ResourceMetaDto } from "@site/domain";
 
 export interface ResourceInfoDateProps {
-  date: NodeDateType;
+  meta: ResourceMetaDto;
 }

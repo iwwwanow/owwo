@@ -1,12 +1,12 @@
-import { ImageVariantName } from "@site/models";
+import { ImageVariantEnum } from "@site/domain";
 
 import type { ResourceLinkImageSmallProps } from "./resource-link-image-small.interfaces.js";
 
 export const ResourceLinkImageSmall: Component<ResourceLinkImageSmallProps> = ({
   image,
 }) => {
-  const imageHeight16pxSource = image[ImageVariantName.Height_16px];
-  const imageHeight16px2xSource = image[ImageVariantName.Height_16px_2x];
+  const imageHeight16pxSource = image[ImageVariantEnum.Height_16px];
+  const imageHeight16px2xSource = image[ImageVariantEnum.Height_16px_2x];
 
   const imageSrcset = `${imageHeight16pxSource}, ${imageHeight16px2xSource} 2x`;
   // TODO check it

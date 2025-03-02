@@ -1,8 +1,8 @@
-import type { NodeDataType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
 
 export interface NodeNavigationProps {
-  prevNode: NodeDataType;
-  nextNode: NodeDataType;
+  prevNode: ResourceDto;
+  nextNode: ResourceDto;
   current: number;
   length: number;
 }

@@ -2,21 +2,20 @@ import { CssModule } from "../index.js";
 import type { DateComponentProps } from "./date.interface.js";
 import Style from "./date.module.css";
 
-const DateComponent: Component<DateComponentProps> = (props) => {
-  const { date } = props;
+export const DateComponent: Component<DateComponentProps> = (props) => {
+  const { meta } = props;
+  const { createdAt, updatedAt } = meta;
 
-  const localDate = date.last.toLocaleDateString("ru-RU");
-  const localCreationDate = date.creation.toLocaleDateString("ru-RU");
+  const createdAtLocalString = createdAt.toLocaleDateString("ru-RU");
+  const updatedAtLocalString = updatedAt.toLocaleDateString("ru-RU");
 
   return (
     <>
       <div class="date-container">
-        <h5 class="date_creation">{localCreationDate}</h5>
-        <h6 class="date_last">{localDate}</h6>
+        <h5 class="date_creation">{createdAtLocalString}</h5>
+        <h6 class="date_last">{updatedAtLocalString}</h6>
       </div>
       <CssModule filepath={Style} />
     </>
   );
 };
-
-export { DateComponent };

@@ -1,5 +1,5 @@
-import type { NodeContentType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
 
 export interface ResourceInfoDescriptionProps {
-  description: NodeContentType;
+  description: ResourceDto;
 }

@@ -11,7 +11,7 @@ export const ResourceNavigation: Component<NodeNavigationProps> = (props) => {
       <div class="grid navigation-elements__wrapper">
         <div class="navigation-elements__container">
           <span class="navigation-elements__element">
-            <ResourceLink node={prevNode} leftSymbol="◂" />
+            <ResourceLink resourceData={prevNode} leftSymbol="◂" />
           </span>
           <span>
             <h5>
@@ -19,7 +19,7 @@ export const ResourceNavigation: Component<NodeNavigationProps> = (props) => {
             </h5>
           </span>
           <span class="navigation-elements__element">
-            <ResourceLink node={nextNode} rightSymbol="▸" />
+            <ResourceLink resourceData={nextNode} rightSymbol="▸" />
           </span>
         </div>
       </div>

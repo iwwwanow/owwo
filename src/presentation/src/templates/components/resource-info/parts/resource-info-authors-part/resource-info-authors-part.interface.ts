@@ -1,5 +1,5 @@
-import type { NodeDataType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
 
 export interface ResourceInfoAuthorsProps {
-  authors: Array<NodeDataType>;
+  authors: Array<ResourceDto>;
 }

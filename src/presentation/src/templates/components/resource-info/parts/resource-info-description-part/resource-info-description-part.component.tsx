@@ -7,6 +7,6 @@ export const ResourceInfoDescriptionPart: Component<
 > = ({ description }) => (
   <>
     <Hr text={HR_TITLE} />
-    {description.html}
+    <h5>{description}</h5>
   </>
 );

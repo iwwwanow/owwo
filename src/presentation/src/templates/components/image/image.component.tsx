@@ -1,4 +1,4 @@
-import { ImageVariantName } from "@site/models";
+import { ImageVariantEnum } from "@site/domain";
 
 import type { ImageProps } from "./image.interface.js";
 
@@ -9,7 +9,7 @@ export const Image: Component<ImageProps> = (props) => {
   const imageSrcset = `${image[`${variant}_2x`]}`;
   const image2xSrcset = `${image[variant]}, ${image[`${variant}_2x`]} 2x`;
 
-  const imageOriginalSource = image[ImageVariantName.Original];
+  const imageOriginalSource = image[ImageVariantEnum.Original];
 
   return (
     <picture>

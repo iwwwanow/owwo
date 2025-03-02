@@ -1,8 +1,9 @@
-import type { NodeImageType } from "@site/models";
-import { ImageVariantName } from "@site/models";
+import type { CoverDto } from "@site/domain";
+import { ImageVariantEnum } from "@site/domain";
 
+// TODO all that logic must be on repository
 export class ImageSourceGetter {
-  static componentVariants(image: NodeImageType) {
+  static componentVariants(image: CoverDto) {
     const imageWidth190pxSource = ImageSourceGetter.width190pxSource(image);
     const imageWidth190px2xSource = ImageSourceGetter.width190px2xSource(image);
     const imageOriginalSource = ImageSourceGetter.originalSource(image);
@@ -19,18 +20,18 @@ export class ImageSourceGetter {
     };
   }
 
-  static width190pxSource(image: NodeImageType) {
-    const imageWidth190pxSource = image[ImageVariantName.Width_190px];
+  static width190pxSource(image: CoverDto) {
+    const imageWidth190pxSource = image[ImageVariantEnum.Width_190px];
     return imageWidth190pxSource;
   }
 
-  static width190px2xSource(image: NodeImageType) {
-    const imageWidth190px2xSource = image[ImageVariantName.Width_190px_2x];
+  static width190px2xSource(image: CoverDto) {
+    const imageWidth190px2xSource = image[ImageVariantEnum.Width_190px_2x];
     return imageWidth190px2xSource;
   }
 
-  static originalSource(image: NodeImageType) {
-    const imageOriginalSource = image[ImageVariantName.Original];
+  static originalSource(image: CoverDto) {
+    const imageOriginalSource = image[ImageVariantEnum.Original];
     return imageOriginalSource;
   }
 

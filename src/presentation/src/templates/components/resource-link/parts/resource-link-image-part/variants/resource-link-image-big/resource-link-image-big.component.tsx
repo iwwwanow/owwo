@@ -1,4 +1,4 @@
-import { ImageVariantName } from "@site/models";
+import { ImageVariantEnum } from "@site/domain";
 
 import { IMAGE_ALT } from "./resource-link-image-big.constants.js";
 import type { ResourceLinkImageBigProps } from "./resource-link-image-big.interfaces.js";
@@ -7,8 +7,8 @@ export const ResourceLinkImageBig: Component<ResourceLinkImageBigProps> = ({
   image,
 }) => {
   // TODO refactor
-  const imageHeight32pxSource = image[ImageVariantName.Height_32px];
-  const imageHeight32px2xSource = image[ImageVariantName.Height_32px_2x];
+  const imageHeight32pxSource = image[ImageVariantEnum.Height_32px];
+  const imageHeight32px2xSource = image[ImageVariantEnum.Height_32px_2x];
 
   const imageSrcset = `${imageHeight32pxSource}, ${imageHeight32px2xSource} 2x`;
   // TODO check it

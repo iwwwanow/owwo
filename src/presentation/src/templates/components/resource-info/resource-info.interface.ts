@@ -1,10 +1,9 @@
-import type { NodeImageType } from "@site/models";
-import type { NodeContentType } from "@site/models";
-import type { NodeDateType } from "@site/models";
-import type { NodeDataType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
+import type { CoverDto } from "@site/domain";
+import type { ContentDto } from "@site/domain";
 
 export interface ResourceInfoProps {
-  nodeData: NodeDataType;
+  resourceData: ResourceDto;
 
   isTitleNeeded?: boolean;
   isDescriptionNeeded?: boolean;

@@ -1,5 +1,5 @@
-import { NodeDataType } from "@site/models";
+import { ResourceDto } from "@site/domain";
 
 export interface ResourcePageProps {
-  resourceData: NodeDataType;
+  resourceData: ResourceDto;
 }

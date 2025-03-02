@@ -1,6 +1,6 @@
-import type { NodeContentType } from "@site/models";
+import type { ContentDto } from "@site/domain";
 
 export interface TextProps {
-  text: NodeContentType;
+  text: ContentDto;
   className?: string;
 }

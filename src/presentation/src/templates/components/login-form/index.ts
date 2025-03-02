@@ -1,1 +1,1 @@
-export * from "./login-form.component/index.js";
+export * from "./login-form.component.js";

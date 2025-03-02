@@ -1,5 +1,5 @@
-import type { NodeContentType } from "@site/models";
+import type { ContentDto } from "@site/domain";
 
 export interface ResourceExtendedFragmentProps {
-  content: NodeContentType;
+  content: ContentDto;
 }

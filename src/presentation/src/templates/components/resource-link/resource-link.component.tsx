@@ -6,12 +6,12 @@ import type { ResourceLinkProps } from "./resource-link.interface.js";
 import Style from "./resource-link.module.css";
 
 export const ResourceLink: Component<ResourceLinkProps> = (props) => {
-  const { node, leftSymbol, rightSymbol } = props;
+  const { resourceData, leftSymbol, rightSymbol } = props;
 
   const { isTitleNeeded = true } = props;
-  const id = props.id || node.meta.id;
-  const title = props.title || node.title;
-  const image = props.image || node.image;
+  const id = props.id || resourceData.meta.path;
+  const title = props.title || resourceData.meta.title;
+  const image = props.image || resourceData.cover;
 
   const imageVariant = isTitleNeeded ? "small" : "big";
   const nodeLinkHref = `/${id}`;

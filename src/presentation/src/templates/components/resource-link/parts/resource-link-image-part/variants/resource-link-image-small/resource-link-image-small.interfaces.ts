@@ -1,5 +1,5 @@
-import type { NodeImageType } from "@site/models";
+import type { CoverDto } from "@site/domain";
 
 export interface ResourceLinkImageSmallProps {
-  image: NodeImageType;
+  image: CoverDto;
 }

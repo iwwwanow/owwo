@@ -1,3 +1,6 @@
+import { ResourceDto } from "@site/domain";
+import { PageVariantEnum } from "@site/domain";
+
 import { PlusButton } from "../../components/index.js";
 import { CssModule } from "../../components/index.js";
 import { Hr } from "../../components/index.js";
@@ -12,58 +15,38 @@ import Style from "./resource-page.module.css";
 // TODO remove it
 const ADD_NODE_INPUT_PLACEHOLDER = "bla";
 
+const checkInfoNeeded = (resourceData: ResourceDto): boolean => {
+  return true;
+  // TODO for layout refactor only; uncomment
+  // if (resourceData.meta.pageType !== PageVariantEnum.Index) return true;
+  // return false;
+};
+
 export const ResourcePage: Component<ResourcePageProps> = (props) => {
-  console.log(props);
+  const { resourceData } = props;
+  const { content, children } = resourceData;
 
-  return <h1>bla</h1>;
+  const isInfoNeeded = checkInfoNeeded(resourceData);
 
-  // const { resourceData } = props;
-  //
-  // const { meta } = nodeData;
-  // const childs = meta.childs;
-  //
-  // const { isEditor } = client;
-  //
-  // return (
-  //   <>
-  //     <BaseLayout>
-  //       <div class="grid node-wrapper">
-  //         <ResourceInfo nodeData={nodeData} />
-  //
-  //         {resourceData.content && (
-  //           <Text text={nodeData.content} className="grid__right-content" />
-  //         )}
-  //       </div>
-  //       <div class="grid user__pages-container">
-  //         <Hr text="node-files"></Hr>
-  //         {childs &&
-  //           childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
-  //
-  //         <span class="add-node__container">
-  //           <PlusButton />
-  //         </span>
-  //       </div>
-  //       <div class="grid user__pages-container">
-  //         <Hr text="child-nodes"></Hr>
-  //         {childs &&
-  //           childs.map((childNode) => <ResourceCard nodeData={childNode} />)}
-  //
-  //         <span class="add-node__container">
-  //           <div class="add-node__input-container">
-  //             <TextInput
-  //               id="add-node__input"
-  //               name="node-data"
-  //               required={true}
-  //               placeholder={ADD_NODE_INPUT_PLACEHOLDER}
-  //             />
-  //             <PlusButton variant="small" />
-  //           </div>
-  //
-  //           <PlusButton />
-  //         </span>
-  //       </div>
-  //     </BaseLayout>
-  //     <CssModule filepath={Style} />
-  //   </>
-  // );
+  return (
+    <>
+      <BaseLayout>
+        <div class="grid node-wrapper">
+          {isInfoNeeded && <ResourceInfo resourceData={resourceData} />}
+
+          {
+            // TODO full widt content on index page
+            content && <Text text={content} className="grid__right-content" />
+          }
+        </div>
+
+        <div class="grid user__pages-container">
+          <Hr text="resources"></Hr>
+          {children &&
+            children.map((child) => <ResourceCard resourceData={child} />)}
+        </div>
+      </BaseLayout>
+      <CssModule filepath={Style} />
+    </>
+  );
 };

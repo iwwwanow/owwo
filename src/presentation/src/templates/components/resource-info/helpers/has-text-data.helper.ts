@@ -1,17 +1,17 @@
-import type { NodeDataType } from "@site/interfaces";
-import type { NodeContentType } from "@site/interfaces";
-import type { NodeDateType } from "@site/interfaces";
+import type { ResourceDto } from "@site/domain";
+import type { ContentDto } from "@site/domain";
+import type { ResourceMetaDto } from "@site/domain";
 
 export const hasTextDataHelper = ({
   title,
   authors,
   description,
-  date,
+  meta,
 }: {
   title: string;
-  authors?: Array<NodeDataType>;
-  description: NodeContentType;
-  date?: NodeDateType;
+  authors?: Array<ResourceDto>;
+  description: ContentDto;
+  meta?: ResourceMetaDto;
 }): boolean => {
-  return !!title || !!authors || !!description || !!date;
+  return !!title || !!authors || !!description || !!meta;
 };

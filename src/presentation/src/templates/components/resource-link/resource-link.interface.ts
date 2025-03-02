@@ -1,8 +1,8 @@
-import type { NodeDataType } from "@site/models";
-import type { NodeImageType } from "@site/models";
+import type { ResourceDto } from "@site/domain";
+import type { CoverDto } from "@site/domain";
 
 export interface ResourceLinkProps {
-  node: NodeDataType;
+  resourceData: ResourceDto;
 
   isTitleNeeded?: boolean;
 
@@ -10,5 +10,5 @@ export interface ResourceLinkProps {
   rightSymbol?: string;
   id?: string;
   title?: string;
-  image?: NodeImageType;
+  image?: CoverDto;
 }

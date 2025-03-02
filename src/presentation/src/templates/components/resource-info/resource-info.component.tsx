@@ -1,4 +1,4 @@
-import { ImageVariantName } from "@site/models";
+import { ImageVariantEnum } from "@site/domain";
 
 import { CssModule } from "../index.js";
 import { Image } from "../index.js";
@@ -14,19 +14,28 @@ import type { ResourceInfoProps } from "./resource-info.interface.js";
 import Style from "./resource-info.module.css";
 
 export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
-  const { nodeData } = props;
   const { isTitleNeeded = true, isDescriptionNeeded = true } = props;
+  const { resourceData } = props;
+  const { meta, cover } = resourceData;
 
-  const id = nodeData.meta.id;
-  const image = nodeData.image;
-  const title = nodeData.title;
-  const description = nodeData.description;
-  const author = nodeData.meta.author;
-  const authors = nodeData.meta.authors;
-  const parents = nodeData.meta.parents;
-  const date = nodeData.date;
+  // const id = resourceData.meta.id;
+  const id = meta.path;
 
-  const hasTextData = hasTextDataHelper({ title, authors, description, date });
+  // const image = resourceData.image;
+  const image = cover;
+
+  // const title = resourceData.title;
+  const title = meta.title;
+
+  // const description = resourceData.description;
+  // TODO description from meta.json? settings.json?
+  const description = "description";
+
+  // TODO add that logic to repository; author as resource
+  // const author = resourceData;
+  const author = false;
+
+  const hasTextData = hasTextDataHelper({ title, description, meta });
   const hasData = hasDataHelper({ image, hasTextData });
 
   if (hasData) {
@@ -37,19 +46,17 @@ export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
             <Image
               image={image}
               id={id}
-              variant={ImageVariantName.WIDTH_190PX}
+              variant={ImageVariantEnum.WIDTH_190PX}
             />
           )}
           {hasTextData && (
             <div class="node-info__data-container">
               {isTitleNeeded && <ResourceTitle title={title} />}
               {author && <ResourceInfoAuthorPart author={author} />}
-              {authors && <ResourceInfoAuthorsPart authors={authors} />}
-              {parents && <ResourceInfoParentsPart parents={parents} />}
-              {isDescriptionNeeded && description?.html && (
+              {isDescriptionNeeded && description && (
                 <ResourceInfoDescriptionPart description={description} />
               )}
-              {date && <ResourceInfoDatePart date={date} />}
+              {meta && <ResourceInfoDatePart meta={meta} />}
             </div>
           )}
         </span>

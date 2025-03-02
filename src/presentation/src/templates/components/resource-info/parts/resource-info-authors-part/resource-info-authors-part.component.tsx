@@ -10,7 +10,7 @@ export const ResourceInfoAuthorsPart: Component<ResourceInfoAuthorsProps> = ({
     <Hr text="authors" />
     <ResourceLinkContainer>
       {authors.map((author) => (
-        <ResourceLink node={author} />
+        <ResourceLink resourceData={author} />
       ))}
     </ResourceLinkContainer>
   </>

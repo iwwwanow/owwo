@@ -10,7 +10,7 @@ export const ResourceInfoParentsPart: Component<ResourceInfoParentsProps> = ({
     <Hr text="pages" />
     <ResourceLinkContainer>
       {parents.map((parent) => (
-        <ResourceLink node={parent} />
+        <ResourceLink resourceData={parent} />
       ))}
     </ResourceLinkContainer>
   </>
