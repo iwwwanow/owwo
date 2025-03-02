@@ -1,7 +1,7 @@
-import { BaseHeadFragment } from "../../fragments";
-import { FooterFragment } from "../../fragments";
-import { HeaderFragment } from "../../fragments";
-import type { BaseLayoutProps } from "./base-layout.interface";
+import { BaseHeadFragment } from "../../fragments/index.js";
+import { FooterFragment } from "../../fragments/index.js";
+import { HeaderFragment } from "../../fragments/index.js";
+import type { BaseLayoutProps } from "./base-layout.interface.js";
 import { SuccessMessage } from "./success-message/index.js";
 
 export const BaseLayout: Component<BaseLayoutProps> = (props) => {

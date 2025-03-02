@@ -1,2 +1,2 @@
-export * from "./default-button";
-export * from "./plus-button";
+export * from "./default-button/index.js";
+export * from "./plus-button/index.js";

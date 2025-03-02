@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { LoginFormProps } from "./login-form.interface";
+import { CssModule } from "../index.js";
+import type { LoginFormProps } from "./login-form.interface.js";
 import Style from "./login-form.module.css";
 
 export const LoginForm: Component<LoginFormProps> = (props) => {

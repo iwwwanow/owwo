@@ -1,1 +1,1 @@
-export * from "./css-module.component";
+export * from "./css-module.component.js";

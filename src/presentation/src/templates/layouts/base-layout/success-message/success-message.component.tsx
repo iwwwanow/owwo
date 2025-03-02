@@ -1,4 +1,4 @@
-import { Hr } from "../../../components";
+import { Hr } from "../../../components/index.js";
 import type { SuccessMessageType } from "./success-message.interface.js";
 
 export const SuccessMessage: SuccessMessageType = ({ successMessage }) => (

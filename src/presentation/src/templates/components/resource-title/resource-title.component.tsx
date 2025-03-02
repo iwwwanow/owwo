@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { ResourceTitleProps } from "./resource-title.interface";
+import { CssModule } from "../index.js";
+import type { ResourceTitleProps } from "./resource-title.interface.js";
 import Style from "./resource-title.module.css";
 
 export const ResourceTitle: Component<ResourceTitleProps> = (props) => {

@@ -1,3 +1,3 @@
-export * from "./file-input";
-export * from "./text-input";
-export * from "./textarea";
+export * from "./file-input/index.js";
+export * from "./text-input/index.js";
+export * from "./textarea/index.js";

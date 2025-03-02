@@ -1,7 +1,7 @@
-import { CssModule } from "../../";
-import { TEXTAREA_CLASSNAME } from "./textarea.constants";
-import { TEXTAREA_WRAPPER_CLASSNAME } from "./textarea.constants";
-import type { TextareaProps } from "./textarea.interface";
+import { CssModule } from "../../index.js";
+import { TEXTAREA_CLASSNAME } from "./textarea.constants.js";
+import { TEXTAREA_WRAPPER_CLASSNAME } from "./textarea.constants.js";
+import type { TextareaProps } from "./textarea.interface.js";
 import Style from "./textarea.module.css";
 
 export const Textarea: Component<TextareaProps> = (props) => {

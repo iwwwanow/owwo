@@ -1,7 +1,7 @@
 import { ImageVariantName } from "@site/models";
 
-import { IMAGE_ALT } from "./resource-link-image-big.constants";
-import type { ResourceLinkImageBigProps } from "./resource-link-image-big.interfaces";
+import { IMAGE_ALT } from "./resource-link-image-big.constants.js";
+import type { ResourceLinkImageBigProps } from "./resource-link-image-big.interfaces.js";
 
 export const ResourceLinkImageBig: Component<ResourceLinkImageBigProps> = ({
   image,

@@ -1,6 +1,6 @@
-import { CssModule } from "../";
-import { ResourceLink } from "../";
-import type { NodeNavigationProps } from "./resource-navigation.interface";
+import { CssModule } from "../index.js";
+import { ResourceLink } from "../index.js";
+import type { NodeNavigationProps } from "./resource-navigation.interface.js";
 import Style from "./resource-navigation.module.css";
 
 export const ResourceNavigation: Component<NodeNavigationProps> = (props) => {

@@ -1,5 +1,5 @@
-import { CssModule } from "../../";
-import type { TextInputProps } from "./text-input.interface";
+import { CssModule } from "../../index.js";
+import type { TextInputProps } from "./text-input.interface.js";
 import Style from "./text-input.module.css";
 
 export const TextInput: Component<TextInputProps> = (props) => {

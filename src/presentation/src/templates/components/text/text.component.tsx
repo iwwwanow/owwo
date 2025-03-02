@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { TextProps } from "./text.interface";
+import { CssModule } from "../index.js";
+import type { TextProps } from "./text.interface.js";
 import Style from "./text.module.css";
 
 export const Text: Component<TextProps> = (props) => {

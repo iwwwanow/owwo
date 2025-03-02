@@ -1,4 +1,4 @@
-import type { ResourceLinkTitleProps } from "./resource-link-title-part.interfaces";
+import type { ResourceLinkTitleProps } from "./resource-link-title-part.interfaces.js";
 
 export const ResourceLinkTitlePart: Component<ResourceLinkTitleProps> = (
   props,

@@ -1,6 +1,6 @@
-import { CssModule } from "../../components";
-import { ContentStringPart } from "./parts";
-import type { ResourceExtendedFragmentProps } from "./resource-extended-fragment.interface";
+import { CssModule } from "../../components/index.js";
+import { ContentStringPart } from "./parts/index.js";
+import type { ResourceExtendedFragmentProps } from "./resource-extended-fragment.interface.js";
 import Style from "./resource-extended-fragment.module.css";
 
 export const ResourceExtendedFragment: Component<

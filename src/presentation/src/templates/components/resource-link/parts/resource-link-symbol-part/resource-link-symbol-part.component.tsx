@@ -1,4 +1,4 @@
-import type { ResourceLinkSymbolProps } from "./resource-link-symbol-part.interfaces";
+import type { ResourceLinkSymbolProps } from "./resource-link-symbol-part.interfaces.js";
 
 export const ResourceLinkSymbolPart: Component<ResourceLinkSymbolProps> = (
   props,

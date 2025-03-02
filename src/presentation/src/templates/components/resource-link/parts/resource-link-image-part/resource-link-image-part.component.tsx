@@ -1,6 +1,6 @@
-import type { ResourceLinkImageProps } from "./resource-link-image-part.interface";
-import { ResourceLinkImageBig } from "./variants";
-import { ResourceLinkImageSmall } from "./variants";
+import type { ResourceLinkImageProps } from "./resource-link-image-part.interface.js";
+import { ResourceLinkImageBig } from "./variants/index.js";
+import { ResourceLinkImageSmall } from "./variants/index.js";
 
 export const ResourceLinkImagePart: Component<ResourceLinkImageProps> = (
   props,

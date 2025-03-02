@@ -1,1 +1,1 @@
-export * from "./node-link-container.component";
+export * from "./node-link-container.component.js";

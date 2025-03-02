@@ -1,8 +1,8 @@
-import { CssModule } from "../";
-import { DescriptionFormatter } from "./formatters";
-import { ResourceCardImage } from "./parts";
-import { NodeCardTextContent } from "./parts";
-import type { NodeCardProps } from "./resource-card.interface";
+import { CssModule } from "../index.js";
+import { DescriptionFormatter } from "./formatters/index.js";
+import { NodeCardTextContent } from "./parts/index.js";
+import { ResourceCardImage } from "./parts/index.js";
+import type { NodeCardProps } from "./resource-card.interface.js";
 import Style from "./resource-card.module.css";
 
 export const ResourceCard: Component<NodeCardProps> = (props) => {

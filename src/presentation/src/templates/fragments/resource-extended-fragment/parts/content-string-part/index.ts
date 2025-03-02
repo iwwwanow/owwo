@@ -1,1 +1,1 @@
-export * from "./content-string-part.component";
+export * from "./content-string-part.component.js";

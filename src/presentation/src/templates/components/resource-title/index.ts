@@ -1,1 +1,1 @@
-export * from "./resource-title.component";
+export * from "./resource-title.component.js";

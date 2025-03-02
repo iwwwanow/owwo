@@ -1,6 +1,6 @@
-import { PlusButtonSvg } from "../../../svg";
-import { CssModule } from "../../css-module";
-import type { PlusButtonProps } from "./plus-button.interface";
+import { PlusButtonSvg } from "../../../svg/index.js";
+import { CssModule } from "../../index.js";
+import type { PlusButtonProps } from "./plus-button.interface.js";
 import Style from "./plus-button.module.css";
 
 export const PlusButton: Component<PlusButtonProps> = (props) => {

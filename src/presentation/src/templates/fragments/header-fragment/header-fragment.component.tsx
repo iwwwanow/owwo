@@ -1,7 +1,7 @@
-import { CssModule } from "../../components";
-import { Hr } from "../../components";
-import { LogoComponent } from "../../components";
-import type { HeaderFragmentProps } from "./header-fragment.interface";
+import { CssModule } from "../../components/index.js";
+import { Hr } from "../../components/index.js";
+import { LogoComponent } from "../../components/index.js";
+import type { HeaderFragmentProps } from "./header-fragment.interface.js";
 import Style from "./header-fragment.module.css";
 import StyleBottom from "./header-fragment_position_bottom.module.css";
 

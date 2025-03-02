@@ -1,7 +1,7 @@
-import { Hr } from "../../../";
-import { ResourceLink } from "../../../";
-import { ResourceLinkContainer } from "../../../";
-import type { ResourceInfoParentsProps } from "./resource-info-parents-part.interface";
+import { Hr } from "../../../index.js";
+import { ResourceLink } from "../../../index.js";
+import { ResourceLinkContainer } from "../../../index.js";
+import type { ResourceInfoParentsProps } from "./resource-info-parents-part.interface.js";
 
 export const ResourceInfoParentsPart: Component<ResourceInfoParentsProps> = ({
   parents,

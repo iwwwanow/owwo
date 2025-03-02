@@ -1,5 +1,5 @@
-import { CssModule } from "../../css-module";
-import type { ButtonProps } from "./button.interface";
+import { CssModule } from "../../index.js";
+import type { ButtonProps } from "./button.interface.js";
 import Style from "./button.module.css";
 
 export const Button: Component<ButtonProps> = (props) => {

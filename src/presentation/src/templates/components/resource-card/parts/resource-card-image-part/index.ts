@@ -1,1 +1,1 @@
-export * from "./resource-card-image-part.component";
+export * from "./resource-card-image-part.component.js";

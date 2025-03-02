@@ -1,1 +1,1 @@
-export * from "./description.formatter";
+export * from "./description.formatter.js";

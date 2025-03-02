@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { HrProps } from "./hr.interface";
+import { CssModule } from "../index.js";
+import type { HrProps } from "./hr.interface.js";
 import Style from "./hr.module.css";
 
 export const Hr: Component<HrProps> = (props) => {

@@ -1,1 +1,1 @@
-export * from "./style.getter";
+export * from "./style.getter.js";

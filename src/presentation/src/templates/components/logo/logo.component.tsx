@@ -1,8 +1,8 @@
-import { CssModule } from "../../components";
-import { LogoSvg } from "../../svg";
-import { getClassName } from "./getters";
-import { HOME_ROUTE_PATH } from "./logo.constants";
-import type { LogoComponentProps } from "./logo.interface";
+import { LogoSvg } from "../../svg/index.js";
+import { CssModule } from "../index.js";
+import { getClassName } from "./getters/index.js";
+import { HOME_ROUTE_PATH } from "./logo.constants.js";
+import type { LogoComponentProps } from "./logo.interface.js";
 import Style from "./logo.module.css";
 
 export const LogoComponent: Component<LogoComponentProps> = (props) => {

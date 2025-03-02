@@ -1,1 +1,1 @@
-export * from "./hr.component.tsx";
+export * from "./hr.component.js";

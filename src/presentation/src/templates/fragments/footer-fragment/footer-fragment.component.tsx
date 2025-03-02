@@ -1,5 +1,5 @@
-import { CssModule } from "../../components";
-import { Hr } from "../../components";
+import { CssModule } from "../../components/index.js";
+import { Hr } from "../../components/index.js";
 import Style from "./footer-fragment.module.css";
 
 const ABOUT_ROUTE_PATH = "about";

@@ -1,1 +1,1 @@
-export * from "./resource-extended-layout.component";
+export * from "./resource-extended-layout.component.js";

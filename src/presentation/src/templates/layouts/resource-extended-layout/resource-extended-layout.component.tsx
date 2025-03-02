@@ -1,6 +1,6 @@
-import { CssModule } from "../../components";
-import { BaseHeadFragment } from "../../fragments";
-import type { NodeExtendedLayoutProps } from "./resouce-extended-layout.interface";
+import { CssModule } from "../../components/index.js";
+import { BaseHeadFragment } from "../../fragments/index.js";
+import type { NodeExtendedLayoutProps } from "./resouce-extended-layout.interface.js";
 import Style from "./resource-extended-layout.module.css";
 
 export const ResourceExtendedLayout: Component<NodeExtendedLayoutProps> = (

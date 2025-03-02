@@ -1,16 +1,16 @@
 import { ImageVariantName } from "@site/models";
 
-import { CssModule } from "../../components";
-import { Image } from "../../components";
-import { ResourceTitle } from "../../components";
-import { hasTextDataHelper } from "./helpers";
-import { hasDataHelper } from "./helpers";
-import { ResourceInfoAuthorPart } from "./parts";
-import { ResourceInfoAuthorsPart } from "./parts";
-import { ResourceInfoDatePart } from "./parts";
-import { ResourceInfoDescriptionPart } from "./parts";
-import { ResourceInfoParentsPart } from "./parts";
-import type { ResourceInfoProps } from "./resource-info.interface";
+import { CssModule } from "../index.js";
+import { Image } from "../index.js";
+import { ResourceTitle } from "../index.js";
+import { hasTextDataHelper } from "./helpers/index.js";
+import { hasDataHelper } from "./helpers/index.js";
+import { ResourceInfoAuthorPart } from "./parts/index.js";
+import { ResourceInfoAuthorsPart } from "./parts/index.js";
+import { ResourceInfoDatePart } from "./parts/index.js";
+import { ResourceInfoDescriptionPart } from "./parts/index.js";
+import { ResourceInfoParentsPart } from "./parts/index.js";
+import type { ResourceInfoProps } from "./resource-info.interface.js";
 import Style from "./resource-info.module.css";
 
 export const ResourceInfo: Component<ResourceInfoProps> = (props) => {

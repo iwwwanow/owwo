@@ -1,1 +1,1 @@
-export * from "./resource-extended-fragment.component";
+export * from "./resource-extended-fragment.component.js";

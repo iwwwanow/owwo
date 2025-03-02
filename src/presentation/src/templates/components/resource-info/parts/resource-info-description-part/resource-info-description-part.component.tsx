@@ -1,6 +1,6 @@
-import { Hr } from "../../../";
-import { HR_TITLE } from "./resource-info-description-part.constants";
-import type { ResourceInfoDescriptionProps } from "./resource-info-description-part.interface";
+import { Hr } from "../../../index.js";
+import { HR_TITLE } from "./resource-info-description-part.constants.js";
+import type { ResourceInfoDescriptionProps } from "./resource-info-description-part.interface.js";
 
 export const ResourceInfoDescriptionPart: Component<
   ResourceInfoDescriptionProps

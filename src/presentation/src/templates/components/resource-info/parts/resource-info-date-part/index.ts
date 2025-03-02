@@ -1,1 +1,1 @@
-export * from "./resource-info-date-part.component";
+export * from "./resource-info-date-part.component.js";

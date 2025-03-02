@@ -1,4 +1,4 @@
-import type { CssModuleProps } from "./css-module.interface";
+import type { CssModuleProps } from "./css-module.interface.js";
 
 export const CssModule: Component<CssModuleProps> = async (props) => {
   if (process.env.NODE_ENV === "developement") {

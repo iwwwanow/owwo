@@ -1,6 +1,6 @@
 import { ImageVariantName } from "@site/models";
 
-import type { ResourceLinkImageSmallProps } from "./resource-link-image-small.interfaces";
+import type { ResourceLinkImageSmallProps } from "./resource-link-image-small.interfaces.js";
 
 export const ResourceLinkImageSmall: Component<ResourceLinkImageSmallProps> = ({
   image,

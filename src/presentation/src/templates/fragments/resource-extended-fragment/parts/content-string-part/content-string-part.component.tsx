@@ -1,5 +1,5 @@
-import { CssModule } from "../../../../components";
-import type { ContentStringPartProps } from "./content-string-part.interface";
+import { CssModule } from "../../../../components/index.js";
+import type { ContentStringPartProps } from "./content-string-part.interface.js";
 import Style from "./content-string-part.module.css";
 
 export const ContentStringPart: Component<ContentStringPartProps> = (props) => {

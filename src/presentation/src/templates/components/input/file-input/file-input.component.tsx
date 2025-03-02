@@ -1,5 +1,5 @@
-import { CssModule } from "../../";
-import type { FileInputProps } from "./file-input.interface";
+import { CssModule } from "../../index.js";
+import type { FileInputProps } from "./file-input.interface.js";
 import Style from "./file-input.module.css";
 
 export const FileInput: Component<FileInputProps> = (props) => {

@@ -1,2 +1,2 @@
-export * from "./has-text-data.helper";
-export * from "./has-data.helper";
+export * from "./has-text-data.helper.js";
+export * from "./has-data.helper.js";

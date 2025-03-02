@@ -1,4 +1,4 @@
-import { LOGO_CLASSNAME } from "../logo.constants";
+import { LOGO_CLASSNAME } from "../logo.constants.js";
 
 export const getClassName = (additionalClassname: string): string => {
   if (additionalClassname)

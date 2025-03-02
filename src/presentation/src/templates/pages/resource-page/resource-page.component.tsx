@@ -1,12 +1,12 @@
-import { PlusButton } from "../../components";
-import { CssModule } from "../../components";
-import { Hr } from "../../components";
-import { TextInput } from "../../components";
-import { ResourceCard } from "../../components";
-import { ResourceInfo } from "../../components";
-import { Text } from "../../components";
-import { BaseLayout } from "../../layouts";
-import type { ResourcePageProps } from "./resource-page.interfaces";
+import { PlusButton } from "../../components/index.js";
+import { CssModule } from "../../components/index.js";
+import { Hr } from "../../components/index.js";
+import { TextInput } from "../../components/index.js";
+import { ResourceCard } from "../../components/index.js";
+import { ResourceInfo } from "../../components/index.js";
+import { Text } from "../../components/index.js";
+import { BaseLayout } from "../../layouts/index.js";
+import type { ResourcePageProps } from "./resource-page.interfaces.js";
 import Style from "./resource-page.module.css";
 
 // TODO remove it

@@ -1,7 +1,7 @@
-import { Hr } from "../../../";
-import { ResourceLink } from "../../../";
-import { ResourceLinkContainer } from "../../../";
-import type { ResourceInfoAuthorProps } from "./resource-info-author-part.interface";
+import { ResourceLink } from "../../../index.js";
+import { ResourceLinkContainer } from "../../../index.js";
+import { Hr } from "../../../index.js";
+import type { ResourceInfoAuthorProps } from "./resource-info-author-part.interface.js";
 
 export const ResourceInfoAuthorPart: Component<ResourceInfoAuthorProps> = ({
   author,

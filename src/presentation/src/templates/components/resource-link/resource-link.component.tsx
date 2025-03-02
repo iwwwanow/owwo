@@ -1,8 +1,8 @@
-import { CssModule } from "../";
-import { ResourceLinkImagePart } from "./parts";
-import { ResourceLinkSymbolPart } from "./parts";
-import { ResourceLinkTitlePart } from "./parts";
-import type { ResourceLinkProps } from "./resource-link.interface";
+import { CssModule } from "../index.js";
+import { ResourceLinkImagePart } from "./parts/index.js";
+import { ResourceLinkSymbolPart } from "./parts/index.js";
+import { ResourceLinkTitlePart } from "./parts/index.js";
+import type { ResourceLinkProps } from "./resource-link.interface.js";
 import Style from "./resource-link.module.css";
 
 export const ResourceLink: Component<ResourceLinkProps> = (props) => {

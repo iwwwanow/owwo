@@ -1,2 +1,2 @@
-export * from "./plus-button.svg";
-export * from "./logo.svg";
+export * from "./plus-button.svg.js";
+export * from "./logo.svg.js";

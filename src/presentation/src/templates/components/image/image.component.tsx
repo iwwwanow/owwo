@@ -1,6 +1,6 @@
 import { ImageVariantName } from "@site/models";
 
-import type { ImageProps } from "./image.interface";
+import type { ImageProps } from "./image.interface.js";
 
 export const Image: Component<ImageProps> = (props) => {
   const { image, id, variant } = props;

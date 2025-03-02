@@ -1,4 +1,4 @@
-import type { NodeCardTextContentType } from "./node-card__text-content.interfaces";
+import type { NodeCardTextContentType } from "./resource-card-content-part.interfaces.js";
 
 export const NodeCardTextContent: NodeCardTextContentType = ({
   title,

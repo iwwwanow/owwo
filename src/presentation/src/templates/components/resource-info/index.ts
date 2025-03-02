@@ -1,1 +1,1 @@
-export * from "./resource-info.component";
+export * from "./resource-info.component.js";

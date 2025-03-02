@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { DateComponentProps } from "./date.interface";
+import { CssModule } from "../index.js";
+import type { DateComponentProps } from "./date.interface.js";
 import Style from "./date.module.css";
 
 const DateComponent: Component<DateComponentProps> = (props) => {

@@ -1,5 +1,5 @@
-import { CssModule } from "../";
-import type { ResourceLinkContainerProps } from "./node-link-container.interface";
+import { CssModule } from "../index.js";
+import type { ResourceLinkContainerProps } from "./node-link-container.interface.js";
 import Style from "./node-link-container.module.css";
 
 export const ResourceLinkContainer: Component<ResourceLinkContainerProps> = (

@@ -1,1 +1,1 @@
-export * from "./full-grid-wrap-container.component";
+export * from "./full-grid-wrap-container.component.js";
