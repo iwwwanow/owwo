@@ -1,1 +1,1 @@
-export * from "./resource.service";
+export * from "./services/index.js";

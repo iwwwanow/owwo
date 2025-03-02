@@ -10,10 +10,8 @@ export class ResourceService {
     const { pathname: reqPathname } = reqUrl;
 
     const resourceRepository = new ResourceRepository();
-    const resourceAggregate = await resourceRepository.getByPath(reqPathname);
-    console.log(resourceAggregate);
-
-    const resourcePageHtml = ResourcePage({ resourceData });
+    const resourceDto = await resourceRepository.getByPath(reqPathname);
+    const resourcePageHtml = ResourcePage({ resourceData: resourceDto });
 
     return resourcePageHtml;
   }
