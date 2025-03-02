@@ -1,7 +1,7 @@
 import { ResourceMetaEntity } from "../entities/index.js";
 import { ContentEntity } from "../entities/index.js";
 import { CoverEntity } from "../entities/index.js";
-import type { ResourceAggregateDto } from "../interfaces/index.js";
+import type { ResourceDto } from "../interfaces/index.js";
 
 export class ResourceAggregate {
   public readonly meta: ResourceMetaEntity;
@@ -9,13 +9,17 @@ export class ResourceAggregate {
   public cover?: CoverEntity;
   public children?: Array<ResourceAggregate> = [];
 
-  constructor(resourceAggregateDto: ResourceAggregateDto) {
+  constructor(resourceDto: ResourceDto) {
     this.validate();
-    Object.assign(this, resourceAggregateDto);
+    Object.assign(this, resourceDto);
   }
 
   validate() {
     // TODO validate aggregate
     // if (!this.meta.title) throw new Error("Resource must have title");
+  }
+
+  getDto(): ResourceDto {
+    return this;
   }
 }
