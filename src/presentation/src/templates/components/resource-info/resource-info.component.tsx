@@ -27,15 +27,13 @@ export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
   // const title = resourceData.title;
   const title = meta.title;
 
-  // const description = resourceData.description;
-  // TODO description from meta.json? settings.json?
-  const description = "description";
+  // FEATURE description
 
   // TODO add that logic to repository; author as resource
   // const author = resourceData;
   const author = false;
 
-  const hasTextData = hasTextDataHelper({ title, description, meta });
+  const hasTextData = hasTextDataHelper({ title, meta });
   const hasData = hasDataHelper({ image, hasTextData });
 
   if (hasData) {
@@ -53,9 +51,6 @@ export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
             <div class="node-info__data-container">
               {isTitleNeeded && <ResourceTitle title={title} />}
               {author && <ResourceInfoAuthorPart author={author} />}
-              {isDescriptionNeeded && description && (
-                <ResourceInfoDescriptionPart description={description} />
-              )}
               {meta && <ResourceInfoDatePart meta={meta} />}
             </div>
           )}

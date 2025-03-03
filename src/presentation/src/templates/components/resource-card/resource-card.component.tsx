@@ -6,7 +6,6 @@ import type { NodeCardProps } from "./resource-card.interface.js";
 import Style from "./resource-card.module.css";
 
 export const ResourceCard: Component<NodeCardProps> = (props) => {
-  console.log(props);
   const { resourceData } = props;
 
   const id = resourceData.meta.path;

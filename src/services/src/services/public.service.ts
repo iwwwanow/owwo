@@ -1,6 +1,7 @@
 import { BunFile } from "bun";
 import { join } from "path";
 
+// TODO move it to getter and env
 const PUBLIC_PATH = "./src/static";
 
 export class PublicService {

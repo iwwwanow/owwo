@@ -1,5 +1,6 @@
 import { ResourceController } from "@site/controllers";
 import { PublicController } from "@site/controllers";
+import { UploadsController } from "@site/controllers";
 
 import type { App } from "../interfaces";
 
@@ -18,6 +19,10 @@ export const registerRoutes = (app: App) => {
     console.log("api route");
     return new Response("api route");
     // ResourceController.get(req)
+  });
+
+  app.get("/uploads", (req: Request) => {
+    return UploadsController.get(req);
   });
 
   app.get("/", (req: Request) => {

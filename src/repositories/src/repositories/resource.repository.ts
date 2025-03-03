@@ -192,24 +192,31 @@ export class ResourceRepository {
   }
 
   private async getCoverByPath(): Promise<CoverEntity | null> {
-    const coverPath = await this.getCoverPath();
+    const coverFullPath = await this.getCoverPath();
 
-    if (coverPath) return null;
+    if (!coverFullPath) return null;
 
     let coverDto: CoverDto = {};
 
-    if (fs.existsSync(coverPath)) {
+    const coverRelativePath = coverFullPath.replace(
+      new RegExp(this.#uploadsPath),
+      "uploads",
+    );
+
+    console.log(coverRelativePath);
+
+    if (fs.existsSync(coverFullPath)) {
       // TODO cache logic
       coverDto = {
-        [ImageVariantEnum.Blob]: coverPath,
-        [ImageVariantEnum.Original]: coverPath,
-        [ImageVariantEnum.Height_16px]: coverPath,
-        [ImageVariantEnum.Height_16px_2x]: coverPath,
-        [ImageVariantEnum.Height_32px]: coverPath,
-        [ImageVariantEnum.Height_32px_2x]: coverPath,
-        [ImageVariantEnum.Width_1080px]: coverPath,
-        [ImageVariantEnum.Width_190px]: coverPath,
-        [ImageVariantEnum.Width_190px_2x]: coverPath,
+        [ImageVariantEnum.Blob]: coverRelativePath,
+        [ImageVariantEnum.Original]: coverRelativePath,
+        [ImageVariantEnum.Height_16px]: coverRelativePath,
+        [ImageVariantEnum.Height_16px_2x]: coverRelativePath,
+        [ImageVariantEnum.Height_32px]: coverRelativePath,
+        [ImageVariantEnum.Height_32px_2x]: coverRelativePath,
+        [ImageVariantEnum.Width_1080px]: coverRelativePath,
+        [ImageVariantEnum.Width_190px]: coverRelativePath,
+        [ImageVariantEnum.Width_190px_2x]: coverRelativePath,
       };
     } else return null;
 
