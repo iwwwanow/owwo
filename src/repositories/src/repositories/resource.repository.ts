@@ -24,10 +24,12 @@ import { getUploadsPath } from "../getters/index.js";
 
 interface GetByPathOptions {
   recursive: boolean;
+  isDirectory: boolean;
 }
 
 const DEFAULT_OPTIONS: GetByPathOptions = {
   recursive: true,
+  isDirectory: true,
 };
 
 export class ResourceRepository {
@@ -223,25 +225,33 @@ export class ResourceRepository {
   }
 
   private async getCoverPath(): Promise<string> {
-    const pattern = join(this.#fullPath, "\\!cover.{png,jpg,jpeg,gif,webp}");
-    return new Promise((resolve, reject) => {
-      glob(pattern, (err, files) => {
-        if (err) {
-          return reject(err);
-        }
-        // FEATURE add a priority to file extentions
-        resolve(files[0]);
+    if (this.#file.type === "application/octet-stream") {
+      const pattern = join(this.#fullPath, "\\!cover.{png,jpg,jpeg,gif,webp}");
+
+      return new Promise((resolve, reject) => {
+        glob(pattern, (err, files) => {
+          if (err) {
+            return reject(err);
+          }
+          // FEATURE add a priority to file extentions
+          resolve(files[0]);
+        });
       });
-    });
+    } else if (this.#file.type.split("/")[0] === "image") {
+      return this.#fullPath;
+    }
   }
 
-  private async loadChildrenByPath(): Promise<Array<ResourceAggregate>> {
+  private async loadChildrenByPath(): Promise<Array<ResourceDto>> {
     const dirEntries = await readdir(this.#fullPath, { withFileTypes: true });
     return Promise.all(
-      dirEntries.map((dirent) => {
+      dirEntries.map(async (dirent) => {
         const resourcePath = join(this.#ralativePath, dirent.name);
         const resource = new ResourceRepository();
-        return resource.getByPath(resourcePath, { recursive: false });
+        return resource.getByPath(resourcePath, {
+          isDirectory: dirent.isDirectory(),
+          recursive: false,
+        });
       }),
     );
   }
