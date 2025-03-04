@@ -16,9 +16,7 @@ export const registerRoutes = (app: App) => {
   });
 
   app.get("/api", (req: Request) => {
-    console.log("api route");
     return new Response("api route");
-    // ResourceController.get(req)
   });
 
   app.get("/uploads", (req: Request) => {

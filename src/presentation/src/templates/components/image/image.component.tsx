@@ -11,8 +11,6 @@ export const Image: Component<ImageProps> = (props) => {
 
   const imageOriginalSource = image[ImageVariantEnum.Original];
 
-  // console.log("original:", imageSrcset);
-
   // TODO image srcsets
 
   return (

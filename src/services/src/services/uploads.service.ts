@@ -9,11 +9,9 @@ export class UploadsService {
   static async getFile(req: Request): Promise<BunFile> {
     const reqUrl = new URL(req.url);
     const { pathname: reqPathname } = reqUrl;
-    console.log("pathname:", reqPathname);
     const slug = reqPathname.split("/").slice(2).join("/");
     const uploadsPath = getUploadsPath();
     const filePath = join(uploadsPath, slug);
-    console.log(filePath);
     return Bun.file(filePath);
   }
 }

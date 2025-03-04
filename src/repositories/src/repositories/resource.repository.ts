@@ -203,8 +203,6 @@ export class ResourceRepository {
       "uploads",
     );
 
-    console.log(coverRelativePath);
-
     if (fs.existsSync(coverFullPath)) {
       // TODO cache logic
       coverDto = {
