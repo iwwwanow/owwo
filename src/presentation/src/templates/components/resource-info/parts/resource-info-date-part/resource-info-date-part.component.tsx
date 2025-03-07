@@ -6,7 +6,7 @@ export const ResourceInfoDatePart: Component<ResourceInfoDateProps> = ({
   meta,
 }) => (
   <>
-    <Hr text="last-modification/creation date" />
+    <Hr text="dates" />
     <DateComponent meta={meta} />
   </>
 );
