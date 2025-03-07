@@ -9,7 +9,6 @@ export const getFileCover = async ({
   uploadsPath,
 }): Promise<CoverDto> => {
   const mimeType = getMimeType(fullPath);
-  console.log(mimeType);
   const mimeTypeSegments = mimeType.split("/");
 
   if (mimeTypeSegments[0] === "image") {

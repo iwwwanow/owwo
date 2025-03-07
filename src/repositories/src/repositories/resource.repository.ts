@@ -11,6 +11,7 @@ import { stat } from "node:fs/promises";
 import { join } from "path";
 
 import { getFileCover } from "../getters/index.js";
+import { getFileResourceContent } from "../getters/index.js";
 import { getDirectoryCoverFullPath } from "../getters/index.js";
 import { getCoverRelativePath } from "../getters/index.js";
 import { getDirectoryCover } from "../getters/index.js";
@@ -48,7 +49,8 @@ export class ResourceRepository {
 
     const content = await this.getContentByPath({
       resourceType: meta.resourceType,
-      fullPath: fullPath,
+      fullPath,
+      uploadsPath,
     });
 
     const cover = await this.getCoverByPath({
@@ -118,21 +120,29 @@ export class ResourceRepository {
   private async getContentByPath({
     resourceType,
     fullPath,
+    uploadsPath,
   }): Promise<ContentEntity | null> {
     let content: ContentDto;
 
     if (resourceType === ResourceVariantEnum.File) {
-      // TODO get file content
+      content = await getFileResourceContent({
+        fullPath,
+        uploadsPath,
+      });
+    } else {
+      content = await getDirectoryContent({
+        directoryPath: fullPath,
+        getFileContent,
+        getCleanHtml,
+        getContentPreview,
+      });
     }
 
-    content = await getDirectoryContent({
-      directoryPath: fullPath,
-      getFileContent,
-      getCleanHtml,
-      getContentPreview,
-    });
+    if (content) {
+      return new ContentEntity(content);
+    }
 
-    return new ContentEntity(content);
+    return null;
   }
 
   private async getCoverByPath({
