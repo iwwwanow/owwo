@@ -16,5 +16,6 @@ export const getDirectoryCover = async ({
     coverFullPath,
     uploadsPath,
   });
+
   return getCoverDto(coverRelativePath);
 };

@@ -156,7 +156,10 @@ export class ResourceRepository {
       });
     }
 
-    return new CoverEntity(cover);
+    if (cover) {
+      return new CoverEntity(cover);
+    }
+    return null;
   }
 
   private async getChildrenByPath({

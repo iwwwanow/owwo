@@ -4,7 +4,10 @@ import { getCoverDto } from "./cover-dto.getter.js";
 import { getCoverRelativePath } from "./cover-relative-path.getter.js";
 import { getMimeType } from "./mime-type.getter.js";
 
-export const getFileCover = async ({ fullPath, uploadsPath }): CoverDto => {
+export const getFileCover = async ({
+  fullPath,
+  uploadsPath,
+}): Promise<CoverDto> => {
   const mimeType = getMimeType(fullPath);
   console.log(mimeType);
   const mimeTypeSegments = mimeType.split("/");
@@ -14,6 +17,7 @@ export const getFileCover = async ({ fullPath, uploadsPath }): CoverDto => {
       coverFullPath: fullPath,
       uploadsPath,
     });
+
     return getCoverDto(coverRelativePath);
   }
 

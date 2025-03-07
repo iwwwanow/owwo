@@ -1,5 +1,4 @@
 import { CssModule } from "../index.js";
-import { DescriptionFormatter } from "./formatters/index.js";
 import { NodeCardTextContent } from "./parts/index.js";
 import { ResourceCardImage } from "./parts/index.js";
 import type { NodeCardProps } from "./resource-card.interface.js";
