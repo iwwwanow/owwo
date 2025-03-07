@@ -4,20 +4,13 @@ import { ContentEntity } from "@site/domain";
 import { CoverEntity } from "@site/domain";
 import { ResourceVariantEnum } from "@site/domain";
 import { PageVariantEnum } from "@site/domain";
-import { ReserverdFilenamesEnum } from "@site/domain";
-import type { ContentDto } from "@site/domain";
-import { ImageVariantEnum } from "@site/domain";
-import { CoverDto } from "@site/domain";
+import type { ContentDto, CoverDto } from "@site/domain";
 import { ResourceDto } from "@site/domain";
-import { BunFile } from "bun";
 import { readdir } from "fs/promises";
-import { glob } from "node:fs";
-import fs from "node:fs";
-import type { Stats } from "node:fs";
 import { stat } from "node:fs/promises";
-import { readFile } from "node:fs/promises";
 import { join } from "path";
 
+import { getFileCover } from "../getters/index.js";
 import { getDirectoryCoverFullPath } from "../getters/index.js";
 import { getCoverRelativePath } from "../getters/index.js";
 import { getDirectoryCover } from "../getters/index.js";
@@ -52,17 +45,19 @@ export class ResourceRepository {
       relativePath,
       resourceType,
     });
+
     const content = await this.getContentByPath({
       resourceType: meta.resourceType,
       fullPath: fullPath,
     });
+
     const cover = await this.getCoverByPath({
       fullPath: fullPath,
       uploadsPath: uploadsPath,
       resourceType: meta.resourceType,
     });
 
-    let children: Array<ResourceAggregate>;
+    let children: Array<ResourceDto>;
 
     if (options.recursive) {
       children = await this.getChildrenByPath({ fullPath, relativePath });
@@ -145,17 +140,21 @@ export class ResourceRepository {
     fullPath,
     uploadsPath,
   }): Promise<CoverEntity | null> {
-    if (resourceType === ResourceVariantEnum.File) {
-      // TODO get file content
-      return;
-    }
+    let cover: CoverDto;
 
-    const cover = await getDirectoryCover({
-      getCoverFullPath: getDirectoryCoverFullPath,
-      getCoverRelativePath,
-      uploadsPath,
-      fullPath,
-    });
+    if (resourceType === ResourceVariantEnum.File) {
+      cover = await getFileCover({
+        fullPath,
+        uploadsPath,
+      });
+    } else {
+      cover = await getDirectoryCover({
+        getCoverFullPath: getDirectoryCoverFullPath,
+        getCoverRelativePath,
+        uploadsPath,
+        fullPath,
+      });
+    }
 
     return new CoverEntity(cover);
   }

@@ -7,7 +7,7 @@ export class ResourceAggregate {
   public readonly meta: ResourceMetaEntity;
   public content?: ContentEntity;
   public cover?: CoverEntity;
-  public children?: Array<ResourceAggregate> = [];
+  public children?: Array<ResourceDto> = [];
 
   constructor(resourceDto: ResourceDto) {
     this.validate();
