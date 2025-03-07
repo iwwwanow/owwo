@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/* @import url("/public/assets/fonts/iosevka-term-ss-14/iosevka-term-ss-14.css"); */
 
 :root {
   font-size: 62.5%;
@@ -7,6 +8,9 @@
 
 * {
   font-family: "Roboto Condensed", "Helvetica Neue Condensed", sans-serif;
+  /* TODO check it */
+  /* font-family: "Iosevka Term SS14 Web", "Helvetica Neue Condensed", sans-serif; */
+  /* font-variant-ligatures: normal; */
   /* color: var(--DARK); */
 }
 
