@@ -14,8 +14,10 @@ import type { ResourcePageProps } from "./resource-page.interfaces.js";
 import Style from "./resource-page.module.css";
 
 const checkInfoNeeded = (resourceData: ResourceDto): boolean => {
+  // TODO to domain
   if (resourceData.meta.resourceType === ResourceVariantEnum.File) return false;
   if (resourceData.meta.pageType === PageVariantEnum.Index) return false;
+  if (resourceData.meta.pageType === PageVariantEnum.About) return false;
   return true;
 };
 

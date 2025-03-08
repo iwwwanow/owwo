@@ -1,3 +1,4 @@
+import { ReserverdFilenamesEnum } from "@site/domain";
 import { ResourcePage } from "@site/presentation";
 import { ErrorPage } from "@site/presentation";
 import { ResourceRepository } from "@site/repositories";
@@ -8,7 +9,14 @@ export class ResourceService {
   // getResourcePresentation
   static async getPresentation(req: Request): Promise<string> {
     const reqUrl = new URL(req.url);
-    const { pathname: reqPathname } = reqUrl;
+    let { pathname: reqPathname } = reqUrl;
+
+    // TODO to constants/enums (original req name)
+    if (reqPathname === "/about") {
+      reqPathname = `/${ReserverdFilenamesEnum.AboutPage}`;
+      console.log("about");
+    }
+
     const decodedPathname = decodeURI(reqPathname);
 
     try {

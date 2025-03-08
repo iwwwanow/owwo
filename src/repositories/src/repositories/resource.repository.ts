@@ -126,7 +126,7 @@ export class ResourceRepository {
     switch (relativePath) {
       case "/":
         return PageVariantEnum.Index;
-      case "/about":
+      case "/!about":
         return PageVariantEnum.About;
       default:
         return PageVariantEnum.Common;

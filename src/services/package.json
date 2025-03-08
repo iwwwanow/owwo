@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@site/repositories": "workspace:*",
-    "@site/presentation": "workspace:*"
+    "@site/presentation": "workspace:*",
+    "@site/domain": "workspace:*"
   }
 }

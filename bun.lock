@@ -63,6 +63,7 @@
       "name": "@site/services",
       "version": "0.0.1",
       "dependencies": {
+        "@site/domain": "workspace:*",
         "@site/presentation": "workspace:*",
         "@site/repositories": "workspace:*",
       },

@@ -12,7 +12,6 @@ export class PublicService {
     let filePath: string;
 
     if (reqPathname === "/favicon.ico") {
-      console.log("favicon");
       // TODO favicon name to const
       // TODO all path to const; and check in on start with warning
       filePath = join(PUBLIC_PATH, "public", "assets", "favicon.png");
