@@ -7,10 +7,11 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "dev": "./src/server.entrypoint.ts"
+    "dev": "./src/index.ts"
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@site/routes": "workspace:*"
+    "@site/routes": "workspace:*",
+    "@site/domain": "workspace:*"
   }
 }

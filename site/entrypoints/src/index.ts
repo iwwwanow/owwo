@@ -1,1 +1,1 @@
-export * from "./entrypoint/index.js";
+import "./entrypoint/index.js";

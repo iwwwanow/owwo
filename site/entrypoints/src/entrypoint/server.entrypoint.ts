@@ -2,6 +2,9 @@ import { registerRoutes } from "@site/routes";
 
 import { getRouter } from "../getters/index.js";
 import { getApp } from "../getters/index.js";
+import { checkEnvsUtil } from "../utils/check.envs.util.js";
+
+checkEnvsUtil();
 
 const router = getRouter();
 const app = getApp({ router });
