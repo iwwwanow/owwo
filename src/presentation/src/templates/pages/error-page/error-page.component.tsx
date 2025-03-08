@@ -3,6 +3,7 @@ import { BaseLayout } from "../../layouts/index.js";
 import type { ErrorPageProps } from "./error-page.interfaces.js";
 import Style from "./error-page.module.css";
 
+// TODO separete part
 const ErrorContent = ({ error }) => {
   return (
     <>
