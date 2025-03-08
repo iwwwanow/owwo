@@ -1,5 +1,5 @@
-import type { NodeImageType } from "@site/interfaces";
+import type { CoverDto } from "@site/domain";
 
 export type NodeCardImageProps = {
-  image: NodeImageType;
+  image: CoverDto;
 };

@@ -1,10 +1,10 @@
-import type { NodeImageType } from "@site/interfaces";
+import type { CoverDto } from "@site/domain";
 
 export const hasDataHelper = ({
   image,
   hasTextData,
 }: {
-  image?: NodeImageType;
+  image?: CoverDto;
   hasTextData: boolean;
 }): boolean => {
   return !!image || hasTextData;

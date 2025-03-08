@@ -10,7 +10,7 @@ export const hasTextDataHelper = ({
 }: {
   title: string;
   authors?: Array<ResourceDto>;
-  description: ContentDto;
+  description?: ContentDto;
   meta?: ResourceMetaDto;
 }): boolean => {
   return !!title || !!authors || !!description || !!meta;

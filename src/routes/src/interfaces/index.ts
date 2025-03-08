@@ -1,1 +1,1 @@
-export * from "./routes.interfaces";
+export * from "./routes.interfaces.js";

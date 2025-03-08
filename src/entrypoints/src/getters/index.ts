@@ -1,2 +1,2 @@
-export * from "./router.getter";
-export * from "./app.getter";
+export * from "./router.getter.js";
+export * from "./app.getter.js";

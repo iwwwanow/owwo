@@ -1,8 +1,6 @@
-import type { NodeContentType } from "@site/interfaces";
-
 type NodeCardTextContentProps = {
   title: string;
-  description: NodeContentType;
+  description: string;
 };
 
 export type NodeCardTextContentType = (

@@ -6,10 +6,7 @@ import { ResourceTitle } from "../index.js";
 import { hasTextDataHelper } from "./helpers/index.js";
 import { hasDataHelper } from "./helpers/index.js";
 import { ResourceInfoAuthorPart } from "./parts/index.js";
-import { ResourceInfoAuthorsPart } from "./parts/index.js";
 import { ResourceInfoDatePart } from "./parts/index.js";
-import { ResourceInfoDescriptionPart } from "./parts/index.js";
-import { ResourceInfoParentsPart } from "./parts/index.js";
 import type { ResourceInfoProps } from "./resource-info.interface.js";
 import Style from "./resource-info.module.css";
 
@@ -44,7 +41,7 @@ export const ResourceInfo: Component<ResourceInfoProps> = (props) => {
             <Image
               image={image}
               id={id}
-              variant={ImageVariantEnum.WIDTH_190PX}
+              variant={ImageVariantEnum.Width_190px}
             />
           )}
           {hasTextData && (

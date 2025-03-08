@@ -1,1 +1,1 @@
-export * from "./server.entrypoint";
+export * from "./server.entrypoint.js";

@@ -4,9 +4,14 @@ import type { ResourceInfoDescriptionProps } from "./resource-info-description-p
 
 export const ResourceInfoDescriptionPart: Component<
   ResourceInfoDescriptionProps
-> = ({ description }) => (
-  <>
-    <Hr text={HR_TITLE} />
-    <h5>{description}</h5>
-  </>
-);
+> = ({ description }) => <>description</>;
+
+// TODO is it needed?
+// export const ResourceInfoDescriptionPart: Component<
+//   ResourceInfoDescriptionProps
+// > = ({ description }) => (
+//   <>
+//     <Hr text={HR_TITLE} />
+//     <h5>{description}</h5>
+//   </>
+// );
