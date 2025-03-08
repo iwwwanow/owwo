@@ -14,7 +14,6 @@ export class ResourceService {
     // TODO to constants/enums (original req name)
     if (reqPathname === "/about") {
       reqPathname = `/${ReserverdFilenamesEnum.AboutPage}`;
-      console.log("about");
     }
 
     const decodedPathname = decodeURI(reqPathname);

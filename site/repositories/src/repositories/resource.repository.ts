@@ -7,6 +7,7 @@ import { PageVariantEnum } from "@site/domain";
 import type { ContentDto, CoverDto } from "@site/domain";
 import { ResourceDto } from "@site/domain";
 import { ResourceNotFoundException } from "@site/domain";
+import { getUploadsPath } from "@site/domain";
 import { readdir } from "fs/promises";
 import { existsSync } from "node:fs";
 import { stat } from "node:fs/promises";
@@ -20,7 +21,6 @@ import { getDirectoryContent } from "../getters/index.js";
 import { getFileContent } from "../getters/index.js";
 import { getContentPreview } from "../getters/index.js";
 import { getCleanHtml } from "../getters/index.js";
-import { getUploadsPath } from "../getters/index.js";
 import { getCssPath } from "../getters/index.js";
 import { getJsPath } from "../getters/index.js";
 

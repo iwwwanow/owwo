@@ -1,7 +1,6 @@
+import { getUploadsPath } from "@site/domain";
 import { BunFile } from "bun";
 import { join } from "path";
-
-import { getUploadsPath } from "../getters/index.js";
 
 export class UploadsService {
   static async getFile(req: Request): Promise<BunFile> {

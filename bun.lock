@@ -17,32 +17,32 @@
         "typescript-plugin-css-modules": "5.1.0",
       },
     },
-    "src/controllers": {
+    "site/controllers": {
       "name": "@site/controllers",
       "version": "0.0.1",
       "dependencies": {
         "@site/services": "workspace:*",
       },
     },
-    "src/domain": {
+    "site/domain": {
       "name": "@site/domain",
       "version": "0.0.1",
     },
-    "src/entrypoints": {
+    "site/entrypoints": {
       "name": "@site/entrypoints",
       "version": "0.0.1",
       "dependencies": {
         "@site/routes": "workspace:*",
       },
     },
-    "src/presentation": {
+    "site/presentation": {
       "name": "@site/presentation",
       "version": "0.0.1",
       "dependencies": {
         "@site/domain": "workspace:*",
       },
     },
-    "src/repositories": {
+    "site/repositories": {
       "name": "@site/repositories",
       "version": "0.0.1",
       "dependencies": {
@@ -52,14 +52,14 @@
         "marked": "15.0.7",
       },
     },
-    "src/routes": {
+    "site/routes": {
       "name": "@site/routes",
       "version": "0.0.1",
       "dependencies": {
         "@site/controllers": "workspace:*",
       },
     },
-    "src/services": {
+    "site/services": {
       "name": "@site/services",
       "version": "0.0.1",
       "dependencies": {
@@ -152,19 +152,19 @@
 
     "@parcel/watcher-win32-x64": ["@parcel/watcher-win32-x64@2.5.1", "", { "os": "win32", "cpu": "x64" }, "sha512-9lHBdJITeNR++EvSQVUcaZoWupyHfXe1jZvGZ06O/5MflPcuPLtEphScIBL+AiCWBO46tDSHzWyD0uDmmZqsgA=="],
 
-    "@site/controllers": ["@site/controllers@workspace:src/controllers"],
+    "@site/controllers": ["@site/controllers@workspace:site/controllers"],
 
-    "@site/domain": ["@site/domain@workspace:src/domain"],
+    "@site/domain": ["@site/domain@workspace:site/domain"],
 
-    "@site/entrypoints": ["@site/entrypoints@workspace:src/entrypoints"],
+    "@site/entrypoints": ["@site/entrypoints@workspace:site/entrypoints"],
 
-    "@site/presentation": ["@site/presentation@workspace:src/presentation"],
+    "@site/presentation": ["@site/presentation@workspace:site/presentation"],
 
-    "@site/repositories": ["@site/repositories@workspace:src/repositories"],
+    "@site/repositories": ["@site/repositories@workspace:site/repositories"],
 
-    "@site/routes": ["@site/routes@workspace:src/routes"],
+    "@site/routes": ["@site/routes@workspace:site/routes"],
 
-    "@site/services": ["@site/services@workspace:src/services"],
+    "@site/services": ["@site/services@workspace:site/services"],
 
     "@trivago/prettier-plugin-sort-imports": ["@trivago/prettier-plugin-sort-imports@4.3.0", "", { "dependencies": { "@babel/generator": "7.17.7", "@babel/parser": "^7.20.5", "@babel/traverse": "7.23.2", "@babel/types": "7.17.0", "javascript-natural-sort": "0.7.1", "lodash": "^4.17.21" }, "peerDependencies": { "@vue/compiler-sfc": "3.x", "prettier": "2.x - 3.x" }, "optionalPeers": ["@vue/compiler-sfc"] }, "sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ=="],
 

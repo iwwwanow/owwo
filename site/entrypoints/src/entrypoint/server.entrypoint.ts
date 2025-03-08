@@ -1,7 +1,7 @@
 import { registerRoutes } from "@site/routes";
 
-import { getRouter } from "./getters/index.js";
-import { getApp } from "./getters/index.js";
+import { getRouter } from "../getters/index.js";
+import { getApp } from "../getters/index.js";
 
 const router = getRouter();
 const app = getApp({ router });
