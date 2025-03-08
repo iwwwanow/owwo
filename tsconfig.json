@@ -6,7 +6,10 @@
 
     "target": "ESNext",
     "moduleResolution": "NodeNext",
-    "module": "NodeNext"
+    "module": "NodeNext",
+
+    "skipLibCheck": true,
+    "noEmit": true
   }
 }
 
