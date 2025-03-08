@@ -1,8 +1,10 @@
+import { EsceptionCodeEnum } from "../enums/index.js";
+import { enLocale } from "../locales/index.js";
+
 export class ResourceNotFoundException extends Error {
-  // TODO to enum
-  public code: number = 404;
+  public code: number = EsceptionCodeEnum.NotFound;
 
   constructor() {
-    super("Resource not found");
+    super(enLocale.exceptions["not-found"]);
   }
 }

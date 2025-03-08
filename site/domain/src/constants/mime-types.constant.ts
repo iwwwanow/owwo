@@ -5,13 +5,13 @@ import { MimeTypesEnum } from "../enums/index.js";
 export const mimeTypes: { [extension: string]: MimeTypesEnum } = {
   // Текстовые файлы
   txt: MimeTypesEnum.TXT,
-  csv: MimeTypesEnum.CSV,
+  // csv: MimeTypesEnum.CSV,
   html: MimeTypesEnum.HTML,
-  htm: MimeTypesEnum.HTM,
+  // htm: MimeTypesEnum.HTM,
   css: MimeTypesEnum.CSS,
   js: MimeTypesEnum.JS,
   json: MimeTypesEnum.JSON,
-  xml: MimeTypesEnum.XML,
+  // xml: MimeTypesEnum.XML,
   md: MimeTypesEnum.MD,
 
   // Изображения
@@ -24,75 +24,87 @@ export const mimeTypes: { [extension: string]: MimeTypesEnum } = {
   svg: MimeTypesEnum.SVG,
   ico: MimeTypesEnum.ICO,
 
+  // FEAT
   // Аудио
-  mp3: MimeTypesEnum.MP3,
-  wav: MimeTypesEnum.WAV,
-  ogg: MimeTypesEnum.OGG,
-  m4a: MimeTypesEnum.M4A,
-  flac: MimeTypesEnum.FLAC,
+  // mp3: MimeTypesEnum.MP3,
+  // wav: MimeTypesEnum.WAV,
+  // ogg: MimeTypesEnum.OGG,
+  // m4a: MimeTypesEnum.M4A,
+  // flac: MimeTypesEnum.FLAC,
 
+  // FEAT
   // Видео
-  mp4: MimeTypesEnum.MP4,
-  mov: MimeTypesEnum.MOV,
-  wmv: MimeTypesEnum.WMV,
-  flv: MimeTypesEnum.FLV,
-  avi: MimeTypesEnum.AVI,
-  mkv: MimeTypesEnum.MKV,
-  webm: MimeTypesEnum.WEBM,
+  // mp4: MimeTypesEnum.MP4,
+  // mov: MimeTypesEnum.MOV,
+  // wmv: MimeTypesEnum.WMV,
+  // flv: MimeTypesEnum.FLV,
+  // avi: MimeTypesEnum.AVI,
+  // mkv: MimeTypesEnum.MKV,
+  // webm: MimeTypesEnum.WEBM,
 
+  // FEAT
   // Архивы и сжатые файлы
-  zip: MimeTypesEnum.ZIP,
-  rar: MimeTypesEnum.RAR,
-  "7z": MimeTypesEnum.SEVENZ,
-  tar: MimeTypesEnum.TAR,
-  gz: MimeTypesEnum.GZ,
-  bz: MimeTypesEnum.BZ,
-  bz2: MimeTypesEnum.BZ2,
+  // zip: MimeTypesEnum.ZIP,
+  // rar: MimeTypesEnum.RAR,
+  // "7z": MimeTypesEnum.SEVENZ,
+  // tar: MimeTypesEnum.TAR,
+  // gz: MimeTypesEnum.GZ,
+  // bz: MimeTypesEnum.BZ,
+  // bz2: MimeTypesEnum.BZ2,
 
+  // FEAT
   // Документы
-  pdf: MimeTypesEnum.PDF,
-  doc: MimeTypesEnum.DOC,
-  docx: MimeTypesEnum.DOCX,
-  xls: MimeTypesEnum.XLS,
-  xlsx: MimeTypesEnum.XLSX,
-  ppt: MimeTypesEnum.PPT,
-  pptx: MimeTypesEnum.PPTX,
-  odt: MimeTypesEnum.ODT,
-  ods: MimeTypesEnum.ODS,
+  // pdf: MimeTypesEnum.PDF,
+  // doc: MimeTypesEnum.DOC,
+  // docx: MimeTypesEnum.DOCX,
+  // xls: MimeTypesEnum.XLS,
+  // xlsx: MimeTypesEnum.XLSX,
+  // ppt: MimeTypesEnum.PPT,
+  // pptx: MimeTypesEnum.PPTX,
+  // odt: MimeTypesEnum.ODT,
+  // ods: MimeTypesEnum.ODS,
 
+  // FEAT
   // Шрифты
-  ttf: MimeTypesEnum.TTF,
-  otf: MimeTypesEnum.OTF,
-  woff: MimeTypesEnum.WOFF,
-  woff2: MimeTypesEnum.WOFF2,
+  // ttf: MimeTypesEnum.TTF,
+  // otf: MimeTypesEnum.OTF,
+  // woff: MimeTypesEnum.WOFF,
+  // woff2: MimeTypesEnum.WOFF2,
 
+  // FEAT
   // Приложения и двоичные форматы
-  exe: MimeTypesEnum.EXE,
-  bin: MimeTypesEnum.BIN,
-  dmg: MimeTypesEnum.DMG,
-  iso: MimeTypesEnum.ISO,
+  // exe: MimeTypesEnum.EXE,
+  // bin: MimeTypesEnum.BIN,
+  // dmg: MimeTypesEnum.DMG,
+  // iso: MimeTypesEnum.ISO,
 
+  // FEAT
   // Другие типы
-  apk: MimeTypesEnum.APK,
-  app: MimeTypesEnum.APP,
+  // apk: MimeTypesEnum.APK,
+  // app: MimeTypesEnum.APP,
 
+  // FEAT
   // Расширенные списки
-  rtf: MimeTypesEnum.RTF,
-  psd: MimeTypesEnum.PSD,
-  eps: MimeTypesEnum.EPS,
-  ai: MimeTypesEnum.AI,
-  z: MimeTypesEnum.Z,
+  // rtf: MimeTypesEnum.RTF,
+  // psd: MimeTypesEnum.PSD,
+  // eps: MimeTypesEnum.EPS,
+  // ai: MimeTypesEnum.AI,
+  // z: MimeTypesEnum.Z,
 
+  // FEAT
   // Дополнительные типы для веб-шрифтов
-  eot: MimeTypesEnum.EOT,
+  // eot: MimeTypesEnum.EOT,
 
+  // FEAT
   // XML различные
-  xhtml: MimeTypesEnum.XHTML,
-  xsl: MimeTypesEnum.XSL,
+  // xhtml: MimeTypesEnum.XHTML,
+  // xsl: MimeTypesEnum.XSL,
 
+  // FEAT
   // Расширения для Java
-  jar: MimeTypesEnum.JAR,
+  // jar: MimeTypesEnum.JAR,
 
+  // FEAT
   // Дополнительно
-  wasm: MimeTypesEnum.WASM,
+  // wasm: MimeTypesEnum.WASM,
 };
