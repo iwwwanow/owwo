@@ -6,7 +6,9 @@ import type { BaseLayoutProps } from "./base-layout.interface.js";
 export const BaseLayout: Component<BaseLayoutProps> = (props) => {
   const { children } = props;
   const { resourceData } = props;
-  const { jsPath, cssPath } = resourceData.meta;
+
+  const jsPath = resourceData?.meta.jsPath;
+  const cssPath = resourceData?.meta.cssPath;
 
   return (
     <>

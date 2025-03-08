@@ -1,4 +1,5 @@
 import { ResourcePage } from "@site/presentation";
+import { ErrorPage } from "@site/presentation";
 import { ResourceRepository } from "@site/repositories";
 
 export class ResourceService {
@@ -10,10 +11,15 @@ export class ResourceService {
     const { pathname: reqPathname } = reqUrl;
     const decodedPathname = decodeURI(reqPathname);
 
-    const resourceRepository = new ResourceRepository();
-    const resourceDto = await resourceRepository.getByPath(decodedPathname);
-    const resourcePageHtml = ResourcePage({ resourceData: resourceDto });
+    try {
+      const resourceRepository = new ResourceRepository();
+      const resourceDto = await resourceRepository.getByPath(decodedPathname);
+      const resourcePageHtml = ResourcePage({ resourceData: resourceDto });
 
-    return resourcePageHtml;
+      return resourcePageHtml;
+    } catch (e) {
+      const errorPageHtml = ErrorPage({ error: e });
+      return errorPageHtml;
+    }
   }
 }

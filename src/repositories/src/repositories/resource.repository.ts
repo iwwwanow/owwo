@@ -6,7 +6,9 @@ import { ResourceVariantEnum } from "@site/domain";
 import { PageVariantEnum } from "@site/domain";
 import type { ContentDto, CoverDto } from "@site/domain";
 import { ResourceDto } from "@site/domain";
+import { ResourceNotFoundException } from "@site/domain";
 import { readdir } from "fs/promises";
+import { existsSync } from "node:fs";
 import { stat } from "node:fs/promises";
 import { join } from "path";
 
@@ -37,6 +39,8 @@ export class ResourceRepository {
   ): Promise<ResourceDto> {
     const uploadsPath = getUploadsPath();
     const fullPath = join(uploadsPath, relativePath);
+
+    if (!existsSync(fullPath)) throw new ResourceNotFoundException();
 
     const stats = await stat(fullPath);
     const resourceType = this.getResourceType(stats);
