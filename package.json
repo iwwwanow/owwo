@@ -25,8 +25,5 @@
     "compose-dev": "docker compose --env-file .env -f ./site/docker/dev.docker-compose.yaml up",
     "compose-prod": "docker compose --env-file .env -f ./site/docker/prod.docker-compose.yaml up",
     "test": "bun test"
-  },
-  "override": {
-    "@sinclair/typebox": "0.32.4"
   }
 }
