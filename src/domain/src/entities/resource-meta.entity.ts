@@ -9,6 +9,8 @@ export class ResourceMetaEntity {
   pageType: PageVariantEnum;
   createdAt: Date;
   updatedAt: Date;
+  jsPath: null | string;
+  cssPath: null | string;
 
   constructor(resourceMetaDto: ResourceMetaDto) {
     this.validate();

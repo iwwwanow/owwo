@@ -2,26 +2,26 @@ import { BaseHeadFragment } from "../../fragments/index.js";
 import { FooterFragment } from "../../fragments/index.js";
 import { HeaderFragment } from "../../fragments/index.js";
 import type { BaseLayoutProps } from "./base-layout.interface.js";
-import { SuccessMessage } from "./success-message/index.js";
 
 export const BaseLayout: Component<BaseLayoutProps> = (props) => {
   const { children } = props;
-  const successMessage = props.clientData?.successMessage;
+  const { resourceData } = props;
+  const { jsPath, cssPath } = resourceData.meta;
 
   return (
     <>
       <head>
         <BaseHeadFragment />
+        {cssPath && <link rel="stylesheet" href={cssPath} />}
       </head>
 
       <body class="wrapper">
         <HeaderFragment />
 
-        {successMessage && <SuccessMessage successMessage={successMessage} />}
-
         {children}
 
         <FooterFragment />
+        {jsPath && <script src={jsPath}></script>}
       </body>
     </>
   );

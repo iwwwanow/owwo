@@ -30,7 +30,7 @@ export const ResourcePage: Component<ResourcePageProps> = (props) => {
 
   return (
     <>
-      <BaseLayout>
+      <BaseLayout resourceData={resourceData}>
         <div class="grid node-wrapper">
           {isInfoNeeded && <ResourceInfo resourceData={resourceData} />}
 

@@ -8,4 +8,6 @@ export interface ResourceMetaDto {
   pageType: PageVariantEnum;
   createdAt: Date;
   updatedAt: Date;
+  jsPath?: null | string;
+  cssPath?: null | string;
 }

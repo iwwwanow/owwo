@@ -23,7 +23,6 @@ export const getTextContentDto = async (
       preview: cleanFileContent,
     };
   } else if (extention === "html") {
-    console.log(cleanFileContent);
     return {
       html: cleanFileContent,
       markdown: cleanFileContent,

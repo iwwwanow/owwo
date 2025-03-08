@@ -8,3 +8,7 @@ export * from "./cover-relative-path.getter.js";
 export * from "./directory-cover-full-path.getter.js";
 export * from "./file-cover.getter.js";
 export * from "./file-resource-content.getter.js";
+
+export * from "./js-path.getter.js";
+export * from "./css-path.getter.js";
+export * from "./uploads-req-path.getter.js";

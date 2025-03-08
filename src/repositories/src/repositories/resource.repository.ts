@@ -20,6 +20,8 @@ import { getFileContent } from "../getters/index.js";
 import { getContentPreview } from "../getters/index.js";
 import { getCleanHtml } from "../getters/index.js";
 import { getUploadsPath } from "../getters/index.js";
+import { getCssPath } from "../getters/index.js";
+import { getJsPath } from "../getters/index.js";
 
 interface GetByPathOptions {
   recursive: boolean;
@@ -43,6 +45,8 @@ export class ResourceRepository {
     // TODO сомнительный вариант с getContentByPath
     const meta = await this.getMetaByPath({
       stats,
+      fullPath,
+      uploadsPath,
       relativePath,
       resourceType,
     });
@@ -78,11 +82,13 @@ export class ResourceRepository {
 
   private async getMetaByPath({
     stats,
+    fullPath,
     relativePath,
+    uploadsPath,
     resourceType,
   }): Promise<ResourceMetaEntity> {
     // TODO to getters
-    const meta = {
+    let meta = {
       path: relativePath,
       title: this.getResourceTitle(relativePath),
       resourceType,
@@ -90,7 +96,14 @@ export class ResourceRepository {
       // BUG on bun works incorrectly. node - well
       createdAt: new Date(stats.birthtime),
       updatedAt: new Date(stats.mtime),
+      jsPath: null,
+      cssPath: null,
     };
+
+    if (resourceType === ResourceVariantEnum.Directory) {
+      meta.jsPath = getJsPath({ fullPath, uploadsPath });
+      meta.cssPath = getCssPath({ fullPath, uploadsPath });
+    }
 
     return new ResourceMetaEntity(meta);
   }
