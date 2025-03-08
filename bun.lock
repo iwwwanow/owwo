@@ -32,6 +32,7 @@
       "name": "@site/entrypoints",
       "version": "0.0.1",
       "dependencies": {
+        "@site/domain": "workspace:*",
         "@site/routes": "workspace:*",
       },
     },

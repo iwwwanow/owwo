@@ -9,7 +9,9 @@
     "module": "NodeNext",
 
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+
+    "resolveJsonModule": true
   }
 }
 

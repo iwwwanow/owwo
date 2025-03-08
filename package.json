@@ -18,7 +18,7 @@
     "site/**/*"
   ],
   "scripts": {
-    "dev": "NODE_ENV=developement bun --watch ./src/entrypoints/src/server.entrypoint.ts",
+    "dev": "NODE_ENV=developement bun --watch ./site/entrypoints/src/index.ts",
     "build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
     "build-image": "docker build -f ./site/docker/site.Dockerfile -t owwo/site:latest .",
     "build-system-image": "docker build -f ./site/docker/system.Dockerfile -t owwo/system:latest .",
