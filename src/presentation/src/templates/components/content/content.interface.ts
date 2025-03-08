@@ -1,6 +1,6 @@
 import type { ContentDto } from "@site/domain";
 
-export interface TextProps {
-  text: ContentDto;
+export interface ContentProps {
+  contentData: ContentDto;
   className?: string;
 }

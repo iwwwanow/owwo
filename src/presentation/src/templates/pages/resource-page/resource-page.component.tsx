@@ -8,7 +8,7 @@ import { Hr } from "../../components/index.js";
 import { TextInput } from "../../components/index.js";
 import { ResourceCard } from "../../components/index.js";
 import { ResourceInfo } from "../../components/index.js";
-import { Text } from "../../components/index.js";
+import { Content } from "../../components/index.js";
 import { BaseLayout } from "../../layouts/index.js";
 import type { ResourcePageProps } from "./resource-page.interfaces.js";
 import Style from "./resource-page.module.css";
@@ -41,7 +41,9 @@ export const ResourcePage: Component<ResourcePageProps> = (props) => {
 
           {
             // TODO full widt content on index page
-            content && <Text text={content} className="grid__right-content" />
+            content && (
+              <Content contentData={content} className="grid__right-content" />
+            )
           }
         </div>
 

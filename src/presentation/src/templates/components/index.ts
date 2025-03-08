@@ -14,4 +14,4 @@ export * from "./resource-link/index.js";
 export * from "./resource-link-container/index.js";
 export * from "./resource-navigation/index.js";
 export * from "./resource-title/index.js";
-export * from "./text/index.js";
+export * from "./content/index.js";
