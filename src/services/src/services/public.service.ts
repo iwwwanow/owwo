@@ -1,8 +1,6 @@
+import { FAVICON_PATH } from "@site/domain";
 import { BunFile } from "bun";
 import { join } from "path";
-
-// TODO move it to getter and env
-const PUBLIC_PATH = "./src/static";
 
 export class PublicService {
   static async getFile(req: Request): Promise<BunFile> {
@@ -12,13 +10,11 @@ export class PublicService {
     let filePath: string;
 
     if (reqPathname === "/favicon.ico") {
-      // TODO favicon name to const
-      // TODO all path to const; and check in on start with warning
-      filePath = join(PUBLIC_PATH, "public", "assets", "favicon.png");
+      filePath = FAVICON_PATH;
     } else {
-      filePath = join(PUBLIC_PATH, reqPathname);
+      filePath = join(reqPathname);
     }
 
-    return Bun.file(filePath);
+    return Bun.file(`./${filePath}`);
   }
 }
