@@ -195,7 +195,6 @@ export class ResourceRepository {
 
     dirEntries.forEach(async (dirent) => {
       // TODO symbols enum?
-      console.log(!dirent.name.startsWith("!"));
       if (!dirent.name.startsWith("!")) {
         const resourcePath = join(relativePath, dirent.name);
         const repository = new ResourceRepository();
