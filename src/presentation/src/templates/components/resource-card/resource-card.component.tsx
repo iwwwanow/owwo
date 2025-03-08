@@ -18,7 +18,7 @@ export const ResourceCard: Component<NodeCardProps> = (props) => {
         {cover && <ResourceCardImage image={cover} />}
 
         {(title || content) && (
-          <NodeCardTextContent title={title} description={content.preview} />
+          <NodeCardTextContent title={title} description={content?.preview} />
         )}
       </a>
       <CssModule filepath={Style} />

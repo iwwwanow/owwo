@@ -61,7 +61,7 @@ export class ResourceRepository {
 
     let children: Array<ResourceDto>;
 
-    if (options.recursive) {
+    if (options.recursive && resourceType === ResourceVariantEnum.Directory) {
       children = await this.getChildrenByPath({ fullPath, relativePath });
     }
 
