@@ -1,10 +1,10 @@
 import type { CoverDto } from "@site/domain";
 
 import { getCoverDto } from "./cover-dto.getter.js";
+import { getUploadsReqPath } from "./uploads-req-path.getter.js";
 
 export const getDirectoryCover = async ({
   getCoverFullPath,
-  getCoverRelativePath,
   uploadsPath,
   fullPath,
 }): Promise<CoverDto> => {
@@ -12,10 +12,10 @@ export const getDirectoryCover = async ({
 
   if (!coverFullPath) return null;
 
-  const coverRelativePath = getCoverRelativePath({
-    coverFullPath,
+  const coverReqPath = getUploadsReqPath({
+    fullPath: coverFullPath,
     uploadsPath,
   });
 
-  return getCoverDto(coverRelativePath);
+  return getCoverDto(coverReqPath);
 };

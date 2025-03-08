@@ -2,10 +2,10 @@
 // TODO FIX naming
 import { ContentDto } from "@site/domain";
 
-import { getCoverRelativePath } from "./cover-relative-path.getter.js";
 import { getImageContentDto } from "./image-cotnent-dto.getter.js";
 import { getMimeType } from "./mime-type.getter.js";
 import { getTextContentDto } from "./text-content.dto.getter.js";
+import { getUploadsReqPath } from "./uploads-req-path.getter.js";
 
 export const getFileResourceContent = async ({
   fullPath,
@@ -17,8 +17,8 @@ export const getFileResourceContent = async ({
   let content: ContentDto;
 
   if (mimeTypeSegments[0] === "image") {
-    const coverRelativePath = getCoverRelativePath({
-      coverFullPath: fullPath,
+    const coverRelativePath = getUploadsReqPath({
+      fullPath,
       uploadsPath,
     });
     content = getImageContentDto(coverRelativePath);

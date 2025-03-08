@@ -13,7 +13,6 @@ import { join } from "path";
 import { getFileCover } from "../getters/index.js";
 import { getFileResourceContent } from "../getters/index.js";
 import { getDirectoryCoverFullPath } from "../getters/index.js";
-import { getCoverRelativePath } from "../getters/index.js";
 import { getDirectoryCover } from "../getters/index.js";
 import { getDirectoryContent } from "../getters/index.js";
 import { getFileContent } from "../getters/index.js";
@@ -173,7 +172,6 @@ export class ResourceRepository {
     } else {
       cover = await getDirectoryCover({
         getCoverFullPath: getDirectoryCoverFullPath,
-        getCoverRelativePath,
         uploadsPath,
         fullPath,
       });

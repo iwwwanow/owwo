@@ -4,7 +4,6 @@ export * from "./content-preview.getter.js";
 export * from "./file-content.getter.js";
 export * from "./directory-content.getter.js";
 export * from "./directory-cover.getter.js";
-export * from "./cover-relative-path.getter.js";
 export * from "./directory-cover-full-path.getter.js";
 export * from "./file-cover.getter.js";
 export * from "./file-resource-content.getter.js";
