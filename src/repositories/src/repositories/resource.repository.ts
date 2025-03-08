@@ -191,14 +191,22 @@ export class ResourceRepository {
   }): Promise<Array<ResourceDto>> {
     const dirEntries = await readdir(fullPath, { withFileTypes: true });
 
-    return Promise.all(
-      dirEntries.map(async (dirent) => {
+    const promises = [];
+
+    dirEntries.forEach(async (dirent) => {
+      // TODO symbols enum?
+      console.log(!dirent.name.startsWith("!"));
+      if (!dirent.name.startsWith("!")) {
         const resourcePath = join(relativePath, dirent.name);
         const repository = new ResourceRepository();
-        return repository.getByPath(resourcePath, {
-          recursive: false,
-        });
-      }),
-    );
+        promises.push(
+          repository.getByPath(resourcePath, {
+            recursive: false,
+          }),
+        );
+      }
+    });
+
+    return Promise.all(promises);
   }
 }
