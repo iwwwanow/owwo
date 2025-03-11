@@ -18,12 +18,11 @@
     "site/**/*"
   ],
   "scripts": {
-    "dev": "NODE_ENV=developement bun --watch ./site/entrypoints/src/index.ts",
-    "build": "bun build ./entrypoints/site/src/index.ts --outdir dist --minify",
-    "build-image": "docker build -f ./site/docker/site.Dockerfile -t owwo/site:latest .",
-    "build-system-image": "docker build -f ./site/docker/system.Dockerfile -t owwo/system:latest .",
-    "compose-dev": "docker compose --env-file .env -f ./site/docker/dev.docker-compose.yaml up",
-    "compose-prod": "docker compose --env-file .env -f ./site/docker/prod.docker-compose.yaml up",
-    "test": "bun test"
+    "site:dev": "./scripts/site/dev.sh",
+    "site:build": "./scripts/site/build.sh",
+    "site:build-site-image": "./scripts/site/build-site-image.sh",
+    "site:build-system-image": "./scripts/site/build-system-image.sh",
+    "site:dev-compose-up": "./scripts/site/dev-compose-up.sh",
+    "site:prod-compse-up": "./scripts/site/dev-compose-up.sh"
   }
 }
