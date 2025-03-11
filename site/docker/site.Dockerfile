@@ -2,6 +2,8 @@ FROM oven/bun:latest
 
 ENV NODE_ENV=production
 
+RUN bun site:build
+
 WORKDIR /app
 
 LABEL org.opencontainers.image.source=https://github.com/kirill-ivanovvv/owwo
