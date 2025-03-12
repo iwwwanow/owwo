@@ -1,6 +1,7 @@
 /src/data/*
 /dist/*
 todo.md
+/secrets/
 
 /public/data_uploads
 
