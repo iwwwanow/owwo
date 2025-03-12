@@ -1,24 +1,26 @@
 FROM alpine:latest
 
+COPY secrets/password /tmp/password
+COPY secrets/username /tmp/username
+
 ARG UPLOADS_PATH=/home/uploads
 ENV UPLOADS_PATH=$UPLOADS_PATH
 
-RUN apk update &&\
-    apk add --no-cache openssh
+RUN \
+  apk update && \
+  apk add --no-cache openssh && \
+  mkdir /var/run/sshd && \
+  addgroup sftpusers
 
-RUN mkdir /var/run/sshd
-
-RUN addgroup sftpusers
-
-RUN adduser -D -s /sbin/nologin -G sftpusers appuser
-
-RUN echo "appuser:secret" | chpasswd
-
-RUN mkdir -p $UPLOADS_PATH/appuser &&\
-    chown root:root $UPLOADS_PATH &&\
-    chmod 755 $UPLOADS_PATH
-
-RUN chown appuser:sftpusers $UPLOADS_PATH/appuser
+RUN \
+  USERNAME=$(cat /tmp/username) && \
+  PASS=$(cat /tmp/password) && \
+  adduser -D -s /sbin/nologin -G sftpusers $USERNAME && \
+  echo $USERNAME:$PASS | chpasswd && \
+  mkdir -p $UPLOADS_PATH/$USERNAME &&\
+  chown root:root $UPLOADS_PATH &&\
+  chmod 755 $UPLOADS_PATH && \
+  chown $USERNAME:sftpusers $UPLOADS_PATH/$USERNAME
 
 RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config &&\
     sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config &&\
