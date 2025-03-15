@@ -1,20 +1,9 @@
 services:
-  site:
-    image: owwo/site:latest
-    environment:
-      - UPLOADS_PATH=${UPLOADS_PATH}
-    volumes:
-      - shared-volume:${UPLOADS_PATH}:ro
-    ports:
-      - "3000:3000"
   system:
-    environment:
-      - UPLOADS_PATH=${UPLOADS_PATH}
     image: owwo/system:latest
-    volumes:
-      - shared-volume:${UPLOADS_PATH}
     ports:
       - "2222:22"
-
-volumes:
-  shared-volume:
+  site:
+    image: owwo/site:latest
+    ports:
+      - "3000:3000"
