@@ -1,0 +1,71 @@
+name: Build, publish & bump images
+
+
+on:
+  pull_request:
+  # pull_request:
+  #   types:
+  #     - closed
+  #   branches:
+  #     - 'master'
+  # workflow_dispatch:
+
+jobs:
+  run:
+    # if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Create secrets directory
+        run: |
+          mkdir -p secrets
+
+      - name: Decode and write secrets/username
+        run: |
+          echo "$SYSTEM_USERNAME_AS_BASE64" | base64 -d > secrets/username
+        env:
+          SYSTEM_USERNAME_AS_BASE64: ${{ vars.SYSTEM_USERNAME_AS_BASE64 }}
+
+      - name: Decode and write secrets/id_rsa.pub
+        run: |
+          echo "$USER_KEY_PUB_AS_BASE64" | base64 -d > secrets/id_rsa.pub
+        env:
+          USER_KEY_PUB_AS_BASE64: ${{ secrets.USER_KEY_PUB_AS_BASE64 }}
+
+      - name: Decode and write secrets/root_id_rsa.pub
+        run: |
+          echo "$ROOT_KEY_PUB_AS_BASE64" | base64 -d > secrets/root_id_rsa.pub
+        env:
+          ROOT_KEY_PUB_AS_BASE64: ${{ secrets.ROOT_KEY_PUB_AS_BASE64 }}
+
+      - name: Build and push site docker image
+        env:
+          REPOSITORY: ${{ github.repository }}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')-site
+          image_name_latest=ghcr.io/$REPOSITORY_LOWER:latest
+          image_name=ghcr.io/$REPOSITORY_LOWER:$(git rev-parse --short HEAD)-$(date +%s)
+          docker build -f site/docker/site.Dockerfile . -t $image_name -t $image_name_latest --quiet
+          echo $GITHUB_TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+          docker push $image_name --quiet
+          docker push $image_name_latest --quiet
+
+      - name: Build and push site docker image
+        env:
+          REPOSITORY: ${{ github.repository }}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')-system
+          image_name_latest=ghcr.io/$REPOSITORY_LOWER:latest
+          image_name=ghcr.io/$REPOSITORY_LOWER:$(git rev-parse --short HEAD)-$(date +%s)
+          docker build -f site/docker/system.Dockerfile . -t $image_name -t $image_name_latest --quiet
+          echo $GITHUB_TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+          docker push $image_name --quiet
+          docker push $image_name_latest --quiet
