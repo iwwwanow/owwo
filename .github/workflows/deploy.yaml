@@ -47,4 +47,4 @@ jobs:
 
             cd $REMOTE_DIR
 
-            docker compose -f $DOCKER_COMPOSE_NAME up -d
+            docker compose up -d
