@@ -1,4 +1,4 @@
-name: Build, publish & bump images
+name: Build, publish
 
 
 on:
