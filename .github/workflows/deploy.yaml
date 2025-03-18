@@ -30,13 +30,20 @@ jobs:
           envs: REMOTE_DIR,DOCKER_COMPOSE_NAME,REPOSITORY_OWNER,REPOSITORY,TOKEN
           script: |
             REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')
-            IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER
+
+            SYSTEM_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-system
+            SITE_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-site
 
             echo $TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
 
-            docker rm -f ghcr.io/$REPOSITORY_LOWER:latest || true
-            docker image rm -f ghcr.io/$REPOSITORY_LOWER:latest || true
-            docker image pull ghcr.io/$REPOSITORY_LOWER:latest
+            docker rm -f $SYSTEM_IMAGE_NAME:latest || true
+            docker rm -f $SITE_IMAGE_NAME:latest || true
+
+            docker image rm -f $SYSTEM_IMAGE_NAME:latest || true
+            docker image rm -f $SITE_IMAGE_NAME:latest || true
+
+            docker image pull $SYSTEM_IMAGE_NAME:latest
+            docker image pull $SITE_IMAGE_NAME:latest
 
             cd $REMOTE_DIR
 
