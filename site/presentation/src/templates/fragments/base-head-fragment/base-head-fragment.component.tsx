@@ -1,4 +1,6 @@
 export const BaseHeadFragment = () => {
+	process.env.NODE_ENV = 'production'
+
   return (
     <>
       <meta charset="UTF-8" />
@@ -8,6 +10,8 @@ export const BaseHeadFragment = () => {
       <title>owwo</title>
 
       <link rel="stylesheet" href="/public/styles/index.css" />
+	  {/* TODO fix it */}
+	  {process.env.NODE_ENV === 'production' && <link rel="stylesheet" href="/public/styles/bundle.css" />}
     </>
   );
 };

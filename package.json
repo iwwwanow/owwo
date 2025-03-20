@@ -18,7 +18,8 @@
     "site/**/*"
   ],
   "scripts": {
-    "site:dev": "./scripts/site/dev.sh",
+    "site:dev": "./scripts/site/dev-site.sh",
+    "site:prod": "./scripts/site/prod-site.sh",
     "site:build": "./scripts/site/build-site.sh",
     "site:build-site-image": "./scripts/site/build-site-image.sh",
     "site:build-system-image": "./scripts/site/build-system-image.sh",
