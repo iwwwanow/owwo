@@ -18,7 +18,8 @@ RUN bun install \
 FROM oven/bun:1.2.3
 
 ENV NODE_ENV=production
-ENV UPLOADS_PATH=production
+# TODO принимает ли эта переменная входящие данные при компоузе?
+ENV UPLOADS_PATH=/home/uploads
 
 WORKDIR /app
 
