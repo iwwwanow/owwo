@@ -22,6 +22,6 @@ ENV UPLOADS_PATH=production
 
 WORKDIR /app
 
-COPY --from=builder /app/site/dist ./site
+COPY --from=builder /app/site/dist/bundle ./site
 
-CMD ["bun", "/app/site/index.js"]
+CMD ["bun", "/app/site/bundle"]

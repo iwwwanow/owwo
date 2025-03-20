@@ -1,1 +1,1 @@
-bun build ./site/entrypoints/src/index.ts --bundle --minify --outdir ./site/dist --minify --target bun
+bun build ./site/entrypoints/src/index.ts  --compile --outfile ./site/dist/bundle
