@@ -40,6 +40,8 @@ export class ResourceRepository {
     const uploadsPath = getUploadsPath();
     const fullPath = join(uploadsPath, relativePath);
 
+	console.log(fullPath)
+
     if (!existsSync(fullPath)) throw new ResourceNotFoundException();
 
     const stats = await stat(fullPath);
