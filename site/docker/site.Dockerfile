@@ -1,4 +1,4 @@
-FROM oven/bun:1.2.1 AS builder
+FROM oven/bun:1.2.3 AS builder
 
 ENV NODE_ENV=production
 
@@ -15,13 +15,14 @@ COPY site ./site
 RUN bun install \
     && bun site:build
 
-FROM oven/bun:1.2.1
+FROM oven/bun:1.2.3
 
 ENV NODE_ENV=production
 ENV UPLOADS_PATH=production
 
 WORKDIR /app
 
-COPY --from=builder /app/site/dist/bundle ./site
+COPY --from=builder /app/site/dist/ ./site
+COPY --from=builder /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js
 
-CMD ["bun", "/app/site/bundle"]
+CMD ["/app/site/bundle"]
