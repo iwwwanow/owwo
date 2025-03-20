@@ -3,7 +3,18 @@ services:
     image: ghcr.io/kirill-ivanovvv/owwo-system:latest
     ports:
       - "2222:22"
+    env_file:
+      - ./.env
+    volumes:
+      - shared-uploads:/home/uploads
   site:
     image: ghcr.io/kirill-ivanovvv/owwo-site:latest
     ports:
       - "3000:3000"
+    env_file:
+      - ./.env
+    volumes:
+      - shared-uploads:/home/uploads
+
+volumes:
+  shared-uploads:

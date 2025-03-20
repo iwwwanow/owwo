@@ -42,6 +42,8 @@ jobs:
             docker image rm -f $SYSTEM_IMAGE_NAME:latest || true
             docker image rm -f $SITE_IMAGE_NAME:latest || true
 
+            docker image prune -f
+
             docker image pull $SYSTEM_IMAGE_NAME:latest
             docker image pull $SITE_IMAGE_NAME:latest
 
