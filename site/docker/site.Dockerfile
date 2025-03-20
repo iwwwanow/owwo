@@ -11,6 +11,7 @@ LABEL org.opencontainers.image.licenses="BSD 3-Clause License"
 COPY package.json bun.lock tsconfig.json ./
 COPY scripts ./scripts
 COPY site ./site
+COPY public ./public
 
 RUN bun install \
     && bun site:build
@@ -25,6 +26,6 @@ WORKDIR /app
 
 COPY --from=builder /app/site/dist/ ./site
 COPY --from=builder /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js
-COPY public ./public
+COPY --from=builder /app/public ./public
 
-CMD ["/app/site/bundle"]
+CMD ["bun", "/app/site/index.js"]
