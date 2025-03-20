@@ -24,5 +24,6 @@ WORKDIR /app
 
 COPY --from=builder /app/site/dist/ ./site
 COPY --from=builder /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js /app/node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js
+COPY public ./public
 
 CMD ["/app/site/bundle"]
