@@ -1,9 +1,9 @@
 services:
   system:
-    image: owwo/system:latest
+    image: ghcr.io/kirill-ivanovvv/owwo-system:latest
     ports:
       - "2222:22"
   site:
-    image: owwo/site:latest
+    image: ghcr.io/kirill-ivanovvv/owwo-site:latest
     ports:
       - "3000:3000"
