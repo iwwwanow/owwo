@@ -4,9 +4,10 @@
   gap: var(--GRID-GAP-2);
 }
 
-:global(.node-info .node-title) {
-  margin: 0;
-}
+/* FIX */
+/* :global(.node-info .node-title) { */
+/*   margin: 0; */
+/* } */
 
 @media screen and (max-width: 650px) {
   .node-info__data-wrapper {
