@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      network: host
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - fcgi
+
+  fcgi:
+    build:
+      network: host
+      context: ./web
+      dockerfile: Dockerfile
+    expose:
+      - "9000"
