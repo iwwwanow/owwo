@@ -6,12 +6,13 @@ RUN apk add --no-cache \
 
 WORKDIR /web
 COPY hello_fcgi.c /web/
-COPY scripts/build.sh /web/scripts/
+COPY scripts/ /web/scripts/
 RUN /web/scripts/build.sh
 
 FROM alpine:latest
 RUN apk add --no-cache spawn-fcgi
 COPY --from=builder /web/hello_fcgi /web/
+COPY --from=builder /web/scripts/start.sh /web/scripts/
 
 EXPOSE 9000
-CMD ["spawn-fcgi", "-p", "9000", "-n", "/web/hello_fcgi"]
+CMD ["sh","/web/scripts/start.sh"]
