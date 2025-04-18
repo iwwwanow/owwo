@@ -1,1 +1,6 @@
-gcc -static /web/hello_fcgi.c -o /web/hello_fcgi -lfcgi
+source /web/constants/config.env
+
+gcc \
+	-static $SRC \
+	-o $OUT \
+	-lfcgi

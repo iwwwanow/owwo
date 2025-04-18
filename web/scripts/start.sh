@@ -1,1 +1,5 @@
-spawn-fcgi -p 9000 -n /web/hello_fcgi
+source /web/constants/config.env
+
+spawn-fcgi \
+	-p $PORT \
+	-n $OUT
