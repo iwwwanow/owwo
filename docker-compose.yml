@@ -5,7 +5,7 @@ services:
     build:
       network: host
       context: ./nginx
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
@@ -15,6 +15,6 @@ services:
     build:
       network: host
       context: ./web
-      dockerfile: Dockerfile.fcgi
+      dockerfile: Dockerfile
     expose:
       - "9000"
