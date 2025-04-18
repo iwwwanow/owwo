@@ -5,8 +5,9 @@ RUN apk add --no-cache \
 	fcgi-dev
 
 WORKDIR /web
-COPY hello_fcgi.c .
-RUN gcc -static hello_fcgi.c -o hello_fcgi -lfcgi
+COPY hello_fcgi.c /web/
+COPY scripts/build.sh /web/scripts/
+RUN /web/scripts/build.sh
 
 FROM alpine:latest
 RUN apk add --no-cache spawn-fcgi

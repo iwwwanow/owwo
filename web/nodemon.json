@@ -1,7 +1,7 @@
 {
   "watch": ["/web"],
   "ext": "c",
-  "exec": "sh -c 'gcc /web/hello_fcgi.c -o /web/hello_fcgi -lfcgi && spawn-fcgi -p 9000 -n /web/hello_fcgi'",
+  "exec": "sh -c './scripts/build.sh && spawn-fcgi -p 9000 -n /web/hello_fcgi'",
   "delay": 1,
   "verbose": true
 }
