@@ -3,7 +3,6 @@
 
 int main() {
   while (FCGI_Accept() >= 0) {
-    // Стандартный HTTP-заголовок
     printf("Content-Type: text/html\r\n\r\n");
 
     printf("<h1>Hello, FastCGI!</h1>");
