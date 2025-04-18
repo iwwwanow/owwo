@@ -5,16 +5,26 @@ services:
     build:
       network: host
       context: ./nginx
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
       - fcgi
+    networks:
+      - web-network
 
   fcgi:
     build:
       network: host
       context: ./web
-      dockerfile: Dockerfile.fcgi
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./web:/web
     expose:
       - "9000"
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge

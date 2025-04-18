@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+RUN apk add --no-cache \
+	build-base \
+	fcgi-dev \
+	spawn-fcgi \
+	nodejs \
+	npm && \
+	npm install -g nodemon
+
+WORKDIR /web
+COPY . .
+
+EXPOSE 9000
+CMD ["nodemon", "--config", "/web/nodemon.json"]
