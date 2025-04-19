@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "name": "live-reload",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node reload-server.js",
+    "watch": "/web/scripts/build.sh && /web/scripts/start.dev.sh && node reload-server.js --watch"
+  },
+  "dependencies": {
+    "ws": "8.18.1",
+    "chokidar": "4.0.3"
+  }
+}
