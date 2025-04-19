@@ -1,7 +1,0 @@
-{
-  "watch": ["/web"],
-  "ext": "c",
-  "exec": "sh -c './scripts/build.sh && ./scripts/start.sh'",
-  "delay": 1,
-  "verbose": true
-}
