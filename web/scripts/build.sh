@@ -4,3 +4,5 @@ gcc \
 	-static $SRC \
 	-o $OUT \
 	-lfcgi
+
+echo "build successful"
