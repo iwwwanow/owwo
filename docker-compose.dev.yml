@@ -20,8 +20,9 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./web:/web
-    expose:
-      - "9000"
+    ports:
+      - "9000:9000"
+      - "8082:8082"
     networks:
       - web-network
 
