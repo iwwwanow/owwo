@@ -20,6 +20,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./web:/web
+      - ./data:/data
     ports:
       - "9000:9000"
       - "8082:8082"
