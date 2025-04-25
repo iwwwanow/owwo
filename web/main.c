@@ -1,6 +1,11 @@
+#include <dirent.h>
 #include <fcgi_stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
+
+#define MAX_FILENAME_LENGTH 256
 
 const char *reload_js =
     "<script>\n"
@@ -32,6 +37,14 @@ void print_html_tag(const char *html_tag, const char *html_content) {
   printf("<%s>", html_tag);
 }
 
+void log_message(const char *message) {
+  FILE *logfile = fopen("/web/logs/myfcgi.log", "a");
+  if (logfile) {
+    fprintf(logfile, "%s\n", message);
+    fclose(logfile);
+  }
+}
+
 void print_child() {
   print_html_tag("li", NULL);
   print_html_tag("h4", "child-file-type-icon");
@@ -42,6 +55,36 @@ void print_child() {
 }
 
 int main() {
+  const char *path = "/data/uploads/";
+
+  struct dirent *entry;
+  DIR *dp = opendir(path);
+
+  if (dp == NULL) {
+    perror("opendir");
+    return -1;
+  }
+
+  /* TODO change it to dynamic array */
+  char filenames[100][MAX_FILENAME_LENGTH]; // Массив для хранения имен файлов
+  int count = 0;
+
+  while ((entry = readdir(dp))) {
+    if (count < 100) {
+      strncpy(filenames[count], entry->d_name, MAX_FILENAME_LENGTH);
+      filenames[count][MAX_FILENAME_LENGTH - 1] = '\0';
+      count++;
+    }
+  }
+
+  closedir(dp);
+
+  for (int i = 0; i < count; i++) {
+    log_message(filenames[i]);
+  }
+
+  return 0;
+
   while (FCGI_Accept() >= 0) {
     printf("Content-Type: text/html\r\n\r\n");
     print_html_tag("html", NULL);
