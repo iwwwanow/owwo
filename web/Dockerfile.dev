@@ -1,7 +1,10 @@
 FROM alpine:latest
 
+ENV CONFIG_PATH=/web/constants/docker.env
+
 RUN apk add --no-cache \
 	gcc \
+	make \
 	musl-dev \
 	fcgi-dev \
 	spawn-fcgi \
