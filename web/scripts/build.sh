@@ -1,8 +1,11 @@
-source /web/constants/config.env
+if [ -n "$CONFIG_PATH" ]; then
+	source "$CONFIG_PATH"
+else 
+	source web/constants/local.env
+fi
 
-gcc \
-	-static $SRC \
-	-o $OUT \
-	-lfcgi
+export OUT=$OUT
+export SRC=$SRC
 
+make -f "$MAKEFILE_PATH" && \
 echo "build successful"
