@@ -39,7 +39,7 @@ watcher.on("change", async (path) => {
 
   const { stdout: buildStdout } = await execAsync("/web/scripts/build.sh");
   console.log(buildStdout);
-  const startStdout = execSync("/web/scripts/start.dev.sh", {
+  const startStdout = execSync("/web/scripts/start.sh", {
     stdio: "inherit",
   });
   console.log(startStdout);
