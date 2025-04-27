@@ -3,7 +3,6 @@
 #include "ui.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 
 void render_resource_page(const char *reload_js) {
