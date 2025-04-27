@@ -1,3 +1,4 @@
+#include "dev.h"
 #include <dirent.h>
 #include <fcgi_stdio.h>
 #include <stdio.h>

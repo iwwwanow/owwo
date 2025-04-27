@@ -1,4 +1,4 @@
-#include "get_reload_js.h"
+#include "dev.h"
 
 const char *get_reload_js() {
   return "<script>\n"

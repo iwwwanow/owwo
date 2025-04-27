@@ -5,8 +5,8 @@
 #include <string.h>
 #include <time.h>
 
-#include "include/dev.h"
-#include "include/utils.h"
+#include "dev/dev.h"
+#include "utils/utils.h"
 
 #define MAX_FILENAME_LENGTH 256
 
