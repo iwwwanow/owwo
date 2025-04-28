@@ -3,5 +3,6 @@
 
 void render_resource_page(const char *reload_js);
 void render_resource_child();
+void render_footer();
 
 #endif

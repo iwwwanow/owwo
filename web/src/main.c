@@ -1,5 +1,5 @@
 #include <dirent.h>
-#include <fcgi_stdio.h>
+/* #include <fcgi_stdio.h> */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,23 +13,22 @@ int main() {
   const char *reload_js = get_reload_js();
   /* TODO env & fallback */
   const char *path = "/data/uploads/";
-  int count;
 
-  char **filenames = get_filenames(path, &count);
-  if (filenames == NULL) {
+  struct Resources *resources = get_filenames(path);
+  if (resources == NULL) {
+    printf("resources is null");
     return -1;
   }
 
-  for (int i = 0; i < count; i++) {
-    write_log_message(filenames[i]);
-    free(filenames[i]);
+  printf("filenames count: %d\n", resources->count);
+  for (int i = 0; i < resources->count; i++) {
+    printf("filename: %s\n", resources->filenames[i]);
   }
-  free(filenames);
 
-  while (FCGI_Accept() >= 0) {
-    printf("Content-Type: text/html\r\n\r\n");
-    render_resource_page(reload_js);
-  }
+  /* while (FCGI_Accept() >= 0) { */
+  /*   printf("Content-Type: text/html\r\n\r\n"); */
+  /*   render_resource_page(reload_js); */
+  /* } */
 
   return 0;
 }

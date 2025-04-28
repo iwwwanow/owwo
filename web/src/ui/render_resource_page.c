@@ -6,6 +6,8 @@
 #include <time.h>
 
 void render_resource_page(const char *reload_js) {
+  int count = 0;
+
   print_html_tag("html", NULL);
 
   print_html_tag("head", NULL);
@@ -30,23 +32,16 @@ void render_resource_page(const char *reload_js) {
   print_html_tag("h2", "markdown-content");
 
   print_html_tag("hr/", NULL);
+
   print_html_tag("ul", NULL);
 
   render_resource_child();
-  render_resource_child();
-  render_resource_child();
 
   print_html_tag("/ul", NULL);
+
   print_html_tag("hr/", NULL);
 
-  print_html_tag("h1", "footer");
-  print_html_tag("h4", "about");
-  print_html_tag("h4", "systemInfo?");
-  print_html_tag("h4", "serverInfo?");
-  print_html_tag("h4", "randomItem?");
-  printf("<h4>Last update: %ld</h4>", time(NULL));
-  print_html_tag("/body", NULL);
-  print_html_tag("/html", NULL);
+  render_footer();
 
   printf("</html>");
 }

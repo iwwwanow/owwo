@@ -4,6 +4,11 @@
 #define MAX_FILENAME_LENGTH 256
 #define MAX_FILES_COUNT 100
 
-char **get_filenames(const char *path, int *count);
+struct Resources {
+  int count;
+  char **filenames;
+};
+
+struct Resources *get_filenames(const char *path);
 
 #endif
