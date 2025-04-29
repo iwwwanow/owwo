@@ -1,5 +1,5 @@
 #include <dirent.h>
-/* #include <fcgi_stdio.h> */
+#include <fcgi_stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +10,7 @@
 #define MAX_FILENAME_LENGTH 256
 
 int main() {
+
   const char *reload_js = get_reload_js();
   /* TODO env & fallback */
   const char *path = "/data/uploads/";
@@ -20,15 +21,22 @@ int main() {
     return -1;
   }
 
-  printf("filenames count: %d\n", resources->count);
-  for (int i = 0; i < resources->count; i++) {
-    printf("filename: %s\n", resources->filenames[i]);
-  }
+  while (FCGI_Accept() >= 0) {
+    char *request_method = getenv("REQUEST_METHOD");
+    char *request_uri = getenv("REQUEST_URI");
+    char *path_info = getenv("PATH_INFO");
+    char *query_string = getenv("QUERY_STRING");
+    char *remote_addr = getenv("REMOTE_ADDR");
 
-  /* while (FCGI_Accept() >= 0) { */
-  /*   printf("Content-Type: text/html\r\n\r\n"); */
-  /*   render_resource_page(reload_js); */
-  /* } */
+    write_log_message("%s\n", request_method);
+    write_log_message("%s\n", request_uri);
+    write_log_message("%s\n", query_string);
+    write_log_message("%s\n", remote_addr);
+    write_log_message("\n\n", NULL);
+
+    printf("Content-Type: text/html\r\n\r\n");
+    render_resource_page(reload_js, resources);
+  }
 
   return 0;
 }
