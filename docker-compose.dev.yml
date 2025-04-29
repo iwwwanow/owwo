@@ -1,11 +1,12 @@
+# TODO /var/www/web dirs
 version: '3.8'
 
 services:
   nginx:
     build:
       network: host
-      context: ./nginx
-      dockerfile: Dockerfile
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:8080"
     depends_on:
