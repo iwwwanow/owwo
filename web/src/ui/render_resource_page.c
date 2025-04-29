@@ -1,3 +1,5 @@
+/* TODO didnt like it */
+#include "../getters/getters.h"
 #include "../utils/utils.h"
 #include "fcgi_stdio.h"
 #include "ui.h"
@@ -5,7 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void render_resource_page(const char *reload_js) {
+void render_resource_page(const char *reload_js, struct Resources *resources) {
   int count = 0;
 
   print_html_tag("html", NULL);
@@ -35,7 +37,9 @@ void render_resource_page(const char *reload_js) {
 
   print_html_tag("ul", NULL);
 
-  render_resource_child();
+  for (int i = 0; i < resources->count; i++) {
+    render_resource_child(resources->filenames[i]);
+  }
 
   print_html_tag("/ul", NULL);
 

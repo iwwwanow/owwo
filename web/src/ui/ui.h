@@ -1,8 +1,10 @@
 #ifndef UI_H
 #define UI_H
 
-void render_resource_page(const char *reload_js);
-void render_resource_child();
+#include "../getters/getters.h"
+
+void render_resource_page(const char *reload_js, struct Resources *resources);
+void render_resource_child(char *filename);
 void render_footer();
 
 #endif
