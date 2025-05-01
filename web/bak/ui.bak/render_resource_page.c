@@ -1,5 +1,4 @@
 /* TODO didnt like it */
-#include "../getters/getters.h"
 #include "../utils/utils.h"
 #include "fcgi_stdio.h"
 #include "ui.h"
