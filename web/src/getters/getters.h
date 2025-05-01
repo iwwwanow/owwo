@@ -1,14 +1,8 @@
 #ifndef GETTERS_H
 #define GETTERS_H
 
-#define MAX_FILENAME_LENGTH 256
-#define MAX_FILES_COUNT 100
+#include "../models/resource_list.h"
 
-struct Resources {
-  int count;
-  char **filenames;
-};
-
-struct Resources *get_filenames(const char *path);
+void scan_directory(const char *dir_path, ResourceList *resources);
 
 #endif
