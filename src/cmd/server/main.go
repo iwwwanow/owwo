@@ -18,7 +18,7 @@ func main() {
 	portStr := os.Getenv("PORT")
 
 	if portStr == "" {
-		portStr = "3000" // Значение по умолчанию в виде строки
+		portStr = "3000"
 	}
 
 	port, err := strconv.Atoi(portStr)
@@ -27,25 +27,17 @@ func main() {
 		return
 	}
 
+	tmpl, err := template.ParseFiles("src/templates/index.html")
+	if err != nil {
+		fmt.Printf("Error template loading: %v\n", err)
+		return
+	}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := PageData{
 			Title:   "Мой первый HTTP-сервер на Go",
 			Message: "Привет, мир!",
 		}
-
-		tmpl := template.Must(template.New("index").Parse(`
-			<!DOCTYPE html>
-			<html>
-			<head>
-				<title>{{.Title}}</title>
-				<meta charset="UTF-8">
-			</head>
-			<body>
-				<h1>{{.Title}}</h1>
-				<p>{{.Message}}</p>
-			</body>
-			</html>
-		`))
 
 		err := tmpl.Execute(w, data)
 		if err != nil {
