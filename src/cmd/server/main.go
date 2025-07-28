@@ -23,7 +23,7 @@ func main() {
 
 	port, err := strconv.Atoi(portStr)
 	if err != nil {
-		fmt.Println("Ошибка преобразования порта:", err)
+		fmt.Println("error portStr formatting:", err)
 		return
 	}
 
@@ -35,8 +35,8 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := PageData{
-			Title:   "Мой первый HTTP-сервер на Go",
-			Message: "Привет, мир!",
+			Title:   "title",
+			Message: "message",
 		}
 
 		err := tmpl.Execute(w, data)
@@ -51,6 +51,6 @@ func main() {
 
 	err = http.ListenAndServe(":"+strconv.Itoa(port), nil)
 	if err != nil {
-		fmt.Println("Ошибка при запуске сервера:", err)
+		fmt.Println("error with launch:", err)
 	}
 }
