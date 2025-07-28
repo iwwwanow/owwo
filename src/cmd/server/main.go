@@ -1,26 +1,38 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+	"os"
+	"strconv"
 )
 
-// Данные для передачи в шаблон
 type PageData struct {
 	Title   string
 	Message string
 }
 
 func main() {
-	// Обработчик для главной страницы
+
+	portStr := os.Getenv("PORT")
+
+	if portStr == "" {
+		portStr = "3000" // Значение по умолчанию в виде строки
+	}
+
+	port, err := strconv.Atoi(portStr)
+	if err != nil {
+		fmt.Println("Ошибка преобразования порта:", err)
+		return
+	}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// Создаем данные для шаблона
 		data := PageData{
 			Title:   "Мой первый HTTP-сервер на Go",
 			Message: "Привет, мир!",
 		}
 
-		// Парсим шаблон из строки (можно загружать из файла)
 		tmpl := template.Must(template.New("index").Parse(`
 			<!DOCTYPE html>
 			<html>
@@ -35,7 +47,6 @@ func main() {
 			</html>
 		`))
 
-		// Выполняем шаблон с нашими данными
 		err := tmpl.Execute(w, data)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -43,6 +54,11 @@ func main() {
 		}
 	})
 
-	// Запускаем сервер на порту 8080
-	http.ListenAndServe(":8080", nil)
+	address := fmt.Sprintf("http://localhost:%d", port)
+	fmt.Printf("server listening on %s\n", address)
+
+	err = http.ListenAndServe(":"+strconv.Itoa(port), nil)
+	if err != nil {
+		fmt.Println("Ошибка при запуске сервера:", err)
+	}
 }
