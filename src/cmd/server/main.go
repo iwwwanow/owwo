@@ -27,15 +27,17 @@ func main() {
 		return
 	}
 
-	tmpl, err := template.ParseFiles("src/templates/index.html")
-	if err != nil {
-		fmt.Printf("Error template loading: %v\n", err)
-		return
-	}
+	tmpl := template.Must(template.ParseFiles(
+		"src/templates/index.html",
+		"src/templates/fragments/head.html",
+		"src/templates/fragments/header.html",
+		"src/templates/fragments/content.html",
+		"src/templates/fragments/footer.html",
+	))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := PageData{
-			Title:   "title",
+			Title:   "title-custom-title",
 			Message: "message",
 		}
 
