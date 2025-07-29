@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{{.Title}}</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h1>{{.Title}}</h1>
-    <p>{{.Message}}</p>
-</body>
+	<head>
+		<title>{{.Title}}</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		{{ template "head" . }}
+		{{ template "header" . }}
+		{{ template "content" . }}
+		{{ template "footer" . }}
+		<h1>{{.Title}}</h1>
+		<p>{{.Message}}</p>
+	</body>
 </html>
