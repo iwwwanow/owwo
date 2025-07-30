@@ -7,7 +7,9 @@
 	<body>
 		{{ template "head" . }}
 		{{ template "header" . }}
+		{{ template "resource-info" . }}
 		{{ template "content" . }}
+		{{ template "resource-group" . }}
 		{{ template "footer" . }}
 		<h1>{{.Title}}</h1>
 		<p>{{.Message}}</p>

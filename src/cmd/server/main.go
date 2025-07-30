@@ -33,6 +33,8 @@ func main() {
 		"src/templates/fragments/header.html",
 		"src/templates/fragments/content.html",
 		"src/templates/fragments/footer.html",
+		"src/templates/fragments/resource-info.html",
+		"src/templates/fragments/resource-group.html",
 	))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
