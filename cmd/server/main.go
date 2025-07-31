@@ -10,6 +10,10 @@ import (
 	"strings"
 )
 
+const (
+	PublicDir = "/var/www/owwo/shared"
+)
+
 type PageData struct {
 	Title   string
 	Message string
@@ -68,6 +72,22 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		resourcePath := strings.TrimPrefix(r.URL.Path, "/")
 		fmt.Printf("resource path %s\n", resourcePath)
+
+		fullPath := filepath.Join(PublicDir, resourcePath)
+
+		var dirContents []string
+		if fileInfo, err := os.Stat(fullPath); err == nil && fileInfo.IsDir() {
+			if files, err := os.ReadDir(fullPath); err == nil {
+				for _, file := range files {
+					fmt.Printf("file name %s\n", resourcePath)
+					dirContents = append(dirContents, file.Name())
+				}
+			}
+		}
+
+		fmt.Printf("Requested path: %s\n", resourcePath)
+		fmt.Printf("Full path: %s\n", fullPath)
+		fmt.Println("Directory contents:", dirContents)
 
 		data := PageData{
 			Title:   "title-custom-title",
