@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 type PageData struct {
@@ -65,6 +66,9 @@ func main() {
 	))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		resourcePath := strings.TrimPrefix(r.URL.Path, "/")
+		fmt.Printf("resource path %s\n", resourcePath)
+
 		data := PageData{
 			Title:   "title-custom-title",
 			Message: "message",
