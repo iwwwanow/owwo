@@ -1,0 +1,12 @@
+@import url("/static/css/reset.css");
+
+@import url("/static/css/scrollbar.css");
+@import url("/static/css/layout.css");
+@import url("/static/css/font.css");
+
+@import url("/static/css/hr.css");
+@import url("/static/css/border.css");
+
+@import url("/static/css/constants/colors.constants.css");
+@import url("/static/css/constants/spaces.constants.css");
+@import url("/static/css/constants/layout.constants.css");
