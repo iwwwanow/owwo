@@ -1,4 +1,4 @@
-{{define "resource-info"}}
+{{define "resource_info_fragment"}}
 
 <span class="node-info node-info__data-wrapper">
 	<h2>resource-info-image</h2>

@@ -1,17 +1,4 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{{.Title}}</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		{{ template "head" . }}
-		{{ template "header" . }}
-		{{ template "resource-info" . }}
-		{{ template "content" . }}
-		{{ template "resource-group" . }}
-		{{ template "footer" . }}
-		<h1>{{.Title}}</h1>
-		<p>{{.Message}}</p>
-	</body>
+	{{ template "resource_page" . }}
 </html>

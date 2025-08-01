@@ -61,12 +61,14 @@ func main() {
 
 	tmpl := template.Must(template.ParseFiles(
 		"templates/index.html",
-		"templates/fragments/head.html",
-		"templates/fragments/header.html",
-		"templates/fragments/content.html",
-		"templates/fragments/footer.html",
-		"templates/fragments/resource-info.html",
-		"templates/fragments/resource-group.html",
+		"templates/pages/resource.page.html",
+		"templates/fragments/head.fragment.html",
+		"templates/fragments/header.fragment.html",
+		"templates/fragments/content.fragment.html",
+		"templates/fragments/footer.fragment.html",
+		// TODO
+		// "templates/fragments/resource-info.fragment.html",
+		// "templates/fragments/resource-group.fragment.html",
 	))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -90,7 +92,7 @@ func main() {
 		fmt.Println("Directory contents:", dirContents)
 
 		data := PageData{
-			Title:   "title-custom-title",
+			Title:   "iwwwanowwwwwww",
 			Message: "message",
 		}
 

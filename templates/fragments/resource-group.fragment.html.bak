@@ -1,4 +1,4 @@
-{{ define "resource-group" }}
+{{ define "resource_group_fragment" }}
 
 <div class="grid user__pages-container">
 	<h2>resource-group</h2>
