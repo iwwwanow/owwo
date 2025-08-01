@@ -10,3 +10,5 @@
 @import url("/static/css/constants/colors.constants.css");
 @import url("/static/css/constants/spaces.constants.css");
 @import url("/static/css/constants/layout.constants.css");
+
+@import url("/static/css/fragments/index.css");
