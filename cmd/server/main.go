@@ -17,6 +17,7 @@ const (
 type PageData struct {
 	Title   string
 	Message string
+	Content []string
 }
 
 func StaticHandler(staticDir string) http.HandlerFunc {
@@ -94,6 +95,7 @@ func main() {
 		data := PageData{
 			Title:   "iwwwanowwwwwww",
 			Message: "message",
+			Content: dirContents,
 		}
 
 		err := tmpl.Execute(w, data)

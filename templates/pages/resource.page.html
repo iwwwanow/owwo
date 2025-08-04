@@ -4,9 +4,11 @@
 	{{ template "head_fragment" . }}
 </head>
 <body>
-	{{ template "header_fragment" . }}
-	{{ template "content_fragment" . }}
-	{{ template "footer_fragment" . }}
+	<div class="wrapper">
+		{{ template "header_fragment" . }}
+		{{ template "content_fragment" . }}
+		{{ template "footer_fragment" . }}
+	</div>
 </body>
 
 {{ end }}
