@@ -14,10 +14,35 @@ const (
 	PublicDir = "/var/www/owwo/shared"
 )
 
+const (
+	FileTypeImage = "image"
+	FileTypeText  = "text"
+	FileTypeDir   = "directory"
+	FileTypeOther = "other"
+)
+
+type ResourceInfo struct {
+	Path string
+	Type string
+}
+
 type PageData struct {
-	Title   string
-	Message string
-	Content []string
+	Title     string
+	Message   string
+	Resources []ResourceInfo
+}
+
+func getFileType(filename string, info os.FileInfo) string {
+	ext := strings.ToLower(filepath.Ext(filename))
+
+	switch ext {
+	case ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp":
+		return FileTypeImage
+	case ".txt", ".md", ".csv", ".json", ".xml", ".html", ".css", ".js":
+		return FileTypeText
+	default:
+		return FileTypeOther
+	}
 }
 
 func StaticHandler(staticDir string) http.HandlerFunc {
@@ -81,24 +106,33 @@ func main() {
 
 		fullPath := filepath.Join(PublicDir, resourcePath)
 
-		var dirContents []string
+		var resources []ResourceInfo
+
 		if fileInfo, err := os.Stat(fullPath); err == nil && fileInfo.IsDir() {
 			if files, err := os.ReadDir(fullPath); err == nil {
 				for _, file := range files {
-					fmt.Printf("file name %s\n", resourcePath)
-					dirContents = append(dirContents, file.Name())
+					info, _ := file.Info()
+					resource := ResourceInfo{
+						Path: filepath.Join(resourcePath, file.Name()),
+					}
+					if file.IsDir() {
+						resource.Type = FileTypeDir
+					} else {
+						resource.Type = getFileType(file.Name(), info)
+					}
+					resources = append(resources, resource)
 				}
 			}
 		}
 
 		fmt.Printf("Requested path: %s\n", resourcePath)
 		fmt.Printf("Full path: %s\n", fullPath)
-		fmt.Println("Directory contents:", dirContents)
+		fmt.Println("Directory contents:", resources)
 
 		data := PageData{
-			Title:   "iwwwanowwwwwww",
-			Message: "message",
-			Content: dirContents,
+			Title:     "iwwwanowwwwwww",
+			Message:   "message",
+			Resources: resources,
 		}
 
 		err := tmpl.Execute(w, data)
