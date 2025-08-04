@@ -2,9 +2,9 @@
 
 <div class="grid">
 	{{if .Content}}
-		{{range .Content}}
-		<div>{{.}}</div>
-		{{end}}
+	{{range .Content}}
+	{{template "resource-card_component" .}}
+	{{end}}
 	{{else}}
 	<p class="empty-message">No files found</p>
 	{{end}}

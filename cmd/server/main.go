@@ -63,10 +63,13 @@ func main() {
 	tmpl := template.Must(template.ParseFiles(
 		"templates/index.html",
 		"templates/pages/resource.page.html",
+
 		"templates/fragments/head.fragment.html",
 		"templates/fragments/header.fragment.html",
 		"templates/fragments/content.fragment.html",
 		"templates/fragments/footer.fragment.html",
+
+		"templates/components/resource-card.component.html",
 		// TODO
 		// "templates/fragments/resource-info.fragment.html",
 		// "templates/fragments/resource-group.fragment.html",
@@ -107,6 +110,8 @@ func main() {
 
 	staticDir := "static"
 	http.Handle("/static/", http.StripPrefix("/static/", StaticHandler(staticDir)))
+
+	http.Handle("/public/", http.StripPrefix("/public/", StaticHandler(PublicDir)))
 
 	address := fmt.Sprintf("http://localhost:%d", port)
 	fmt.Printf("server listening on %s\n", address)
