@@ -11,24 +11,25 @@ import (
 )
 
 const (
-	PublicDir = "/var/www/owwo/shared"
-)
-
-const (
-	FileTypeImage = "image"
-	FileTypeText  = "text"
-	FileTypeDir   = "directory"
-	FileTypeOther = "other"
+	// TODO env
+	PublicDir        = "/var/www/owwo/shared"
+	FileTypeImage    = "image"
+	FileTypeText     = "text"
+	FileTypeDir      = "directory"
+	FileTypeOther    = "other"
+	PreviewMaxLength = 50
 )
 
 type ResourceInfo struct {
-	Path string
-	Type string
+	Path    string
+	Type    string
+	Preview string
 }
 
 type PageData struct {
 	Title     string
 	Message   string
+	Resource  ResourceInfo
 	Resources []ResourceInfo
 }
 
@@ -106,9 +107,11 @@ func main() {
 
 		fullPath := filepath.Join(PublicDir, resourcePath)
 
+		var resource ResourceInfo
 		var resources []ResourceInfo
 
 		if fileInfo, err := os.Stat(fullPath); err == nil && fileInfo.IsDir() {
+			resource.Type = FileTypeDir
 			if files, err := os.ReadDir(fullPath); err == nil {
 				for _, file := range files {
 					info, _ := file.Info()
@@ -119,10 +122,22 @@ func main() {
 						resource.Type = FileTypeDir
 					} else {
 						resource.Type = getFileType(file.Name(), info)
+						if resource.Type == FileTypeText || resource.Type == FileTypeOther {
+							content, err := os.ReadFile(filepath.Join(fullPath, file.Name()))
+							if err == nil {
+								preview := string(content)
+								if len(preview) > PreviewMaxLength {
+									preview = preview[:PreviewMaxLength] + "..."
+								}
+								resource.Preview = preview
+							}
+						}
 					}
 					resources = append(resources, resource)
 				}
 			}
+		} else {
+			resource.Type = getFileType(fileInfo.Name(), fileInfo)
 		}
 
 		fmt.Printf("Requested path: %s\n", resourcePath)
@@ -132,6 +147,7 @@ func main() {
 		data := PageData{
 			Title:     "iwwwanowwwwwww",
 			Message:   "message",
+			Resource:  resource,
 			Resources: resources,
 		}
 
