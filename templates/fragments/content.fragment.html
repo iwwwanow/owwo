@@ -1,13 +1,13 @@
 {{define "content_fragment"}}
 
 <div class="grid">
-	{{if .Resources}}
+	{{ if eq .Resource.Type "directory" }}
 	{{range .Resources}}
 	{{template "resource-card_component" .}}
 	{{end}}
 	{{else}}
 	<!-- TODO -->
-	<p class="empty-message">No resources found</p>
+	<p class="empty-message">{{.Resource.Type}}</p>
 	{{end}}
 </div>
 
