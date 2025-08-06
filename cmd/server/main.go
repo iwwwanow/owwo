@@ -105,14 +105,18 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		resourcePath := strings.TrimPrefix(r.URL.Path, "/")
-		fmt.Printf("resource path %s\n", resourcePath)
-
 		fullPath := filepath.Join(PublicDir, resourcePath)
 
 		var resource ResourceInfo
 		var resources []ResourceInfo
 
-		if fileInfo, err := os.Stat(fullPath); err == nil && fileInfo.IsDir() {
+		fileInfo, err := os.Stat(fullPath)
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		if fileInfo.IsDir() {
 			resource.Type = FileTypeDir
 			if files, err := os.ReadDir(fullPath); err == nil {
 				for _, file := range files {
@@ -142,16 +146,10 @@ func main() {
 			resource.Path = resourcePath
 			resource.Type = getFileType(fileInfo.Name(), fileInfo)
 			content, err := os.ReadFile(fullPath)
-			fmt.Printf("ResourcePath: %s\n", resourcePath)
-			fmt.Printf("Content: %s\n", content)
 			if err == nil {
 				resource.Content = string(content)
 			}
 		}
-
-		fmt.Printf("Requested path: %s\n", resourcePath)
-		fmt.Printf("Full path: %s\n", fullPath)
-		fmt.Println("Directory contents:", resources)
 
 		data := PageData{
 			Title:     "iwwwanowwwwwww",
@@ -160,7 +158,7 @@ func main() {
 			Resources: resources,
 		}
 
-		err := tmpl.Execute(w, data)
+		err = tmpl.Execute(w, data)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
