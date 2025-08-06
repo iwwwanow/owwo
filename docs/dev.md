@@ -3,10 +3,9 @@
   - [x] - выбор directory || text || image || other для шаблона resouce-card
    - [x] - для type=text сделать подготовку preview
      - для image можно заталкивать туда ссылку
-- [ ] - рендер страницы с ресурсом
-  - [ ] - get resource content
-  - [ ] - full-size-image
-  - [ ] - md text to html
+- [x] - рендер страницы с ресурсом
+  - [x] - get resource content
+  - [x] - full-size-image
 - [ ] - docker, docker-compose for deploy, or docker only for deploy. it will be better
   - [ ] - ssh-connection
   - [ ] - linux-enveronment
@@ -18,7 +17,10 @@
 - после рендера страницы настраивать деплой
 
 ltf:
+- [ ] - css, js, html, md
 - [ ] directory resource type card design. должен отличаться
+- [ ] - md text to html
+- [ ] - баннер на главной
 - [ ] resource page
   - [ ] - css link to page
   - [ ] - js link to page
