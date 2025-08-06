@@ -7,7 +7,7 @@
 	{{end}}
 	{{else}}
 	<!-- TODO -->
-	<p class="empty-message">{{.Resource.Type}}</p>
+	{{template "resource_fragment" .Resource}}
 	{{end}}
 </div>
 
