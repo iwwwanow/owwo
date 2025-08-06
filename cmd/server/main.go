@@ -23,6 +23,7 @@ const (
 type ResourceInfo struct {
 	Path    string
 	Type    string
+	Content string
 	Preview string
 }
 
@@ -94,6 +95,7 @@ func main() {
 		"templates/fragments/header.fragment.html",
 		"templates/fragments/content.fragment.html",
 		"templates/fragments/footer.fragment.html",
+		"templates/fragments/resource.fragment.html",
 
 		"templates/components/resource-card.component.html",
 		// TODO
@@ -137,7 +139,14 @@ func main() {
 				}
 			}
 		} else {
+			resource.Path = resourcePath
 			resource.Type = getFileType(fileInfo.Name(), fileInfo)
+			content, err := os.ReadFile(fullPath)
+			fmt.Printf("ResourcePath: %s\n", resourcePath)
+			fmt.Printf("Content: %s\n", content)
+			if err == nil {
+				resource.Content = string(content)
+			}
 		}
 
 		fmt.Printf("Requested path: %s\n", resourcePath)
