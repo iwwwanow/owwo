@@ -1,5 +1,5 @@
 services:
-  app:
+  owwo:
     image: golang
     working_dir: /app
     volumes:
