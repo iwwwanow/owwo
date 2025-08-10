@@ -1,4 +1,4 @@
-name: Deploy stage
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -38,45 +38,25 @@ jobs:
           docker push $image_name --quiet
           docker push $image_name_latest --quiet
 
-  # deploy-backend:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # TODO devide
-  #     - name: Connect, pull from repo and restart docker
-  #       uses: appleboy/ssh-action@v1.2.2
-  #       env:
-  #         REMOTE_DIR: /root/owwo
-  #         DOCKER_COMPOSE_NAME: docker-compose.yml
-  #         REPOSITORY: ${{ github.repository }}
-  #         REPOSITORY_OWNER: ${{ github.repository_owner }}
-  #         TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         host: ${{ secrets.HOST_STAGE }}
-  #         username: ${{ secrets.USER_STAGE }}
-  #         key: ${{ secrets.KEY_STAGE }}
-  #         port: ${{ secrets.PORT_STAGE }}
-  #         debug: true
-  #         script_stop: true
-  #         envs: REMOTE_DIR,DOCKER_COMPOSE_NAME,REPOSITORY_OWNER,REPOSITORY,TOKEN
-  #         script: |
-  #           REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')
-  #
-  #           SYSTEM_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-system
-  #           SITE_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-site
-  #
-  #           echo $TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
-  #
-  #           docker rm -f $SYSTEM_IMAGE_NAME:latest || true
-  #           docker rm -f $SITE_IMAGE_NAME:latest || true
-  #
-  #           docker image rm -f $SYSTEM_IMAGE_NAME:latest || true
-  #           docker image rm -f $SITE_IMAGE_NAME:latest || true
-  #
-  #           docker image prune -f
-  #
-  #           docker image pull $SYSTEM_IMAGE_NAME:latest
-  #           docker image pull $SITE_IMAGE_NAME:latest
-  #
-  #           cd $REMOTE_DIR
-  #
-  #           docker compose up -d
+  deploy-backend:
+    runs-on: ubuntu-latest
+    needs: build-and-publish
+    environment: infrastructure
+    steps:
+      # TODO devide
+      - name: Connect, pull from repo and restart docker
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          envs: REPOSITORY_OWNER,REPOSITORY,GITHUB_TOKEN
+          script: |
+            REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')
+  
+            echo $TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+
+            docker compose pull
+            docker image prune -f
+            docker compose up -d

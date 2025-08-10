@@ -30,6 +30,7 @@ EXPOSE 22 8080
 ENV PORT=8080 \
 	TZ=Europe/Moscow \
 	PUBLIC_DIR=/var/www/owwo/shared
+
 VOLUME ["/var/www/owwo/shared"]
 
 CMD ["sh", "-c", "/usr/sbin/sshd -D & /app/server"]

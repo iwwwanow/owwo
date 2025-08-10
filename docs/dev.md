@@ -6,10 +6,14 @@
 - [x] - рендер страницы с ресурсом
   - [x] - get resource content
   - [x] - full-size-image
-- [ ] - docker, docker-compose for deploy, or docker only for deploy. it will be better
-  - [ ] - ssh-connection
-  - [ ] - linux-enveronment
-  - [ ] - remote-server-usage
+- [x] - docker, docker-compose for deploy, or docker only for deploy. it will be better
+  - [x] - ssh-connection
+  - [x] - linux-enveronment
+  - [x] - remote-server-usage
+- [ ] - dns setup for domain
+- [ ] - yandex cloud
+- [ ] - docker compose up error on workflow deploy run
+- [ ] - latest owwo image not deployed
 
 - покачто делаю без зарезервированных имен, типа кавера, resource-info.json и пр
 - также делаю без даты типа дата создания, дата регистрации и пр
