@@ -18,6 +18,7 @@
 
 ltf:
 - [ ] - css, js, html, md
+- [ ] - sftp users on docker
 - [ ] directory resource type card design. должен отличаться
 - [ ] - md text to html
 - [ ] - баннер на главной
