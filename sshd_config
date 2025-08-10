@@ -8,3 +8,4 @@ ChallengeResponseAuthentication no
 X11Forwarding no
 PrintMotd no
 Subsystem sftp /usr/lib/ssh/sftp-server
+ForceCommand internal-sftp -d /var/www/owwo/shared
