@@ -1,52 +1,76 @@
 name: Deploy stage
 
 on:
-  workflow_run:
-    workflows: ["Build, publish"]
-    types:
-      - completed
   workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
 
 jobs:
-  deploy-backend:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} || github.event_name == 'workflow_dispatch'
+  # TODO devide
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Connect, pull from repo and restart docker
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Build and push site docker image
         env:
-          REMOTE_DIR: /root/owwo
-          DOCKER_COMPOSE_NAME: docker-compose.yml
           REPOSITORY: ${{ github.repository }}
           REPOSITORY_OWNER: ${{ github.repository_owner }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          host: ${{ secrets.HOST_STAGE }}
-          username: ${{ secrets.USER_STAGE }}
-          key: ${{ secrets.KEY_STAGE }}
-          port: ${{ secrets.PORT_STAGE }}
-          debug: true
-          script_stop: true
-          envs: REMOTE_DIR,DOCKER_COMPOSE_NAME,REPOSITORY_OWNER,REPOSITORY,TOKEN
-          script: |
-            REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo $GITHUB_TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
 
-            SYSTEM_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-system
-            SITE_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-site
+          REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')-site
+          image_name_latest=ghcr.io/$REPOSITORY_LOWER:latest
+          image_name=ghcr.io/$REPOSITORY_LOWER:$(git rev-parse --short HEAD)-$(date +%s)
 
-            echo $TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+          docker build --no-cache -t $image_name -t $image_name_latest --quiet .
 
-            docker rm -f $SYSTEM_IMAGE_NAME:latest || true
-            docker rm -f $SITE_IMAGE_NAME:latest || true
+          docker push $image_name --quiet
+          docker push $image_name_latest --quiet
 
-            docker image rm -f $SYSTEM_IMAGE_NAME:latest || true
-            docker image rm -f $SITE_IMAGE_NAME:latest || true
-
-            docker image prune -f
-
-            docker image pull $SYSTEM_IMAGE_NAME:latest
-            docker image pull $SITE_IMAGE_NAME:latest
-
-            cd $REMOTE_DIR
-
-            docker compose up -d
+  # deploy-backend:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # TODO devide
+  #     - name: Connect, pull from repo and restart docker
+  #       uses: appleboy/ssh-action@v1.2.2
+  #       env:
+  #         REMOTE_DIR: /root/owwo
+  #         DOCKER_COMPOSE_NAME: docker-compose.yml
+  #         REPOSITORY: ${{ github.repository }}
+  #         REPOSITORY_OWNER: ${{ github.repository_owner }}
+  #         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         host: ${{ secrets.HOST_STAGE }}
+  #         username: ${{ secrets.USER_STAGE }}
+  #         key: ${{ secrets.KEY_STAGE }}
+  #         port: ${{ secrets.PORT_STAGE }}
+  #         debug: true
+  #         script_stop: true
+  #         envs: REMOTE_DIR,DOCKER_COMPOSE_NAME,REPOSITORY_OWNER,REPOSITORY,TOKEN
+  #         script: |
+  #           REPOSITORY_LOWER=$(echo "$REPOSITORY" | tr '[:upper:]' '[:lower:]')
+  #
+  #           SYSTEM_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-system
+  #           SITE_IMAGE_NAME=ghcr.io/$REPOSITORY_LOWER-site
+  #
+  #           echo $TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+  #
+  #           docker rm -f $SYSTEM_IMAGE_NAME:latest || true
+  #           docker rm -f $SITE_IMAGE_NAME:latest || true
+  #
+  #           docker image rm -f $SYSTEM_IMAGE_NAME:latest || true
+  #           docker image rm -f $SITE_IMAGE_NAME:latest || true
+  #
+  #           docker image prune -f
+  #
+  #           docker image pull $SYSTEM_IMAGE_NAME:latest
+  #           docker image pull $SITE_IMAGE_NAME:latest
+  #
+  #           cd $REMOTE_DIR
+  #
+  #           docker compose up -d
