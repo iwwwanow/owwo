@@ -16,6 +16,7 @@ func GetTemplateInstance() *template.Template {
 		"templates/fragments/resource.fragment.html",
 
 		"templates/components/resource-card.component.html",
+		"templates/components/resource-content.component.html",
 		// TODO
 		// "templates/fragments/resource-info.fragment.html",
 		// "templates/fragments/resource-group.fragment.html",

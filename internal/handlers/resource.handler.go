@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"os"
@@ -8,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/iwwwanow/owwo/internal/configs"
+	"github.com/iwwwanow/owwo/internal/constants"
 	"github.com/iwwwanow/owwo/internal/interfaces"
 	"github.com/iwwwanow/owwo/internal/utils"
 )
@@ -15,63 +17,81 @@ import (
 func ResouceHandler(tmpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		resourcePath := strings.TrimPrefix(r.URL.Path, "/")
-		fullPath := filepath.Join(configs.PublicDir, resourcePath)
+		resourceFullPath := filepath.Join(configs.PublicDir, resourcePath)
 
-		var resource interfaces.ResourceInfo
-		var resources []interfaces.ResourceInfo
+		var pageData interfaces.PageStruct
+		var resource interfaces.ResourceInfoStruct
+		var resources []interfaces.ResourceInfoStruct
 
-		fileInfo, err := os.Stat(fullPath)
+		resourceFileInfo, err := os.Stat(resourceFullPath)
 		if err != nil {
 			http.NotFound(w, r)
 			return
 		}
 
-		if fileInfo.IsDir() {
-			resource.Type = utils.FileTypeDir
-			if files, err := os.ReadDir(fullPath); err == nil {
-				for _, file := range files {
-					info, _ := file.Info()
-					resource := interfaces.ResourceInfo{
-						Path: filepath.Join(resourcePath, file.Name()),
-						Name: file.Name(),
-					}
-					if file.IsDir() {
-						resource.Type = utils.FileTypeDir
-					} else {
-						resource.Type = utils.GetFileType(file.Name(), info)
-						if resource.Type == utils.FileTypeText || resource.Type == utils.FileTypeOther {
-							content, err := os.ReadFile(filepath.Join(fullPath, file.Name()))
-							if err == nil {
-								preview := string(content)
-								if len(preview) > configs.PreviewMaxLength {
-									preview = preview[:configs.PreviewMaxLength] + "..."
+		resource.Path = resourcePath
+		resource.Name = resourceFileInfo.Name()
+		resource.Type = utils.GetFileType(resource.Name, resourceFileInfo)
+
+		if resource.Type == constants.FileTypeDir {
+			if files, err := os.ReadDir(resourceFullPath); err == nil {
+				for _, childResourceFile := range files {
+					childResourceFullPath := filepath.Join(resourceFullPath, childResourceFile.Name())
+					childResourceInfo, _ := childResourceFile.Info()
+
+					var childResource interfaces.ResourceInfoStruct
+					childResource.Path = filepath.Join(resourcePath, childResourceFile.Name())
+					childResource.Name = childResourceFile.Name()
+					childResource.Type = utils.GetFileType(childResourceFile.Name(), childResourceInfo)
+
+					if childResource.Type == constants.FileTypeText ||
+						childResource.Type == constants.FileTypeOther {
+						childResource.Preview = utils.GetChildResourcePreview(childResourceFullPath)
+					} else if childResource.Type == constants.FileTypeDir {
+						if childResource.Name == configs.MetaDirName {
+							metaDirPath := childResourceFullPath
+							meta := interfaces.MetaStruct{}
+
+							htmlPath := filepath.Join(metaDirPath, configs.MetaHtmlName)
+							if _, err := os.Stat(htmlPath); err == nil {
+								meta.HtmlPath = filepath.Join(childResource.Path, configs.MetaHtmlName)
+								content, err := os.ReadFile(meta.HtmlPath)
+								fmt.Println("error portStr formatting:", content)
+								if err == nil {
+									meta.HtmlContent = content
 								}
-								resource.Preview = preview
 							}
+
+							cssPath := filepath.Join(metaDirPath, configs.MetaCssName)
+							if _, err := os.Stat(cssPath); err == nil {
+								meta.CssPath = filepath.Join(childResource.Path, configs.MetaCssName)
+							}
+
+							jsPath := filepath.Join(metaDirPath, configs.MetaJsName)
+							if _, err := os.Stat(jsPath); err == nil {
+								meta.JsPath = filepath.Join(childResource.Path, configs.MetaJsName)
+							}
+
+							pageData.Meta = meta
 						}
 					}
-					resources = append(resources, resource)
+
+					resources = append(resources, childResource)
 				}
 			}
 		} else {
-			resource.Path = resourcePath
-			resource.Name = fileInfo.Name()
-			resource.Type = utils.GetFileType(fileInfo.Name(), fileInfo)
-			content, err := os.ReadFile(fullPath)
+			content, err := os.ReadFile(resourceFullPath)
 			if err == nil {
 				resource.Content = string(content)
 			}
 		}
 
-		data := interfaces.PageData{
-			// TODO base title on domainname
-			Title:     "iwwwanowwwwwww",
-			Message:   "message",
-			Resource:  resource,
-			Resources: resources,
-		}
+		// TODO base title on domainname
+		pageData.Title = "iwwwanowwwwwww"
+		pageData.Resource = resource
+		pageData.Resources = resources
 
-		err = tmpl.Execute(w, data)
+		err = tmpl.Execute(w, pageData)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

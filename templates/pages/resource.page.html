@@ -9,6 +9,10 @@
 		{{ template "content_fragment" . }}
 		{{ template "footer_fragment" . }}
 	</div>
+
+	{{ if .Meta.JsPath }}
+	<script defer src="/public/{{ .Meta.JsPath }}"></script>
+	{{end}}
 </body>
 
 {{ end }}

@@ -1,6 +1,6 @@
 package interfaces
 
-type ResourceInfo struct {
+type ResourceInfoStruct struct {
 	Path    string
 	Name    string
 	Type    string

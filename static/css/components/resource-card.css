@@ -18,7 +18,9 @@
   padding: 6px 8px;
 
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
 
   pointer-events: none;
   user-select: none;

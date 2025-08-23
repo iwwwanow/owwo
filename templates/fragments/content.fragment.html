@@ -1,6 +1,13 @@
 {{define "content_fragment"}}
 
+{{ if .Meta.HtmlPath }}
 <div class="grid">
+	{{template "resource-content_component" .Meta.HtmlPath }}
+</div>
+{{end}}
+
+<div class="grid">
+
 	{{ if eq .Resource.Type "directory" }}
 	{{range .Resources}}
 	{{template "resource-card_component" .}}
