@@ -59,18 +59,11 @@ jobs:
           script: |
             echo $GITHUB_TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
 
-            echo "Testing image access..."
-            docker pull ghcr.io/iwwwanow/nginx:latest || echo "NGINX pull failed"
-            docker pull ghcr.io/iwwwanow/owwo:latest || echo "OWWO pull failed"
-
             docker compose down
 
-            NGINX_IMAGE_NAME="ghcr.io/iwwwanow/nginx"
             OWWO_IMAGE_NAME="ghcr.io/iwwwanow/owwo"
 
-            docker rm -f $NGINX_IMAGE_NAME:latest || true
             docker rm -f $OWWO_IMAGE_NAME:latest || true
-            docker image rm -f $NGINX_IMAGE_NAME:latest || true
             docker image rm -f $OWWO_IMAGE_NAME:latest || true
             docker image prune -f
 
