@@ -55,11 +55,6 @@ func ResouceHandler(tmpl *template.Template) http.HandlerFunc {
 							htmlPath := filepath.Join(metaDirPath, configs.MetaHtmlName)
 							if _, err := os.Stat(htmlPath); err == nil {
 								meta.HtmlPath = filepath.Join(childResource.Path, configs.MetaHtmlName)
-								content, err := os.ReadFile(meta.HtmlPath)
-								fmt.Println("error portStr formatting:", content)
-								if err == nil {
-									meta.HtmlContent = content
-								}
 							}
 
 							cssPath := filepath.Join(metaDirPath, configs.MetaCssName)
@@ -72,7 +67,21 @@ func ResouceHandler(tmpl *template.Template) http.HandlerFunc {
 								meta.JsPath = filepath.Join(childResource.Path, configs.MetaJsName)
 							}
 
+							mdPath := filepath.Join(metaDirPath, configs.MetaMdName)
+							if _, err := os.Stat(mdPath); err == nil {
+								content, err := os.ReadFile(mdPath)
+								if err == nil {
+									meta.MdContent = utils.ConvertMDToHTML(content)
+								}
+							}
+
 							pageData.Meta = meta
+						} else {
+							coverPath := utils.FindCoverForResource(childResource.Path, childResourceFullPath)
+							fmt.Printf("%s", coverPath)
+							if coverPath != "" {
+								childResource.Cover = coverPath
+							}
 						}
 					}
 

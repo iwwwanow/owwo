@@ -6,4 +6,5 @@ type ResourceInfoStruct struct {
 	Type    string
 	Content string
 	Preview string
+	Cover   string
 }

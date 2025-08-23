@@ -8,6 +8,13 @@
 		<!-- <source srcset={image2xSrcset} /> -->
 		<img src="/public/{{.Path}}" class="card__img" alt="page card cover" />
 	</picture>
+	{{ else if .Cover }}
+	<picture class="card__cover-container">
+		<!-- TODO -->
+		<!-- <source srcset={imageWidth190px2xSource} media="(max-width: 360px)" /> -->
+		<!-- <source srcset={image2xSrcset} /> -->
+		<img src="/public/{{.Cover}}" class="card__img" alt="page card cover" />
+	</picture>
 	{{ end }}
 
 	<div class="card__text-container">

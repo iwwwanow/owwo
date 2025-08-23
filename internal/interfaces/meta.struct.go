@@ -1,8 +1,11 @@
 package interfaces
 
+import "html/template"
+
 type MetaStruct struct {
-	HtmlPath    string
-	HtmlContent []byte
-	CssPath     string
-	JsPath      string
+	HtmlPath  string
+	CssPath   string
+	JsPath    string
+	MdContent template.HTML
+	CoverName template.HTML
 }

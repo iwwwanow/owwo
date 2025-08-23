@@ -1,21 +1,23 @@
 {{define "content_fragment"}}
 
 {{ if .Meta.HtmlPath }}
-<div class="grid">
-	{{template "resource-content_component" .Meta.HtmlPath }}
-</div>
+{{template "iframe-content_component" .Meta.HtmlPath }}
 {{end}}
 
-<div class="grid">
+{{ if .Meta.MdContent }}
+{{template "markdown-content_component" .Meta.MdContent }}
+{{end}}
 
-	{{ if eq .Resource.Type "directory" }}
+{{ if .Resource }}
+	{{template "resource-content_component" .Resource}}
+{{ end }}
+
+{{ if .Resources }}
+<div class="grid">
 	{{range .Resources}}
 	{{template "resource-card_component" .}}
 	{{end}}
-	{{else}}
-	<!-- TODO -->
-	{{template "resource_fragment" .Resource}}
-	{{end}}
 </div>
+{{ end }}
 
-{{end}}
+{{ end }}
