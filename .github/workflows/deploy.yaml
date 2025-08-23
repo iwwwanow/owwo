@@ -68,5 +68,5 @@ jobs:
             docker image prune -f
 
             docker rm -f $(docker ps -aq) 2>/dev/null
-            docker compose pull
+            docker pull $OWWO_IMAGE_NAME:latest
             docker-compose up -d
