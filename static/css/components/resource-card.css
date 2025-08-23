@@ -24,9 +24,7 @@
   user-select: none;
 
   color: var(--DARK);
-  background-color: var(--WHITE);
   mix-blend-mode: luminosity;
-  opacity: 0.96;
 }
 
 .card__text-header {
