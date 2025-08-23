@@ -58,6 +58,11 @@ jobs:
           envs: REPOSITORY_OWNER,REPOSITORY,GITHUB_TOKEN
           script: |
             echo $GITHUB_TOKEN | docker login ghcr.io -u $REPOSITORY_OWNER --password-stdin
+
+            echo "Testing image access..."
+            docker pull ghcr.io/iwwwanow/nginx:latest || echo "NGINX pull failed"
+            docker pull ghcr.io/iwwwanow/owwo:latest || echo "OWWO pull failed"
+
             docker compose down
 
             NGINX_IMAGE_NAME="ghcr.io/iwwwanow/nginx"
