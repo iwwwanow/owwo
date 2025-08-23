@@ -10,10 +10,14 @@
   - [x] - ssh-connection
   - [x] - linux-enveronment
   - [x] - remote-server-usage
-- [ ] - dns setup for domain
-- [ ] - yandex cloud
-- [ ] - docker compose up error on workflow deploy run
-- [ ] - latest owwo image not deployed
+- [x] - dns setup for domain
+- [x] - docker compose up error on workflow deploy run
+- [x] - ssl sertificate
+  - [x] - сайт перестал отвечать на http
+  - [x] - проверить наличие сертификата на сервере. создается ли он вообще
+  - [x] - перепроверить сайт с наличием сертификата
+  - [x] - проверить http-config в nginx. если неверный, вернуть как было
+- [x] - latest owwo image not deployed
 
 - покачто делаю без зарезервированных имен, типа кавера, resource-info.json и пр
 - также делаю без даты типа дата создания, дата регистрации и пр
