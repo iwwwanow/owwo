@@ -70,12 +70,5 @@ jobs:
             docker image prune -f
 
             docker rm -f $(docker ps -aq) 2>/dev/null
-
-            curl -L -o docker-compose.yml \
-              -H "Authorization: token $GITHUB_TOKEN" \
-              -H "Accept: application/vnd.github.v3.raw" \
-              "https://api.github.com/repos/iwwwanow/infrastructure/contents/docker-compose.yml?ref=master"
-
             docker compose pull
-
             docker-compose up -d
