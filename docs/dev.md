@@ -1,3 +1,14 @@
+- [ ] identical layout on mobile. just 2 columns
+  - without hovers
+- [ ] ssh connection to docker
+- [ ] owwo workflows
+- [ ] cache
+- [ ] videos
+- [ ] interfactive meeting
+- [ ] wrap on resource card
+
+---
+
 - [x] подключить стили в директорию public. передавать их независимо от шаблонов
 - [x] - рендер сетки в директории
   - [x] - выбор directory || text || image || other для шаблона resouce-card
@@ -25,7 +36,7 @@
 - после рендера страницы настраивать деплой
 
 ltf:
-- [ ] - css, js, html, md
+- [x] - css, js, html, md
 - [ ] - sftp users on docker
 - [ ] directory resource type card design. должен отличаться
 - [ ] - md text to html

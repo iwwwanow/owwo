@@ -43,11 +43,11 @@
 
 @media screen and (max-width: 360px) {
   .card__wrapper {
-    height: 192px;
+    height: 214px;
   }
   .card__img {
-    width: 100%;
+    width: auto;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
