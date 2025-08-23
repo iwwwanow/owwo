@@ -1,1 +1,0 @@
-export const REQUIRED_ENVS_LIST = ["UPLOADS_PATH"];
