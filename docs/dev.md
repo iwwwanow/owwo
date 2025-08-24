@@ -1,6 +1,12 @@
 - [ ] identical layout on mobile. just 2 columns
   - without hovers
 - [ ] ssh connection to docker
+- [ ] favicon
+- [ ] metainfo
+- [ ] render hidden folders
+- [ ] цифровая путь к храму
+- [ ] вертикальная путь к храму
+- [ ] after rebuild image cannot connet. need to rm ssh auth key and reconnect
 - [ ] owwo workflows
 - [ ] cache
 - [ ] videos
