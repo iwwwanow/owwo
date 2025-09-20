@@ -1,7 +1,21 @@
+- [ ] git repo
+   - .git direcotry in folder
+   - auto pull on page request
+   - render index.html
+   - how to get .js & .css files?
+   - meeting-with-the-goddess-of-flowers-1_interactive refactor
+- [ ] images list on infra (config.yaml maybe)
+- [ ] scripts.sh on infra (pull, clean & deploy.sh)
 - [ ] identical layout on mobile. just 2 columns
   - without hovers
+- [ ] config.(json/yaml) in root
+- [ ] render hidden resources
+- [ ] show-hidden-resources - config option
+- [ ] render directory
+   - iosevka nerd font
 - [ ] ssh connection to docker
-- [ ] favicon
+- [ ] just black/inversion font on cards
+- [x] favicon
 - [ ] metainfo
 - [ ] render hidden folders
 - [ ] цифровая путь к храму
