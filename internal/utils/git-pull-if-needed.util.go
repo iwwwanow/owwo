@@ -6,9 +6,12 @@ import (
 )
 
 func GitPullIfNeeded(dirPath string) error {
-	cmd := exec.Command("git", "-C", dirPath, "pull", "--rebase")
+	fmt.Printf("Attempting git pull from: %s\n", dirPath)
 
-	_, err := cmd.CombinedOutput()
+	cmd := exec.Command("git", "-C", dirPath, "pull", "--rebase")
+	output, err := cmd.CombinedOutput()
+	fmt.Printf("Git pull output: %s\n", string(output))
+
 	if err != nil {
 		return fmt.Errorf("git pull failed: %v", err)
 	}
