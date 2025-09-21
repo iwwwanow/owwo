@@ -16,6 +16,8 @@ RUN apk add --no-cache \
 	&& mkdir -p /root/.ssh \
 	&& chmod 700 /root/.ssh
 
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
 COPY --from=builder /server /app/server
 COPY --from=builder /app/static /app/static
 COPY --from=builder /app/templates /app/templates
