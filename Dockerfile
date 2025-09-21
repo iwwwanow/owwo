@@ -8,6 +8,7 @@ FROM alpine:3.22.1
 WORKDIR /app
 
 RUN apk add --no-cache \
+	git \
 	openssh \
 	&& echo "root:root" | chpasswd \
 	&& mkdir -p /var/run/sshd \
