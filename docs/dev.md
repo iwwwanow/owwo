@@ -1,3 +1,5 @@
+- [ ] save host keys on update images
+- [ ] curl, or scripts, or exe, or bit to fast install on server and localhost
 - [ ] git repo
    - .git direcotry in folder
    - auto pull on page request
