@@ -34,6 +34,8 @@ func ResouceHandler(tmpl *template.Template) http.HandlerFunc {
 		resource.Type = utils.GetFileType(resource.Name, resourceFileInfo)
 
 		if resource.Type == constants.FileTypeDir {
+			utils.GitPullIfNeeded(resourceFullPath)
+
 			if files, err := os.ReadDir(resourceFullPath); err == nil {
 				for _, childResourceFile := range files {
 					childResourceFullPath := filepath.Join(resourceFullPath, childResourceFile.Name())
