@@ -11,3 +11,14 @@ services:
       - PORT=8080
       - TZ=Europe/Moscow
     command: air -c .air.toml
+  owwo_image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /media/ubuntu-operator/7fff58c3-3e1f-4c91-8ef4-0aabb30c27f1/Documents/backups/owwo:/var/www/owwo/shared
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - TZ=Europe/Moscow
