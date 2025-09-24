@@ -12,7 +12,6 @@ RUN apk add --no-cache \
 	openssh \
 	&& echo "root:root" | chpasswd \
 	&& mkdir -p /var/run/sshd \
-	&& ssh-keygen -A \
 	&& mkdir -p /root/.ssh \
 	&& chmod 700 /root/.ssh
 
