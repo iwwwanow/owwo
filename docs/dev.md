@@ -1,5 +1,7 @@
 - [ ] разделить получение страницы и получение файла, как статики ЛИБО при помощи `queryParam` ЛИБО при помощи браузерных средств (могу ли я понять инициатора запроса)?
 - [ ] при сборке образа, нужно копировать в него ssh-ключи, чтобы при повторном подключении не высвечивалось предупреждении об изменении ключей. тоесть нужно зафиксировать постоянный ключ в образе
+- [ ] save host keys on update images
+- [ ] curl, or scripts, or exe, or bit to fast install on server and localhost
 - [ ] git repo
    - .git direcotry in folder
    - auto pull on page request
