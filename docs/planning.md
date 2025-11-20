@@ -1,3 +1,8 @@
+- [ ] api: добавить ручку на получение всех айтемов со страницы
+- [ ] config: добавить параметр hideItems/hide_items: boolean
+- [ ] при помощи js и webcomponents отрисовывать айтемы по категориям
+  - https://timurnovikov.com/en
+
 - [ ] запаблить и резюме и cv на owwo.
 - [ ] нужно перенести всю эту движуху на iwwwanow.ru домен
 
