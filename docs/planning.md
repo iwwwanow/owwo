@@ -1,3 +1,5 @@
+- [ ] если создание ярлыков (ссылок) не будет работать - можно ввести спецефичный нейминг для копирования ресурса. чтобы не дублировать место на диске
+
 - [ ] api: добавить ручку на получение всех айтемов со страницы
 - [ ] config: добавить параметр hideItems/hide_items: boolean
 - [ ] при помощи js и webcomponents отрисовывать айтемы по категориям
@@ -14,11 +16,11 @@
 - [ ] save host keys on update images
 - [ ] curl, or scripts, or exe, or bit to fast install on server and localhost
 - [ ] git repo
-   - .git direcotry in folder
-   - auto pull on page request
-   - render index.html
-   - how to get .js & .css files?
-   - meeting-with-the-goddess-of-flowers-1_interactive refactor
+  - .git direcotry in folder
+  - auto pull on page request
+  - render index.html
+  - how to get .js & .css files?
+  - meeting-with-the-goddess-of-flowers-1_interactive refactor
 - [ ] images list on infra (config.yaml maybe)
 - [ ] scripts.sh on infra (pull, clean & deploy.sh)
 - [ ] identical layout on mobile. just 2 columns
@@ -27,7 +29,7 @@
 - [ ] render hidden resources
 - [ ] show-hidden-resources - config option
 - [ ] render directory
-   - iosevka nerd font
+  - iosevka nerd font
 - [ ] ssh connection to docker
 - [ ] just black/inversion font on cards
 - [x] favicon
@@ -47,8 +49,8 @@
 - [x] подключить стили в директорию public. передавать их независимо от шаблонов
 - [x] - рендер сетки в директории
   - [x] - выбор directory || text || image || other для шаблона resouce-card
-   - [x] - для type=text сделать подготовку preview
-     - для image можно заталкивать туда ссылку
+  - [x] - для type=text сделать подготовку preview
+    - для image можно заталкивать туда ссылку
 - [x] - рендер страницы с ресурсом
   - [x] - get resource content
   - [x] - full-size-image
@@ -71,6 +73,7 @@
 - после рендера страницы настраивать деплой
 
 ltf:
+
 - [x] - css, js, html, md
 - [ ] - sftp users on docker
 - [ ] directory resource type card design. должен отличаться
